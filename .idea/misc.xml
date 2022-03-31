@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/edit_text_background.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/google_icon_login.xml" value="0.35625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/gradient_background.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/image_logo_register.xml" value="0.1765625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/round_btn.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/text_stype_shadow.xml" value="0.1765625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/login_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/register_fragment.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
