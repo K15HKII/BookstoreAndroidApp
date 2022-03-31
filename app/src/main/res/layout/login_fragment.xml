@@ -75,7 +75,27 @@
                     android:textColor="#000000"
                     android:textSize="19sp"
                     android:text="Đăng nhập bằng tài khoản"/>
-
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginTop="30dp"
+                          android:layout_marginBottom="30dp"
+                          android:orientation="horizontal">
+                <android.widget.Button
+                        android:id="@+id/btn_Login_LoginWithGoogle"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="120dp"
+                        android:backgroundTint="@color/btn_blue"
+                        android:background="@drawable/google_icon"
+                        android:textSize="24sp"/>
+                <android.widget.Button
+                        android:id="@+id/btn_Login_LoginWithFaceBook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="72dp"
+                        android:backgroundTint="@color/btn_blue"
+                        android:background="@drawable/facebook_icon"
+                        android:textSize="24sp"/>
+            </LinearLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
