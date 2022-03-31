@@ -26,7 +26,7 @@
                       android:textColor="@color/white"
                       android:textAlignment="center"/>
             <EditText
-                    android:id="@+id/et_Login_User"
+                    android:id="@+id/etLoginUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -36,7 +36,7 @@
                     android:inputType="text"
                     android:hint="Tên đăng nhập"/>
             <EditText
-                    android:id="@+id/et_Login_Password"
+                    android:id="@+id/etLoginPassword"
                     android:background="@drawable/edit_text_background"
                     android:padding="15dp"
                     android:textSize="16dp"
@@ -45,7 +45,7 @@
                     android:layout_marginTop="10dp"
                     android:hint="Mật khẩu"/>
             <TextView
-                    android:id="@+id/tv_Login_Passforget"
+                    android:id="@+id/tvLoginPassforget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/quen_mat_khau"
@@ -57,7 +57,7 @@
                     android:textAlignment="textEnd"/>
             <android.widget.Button
                     android:textAllCaps="false"
-                    android:id="@+id/btn_Login_Login"
+                    android:id="@+id/btnLoginLogin"
                     android:background="@drawable/round_btn"
                     android:radius="45dp"
                     android:layout_width="155dp"
@@ -80,7 +80,7 @@
                           android:layout_marginBottom="30dp"
                           android:orientation="horizontal">
                 <android.widget.Button
-                        android:id="@+id/btn_Login_LoginWithGoogle"
+                        android:id="@+id/btnLoginLoginWithGoogle"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="120dp"
@@ -88,9 +88,11 @@
                         android:background="@drawable/google_icon"
                         android:textSize="24sp"/>
                 <android.widget.Button
-                        android:id="@+id/btn_Login_LoginWithFaceBook"
+                        android:id="@+id/btnLoginLoginWithFaceBook"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:scaleX="1.35"
+                        android:scaleY="1.35"
                         android:layout_marginLeft="72dp"
                         android:backgroundTint="@color/btn_blue"
                         android:background="@drawable/facebook_icon"
@@ -112,7 +114,7 @@
                         android:textColor="#024C5E"
                         android:textAlignment="center"/>
                 <TextView
-                        android:id="@+id/tv_Login_Register"
+                        android:id="@+id/tvLoginRegister"
                         android:text="Đăng kí"
                         android:textStyle="bold"
                         android:textAppearance="@style/Dang_ki"

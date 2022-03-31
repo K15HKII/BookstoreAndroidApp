@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Library App</string>
+    
+    <string-array name="Gender_spinner">
+        <item>Nam</item>
+        <item>Nữ</item>
+        <item>Khác</item>
+    </string-array>
 </resources>

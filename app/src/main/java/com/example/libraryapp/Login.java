@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 public class Login extends Fragment {
 
     private LoginViewModel mViewModel;
-    private EditText et_Username,et_Password;
-    private Button btn_Login;
-    private TextView tv_Passforget,tv_Register;
+    private EditText etUsername,etPassword;
+    private Button btnLogin, btnLoginWithGoogle, btnLoginWithFacebook;
+    private TextView tvPassforget,tvRegister;
 
     public static Login newInstance() {
         return new Login();
@@ -33,26 +33,50 @@ public class Login extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
 //        Tìm view
-        et_Username = view.findViewById(R.id.et_Login_User);
-        et_Password = view.findViewById(R.id.et_Login_Password);
-        btn_Login = view.findViewById(R.id.btn_Login_Login);
-        tv_Register = view.findViewById(R.id.tv_Login_Register);
-        tv_Passforget = view.findViewById(R.id.tv_Login_Passforget);
+        etUsername = view.findViewById(R.id.etLoginUser);
+        etPassword = view.findViewById(R.id.etLoginPassword);
+        btnLogin = view.findViewById(R.id.btnLoginLogin);
+        btnLoginWithGoogle = view.findViewById(R.id.btnLoginLoginWithGoogle);
+        btnLoginWithFacebook = view.findViewById(R.id.btnLoginLoginWithFaceBook);
+        tvRegister = view.findViewById(R.id.tvLoginRegister);
+        tvPassforget = view.findViewById(R.id.tvLoginPassforget);
 
 //        Chức năng các nút
-        btn_Login.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        tv_Register.setOnClickListener(new View.OnClickListener() {
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragmentTransaction.replace(R.id.fragmentContainerView,Register.class,null).commit();
             }
         });
+
+        tvPassforget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnLoginWithGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnLoginWithFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         return view;
     }
 
