@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.libraryapp.ViewModel.LoginViewModel;
 
 public class Login extends Fragment {
 
@@ -45,14 +46,14 @@ public class Login extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                fragmentTransaction.replace(R.id.fragmentContainerView,Home.class,null).addToBackStack(null).commit();
             }
         });
 
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragmentContainerView,Register.class,null).commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView,Register.class,null).addToBackStack(null).commit();
             }
         });
 

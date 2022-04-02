@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_backgroup"
+        tools:context=".home_view">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_backgroup"
+            android:orientation="vertical">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+        <EditText
+                android:id="@+id/etHomeSearch"
+                android:drawableStart="@drawable/search_icon"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:padding="15dp"
+                android:hint="   Tìm kiếm"
+                android:background="@drawable/edit_text_background"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"/>
+        <android.widget.Button
+                android:id="@+id/btn_Home_Notification"
+                android:scaleX="0.62"
+                android:scaleY="0.7"
+                android:backgroundTint="@color/btn_blue"
+                android:background="@drawable/notification_icon"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"/>
+        <android.widget.Button
+                android:id="@+id/btn_Home_Shopping"
+                android:scaleX="0.62"
+                android:scaleY="0.7"
+                android:backgroundTint="@color/btn_blue"
+                android:background="@drawable/shopping_icon"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="31sp"
+            android:text="Kho Sách"
+            android:textColor="@color/black"/>
+    <!--Danh mục cái navigation item-->
+    <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+    <!--Danh sách các mục listbox-->
+<!--            <ListView-->
+<!--                    android:id="@+id/lvHomeListViewBook"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--            </ListView>-->
+    </LinearLayout>
+
+</LinearLayout>

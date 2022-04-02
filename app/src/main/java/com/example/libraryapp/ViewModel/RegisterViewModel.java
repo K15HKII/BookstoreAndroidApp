@@ -1,4 +1,4 @@
-package com.example.libraryapp;
+package com.example.libraryapp.ViewModel;
 
 import androidx.lifecycle.ViewModel;
 

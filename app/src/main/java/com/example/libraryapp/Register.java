@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.libraryapp.ViewModel.RegisterViewModel;
 
 public class Register extends Fragment implements AdapterView.OnItemSelectedListener {
 
