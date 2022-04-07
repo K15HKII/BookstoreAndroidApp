@@ -80,6 +80,7 @@
                     android:textSize="15dp"
                     android:clickable="true"
                     android:checkable="true"
+                    android:checked="true"
                     app:checkedIconVisible="false"
                     app:chipIconTint="@color/text_selector"
                     app:chipBackgroundColor="@color/chip_selector"
