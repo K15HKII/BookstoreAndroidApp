@@ -26,7 +26,7 @@
                 android:padding="15dp"
                 android:hint="   Tìm kiếm"
                 android:background="@drawable/edit_text_background"
-                android:layout_width="270dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"/>
         <android.widget.Button
                 android:id="@+id/btn_Home_Notification"
@@ -67,12 +67,7 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-    <!--Danh sách các mục listbox-->
-<!--            <ListView-->
-<!--                    android:id="@+id/lvHomeListViewBook"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content">-->
-<!--            </ListView>-->
+
     </LinearLayout>
 
 </LinearLayout>

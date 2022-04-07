@@ -9,4 +9,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red_orange">#E73827</color>
+    <color name="unselected">#BDBDBD</color>
+    <color name="forgot_password">#4E9FC2</color>
 </resources>

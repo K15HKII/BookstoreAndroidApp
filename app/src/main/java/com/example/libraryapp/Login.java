@@ -60,7 +60,7 @@ public class Login extends Fragment {
         tvPassforget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                fragmentTransaction.replace(R.id.fragmentContainerView,forgot_password.class,null).addToBackStack(null).commit();
             }
         });
 

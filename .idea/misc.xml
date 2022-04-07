@@ -4,7 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_arrow.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_button_1.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_button_2.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_button_3.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_image.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/account_selector.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/background_forgotpassword.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/backward_icon.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/btn_forgotpassword.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/edit_text_background.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/google_icon_login.xml" value="0.35625" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/gradient_background.xml" value="0.17239583333333333" />
@@ -15,18 +23,24 @@
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/ic_launcher_background.xml" value="0.35625" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/image_logo_register.xml" value="0.1765625" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/love_selector.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/navigation_selector.xml" value="0.1765625" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/navigation_shape.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/receipt_selector.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/round_btn.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/spinner_shape.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/drawable/text_stype_shadow.xml" value="0.1765625" />
-        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/account_view_fragment.xml" value="0.34010416666666665" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/account_view_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/favorite_view.xml" value="0.33489583333333334" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/forgot_password_fragment.xml" value="0.5" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/home_fragment.xml" value="0.34010416666666665" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/home_navigation.xml" value="0.31979166666666664" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/home_view_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/login_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/love_view_fragment.xml" value="0.34010416666666665" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/purchase_view.xml" value="0.33489583333333334" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/receipt_view_fragment.xml" value="0.34010416666666665" />
-        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/register_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/layout/register_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Admin/IdeaProjects/app/src/main/res/menu/bottom_menu.xml" value="0.3536458333333333" />
       </map>
     </option>

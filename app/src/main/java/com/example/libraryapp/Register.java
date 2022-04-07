@@ -1,5 +1,6 @@
 package com.example.libraryapp;
 
+import android.app.DatePickerDialog;
 import android.widget.*;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -11,13 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.libraryapp.ViewModel.RegisterViewModel;
 
+import java.util.Calendar;
+
 public class Register extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private RegisterViewModel mViewModel;
     private Button btnRegister, btnRegisterWithGoogle, btnRegisterWithFacebook;
-    private EditText etUsername,etDOB,etPhoneNum,etEmail;
+    private EditText etUsername,etDOB,etPhoneNum,etEmail,etPassword,etPasswordConfirm;
     private Spinner spGender;
     private TextView tvPolicy;
+    private DatePickerDialog.OnDateSetListener datePickerDOB;
+    private Calendar DOB;
 
     public static Register newInstance() {
         return new Register();
@@ -31,15 +36,23 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
 //        Tìm view
 
         btnRegister = view.findViewById(R.id.btnRegisterRegister);
-        btnRegisterWithGoogle = view.findViewById(R.id.btnRegisterRegisterWithGoogle);
-        btnRegisterWithFacebook = view.findViewById(R.id.btnRegisterRegisterWithFaceBook);
+//        btnRegisterWithGoogle = view.findViewById(R.id.btnRegisterRegisterWithGoogle);
+//        btnRegisterWithFacebook = view.findViewById(R.id.btnRegisterRegisterWithFaceBook);
         etUsername = view.findViewById(R.id.etRegisterUser);
         etDOB = view.findViewById(R.id.etRegisterDOB);
         etEmail = view.findViewById(R.id.etRegisterEmail);
         etPhoneNum = view.findViewById(R.id.etRegisterPhoneNum);
+        etPassword = view.findViewById(R.id.etRegisterPassword);
+        etPasswordConfirm = view.findViewById(R.id.etRegisterPasswordConfirm);
         spGender = view.findViewById(R.id.spRegisterGender);
         tvPolicy = view.findViewById(R.id.tvRegisterPolicy);
 
+//        datePickerDOB = (datePicker, year, month, dayOfMonth) -> {
+//            month += 1;
+//            DOB = Calendar.getInstance();
+//            DOB.set(year, month, dayOfMonth, 0, 0);
+//            etDOB.setText(DOB.get(Calendar.DATE) + "/" + DOB.get(Calendar.MONTH) + "/" + DOB.get(Calendar.YEAR));
+//        };
 //        Button Function
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,25 +61,32 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
             }
         });
 
-        btnRegisterWithGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        btnRegisterWithFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        btnRegisterWithGoogle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//
+//        btnRegisterWithFacebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
 //        TextView Function
         tvPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        etDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Utils.pickDate(getActivity(), datePickerDOB);
             }
         });
 

@@ -4,36 +4,44 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
+        android:padding="15dp"
         android:background="@drawable/gradient_background"
         tools:context=".Register">
-
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 <!--        Hình ảnh logo-->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+                    <android.widget.Button
+                            android:id="@+id/btnRegisterBackward"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:background="@drawable/backward_icon"/>
                 <View
                         android:layout_width="235.82dp"
                         android:layout_height="150dp"
-                        android:scaleX="1.1"
-                        android:scaleY="1"
-                        android:layout_marginLeft="67dp"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginRight="67dp"
-                        android:layout_marginTop="20.67dp"
-                        android:background="@drawable/image1"
-                />
+                        android:background="@drawable/image1"/>
+                </LinearLayout>
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:text="Đăng kí"
                           android:textAlignment="center"
-                          android:textSize="40sp"
+                          android:textSize="35sp"
                           android:textStyle="bold"
-                          android:textColor="@color/white"
+                          android:textColor="@color/btn_blue"
                           android:backgroundTint="@color/black"
                           android:textAppearance="@style/Dang_ki"/>
             </LinearLayout>
@@ -55,6 +63,7 @@
                         android:id="@+id/spRegisterGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:popupBackground="@drawable/spinner_shape"
                         android:padding="15dp"
                         android:layout_marginLeft="15dp"
                         android:textSize="16dp"
@@ -63,18 +72,21 @@
                         android:hint="giới tính"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:layout_marginTop="10dp"
-                          android:orientation="horizontal">
-                <EditText
-                        android:id="@+id/etRegisterDOB"
-                        android:layout_width="188dp"
-                        android:layout_height="wrap_content"
-                        android:padding="15dp"
-                        android:textSize="16dp"
-                        android:background="@drawable/edit_text_background"
-                        android:inputType="date"
-                        android:hint="Ngày sinh"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="10dp">
+
+                    <EditText
+                            android:id="@+id/etRegisterDOB"
+                            android:layout_width="188dp"
+                            android:layout_height="wrap_content"
+                            android:padding="15dp"
+                            android:textSize="16dp"
+                            android:background="@drawable/edit_text_background"
+                            android:inputType="date"
+                            android:hint="Ngày sinh"/>
+
                 <EditText
                         android:id="@+id/etRegisterPhoneNum"
                         android:layout_width="match_parent"
@@ -96,63 +108,97 @@
                     android:background="@drawable/edit_text_background"
                     android:inputType="text"
                     android:hint="Email"/>
-
-            <!--Điều khoản-->
-            <TextView
-                    android:id="@+id/tvRegisterPolicy"
+            <EditText
+                    android:id="@+id/etRegisterPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#001C44"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Điều khoản chính sách"
-                    android:clickable="true"/>
+                    android:padding="15dp"
+                    android:textSize="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="textPassword"
+                    android:hint="Mật khẩu"/>
+            <EditText
+                    android:id="@+id/etRegisterPasswordConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:textSize="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="textPassword"
+                    android:hint="Nhập lại mật khẩu"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <!--Kiểm tra đã đồng ý điều khoản hay chưa-->
+                <CheckBox
+                        android:id="@+id/cbRegisterCheckPolicy"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="12dp"/>
+
+                <!--Điều khoản-->
+                <TextView
+                        android:id="@+id/tvRegisterPolicy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#001C44"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Tôi chấp nhận với điều khoản và chính sách của appname."
+                        android:clickable="true"/>
+            </LinearLayout>
+
             <!--            Đăng kí button-->
             <android.widget.Button
                     android:id="@+id/btnRegisterRegister"
+                    android:textAllCaps="false"
                     android:background="@drawable/round_btn"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:padding="15dp"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:text="Đăng kí"
                     android:textColor="@color/white"
                     android:layout_gravity="center"/>
-            <!--            Đăng kí bằng phương thức khác-->
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/Dang_nhap_bang_tai_khoan"
-                    android:textColor="#000000"
-                    android:textSize="19sp"
-                    android:text="Đăng ký bằng tài khoản"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:layout_marginTop="30dp"
-                          android:layout_marginBottom="30dp"
-                          android:orientation="horizontal">
-                <android.widget.Button
-                        android:id="@+id/btnRegisterRegisterWithGoogle"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="120dp"
-                        android:backgroundTint="@color/btn_blue"
-                        android:background="@drawable/google_icon"
-                        android:textSize="24sp"/>
-                <android.widget.Button
-                        android:id="@+id/btnRegisterRegisterWithFaceBook"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:scaleX="1.35"
-                        android:scaleY="1.35"
-                        android:layout_marginLeft="72dp"
-                        android:backgroundTint="@color/btn_blue"
-                        android:background="@drawable/facebook_icon"
-                        android:textSize="24sp"/>
-            </LinearLayout>
+<!--            &lt;!&ndash;            Đăng kí bằng phương thức khác&ndash;&gt;-->
+<!--            <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textAppearance="@style/Dang_nhap_bang_tai_khoan"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textSize="19sp"-->
+<!--                    android:text="Đăng ký bằng tài khoản"/>-->
+<!--            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="30dp"-->
+<!--                          android:layout_marginBottom="30dp"-->
+<!--                          android:orientation="horizontal">-->
+<!--                <android.widget.Button-->
+<!--                        android:id="@+id/btnRegisterRegisterWithGoogle"-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_marginLeft="120dp"-->
+<!--                        android:backgroundTint="@color/btn_blue"-->
+<!--                        android:background="@drawable/google_icon"-->
+<!--                        android:textSize="24sp"/>-->
+<!--                <android.widget.Button-->
+<!--                        android:id="@+id/btnRegisterRegisterWithFaceBook"-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:scaleX="1.35"-->
+<!--                        android:scaleY="1.35"-->
+<!--                        android:layout_marginLeft="72dp"-->
+<!--                        android:backgroundTint="@color/btn_blue"-->
+<!--                        android:background="@drawable/facebook_icon"-->
+<!--                        android:textSize="24sp"/>-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 
