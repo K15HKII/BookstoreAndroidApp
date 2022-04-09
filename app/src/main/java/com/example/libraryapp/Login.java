@@ -46,7 +46,7 @@ public class Login extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragmentContainerView,Home.class,null).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView,edit_bank_account.class,null).addToBackStack(null).commit();
             }
         });
 

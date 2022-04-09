@@ -65,30 +65,35 @@
             android:layout_width="wrap_content"
             android:scrollbars="none"
             android:layout_height="50dp">
+
             <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chipgrpHomeChipNavigation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:singleLine="true"
                     app:singleSelection="true">
-            <com.google.android.material.chip.Chip
-                    android:id="@+id/chipHomeAllTopics"
-                    android:layout_width="65dp"
-                    android:layout_height="match_parent"
-                    app:iconStartPadding="17dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
-                    android:clickable="true"
-                    android:checkable="true"
-                    android:checked="true"
-                    app:checkedIconVisible="false"
-                    app:chipIconTint="@color/text_selector"
-                    app:chipBackgroundColor="@color/chip_selector"
-                    app:chipIcon="@drawable/menu_icon"/>
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chipHomeAllTopics"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="15dp"
+                            android:clickable="true"
+                            android:checkable="true"
+                            android:checked="true"
+                            android:scaleY="1"
+                            android:scaleX="1"
+                            app:chipIconSize="20dp"
+                            app:iconStartPadding="17dp"
+                            app:checkedIconVisible="false"
+                            app:chipIconTint="@color/text_selector"
+                            app:chipBackgroundColor="@color/chip_selector"
+                            app:chipIcon="@drawable/menu_icon"/>
             <com.google.android.material.chip.Chip
                     android:id="@+id/chipHomeAllBooks"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:clickable="true"
@@ -101,11 +106,12 @@
                         android:id="@+id/chipHomePopularBooks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:iconStartPadding="15dp"
+                        android:layout_marginLeft="10dp"
                         android:textSize="15dp"
                         android:clickable="true"
                         android:text="Phổ biến"
                         android:checkable="true"
+                        app:iconStartPadding="15dp"
                         app:checkedIconVisible="false"
                         android:textColor="@color/text_selector"
                         app:chipBackgroundColor="@color/chip_selector"/>
@@ -113,11 +119,12 @@
                         android:id="@+id/chipHomeFamiliarBooks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:iconStartPadding="15dp"
+                        android:layout_marginLeft="10dp"
                         android:textSize="15dp"
                         android:clickable="true"
                         android:text="Gần đây"
                         android:checkable="true"
+                        app:iconStartPadding="15dp"
                         app:checkedIconVisible="false"
                         android:textColor="@color/text_selector"
                         app:chipBackgroundColor="@color/chip_selector"/>
@@ -125,15 +132,18 @@
                         android:id="@+id/chipHomeForYouBooks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:iconStartPadding="15dp"
+                        android:layout_marginLeft="10dp"
                         android:textSize="15dp"
                         android:clickable="true"
                         android:text="Dành cho bạn"
                         android:checkable="true"
+                        app:iconStartPadding="15dp"
                         app:checkedIconVisible="false"
                         android:textColor="@color/text_selector"
                         app:chipBackgroundColor="@color/chip_selector"/>
+
             </com.google.android.material.chip.ChipGroup>
+
     </HorizontalScrollView>
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"

@@ -23,7 +23,7 @@
 
         <path
                 android:pathData="M0.5 0.5V48.5H155.5V0.5"
-                android:fillColor="#001C44"
+                android:fillColor="#0C5776"
         />
 
     </group>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".add_bank_account">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarAddBank">
+            <android.widget.Button
+                    android:id="@+id/btnAddBankBackward"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:background="@drawable/backward_icon"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:textStyle="bold"
+                    android:text="Thêm ngân hàng"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="673dp"
+                android:background="@drawable/home_backgroup"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarAddBank"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            <EditText
+                    android:id="@+id/etAddBankOwnerName"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tên chủ sở hữu"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/edit_text_background"/>
+            <EditText
+                    android:id="@+id/etAddBankIdentify"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CMND/CCCD"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/edit_text_background"/>
+            <ExpandableListView
+                    android:id="@+id/lvAddBankBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/home_backgroup"
+                    android:scrollbars="none"
+                    android:divider="#BCFEFE"
+                    android:dividerHeight="10dp"
+                    android:layoutDirection="rtl"
+                    android:groupIndicator="@drawable/expandable_selector"
+                    android:transcriptMode="alwaysScroll"/>
+            <EditText
+                    android:id="@+id/etAddBankCardNumber"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Số tài khoản"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/edit_text_background"/>
+            <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <CheckBox
+                        android:id="@+id/cbAddBankDefaultBankCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Đặt làm tài khoản ngân hàng mặc định"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+            </LinearLayout>
+            <android.widget.Button
+                    android:id="@+id/btnAddBankDone"
+                    android:textAllCaps="false"
+                    android:background="@drawable/round_btn"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textSize="16.5dp"
+                    android:text="Xong"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</FrameLayout>
