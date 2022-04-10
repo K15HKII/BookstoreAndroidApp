@@ -1,6 +1,9 @@
 package com.example.libraryapp;
 
 import android.app.DatePickerDialog;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.widget.*;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -23,6 +26,7 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
     private TextView tvPolicy;
     private DatePickerDialog.OnDateSetListener datePickerDOB;
     private Calendar DOB;
+    private boolean passwordVisible;
 
     public static Register newInstance() {
         return new Register();
@@ -34,10 +38,7 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
         View view = inflater.inflate(R.layout.register_fragment, container, false);
 
 //        Tìm view
-
         btnRegister = view.findViewById(R.id.btnRegisterRegister);
-//        btnRegisterWithGoogle = view.findViewById(R.id.btnRegisterRegisterWithGoogle);
-//        btnRegisterWithFacebook = view.findViewById(R.id.btnRegisterRegisterWithFaceBook);
         etUsername = view.findViewById(R.id.etRegisterUser);
         etDOB = view.findViewById(R.id.etRegisterDOB);
         etEmail = view.findViewById(R.id.etRegisterEmail);
@@ -45,38 +46,9 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
         etPassword = view.findViewById(R.id.etRegisterPassword);
         etPasswordConfirm = view.findViewById(R.id.etRegisterPasswordConfirm);
         spGender = view.findViewById(R.id.spRegisterGender);
-        tvPolicy = view.findViewById(R.id.tvRegisterPolicy);
 
-//        datePickerDOB = (datePicker, year, month, dayOfMonth) -> {
-//            month += 1;
-//            DOB = Calendar.getInstance();
-//            DOB.set(year, month, dayOfMonth, 0, 0);
-//            etDOB.setText(DOB.get(Calendar.DATE) + "/" + DOB.get(Calendar.MONTH) + "/" + DOB.get(Calendar.YEAR));
-//        };
-//        Button Function
+//      Button Function
         btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-//        btnRegisterWithGoogle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-//
-//        btnRegisterWithFacebook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
-//        TextView Function
-        tvPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -87,6 +59,64 @@ public class Register extends Fragment implements AdapterView.OnItemSelectedList
             @Override
             public void onClick(View view) {
 //                Utils.pickDate(getActivity(), datePickerDOB);
+            }
+        });
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right = 2;
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_off_black,0);
+                            //for hide password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        }
+                        else{
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_black,0);
+                            //for show password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        etPasswordConfirm.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right = 2;
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_off_black,0);
+                            //for hide password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        }
+                        else{
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_black,0);
+                            //for show password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
 

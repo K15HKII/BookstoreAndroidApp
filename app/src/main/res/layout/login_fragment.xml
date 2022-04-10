@@ -8,6 +8,10 @@
         android:background="@drawable/gradient_background"
         tools:context=".Login">
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -40,10 +44,14 @@
                     android:id="@+id/etLoginPassword"
                     android:background="@drawable/edit_text_background"
                     android:padding="15dp"
+                    android:paddingRight="10dp"
                     android:textSize="16dp"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:drawableRight="@drawable/ic_visibility_off_black"
+                    android:longClickable="false"
+                    android:inputType="textPassword"
                     android:hint="Mật khẩu"/>
             <TextView
                     android:id="@+id/tvLoginPassforget"
@@ -127,5 +135,6 @@
                         android:clickable="true"/>
             </LinearLayout>
         </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </FrameLayout>

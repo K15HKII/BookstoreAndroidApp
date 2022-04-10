@@ -1,5 +1,8 @@
 package com.example.libraryapp;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ public class Login extends Fragment {
     private EditText etUsername,etPassword;
     private Button btnLogin, btnLoginWithGoogle, btnLoginWithFacebook;
     private TextView tvPassforget,tvRegister;
+    private boolean passwordVisible;
 
     public static Login newInstance() {
         return new Login();
@@ -75,6 +79,35 @@ public class Login extends Fragment {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right = 2;
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_off_black,0);
+                            //for hide password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        }
+                        else{
+                            //set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_visibility_black,0);
+                            //for show password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
 

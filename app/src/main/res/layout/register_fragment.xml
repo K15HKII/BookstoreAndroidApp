@@ -10,7 +10,10 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 <!--        Hình ảnh logo-->
         <LinearLayout
                 android:layout_width="match_parent"
@@ -117,6 +120,8 @@
                     android:textSize="16dp"
                     android:background="@drawable/edit_text_background"
                     android:inputType="textPassword"
+                    android:drawableRight="@drawable/ic_visibility_off_black"
+                    android:longClickable="false"
                     android:hint="Mật khẩu"/>
             <EditText
                     android:id="@+id/etRegisterPasswordConfirm"
@@ -126,6 +131,8 @@
                     android:padding="15dp"
                     android:textSize="16dp"
                     android:background="@drawable/edit_text_background"
+                    android:drawableRight="@drawable/ic_visibility_off_black"
+                    android:longClickable="false"
                     android:inputType="textPassword"
                     android:hint="Nhập lại mật khẩu"/>
 
@@ -136,21 +143,13 @@
                 <!--Kiểm tra đã đồng ý điều khoản hay chưa-->
                 <CheckBox
                         android:id="@+id/cbRegisterCheckPolicy"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="12dp"/>
-
-                <!--Điều khoản-->
-                <TextView
-                        android:id="@+id/tvRegisterPolicy"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:textColor="#001C44"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="Tôi chấp nhận với điều khoản và chính sách của appname."
-                        android:clickable="true"/>
+                        android:clickable="true"
+                        android:text="Tôi chấp nhận với điều khoản và chính sách của appname."/>
+
             </LinearLayout>
 
             <!--            Đăng kí button-->
@@ -166,40 +165,8 @@
                     android:text="Đăng kí"
                     android:textColor="@color/white"
                     android:layout_gravity="center"/>
-<!--            &lt;!&ndash;            Đăng kí bằng phương thức khác&ndash;&gt;-->
-<!--            <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="40dp"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAppearance="@style/Dang_nhap_bang_tai_khoan"-->
-<!--                    android:textColor="#000000"-->
-<!--                    android:textSize="19sp"-->
-<!--                    android:text="Đăng ký bằng tài khoản"/>-->
-<!--            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"-->
-<!--                          android:layout_marginTop="30dp"-->
-<!--                          android:layout_marginBottom="30dp"-->
-<!--                          android:orientation="horizontal">-->
-<!--                <android.widget.Button-->
-<!--                        android:id="@+id/btnRegisterRegisterWithGoogle"-->
-<!--                        android:layout_width="30dp"-->
-<!--                        android:layout_height="30dp"-->
-<!--                        android:layout_marginLeft="120dp"-->
-<!--                        android:backgroundTint="@color/btn_blue"-->
-<!--                        android:background="@drawable/google_icon"-->
-<!--                        android:textSize="24sp"/>-->
-<!--                <android.widget.Button-->
-<!--                        android:id="@+id/btnRegisterRegisterWithFaceBook"-->
-<!--                        android:layout_width="30dp"-->
-<!--                        android:layout_height="30dp"-->
-<!--                        android:scaleX="1.35"-->
-<!--                        android:scaleY="1.35"-->
-<!--                        android:layout_marginLeft="72dp"-->
-<!--                        android:backgroundTint="@color/btn_blue"-->
-<!--                        android:background="@drawable/facebook_icon"-->
-<!--                        android:textSize="24sp"/>-->
-<!--            </LinearLayout>-->
         </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 
 </FrameLayout>
