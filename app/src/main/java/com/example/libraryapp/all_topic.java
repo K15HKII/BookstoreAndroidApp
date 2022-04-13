@@ -1,5 +1,7 @@
 package com.example.libraryapp;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,6 +15,8 @@ import com.example.libraryapp.ViewModel.AllTopicViewModel;
 public class all_topic extends Fragment {
 
     private AllTopicViewModel mViewModel;
+    private ListView lsTopics;
+    private ArrayAdapter<String> arrayAdapterTopic;
 
     public static all_topic newInstance() {
         return new all_topic();
@@ -21,7 +25,15 @@ public class all_topic extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.all_topic_fragment, container, false);
+        View view = inflater.inflate(R.layout.all_topic_fragment, container, false);
+
+        lsTopics = view.findViewById(R.id.lvHomeAllTopic);
+        String[] TopicsArray = {"Văn học", "Giáo dục", "Công nghệ"};
+
+        arrayAdapterTopic = new ArrayAdapter<String>(getActivity(), R.layout.topics_view, TopicsArray);
+        lsTopics.setAdapter(arrayAdapterTopic);
+
+        return view;
     }
 
     @Override

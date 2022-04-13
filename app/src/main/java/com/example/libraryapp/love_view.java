@@ -8,11 +8,22 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.libraryapp.HomeRecycleView.BookView;
+import com.example.libraryapp.HomeRecycleView.BookViewAdapter;
 import com.example.libraryapp.ViewModel.LoveViewViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class love_view extends Fragment {
 
     private LoveViewViewModel mViewModel;
+    private RecyclerView rcvListRecentlyBooks;
+    private BookViewAdapter bookViewRecentlyAdapter;
+    private RecyclerView rcvListAllBooks;
+    private BookViewAdapter bookViewAllAdapter;
 
     public static love_view newInstance() {
         return new love_view();
@@ -21,7 +32,30 @@ public class love_view extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.love_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.love_view_fragment, container, false);
+
+        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
+
+        List<BookView> arrayName = new ArrayList<BookView>();
+        for(int i=0;i<names.length;i++){
+            arrayName.add(new BookView(names[i]));
+        }
+
+        rcvListRecentlyBooks = view.findViewById(R.id.lvLoveRecentlyBook);
+        bookViewRecentlyAdapter = new BookViewAdapter(getActivity(),arrayName);
+
+        rcvListAllBooks = view.findViewById(R.id.lvLoveAllBook);
+        bookViewAllAdapter = new BookViewAdapter(getActivity(),arrayName);
+
+        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getActivity(),2);
+        rcvListRecentlyBooks.setLayoutManager(gridLayoutManager1);
+        rcvListAllBooks.setLayoutManager(gridLayoutManager2);
+
+        rcvListRecentlyBooks.setAdapter(bookViewRecentlyAdapter);
+        rcvListAllBooks.setAdapter(bookViewAllAdapter);
+
+        return view;
     }
 
     @Override

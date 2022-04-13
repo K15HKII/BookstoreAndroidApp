@@ -23,37 +23,48 @@
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
                 android:id="@+id/toolbarEditBank">
-        <android.widget.Button
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+                <android.widget.Button
                 android:id="@+id/btnEditBankBackward"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
                 android:background="@drawable/backward_icon"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:textStyle="bold"
-                android:text="Tài khoản ngân hàng"
-                android:textColor="@color/black"
-                android:textSize="24dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="Tài khoản ngân hàng"
+                            android:textColor="@color/black"
+                            android:textSize="24dp"/>
+                </LinearLayout>
 
             <android.widget.Button
                     android:id="@+id/btnEditBank"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:scaleX="1"
-                    android:scaleY="1"
+                    android:layout_alignParentEnd="true"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/ic_delete_black"/>
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="673dp"
-                    android:background="@drawable/home_backgroup"
+                    android:background="@drawable/home_background"
                     android:padding="20dp">
                 <EditText
                         android:id="@+id/etAddBankOwnerName"
@@ -85,12 +96,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/home_backgroup"
+                        android:background="@drawable/home_background"
                         android:scrollbars="none"
                         android:divider="#BCFEFE"
                         android:dividerHeight="10dp"
+                        android:childDivider="#BCFEFE"
                         android:layoutDirection="rtl"
-                        android:groupIndicator="@drawable/expandable_selector"
                         android:transcriptMode="alwaysScroll"/>
 
                 <EditText

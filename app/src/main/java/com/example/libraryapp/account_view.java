@@ -1,5 +1,8 @@
 package com.example.libraryapp;
 
+import android.widget.Button;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import com.example.libraryapp.ViewModel.AccountViewViewModel;
 public class account_view extends Fragment {
 
     private AccountViewViewModel mViewModel;
+    private Button btnInfomation, btnSetting, btnHelpCenter;
 
     public static account_view newInstance() {
         return new account_view();
@@ -21,7 +25,37 @@ public class account_view extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.account_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.account_view_fragment, container, false);
+
+        btnInfomation = view.findViewById(R.id.btnAccountInfomation);
+        btnSetting = view.findViewById(R.id.btnAccountSetting);
+        btnHelpCenter = view.findViewById(R.id.btnAccountHelpCenter);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        btnInfomation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragmentContainerView,account_info_view.class,null).addToBackStack(null).commit();
+            }
+        });
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragmentContainerView,setting_page.class,null).addToBackStack(null).commit();
+            }
+        });
+
+        btnHelpCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentTransaction.replace(R.id.fragmentContainerView,help_page.class,null).addToBackStack(null).commit();
+            }
+        });
+
+        return view;
     }
 
     @Override

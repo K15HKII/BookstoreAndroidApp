@@ -10,7 +10,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_backgroup"
+            android:background="@drawable/home_background"
             android:orientation="vertical">
         <LinearLayout
                 android:layout_width="match_parent"
@@ -31,6 +31,15 @@
                     android:background="@drawable/edit_text_background"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
             <android.widget.Button
                     android:id="@+id/btn_Home_Notification"
                     android:scaleX="0.62"
@@ -43,11 +52,51 @@
                     android:id="@+id/btn_Home_Shopping"
                     android:scaleX="0.62"
                     android:scaleY="0.7"
+                    android:layout_marginRight="10dp"
                     android:backgroundTint="@color/btn_blue"
                     android:background="@drawable/shopping_icon"
                     android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-            />
+                    android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
+
+        <ScrollView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="505dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:textSize="31sp"
+                        android:text="Gần đây"
+                        android:textColor="@color/black"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/lvLoveRecentlyBook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:textSize="31sp"
+                        android:text="Tất cả"
+                        android:textColor="@color/black"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/lvLoveAllBook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 </LinearLayout>

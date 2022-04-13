@@ -2,14 +2,15 @@
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".receipt_view">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_backgroup"
+            android:background="@drawable/home_background"
             android:orientation="vertical">
         <LinearLayout
                 android:layout_width="match_parent"
@@ -30,6 +31,13 @@
                     android:background="@drawable/edit_text_background"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"/>
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentEnd="true"
+                          android:layout_centerVertical="true"
+                          android:orientation="horizontal">
             <android.widget.Button
                     android:id="@+id/btn_Home_Notification"
                     android:scaleX="0.62"
@@ -45,9 +53,24 @@
                     android:backgroundTint="@color/btn_blue"
                     android:background="@drawable/shopping_icon"
                     android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-            />
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabMenuReceiptNav"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/home_background"
+                android:minHeight="?attr/actionBarSize"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabSelectedTextColor="@color/black"
+                app:tabIndicatorColor="@color/black"/>
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpReceiptOrderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
     </LinearLayout>
 
 </FrameLayout>

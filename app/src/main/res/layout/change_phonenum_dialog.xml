@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="20dp"
+              android:background="@drawable/dialog_shape">
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi số điện thoại"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+    <EditText
+            android:id="@+id/etChangePhoneNumNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Nhập số điện thoại"
+            android:padding="15dp"
+            android:inputType="number"
+            android:background="@drawable/edit_text_background"/>
+    <android.widget.Button
+            android:id="@+id/btnChangePhoneNumChangePhoneNum"
+            android:text="Đổi số"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="15dp"
+            android:background="@drawable/round_btn"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+</LinearLayout>

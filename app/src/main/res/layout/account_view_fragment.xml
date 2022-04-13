@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:padding="24dp"
-        android:background="@drawable/home_backgroup"
+        android:background="@drawable/home_background"
         android:layout_height="match_parent"
         tools:context=".account_view">
 
@@ -45,6 +45,7 @@
                   android:layout_marginTop="20dp"
                   android:orientation="vertical">
         <android.widget.Button
+                android:id="@+id/btnAccountInfomation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -57,6 +58,7 @@
                 android:drawableStart="@drawable/account_human_icon"
                 android:drawableEnd="@drawable/account_arrow_icon"/>
         <android.widget.Button
+                android:id="@+id/btnAccountVoucher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -89,6 +91,7 @@
                   android:orientation="vertical"
                   android:layout_marginTop="15dp">
         <android.widget.Button
+                android:id="@+id/btnAccountSetting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -119,7 +122,9 @@
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:layout_marginTop="15dp">
+
         <android.widget.Button
+                android:id="@+id/btnAccountHelpCenter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -131,19 +136,24 @@
                 android:textAlignment="center"
                 android:drawableStart="@drawable/account_infomation_icon"
                 android:drawableEnd="@drawable/account_arrow_icon"/>
-        <android.widget.Button
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:paddingLeft="120dp"
-                android:paddingRight="120dp"
-                android:textSize="16.5dp"
-                android:textStyle="normal"
-                android:background="@drawable/account_button_2"
-                android:text="Đăng xuất"
-                android:textAllCaps="false"
-                android:textColor="@color/red_orange"
-                android:layout_marginTop="2dp"
-                android:drawableLeft="@drawable/account_signout_icon"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/account_button_2">
+            <android.widget.Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="16.5dp"
+                    android:textStyle="normal"
+                    android:background="@null"
+                    android:text="Đăng xuất"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:textColor="@color/red_orange"
+                    android:drawableStart="@drawable/account_signout_icon"
+                    android:layout_marginTop="2dp"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

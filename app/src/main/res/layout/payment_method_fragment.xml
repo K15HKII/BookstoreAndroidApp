@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_background"
+        tools:context=".payment_method">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbarSettingPage">
+        <android.widget.Button
+                android:id="@+id/btnPaymentMethodBackward"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:background="@drawable/backward_icon"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:textStyle="bold"
+                android:text="Hình thức thanh toán"
+                android:textColor="@color/black"
+                android:textSize="24dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/account_button_1">
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                <RadioButton
+                        android:id="@+id/btnPaymentMethodATM"
+                        android:layout_width="349dp"
+                        android:layout_height="wrap_content"
+                        android:text="Thẻ ATM"
+                        android:textSize="18dp"
+                        android:textColor="@color/btn_blue"
+                        android:textStyle="bold"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2.25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/account_arrow_icon"/>
+            </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/account_button_2">
+                <RadioButton
+                        android:id="@+id/btnPaymentMethodCash"
+                        android:layout_width="349dp"
+                        android:layout_height="match_parent"
+                        android:text="Tiền mặt"
+                        android:textSize="18dp"
+                        android:textColor="@color/btn_blue"
+                        android:textStyle="bold"/>
+            </LinearLayout>
+            <android.widget.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="365dp"
+                    android:text="Chọn"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/round_long_btn"
+                    />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

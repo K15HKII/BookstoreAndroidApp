@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingTop="27dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical"
+        android:background="@drawable/account_button_1">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại"
+                android:textColor="@color/black"
+                android:textSize="14dp"/>
+        <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:text="Bìa mềm"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+        <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Bìa cứng"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
+    </LinearLayout>
+    <!--    TODO: Cần add thêm cộng trừ-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Số lượng"
+                android:textColor="@color/black"
+                android:textSize="14dp"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+                <ImageButton
+                        android:id="@+id/btnBuyNowMinusAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#98BDC7"
+                        android:src="@drawable/ic_minus"/>
+                <TextView
+                        android:id="@+id/btnBuyNowAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                />
+                <ImageButton
+                        android:id="@+id/btnBuyNowPlusAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_alignParentRight="true"
+                        android:background="#98BDC7"
+                        android:src="@drawable/ic_plus"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/btnBuyNowDialogBuyNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:background="@drawable/round_long_btn">
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+    <android.widget.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:text="Mua ngay"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:drawableLeft="@drawable/ic_shopping_cart_checkout_black"
+            android:background="@null"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+

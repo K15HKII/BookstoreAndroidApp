@@ -1,18 +1,24 @@
 package com.example.libraryapp;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.Layout;
+import android.view.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import com.example.libraryapp.ViewModel.AccountInfoViewViewModel;
 
 public class account_info_view extends Fragment {
 
     private AccountInfoViewViewModel mViewModel;
+    private LinearLayout btnChangeName, btnPasswordChange;
 
     public static account_info_view newInstance() {
         return new account_info_view();
@@ -21,7 +27,25 @@ public class account_info_view extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.account_info_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.account_info_view_fragment, container, false);
+        btnChangeName = view.findViewById(R.id.btnAccountInfoDetailName);
+        btnPasswordChange = view.findViewById(R.id.btnAccountInfoPasswordChange);
+
+        btnChangeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChangeName(Gravity.CENTER);
+            }
+        });
+
+        btnPasswordChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChangePassword(Gravity.CENTER);
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -31,4 +55,78 @@ public class account_info_view extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    private void openChangeName(int gravity){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.change_name_dialog);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAtributes = window.getAttributes();
+        windowAtributes.gravity = gravity;
+        window.setAttributes(windowAtributes);
+
+        if(Gravity.CENTER == gravity);
+        {
+            dialog.setCancelable(true);
+        }
+
+        EditText etChangeName = dialog.findViewById(R.id.etChangeNameName);
+        Button btnChangeName = dialog.findViewById(R.id.btnChangeNameChangeName);
+
+        btnChangeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void openChangePassword(int gravity){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.change_password_dialog);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAtributes = window.getAttributes();
+        windowAtributes.gravity = gravity;
+        window.setAttributes(windowAtributes);
+
+        if(Gravity.CENTER == gravity);
+        {
+            dialog.setCancelable(true);
+        }
+
+        EditText etOldPass, etNewPass, etNewPassConfirm;
+        Button btnChangePass;
+
+        etOldPass = dialog.findViewById(R.id.etChangePassOldPass);
+        etNewPass = dialog.findViewById(R.id.etChangePassNewPass);
+        etNewPassConfirm = dialog.findViewById(R.id.etChangePassConfirmPass);
+        btnChangePass = dialog.findViewById(R.id.btnChangePassChangePassword);
+
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
 }

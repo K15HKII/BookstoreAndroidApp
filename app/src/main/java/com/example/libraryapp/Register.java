@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class Register extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private RegisterViewModel mViewModel;
-    private Button btnRegister, btnRegisterWithGoogle, btnRegisterWithFacebook;
+    private Button btnRegister;
     private EditText etUsername,etDOB,etPhoneNum,etEmail,etPassword,etPasswordConfirm;
     private Spinner spGender;
     private TextView tvPolicy;

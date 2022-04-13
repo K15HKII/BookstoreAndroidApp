@@ -43,7 +43,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="673dp"
-                android:background="@drawable/home_backgroup"
+                android:background="@drawable/home_background"
                 android:padding="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,12 +79,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/home_backgroup"
+                    android:background="@drawable/home_background"
                     android:scrollbars="none"
                     android:divider="#BCFEFE"
                     android:dividerHeight="10dp"
+                    android:childDivider="#BCFEFE"
                     android:layoutDirection="rtl"
-                    android:groupIndicator="@drawable/expandable_selector"
                     android:transcriptMode="alwaysScroll"/>
             <EditText
                     android:id="@+id/etAddBankCardNumber"

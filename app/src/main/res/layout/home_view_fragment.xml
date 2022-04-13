@@ -5,13 +5,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_backgroup"
+        android:background="@drawable/home_background"
         tools:context=".home_view" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_backgroup"
+            android:background="@drawable/home_background"
             android:orientation="vertical">
     <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +32,15 @@
                 android:background="@drawable/edit_text_background"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
         <android.widget.Button
                 android:id="@+id/btn_Home_Notification"
                 android:scaleX="0.62"
@@ -47,8 +56,9 @@
                 android:backgroundTint="@color/btn_blue"
                 android:background="@drawable/shopping_icon"
                 android:layout_width="55dp"
-                android:layout_height="wrap_content"
-        />
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <TextView
@@ -147,9 +157,9 @@
     </HorizontalScrollView>
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:name="com.example.libraryapp.all_topic"
+                android:layout_height="410dp"
+                android:name="com.example.libraryapp.all_topic"
                 android:id="@+id/fragmentContainerHomeView"/>
-
 
     </LinearLayout>
 
