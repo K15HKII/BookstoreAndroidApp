@@ -16,6 +16,10 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
     private Context context;
     public List<BookView> lsBookView;
 
+    BookViewAdapter(List<BookView> lsBookView) {
+        this.lsBookView = lsBookView;
+    }
+
     public void setLsBookView(List<BookView> lsBookView) {
         this.lsBookView = lsBookView;
         notifyDataSetChanged();

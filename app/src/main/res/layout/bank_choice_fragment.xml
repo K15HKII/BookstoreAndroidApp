@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_background"
+        tools:context=".bank_choice">
+
+    <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbarEditBank">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.widget.Button
+                        android:id="@+id/btnBankChoiceBackward"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:background="@drawable/backward_icon"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Tài khoản ngân hàng"
+                        android:textColor="@color/black"
+                        android:textSize="24dp"/>
+            <android.widget.Button
+                    android:id="@+id/btnBankChoiceBank"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_delete_black"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Tài khoản mặc định"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"/>
+
+                    <LinearLayout
+                            android:id="@+id/btnBankChoiceDefaultBank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:background="@drawable/edit_text_background"
+                            android:orientation="horizontal">
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                <TextView
+                                        android:id="@+id/tvBankChoiceBankName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="19dp"
+                                        android:text="Agribank"
+                                        android:textStyle="bold"
+                                        android:textColor="#001C44"/>
+                                <LinearLayout android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:orientation="horizontal">
+                                    <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
+                                            android:text="Họ và tên: "
+                                            android:textColor="#001C44"/>
+                                    <TextView
+                                            android:id="@+id/tvBankChoiceOwnerName"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Trần Hữu Trí"
+                                            android:textColor="#001C44"/>
+                                </LinearLayout>
+                                <TextView
+                                        android:id="@+id/tvBankChoiceBankNumber"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="xxx113"
+                                        android:textColor="#001C44"/>
+                            </LinearLayout>
+                            <android.widget.Button
+                                    android:id="@+id/btnBankChoiceDeleteBank"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:scaleX="0.7"
+                                    android:scaleY="0.7"
+                                    android:backgroundTint="@color/btn_blue"
+                                    android:background="@drawable/ic_delete_black"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Tất cả"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"/>
+
+            <ListView
+                    android:id="@+id/lvBankChoiceOtherBank"
+                    android:scrollbars="none"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="#BCFEFE"
+                    android:dividerHeight="2dp"
+                    android:background="@drawable/home_background"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -8,11 +8,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.libraryapp.HomeRecycleView.BookView;
+import com.example.libraryapp.HomeRecycleView.OrderView;
+import com.example.libraryapp.HomeRecycleView.OrderViewAdapter;
 import com.example.libraryapp.ViewModel.WaitingOrderViewViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class waiting_order_view extends Fragment {
 
     private WaitingOrderViewViewModel mViewModel;
+//    private RecyclerView lvOrderView;
+//    private OrderViewAdapter orderViewAdapter;
 
     public static waiting_order_view newInstance() {
         return new waiting_order_view();
@@ -21,8 +31,33 @@ public class waiting_order_view extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.waiting_order_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.waiting_order_view_fragment, container, false);
+
+        /*lvOrderView = view.findViewById(R.id.lvWaitingOrderOrderView);
+        orderViewAdapter = new OrderViewAdapter(getListBook(),waiting_order_view.this.getContext());
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(waiting_order_view.this.getContext());
+        lvOrderView.setLayoutManager(linearLayoutManager);
+        lvOrderView.setAdapter(orderViewAdapter);*/
+        return view;
     }
+
+    /*private List<OrderView> getListBook() {
+        List<OrderView> lsOrder = new ArrayList<>();
+
+        List<BookView> lsBook1 = new ArrayList<>();
+        lsBook1.add(new BookView("Dac Nhan Tam"));
+        lsBook1.add(new BookView("hello"));
+
+
+        List<BookView> lsBook2 = new ArrayList<>();
+        lsBook2.add(new BookView("Dac Nhan Tam"));
+
+        lsOrder.add(new OrderView("200.000d","nothing",lsBook1));
+        lsOrder.add(new OrderView("120.000d","nothing",lsBook2));
+
+        return lsOrder;
+    }*/
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
