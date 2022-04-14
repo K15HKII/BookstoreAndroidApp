@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/home_background"
+        tools:context=".oncart_view">
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbarSettingPage">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.widget.Button
+                        android:id="@+id/btnOncartViewBackward"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/backward_icon"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:text="Giỏ hàng"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lvOnCartViewListItems"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingLeft="20dp"
+                      android:paddingRight="20dp"
+                      android:paddingTop="12dp"
+                      android:paddingBottom="13dp"
+                      android:gravity="bottom"
+                      android:background="@drawable/oncart_bottom_shape"
+                      android:orientation="horizontal" app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <CheckBox
+                        android:id="@+id/cbOnCartViewPickAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:textColor="@color/black"
+                        android:text="Chọn tất cả"
+                        android:textSize="12dp"
+                        android:backgroundTint="@color/btn_blue"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tổng tiền  "
+                            android:textSize="19dp"
+                            android:textColor="@color/black"/>
+                    <TextView
+                            android:id="@+id/tvOnCartViewPriceOfAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="120.000đ"
+                            android:textSize="19dp"
+                            android:textColor="@color/red_orange"/>
+                </LinearLayout>
+            </LinearLayout>
+            <android.widget.Button
+                    android:id="@+id/btnOnCartViewConfirmOrderOncart"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_marginLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="30dp"
+                    android:text="Mua hàng"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/shopping_icon"
+                    android:drawableTint="@color/white"
+                    android:background="@drawable/oncart_btn"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

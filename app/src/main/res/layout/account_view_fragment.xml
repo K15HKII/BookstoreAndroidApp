@@ -143,7 +143,6 @@
             <android.widget.Button
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
-                    android:layout_centerInParent="true"
                     android:textSize="16.5dp"
                     android:textStyle="normal"
                     android:background="@null"
@@ -152,7 +151,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/red_orange"
                     android:drawableStart="@drawable/account_signout_icon"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp" android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
 
