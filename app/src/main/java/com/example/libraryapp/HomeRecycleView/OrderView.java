@@ -5,20 +5,20 @@ import java.util.List;
 public class OrderView {
     String price;
     String note;
-    List<BookView> lsBooks;
+    List<OrderItem> lsOrderItem;
 
-    public OrderView(String price, String note, List<BookView> lsBooks) {
+    public OrderView(String price, String note, List<OrderItem> lsOrderItem) {
         this.price = price;
         this.note = note;
-        this.lsBooks = lsBooks;
+        this.lsOrderItem = lsOrderItem;
     }
 
-    public List<BookView> getLsBooks() {
-        return lsBooks;
+    public List<OrderItem> getLsBooks() {
+        return lsOrderItem;
     }
 
-    public void setLsBooks(List<BookView> lsBooks) {
-        this.lsBooks = lsBooks;
+    public void setLsBooks(List<OrderItem> lsBooks) {
+        this.lsOrderItem = lsBooks;
     }
 
     public String getPrice() {

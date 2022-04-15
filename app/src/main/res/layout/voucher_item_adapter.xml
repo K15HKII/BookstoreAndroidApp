@@ -1,67 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@drawable/voucher_shape1"
-              android:paddingTop="15dp"
-              android:paddingLeft="20dp"
-              android:paddingRight="15dp"
-              android:paddingBottom="10dp"
-              android:layout_marginTop="10dp"
-              android:layout_width="wrap_content"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content">
+    <RadioButton
+            android:id="@+id/radbtn"
+            android:layout_width="31dp"
+            android:layout_height="match_parent"/>
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:id="@+id/tvVoucherItemTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/btn_blue"
-                    android:textSize="24dp"
-                    android:text="20% Giảm giá"
-                    android:textStyle="bold"/>
+                  android:orientation="vertical"
+                  android:background="@drawable/voucher_shape"
+                  android:paddingTop="15dp"
+                  android:paddingLeft="20dp"
+                  android:paddingRight="15dp"
+                  android:paddingBottom="10dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
                 android:orientation="horizontal">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hạn sử dụng "/>
-        <TextView
-                android:id="@+id/tvVoucherItemDateExp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20/04/2022"/>
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/tvVoucherItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/btn_blue"
+                        android:textSize="24dp"
+                        android:text="20% Giảm giá"
+                        android:textStyle="bold"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hạn sử dụng "/>
+                    <TextView
+                            android:id="@+id/tvVoucherItemDateExp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20/04/2022"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
-        </RelativeLayout>
+        <TextView
+                android:id="@+id/tvVoucherItemMaxUse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tối đa 100.000đ"
+                android:textSize="13dp"
+                android:textColor="@color/btn_blue"/>
+        <TextView
+                android:id="@+id/tvVoucherItemApplyForBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:text="Cho đơn hàng trên 300.000đ"
+                android:textColor="@color/btn_blue"/>
+        <TextView
+                android:id="@+id/tvVoucherItemApplyForBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10.5dp"
+                android:text="Áp dụng cho Sách thể loại Văn học, Khoa học"
+        />
     </LinearLayout>
-    <TextView
-            android:id="@+id/tvVoucherItemMaxUse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tối đa 100.000đ"
-            android:textSize="13dp"
-            android:textColor="@color/btn_blue"/>
-    <TextView
-            android:id="@+id/tvVoucherItemApplyForBill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="18dp"
-            android:text="Cho đơn hàng trên 300.000đ"
-            android:textColor="@color/btn_blue"/>
-    <TextView
-            android:id="@+id/tvVoucherItemApplyForBook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10.5dp"
-            android:text="Áp dụng cho Sách thể loại Văn học, Khoa học"
-            />
 </LinearLayout>

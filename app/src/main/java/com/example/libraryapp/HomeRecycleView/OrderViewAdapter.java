@@ -16,7 +16,6 @@ import java.util.List;
 
 public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.OrderViewHolder> {
 
-    private RecyclerView.RecycledViewPool recycledViewPool = new RecyclerView.RecycledViewPool();
     private List<OrderView> orderViewList;
     Context context;
 
@@ -56,10 +55,10 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.Orde
         );
 
         // Create sub item view adapter
-        BookViewAdapter bookViewAdapter = new BookViewAdapter(orderView.getLsBooks());
+        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(orderView.getLsBooks());
 
         holder.rcvBookList.setLayoutManager(layoutManager);
-        holder.rcvBookList.setAdapter(bookViewAdapter);
+        holder.rcvBookList.setAdapter(orderItemAdapter);
         holder.rcvBookList.setFocusable(false);
     }
 
@@ -77,7 +76,7 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.Orde
             super(itemView);
             tvItemPrice = itemView.findViewById(R.id.tvWaitingOrderItemsPrice);
             tvItemNote = itemView.findViewById(R.id.tvWaitingOrderItemsNote);
-            rcvBookList = itemView.findViewById(R.id.lvWaitingOrderOrderView);
+            rcvBookList = itemView.findViewById(R.id.rcvWaitingOrderItemsItems);
         }
     }
 }

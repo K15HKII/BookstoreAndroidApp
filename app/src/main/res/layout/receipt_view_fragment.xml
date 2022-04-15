@@ -70,7 +70,7 @@
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpReceiptOrderView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="450dp"/>
     </LinearLayout>
 
 </FrameLayout>

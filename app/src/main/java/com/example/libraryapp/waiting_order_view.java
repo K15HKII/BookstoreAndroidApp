@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.libraryapp.HomeRecycleView.BookView;
+import com.example.libraryapp.HomeRecycleView.OrderItem;
 import com.example.libraryapp.HomeRecycleView.OrderView;
 import com.example.libraryapp.HomeRecycleView.OrderViewAdapter;
 import com.example.libraryapp.ViewModel.WaitingOrderViewViewModel;
@@ -21,8 +22,8 @@ import java.util.List;
 public class waiting_order_view extends Fragment {
 
     private WaitingOrderViewViewModel mViewModel;
-//    private RecyclerView lvOrderView;
-//    private OrderViewAdapter orderViewAdapter;
+    private RecyclerView rcvOrderView;
+    private OrderViewAdapter orderViewAdapter;
 
     public static waiting_order_view newInstance() {
         return new waiting_order_view();
@@ -33,31 +34,31 @@ public class waiting_order_view extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.waiting_order_view_fragment, container, false);
 
-        /*lvOrderView = view.findViewById(R.id.lvWaitingOrderOrderView);
+        rcvOrderView = view.findViewById(R.id.rcvWaitingOrderOrderView);
         orderViewAdapter = new OrderViewAdapter(getListBook(),waiting_order_view.this.getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(waiting_order_view.this.getContext());
-        lvOrderView.setLayoutManager(linearLayoutManager);
-        lvOrderView.setAdapter(orderViewAdapter);*/
+        rcvOrderView.setLayoutManager(linearLayoutManager);
+        rcvOrderView.setAdapter(orderViewAdapter);
         return view;
     }
 
-    /*private List<OrderView> getListBook() {
+    private List<OrderView> getListBook() {
         List<OrderView> lsOrder = new ArrayList<>();
 
-        List<BookView> lsBook1 = new ArrayList<>();
-        lsBook1.add(new BookView("Dac Nhan Tam"));
-        lsBook1.add(new BookView("hello"));
+        List<OrderItem> lsBook1 = new ArrayList<>();
+        lsBook1.add(new OrderItem("Dac Nhan Tam"));
+        lsBook1.add(new OrderItem("hello"));
 
 
-        List<BookView> lsBook2 = new ArrayList<>();
-        lsBook2.add(new BookView("Dac Nhan Tam"));
+        List<OrderItem> lsBook2 = new ArrayList<>();
+        lsBook2.add(new OrderItem("Dac Nhan Tam"));
 
         lsOrder.add(new OrderView("200.000d","nothing",lsBook1));
         lsOrder.add(new OrderView("120.000d","nothing",lsBook2));
 
         return lsOrder;
-    }*/
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

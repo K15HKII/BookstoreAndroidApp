@@ -32,7 +32,8 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold"/>
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent">
                 <ToggleButton
                         android:id="@+id/btnBookViewHeartbtn"
                         android:layout_width="61dp"

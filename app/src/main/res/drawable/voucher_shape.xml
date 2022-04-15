@@ -5,13 +5,13 @@
     <item>
         <shape android:shape="rectangle">
             <corners
-                    android:topLeftRadius="10dp"
-                    android:topRightRadius="10dp"
-                    android:bottomLeftRadius="10dp"
-                    android:bottomRightRadius="10dp" />
+                    android:topLeftRadius="12dp"
+                    android:topRightRadius="12dp"
+                    android:bottomLeftRadius="12dp"
+                    android:bottomRightRadius="12dp" />
 
             <size
-                    android:width="400dp"
+                    android:width="300dp"
                     android:height="100dp" />
             <solid android:color="#F8DAD0" />
         </shape>
@@ -20,7 +20,7 @@
     <!-- Left Half-Circle -->
     <item
             android:left="-12dp"
-            android:right="395dp"
+            android:right="370dp"
             android:top="48dp"
             android:bottom="48dp">
         <shape android:shape="oval">
@@ -30,7 +30,7 @@
 
     <!-- Right Half-Circle -->
     <item
-            android:left="395dp"
+            android:left="370dp"
             android:right="-12dp"
             android:top="48dp"
             android:bottom="48dp">
