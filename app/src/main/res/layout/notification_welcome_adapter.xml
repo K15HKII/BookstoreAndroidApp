@@ -6,21 +6,22 @@
               android:paddingTop="10dp"
               android:paddingRight="20dp"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:background="@drawable/listview_shape">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
+                android:id="@+id/tvNotificationWelcomeTitle"
                 android:layout_width="328dp"
                 android:layout_height="46dp"
                 android:text="Chào mừng bạn đến với búc sờ to của chúng tôi"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView4"/>
+                app:layout_constraintTop_toTopOf="parent" />
         <android.widget.Button
-                android:id="@+id/btnAddAddressBackward"
+                android:id="@+id/btnNotification"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -28,17 +29,19 @@
                 android:scaleX="0.55"
                 android:scaleY="0.55"
                 android:background="@drawable/ic_arrow_forward" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView4" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvNotificationWelcomeTitle" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"/>
         <ImageView
+                android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_check_circle"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvNotificationWelcomeTitle"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.02" app:layout_constraintVertical_bias="0.01"
-                android:id="@+id/imageView4"/>
+                />
         <TextView
+                android:id="@+id/tvNotificationWelcomeDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mô tả bla bla"
@@ -46,11 +49,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.024"
-                app:layout_constraintVertical_bias="0.022" android:id="@+id/textView5"/>
+                app:layout_constraintVertical_bias="0.022" />
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/welcome_shark" app:layout_constraintTop_toBottomOf="@+id/textView5"
+                android:src="@drawable/welcome_shark" app:layout_constraintTop_toBottomOf="@+id/tvNotificationWelcomeDescription"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="48dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
