@@ -2,17 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_background">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/receipt_background" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/imageView3"/>
+            android:layout_height="wrap_content">
         <LinearLayout
                 android:layout_width="match_parent" android:layout_height="match_parent"
                 android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +27,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                         <ImageView
-                                android:id="@+id/imageListBooksBookView"
+                                android:id="@+id/imageRatingReportBookView"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_marginTop="10dp"
@@ -46,7 +39,7 @@
                                 android:padding="12dp"
                                 android:orientation="vertical">
                             <TextView
-                                    android:id="@+id/tvListBooksNameOfBook"
+                                    android:id="@+id/tvRatingReportNameOfBook"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Sách Đắc Nhân Tâm"
@@ -58,13 +51,13 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
                                 <TextView
-                                        android:id="@+id/tvListBooksTypeOfBook"
+                                        android:id="@+id/tvRatingReportTypeOfBook"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textAlignment="textStart"
                                         android:text="Bìa cứng"/>
                                 <TextView
-                                        android:id="@+id/tvListBooksNumberOfBooks"
+                                        android:id="@+id/tvRatingReportNumberOfBooks"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="x 1"
@@ -76,7 +69,7 @@
                     </LinearLayout>
                 </LinearLayout>
                 <RatingBar
-                        android:id="@+id/rateBar"
+                        android:id="@+id/ratebarRatingReportScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -93,23 +86,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="10dp"
+                        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
                         android:background="@drawable/edit_text_background"
+                        app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                <com.google.android.material.textfield.TextInputEditText
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:lines="6"
-                          android:hint="Placeholder"
-                          android:gravity="top|start"
-                          android:inputType="textMultiLine"
-                          android:overScrollMode="always"
-                          android:scrollbarStyle="insideInset"
-                          android:scrollbars="vertical"
-                          android:scrollHorizontally="false"
-                          />
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRatingReportDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="6"
+                            android:hint="Placeholder"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine"
+                            android:overScrollMode="always"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:scrollHorizontally="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <android.widget.Button
-                        android:id="@+id/btnRatingBookConfirm"
+                        android:id="@+id/btnRatingReportConfirm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

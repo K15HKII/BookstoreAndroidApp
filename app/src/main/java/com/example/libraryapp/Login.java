@@ -50,7 +50,7 @@ public class Login extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.fragmentContainerView,notification_page.class,null).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView,rating_books_view.class,null).addToBackStack(null).commit();
             }
         });
 
