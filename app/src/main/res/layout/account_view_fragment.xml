@@ -55,8 +55,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:drawableStart="@drawable/account_human_icon"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableStart="@drawable/ic_account_person"
+                android:drawableEnd="@drawable/ic_arrow_account"/>
         <android.widget.Button
                 android:id="@+id/btnAccountVoucher"
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:drawableStart="@drawable/ic_voucher"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableEnd="@drawable/ic_arrow_account"/>
         <android.widget.Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,8 +82,8 @@
                 android:text="Thông tin cá nhân"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:drawableStart="@drawable/account_human_icon"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableStart="@drawable/ic_account_person"
+                android:drawableEnd="@drawable/ic_arrow_account"/>
     </LinearLayout>
 
     <LinearLayout android:layout_width="match_parent"
@@ -101,8 +101,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:drawableStart="@drawable/account_setting_icon"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableStart="@drawable/ic_setting_account"
+                android:drawableEnd="@drawable/ic_arrow_account"/>
         <android.widget.Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,8 +114,8 @@
                 android:textColor="@color/black"
                 android:textAlignment="center"
                 android:layout_marginTop="2dp"
-                android:drawableStart="@drawable/account_human_icon"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableStart="@drawable/ic_account_person"
+                android:drawableEnd="@drawable/ic_arrow_account"/>
     </LinearLayout>
 
     <LinearLayout android:layout_width="match_parent"
@@ -134,14 +134,14 @@
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:drawableStart="@drawable/account_infomation_icon"
-                android:drawableEnd="@drawable/account_arrow_icon"/>
+                android:drawableStart="@drawable/ic_help_account"
+                android:drawableEnd="@drawable/ic_arrow_account"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/account_button_2">
             <android.widget.Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="55dp"
                     android:textSize="16.5dp"
                     android:textStyle="normal"
@@ -150,7 +150,7 @@
                     android:textAllCaps="false"
                     android:textAlignment="center"
                     android:textColor="@color/red_orange"
-                    android:drawableStart="@drawable/account_signout_icon"
+                    android:drawableLeft="@drawable/ic_signout"
                     android:layout_marginTop="2dp" android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>

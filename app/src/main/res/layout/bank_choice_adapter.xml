@@ -56,7 +56,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/account_arrow_icon"/>
+                    android:src="@drawable/ic_arrow_account"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -29,7 +29,7 @@
                             android:layout_height="40dp"
                             android:scaleX="0.7"
                             android:scaleY="0.7"
-                            android:background="@drawable/backward_icon"/>
+                            android:background="@drawable/ic_backward"/>
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                         <View
                                 android:layout_width="220dp"

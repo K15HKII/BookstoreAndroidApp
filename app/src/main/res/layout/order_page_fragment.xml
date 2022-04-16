@@ -24,7 +24,7 @@
                     android:layout_height="40dp"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
-                    android:background="@drawable/backward_icon"/>
+                    android:background="@drawable/ic_backward"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
-                            android:src="@drawable/ic_place_black_24dp"/>
+                            android:src="@drawable/ic_location"/>
                     <TextView
                             android:text="Địa chỉ"
                             android:textStyle="bold"
@@ -87,7 +87,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginEnd="2.25dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView
@@ -122,7 +122,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="0dp"
                             android:backgroundTint="@color/black"
-                            android:src="@drawable/baseline_shopping_cart"/>
+                            android:src="@drawable/ic_shopping"/>
                     <TextView
                             android:text="Đơn hàng"
                             android:textStyle="bold"
@@ -165,7 +165,7 @@
                             <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/baseline_local_offer_black"/>
+                                    android:src="@drawable/ic_voucher"/>
                             <TextView
                                     android:text="Voucher"
                                     android:textStyle="bold"
@@ -183,7 +183,7 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="2.25dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView
@@ -222,7 +222,7 @@
                     <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:src="@drawable/baseline_credit_card_black"/>
+                            android:src="@drawable/ic_credit"/>
                     <TextView
                             android:text="Hình thức thanh toán"
                             android:textStyle="bold"
@@ -240,7 +240,7 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="2.25dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView
@@ -364,7 +364,7 @@
                     android:layout_marginTop="25dp"
                     android:textAllCaps="false"
                     android:textSize="14sp"
-                    android:drawableStart="@drawable/baseline_shopping_cart_white"
+                    android:drawableStart="@drawable/ic_shopping_white"
                     android:text="Đặt hàng"
                     android:textColor="@color/white"
                     android:layout_gravity="center"/>

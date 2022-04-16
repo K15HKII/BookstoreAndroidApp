@@ -35,7 +35,7 @@
                    android:layout_height="40dp"
                    android:scaleX="0.55"
                    android:scaleY="0.55"
-                   android:background="@drawable/backward_icon"/>
+                   android:background="@drawable/ic_backward"/>
 
                <TextView
                        android:layout_width="wrap_content"

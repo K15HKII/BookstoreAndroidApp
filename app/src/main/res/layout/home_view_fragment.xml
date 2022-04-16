@@ -20,8 +20,8 @@
             android:orientation="horizontal">
         <EditText
                 android:id="@+id/etHomeSearch"
-                android:drawableStart="@drawable/search_icon"
-                android:drawableEnd="@drawable/filter_icon"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableEnd="@drawable/ic_filter"
                 android:layout_marginLeft="5dp"
                 android:textSize="16sp"
                 android:paddingTop="15dp"
@@ -54,7 +54,7 @@
                 android:scaleX="0.62"
                 android:scaleY="0.7"
                 android:backgroundTint="@color/btn_blue"
-                android:background="@drawable/shopping_icon"
+                android:background="@drawable/ic_shopping"
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -84,8 +84,8 @@
                     app:singleSelection="true">
                     <com.google.android.material.chip.Chip
                             android:id="@+id/chipHomeAllTopics"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:textSize="15dp"
                             android:clickable="true"
@@ -98,7 +98,7 @@
                             app:checkedIconVisible="false"
                             app:chipIconTint="@color/text_selector"
                             app:chipBackgroundColor="@color/chip_selector"
-                            app:chipIcon="@drawable/menu_icon"/>
+                            app:chipIcon="@drawable/ic_home_selected"/>
             <com.google.android.material.chip.Chip
                     android:id="@+id/chipHomeAllBooks"
                     android:layout_width="wrap_content"

@@ -19,9 +19,9 @@
                 android:orientation="horizontal">
             <EditText
                     android:id="@+id/etHomeSearch"
-                    android:drawableStart="@drawable/search_icon"
+                    android:drawableStart="@drawable/ic_search"
                     android:layout_marginLeft="5dp"
-                    android:drawableEnd="@drawable/filter_icon"
+                    android:drawableEnd="@drawable/ic_filter"
                     android:textSize="16sp"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
@@ -54,7 +54,7 @@
                     android:scaleY="0.7"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="@color/btn_blue"
-                    android:background="@drawable/shopping_icon"
+                    android:background="@drawable/ic_shopping"
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"/>
                 </LinearLayout>

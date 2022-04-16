@@ -27,7 +27,7 @@
                         android:layout_height="40dp"
                         android:scaleX="0.55"
                         android:scaleY="0.55"
-                        android:background="@drawable/backward_icon"/>
+                        android:background="@drawable/ic_backward"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -103,7 +103,7 @@
                     android:textAllCaps="false"
                     android:textSize="16dp"
                     android:textColor="@color/white"
-                    android:drawableStart="@drawable/shopping_icon"
+                    android:drawableStart="@drawable/ic_shopping"
                     android:drawableTint="@color/white"
                     android:background="@drawable/oncart_btn"/>
         </LinearLayout>

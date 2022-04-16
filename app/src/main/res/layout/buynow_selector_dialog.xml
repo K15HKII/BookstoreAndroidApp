@@ -102,7 +102,7 @@
             android:textSize="15dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:drawableLeft="@drawable/ic_shopping_cart_checkout_black"
+            android:drawableLeft="@drawable/ic_shopping_cart_checkout"
             android:background="@null"/>
         </RelativeLayout>
     </LinearLayout>

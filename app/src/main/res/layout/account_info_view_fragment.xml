@@ -34,7 +34,7 @@
                     android:layout_height="40dp"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
-                    android:background="@drawable/backward_icon"/>
+                    android:background="@drawable/ic_backward"/>
             </androidx.appcompat.widget.Toolbar>
 
 
@@ -99,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                 </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
@@ -142,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="2.25dp"
-                        android:src="@drawable/account_arrow_icon"/>
+                        android:src="@drawable/ic_arrow_account"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -185,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="2.25dp"
-                        android:src="@drawable/account_arrow_icon"/>
+                        android:src="@drawable/ic_arrow_account"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -228,7 +228,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
@@ -272,7 +272,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
@@ -304,7 +304,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="9dp"
                                 android:backgroundTint="@color/btn_blue"
-                                android:src="@drawable/ic_place_black_24dp"/>
+                                android:src="@drawable/ic_location"/>
                         <TextView
                                 android:text="Địa chỉ"
                                 android:textSize="19dp"
@@ -324,7 +324,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="end"
                                 android:layout_marginEnd="2.25dp"
-                                android:src="@drawable/account_arrow_icon"/>
+                                android:src="@drawable/ic_arrow_account"/>
                             </LinearLayout>
                         </RelativeLayout>
                     </LinearLayout>
@@ -367,7 +367,7 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="2.25dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -399,7 +399,7 @@
                             android:layout_gravity="end"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -431,7 +431,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_gravity="end"
                             android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/account_arrow_icon"/>
+                            android:src="@drawable/ic_arrow_account"/>
                     </RelativeLayout>
                 </LinearLayout>
 

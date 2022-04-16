@@ -21,7 +21,7 @@
                 android:layout_height="40dp"
                 android:scaleX="0.55"
                 android:scaleY="0.55"
-                android:background="@drawable/backward_icon"/>
+                android:background="@drawable/ic_backward"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                 android:padding="15dp"
                 android:textAllCaps="false"
                 android:textSize="19dp"
-                android:drawableEnd="@drawable/account_arrow_icon"
+                android:drawableEnd="@drawable/ic_arrow_account"
                 android:text="Trung tâm hỗ trợ"/>
         <android.widget.Button
                 android:id="@+id/btnHelpPresenter"
@@ -63,7 +63,7 @@
                 android:padding="15dp"
                 android:textAllCaps="false"
                 android:textSize="19dp"
-                android:drawableEnd="@drawable/account_arrow_icon"
+                android:drawableEnd="@drawable/ic_arrow_account"
                 android:text="Giới thiệu"/>
         <android.widget.Button
                 android:id="@+id/btnHelpPolicy"
@@ -76,7 +76,7 @@
                 android:textSize="19dp"
                 android:text="Điều khoản"
                 android:padding="15dp"
-                android:drawableEnd="@drawable/account_arrow_icon"
+                android:drawableEnd="@drawable/ic_arrow_account"
         />
         <android.widget.Button
                 android:id="@+id/btnHelpRequestDeleteAccount"
@@ -88,7 +88,7 @@
                 android:textSize="19dp"
                 android:text="Yêu cầu xoá tài khoản"
                 android:padding="15dp"
-                android:drawableEnd="@drawable/account_arrow_icon"
+                android:drawableEnd="@drawable/ic_arrow_account"
         />
     </LinearLayout>
 </LinearLayout>
