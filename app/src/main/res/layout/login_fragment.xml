@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:padding="20dp"
         android:background="@drawable/gradient_background"
-        tools:context=".Login">
+        tools:context=".LoginScreen.Login">
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
         <ScrollView
                 android:layout_width="match_parent"
@@ -94,10 +94,9 @@
                           android:orientation="horizontal">
                 <android.widget.Button
                         android:id="@+id/btnLoginLoginWithGoogle"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:backgroundTint="@color/btn_blue"
-                        android:background="@drawable/google_icon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/ic_google"
                         android:textSize="24sp"/>
                 <android.widget.Button
                         android:id="@+id/btnLoginLoginWithFaceBook"

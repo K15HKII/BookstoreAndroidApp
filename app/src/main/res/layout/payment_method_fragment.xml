@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".payment_method">
+        tools:context=".OrderInfoScreen.PaymentMethodPage">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

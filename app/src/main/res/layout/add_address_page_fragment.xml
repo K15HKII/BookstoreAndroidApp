@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddressScreen.AddAddressPage">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/home_background">
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
+            <android.widget.Button
+                    android:id="@+id/btnAddAddressBackward"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleX="0.55"
+                    android:scaleY="0.55"
+                    android:background="@drawable/ic_backward"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:text="Thêm địa chỉ"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"/>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <android.widget.Spinner
+                            android:id="@+id/spAddAddressCity"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16dp"
+                            android:inputType="text"
+                            android:popupBackground="@drawable/spinner_shape"
+                            android:background="@drawable/edit_text_background"/>
+                    <android.widget.Spinner
+                            android:id="@+id/spAddAddressDistrict"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="16dp"
+                            android:inputType="text"
+                            android:popupBackground="@drawable/spinner_shape"
+                            android:background="@drawable/edit_text_background"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <android.widget.Spinner
+                    android:id="@+id/spAddAddressVillage"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="16dp"
+                    android:inputType="text"
+                    android:popupBackground="@drawable/spinner_shape"
+                    android:background="@drawable/edit_text_background"/>
+            <EditText
+                    android:id="@+id/etAddAddressAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:background="@drawable/edit_text_background"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
+                    android:hint="Số nhà"
+                    android:inputType="text"/>
+            <CheckBox
+                    android:id="@+id/cbAddAddressCheckDefaultAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/btn_blue"
+                    android:text="Đặt làm địa chỉ mặc định"/>
+            <android.widget.Button
+                    android:id="@+id/btnAddAddressConfirmInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_btn"
+                    android:text="Xong"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"/>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
