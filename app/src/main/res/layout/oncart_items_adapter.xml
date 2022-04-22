@@ -15,6 +15,7 @@
             android:orientation="horizontal"
             android:background="@drawable/listview_shape">
         <ImageView
+                android:id="@+id/imageViewOnCartBookImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="5dp"
@@ -26,9 +27,10 @@
                 android:background="@drawable/listview_shape">
             <TextView
                     android:id="@+id/tvOnCartItemName"
+                    android:fontFamily="@font/lato_regular"
                     android:text="Sách Đắc Nhân Tâm"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
@@ -41,6 +43,7 @@
                     android:id="@+id/tvOnCartItemType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
                     android:text="Bìa cứng"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -50,15 +53,16 @@
                     android:id="@+id/tvOnCartItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
                     android:text="120.000đ"
-                    android:textSize="20dp"
+                    android:textSize="22dp"
                     android:textColor="@color/red_orange"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvOnCartItemType"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.045" app:layout_constraintVertical_bias="0.466"/>
             <android.widget.Button
-                    android:id="@+id/btnBankChoiceBank"
+                    android:id="@+id/btnOnCartDeleteProduct"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.7"
@@ -85,8 +89,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/lato_regular"
                         android:text="0"
                         android:textColor="@color/black"
+                        android:textSize="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                 />

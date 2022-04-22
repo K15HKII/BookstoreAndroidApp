@@ -23,6 +23,7 @@
                           android:orientation="vertical">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:orientation="horizontal">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                     <android.widget.Button
                             android:id="@+id/btnRegisterBackward"
                             android:layout_width="40dp"
@@ -30,7 +31,7 @@
                             android:scaleX="0.7"
                             android:scaleY="0.7"
                             android:background="@drawable/ic_backward"/>
-                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
                         <View
                                 android:layout_width="220dp"
                                 android:layout_height="150dp"
@@ -39,13 +40,15 @@
                                 android:background="@drawable/image1" android:layout_centerInParent="true"/>
                     </RelativeLayout>
                 </LinearLayout>
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:fontFamily="@font/lato_bold"
                           android:text="Đăng kí"
                           android:textAlignment="center"
                           android:textSize="35sp"
                           android:textStyle="bold"
                           android:textColor="@color/btn_blue"
-                          android:paddingLeft="50dp"
+                          android:gravity="center"
                           android:backgroundTint="@color/black"
                           android:textAppearance="@style/Dang_ki"/>
             </LinearLayout>
@@ -56,10 +59,11 @@
                           android:orientation="horizontal">
                 <EditText
                         android:id="@+id/etRegisterUser"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:padding="15dp"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:background="@drawable/edit_text_background"
                         android:inputType="text"
                         android:hint="Tên đăng nhập"/>
@@ -84,20 +88,22 @@
 
                     <EditText
                             android:id="@+id/etRegisterDOB"
+                            android:fontFamily="@font/lato_regular"
                             android:layout_width="188dp"
                             android:layout_height="wrap_content"
                             android:padding="15dp"
-                            android:textSize="16dp"
+                            android:textSize="18dp"
                             android:background="@drawable/edit_text_background"
                             android:inputType="date"
                             android:hint="Ngày sinh"/>
 
                 <EditText
                         android:id="@+id/etRegisterPhoneNum"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="15dp"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/edit_text_background"
                         android:inputType="number"
@@ -105,21 +111,23 @@
             </LinearLayout>
             <EditText
                     android:id="@+id/etRegisterEmail"
+                    android:fontFamily="@font/lato_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:padding="15dp"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:background="@drawable/edit_text_background"
                     android:inputType="text"
                     android:hint="Email"/>
             <EditText
                     android:id="@+id/etRegisterPassword"
+                    android:fontFamily="@font/lato_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:padding="15dp"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:background="@drawable/edit_text_background"
                     android:inputType="textPassword"
                     android:drawableRight="@drawable/ic_visibility_off_black"
@@ -127,11 +135,12 @@
                     android:hint="Mật khẩu"/>
             <EditText
                     android:id="@+id/etRegisterPasswordConfirm"
+                    android:fontFamily="@font/lato_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:padding="15dp"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:background="@drawable/edit_text_background"
                     android:drawableRight="@drawable/ic_visibility_off_black"
                     android:longClickable="false"
@@ -145,10 +154,12 @@
                 <!--Kiểm tra đã đồng ý điều khoản hay chưa-->
                 <CheckBox
                         android:id="@+id/cbRegisterCheckPolicy"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:textColor="#001C44"
+                        android:textSize="15dp"
                         android:clickable="true"
                         android:text="Tôi chấp nhận với điều khoản và chính sách của appname."/>
 
@@ -157,6 +168,7 @@
             <!--            Đăng kí button-->
             <android.widget.Button
                     android:id="@+id/btnRegisterRegister"
+                    android:fontFamily="@font/lato_bold"
                     android:textAllCaps="false"
                     android:background="@drawable/round_btn"
                     android:layout_width="160dp"

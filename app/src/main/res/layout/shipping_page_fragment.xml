@@ -17,44 +17,62 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
-            <EditText
-                    android:id="@+id/etHomeSearch"
-                    android:drawableStart="@drawable/ic_search"
-                    android:drawableEnd="@drawable/ic_filter"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="16sp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="15dp"
-                    android:hint="   Tìm kiếm"
-                    android:background="@drawable/edit_text_background"
-                    android:layout_width="290dp"
-                    android:layout_height="wrap_content"/>
-            <RelativeLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-            <LinearLayout android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_alignParentEnd="true"
-                          android:layout_centerVertical="true"
-                          android:orientation="horizontal">
-            <android.widget.Button
-                    android:id="@+id/btn_Home_Notification"
-                    android:scaleX="0.62"
-                    android:scaleY="0.7"
-                    android:backgroundTint="@color/btn_blue"
-                    android:background="@drawable/notification_icon"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"/>
-            <android.widget.Button
-                    android:id="@+id/btn_Home_Shopping"
-                    android:scaleX="0.62"
-                    android:scaleY="0.7"
-                    android:backgroundTint="@color/btn_blue"
-                    android:background="@drawable/ic_shopping"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/searchbox_shape"
+                        android:orientation="horizontal">
+                    <EditText
+                            android:id="@+id/etShipmentSearchBox"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawableStart="@drawable/ic_search"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="16sp"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:paddingRight="20dp"
+                            android:paddingLeft="15dp"
+                            android:hint="   Tìm kiếm"
+                            android:background="@drawable/edit_text_background"
+                            android:layout_width="225dp"
+                            android:layout_height="wrap_content"/>
+                    <android.widget.Button
+                            android:id="@+id/etShipmentFilterbox"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.6"
+                            android:scaleY="0.6"
+                            android:background="@drawable/ic_filter"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <android.widget.Button
+                            android:id="@+id/btnShipmentNotification"
+                            android:scaleX="0.62"
+                            android:scaleY="0.7"
+                            android:backgroundTint="@color/btn_blue"
+                            android:background="@drawable/notification_icon"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"/>
+                    <android.widget.Button
+                            android:id="@+id/btnShipmentShoppingCart"
+                            android:scaleX="0.62"
+                            android:scaleY="0.7"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/btn_blue"
+                            android:background="@drawable/ic_shopping"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
         <com.google.android.material.tabs.TabLayout

@@ -8,6 +8,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
             android:text="Đổi số điện thoại"
             android:textSize="20dp"
             android:textColor="@color/black"
@@ -17,14 +18,16 @@
             android:id="@+id/etChangePhoneNumNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
             android:layout_marginTop="20dp"
             android:hint="Nhập số điện thoại"
             android:padding="15dp"
             android:inputType="number"
             android:background="@drawable/edit_text_background"/>
     <android.widget.Button
-            android:id="@+id/btnChangePhoneNumChangePhoneNum"
+            android:id="@+id/btnChangePhoneNumConfirmChange"
             android:text="Đổi số"
+            android:fontFamily="@font/lato_bold"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="15dp"

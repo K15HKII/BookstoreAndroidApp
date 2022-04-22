@@ -38,13 +38,14 @@
                    android:background="@drawable/ic_backward"/>
 
                <TextView
+                       android:fontFamily="@font/lato_bold"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_centerHorizontal="true"
                        android:textStyle="bold"
                        android:text="Voucher"
                        android:textColor="@color/black"
-                       android:textSize="24dp"/>
+                       android:textSize="26dp"/>
            </RelativeLayout>
        </androidx.appcompat.widget.Toolbar>
        <androidx.recyclerview.widget.RecyclerView

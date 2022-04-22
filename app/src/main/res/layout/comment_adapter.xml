@@ -8,7 +8,7 @@
             android:id="@+id/tvCommentViewUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:fontFamily="@font/lato_bold"
             android:textColor="@color/black"
             android:text="abc@gm.uit.edu.vn"
             android:textSize="18dp"/>
@@ -21,6 +21,7 @@
             android:id="@+id/rateBarCommentViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
             android:textColor="@color/black"
             android:text="Đóng gói sản phẩm cẩn thận, sách được bọc đẹp, nguyên vẹn, thơm nữa eheheehehe"/>
 </LinearLayout>

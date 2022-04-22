@@ -49,6 +49,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                     <ImageView
+                            android:id="@+id/imageViewDeltailBookImage"
                             android:layout_width="match_parent"
                             android:layout_height="300dp"
                             android:src="@drawable/dac_nhan_tam_book"/>
@@ -62,6 +63,7 @@
                                 android:layout_height="wrap_content">
                             <TextView
                                     android:id="@+id/tvDeltailBookTiltleOfBook"
+                                    android:fontFamily="@font/lato_bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
@@ -70,7 +72,7 @@
                                     android:textStyle="bold"
                                     android:text="Sách Đắc Nhân Tâm"/>
                             <ToggleButton
-                                    android:id="@+id/btnDeltailBookHeartbtn"
+                                    android:id="@+id/btnDeltailBookHeart"
                                     android:layout_width="61dp"
                                     android:layout_height="30dp"
                                     android:layout_marginTop="5dp"
@@ -88,13 +90,14 @@
                             android:id="@+id/tvDeltailBookPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
                             android:text="120.000đ"
                             android:textStyle="bold"
                             android:textColor="@color/red_orange"
                             android:textSize="29dp"/>
                     <RatingBar
-                            style="?android:attr/ratingBarStyleIndicator"
                             android:id="@+id/rbDeltailBookRatingView"
+                            style="?android:attr/ratingBarStyleIndicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
@@ -103,23 +106,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Số lượng hàng còn:"
+                            android:fontFamily="@font/lato_bold"
                             android:textStyle="bold"/>
                     <TextView
-                            android:id="@+id/tvDeltailBookRatingNumberLeft"
+                            android:id="@+id/tvDeltailBookBookLeft"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:textColor="@color/red_orange"
                             android:text="2"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
                             android:text="Mô tả"
                             android:textStyle="bold"/>
                     <TextView
-                            android:id="@+id/tvDeltailBookRatingDescription"
+                            android:id="@+id/tvDeltailBookDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:textColor="@color/black"
                             android:text="Blablabla"/>
@@ -129,6 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
                     android:text="Đánh giá"
                     android:textSize="20dp"
                     android:textColor="@color/black"
@@ -152,15 +160,16 @@
                             android:scaleY="0.35"
                             android:scaleX="0.25"
                             android:background="@drawable/ic_add_shopping_cart"/>
-                <android.widget.Button
-                        android:id="@+id/btnDeltailBookBuyNow"
-                        android:layout_width="279dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="Mua ngay"
-                        android:textColor="@color/white"
-                        android:textAllCaps="false"
-                        android:background="@drawable/confirm_order_btn"/>
+                    <android.widget.Button
+                            android:id="@+id/btnDeltailBookBuyNow"
+                            android:layout_width="279dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_alignParentEnd="true"
+                            android:text="Mua ngay"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:background="@drawable/confirm_order_btn"/>
                 </RelativeLayout>
             </LinearLayout>
             </ScrollView>

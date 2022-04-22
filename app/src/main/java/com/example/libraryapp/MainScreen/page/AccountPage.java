@@ -1,5 +1,6 @@
 package com.example.libraryapp.MainScreen.page;
 
+import android.os.Handler;
 import android.widget.Button;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.libraryapp.LoginScreen.LoadingDialog;
 import com.example.libraryapp.R;
 import com.example.libraryapp.ViewModel.AccountViewViewModel;
 import com.example.libraryapp.AccountScreen.AccountDetailPage;
@@ -37,6 +39,16 @@ public class AccountPage extends Fragment {
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startLoadingDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        },1000);
 
         btnInfomation.setOnClickListener(new View.OnClickListener() {
             @Override

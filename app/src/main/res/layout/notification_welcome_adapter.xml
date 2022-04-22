@@ -13,15 +13,16 @@
             android:layout_height="wrap_content">
         <TextView
                 android:id="@+id/tvNotificationWelcomeTitle"
+                android:fontFamily="@font/lato_regular"
                 android:layout_width="328dp"
                 android:layout_height="46dp"
                 android:text="Chào mừng bạn đến với búc sờ to của chúng tôi"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
         <android.widget.Button
-                android:id="@+id/btnNotification"
+                android:id="@+id/btnNotificationMoreInfo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -42,6 +43,7 @@
                 />
         <TextView
                 android:id="@+id/tvNotificationWelcomeDescription"
+                android:fontFamily="@font/lato_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mô tả bla bla"

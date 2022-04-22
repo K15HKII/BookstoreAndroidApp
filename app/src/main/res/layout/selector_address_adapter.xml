@@ -14,10 +14,11 @@
                         android:layout_height="wrap_content">
             <RadioButton
                     android:id="@+id/btnAddressChoiceOtherAddress"
+                    android:fontFamily="@font/lato_regular"
                     android:layout_width="319dp"
                     android:layout_height="wrap_content"
                     android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textColor="@color/black"/>
 
             <ImageView

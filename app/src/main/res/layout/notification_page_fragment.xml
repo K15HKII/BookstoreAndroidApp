@@ -32,13 +32,13 @@
                         android:scaleY="0.55"
                         android:background="@drawable/ic_backward"/>
                 <TextView
+                        android:fontFamily="@font/lato_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
                         android:textStyle="bold"
                         android:text="Thông báo"
                         android:textColor="@color/black"
-                        android:textSize="24dp"/>
+                        android:textSize="24dp" android:layout_centerInParent="true"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <androidx.recyclerview.widget.RecyclerView

@@ -28,6 +28,7 @@
                     android:id="@+id/tvBookViewBookName"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
+                    android:fontFamily="@font/lato_bold"
                     android:text="Sách Đắc nhân tâm"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -35,7 +36,7 @@
             <RelativeLayout android:layout_width="match_parent"
                             android:layout_height="match_parent">
                 <ToggleButton
-                        android:id="@+id/btnBookViewHeartbtn"
+                        android:id="@+id/btnBookViewHeart"
                         android:layout_width="61dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
@@ -51,6 +52,7 @@
                 android:id="@+id/tvBookViewPrice"
                 android:layout_width="322dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
                 android:text="120.000đ"
                 android:textColor="#F51F01"
                 android:textSize="17dp"/>
@@ -59,6 +61,7 @@
                 android:layout_width="52dp"
                 android:layout_height="29dp"
                 android:clickable="false"
+                android:fontFamily="@font/lato_regular"
                 android:background="@drawable/book_view_rating"
                 android:drawableStart="@drawable/ic_star"
                 android:scaleX="1"

@@ -31,17 +31,16 @@
                         android:scaleX="0.5"
                         android:scaleY="0.5"
                         android:background="@drawable/ic_backward"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:text="Tài khoản ngân hàng"
-                        android:textColor="@color/black"
-                        android:textSize="24dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/lato_bold"
+                    android:textStyle="bold"
+                    android:text="Tài khoản ngân hàng"
+                    android:textColor="@color/black"
+                    android:textSize="26dp" android:layout_centerInParent="true"/>
             <android.widget.Button
                     android:id="@+id/btnBankChoiceBank"
                     android:layout_width="40dp"
@@ -66,10 +65,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
+                    android:fontFamily="@font/lato_bold"
                     android:textStyle="bold"
                     android:text="Tài khoản mặc định"
                     android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                    android:textSize="26dp"/>
 
                     <LinearLayout
                             android:id="@+id/btnBankChoiceDefaultBank"
@@ -89,7 +89,8 @@
                                         android:id="@+id/tvBankChoiceBankName"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="19dp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:textSize="21dp"
                                         android:text="Agribank"
                                         android:textStyle="bold"
                                         android:textColor="#001C44"/>
@@ -99,6 +100,8 @@
                                     <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:fontFamily="@font/lato_regular"
+                                            android:textSize="15dp"
                                             android:layout_marginTop="5dp"
                                             android:text="Họ và tên: "
                                             android:textColor="#001C44"/>
@@ -107,6 +110,8 @@
                                             android:layout_marginTop="5dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:fontFamily="@font/lato_regular"
+                                            android:textSize="15dp"
                                             android:text="Trần Hữu Trí"
                                             android:textColor="#001C44"/>
                                 </LinearLayout>
@@ -115,6 +120,8 @@
                                         android:layout_marginTop="5dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:textSize="15dp"
                                         android:text="xxx113"
                                         android:textColor="#001C44"/>
                             </LinearLayout>
@@ -138,10 +145,11 @@
                     android:layout_marginTop="30dp"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
+                    android:fontFamily="@font/lato_bold"
                     android:textStyle="bold"
                     android:text="Tất cả"
                     android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                    android:textSize="26dp"/>
 
             <ListView
                     android:id="@+id/lvBankChoiceOtherBank"

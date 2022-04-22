@@ -3,6 +3,7 @@ package com.example.libraryapp.AccountScreen;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import com.example.libraryapp.LoginScreen.LoadingDialog;
 import com.example.libraryapp.R;
 import com.example.libraryapp.ViewModel.AccountInfoViewViewModel;
 
@@ -117,8 +119,8 @@ public class AccountDetailPage extends Fragment {
 
         etOldPass = dialog.findViewById(R.id.etChangePassOldPass);
         etNewPass = dialog.findViewById(R.id.etChangePassNewPass);
-        etNewPassConfirm = dialog.findViewById(R.id.etChangePassConfirmPass);
-        btnChangePass = dialog.findViewById(R.id.btnChangePassChangePassword);
+        etNewPassConfirm = dialog.findViewById(R.id.etChangePassConfirmNewPass);
+        btnChangePass = dialog.findViewById(R.id.btnChangePassConfirmChange);
 
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override

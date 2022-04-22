@@ -25,6 +25,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
             android:textAlignment="center"
             android:textColor="@color/btn_blue"
             android:textSize="24dp"
@@ -35,6 +36,7 @@
             app:layout_constraintHorizontal_bias="0.0" android:id="@+id/textView"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:fontFamily="@font/lato_regular"
               android:textAlignment="center"
               android:textColor="#636363"
               android:text="Cảm ơn bạn đã sử dụng dịch vụ, đơn hàng của bạn sẽ\nđược giao trong thời gian dự kiến ! \nChúc bạn một ngày tốt lành !!!"
@@ -48,6 +50,7 @@
             android:textAllCaps="false"
             android:text="Quay lại trang chủ"
             android:layout_marginTop="100dp"
+            android:fontFamily="@font/lato_bold"
             android:background="@drawable/confirm_order_btn"
             android:textColor="@color/white"
             android:paddingTop="16dp"

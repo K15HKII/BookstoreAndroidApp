@@ -11,6 +11,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/home_background"
             android:orientation="vertical">
+
         <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
                     android:background="@drawable/ic_backward"/>
 
             <TextView
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -35,7 +37,6 @@
                     android:textColor="@color/black"
                     android:textSize="24dp"/>
         </androidx.appcompat.widget.Toolbar>
-
         <ScrollView android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbars="none">
@@ -71,6 +72,7 @@
                             android:layout_marginLeft="5dp"
                             android:src="@drawable/ic_location"/>
                     <TextView
+                            android:fontFamily="@font/lato_bold"
                             android:text="Địa chỉ"
                             android:textStyle="bold"
                             android:textSize="19dp"
@@ -91,7 +93,8 @@
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView
-                        android:id="@+id/tvAccountInfoVoucherDetail"
+                        android:id="@+id/tvOrderPageAddressDetail"
+                        android:fontFamily="@font/lato_regular"
                         android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
                         android:textSize="19dp"
                         android:textColor="@color/black"
@@ -125,6 +128,7 @@
                             android:src="@drawable/ic_shopping"/>
                     <TextView
                             android:text="Đơn hàng"
+                            android:fontFamily="@font/lato_bold"
                             android:textStyle="bold"
                             android:textSize="19dp"
                             android:textColor="@color/black"
@@ -168,6 +172,7 @@
                                     android:src="@drawable/ic_voucher"/>
                             <TextView
                                     android:text="Voucher"
+                                    android:fontFamily="@font/lato_bold"
                                     android:textStyle="bold"
                                     android:textSize="19dp"
                                     android:textColor="@color/black"
@@ -187,7 +192,8 @@
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView
-                        android:id="@+id/tvAccountInfoLocation"
+                        android:id="@+id/tvOrderPageVoucher"
+                        android:fontFamily="@font/lato_regular"
                         android:text="%25 giảm giá"
                         android:textSize="19dp"
                         android:textColor="@color/black"
@@ -223,16 +229,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:src="@drawable/ic_credit"/>
-                    <TextView
-                            android:text="Hình thức thanh toán"
-                            android:textStyle="bold"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textStart"
-                            android:layout_width="220dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="84.5dp"/>
+                        <TextView
+                                android:text="Hình thức thanh toán"
+                                android:fontFamily="@font/lato_bold"
+                                android:textStyle="bold"
+                                android:textSize="19dp"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="textStart"
+                                android:layout_width="220dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="84.5dp"/>
                     </LinearLayout>
                     <ImageView
                             android:layout_width="wrap_content"
@@ -245,6 +252,7 @@
                 </LinearLayout>
                 <TextView
                         android:id="@+id/tvOrderPagePaymentMethod"
+                        android:fontFamily="@font/lato_regular"
                         android:text="Thanh toán khi nhận hàng"
                         android:textSize="19dp"
                         android:textColor="@color/black"
@@ -274,11 +282,15 @@
                     <TextView
                             android:layout_width="185dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textColor="@color/black"
                             android:text="Tổng tiền hàng"
                             android:textAlignment="textStart"/>
                     <TextView
                             android:id="@+id/tvOrderPageTotal"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="textEnd"
@@ -294,6 +306,8 @@
                     <TextView
                             android:layout_width="185dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textColor="@color/black"
                             android:text="Phí vận chuyển"
                             android:textAlignment="textStart"/>
@@ -301,6 +315,8 @@
                             android:id="@+id/tvOrderPageShipmentPay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:text="240.000đ"/>
@@ -314,6 +330,8 @@
                     <TextView
                             android:layout_width="185dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textColor="@color/black"
                             android:text="Giảm giá"
                             android:textAlignment="textStart"/>
@@ -321,6 +339,8 @@
                             android:id="@+id/tvOrderPageDiscount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:text="-60.000đ"/>
@@ -335,15 +355,17 @@
                     <TextView
                             android:layout_width="185dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
                             android:textColor="@color/black"
                             android:text="Tổng tiền"
                             android:textSize="24dp"
                             android:textStyle="bold"
                             android:textAlignment="textStart"/>
                     <TextView
-                            android:id="@+id/tvOrderPageTotalMoney"
+                            android:id="@+id/tvOrderPageTotalMoneyPay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:textSize="24dp"
@@ -353,7 +375,8 @@
 
             </LinearLayout>
             <android.widget.Button
-                    android:id="@+id/btnLoginLogin"
+                    android:id="@+id/btnOrderPageConfirmOrder"
+                    android:fontFamily="@font/lato_bold"
                     android:paddingLeft="35dp"
                     android:paddingRight="35dp"
                     android:paddingTop="12dp"

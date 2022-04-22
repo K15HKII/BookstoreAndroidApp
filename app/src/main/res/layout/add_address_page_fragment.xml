@@ -27,6 +27,7 @@
                     android:background="@drawable/ic_backward"/>
 
             <TextView
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -54,6 +55,7 @@
                             android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:textSize="16dp"
+                            android:fontFamily="@font/lato_regular"
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
                             android:background="@drawable/edit_text_background"/>
@@ -64,6 +66,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:textSize="16dp"
+                            android:fontFamily="@font/lato_regular"
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
                             android:background="@drawable/edit_text_background"/>
@@ -76,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:textSize="16dp"
+                    android:fontFamily="@font/lato_regular"
                     android:inputType="text"
                     android:popupBackground="@drawable/spinner_shape"
                     android:background="@drawable/edit_text_background"/>
@@ -84,8 +88,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="15dp"
+                    android:padding="18dp"
                     android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/lato_regular"
                     android:textSize="16dp"
                     android:textColor="@color/black"
                     android:hint="Số nhà"
@@ -94,10 +99,12 @@
                     android:id="@+id/cbAddAddressCheckDefaultAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
                     android:backgroundTint="@color/btn_blue"
                     android:text="Đặt làm địa chỉ mặc định"/>
             <android.widget.Button
                     android:id="@+id/btnAddAddressConfirmInfo"
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

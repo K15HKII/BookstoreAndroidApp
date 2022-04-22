@@ -37,25 +37,24 @@
                         android:scaleY="0.5"
                         android:background="@drawable/ic_backward"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textStyle="bold"
-                    android:text="Đánh giá"
-                    android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                <TextView
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Đánh giá"
+                        android:textColor="@color/black"
+                        android:textSize="24dp" android:layout_centerInParent="true"/>
 
-            <android.widget.Button
-                    android:id="@+id/btnRatingBookDone"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7"
-                    android:background="@drawable/ic_done"/>
+                <android.widget.Button
+                        android:id="@+id/btnRatingBookDone"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:background="@drawable/ic_done"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <androidx.recyclerview.widget.RecyclerView

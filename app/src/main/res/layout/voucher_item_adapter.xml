@@ -29,8 +29,9 @@
                         android:id="@+id/tvVoucherItemTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
                         android:textColor="@color/btn_blue"
-                        android:textSize="24dp"
+                        android:textSize="28dp"
                         android:text="20% Giảm giá"
                         android:textStyle="bold"/>
                 <LinearLayout
@@ -42,9 +43,11 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
                             android:text="Hạn sử dụng "/>
                     <TextView
                             android:id="@+id/tvVoucherItemDateExp"
+                            android:fontFamily="@font/lato_regular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20/04/2022"/>
@@ -55,22 +58,25 @@
                 android:id="@+id/tvVoucherItemMaxUse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
                 android:text="Tối đa 100.000đ"
-                android:textSize="13dp"
+                android:textSize="15dp"
                 android:textColor="@color/btn_blue"/>
         <TextView
                 android:id="@+id/tvVoucherItemApplyForBill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="20dp"
                 android:text="Cho đơn hàng trên 300.000đ"
                 android:textColor="@color/btn_blue"/>
         <TextView
                 android:id="@+id/tvVoucherItemApplyForBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10.5dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="12.5dp"
                 android:text="Áp dụng cho Sách thể loại Văn học, Khoa học"
         />
     </LinearLayout>

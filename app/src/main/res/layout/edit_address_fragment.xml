@@ -30,15 +30,15 @@
                         android:layout_alignParentLeft="true"
                         android:background="@drawable/ic_backward"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_centerInParent="true"
-                    android:textStyle="bold"
-                    android:text="Địa chỉ"
-                    android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textStyle="bold"
+                        android:text="Địa chỉ"
+                        android:textColor="@color/black"
+                        android:textSize="24dp" android:layout_centerInParent="true"/>
             <android.widget.Button
                     android:id="@+id/btnEditAddressDelete"
                     android:layout_width="40dp"
@@ -98,6 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_regular"
                     android:padding="15dp"
                     android:background="@drawable/edit_text_background"
                     android:textSize="16dp"
@@ -109,13 +110,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/btn_blue"
+                    android:fontFamily="@font/lato_regular"
                     android:text="Đặt làm địa chỉ mặc định"/>
             <android.widget.Button
                     android:id="@+id/btnEditAddressConfirmInfo"
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:gravity="center"
                     android:layout_gravity="center"
                     android:background="@drawable/round_btn"
                     android:text="Xong"

@@ -8,6 +8,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
             android:text="Xác nhận đặt hàng"
             android:textSize="20dp"
             android:textColor="@color/black"
@@ -26,6 +27,7 @@
                     android:orientation="horizontal">
                 <android.widget.Button
                         android:id="@+id/btnConfirmOrderCancle"
+                        android:fontFamily="@font/lato_bold"
                         android:text="Hủy"
                         android:textColor="#001C44"
                         android:textAllCaps="false"
@@ -37,9 +39,10 @@
                         android:paddingBottom="5.5dp"
                         android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"/>
+                        android:layout_height="42dp"/>
                 <android.widget.Button
                         android:id="@+id/btnConfirmOrderAccept"
+                        android:fontFamily="@font/lato_bold"
                         android:text="Chấp nhận"
                         android:textColor="@color/white"
                         android:textAllCaps="false"
@@ -48,7 +51,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="26dp"
                         android:layout_width="110dp"
-                        android:layout_height="40dp"/>
+                        android:layout_height="42dp"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

@@ -13,61 +13,78 @@
             android:layout_height="match_parent"
             android:background="@drawable/home_background"
             android:orientation="vertical">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-        <EditText
-                android:id="@+id/etHomeSearch"
-                android:drawableStart="@drawable/ic_search"
-                android:drawableEnd="@drawable/ic_filter"
-                android:layout_marginLeft="5dp"
-                android:textSize="16sp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingRight="20dp"
-                android:paddingLeft="15dp"
-                android:hint="   Tìm kiếm"
-                android:background="@drawable/edit_text_background"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"/>
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
         <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
-        <android.widget.Button
-                android:id="@+id/btn_Home_Notification"
-                android:scaleX="0.62"
-                android:scaleY="0.7"
-                android:backgroundTint="@color/btn_blue"
-                android:background="@drawable/notification_icon"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"/>
-        <android.widget.Button
-                android:id="@+id/btn_Home_Shopping"
-                android:scaleX="0.62"
-                android:scaleY="0.7"
-                android:backgroundTint="@color/btn_blue"
-                android:background="@drawable/ic_shopping"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/searchbox_shape"
+                        android:orientation="horizontal">
+                    <EditText
+                            android:id="@+id/etHomeSearchBox"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawableStart="@drawable/ic_search"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="16sp"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:paddingRight="20dp"
+                            android:paddingLeft="15dp"
+                            android:hint="   Tìm kiếm"
+                            android:background="@drawable/edit_text_background"
+                            android:layout_width="225dp"
+                            android:layout_height="wrap_content"/>
+                    <android.widget.Button
+                            android:id="@+id/etHomeFilterbox"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.6"
+                            android:scaleY="0.6"
+                            android:background="@drawable/ic_filter"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <android.widget.Button
+                            android:id="@+id/btnHomeNotification"
+                            android:scaleX="0.6"
+                            android:scaleY="0.7"
+                            android:backgroundTint="@color/btn_blue"
+                            android:background="@drawable/notification_icon"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"/>
+                    <android.widget.Button
+                            android:id="@+id/btnHomeShoppingCart"
+                            android:scaleX="0.62"
+                            android:scaleY="0.7"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/btn_blue"
+                            android:background="@drawable/ic_shopping"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/lato_bold"
             android:textStyle="bold"
-            android:textSize="31sp"
+            android:textSize="33sp"
             android:text="Kho Sách"
             android:textColor="@color/black"/>
     <!--Danh mục cái navigation item-->
@@ -101,6 +118,7 @@
                             app:chipIcon="@drawable/ic_home_selected"/>
             <com.google.android.material.chip.Chip
                     android:id="@+id/chipHomeAllBooks"
+                    android:fontFamily="@font/lato_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -114,6 +132,7 @@
                     app:chipBackgroundColor="@color/chip_selector"/>
                 <com.google.android.material.chip.Chip
                         android:id="@+id/chipHomePopularBooks"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -127,6 +146,7 @@
                         app:chipBackgroundColor="@color/chip_selector"/>
                 <com.google.android.material.chip.Chip
                         android:id="@+id/chipHomeFamiliarBooks"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -140,6 +160,7 @@
                         app:chipBackgroundColor="@color/chip_selector"/>
                 <com.google.android.material.chip.Chip
                         android:id="@+id/chipHomeForYouBooks"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

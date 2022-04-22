@@ -7,6 +7,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
+            android:clickable="true"
             android:background="@drawable/edit_text_background"
             android:orientation="horizontal">
         <RelativeLayout
@@ -20,7 +21,8 @@
                         android:id="@+id/tvBankChoiceAdapterBankName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="19dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="21dp"
                         android:text="Agribank"
                         android:textStyle="bold"
                         android:textColor="#001C44"/>
@@ -32,12 +34,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:text="Họ và tên: "
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:textColor="#001C44"/>
                     <TextView
                             android:id="@+id/tvBankChoiceAdapterOwnerName"
                             android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="15dp"
                             android:text="Trần Hữu Trí"
                             android:textColor="#001C44"/>
                 </LinearLayout>
@@ -46,6 +52,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="15dp"
                         android:text="xxx113"
                         android:textColor="#001C44"/>
             </LinearLayout>

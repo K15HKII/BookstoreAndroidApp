@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
@@ -16,22 +17,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loại"
+                android:fontFamily="@font/lato_regular"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>
+        <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipgrpHomeChipNavigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:singleSelection="true">
         <com.google.android.material.chip.Chip
+                android:id="@+id/chipBuyNowSoftBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36dp"
+                android:fontFamily="@font/lato_regular"
                 android:text="Bìa mềm"
                 android:textStyle="bold"
                 android:textSize="15dp"/>
         <com.google.android.material.chip.Chip
+                android:id="@+id/chipBuyNowHardBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/lato_regular"
                 android:text="Bìa cứng"
                 android:textStyle="bold"
                 android:textSize="15dp"/>
+        </com.google.android.material.chip.ChipGroup>
     </LinearLayout>
     <!--    TODO: Cần add thêm cộng trừ-->
     <LinearLayout
@@ -42,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato_regular"
                 android:text="Số lượng"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>
@@ -62,7 +76,7 @@
                         android:background="#98BDC7"
                         android:src="@drawable/ic_minus"/>
                 <TextView
-                        android:id="@+id/btnBuyNowAmount"
+                        android:id="@+id/tvBuyNowAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -91,19 +105,19 @@
             android:background="@drawable/round_long_btn">
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-    <android.widget.Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_centerInParent="true"
-            android:text="Mua ngay"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:drawableLeft="@drawable/ic_shopping_cart_checkout"
-            android:background="@null"/>
+            <android.widget.Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Mua ngay"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:drawableLeft="@drawable/ic_shopping_cart_checkout"
+                    android:background="@null" android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

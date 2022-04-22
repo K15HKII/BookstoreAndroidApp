@@ -1,5 +1,6 @@
 package com.example.libraryapp.LoginScreen;
 
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -49,11 +50,20 @@ public class Login extends Fragment {
         btnLoginWithFacebook = view.findViewById(R.id.btnLoginLoginWithFaceBook);
         tvRegister = view.findViewById(R.id.tvLoginRegister);
         tvPassforget = view.findViewById(R.id.tvLoginPassforget);
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
 
 //        Chức năng các nút
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loadingDialog.startLoadingDialog();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismissDialog();
+                    }
+                },1000);
                 fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
             }
         });

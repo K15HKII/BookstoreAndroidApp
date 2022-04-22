@@ -28,6 +28,8 @@
                     android:padding="15dp">
                 <TextView
                         android:id="@+id/tvWaitingOrderItemsNote"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -40,15 +42,17 @@
                         android:orientation="horizontal">
                     <TextView
                             android:text="Thành tiền: "
+                            android:fontFamily="@font/lato_regular"
                             android:textColor="@color/red_orange"
-                            android:textSize="19dp"
+                            android:textSize="21dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     <TextView
                             android:id="@+id/tvWaitingOrderItemsPrice"
+                            android:fontFamily="@font/lato_regular"
                             android:text="120.000đ"
                             android:textColor="@color/red_orange"
-                            android:textSize="19dp"
+                            android:textSize="21dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                 </LinearLayout>

@@ -27,6 +27,7 @@
                 android:background="@drawable/ic_backward"/>
 
         <TextView
+                android:fontFamily="@font/lato_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -43,21 +44,24 @@
                 android:orientation="vertical"
                 android:padding="15dp">
             <LinearLayout
+                    android:id="@+id/btnPaymentMethodATMSelector"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="10dp"
                     android:orientation="horizontal"
+                    android:clickable="true"
                     android:background="@drawable/account_button_1">
                 <RelativeLayout android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
-                <RadioButton
-                        android:id="@+id/btnPaymentMethodATM"
-                        android:layout_width="349dp"
-                        android:layout_height="wrap_content"
-                        android:text="Thẻ ATM"
-                        android:textSize="18dp"
-                        android:textColor="@color/btn_blue"
-                        android:textStyle="bold"/>
+                    <RadioButton
+                            android:id="@+id/btnPaymentMethodATM"
+                            android:layout_width="349dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Thẻ ATM"
+                            android:textSize="18dp"
+                            android:textColor="@color/btn_blue"
+                            android:textStyle="bold"/>
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,6 +79,7 @@
                     android:background="@drawable/account_button_2">
                 <RadioButton
                         android:id="@+id/btnPaymentMethodCash"
+                        android:fontFamily="@font/lato_bold"
                         android:layout_width="349dp"
                         android:layout_height="match_parent"
                         android:text="Tiền mặt"
@@ -85,6 +90,7 @@
             <android.widget.Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
                     android:layout_marginTop="365dp"
                     android:text="Chọn"
                     android:textAllCaps="false"

@@ -10,9 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      xmlns:app="http://schemas.android.com/apk/res-auto"
-                      xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:orientation="vertical">
@@ -39,6 +37,7 @@
                 android:scaleY="0.5"
                 android:background="@drawable/ic_backward"/>
                     <TextView
+                            android:fontFamily="@font/lato_bold"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -67,27 +66,29 @@
                     android:background="@drawable/home_background"
                     android:padding="20dp">
                 <EditText
-                        android:id="@+id/etAddBankOwnerName"
+                        android:id="@+id/etEditBankOwnerName"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_marginTop="30dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Tên chủ sở hữu"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingBottom="15dp"
-                        android:paddingTop="15dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
                         android:textSize="20dp"
                         android:background="@drawable/edit_text_background"/>
                 <EditText
-                        android:id="@+id/etAddBankIdentify"
+                        android:id="@+id/etEditBankIdentify"
+                        android:fontFamily="@font/lato_regular"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="CMND/CCCD"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingBottom="15dp"
-                        android:paddingTop="15dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
                         android:textSize="20dp"
                         android:background="@drawable/edit_text_background"/>
 
@@ -105,15 +106,16 @@
                         android:transcriptMode="alwaysScroll"/>
 
                 <EditText
-                        android:id="@+id/etAddBankCardNumber"
+                        android:id="@+id/etEditBankCardNumber"
+                        android:fontFamily=""
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Số tài khoản"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingBottom="15dp"
-                        android:paddingTop="15dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
                         android:textSize="20dp"
                         android:background="@drawable/edit_text_background"/>
                 <LinearLayout
@@ -122,17 +124,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <CheckBox
-                            android:id="@+id/cbAddBankDefaultBankCheck"
+                            android:id="@+id/cbEditBankDefaultBankCheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/lato_regular"
                             android:text="Đặt làm tài khoản ngân hàng mặc định"
                             android:textSize="15dp"
                             android:textColor="@color/black"/>
                 </LinearLayout>
                 <android.widget.Button
-                        android:id="@+id/btnAddBankDone"
+                        android:id="@+id/btnEditBankDone"
                         android:textAllCaps="false"
                         android:background="@drawable/round_btn"
+                        android:fontFamily="@font/lato_bold"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
