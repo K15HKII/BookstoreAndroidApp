@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
+             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -83,6 +83,59 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_bold"
                         android:text="Hình ảnh"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                    <ImageView
+                            android:id="@+id/imageRatingReport1"
+                            android:layout_width="104dp"
+                            android:layout_height="104dp"
+                            android:background="@drawable/add_image_btn"
+                            android:clickable="true"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.003" app:layout_constraintVertical_bias="0.0"/>
+                    <android.widget.Button
+                            android:id="@+id/btnRatingReportAddImage1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.3"
+                            android:scaleY="0.55"
+                            android:background="@drawable/ic_plus"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageRatingReport1" app:layout_constraintTop_toTopOf="@+id/imageRatingReport1"
+                            app:layout_constraintEnd_toEndOf="@+id/imageRatingReport1"
+                            app:layout_constraintStart_toStartOf="@+id/imageRatingReport1" app:layout_constraintHorizontal_bias="0.5"/>
+                    <ImageView
+                            android:id="@+id/imageRatingReport2"
+                            android:layout_width="104dp"
+                            android:layout_height="104dp"
+                            android:background="@drawable/add_image_btn"
+                            android:clickable="true"
+                            app:layout_constraintStart_toEndOf="@+id/imageRatingReport1"
+                            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.049"
+                            app:layout_constraintVertical_bias="0.0"/>
+                    <android.widget.Button
+                            android:id="@+id/btnRatingReportAddImage2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.3"
+                            android:scaleY="0.55"
+                            android:background="@drawable/ic_plus"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageRatingReport2" app:layout_constraintTop_toTopOf="@+id/imageRatingReport2"
+                            app:layout_constraintEnd_toEndOf="@+id/imageRatingReport2"
+                            app:layout_constraintStart_toStartOf="@+id/imageRatingReport2" app:layout_constraintHorizontal_bias="0.5"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Đánh giá chi tiết"
                         android:textSize="20dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
