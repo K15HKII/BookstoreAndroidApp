@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/home_background"
-        tools:context=".OncartScreen.OncartViewPage">
+        tools:context=".oncartscreen.OncartViewPage">
 
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:background="@drawable/gradient_background"
-        tools:context=".LoginScreen.Login">
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        tools:context=".loginscreen.Login">
+    <data>
+        <variable name="LoginViewModel"
+                  type="com.example.libraryapp.viewmodel.LoginViewModel"/>
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:orientation="vertical"
+                 android:padding="15dp"
+                 android:background="@drawable/gradient_background">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,33 +39,64 @@
                           android:textSize="31dp"
                           android:textColor="@color/btn_blue"
                           android:textAlignment="center"
-                          android:fontFamily="@font/lato_bold"
-                />
-                <EditText
-                        android:id="@+id/etLoginUser"
-                        android:fontFamily="@font/lato_regular"
+                          android:fontFamily="@font/lato_bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:padding="18dp"
-                        android:textSize="16dp"
+                        android:layout_marginTop="20dp"
                         android:background="@drawable/edit_text_background"
-                        android:inputType="text"
-                        android:hint="Tên đăng nhập"/>
-                <EditText
-                        android:id="@+id/etLoginPassword"
-                        android:fontFamily="@font/lato_regular"
-                        android:background="@drawable/edit_text_background"
-                        android:padding="18dp"
-                        android:paddingRight="10dp"
-                        android:textSize="16dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Tên đăng nhập">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLoginUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="16dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:drawableRight="@drawable/ic_visibility_off_black"
-                        android:longClickable="false"
-                        android:inputType="textPassword"
-                        android:hint="Mật khẩu"/>
+                        app:passwordToggleEnabled="true"
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Mật khẩu">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLoginPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:text="@={LoginViewModel.pass}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="16dp"
+                            android:ems="15"
+                            android:textColorHighlight="@color/white"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <TextView
                         android:id="@+id/tvLoginPassforget"
                         android:fontFamily="@font/lato_regular"
@@ -68,8 +109,21 @@
                         android:text="Quên mật khẩu?"
                         android:clickable="true"
                         android:textAlignment="textEnd"/>
+                <TextView
+                        android:id="@+id/message"
+                        android:fontFamily="@font/lato_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/quen_mat_khau"
+                        android:textColor="#024C5E"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@{LoginViewModel.LoginMessage}"
+                        android:clickable="true"
+                        android:textAlignment="textEnd"/>
                 <android.widget.Button
                         android:id="@+id/btnLoginLogin"
+                        android:onClick="@{()-> LoginViewModel.LoginOnclick()}"
                         android:background="@drawable/round_btn"
                         android:radius="45dp"
                         android:layout_width="155dp"
@@ -151,4 +205,5 @@
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
-</FrameLayout>
+    </LinearLayout>
+</layout>

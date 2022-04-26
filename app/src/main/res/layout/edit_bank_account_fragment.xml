@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BankScreen.Edit_bank_page">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".bankscreen.Edit_bank_page">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -65,32 +65,67 @@
                     android:layout_height="673dp"
                     android:background="@drawable/home_background"
                     android:padding="20dp">
-                <EditText
-                        android:id="@+id/etEditBankOwnerName"
-                        android:fontFamily="@font/lato_regular"
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Tên chủ sở hữu">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEditBankOwnerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="18dp"
+                            android:paddingTop="18dp"
+                            android:inputType="text"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="20dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tên chủ sở hữu"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="18dp"
-                        android:paddingTop="18dp"
-                        android:textSize="20dp"
-                        android:background="@drawable/edit_text_background"/>
-                <EditText
-                        android:id="@+id/etEditBankIdentify"
-                        android:fontFamily="@font/lato_regular"
                         android:layout_marginTop="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="CMND/CCCD"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="18dp"
-                        android:paddingTop="18dp"
-                        android:textSize="20dp"
-                        android:background="@drawable/edit_text_background"/>
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="CMND/CCCD">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEditBankIdentifyNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="18dp"
+                            android:paddingTop="18dp"
+                            android:inputType="text"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="20dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <ExpandableListView
                         android:id="@+id/lvEditBankBank"
@@ -105,19 +140,37 @@
                         android:layoutDirection="rtl"
                         android:transcriptMode="alwaysScroll"/>
 
-                <EditText
-                        android:id="@+id/etEditBankCardNumber"
-                        android:fontFamily=""
-                        android:layout_marginTop="15dp"
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Số tài khoản"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="18dp"
-                        android:paddingTop="18dp"
-                        android:textSize="20dp"
-                        android:background="@drawable/edit_text_background"/>
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="CMND/CCCD">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEditBankCardNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="18dp"
+                            android:paddingTop="18dp"
+                            android:inputType="text"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="20dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <LinearLayout
                         android:layout_marginTop="30dp"
                         android:layout_width="match_parent"

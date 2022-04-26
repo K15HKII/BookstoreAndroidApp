@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".AddressScreen.Selector_bank_page">
+        tools:context=".addressscreen.Selector_bank_page">
 
     <LinearLayout
                   android:layout_width="match_parent"

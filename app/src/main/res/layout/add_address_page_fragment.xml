@@ -3,8 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AddressScreen.AddAddressPage">
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".addressscreen.AddAddressPage">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -83,18 +83,32 @@
                     android:inputType="text"
                     android:popupBackground="@drawable/spinner_shape"
                     android:background="@drawable/edit_text_background"/>
-            <EditText
-                    android:id="@+id/etAddAddressAddress"
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="18dp"
                     android:background="@drawable/edit_text_background"
-                    android:fontFamily="@font/lato_regular"
-                    android:textSize="16dp"
-                    android:textColor="@color/black"
-                    android:hint="Số nhà"
-                    android:inputType="text"/>
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Số nhà">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddAddressAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={LoginViewModel.user}"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="16dp"
+                        android:ems="15"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/edit_text_background"/>
+            </com.google.android.material.textfield.TextInputLayout>
             <CheckBox
                     android:id="@+id/cbAddAddressCheckDefaultAddress"
                     android:layout_width="match_parent"

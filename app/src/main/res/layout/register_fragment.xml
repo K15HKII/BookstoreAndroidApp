@@ -3,10 +3,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:padding="15dp"
         android:background="@drawable/gradient_background"
-        tools:context=".RegisterScreen.Register">
+        tools:context=".registerscreen.Register">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -57,16 +57,32 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_marginTop="10dp"
                           android:orientation="horizontal">
-                <EditText
-                        android:id="@+id/etRegisterUser"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="250dp"
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="15dp"
-                        android:textSize="18dp"
+                        android:layout_marginTop="20dp"
                         android:background="@drawable/edit_text_background"
-                        android:inputType="text"
-                        android:hint="Tên đăng nhập"/>
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Tên đăng nhập">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRegisterUser"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="18dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
                 <android.widget.Spinner
                         android:id="@+id/spRegisterGender"
                         android:layout_width="match_parent"
@@ -74,7 +90,7 @@
                         android:popupBackground="@drawable/spinner_shape"
                         android:padding="15dp"
                         android:layout_marginLeft="15dp"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:background="@drawable/edit_text_background"
                         android:dropDownSelector="@drawable/dropdown_selector"
                         android:inputType="text"
@@ -85,68 +101,143 @@
                           android:layout_height="wrap_content"
                           android:orientation="horizontal"
                           android:layout_marginTop="10dp">
-
-                    <EditText
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Ngày sinh">
+                    <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etRegisterDOB"
-                            android:fontFamily="@font/lato_regular"
                             android:layout_width="188dp"
                             android:layout_height="wrap_content"
-                            android:padding="15dp"
-                            android:textSize="18dp"
-                            android:background="@drawable/edit_text_background"
                             android:inputType="date"
-                            android:hint="Ngày sinh"/>
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="18dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/edit_text_background"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Số điện thoại">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRegisterPhoneNum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="@={LoginViewModel.user}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="18dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/edit_text_background"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                        android:id="@+id/etRegisterPhoneNum"
-                        android:fontFamily="@font/lato_regular"
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Email">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="15dp"
+                        android:inputType="text"
+                        android:text="@={LoginViewModel.user}"
+                        android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/edit_text_background"
-                        android:inputType="number"
-                        android:hint="Số điện thoại"/>
-            </LinearLayout>
-            <EditText
-                    android:id="@+id/etRegisterEmail"
-                    android:fontFamily="@font/lato_regular"
+                        android:ems="15"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/edit_text_background"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="15dp"
-                    android:textSize="18dp"
+                    app:passwordToggleEnabled="true"
                     android:background="@drawable/edit_text_background"
-                    android:inputType="text"
-                    android:hint="Email"/>
-            <EditText
-                    android:id="@+id/etRegisterPassword"
-                    android:fontFamily="@font/lato_regular"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Nhập mật khẩu">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="@={LoginViewModel.pass}"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="18dp"
+                        android:ems="15"
+                        android:textColorHighlight="@color/white"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/edit_text_background"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="15dp"
-                    android:textSize="18dp"
+                    app:passwordToggleEnabled="true"
                     android:background="@drawable/edit_text_background"
-                    android:inputType="textPassword"
-                    android:drawableRight="@drawable/ic_visibility_off_black"
-                    android:longClickable="false"
-                    android:hint="Mật khẩu"/>
-            <EditText
-                    android:id="@+id/etRegisterPasswordConfirm"
-                    android:fontFamily="@font/lato_regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="15dp"
-                    android:textSize="18dp"
-                    android:background="@drawable/edit_text_background"
-                    android:drawableRight="@drawable/ic_visibility_off_black"
-                    android:longClickable="false"
-                    android:inputType="textPassword"
-                    android:hint="Nhập lại mật khẩu"/>
-
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Nhập lại mật khẩu">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegisterPasswordConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="@={LoginViewModel.pass}"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="18dp"
+                        android:ems="15"
+                        android:textColorHighlight="@color/white"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/edit_text_background"/>
+            </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

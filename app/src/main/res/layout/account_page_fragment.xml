@@ -7,7 +7,7 @@
         android:padding="24dp"
         android:background="@drawable/home_background"
         android:layout_height="match_parent"
-        tools:context=".MainScreen.page.AccountPage">
+        tools:context=".mainscreen.page.AccountPage">
 
     <LinearLayout
             android:layout_width="match_parent"

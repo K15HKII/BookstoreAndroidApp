@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,16 +15,32 @@
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textStyle="bold"/>
-    <EditText
-            android:id="@+id/etChangeGenderGender"
+    <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/lato_regular"
-            android:hint="Nhập giới tính"
-            android:padding="15dp"
-            android:inputType="number"
-            android:background="@drawable/edit_text_background"/>
+            android:background="@drawable/edit_text_background"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxStrokeColor="#FFF"
+            app:boxBackgroundColor="#FFF"
+            app:hintTextColor="@color/btn_blue"
+            android:nextFocusRight="@color/btn_blue"
+            android:hint="Nhập giới tính">
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChangeGenderGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@={LoginViewModel.user}"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="16dp"
+                android:ems="15"
+                android:textColor="@color/btn_blue"
+                android:textColorHint="@color/btn_blue"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/edit_text_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <android.widget.Button
             android:id="@+id/btnChangeGenderConfirmChange"
             android:fontFamily="@font/lato_bold"
