@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".addressscreen.SelectorAddressPage">
+        tools:context="k15hkii.se114.bookstore.views.SelectorAddressPage">
 
 
     <LinearLayout

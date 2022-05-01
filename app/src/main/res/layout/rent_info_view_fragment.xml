@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".mainscreen.RentScreen.RentInfoView">
+        tools:context=".views.mainscreen.RentScreen.RentInfoView">
 
     <ScrollView
             android:layout_width="match_parent"

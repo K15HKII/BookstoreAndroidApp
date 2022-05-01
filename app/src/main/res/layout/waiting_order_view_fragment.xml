@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mainscreen.ShipmentScreen.WaitingOrderViewPage">
+        tools:context=".views.mainscreen.ShipmentScreen.WaitingOrderViewPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

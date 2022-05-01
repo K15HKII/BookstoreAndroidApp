@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mainscreen.ShipmentScreen.ShipmentArrivedViewPage">
+        tools:context=".views.mainscreen.ShipmentScreen.ShipmentArrivedViewPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
