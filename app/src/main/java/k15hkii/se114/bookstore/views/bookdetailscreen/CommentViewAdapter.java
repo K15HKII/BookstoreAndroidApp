@@ -8,21 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.CommentViewHolder> {
+public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.CommentViewHolder> {
 
-    List<Comment> lsComments;
     Context context;
 
-    public void setLsComments(List<Comment> lsComments) {
-        this.lsComments = lsComments;
-    }
-
     public CommentViewAdapter(List<Comment> lsComments, Context context) {
-        this.lsComments = lsComments;
+        super(lsComments);
         this.context = context;
     }
 
@@ -35,21 +31,11 @@ public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull CommentViewHolder holder, int position) {
-        Comment comment = lsComments.get(position);
-        if(comment == null){
+    public void onBindViewHolder(@NonNull @NotNull CommentViewHolder holder, Comment data) {
+        if(data == null){
             return;
         }
-        holder.tvUserEmail.setText(comment.getUserEmail());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsComments != null)
-        {
-            return lsComments.size();
-        }
-        return 0;
+        holder.tvUserEmail.setText(data.getUserEmail());
     }
 
     class CommentViewHolder extends RecyclerView.ViewHolder{
