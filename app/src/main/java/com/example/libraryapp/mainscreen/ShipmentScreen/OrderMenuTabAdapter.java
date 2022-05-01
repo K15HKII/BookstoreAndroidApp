@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen;
+package com.example.libraryapp.mainscreen.ShipmentScreen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView;
+package com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.Orde
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.waiting_order_view_adapter, parent, false);
-        return new OrderViewHolder(view);
+        return new OrderViewAdapter.OrderViewHolder(view);
     }
 
     @Override

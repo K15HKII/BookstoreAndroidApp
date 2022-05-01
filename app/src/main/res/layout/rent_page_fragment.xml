@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/home_background"
+        tools:context=".mainscreen.page.RentPage">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/receipt_background"
+                android:paddingBottom="200dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="horizontal">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/searchbox_shape"
+                    android:orientation="horizontal">
+                <EditText
+                        android:id="@+id/etRentSearchBox"
+                        android:fontFamily="@font/lato_regular"
+                        android:drawableStart="@drawable/ic_search"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="16sp"
+                        android:paddingTop="13dp"
+                        android:paddingBottom="13dp"
+                        android:paddingRight="15dp"
+                        android:paddingLeft="10dp"
+                        android:hint="   Tìm kiếm"
+                        android:background="@drawable/edit_text_background"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"/>
+                <android.widget.Button
+                        android:id="@+id/etRentFilterbox"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:background="@drawable/ic_filter"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <android.widget.Button
+                        android:id="@+id/btnRentNotification"
+                        android:scaleX="0.63"
+                        android:scaleY="0.65"
+                        android:backgroundTint="@color/btn_blue"
+                        android:background="@drawable/notification_icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+                <android.widget.Button
+                        android:id="@+id/btnRentShoppingCart"
+                        android:scaleX="0.58"
+                        android:scaleY="0.58"
+                        android:backgroundTint="@color/btn_blue"
+                        android:background="@drawable/ic_shopping"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabMenuRentNav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/home_background"
+                    android:minHeight="?attr/actionBarSize"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabIndicatorColor="@color/black" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnRentBookAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_white"
+                    app:backgroundTint="#0C5776"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpRentBookView"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"/>
+
+    </LinearLayout>
+</FrameLayout>

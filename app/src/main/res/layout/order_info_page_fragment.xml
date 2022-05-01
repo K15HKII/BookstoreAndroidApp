@@ -372,7 +372,6 @@
                             android:textStyle="bold"
                             android:text="200.000đ"/>
                 </LinearLayout>
-
             </LinearLayout>
             <android.widget.Button
                     android:id="@+id/btnOrderPageConfirmOrder"

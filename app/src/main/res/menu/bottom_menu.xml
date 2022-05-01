@@ -17,9 +17,13 @@
             android:icon="@drawable/love_selector"
             android:iconTint="@color/btn_blue"/>
     <item
+            android:id="@+id/rent_view"
+            android:title="Rent"
+            android:icon="@drawable/ic_rent_selector"
+            android:iconTint="@color/btn_blue"/>
+    <item
             android:id="@+id/account_view"
             android:title="Account"
             android:icon="@drawable/account_selector"
             android:iconTint="@color/btn_blue"/>
-
 </menu>

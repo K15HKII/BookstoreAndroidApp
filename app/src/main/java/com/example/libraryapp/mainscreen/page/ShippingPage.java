@@ -1,5 +1,6 @@
 package com.example.libraryapp.mainscreen.page;
 
+import android.os.Handler;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,7 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.ViewPager;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderMenuTabAdapter;
+import com.example.libraryapp.loginscreen.LoadingDialog;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderMenuTabAdapter;
 import com.example.libraryapp.R;
 import com.example.libraryapp.viewmodel.ReceiptViewViewModel;
 import com.google.android.material.tabs.TabLayout;
@@ -32,6 +34,16 @@ public class ShippingPage extends Fragment {
 
         tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
         orderView = view.findViewById(R.id.vpReceiptOrderView);
+
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startLoadingDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        },500);
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                                                     FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

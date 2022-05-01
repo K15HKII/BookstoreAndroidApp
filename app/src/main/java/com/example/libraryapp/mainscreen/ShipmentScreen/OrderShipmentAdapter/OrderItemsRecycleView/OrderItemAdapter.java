@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView;
+package com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView;
 
 import android.content.Context;
 import android.view.LayoutInflater;

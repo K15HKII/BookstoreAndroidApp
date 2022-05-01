@@ -15,7 +15,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:padding="15dp"
                 android:orientation="horizontal">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -31,21 +31,21 @@
                         android:drawableStart="@drawable/ic_search"
                         android:layout_marginLeft="5dp"
                         android:textSize="16sp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="15dp"
-                        android:paddingRight="20dp"
-                        android:paddingLeft="15dp"
+                        android:paddingTop="13dp"
+                        android:paddingBottom="13dp"
+                        android:paddingRight="15dp"
+                        android:paddingLeft="10dp"
                         android:hint="   Tìm kiếm"
                         android:background="@drawable/edit_text_background"
-                        android:layout_width="225dp"
+                        android:layout_width="220dp"
                         android:layout_height="wrap_content"/>
                 <android.widget.Button
                         android:id="@+id/etFavoriteFilterbox"
                         android:layout_marginRight="10dp"
                         android:layout_width="48dp"
                         android:layout_height="wrap_content"
-                        android:scaleX="0.6"
-                        android:scaleY="0.6"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
                         android:background="@drawable/ic_filter"/>
             </LinearLayout>
 
@@ -57,21 +57,20 @@
                         android:orientation="horizontal">
             <android.widget.Button
                     android:id="@+id/btnFavoriteNotification"
-                    android:scaleX="0.62"
-                    android:scaleY="0.7"
+                    android:scaleX="0.63"
+                    android:scaleY="0.65"
                     android:backgroundTint="@color/btn_blue"
                     android:background="@drawable/notification_icon"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
             <android.widget.Button
                     android:id="@+id/btnFavoriteShoppingCart"
-                    android:scaleX="0.6"
-                    android:scaleY="0.7"
-                    android:layout_marginRight="10dp"
+                    android:scaleX="0.58"
+                    android:scaleY="0.58"
                     android:backgroundTint="@color/btn_blue"
                     android:background="@drawable/ic_shopping"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

@@ -1,6 +1,6 @@
 package com.example.libraryapp.notificationnews;
 
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
 
 import java.util.List;
 

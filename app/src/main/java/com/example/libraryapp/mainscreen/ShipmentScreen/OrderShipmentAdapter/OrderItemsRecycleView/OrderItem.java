@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView;
+package com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView;
 
 public class OrderItem {
     String name;

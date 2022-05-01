@@ -37,20 +37,20 @@ public class LoginViewModel extends BaseObservable {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-        notifyPropertyChanged(BR.user);
-    }
-
-    @Bindable
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-        notifyPropertyChanged(BR.pass);
-    }
+//    public void setUser(String user) {
+//        this.user = user;
+//        notifyPropertyChanged(BR.user);
+//    }
+//
+//    @Bindable
+//    public String getPass() {
+//        return pass;
+//    }
+//
+//    public void setPass(String pass) {
+//        this.pass = pass;
+//        notifyPropertyChanged(BR.pass);
+//    }
 
     boolean CheckUser(List<UserAccount> lsUsers,String user, String pass){
         for(int i=0;i<lsUsers.size();i++){
@@ -62,39 +62,39 @@ public class LoginViewModel extends BaseObservable {
         return false;
     }
 
-    public void LoginOnclick(){
-        lsUsers = new ArrayList<>();
-        lsUsers.add(new UserAccount("trihuu14","12345678"));
-        lsUsers.add(new UserAccount("trihuu15","12345678"));
-        lsUsers.add(new UserAccount("1", "1"));
-
-        UserAccount userAccount = new UserAccount(getUser(),getPass());
-        Context context = loginView.getContext();
-        if(userAccount.isValidUserName() && userAccount.isValidPassword() && CheckUser(lsUsers, userAccount.getUserName(), userAccount.getPassword())){
-            LoginMessage.set("Đăng nhập thành công");
-//            FragmentManager fragmentManager = loginView.getChildFragmentManager();
-//            Log.i("fuck huy", loginView.getActivity().hashCode() + "");
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            /*final LoadingDialog loadingDialog = new LoadingDialog(loginView);
-            loadingDialog.startLoadingDialog();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    loadingDialog.dismissDialog();
-                }
-            },1000);*/
-            Toast.makeText(context, "Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-
-            //fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
-//            ((MainActivity) loginView.getActivity()).nav(HomeLayout.class);
-        }else if (userAccount.isValidUserName() && userAccount.isValidPassword() && !CheckUser(lsUsers, userAccount.getUserName(), userAccount.getPassword())) {
-            LoginMessage.set("Tài khoản hoặc mật khẩu sai!");
-            Toast.makeText(context, "Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            LoginMessage.set("Tài khoản hoặc mật khẩu không hợp lệ!");
-            Toast.makeText(context, "Tài khoản không hợp lệ!",Toast.LENGTH_SHORT).show();
-        }
-    }
+//    public void LoginOnclick(){
+//        lsUsers = new ArrayList<>();
+//        lsUsers.add(new UserAccount("trihuu14","12345678"));
+//        lsUsers.add(new UserAccount("trihuu15","12345678"));
+//        lsUsers.add(new UserAccount("1", "1"));
+//
+//        UserAccount userAccount = new UserAccount(getUser(),getPass());
+//        Context context = loginView.getContext();
+//        if(userAccount.isValidUserName() && userAccount.isValidPassword() && CheckUser(lsUsers, userAccount.getUserName(), userAccount.getPassword())){
+//            LoginMessage.set("Đăng nhập thành công");
+////            FragmentManager fragmentManager = loginView.getChildFragmentManager();
+////            Log.i("fuck huy", loginView.getActivity().hashCode() + "");
+////            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            /*final LoadingDialog loadingDialog = new LoadingDialog(loginView);
+//            loadingDialog.startLoadingDialog();
+//            Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    loadingDialog.dismissDialog();
+//                }
+//            },1000);*/
+//            Toast.makeText(context, "Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+//
+//            //fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
+////            ((MainActivity) loginView.getActivity()).nav(HomeLayout.class);
+//        }else if (userAccount.isValidUserName() && userAccount.isValidPassword() && !CheckUser(lsUsers, userAccount.getUserName(), userAccount.getPassword())) {
+//            LoginMessage.set("Tài khoản hoặc mật khẩu sai!");
+//            Toast.makeText(context, "Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            LoginMessage.set("Tài khoản hoặc mật khẩu không hợp lệ!");
+//            Toast.makeText(context, "Tài khoản không hợp lệ!",Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

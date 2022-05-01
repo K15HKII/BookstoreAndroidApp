@@ -98,7 +98,7 @@
                     android:id="@+id/btnOnCartViewConfirmOrderOncart"
                     android:fontFamily="@font/lato_bold"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"

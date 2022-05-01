@@ -8,23 +8,34 @@
         <action android:id="@+id/action_home_view_to_love_view" app:destination="@id/love_view"/>
         <action android:id="@+id/action_home_view_to_receipt_view" app:destination="@id/receipt_view"/>
         <action android:id="@+id/action_home_view_to_account_view" app:destination="@id/account_view"/>
+        <action android:id="@+id/action_home_view_to_rent_view" app:destination="@id/rent_view"/>
     </fragment>
     <fragment android:id="@+id/receipt_view" android:name="com.example.libraryapp.mainscreen.page.ShippingPage"
               android:label="receipt_view_fragment" tools:layout="@layout/shipping_page_fragment">
         <action android:id="@+id/action_receipt_view_to_love_view" app:destination="@id/love_view"/>
         <action android:id="@+id/action_receipt_view_to_home_view" app:destination="@id/home_view"/>
         <action android:id="@+id/action_receipt_view_to_account_view" app:destination="@id/account_view"/>
+        <action android:id="@+id/action_receipt_view_to_rent_view" app:destination="@id/rent_view"/>
     </fragment>
     <fragment android:id="@+id/account_view" android:name="com.example.libraryapp.mainscreen.page.AccountPage"
               android:label="account_view_fragment" tools:layout="@layout/account_page_fragment">
         <action android:id="@+id/action_account_view_to_receipt_view" app:destination="@id/receipt_view"/>
         <action android:id="@+id/action_account_view_to_love_view" app:destination="@id/love_view"/>
         <action android:id="@+id/action_account_view_to_home_view" app:destination="@id/home_view"/>
+        <action android:id="@+id/action_account_view_to_rent_view" app:destination="@id/rent_view"/>
     </fragment>
     <fragment android:id="@+id/love_view" android:name="com.example.libraryapp.mainscreen.page.FavoritePage"
               android:label="love_view_fragment" tools:layout="@layout/favorite_page_fragment">
         <action android:id="@+id/action_love_view_to_home_view" app:destination="@id/home_view"/>
         <action android:id="@+id/action_love_view_to_receipt_view" app:destination="@id/receipt_view"/>
         <action android:id="@+id/action_love_view_to_account_view" app:destination="@id/account_view"/>
+        <action android:id="@+id/action_love_view_to_rent_view" app:destination="@id/rent_view"/>
+    </fragment>
+    <fragment android:id="@+id/rent_view" android:name="com.example.libraryapp.mainscreen.page.RentPage"
+              android:label="rent_page_fragment" tools:layout="@layout/rent_page_fragment">
+        <action android:id="@+id/action_rent_view_to_home_view" app:destination="@id/home_view"/>
+        <action android:id="@+id/action_rent_view_to_love_view" app:destination="@id/love_view"/>
+        <action android:id="@+id/action_rent_view_to_account_view" app:destination="@id/account_view"/>
+        <action android:id="@+id/action_rent_view_to_receipt_view" app:destination="@id/receipt_view"/>
     </fragment>
 </navigation>

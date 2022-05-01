@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen;
+package com.example.libraryapp.mainscreen.ShipmentScreen;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,37 +10,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
 import com.example.libraryapp.R;
-import com.example.libraryapp.viewmodel.ShippingViewViewModel;
+import com.example.libraryapp.viewmodel.WaitingOrderViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShippingViewPage extends Fragment {
+public class WaitingOrderViewPage extends Fragment {
 
-    private ShippingViewViewModel mViewModel;
+    private WaitingOrderViewViewModel mViewModel;
     private RecyclerView rcvOrderView;
     private OrderViewAdapter orderViewAdapter;
 
-    public static ShippingViewPage newInstance() {
-        return new ShippingViewPage();
+    public static WaitingOrderViewPage newInstance() {
+        return new WaitingOrderViewPage();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.shipping_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.waiting_order_view_fragment, container, false);
 
-        rcvOrderView = view.findViewById(R.id.rcvShippingOrderView);
-        orderViewAdapter = new OrderViewAdapter(getListBook(), ShippingViewPage.this.getContext());
+        rcvOrderView = view.findViewById(R.id.rcvWaitingOrderOrderView);
+        orderViewAdapter = new OrderViewAdapter(getListBook(), WaitingOrderViewPage.this.getContext());
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShippingViewPage.this.getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(WaitingOrderViewPage.this.getContext());
         rcvOrderView.setLayoutManager(linearLayoutManager);
         rcvOrderView.setAdapter(orderViewAdapter);
-
         return view;
     }
 
@@ -64,7 +63,7 @@ public class ShippingViewPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShippingViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WaitingOrderViewViewModel.class);
         // TODO: Use the ViewModel
     }
 

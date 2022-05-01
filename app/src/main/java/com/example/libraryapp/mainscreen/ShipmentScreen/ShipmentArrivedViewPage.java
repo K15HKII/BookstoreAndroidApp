@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen;
+package com.example.libraryapp.mainscreen.ShipmentScreen;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,34 +10,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
 import com.example.libraryapp.R;
-import com.example.libraryapp.viewmodel.WaitingOrderViewViewModel;
+import com.example.libraryapp.viewmodel.ArrivedViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WaitingOrderViewPage extends Fragment {
+public class ShipmentArrivedViewPage extends Fragment {
 
-    private WaitingOrderViewViewModel mViewModel;
+    private ArrivedViewViewModel mViewModel;
     private RecyclerView rcvOrderView;
     private OrderViewAdapter orderViewAdapter;
 
-    public static WaitingOrderViewPage newInstance() {
-        return new WaitingOrderViewPage();
+    public static ShipmentArrivedViewPage newInstance() {
+        return new ShipmentArrivedViewPage();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.waiting_order_view_fragment, container, false);
+        View view = inflater.inflate(R.layout.shipment_arrived_view_fragment, container, false);
+        rcvOrderView = view.findViewById(R.id.rcvArrivedOrderView);
+        orderViewAdapter = new OrderViewAdapter(getListBook(), ShipmentArrivedViewPage.this.getContext());
 
-        rcvOrderView = view.findViewById(R.id.rcvWaitingOrderOrderView);
-        orderViewAdapter = new OrderViewAdapter(getListBook(), WaitingOrderViewPage.this.getContext());
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(WaitingOrderViewPage.this.getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShipmentArrivedViewPage.this.getContext());
         rcvOrderView.setLayoutManager(linearLayoutManager);
         rcvOrderView.setAdapter(orderViewAdapter);
         return view;
@@ -63,7 +62,7 @@ public class WaitingOrderViewPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(WaitingOrderViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ArrivedViewViewModel.class);
         // TODO: Use the ViewModel
     }
 

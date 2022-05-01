@@ -24,7 +24,7 @@ import com.example.libraryapp.R;
 import com.example.libraryapp.registerscreen.Register;
 import com.example.libraryapp.viewmodel.LoginViewModel;
 import com.example.libraryapp.forgotpassscreen.Forgot_password_page;
-import com.example.libraryapp.databinding.LoginFragmentBinding;
+//import com.example.libraryapp.databinding.LoginFragmentBinding;
 
 public class Login extends Fragment {
 
@@ -46,9 +46,9 @@ public class Login extends Fragment {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        LoginFragmentBinding loginFragmentBinding = DataBindingUtil.setContentView(getActivity(), R.layout.login_fragment);
-        loginViewModel = new LoginViewModel(this);
-        loginFragmentBinding.setLoginViewModel(loginViewModel);
+//        LoginFragmentBinding loginFragmentBinding = DataBindingUtil.setContentView(getActivity(), R.layout.login_fragment);
+//        loginViewModel = new LoginViewModel(this);
+//        loginFragmentBinding.setLoginViewModel(loginViewModel);
 //        Tìm view
         etUsername = view.findViewById(R.id.etLoginUser);
         etPassword = view.findViewById(R.id.etLoginPassword);
@@ -64,8 +64,6 @@ public class Login extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
                 loadingDialog.startLoadingDialog();
                 Handler handler = new Handler();
@@ -74,7 +72,7 @@ public class Login extends Fragment {
                     public void run() {
                         loadingDialog.dismissDialog();
                     }
-                },1000);
+                },500);
                 Toast.makeText(getContext(), "Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                 fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
             }

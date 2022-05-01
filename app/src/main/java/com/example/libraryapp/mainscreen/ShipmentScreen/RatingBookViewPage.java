@@ -1,4 +1,4 @@
-package com.example.libraryapp.mainscreen.Shipment_screen;
+package com.example.libraryapp.mainscreen.ShipmentScreen;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,33 +10,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
-import com.example.libraryapp.mainscreen.Shipment_screen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
+import com.example.libraryapp.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
 import com.example.libraryapp.R;
-import com.example.libraryapp.viewmodel.ArrivedViewViewModel;
+import com.example.libraryapp.viewmodel.RatingViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShipmentArrivedViewPage extends Fragment {
+public class RatingBookViewPage extends Fragment {
 
-    private ArrivedViewViewModel mViewModel;
+    private RatingViewViewModel mViewModel;
     private RecyclerView rcvOrderView;
     private OrderViewAdapter orderViewAdapter;
 
-    public static ShipmentArrivedViewPage newInstance() {
-        return new ShipmentArrivedViewPage();
+    public static RatingBookViewPage newInstance() {
+        return new RatingBookViewPage();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.shipment_arrived_view_fragment, container, false);
-        rcvOrderView = view.findViewById(R.id.rcvArrivedOrderView);
-        orderViewAdapter = new OrderViewAdapter(getListBook(), ShipmentArrivedViewPage.this.getContext());
+        View view = inflater.inflate(R.layout.rating_view_fragment, container, false);
+        rcvOrderView = view.findViewById(R.id.rcvRatingOrderView);
+        orderViewAdapter = new OrderViewAdapter(getListBook(), RatingBookViewPage.this.getContext());
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShipmentArrivedViewPage.this.getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RatingBookViewPage.this.getContext());
         rcvOrderView.setLayoutManager(linearLayoutManager);
         rcvOrderView.setAdapter(orderViewAdapter);
         return view;
@@ -62,7 +62,7 @@ public class ShipmentArrivedViewPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ArrivedViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RatingViewViewModel.class);
         // TODO: Use the ViewModel
     }
 
