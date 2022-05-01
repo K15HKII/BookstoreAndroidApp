@@ -8,17 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RatingReportAdapter extends RecyclerView.Adapter<RatingReportAdapter.RatingReportViewHolder> {
+public class RatingReportAdapter extends ListAdapter<RatingReport,RatingReportAdapter.RatingReportViewHolder> {
 
-    List<RatingReport> lsRatingReport;
     Context context;
 
     public RatingReportAdapter(List<RatingReport> lsRatingReport, Context context) {
-        this.lsRatingReport = lsRatingReport;
+        super(lsRatingReport);
         this.context = context;
     }
 
@@ -31,20 +31,12 @@ public class RatingReportAdapter extends RecyclerView.Adapter<RatingReportAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, int position) {
-        RatingReport ratingReport = lsRatingReport.get(position);
-        if(ratingReport != null){
+    public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, RatingReport data) {
+
+        if(data == null){
             return;
         }
-        holder.tvBookName.setText(ratingReport.getBookname());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsRatingReport != null){
-            return lsRatingReport.size();
-        }
-        return 0;
+        holder.tvBookName.setText(data.getBookname());
     }
 
     class RatingReportViewHolder extends RecyclerView.ViewHolder{

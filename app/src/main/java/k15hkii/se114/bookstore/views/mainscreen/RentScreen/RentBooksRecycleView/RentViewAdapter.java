@@ -9,24 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RentViewAdapter extends RecyclerView.Adapter<RentViewAdapter.RentViewViewHolder> {
+public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentViewViewHolder> {
 
-    private List<RentView> RentViewList;
     Context context;
 
     public RentViewAdapter(List<RentView> rentViewList, Context context) {
-        RentViewList = rentViewList;
+        super(rentViewList);
         this.context = context;
-    }
-
-    public void setData(Context context,List<RentView> rentViewList){
-        this.RentViewList = rentViewList;
-        this.context = context;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -38,13 +32,12 @@ public class RentViewAdapter extends RecyclerView.Adapter<RentViewAdapter.RentVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RentViewViewHolder holder, int position) {
-        RentView rentView = RentViewList.get(position);
-        if(rentView == null){
+    public void onBindViewHolder(@NonNull @NotNull RentViewViewHolder holder, RentView data) {
+        if(data == null){
             return;
         }
-        holder.tvItemNote.setText(rentView.getNote());
-        holder.tvItemPrice.setText(rentView.getPrice());
+        holder.tvItemNote.setText(data.getNote());
+        holder.tvItemPrice.setText(data.getPrice());
         // Create layout manager with initial prefetch item count
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 holder.rcvBookList.getContext(),
@@ -52,21 +45,14 @@ public class RentViewAdapter extends RecyclerView.Adapter<RentViewAdapter.RentVi
                 false
         );
         // Create sub item view adapter
-        RentBookItemAdapter rentBookItemAdapter = new RentBookItemAdapter(rentView.getLsRentItem());
+        RentBookItemAdapter rentBookItemAdapter = new RentBookItemAdapter(data.getLsRentItem());
         holder.rcvBookList.setLayoutManager(layoutManager);
         holder.rcvBookList.setAdapter(rentBookItemAdapter);
         holder.rcvBookList.setFocusable(false);
     }
 
-    @Override
-    public int getItemCount() {
-        if(RentViewList != null){
-            return RentViewList.size();
-        }
-        return 0;
-    }
-
     public class RentViewViewHolder extends RecyclerView.ViewHolder{
+
         private TextView tvItemPrice,tvItemNote;
         private RecyclerView rcvBookList;
 

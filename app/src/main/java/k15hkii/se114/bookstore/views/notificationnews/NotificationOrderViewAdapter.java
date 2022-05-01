@@ -8,20 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItemAdapter;
 import k15hkii.se114.bookstore.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class NotificationOrderViewAdapter extends RecyclerView.Adapter<NotificationOrderViewAdapter.NotificationOrderHolder> {
+public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderView,NotificationOrderViewAdapter.NotificationOrderHolder> {
 
-    Context context;
-    List<NotificationOrderView> lsOrderView;
-
-    public NotificationOrderViewAdapter(Context context, List<NotificationOrderView> lsOrderView) {
-        this.context = context;
-        this.lsOrderView = lsOrderView;
+    public NotificationOrderViewAdapter(List<NotificationOrderView> data) {
+        super(data);
     }
 
     @NonNull
@@ -33,13 +30,11 @@ public class NotificationOrderViewAdapter extends RecyclerView.Adapter<Notificat
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, int position) {
-        NotificationOrderView notificationOrderView = lsOrderView.get(position);
-        if(notificationOrderView == null)
-            return;
-        holder.tvTitle.setText(notificationOrderView.getTitle());
-        holder.tvDescription.setText(notificationOrderView.getDescription());
-        holder.tvPrice.setText(notificationOrderView.getPrice());
+    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationOrderView data) {
+
+        holder.tvTitle.setText(data.getTitle());
+        holder.tvDescription.setText(data.getDescription());
+        holder.tvPrice.setText(data.getPrice());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 holder.rcvListOrders.getContext(),
@@ -47,18 +42,10 @@ public class NotificationOrderViewAdapter extends RecyclerView.Adapter<Notificat
                 false
         );
 
-        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(notificationOrderView.getLsorderItems());
+        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(data.getLsorderItems());
         holder.rcvListOrders.setLayoutManager(linearLayoutManager);
         holder.rcvListOrders.setAdapter(orderItemAdapter);
         holder.rcvListOrders.setFocusable(false);
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsOrderView != null){
-            return lsOrderView.size();
-        }
-        return 0;
     }
 
     class NotificationOrderHolder extends RecyclerView.ViewHolder{

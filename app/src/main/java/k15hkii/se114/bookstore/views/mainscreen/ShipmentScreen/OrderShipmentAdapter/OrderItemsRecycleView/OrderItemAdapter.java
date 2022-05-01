@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.views.componenets.ListAdapter;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -18,17 +18,17 @@ public class OrderItemAdapter extends ListAdapter<OrderItem, OrderItemAdapter.Or
         super(lsOrderItem);
     }
 
-    @Override
-    protected void onBindViewHolder(OrderItemHolder holder, OrderItem data) {
-        holder.tvBookName.setText(data.getName());
-    }
-
     @NonNull
     @NotNull
     @Override
     public OrderItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderpage_items_adapter,parent,false);
         return new OrderItemAdapter.OrderItemHolder(view);
+    }
+
+    @Override
+    protected void onBindViewHolder(OrderItemHolder holder, OrderItem data) {
+        holder.tvBookName.setText(data.getName());
     }
 
     class OrderItemHolder extends RecyclerView.ViewHolder{

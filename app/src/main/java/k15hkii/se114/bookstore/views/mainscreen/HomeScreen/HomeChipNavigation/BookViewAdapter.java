@@ -8,26 +8,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookViewHolder> {
+public class BookViewAdapter extends ListAdapter<BookView, BookViewAdapter.BookViewHolder> {
     private Context context;
-    public List<BookView> lsBookView;
 
     BookViewAdapter(List<BookView> lsBookView) {
-        this.lsBookView = lsBookView;
-    }
-
-    public void setLsBookView(List<BookView> lsBookView) {
-        this.lsBookView = lsBookView;
-        notifyDataSetChanged();
+        super(lsBookView);
     }
 
     public BookViewAdapter(Context context, List<BookView> lsBookView) {
+        super(lsBookView);
         this.context = context;
-        this.lsBookView = lsBookView;
     }
 
     @NonNull
@@ -41,20 +36,11 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
 
     //set DATA
     @Override
-    public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, int position) {
-        BookView book = lsBookView.get(position);
-        if(book == null){
+    public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, BookView data) {
+        if(data == null){
             return;
         }
-        holder.tvBookName.setText(book.getName());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsBookView!=null){
-            return lsBookView.size();
-        }
-        return 0;
+        holder.tvBookName.setText(data.getName());
     }
 
     public class BookViewHolder extends RecyclerView.ViewHolder{

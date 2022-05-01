@@ -8,30 +8,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ListDataNotificationAdapter extends RecyclerView.Adapter<ListDataNotificationAdapter.ListDataNotificationViewHolder> {
+public class ListDataNotificationAdapter extends ListAdapter<ListDataNotification,ListDataNotificationAdapter.ListDataNotificationViewHolder> {
 
     Context context;
-    List<ListDataNotification> lslistDataNotifications;
     public static final int TYPE_INFO = 1;
     public static final int TYPE_ORDERVIEW = 2;
 
     public ListDataNotificationAdapter(Context context, List<ListDataNotification> lslistDataNotifications) {
+        super(lslistDataNotifications);
         this.context = context;
-        this.lslistDataNotifications = lslistDataNotifications;
-    }
-
-    public void setData(List<ListDataNotification> lsDATA){
-        this.lslistDataNotifications = lsDATA;
-        notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return lslistDataNotifications.get(position).getType();
+        return super.data.get(position).getType();
     }
 
     @NonNull
@@ -43,9 +38,8 @@ public class ListDataNotificationAdapter extends RecyclerView.Adapter<ListDataNo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ListDataNotificationViewHolder holder, int position) {
-        ListDataNotification listDataNotification = lslistDataNotifications.get(position);
-        if(listDataNotification == null){
+    public void onBindViewHolder(@NonNull @NotNull ListDataNotificationViewHolder holder, ListDataNotification data) {
+        if(data == null){
             return;
         }
         if(TYPE_INFO == holder.getItemViewType()){
@@ -53,7 +47,7 @@ public class ListDataNotificationAdapter extends RecyclerView.Adapter<ListDataNo
             holder.rcvListNotification.setLayoutManager(linearLayoutManager);
             holder.rcvListNotification.setFocusable(false);
 
-            NotificationInfoAdapter notificationInfoAdapter = new NotificationInfoAdapter(context, listDataNotification.getNotificationInfos());
+            NotificationInfoAdapter notificationInfoAdapter = new NotificationInfoAdapter(data.getNotificationInfos());
             holder.rcvListNotification.setAdapter(notificationInfoAdapter);
         }
         else if(TYPE_ORDERVIEW == holder.getItemViewType()){
@@ -61,17 +55,9 @@ public class ListDataNotificationAdapter extends RecyclerView.Adapter<ListDataNo
             holder.rcvListNotification.setLayoutManager(linearLayoutManager);
             holder.rcvListNotification.setFocusable(false);
 
-            NotificationOrderViewAdapter notificationOrderViewAdapter = new NotificationOrderViewAdapter(context, listDataNotification.getOrderItems());
+            NotificationOrderViewAdapter notificationOrderViewAdapter = new NotificationOrderViewAdapter(data.getOrderItems());
             holder.rcvListNotification.setAdapter(notificationOrderViewAdapter);
         }
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lslistDataNotifications != null){
-            return lslistDataNotifications.size();
-        }
-        return 0;
     }
 
     class ListDataNotificationViewHolder extends RecyclerView.ViewHolder{

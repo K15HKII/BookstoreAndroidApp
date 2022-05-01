@@ -8,21 +8,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RentBookItemAdapter extends RecyclerView.Adapter<RentBookItemAdapter.RentBookItemViewHolder> {
+public class RentBookItemAdapter extends ListAdapter<RentBookItem, RentBookItemAdapter.RentBookItemViewHolder> {
 
-    List<RentBookItem> lsRentItem;
     Context context;
 
     public RentBookItemAdapter(List<RentBookItem> lsRentItem) {
-        this.lsRentItem = lsRentItem;
+        super(lsRentItem);
     }
 
     public RentBookItemAdapter(List<RentBookItem> lsRentItem, Context context) {
-        this.lsRentItem = lsRentItem;
+        super(lsRentItem);
         this.context = context;
     }
 
@@ -35,20 +35,8 @@ public class RentBookItemAdapter extends RecyclerView.Adapter<RentBookItemAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RentBookItemViewHolder holder, int position) {
-        RentBookItem rentBookItem = lsRentItem.get(position);
-        if(rentBookItem == null){
-            return;
-        }
-        holder.tvBookName.setText(rentBookItem.getName());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsRentItem != null){
-            return lsRentItem.size();
-        }
-        return 0;
+    public void onBindViewHolder(@NonNull @NotNull RentBookItemViewHolder holder, RentBookItem data) {
+        holder.tvBookName.setText(data.getName());
     }
 
     public class RentBookItemViewHolder extends RecyclerView.ViewHolder{

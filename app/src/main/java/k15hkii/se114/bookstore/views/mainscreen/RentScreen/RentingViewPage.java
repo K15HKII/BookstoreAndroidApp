@@ -34,6 +34,9 @@ public class RentingViewPage extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.renting_view_page_fragment, container, false);
         rcvRentView = view.findViewById(R.id.rcvRentingBookView);
+
+        //TODO: Fix bug lỗi hiển thị các adapter khi chuyển fragment
+
         rentViewAdapter = new RentViewAdapter(getListBook(),RentingViewPage.this.getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());

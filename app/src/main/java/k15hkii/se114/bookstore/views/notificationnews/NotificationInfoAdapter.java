@@ -8,18 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class NotificationInfoAdapter extends RecyclerView.Adapter<NotificationInfoAdapter.NotificationInfoHolder> {
+public class NotificationInfoAdapter extends ListAdapter<NotificationInfo,NotificationInfoAdapter.NotificationInfoHolder> {
 
-    Context context;
-    List<NotificationInfo> lsNotificationInfo;
-
-    public NotificationInfoAdapter(Context context, List<NotificationInfo> lsNotificationInfo) {
-        this.context = context;
-        this.lsNotificationInfo = lsNotificationInfo;
+    public NotificationInfoAdapter( List<NotificationInfo> lsNotificationInfo) {
+        super(lsNotificationInfo);
     }
 
     @NonNull
@@ -31,20 +28,8 @@ public class NotificationInfoAdapter extends RecyclerView.Adapter<NotificationIn
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull NotificationInfoHolder holder, int position) {
-        NotificationInfo notificationInfo = lsNotificationInfo.get(position);
-        if(notificationInfo == null){
-            return;
-        }
-        holder.tvTitle.setText(notificationInfo.getTitle());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsNotificationInfo != null){
-            return lsNotificationInfo.size();
-        }
-        return 0;
+    public void onBindViewHolder(@NonNull @NotNull NotificationInfoHolder holder, NotificationInfo data) {
+        holder.tvTitle.setText(data.getTitle());
     }
 
     class NotificationInfoHolder extends RecyclerView.ViewHolder {

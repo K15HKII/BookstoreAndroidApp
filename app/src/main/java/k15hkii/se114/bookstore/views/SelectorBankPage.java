@@ -15,14 +15,14 @@ import k15hkii.se114.bookstore.viewmodel.BankChoiceViewModel;
 
 import java.util.ArrayList;
 
-public class Selector_bank_page extends Fragment {
+public class SelectorBankPage extends Fragment {
 
     private BankChoiceViewModel mViewModel;
     private OtherBankAdapter otherBankAdapter;
     private ListView lvOtherBankAccount;
 
-    public static Selector_bank_page newInstance() {
-        return new Selector_bank_page();
+    public static SelectorBankPage newInstance() {
+        return new SelectorBankPage();
     }
 
     @Override

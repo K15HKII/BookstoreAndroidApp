@@ -35,15 +35,15 @@ public class ShippingPage extends Fragment {
         tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
         orderView = view.findViewById(R.id.vpReceiptOrderView);
 
-        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-        loadingDialog.startLoadingDialog();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loadingDialog.dismissDialog();
-            }
-        },500);
+//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+//        loadingDialog.startLoadingDialog();
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                loadingDialog.dismissDialog();
+//            }
+//        },500);
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                                                     FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

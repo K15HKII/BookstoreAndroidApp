@@ -8,27 +8,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class OncartItemAdapter extends RecyclerView.Adapter<OncartItemAdapter.oncart_itemHolder> {
+public class OncartItemAdapter extends ListAdapter<OncartItem,OncartItemAdapter.oncart_itemHolder> {
 
     Context context;
-    List<OncartItem> lsOncart;
-
-    public OncartItemAdapter(List<OncartItem> lsOncart) {
-        this.lsOncart = lsOncart;
-    }
-
-    public void setLsOncart(List<OncartItem> lsOncart) {
-        this.lsOncart = lsOncart;
-        notifyDataSetChanged();
-    }
 
     public OncartItemAdapter(Context context, List<OncartItem> lsOncart) {
+        super(lsOncart);
         this.context = context;
-        this.lsOncart = lsOncart;
     }
 
     @NonNull
@@ -40,20 +31,8 @@ public class OncartItemAdapter extends RecyclerView.Adapter<OncartItemAdapter.on
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, int position) {
-        OncartItem oncart_item = lsOncart.get(position);
-        if(oncart_item == null){
-            return;
-        }
-        holder.tvBookName.setText(oncart_item.getName());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsOncart!=null){
-            return lsOncart.size();
-        }
-        return 0;
+    public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItem data) {
+        holder.tvBookName.setText(data.getName());
     }
 
     class oncart_itemHolder extends RecyclerView.ViewHolder{

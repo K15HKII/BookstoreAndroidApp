@@ -16,13 +16,15 @@ import k15hkii.se114.bookstore.*;
 import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.*;
 import k15hkii.se114.bookstore.viewmodel.HomeViewViewModel;
 import com.google.android.material.chip.Chip;
+import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
+import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 
 public class HomePage extends Fragment {
 
     private HomeViewViewModel mViewModel;
 //    private ChipGroup chipNavi;
     private Chip chipAllTopics, chipAllBooks, chipPoppularBooks, chipFamiliarBooks, chipForYouBooks;
-    private Button btnFilter;
+    private Button btnFilter, btnNotification, btnOncart;
 
 
     public static HomePage newInstance() {
@@ -35,6 +37,8 @@ public class HomePage extends Fragment {
         View v = inflater.inflate(R.layout.home_page_fragment, container, false);
 
         btnFilter = v.findViewById(R.id.etHomeFilterbox);
+        btnNotification = v.findViewById(R.id.btnHomeNotification);
+        btnOncart = v.findViewById(R.id.btnHomeShoppingCart);
 
 //        chipNavi = v.findViewById(R.id.chipgrpHomeChipNavigation);
         chipAllTopics = v.findViewById(R.id.chipHomeAllTopics);
@@ -42,7 +46,6 @@ public class HomePage extends Fragment {
         chipPoppularBooks = v.findViewById(R.id.chipHomePopularBooks);
         chipFamiliarBooks = v.findViewById(R.id.chipHomeFamiliarBooks);
         chipForYouBooks = v.findViewById(R.id.chipHomeForYouBooks);
-
 
         chipAllTopics.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -98,6 +101,24 @@ public class HomePage extends Fragment {
             @Override
             public void onClick(View view) {
                 openChangeName(Gravity.TOP);
+            }
+        });
+
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack("").commit();
+            }
+        });
+
+        btnOncart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack("").commit();
             }
         });
 

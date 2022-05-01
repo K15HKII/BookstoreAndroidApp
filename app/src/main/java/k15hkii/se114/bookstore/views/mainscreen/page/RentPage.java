@@ -2,7 +2,9 @@ package k15hkii.se114.bookstore.views.mainscreen.page;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.ViewPager;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.mainscreen.RentScreen.AddRentBookView;
 import k15hkii.se114.bookstore.views.mainscreen.RentScreen.RentBookMenuTabAdapter;
 import k15hkii.se114.bookstore.viewmodel.RentPageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 
 public class RentPage extends Fragment {
 
@@ -55,6 +59,15 @@ public class RentPage extends Fragment {
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         RentView.setAdapter(rentBookView);
         tabMenuNav.setupWithViewPager(RentView);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = RentPage.this.getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainerView, AddRentBookView.class,null).addToBackStack("").commit();
+            }
+        });
 
         return view;
     }

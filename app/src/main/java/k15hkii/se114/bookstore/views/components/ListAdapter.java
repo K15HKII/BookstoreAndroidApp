@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.componenets;
+package k15hkii.se114.bookstore.views.components;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
