@@ -8,22 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class VoucherViewAdapter extends RecyclerView.Adapter<VoucherViewAdapter.VoucherViewHolder> {
+public class VoucherViewAdapter extends ListAdapter<Voucher,VoucherViewAdapter.VoucherViewHolder> {
 
-    List<Voucher> lsVouchers;
     Context context;
 
-    public void setLsVouchers(List<Voucher> lsVouchers) {
-        this.lsVouchers = lsVouchers;
-        notifyDataSetChanged();
-    }
-
     public VoucherViewAdapter(List<Voucher> lsVouchers, Context context) {
-        this.lsVouchers = lsVouchers;
+        super(lsVouchers);
         this.context = context;
     }
 
@@ -36,20 +31,11 @@ public class VoucherViewAdapter extends RecyclerView.Adapter<VoucherViewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, int position) {
-        Voucher voucher = lsVouchers.get(position);
-        if(voucher == null){
+    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, Voucher data) {
+        if(data == null){
             return;
         }
-        holder.tvItemTilte.setText(voucher.getTitle());
-    }
-
-    @Override
-    public int getItemCount() {
-        if(lsVouchers != null){
-            return lsVouchers.size();
-        }
-        return 0;
+        holder.tvItemTilte.setText(data.getTitle());
     }
 
     class VoucherViewHolder extends RecyclerView.ViewHolder{

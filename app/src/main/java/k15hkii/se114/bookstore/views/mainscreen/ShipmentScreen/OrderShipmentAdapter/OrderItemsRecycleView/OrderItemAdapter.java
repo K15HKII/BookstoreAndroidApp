@@ -37,7 +37,7 @@ public class OrderItemAdapter extends ListAdapter<OrderItem, OrderItemAdapter.Or
 
         public OrderItemHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvListBooksNameOfBook);
+            tvBookName = itemView.findViewById(R.id.tvBooksNameOfBook);
         }
     }
 }
