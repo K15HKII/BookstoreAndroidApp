@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import k15hkii.se114.bookstore.*;
+import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.SelectorAddressPage;
+import k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.SelectorBankPage;
 import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.*;
 import k15hkii.se114.bookstore.viewmodel.HomeViewViewModel;
 import com.google.android.material.chip.Chip;
@@ -109,7 +111,7 @@ public class HomePage extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack("").commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView, SelectorBankPage.class,null).addToBackStack("").commit();
             }
         });
 
@@ -118,7 +120,7 @@ public class HomePage extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack("").commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView, SelectorAddressPage.class,null).addToBackStack("").commit();
             }
         });
 

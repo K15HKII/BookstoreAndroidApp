@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context="k15hkii.se114.bookstore.views.SelectorBankPage">
+        tools:context="k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.SelectorBankPage">
 
     <LinearLayout
                   android:layout_width="match_parent"
@@ -151,14 +151,11 @@
                     android:textColor="@color/black"
                     android:textSize="26dp"/>
 
-            <ListView
-                    android:id="@+id/lvBankChoiceOtherBank"
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvBankChoiceOtherBank"
                     android:scrollbars="none"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="#BCFEFE"
-                    android:dividerHeight="2dp"
-                    android:background="@drawable/home_background"/>
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views;
+package k15hkii.se114.bookstore.views.address;
 
 import android.widget.Spinner;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,30 +10,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.EditAddressViewModel;
+import k15hkii.se114.bookstore.viewmodel.AddAddressViewModel;
 import k15hkii.se114.bookstore.views.CitypinnerAdapter.CitySpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditAddressPage extends Fragment {
+public class AddAddressPage extends Fragment {
 
-    private EditAddressViewModel mViewModel;
+    private AddAddressViewModel mViewModel;
     private Spinner spCity, spDistrict,spVillage;
     private CitySpinnerAdapter cityadapter,districtAdapter,villageadapter;
 
-    public static EditAddressPage newInstance() {
-        return new EditAddressPage();
+    public static AddAddressPage newInstance() {
+        return new AddAddressPage();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.edit_address_fragment, container, false);
+        View view = inflater.inflate(R.layout.add_address_page_fragment, container, false);
 
-        spCity = view.findViewById(R.id.spEditAddressCity);
-        spDistrict = view.findViewById(R.id.spEditAddressDistrict);
-        spVillage = view.findViewById(R.id.spEditAddressVillage);
+        spCity = view.findViewById(R.id.spAddAddressCity);
+        spDistrict = view.findViewById(R.id.spAddAddressDistrict);
+        spVillage = view.findViewById(R.id.spAddAddressVillage);
 
         List<String> lsCity = new ArrayList<>();
         lsCity.add("Hồ Chí Minh");
@@ -65,7 +65,7 @@ public class EditAddressPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditAddressViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AddAddressViewModel.class);
         // TODO: Use the ViewModel
     }
 

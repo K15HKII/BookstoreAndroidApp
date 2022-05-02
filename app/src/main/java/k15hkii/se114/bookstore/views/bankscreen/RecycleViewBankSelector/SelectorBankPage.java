@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views;
+package k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector;
 
 import android.widget.ListView;
 import androidx.lifecycle.ViewModelProvider;
@@ -9,17 +9,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import k15hkii.se114.bookstore.views.bankscreen.OtherBankAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.viewmodel.BankChoiceViewModel;
+import k15hkii.se114.bookstore.views.address.Address;
+import k15hkii.se114.bookstore.views.bankscreen.BankAccount;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectorBankPage extends Fragment {
 
     private BankChoiceViewModel mViewModel;
     private OtherBankAdapter otherBankAdapter;
-    private ListView lvOtherBankAccount;
+    private RecyclerView rcvOtherBankAccount;
 
     public static SelectorBankPage newInstance() {
         return new SelectorBankPage();
@@ -30,13 +34,18 @@ public class SelectorBankPage extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.selector_bank_fragment, container, false);
 
-        lvOtherBankAccount = view.findViewById(R.id.lvBankChoiceOtherBank);
-        ArrayList<String> lsOtherBank = new ArrayList<>();
-        lsOtherBank.add("TechComBank");
-        lsOtherBank.add("MBBank");
+        rcvOtherBankAccount = view.findViewById(R.id.rcvBankChoiceOtherBank);
+        String[] names = {"TechComBank","MBBank"};
 
-        otherBankAdapter = new OtherBankAdapter(lsOtherBank,getActivity());
-        lvOtherBankAccount.setAdapter(otherBankAdapter);
+        List<BankAccount> arrayName = new ArrayList<BankAccount>();
+        for(int i=0;i<names.length;i++){
+            arrayName.add(new BankAccount(names[i]));
+        }
+
+        otherBankAdapter = new OtherBankAdapter(arrayName,getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        rcvOtherBankAccount.setLayoutManager(linearLayoutManager);
+        rcvOtherBankAccount.setAdapter(otherBankAdapter);
 
         return view;
     }

@@ -20,10 +20,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Edit_bank_page extends Fragment {
+public class EditBankPage extends Fragment {
 
-    public static Edit_bank_page newInstance() {
-        return new Edit_bank_page();
+    public static EditBankPage newInstance() {
+        return new EditBankPage();
     }
 
     private EditBankAccountViewModel mViewModel;

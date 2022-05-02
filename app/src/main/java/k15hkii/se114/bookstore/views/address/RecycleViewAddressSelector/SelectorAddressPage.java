@@ -1,6 +1,5 @@
-package k15hkii.se114.bookstore.views;
+package k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector;
 
-import android.widget.ListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -9,15 +8,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.viewmodel.AddressChoiceViewModel;
+import k15hkii.se114.bookstore.views.address.Address;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectorAddressPage extends Fragment {
 
     private AddressChoiceViewModel mViewModel;
-    private ListView lvOtherAddress;
+    private RecyclerView rcvOtherAddress;
     private OtherAddressAdapter otherAddressAdapter;
 
     public static SelectorAddressPage newInstance() {
@@ -29,14 +32,19 @@ public class SelectorAddressPage extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.selector_address_fragment, container, false);
 
-        lvOtherAddress = view.findViewById(R.id.lvAddressChoiceOtherAddress);
+        rcvOtherAddress = view.findViewById(R.id.rcvAddressChoiceOtherAddress);
 
-        ArrayList<String> lsOtherAddress = new ArrayList<>();
-        lsOtherAddress.add("Biên Hòa, Đồng Nai");
-        lsOtherAddress.add("Vạn Ninh, Khánh Hòa");
+        String[] names = {"Biên Hòa, Đồng Nai","Vạn Ninh, Khánh Hòa"};
 
-        otherAddressAdapter = new OtherAddressAdapter(lsOtherAddress,getActivity());
-        lvOtherAddress.setAdapter(otherAddressAdapter);
+        List<Address> arrayName = new ArrayList<Address>();
+        for(int i=0;i<names.length;i++){
+            arrayName.add(new Address(names[i]));
+        }
+
+        otherAddressAdapter = new OtherAddressAdapter(arrayName,getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        rcvOtherAddress.setLayoutManager(linearLayoutManager);
+        rcvOtherAddress.setAdapter(otherAddressAdapter);
 
         return view;
     }
