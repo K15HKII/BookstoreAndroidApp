@@ -48,7 +48,7 @@
                         android:layout_height="135dp"
                         android:layout_gravity="center"
                         android:background="@drawable/account_image_view"
-                        android:src="@drawable/image1"/>
+                        android:src="@drawable/login_shark_img"/>
                 <TextView
                         android:id="@+id/tvAccountInfoUserName"
                         android:fontFamily="@font/lato_bold"

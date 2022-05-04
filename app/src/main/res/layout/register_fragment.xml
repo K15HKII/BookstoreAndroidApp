@@ -37,7 +37,7 @@
                                 android:layout_height="150dp"
                                 android:scaleX="1.5"
                                 android:scaleY="1.5"
-                                android:background="@drawable/image1" android:layout_centerInParent="true"/>
+                                android:background="@drawable/login_shark_img" android:layout_centerInParent="true"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <TextView android:layout_width="match_parent"
