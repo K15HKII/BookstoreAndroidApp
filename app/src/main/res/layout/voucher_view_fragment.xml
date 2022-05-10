@@ -29,13 +29,13 @@
            <RelativeLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content">
-           <android.widget.Button
-                   android:id="@+id/btnAddAddressBackward"
-                   android:layout_width="40dp"
-                   android:layout_height="40dp"
-                   android:scaleX="0.55"
-                   android:scaleY="0.55"
-                   android:background="@drawable/ic_backward"/>
+               <android.widget.Button
+                       android:id="@+id/btnAddAddressBackward"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       android:scaleX="0.55"
+                       android:scaleY="0.55"
+                       android:background="@drawable/ic_backward"/>
 
                <TextView
                        android:fontFamily="@font/lato_bold"

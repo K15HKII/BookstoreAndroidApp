@@ -94,7 +94,8 @@
                         android:background="@drawable/edit_text_background"
                         android:dropDownSelector="@drawable/dropdown_selector"
                         android:inputType="text"
-                        android:hint="giới tính"/>
+                        android:hint="giới tính">
+                </android.widget.Spinner>
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
@@ -238,6 +239,7 @@
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:background="@drawable/edit_text_background"/>
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
