@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.views;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,6 +31,7 @@ public class SearchBookView extends Fragment {
     private EditText sbSearchInput;
     private RecyclerView rcvRecentSearch;
     private RecentSearchAdapter recentSearchAdapter;
+    private List<RecentSearch> arrayName;
 
     public static SearchBookView newInstance() {
         return new SearchBookView();
@@ -46,7 +49,7 @@ public class SearchBookView extends Fragment {
 
         String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
 
-        List<RecentSearch> arrayName = new ArrayList<RecentSearch>();
+        arrayName = new ArrayList<RecentSearch>();
         for(int i=0;i<names.length;i++){
             arrayName.add(new RecentSearch(names[i]));
         }
@@ -56,10 +59,37 @@ public class SearchBookView extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rcvRecentSearch.setLayoutManager(linearLayoutManager);
-
         rcvRecentSearch .setAdapter(recentSearchAdapter);
 
+        sbSearchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
         return view;
+    }
+
+    private void filter(String inputTxt){
+        ArrayList<RecentSearch> filteredLs = new ArrayList<>();
+        for(RecentSearch item : arrayName){
+            if(item.getTitle().toLowerCase().contains(inputTxt.toLowerCase())) {
+                filteredLs.add(item);
+            }
+        }
+
+        recentSearchAdapter.filterlist(filteredLs);
     }
 
     @Override

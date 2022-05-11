@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.views.components.ListAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.TopicAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchAdapter.RecentSearchViewHolder> {
@@ -42,5 +43,10 @@ public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchA
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTopicAdapterName);
         }
+    }
+
+    public void filterlist(ArrayList<RecentSearch> filterls){
+        this.data = filterls;
+        notifyDataSetChanged();
     }
 }
