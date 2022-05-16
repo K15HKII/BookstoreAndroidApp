@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.*;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,13 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import k15hkii.se114.bookstore.*;
+import k15hkii.se114.bookstore.views.SearchBookView;
 import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.SelectorAddressPage;
 import k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.SelectorBankPage;
 import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.*;
 import k15hkii.se114.bookstore.viewmodel.HomeViewViewModel;
 import com.google.android.material.chip.Chip;
-import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
-import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 
 public class HomePage extends Fragment {
 
@@ -27,6 +28,7 @@ public class HomePage extends Fragment {
 //    private ChipGroup chipNavi;
     private Chip chipAllTopics, chipAllBooks, chipPoppularBooks, chipFamiliarBooks, chipForYouBooks;
     private Button btnFilter, btnNotification, btnOncart;
+    private TextView tvSearch;
 
 
     public static HomePage newInstance() {
@@ -41,6 +43,7 @@ public class HomePage extends Fragment {
         btnFilter = v.findViewById(R.id.etHomeFilterbox);
         btnNotification = v.findViewById(R.id.btnHomeNotification);
         btnOncart = v.findViewById(R.id.btnHomeShoppingCart);
+        tvSearch = v.findViewById(R.id.tvHomeSearchBox);
 
 //        chipNavi = v.findViewById(R.id.chipgrpHomeChipNavigation);
         chipAllTopics = v.findViewById(R.id.chipHomeAllTopics);
@@ -48,6 +51,15 @@ public class HomePage extends Fragment {
         chipPoppularBooks = v.findViewById(R.id.chipHomePopularBooks);
         chipFamiliarBooks = v.findViewById(R.id.chipHomeFamiliarBooks);
         chipForYouBooks = v.findViewById(R.id.chipHomeForYouBooks);
+
+        tvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack("").commit();
+            }
+        });
 
         chipAllTopics.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -102,7 +114,7 @@ public class HomePage extends Fragment {
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openChangeName(Gravity.TOP);
+                openFilter(Gravity.TOP);
             }
         });
 
@@ -134,10 +146,30 @@ public class HomePage extends Fragment {
         // TODO: Use the ViewModel
     }
 
-    private void openChangeName(int gravity){
+    private void openFilter(int gravity){
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.filter_search_dialog);
+
+        SeekBar skPrice = dialog.findViewById(R.id.skbarFilterSearchPrice);
+        TextView tvPrice = dialog.findViewById(R.id.tvFilterSearchPrice);
+
+        skPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                tvPrice.setText("" + String.format("%,.0f",(double)i) + "đ - 2.000.000đ");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         Window window = dialog.getWindow();
         if(window == null){

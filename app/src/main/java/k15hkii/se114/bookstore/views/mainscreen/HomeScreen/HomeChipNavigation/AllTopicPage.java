@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation;
 
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,14 +11,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.viewmodel.AllTopicViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllTopicPage extends Fragment {
 
     private AllTopicViewModel mViewModel;
-    private ListView lsTopics;
-    private ArrayAdapter<String> arrayAdapterTopic;
+    private RecyclerView rcvTopics;
+    private TopicAdapter topicAdapter;
 
     public static AllTopicPage newInstance() {
         return new AllTopicPage();
@@ -28,11 +34,17 @@ public class AllTopicPage extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.all_topic_fragment, container, false);
 
-        lsTopics = view.findViewById(R.id.lvHomeAllTopic);
+        rcvTopics = view.findViewById(R.id.rcvHomeAllTopic);
         String[] TopicsArray = {"Văn học", "Giáo dục", "Công nghệ"};
+        List<Topic> arrayName = new ArrayList<Topic>();
+        for(int i=0;i< TopicsArray.length;i++){
+            arrayName.add(new Topic(TopicsArray[i]));
+        }
 
-        arrayAdapterTopic = new ArrayAdapter<String>(getActivity(), R.layout.topic_adapter, TopicsArray);
-        lsTopics.setAdapter(arrayAdapterTopic);
+        topicAdapter = new TopicAdapter(arrayName);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        rcvTopics.setLayoutManager(linearLayoutManager);
+        rcvTopics.setAdapter(topicAdapter);
 
         return view;
     }

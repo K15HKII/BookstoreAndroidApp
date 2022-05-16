@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import k15hkii.se114.bookstore.views.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.viewmodel.LoginViewModel;
+import k15hkii.se114.bookstore.views.registerscreen.Register;
 //import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
 
 public class Login extends Fragment {
@@ -75,7 +76,7 @@ public class Login extends Fragment {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                fragmentTransaction.replace(R.id.fragmentContainerView, Register.class,null).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.fragmentContainerView, Register.class,null).addToBackStack(null).commit();
             }
         });
 

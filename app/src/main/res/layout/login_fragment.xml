@@ -111,18 +111,7 @@
                         android:text="Quên mật khẩu?"
                         android:clickable="true"
                         android:textAlignment="textEnd"/>
-                <TextView
-                        android:id="@+id/message"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/quen_mat_khau"
-                        android:textColor="#024C5E"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="@{LoginViewModel.LoginMessage}"
-                        android:clickable="true"
-                        android:textAlignment="textEnd"/>
+
                 <android.widget.Button
                         android:id="@+id/btnLoginLogin"
                         android:onClick="@{()-> LoginViewModel.LoginOnclick()}"

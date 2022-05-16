@@ -63,6 +63,7 @@
                     android:textStyle="bold"
                     android:textSize="24dp"/>
             <TextView
+                    android:id="@+id/tvFilterSearchPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"

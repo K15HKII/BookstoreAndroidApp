@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class ListAdapter<VM, T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 
-    protected final List<VM> data;
+    protected List<VM> data;
 
     public ListAdapter(List<VM> data) {
         this.data = data;
