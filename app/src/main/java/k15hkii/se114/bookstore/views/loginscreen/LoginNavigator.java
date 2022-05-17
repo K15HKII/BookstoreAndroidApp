@@ -8,4 +8,8 @@ public interface LoginNavigator extends INavigator {
     void login();
 
     void openHomeView();
+
+    void openPasswordForget();
+
+    void openRegister();
 }

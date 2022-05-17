@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="FavoritePageViewModel"
+                  type="k15hkii.se114.bookstore.views.mainscreen.page.favoritepage.FavoritePageViewModel"/>
+    </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".views.mainscreen.page.FavoritePage">
+        tools:context=".views.mainscreen.page.favoritepage.FavoritePage">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -25,22 +30,23 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchbox_shape"
                     android:orientation="horizontal">
-                <EditText
+                <TextView
                         android:id="@+id/etFavoriteSearchBox"
+                        android:onClick="@{()-> FavoritePageViewModel.onSearchBarClick()}"
                         android:fontFamily="@font/lato_regular"
                         android:drawableStart="@drawable/ic_search"
                         android:layout_marginLeft="5dp"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:paddingTop="13dp"
                         android:paddingBottom="13dp"
                         android:paddingRight="15dp"
                         android:paddingLeft="10dp"
-                        android:hint="   Tìm kiếm"
-                        android:background="@drawable/edit_text_background"
+                        android:text="   Tìm kiếm"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"/>
                 <android.widget.Button
                         android:id="@+id/etFavoriteFilterbox"
+                        android:onClick="@{()-> FavoritePageViewModel.onFilterDialog()}"
                         android:layout_marginRight="10dp"
                         android:layout_width="48dp"
                         android:layout_height="wrap_content"
@@ -57,6 +63,7 @@
                         android:orientation="horizontal">
             <android.widget.Button
                     android:id="@+id/btnFavoriteNotification"
+                    android:onClick="@{()-> FavoritePageViewModel.onNotificationClick()}"
                     android:scaleX="0.63"
                     android:scaleY="0.65"
                     android:backgroundTint="@color/btn_blue"
@@ -65,6 +72,7 @@
                     android:layout_height="50dp"/>
             <android.widget.Button
                     android:id="@+id/btnFavoriteShoppingCart"
+                    android:onClick="@{()-> FavoritePageViewModel.onOnCartClick()}"
                     android:scaleX="0.58"
                     android:scaleY="0.58"
                     android:backgroundTint="@color/btn_blue"
@@ -116,3 +124,4 @@
 
     </LinearLayout>
 </LinearLayout>
+</layout>

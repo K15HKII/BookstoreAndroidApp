@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.viewmodel;
+package k15hkii.se114.bookstore.views.loginscreen;
 
 import android.annotation.SuppressLint;
 import androidx.databinding.BaseObservable;
@@ -59,7 +59,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
                 .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
                 .subscribe(userAccount -> {
-                    //TODO: chuyen trang
+
                     getNavigator().openHomeView();
                 }, throwable -> {
                     getNavigator().handleError(throwable);
@@ -67,7 +67,15 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void onServerLoginClick() {
-        getNavigator().login();
+        getNavigator().openHomeView();
+    }
+
+    public void onForgotPasswordClick(){
+        getNavigator().openPasswordForget();
+    }
+
+    public void onRegisterClick(){
+        getNavigator().openRegister();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.page;
+package k15hkii.se114.bookstore.views.mainscreen.page.accountpage;
 
 import android.os.Handler;
 import android.widget.Button;
@@ -14,14 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.views.loginscreen.LoadingDialog;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.AccountViewViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.AccountDetailPage;
 import k15hkii.se114.bookstore.views.accountscreen.HelpPage;
 import k15hkii.se114.bookstore.views.accountscreen.SettingPage;
 
 public class AccountPage extends Fragment {
 
-    private AccountViewViewModel mViewModel;
+    private AccountPageViewModel mViewModel;
     private Button btnInfomation, btnSetting, btnHelpCenter;
 
     public static AccountPage newInstance() {
@@ -77,7 +76,7 @@ public class AccountPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AccountViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AccountPageViewModel.class);
         // TODO: Use the ViewModel
     }
 
