@@ -11,7 +11,6 @@ import javax.inject.Singleton;
 public class AppModule {
 
     @Provides
-    @Singleton
     SchedulerProvider provideSchedulerProvider() {
         return new AppSchedulerProvider();
     }

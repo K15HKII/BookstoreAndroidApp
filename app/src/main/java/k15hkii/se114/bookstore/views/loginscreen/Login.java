@@ -11,18 +11,22 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.viewmodel.LoginViewModel;
 import k15hkii.se114.bookstore.views.registerscreen.Register;
 //import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
 
-public class Login extends Fragment {
+public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> implements LoginNavigator {
 
+    private LoginFragmentBinding loginFragmentBinding;
     private LoginViewModel loginViewModel;
     private EditText etUsername,etPassword;
     private Button btnLogin, btnLoginWithGoogle, btnLoginWithFacebook;
@@ -33,11 +37,25 @@ public class Login extends Fragment {
         return new Login();
     }
 
+    @Override
+    public int getBindingVariable() {
+        return BR.LoginViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.login_fragment;
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
+        loginFragmentBinding = getViewDataBinding();
+
+        viewModel.setNavigator(Login.this);
+
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -104,6 +122,11 @@ public class Login extends Fragment {
         return view;
     }
 
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
+    }
+
     public void LoginSucess(){
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -123,4 +146,20 @@ public class Login extends Fragment {
         Toast.makeText(getContext(), "Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void handleError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void login() {
+
+    }
+
+    @Override
+    public void openHomeView() {
+        FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
+    }
 }

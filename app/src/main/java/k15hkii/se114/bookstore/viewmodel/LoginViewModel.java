@@ -9,13 +9,15 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.auth.LoginRequest;
 import k15hkii.se114.bookstore.data.model.auth.LoginResponse;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
 import k15hkii.se114.bookstore.data.model.api.UserAccount;
+import k15hkii.se114.bookstore.views.loginscreen.LoginNavigator;
 
 import java.util.List;
 
-public class LoginViewModel extends BaseViewModel implements Observable {
+public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Observable {
     // TODO: Implement the ViewModel
     private String user;
     private String pass;
@@ -24,9 +26,26 @@ public class LoginViewModel extends BaseViewModel implements Observable {
     public ObservableField<String> LoginMessage = new ObservableField<>();
     private List<UserAccount> lsUsers;
 
+    public LoginViewModel(SchedulerProvider schedulerProvider) {
+        super(schedulerProvider);
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     @Bindable
     public String getUser() {
         return user;
+    }
+
+    @Bindable
+    public String getPass() {
+        return pass;
     }
 
     @SuppressLint("CheckResult")
@@ -41,12 +60,14 @@ public class LoginViewModel extends BaseViewModel implements Observable {
                 .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
                 .subscribe(userAccount -> {
                     //TODO: chuyen trang
+                    getNavigator().openHomeView();
                 }, throwable -> {
+                    getNavigator().handleError(throwable);
                 });
     }
 
-    public void abc(LoginResponse response) {
-
+    public void onServerLoginClick() {
+        getNavigator().login();
     }
 
     @Override
