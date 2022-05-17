@@ -18,7 +18,7 @@ import k15hkii.se114.bookstore.views.loginscreen.LoginNavigator;
 import java.util.List;
 
 public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Observable {
-    // TODO: Implement the ViewModel
+
     private String user;
     private String pass;
 
