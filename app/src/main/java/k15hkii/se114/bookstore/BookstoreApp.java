@@ -7,7 +7,7 @@ import lombok.Getter;
 
 public class BookstoreApp extends Application {
 
-    @Getter private AppComponent appComponent;
+    @Getter AppComponent appComponent;
 
     @Override
     public void onCreate() {

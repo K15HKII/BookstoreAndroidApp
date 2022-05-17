@@ -11,7 +11,7 @@ public abstract class BaseViewModel extends ViewModel {
 
     private final ObservableBoolean isLoading = new ObservableBoolean();
 
-    @Inject private SchedulerProvider schedulerProvider;
+    @Inject SchedulerProvider schedulerProvider;
 
     private CompositeDisposable compositeDisposable;
 
