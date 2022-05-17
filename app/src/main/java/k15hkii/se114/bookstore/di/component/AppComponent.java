@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.di.component;
 
+import android.app.Application;
+import dagger.BindsInstance;
 import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.di.module.AppModule;
@@ -11,5 +13,15 @@ public interface AppComponent {
     void inject(BookstoreApp app);
 
     SchedulerProvider getSchedulerProvider();
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        Builder application(Application application);
+
+        AppComponent build();
+
+    }
 
 }
