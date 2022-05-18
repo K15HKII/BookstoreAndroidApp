@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.accountscreen.helppage;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,6 +15,11 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.HelpPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.delaccountrequest.DeleteAccount;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenter;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.introduction.Introduction;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.policy.Policy;
+import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordPage;
 
 public class HelpPage extends BaseFragment<HelpPageFragmentBinding, HelpPageViewModel> implements HelpPageNavigator {
 
@@ -57,5 +64,33 @@ public class HelpPage extends BaseFragment<HelpPageFragmentBinding, HelpPageView
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openHelpCenter() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, HelpCenter.class,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openAppIntroduction() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, Introduction.class,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openPolicy() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, Policy.class,null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openDeleteAccountRequest() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, DeleteAccount.class,null).addToBackStack(null).commit();
     }
 }

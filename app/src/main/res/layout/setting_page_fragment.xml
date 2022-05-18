@@ -60,7 +60,7 @@
                     android:textAlignment="textStart"
                     android:padding="15dp"
                     android:textAllCaps="false"
-                    android:textSize="21dp"
+                    android:textSize="20dp"
                     android:text="Thông báo"/>
             <android.widget.Button
                     android:id="@+id/btnSettingPrivacy"
@@ -71,7 +71,7 @@
                     android:textAlignment="textStart"
                     android:padding="15dp"
                     android:textAllCaps="false"
-                    android:textSize="21dp"
+                    android:textSize="20dp"
                     android:drawableEnd="@drawable/ic_arrow_account"
                     android:text="Riêng tư"/>
             <android.widget.Button
@@ -83,7 +83,7 @@
                     android:fontFamily="@font/lato_regular"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
-                    android:textSize="21dp"
+                    android:textSize="20dp"
                     android:text="Ngôn ngữ"
                     android:padding="15dp"
                     android:drawableEnd="@drawable/ic_arrow_account"
@@ -102,7 +102,7 @@
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:textSize="21dp"
+                        android:textSize="20dp"
                         android:text="Nền tối"/>
                 <android.widget.Switch
                         android:id="@+id/swSettingDarkTheme"

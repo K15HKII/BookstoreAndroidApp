@@ -11,12 +11,12 @@ public final class BindingUtils {
     private BindingUtils() {
     }
 
-    @BindingAdapter("testsource")
+    @BindingAdapter("testSource")
     public static void bindSource(Spinner spinner, List<String> source) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         for (String s : source) {
-            adapter.add(s + " binded");
+            adapter.add(s + "");
         }
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);

@@ -10,7 +10,7 @@ public interface AccountPageNavigator extends INavigator {
 
     void openSetting();
 
-    void openHelpCenter();
+    void openHelpPage();
 
     void logOut();
 }

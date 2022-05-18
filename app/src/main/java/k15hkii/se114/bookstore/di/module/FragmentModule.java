@@ -5,7 +5,14 @@ import dagger.Provides;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoViewViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPageViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.delaccountrequest.DeleteAccountViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.introduction.IntroductionViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.policy.PolicyViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenterViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySetting;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
@@ -87,6 +94,41 @@ public class FragmentModule {
     @Provides
     public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public HelpCenterViewModel provideHelpCenterViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, HelpCenterViewModel.class, () -> new HelpCenterViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public IntroductionViewModel provideIntroductionViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, IntroductionViewModel.class, () -> new IntroductionViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PolicyViewModel providePolicyViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, PolicyViewModel.class, () -> new PolicyViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public DeleteAccountViewModel provideDeleteAccountViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, DeleteAccountViewModel.class, () -> new DeleteAccountViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public NotificationSetting provideNotificationSetting(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, NotificationSetting.class, () -> new NotificationSetting(schedulerProvider));
+    }
+
+    @Provides
+    public PrivacySetting providePrivacySetting(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, PrivacySetting.class, () -> new PrivacySetting(schedulerProvider));
+    }
+
+    @Provides
+    public LanguageSetting provideLanguageSetting(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, LanguageSetting.class, () -> new LanguageSetting(schedulerProvider));
     }
 
 }

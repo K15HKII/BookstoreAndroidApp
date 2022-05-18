@@ -95,7 +95,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     }
 
     @Override
-    public void openHelpCenter() {
+    public void openHelpPage() {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, HelpPage.class,null).addToBackStack(null).commit();

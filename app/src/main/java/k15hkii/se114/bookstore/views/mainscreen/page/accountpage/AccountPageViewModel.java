@@ -23,7 +23,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     }
 
     public void onHelpCenterClick(){
-        getNavigator().openHelpCenter();
+        getNavigator().openHelpPage();
     }
 
     public void onLogOutClick(){
