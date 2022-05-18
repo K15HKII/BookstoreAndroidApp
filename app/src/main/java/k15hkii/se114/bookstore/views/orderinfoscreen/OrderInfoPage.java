@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.OrderPageViewModel;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
 
@@ -20,7 +19,7 @@ import java.util.List;
 
 public class OrderInfoPage extends Fragment {
 
-    private OrderPageViewModel mViewModel;
+    private OrderInfoPageViewModel mViewModel;
     private RecyclerView rcvListBooks;
     private OrderBooksViewAdapter orderBooksViewAdapter;
 
@@ -54,7 +53,7 @@ public class OrderInfoPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(OrderPageViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(OrderInfoPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

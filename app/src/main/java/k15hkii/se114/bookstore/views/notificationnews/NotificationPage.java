@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderItem;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.NotificationPageViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

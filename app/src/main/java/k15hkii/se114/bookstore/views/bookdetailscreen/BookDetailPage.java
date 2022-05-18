@@ -11,14 +11,13 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.BookDetailViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookDetailPage extends Fragment {
 
-    private BookDetailViewViewModel mViewModel;
+    private BookDetailPageViewModel mViewModel;
     private RecyclerView rcvCommentsList;
     private CommentViewAdapter commentViewAdapter;
 
@@ -50,7 +49,7 @@ public class BookDetailPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BookDetailViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(BookDetailPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

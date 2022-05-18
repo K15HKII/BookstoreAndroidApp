@@ -13,17 +13,15 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.SearchBookView;
+import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderMenuTabAdapter;
 import k15hkii.se114.bookstore.R;
 import com.google.android.material.tabs.TabLayout;
-import k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 

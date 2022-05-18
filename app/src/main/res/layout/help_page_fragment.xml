@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="HelpPageViewModel"
+                  type="k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPageViewModel"/>
+    </data>
+
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
 
@@ -17,6 +23,7 @@
             android:id="@+id/toolbarHelpPage">
         <android.widget.Button
                 android:id="@+id/btnEditBankBackward"
+                android:onClick="@{()-> HelpPageViewModel.onBackWardClick()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleX="0.55"
@@ -99,3 +106,4 @@
                    android:src="@drawable/sharkhug"/>
     </LinearLayout>
 </LinearLayout>
+</layout>

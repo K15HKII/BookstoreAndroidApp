@@ -3,9 +3,14 @@ package k15hkii.se114.bookstore.di.module;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoViewViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPageViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.mainscreen.page.accountpage.AccountPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.favoritepage.FavoritePageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.homepage.HomePageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPageViewModel;
@@ -57,6 +62,31 @@ public class FragmentModule {
     @Provides
     public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public HelpPageViewModel provideHelpPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, HelpPageViewModel.class, () -> new HelpPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public SettingPageViewModel provideSettingPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, SettingPageViewModel.class, () -> new SettingPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider));
     }
 
 }

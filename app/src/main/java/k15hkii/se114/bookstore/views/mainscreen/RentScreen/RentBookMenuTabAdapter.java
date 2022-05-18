@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.RentScreen.menutab.RentedViewPage;
+import k15hkii.se114.bookstore.views.mainscreen.RentScreen.menutab.RentingViewPage;
 import org.jetbrains.annotations.NotNull;
 
 public class RentBookMenuTabAdapter extends FragmentStatePagerAdapter {

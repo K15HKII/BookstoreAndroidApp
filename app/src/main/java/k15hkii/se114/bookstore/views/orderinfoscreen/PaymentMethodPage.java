@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.PaymentMethodViewModel;
 
 public class PaymentMethodPage extends Fragment {
 

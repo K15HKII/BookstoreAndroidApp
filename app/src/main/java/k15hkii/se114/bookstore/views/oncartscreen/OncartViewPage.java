@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.OncartViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

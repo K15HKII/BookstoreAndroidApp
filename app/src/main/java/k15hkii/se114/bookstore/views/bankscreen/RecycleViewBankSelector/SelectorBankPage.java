@@ -1,6 +1,5 @@
 package k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector;
 
-import android.widget.ListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -12,8 +11,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.BankChoiceViewModel;
-import k15hkii.se114.bookstore.views.address.Address;
+import k15hkii.se114.bookstore.views.bankscreen.BankChoiceViewModel;
 import k15hkii.se114.bookstore.views.bankscreen.BankAccount;
 
 import java.util.ArrayList;

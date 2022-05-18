@@ -17,10 +17,13 @@ import k15hkii.se114.bookstore.*;
 import k15hkii.se114.bookstore.databinding.HomePageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.SearchBookView;
-import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.SelectorAddressPage;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.*;
+import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
 import com.google.android.material.chip.Chip;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.allbooks.AllBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.alltopics.AllTopicPage;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.familiarbooks.FamiliarBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.foryoubooks.ForYouBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.HomeChipNavigation.popularbooks.PopularBooksPage;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 

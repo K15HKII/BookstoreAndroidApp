@@ -14,14 +14,13 @@ import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderShipmentAdap
 import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderView;
 import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderShipmentAdapter.OrderItemsRecycleView.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.RatingViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RatingBookViewPage extends Fragment {
 
-    private RatingViewViewModel mViewModel;
+    private RatingBookViewPageViewModel mViewModel;
     private RecyclerView rcvOrderView;
     private OrderViewAdapter orderViewAdapter;
 
@@ -62,7 +61,7 @@ public class RatingBookViewPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RatingViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RatingBookViewPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

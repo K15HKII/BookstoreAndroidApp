@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.AddressChoiceViewModel;
+import k15hkii.se114.bookstore.views.address.AddressChoiceViewModel;
 import k15hkii.se114.bookstore.views.address.Address;
 
 import java.util.ArrayList;
