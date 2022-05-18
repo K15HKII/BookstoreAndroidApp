@@ -97,8 +97,8 @@
                         android:popupBackground="@drawable/spinner_shape"
                         android:padding="15dp"
                         android:layout_marginLeft="15dp"
-
                         android:textSize="18dp"
+                        testsource="@{RegisterViewModel.testSource}"
                         android:background="@drawable/edit_text_background"
                         android:inputType="text"
                         android:hint="giới tính">

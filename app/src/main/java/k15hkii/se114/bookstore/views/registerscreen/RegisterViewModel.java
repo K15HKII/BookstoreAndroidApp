@@ -2,16 +2,21 @@ package k15hkii.se114.bookstore.views.registerscreen;
 
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Setter
 public class RegisterViewModel extends BaseViewModel<RegisterNavigator> implements Observable {
 
     private String user, gender, dob, phonenum, email, pass, passconfirm;
+    @Getter private final MutableLiveData<List<String>> testSource = new MutableLiveData<>(Arrays.asList("Nam", "Nữ", "Khác"));
 
     @Bindable
     public String getUser() {

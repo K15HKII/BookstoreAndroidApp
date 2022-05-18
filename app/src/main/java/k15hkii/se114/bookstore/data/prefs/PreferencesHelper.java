@@ -8,6 +8,10 @@ public interface PreferencesHelper {
 
     void setAccessToken(String accessToken);
 
+    String getRefreshToken();
+
+    void setRefreshToken(String accessToken);
+
     String getCurrentUserEmail();
 
     void setCurrentUserEmail(String email);

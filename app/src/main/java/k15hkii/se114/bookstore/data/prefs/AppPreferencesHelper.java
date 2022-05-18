@@ -12,6 +12,8 @@ public class AppPreferencesHelper implements PreferencesHelper {
 
     private static final String PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN";
 
+    private static final String PREF_KEY_REFRESH_TOKEN = "PREF_KEY_REFRESH_TOKEN";
+
     private static final String PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL";
 
     private static final String PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID";
@@ -37,6 +39,16 @@ public class AppPreferencesHelper implements PreferencesHelper {
     @Override
     public void setAccessToken(String accessToken) {
         sharedPreferences.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply();
+    }
+
+    @Override
+    public String getRefreshToken() {
+        return sharedPreferences.getString(PREF_KEY_REFRESH_TOKEN, null);
+    }
+
+    @Override
+    public void setRefreshToken(String accessToken) {
+        sharedPreferences.edit().putString(PREF_KEY_REFRESH_TOKEN, accessToken).apply();
     }
 
     @Override
