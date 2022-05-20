@@ -10,8 +10,20 @@ public class SettingPageViewModel extends BaseViewModel<SettingPagenavigator> im
         super(schedulerProvider);
     }
 
-    public void onBackWard(){
+    public void onBackWardClick(){
         getNavigator().BackWard();
+    }
+
+    public void onNotificationSettingClick(){
+        getNavigator().openNotificationSetting();
+    }
+
+    public void onPrivacySettingClick(){
+        getNavigator().openPrivacySetting();
+    }
+
+    public void onLanguageSettingClick(){
+        getNavigator().openLanguageSetting();
     }
 
     @Override

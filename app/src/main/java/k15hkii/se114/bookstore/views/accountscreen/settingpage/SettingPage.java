@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.accountscreen.settingpage;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,6 +15,9 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SettingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySetting;
 
 public class SettingPage extends BaseFragment<SettingPageFragmentBinding, SettingPageViewModel> implements SettingPagenavigator {
 
@@ -57,5 +62,26 @@ public class SettingPage extends BaseFragment<SettingPageFragmentBinding, Settin
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openNotificationSetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, NotificationSetting.class, null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openPrivacySetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, PrivacySetting.class, null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openLanguageSetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, LanguageSetting.class, null).addToBackStack(null).commit();
     }
 }

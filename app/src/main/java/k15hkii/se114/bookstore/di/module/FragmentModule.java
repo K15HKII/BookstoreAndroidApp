@@ -10,19 +10,42 @@ import k15hkii.se114.bookstore.views.accountscreen.helppage.introduction.Introdu
 import k15hkii.se114.bookstore.views.accountscreen.helppage.policy.PolicyViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenterViewModel;
-import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSetting;
-import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSetting;
-import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSettingViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel;
+import k15hkii.se114.bookstore.views.address.SelectorAddressPageViewModel;
+import k15hkii.se114.bookstore.views.address.add.AddAddressPageViewModel;
+import k15hkii.se114.bookstore.views.address.edit.EditAddressPageViewModel;
+import k15hkii.se114.bookstore.views.bankscreen.SelectorBankPageViewModel;
+import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPageViewModel;
+import k15hkii.se114.bookstore.views.bankscreen.edit.EditBankPageViewModel;
+import k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPageViewModel;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.accountpage.AccountPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.favoritepage.FavoritePageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.homepage.HomePageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.shippingpage.ShippingPageViewModel;
+import k15hkii.se114.bookstore.views.notificationnews.NotificationPageViewModel;
+import k15hkii.se114.bookstore.views.oncartscreen.OncartViewViewModel;
+import k15hkii.se114.bookstore.views.orderinfoscreen.OrderInfoPageViewModel;
+import k15hkii.se114.bookstore.views.orderinfoscreen.PaymentMethodViewModel;
+import k15hkii.se114.bookstore.views.ratingbookscreen.RatingBooksDetailPageViewModel;
 import k15hkii.se114.bookstore.views.registerscreen.RegisterViewModel;
+import k15hkii.se114.bookstore.views.searchbook.SearchBookViewResultViewModel;
+import k15hkii.se114.bookstore.views.searchbook.SearchBookViewViewModel;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
@@ -117,18 +140,133 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationSetting provideNotificationSetting(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, NotificationSetting.class, () -> new NotificationSetting(schedulerProvider));
+    public NotificationSettingViewModel provideNotificationSettingViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, NotificationSettingViewModel.class, () -> new NotificationSettingViewModel(schedulerProvider));
     }
 
     @Provides
-    public PrivacySetting providePrivacySetting(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, PrivacySetting.class, () -> new PrivacySetting(schedulerProvider));
+    public PrivacySettingViewModel providePrivacySettingViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, PrivacySettingViewModel.class, () -> new PrivacySettingViewModel(schedulerProvider));
     }
 
     @Provides
-    public LanguageSetting provideLanguageSetting(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, LanguageSetting.class, () -> new LanguageSetting(schedulerProvider));
+    public LanguageSettingViewModel provideLanguageSettingViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, LanguageSettingViewModel.class, () -> new LanguageSettingViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public SelectorAddressPageViewModel provideSelectorAddressPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, SelectorAddressPageViewModel.class, () -> new SelectorAddressPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PaymentMethodViewModel providePaymentMethodViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, PaymentMethodViewModel.class, () -> new PaymentMethodViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OncartViewViewModel provideOncartViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OncartViewViewModel.class, () -> new OncartViewViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AddRentBookViewViewModel provideAddRentBookViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AddRentBookViewViewModel.class, () -> new AddRentBookViewViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AddRentBookDetailViewModel provideAddRentBookDetailViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AddRentBookDetailViewModel.class, () -> new AddRentBookDetailViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RatingBooksDetailPageViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RatingBooksDetailPageViewModel.class, () -> new RatingBooksDetailPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public SearchBookViewResultViewModel provideSearchBookViewResultViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, SearchBookViewResultViewModel.class, () -> new SearchBookViewResultViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider));
     }
 
 }

@@ -9,15 +9,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.AddAddressPageFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.intro.cityspinneradapter.CitySpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddAddressPage extends Fragment {
+public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, AddAddressPageViewModel> implements AddAddressPageNavigator {
 
-    private AddAddressViewModel mViewModel;
+    private AddAddressPageFragmentBinding addAddressPageFragmentBinding;
+    private AddAddressPageViewModel mViewModel;
     private Spinner spCity, spDistrict,spVillage;
     private CitySpinnerAdapter cityadapter,districtAdapter,villageadapter;
 
@@ -26,9 +31,21 @@ public class AddAddressPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.AddAddressPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.add_address_page_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_address_page_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        addAddressPageFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         spCity = view.findViewById(R.id.spAddAddressCity);
         spDistrict = view.findViewById(R.id.spAddAddressDistrict);
@@ -62,9 +79,14 @@ public class AddAddressPage extends Fragment {
     }
 
     @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddAddressViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AddAddressPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -25,7 +25,7 @@
                 android:id="@+id/toolbarSettingPage">
             <android.widget.Button
                     android:id="@+id/btnEditBankBackward"
-                    android:onClick="@{()-> SettingPageViewModel.onBackWard()}"
+                    android:onClick="@{()-> SettingPageViewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
@@ -51,6 +51,7 @@
                 android:padding="20dp">
             <android.widget.Button
                     android:id="@+id/btnSettingAnnouncement"
+                    android:onClick="@{()-> SettingPageViewModel.onNotificationSettingClick()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -64,6 +65,7 @@
                     android:text="Thông báo"/>
             <android.widget.Button
                     android:id="@+id/btnSettingPrivacy"
+                    android:onClick="@{()-> SettingPageViewModel.onPrivacySettingClick()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/account_button_2"
@@ -76,6 +78,7 @@
                     android:text="Riêng tư"/>
             <android.widget.Button
                     android:id="@+id/btnSettingLanguage"
+                    android:onClick="@{()-> SettingPageViewModel.onLanguageSettingClick()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

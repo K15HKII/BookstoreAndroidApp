@@ -14,6 +14,22 @@ public class HelpPageViewModel extends BaseViewModel<HelpPageNavigator> implemen
         getNavigator().BackWard();
     }
 
+    public void onHelpCenterClick(){
+        getNavigator().openHelpCenter();
+    }
+
+    public void onIntroductionAppClick(){
+        getNavigator().openAppIntroduction();
+    }
+
+    public void onPolicyClick(){
+        getNavigator().openPolicy();
+    }
+
+    public void onDeleteAccountRequest(){
+        getNavigator().openDeleteAccountRequest();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

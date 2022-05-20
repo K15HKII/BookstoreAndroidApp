@@ -10,15 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.OrderInfoPageFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderInfoPage extends Fragment {
+public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, OrderInfoPageViewModel> implements OrderInfoPageNavigator {
 
+    private OrderInfoPageFragmentBinding orderInfoPageFragmentBinding;
     private OrderInfoPageViewModel mViewModel;
     private RecyclerView rcvListBooks;
     private OrderBooksViewAdapter orderBooksViewAdapter;
@@ -28,9 +33,21 @@ public class OrderInfoPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.OrderInfoPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.order_info_page_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.order_info_page_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        orderInfoPageFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         String[] items = {"Dac nhan tam", "Nguoi phan xu", "Kteam"};
 
@@ -48,6 +65,11 @@ public class OrderInfoPage extends Fragment {
         rcvListBooks.setAdapter(orderBooksViewAdapter);
 
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
     @Override

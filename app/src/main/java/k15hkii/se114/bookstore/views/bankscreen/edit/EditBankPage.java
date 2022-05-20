@@ -25,7 +25,7 @@ public class EditBankPage extends Fragment {
         return new EditBankPage();
     }
 
-    private EditBankAccountViewModel mViewModel;
+    private EditBankPageViewModel mViewModel;
     private ExpandableListView lvBank;
     private List<BankGroup> lsbankgroup;
     private Map<BankGroup, List<BankItems>> lsbankitem;
@@ -71,7 +71,7 @@ public class EditBankPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditBankAccountViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(EditBankPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

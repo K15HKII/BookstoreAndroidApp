@@ -19,7 +19,7 @@ import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
-import k15hkii.se114.bookstore.views.mainscreen.ShipmentScreen.OrderMenuTabAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderMenuTabAdapter;
 import k15hkii.se114.bookstore.R;
 import com.google.android.material.tabs.TabLayout;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;

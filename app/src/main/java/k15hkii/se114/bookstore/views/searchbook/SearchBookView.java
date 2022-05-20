@@ -15,13 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.SearchBookViewFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchBookView extends Fragment {
+public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, SearchBookViewViewModel> implements SearchBookViewNavigator {
 
+    private SearchBookViewFragmentBinding searchBookViewFragmentBinding;
     private SearchBookViewViewModel mViewModel;
 
     private EditText sbSearchInput;
@@ -34,9 +39,21 @@ public class SearchBookView extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.SearchBookViewViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.search_book_view_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.search_book_view_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        searchBookViewFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         sbSearchInput = view.findViewById(R.id.sbSearchViewInput);
         sbSearchInput.requestFocus();
@@ -75,6 +92,11 @@ public class SearchBookView extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+
     }
 
     private void filter(String inputTxt){

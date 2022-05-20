@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class AddBankPage extends Fragment {
 
-    private AddBankAccountViewModel mViewModel;
+    private AddBankPageViewModel mViewModel;
     private ExpandableListView lvBank;
     private List<BankGroup> lsbankgroup;
     private Map<BankGroup, List<BankItems>> lsbankitem;
@@ -49,7 +49,7 @@ public class AddBankPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddBankAccountViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AddBankPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

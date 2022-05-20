@@ -9,15 +9,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.EditAddressFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.bankscreen.edit.EditBankPageNavigator;
 import k15hkii.se114.bookstore.views.intro.cityspinneradapter.CitySpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditAddressPage extends Fragment {
+public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, EditAddressPageViewModel> implements EditAddressPageNavigator {
 
-    private EditAddressViewModel mViewModel;
+    private EditAddressFragmentBinding editAddressFragmentBinding;
+    private EditAddressPageViewModel mViewModel;
     private Spinner spCity, spDistrict,spVillage;
     private CitySpinnerAdapter cityadapter,districtAdapter,villageadapter;
 
@@ -26,9 +32,21 @@ public class EditAddressPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.EditAddressPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.edit_address_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.edit_address_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        editAddressFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         spCity = view.findViewById(R.id.spEditAddressCity);
         spDistrict = view.findViewById(R.id.spEditAddressDistrict);
@@ -62,9 +80,14 @@ public class EditAddressPage extends Fragment {
     }
 
     @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditAddressViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(EditAddressPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

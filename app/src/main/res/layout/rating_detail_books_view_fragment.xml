@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="RatingDetailBookViewViewModel"
+                  type="k15hkii.se114.bookstore.views.ratingbookscreen.RatingBooksDetailPageViewModel"/>
+    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -63,3 +68,4 @@
                 android:layout_height="match_parent"/>
     </LinearLayout>
 </FrameLayout>
+</layout>
