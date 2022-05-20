@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting;
+package k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.myordernotification;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -10,34 +10,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.PrivacySettingFragmentBinding;
+import k15hkii.se114.bookstore.databinding.MyOrderNotificationFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 
-public class PrivacySetting extends BaseFragment<PrivacySettingFragmentBinding, PrivacySettingViewModel> implements PrivacySettingNavigator {
+public class MyOrderNotification extends BaseFragment<MyOrderNotificationFragmentBinding, MyOrderNotificationViewModel> implements MyOrderNotificationNavigator {
 
-    private PrivacySettingFragmentBinding privacySettingFragmentBinding;
-    private PrivacySettingViewModel mViewModel;
+    private MyOrderNotificationFragmentBinding myOrderNotificationFragmentBinding;
+    private MyOrderNotificationViewModel mViewModel;
 
-    public static PrivacySetting newInstance() {
-        return new PrivacySetting();
+    public static MyOrderNotification newInstance() {
+        return new MyOrderNotification();
     }
 
     @Override
     public int getBindingVariable() {
-        return BR.PrivacySettingViewModel;
+        return BR.MyOrderNotificationViewModel;
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.privacy_setting_fragment;
+        return R.layout.my_order_notification_fragment;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        privacySettingFragmentBinding = getViewDataBinding();
+        myOrderNotificationFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;
     }
@@ -50,7 +50,7 @@ public class PrivacySetting extends BaseFragment<PrivacySettingFragmentBinding, 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PrivacySettingViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(MyOrderNotificationViewModel.class);
         // TODO: Use the ViewModel
     }
 

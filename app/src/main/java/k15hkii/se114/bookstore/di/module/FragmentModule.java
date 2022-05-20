@@ -12,6 +12,9 @@ import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewMo
 import k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenterViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSettingViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotificationViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.views.address.SelectorAddressPageViewModel;
@@ -267,6 +270,21 @@ public class FragmentModule {
     @Provides
     public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public MyOrderNotificationViewModel provideMyOrderNotificationViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, MyOrderNotificationViewModel.class, () -> new MyOrderNotificationViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public VoucherNotificaitonViewModel provideVoucherNotificaitonViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, VoucherNotificaitonViewModel.class, () -> new VoucherNotificaitonViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OtherNotificationViewModel provideOtherNotificationViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OtherNotificationViewModel.class, () -> new OtherNotificationViewModel(schedulerProvider));
     }
 
 }

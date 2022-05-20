@@ -11,6 +11,9 @@ import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPage;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenter;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSetting;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSetting;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotification;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.othernotification.OtherNotification;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaiton;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySetting;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.views.address.SelectorAddressPage;
@@ -163,4 +166,15 @@ public interface FragmentComponent {
 
     void inject(SearchBookViewResult searchBookViewResult);
 
+    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.MYORDERNOTIFICATION
+
+    void inject(MyOrderNotification myOrderNotification);
+
+    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.VOUCHERNOTIFICATION
+
+    void inject(VoucherNotificaiton voucherNotificaiton);
+
+    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.OTHERNOTIFICATION
+
+    void inject(OtherNotification otherNotification);
 }

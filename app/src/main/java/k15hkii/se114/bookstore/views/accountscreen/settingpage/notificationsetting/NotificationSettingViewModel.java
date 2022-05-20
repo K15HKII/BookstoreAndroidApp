@@ -10,6 +10,22 @@ public class NotificationSettingViewModel extends BaseViewModel<NotificationSett
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
+    public void onMyOrderClick(){
+        getNavigator().openMyOrderNotificaitionSetting();
+    }
+
+    public void onOtherNotificationClick(){
+        getNavigator().openOtherNotificationSetting();
+    }
+
+    public void onVoucherNotificationClick(){
+        getNavigator().openVoucherNotificationSetting();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

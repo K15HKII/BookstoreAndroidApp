@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
     <data>
-        <variable name="PrivacySettingViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySettingViewModel"/>
+        <variable name="VoucherNotificationViewModel"
+                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/home_background"
-        tools:context=".views.accountscreen.settingpage.privacysetting.PrivacySetting">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/home_background"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".views.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotification">
+
         <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
                 android:id="@+id/toolbarHelpPage">
             <android.widget.Button
                     android:id="@+id/btnEditBankBackward"
-                    android:onClick="@{()-> PrivacySettingViewModel.onBackWardClick()}"
+                    android:onClick="@{()-> VoucherNotificationViewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
@@ -35,21 +35,24 @@
                     android:layout_marginLeft="40dp"
                     android:fontFamily="@font/lato_bold"
                     android:textStyle="bold"
-                    android:text="Riêng tư"
+                    android:text="Thông báo"
                     android:textColor="@color/black"
                     android:textSize="24dp"/>
 
         </androidx.appcompat.widget.Toolbar>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:padding="20dp"
-                      android:orientation="vertical">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/home_background"
+                android:padding="20dp">
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:text="Chọn sự riêng tư bạn muốn cho phép"
-                      android:textColor="#636363"
-                      android:fontFamily="@font/lato_regular"
-                      android:layout_marginTop="5dp"
-                      android:layout_marginBottom="15dp"/>
+                      android:text="Voucher"
+                      android:textColor="@color/btn_blue"
+                      android:textSize="24dp"
+                      android:fontFamily="@font/lato_bold"
+                      android:layout_marginBottom="20dp"/>
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:layout_marginTop="1dp"
@@ -64,10 +67,10 @@
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:textSize="18dp"
-                        android:text="Camera"/>
+                        android:textSize="19dp"
+                        android:text="Âm thanh"/>
                 <android.widget.Switch
-                        android:id="@+id/swPrivacySettingCamera"
+                        android:id="@+id/swVoucherNotificaitonSound"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
@@ -87,10 +90,10 @@
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:textSize="18dp"
-                        android:text="Thư viện Ảnh"/>
+                        android:textSize="19dp"
+                        android:text="Rung"/>
                 <android.widget.Switch
-                        android:id="@+id/swPrivacySettingLibrary"
+                        android:id="@+id/swVoucherNotificaitonShakeMode"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
@@ -110,15 +113,38 @@
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:textSize="18dp"
-                        android:text="Vị trí"/>
+                        android:textSize="19dp"
+                        android:text="Đèn"/>
                 <android.widget.Switch
-                        android:id="@+id/swPrivacySettingLocation"
+                        android:id="@+id/swVoucherNotificaitonLight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="15dp"
+                          android:padding="5dp"
+                          android:background="@drawable/address_button_shape">
+                <android.widget.Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:shadowColor="@color/white"
+                        android:fontFamily="@font/lato_regular"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="19dp"
+                        android:text="Email"/>
+                <android.widget.Switch
+                        android:id="@+id/swVoucherNotificaitonEmail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

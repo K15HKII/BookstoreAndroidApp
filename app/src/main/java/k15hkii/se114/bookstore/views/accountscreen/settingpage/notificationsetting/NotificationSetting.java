@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,6 +15,9 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.NotificationSettingFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotification;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.othernotification.OtherNotification;
+import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaiton;
 
 public class NotificationSetting extends BaseFragment<NotificationSettingFragmentBinding, NotificationSettingViewModel> implements NotificationSettingNavigator {
 
@@ -54,4 +59,29 @@ public class NotificationSetting extends BaseFragment<NotificationSettingFragmen
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openMyOrderNotificaitionSetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, MyOrderNotification.class, null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openOtherNotificationSetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, OtherNotification.class, null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openVoucherNotificationSetting() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, VoucherNotificaiton.class, null).addToBackStack(null).commit();
+    }
 }

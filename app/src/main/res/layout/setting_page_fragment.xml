@@ -4,120 +4,120 @@
         <variable name="SettingPageViewModel"
                   type="k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewModel"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:background="@drawable/home_background"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:background="@drawable/home_background"
-                  android:orientation="vertical" app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent">
-        <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="?attr/actionBarTheme"
-                android:minHeight="?attr/actionBarSize"
-                android:id="@+id/toolbarSettingPage">
-            <android.widget.Button
-                    android:id="@+id/btnEditBankBackward"
-                    android:onClick="@{()-> SettingPageViewModel.onBackWardClick()}"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:scaleX="0.55"
-                    android:scaleY="0.55"
-                    android:background="@drawable/ic_backward"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:text="Cài đặt"
-                    android:textColor="@color/black"
-                    android:textSize="26dp"/>
-
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/home_background"
-                android:padding="20dp">
-            <android.widget.Button
-                    android:id="@+id/btnSettingAnnouncement"
-                    android:onClick="@{()-> SettingPageViewModel.onNotificationSettingClick()}"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:background="@drawable/home_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:background="@drawable/home_background"
+                      android:orientation="vertical" app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:background="@drawable/account_button_1"
-                    android:drawableEnd="@drawable/ic_arrow_account"
-                    android:fontFamily="@font/lato_regular"
-                    android:textAlignment="textStart"
-                    android:padding="15dp"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-                    android:text="Thông báo"/>
-            <android.widget.Button
-                    android:id="@+id/btnSettingPrivacy"
-                    android:onClick="@{()-> SettingPageViewModel.onPrivacySettingClick()}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/account_button_2"
-                    android:fontFamily="@font/lato_regular"
-                    android:textAlignment="textStart"
-                    android:padding="15dp"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-                    android:drawableEnd="@drawable/ic_arrow_account"
-                    android:text="Riêng tư"/>
-            <android.widget.Button
-                    android:id="@+id/btnSettingLanguage"
-                    android:onClick="@{()-> SettingPageViewModel.onLanguageSettingClick()}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/account_button_1"
-                    android:fontFamily="@font/lato_regular"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-                    android:text="Ngôn ngữ"
-                    android:padding="15dp"
-                    android:drawableEnd="@drawable/ic_arrow_account"
-            />
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="1dp"
-                          android:padding="5dp"
-                          android:background="@drawable/account_button_2">
+                    android:background="@color/white"
+                    android:theme="?attr/actionBarTheme"
+                    android:minHeight="?attr/actionBarSize"
+                    android:id="@+id/toolbarSettingPage">
                 <android.widget.Button
+                        android:id="@+id/btnEditBankBackward"
+                        android:onClick="@{()-> SettingPageViewModel.onBackWardClick()}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward"/>
+
+                <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@null"
-                        android:shadowColor="@color/white"
+                        android:layout_marginLeft="40dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textStyle="bold"
+                        android:text="Cài đặt"
+                        android:textColor="@color/black"
+                        android:textSize="26dp"/>
+
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_background"
+                    android:padding="20dp">
+                <android.widget.Button
+                        android:id="@+id/btnSettingAnnouncement"
+                        android:onClick="@{()-> SettingPageViewModel.onNotificationSettingClick()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/account_button_1"
+                        android:drawableEnd="@drawable/ic_arrow_account"
+                        android:fontFamily="@font/lato_regular"
+                        android:textAlignment="textStart"
+                        android:padding="15dp"
+                        android:textAllCaps="false"
+                        android:textSize="19dp"
+                        android:text="Thông báo"/>
+                <android.widget.Button
+                        android:id="@+id/btnSettingPrivacy"
+                        android:onClick="@{()-> SettingPageViewModel.onPrivacySettingClick()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/account_button_2"
+                        android:fontFamily="@font/lato_regular"
+                        android:textAlignment="textStart"
+                        android:padding="15dp"
+                        android:textAllCaps="false"
+                        android:textSize="19dp"
+                        android:drawableEnd="@drawable/ic_arrow_account"
+                        android:text="Riêng tư"/>
+                <android.widget.Button
+                        android:id="@+id/btnSettingLanguage"
+                        android:onClick="@{()-> SettingPageViewModel.onLanguageSettingClick()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/account_button_1"
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:textSize="20dp"
-                        android:text="Nền tối"/>
-                <android.widget.Switch
-                        android:id="@+id/swSettingDarkTheme"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:textSize="19dp"
+                        android:text="Ngôn ngữ"
+                        android:padding="15dp"
+                        android:drawableEnd="@drawable/ic_arrow_account"
+                />
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="1dp"
+                              android:padding="5dp"
+                              android:background="@drawable/account_button_2">
+                    <android.widget.Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@null"
+                            android:shadowColor="@color/white"
+                            android:fontFamily="@font/lato_regular"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="false"
+                            android:textSize="19dp"
+                            android:text="Nền tối"/>
+                    <android.widget.Switch
+                            android:id="@+id/swSettingDarkTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                </LinearLayout>
+                <ImageView android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:src="@drawable/sharkhug"/>
             </LinearLayout>
-            <ImageView android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:src="@drawable/sharkhug"/>
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
