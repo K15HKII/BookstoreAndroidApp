@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="AccountPageViewModel"
+                  type="k15hkii.se114.bookstore.views.mainscreen.page.accountpage.AccountPageViewModel"/>
+    </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +12,7 @@
         android:padding="24dp"
         android:background="@drawable/home_background"
         android:layout_height="match_parent"
-        tools:context=".views.mainscreen.page.AccountPage">
+        tools:context=".views.mainscreen.page.accountpage.AccountPage">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -53,6 +58,7 @@
                   android:orientation="vertical">
         <android.widget.Button
                 android:id="@+id/btnAccountInfomation"
+                android:onClick="@{()-> AccountPageViewModel.onAccountInfoClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
@@ -67,6 +73,7 @@
                 android:drawableEnd="@drawable/ic_arrow_account"/>
         <android.widget.Button
                 android:id="@+id/btnAccountVoucher"
+                android:onClick="@{()-> AccountPageViewModel.onVoucherClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -103,6 +110,7 @@
                   android:layout_marginTop="15dp">
         <android.widget.Button
                 android:id="@+id/btnAccountSetting"
+                android:onClick="@{()-> AccountPageViewModel.onSettingClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
@@ -138,6 +146,7 @@
 
         <android.widget.Button
                 android:id="@+id/btnAccountHelpCenter"
+                android:onClick="@{()-> AccountPageViewModel.onHelpCenterClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
@@ -152,6 +161,7 @@
                 android:drawableEnd="@drawable/ic_arrow_account"/>
         <RelativeLayout
                 android:id="@+id/btnAccountLogout"
+                android:onClick="@{()-> AccountPageViewModel.onLogOutClick()}"
                 android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,3 +184,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</layout>

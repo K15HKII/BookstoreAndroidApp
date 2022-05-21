@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="NotificationPageViewModel"
+                  type="k15hkii.se114.bookstore.views.notificationnews.NotificationPageViewModel"/>
+    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -50,3 +55,4 @@
     </LinearLayout>
 
 </FrameLayout>
+</layout>

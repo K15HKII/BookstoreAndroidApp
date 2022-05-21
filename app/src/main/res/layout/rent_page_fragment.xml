@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="RentPageViewModel"
+                  type="k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPageViewModel"/>
+    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/home_background"
-        tools:context=".views.mainscreen.page.RentPage">
+        tools:context=".views.mainscreen.page.rentpage.RentPage">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -32,22 +37,23 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/searchbox_shape"
                     android:orientation="horizontal">
-                <EditText
+                <TextView
                         android:id="@+id/etRentSearchBox"
+                        android:onClick="@{()-> RentPageViewModel.onSearchBarClick()}"
                         android:fontFamily="@font/lato_regular"
                         android:drawableStart="@drawable/ic_search"
                         android:layout_marginLeft="5dp"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:paddingTop="13dp"
                         android:paddingBottom="13dp"
                         android:paddingRight="15dp"
                         android:paddingLeft="10dp"
-                        android:hint="   Tìm kiếm"
-                        android:background="@drawable/edit_text_background"
+                        android:text="   Tìm kiếm"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"/>
                 <android.widget.Button
                         android:id="@+id/etRentFilterbox"
+                        android:onClick="@{()-> RentPageViewModel.onFilterDialog()}"
                         android:layout_marginRight="10dp"
                         android:layout_width="48dp"
                         android:layout_height="wrap_content"
@@ -64,6 +70,7 @@
                     android:orientation="horizontal">
                 <android.widget.Button
                         android:id="@+id/btnRentNotification"
+                        android:onClick="@{()-> RentPageViewModel.onNotificationClick()}"
                         android:scaleX="0.63"
                         android:scaleY="0.65"
                         android:backgroundTint="@color/btn_blue"
@@ -72,6 +79,7 @@
                         android:layout_height="50dp"/>
                 <android.widget.Button
                         android:id="@+id/btnRentShoppingCart"
+                        android:onClick="@{()-> RentPageViewModel.onOnCartClick()}"
                         android:scaleX="0.58"
                         android:scaleY="0.58"
                         android:backgroundTint="@color/btn_blue"
@@ -97,6 +105,7 @@
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnRentBookAdd"
+                    android:onClick="@{()-> RentPageViewModel.onAddRentBillClick()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_add_white"
@@ -113,3 +122,4 @@
 
     </LinearLayout>
 </FrameLayout>
+</layout>

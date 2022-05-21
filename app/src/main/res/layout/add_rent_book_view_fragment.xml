@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="AddRentBookViewViewModel"
+                  type="k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel"/>
+    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/home_background"
-        tools:context=".views.mainscreen.RentScreen.AddRentBookView">
+        tools:context=".views.mainscreen.rentscreen.add.AddRentBookView">
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -390,3 +395,4 @@
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
+</layout>

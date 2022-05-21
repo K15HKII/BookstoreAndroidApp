@@ -10,14 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.viewmodel.OncartViewViewModel;
+import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OncartViewPage extends Fragment {
+public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator {
 
+    private OncartViewFragmentBinding oncartViewFragmentBinding;
     private OncartViewViewModel mViewModel;
     RecyclerView rcvListOncart;
     OncartItemAdapter oncartItemAdapter;
@@ -27,9 +31,21 @@ public class OncartViewPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.OncartViewPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.oncart_view_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.oncart_view_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        oncartViewFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         rcvListOncart = view.findViewById(R.id.lvOnCartViewListItems);
         String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
@@ -44,6 +60,11 @@ public class OncartViewPage extends Fragment {
         rcvListOncart.setLayoutManager(linearLayoutManager);
         rcvListOncart.setAdapter(oncartItemAdapter);
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
     @Override

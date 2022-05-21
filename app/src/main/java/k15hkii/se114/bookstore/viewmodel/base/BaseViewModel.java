@@ -15,7 +15,11 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel {
 
     @Inject SchedulerProvider schedulerProvider;
 
-    @Getter private CompositeDisposable compositeDisposable;
+    public BaseViewModel(SchedulerProvider schedulerProvider) {
+        this.schedulerProvider = schedulerProvider;
+    }
+
+    @Getter private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     private WeakReference<N> navigator = new WeakReference<>(null);
 

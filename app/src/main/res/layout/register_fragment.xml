@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="RegisterViewModel"
+                  type="k15hkii.se114.bookstore.views.registerscreen.RegisterViewModel"/>
+    </data>
+
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -24,13 +30,14 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:orientation="horizontal">
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <android.widget.Button
-                            android:id="@+id/btnRegisterBackward"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:scaleX="0.7"
-                            android:scaleY="0.7"
-                            android:background="@drawable/ic_backward"/>
+                        <android.widget.Button
+                                android:id="@+id/btnRegisterBackward"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:onClick="@{()-> RegisterViewModel.onBackWardClick()}"
+                                android:background="@drawable/ic_backward"/>
 
                         <View
                                 android:layout_width="220dp"
@@ -74,7 +81,7 @@
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:text="@={LoginViewModel.user}"
+                            android:text="@={RegisterViewModel.user}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -91,6 +98,7 @@
                         android:padding="15dp"
                         android:layout_marginLeft="15dp"
                         android:textSize="18dp"
+                        testSource="@{RegisterViewModel.testSource}"
                         android:background="@drawable/edit_text_background"
                         android:inputType="text"
                         android:hint="giới tính">
@@ -117,7 +125,7 @@
                             android:layout_width="188dp"
                             android:layout_height="wrap_content"
                             android:inputType="date"
-                            android:text="@={LoginViewModel.user}"
+                            android:text="@={RegisterViewModel.dob}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -143,7 +151,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
-                            android:text="@={LoginViewModel.user}"
+                            android:text="@={RegisterViewModel.phonenum}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -173,7 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="@={LoginViewModel.user}"
+                        android:text="@={RegisterViewModel.email}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"
@@ -200,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:text="@={LoginViewModel.pass}"
+                        android:text="@={RegisterViewModel.pass}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"
@@ -228,7 +236,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:text="@={LoginViewModel.pass}"
+                        android:text="@={RegisterViewModel.passconfirm}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"
@@ -270,9 +278,11 @@
                     android:textSize="15dp"
                     android:text="Đăng kí"
                     android:textColor="@color/white"
+
                     android:layout_gravity="center"/>
         </LinearLayout>
         </ScrollView>
     </RelativeLayout>
 
 </FrameLayout>
+</layout>
