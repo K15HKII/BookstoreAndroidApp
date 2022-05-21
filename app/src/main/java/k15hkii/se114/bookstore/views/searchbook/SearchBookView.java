@@ -5,6 +5,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -96,7 +98,7 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
-
+        buildComponent.inject(this);
     }
 
     private void filter(String inputTxt){
@@ -117,4 +119,15 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openSearchViewResult() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class, null).addToBackStack(null).commit();
+    }
 }

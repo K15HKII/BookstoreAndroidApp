@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.mainscreen.rentscreen.add;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -53,4 +55,15 @@ public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openAddRentBookDetail() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, AddRentBookDetail.class, null).addToBackStack(null).commit();
+    }
 }

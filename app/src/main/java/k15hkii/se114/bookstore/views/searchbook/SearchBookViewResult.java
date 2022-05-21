@@ -78,4 +78,8 @@ public class SearchBookViewResult extends BaseFragment<SearchBookViewResultFragm
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

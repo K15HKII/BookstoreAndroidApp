@@ -55,7 +55,7 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         rentPageFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(RentPage.this);
+        viewModel.setNavigator(this);
 //        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
 //        loadingDialog.startLoadingDialog();
 //        Handler handler = new Handler();
@@ -147,21 +147,21 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
 
     @Override
     public void openNotificationView() {
-        FragmentManager fragmentManager = RentPage.this.getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openOnCartView() {
-        FragmentManager fragmentManager = RentPage.this.getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openAddRentBill() {
-        FragmentManager fragmentManager = RentPage.this.getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, AddRentBookView.class,null).addToBackStack(null).commit();
     }

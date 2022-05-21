@@ -29,6 +29,7 @@ import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
@@ -286,5 +287,4 @@ public class FragmentModule {
     public OtherNotificationViewModel provideOtherNotificationViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, OtherNotificationViewModel.class, () -> new OtherNotificationViewModel(schedulerProvider));
     }
-
 }

@@ -10,6 +10,10 @@ public class SearchBookViewResultViewModel extends BaseViewModel<SearchBookViewR
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
