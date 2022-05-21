@@ -9,6 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.databinding.AddBankAccountFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.BankGroup;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.BankItems;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.ExpandableBankAdapter;
@@ -19,8 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddBankPage extends Fragment {
+public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, AddBankPageViewModel> implements AddBankPageNavigator {
 
+    private AddBankAccountFragmentBinding addBankAccountFragmentBinding;
     private AddBankPageViewModel mViewModel;
     private ExpandableListView lvBank;
     private List<BankGroup> lsbankgroup;
@@ -32,9 +37,21 @@ public class AddBankPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.AddBankPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.add_bank_account_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_bank_account_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        addBankAccountFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         lvBank = view.findViewById(R.id.lvAddBankBank);
         lsbankitem = getListItems();
@@ -44,6 +61,11 @@ public class AddBankPage extends Fragment {
         lvBank.setAdapter(expandableBankAdapter);
 
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
     @Override
@@ -75,4 +97,8 @@ public class AddBankPage extends Fragment {
         return lsMap;
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

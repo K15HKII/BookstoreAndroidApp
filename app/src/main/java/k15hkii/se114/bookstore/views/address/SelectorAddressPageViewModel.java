@@ -10,6 +10,14 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
+    public void onOpenAddBankClick(){
+        getNavigator().openAddBank();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

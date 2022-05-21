@@ -28,14 +28,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.widget.Button
-                        android:id="@+id/btnBankChoiceBackward"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentLeft="true"
-                        android:scaleX="0.5"
-                        android:scaleY="0.5"
-                        android:background="@drawable/ic_backward"/>
+            <android.widget.Button
+                    android:id="@+id/btnBankChoiceBackward"
+                    android:onClick="@{()-> SelectorBankPageViewModel.onBackWardClick()}"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:background="@drawable/ic_backward"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,14 +48,16 @@
                     android:textColor="@color/black"
                     android:textSize="26dp" android:layout_centerInParent="true"/>
             <android.widget.Button
-                    android:id="@+id/btnBankChoiceBank"
+                    android:id="@+id/btnBankChoiceAddBank"
+                    android:onClick="@{()-> SelectorBankPageViewModel.onOpenAddBankClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/ic_delete_black"/>
+                    android:background="@drawable/ic_add_white"
+                    android:backgroundTint="@color/black"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 

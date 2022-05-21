@@ -14,9 +14,9 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentingViewPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentBooksRecycleView.RentBookItem;
-import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentBooksRecycleView.RentView;
-import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentBooksRecycleView.RentViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentBookItem;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentView;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,6 +9,10 @@ public class AddRentBookDetailViewModel extends BaseViewModel<AddRentBookDetailN
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

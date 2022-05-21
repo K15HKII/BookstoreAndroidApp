@@ -10,6 +10,10 @@ public class EditAddressPageViewModel extends BaseViewModel<EditAddressPageNavig
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

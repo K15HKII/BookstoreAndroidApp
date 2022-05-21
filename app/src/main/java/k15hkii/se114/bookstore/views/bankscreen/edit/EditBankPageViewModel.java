@@ -10,6 +10,10 @@ public class EditBankPageViewModel extends BaseViewModel<EditBankPageNavigator> 
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

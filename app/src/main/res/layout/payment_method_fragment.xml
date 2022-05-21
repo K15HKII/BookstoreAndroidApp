@@ -25,6 +25,7 @@
             android:id="@+id/toolbarSettingPage">
         <android.widget.Button
                 android:id="@+id/btnPaymentMethodBackward"
+                android:onClick="@{()-> PaymentMethodPageViewModel.onBackWardClick()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleX="0.55"

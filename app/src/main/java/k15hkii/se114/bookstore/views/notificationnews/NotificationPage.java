@@ -85,4 +85,8 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

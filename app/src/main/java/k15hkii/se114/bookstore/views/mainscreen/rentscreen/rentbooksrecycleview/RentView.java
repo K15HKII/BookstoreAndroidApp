@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentBooksRecycleView;
+package k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

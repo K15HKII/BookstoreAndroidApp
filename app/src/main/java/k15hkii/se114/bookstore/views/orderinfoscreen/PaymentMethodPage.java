@@ -54,4 +54,8 @@ public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="AddBankPageViewModel"
+                  type="k15hkii.se114.bookstore.views.bankscreen.add.AddBankPageViewModel"/>
+    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -71,7 +76,6 @@
                         android:paddingBottom="18dp"
                         android:paddingTop="18dp"
                         android:inputType="text"
-                        android:text="@={LoginViewModel.user}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="20dp"
                         android:ems="15"
@@ -101,7 +105,6 @@
                         android:paddingBottom="18dp"
                         android:paddingTop="18dp"
                         android:inputType="text"
-                        android:text="@={LoginViewModel.user}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="20dp"
                         android:ems="15"
@@ -143,7 +146,6 @@
                         android:paddingBottom="18dp"
                         android:paddingTop="18dp"
                         android:inputType="text"
-                        android:text="@={LoginViewModel.user}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="20dp"
                         android:ems="15"
@@ -187,3 +189,4 @@
     </LinearLayout>
     </ScrollView>
 </FrameLayout>
+</layout>

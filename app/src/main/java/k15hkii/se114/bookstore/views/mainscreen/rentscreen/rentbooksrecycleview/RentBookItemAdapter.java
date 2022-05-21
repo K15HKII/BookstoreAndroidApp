@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentBooksRecycleView;
+package k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview;
 
 import android.content.Context;
 import android.view.LayoutInflater;

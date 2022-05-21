@@ -10,6 +10,10 @@ public class NotificationPageViewModel extends BaseViewModel<NotificationPageNav
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

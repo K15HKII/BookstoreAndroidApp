@@ -9,6 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.databinding.EditBankAccountFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.BankGroup;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.BankItems;
 import k15hkii.se114.bookstore.views.bankscreen.BankExpandableListView.ExpandableBankAdapter;
@@ -19,12 +23,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EditBankPage extends Fragment {
+public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, EditBankPageViewModel> implements EditBankPageNavigator {
 
     public static EditBankPage newInstance() {
         return new EditBankPage();
     }
 
+    private EditBankAccountFragmentBinding editBankAccountFragmentBinding;
     private EditBankPageViewModel mViewModel;
     private ExpandableListView lvBank;
     private List<BankGroup> lsbankgroup;
@@ -32,9 +37,21 @@ public class EditBankPage extends Fragment {
     private ExpandableBankAdapter expandableBankAdapter;
 
     @Override
+    public int getBindingVariable() {
+        return BR.EditBankPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.edit_bank_account_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.edit_bank_account_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        editBankAccountFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         lvBank = view.findViewById(R.id.lvEditBankBank);
         lsbankitem = getListItems();
@@ -44,6 +61,11 @@ public class EditBankPage extends Fragment {
         lvBank.setAdapter(expandableBankAdapter);
 
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
     private Map<BankGroup, List<BankItems>> getListItems() {
@@ -75,4 +97,8 @@ public class EditBankPage extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

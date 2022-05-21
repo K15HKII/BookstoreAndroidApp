@@ -53,4 +53,8 @@ public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBin
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

@@ -10,6 +10,14 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
         super(schedulerProvider);
     }
 
+    public void onBackWardClick(){
+        getNavigator().BackWard();
+    }
+
+    public void onOpenAddBankClick(){
+        getNavigator().openAddBankAccount();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

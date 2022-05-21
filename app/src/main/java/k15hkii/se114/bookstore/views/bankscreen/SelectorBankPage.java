@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.bankscreen;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import k15hkii.se114.bookstore.databinding.SelectorBankFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,4 +79,15 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openAddBankAccount() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, AddBankPage.class, null).addToBackStack(null).commit();
+    }
 }

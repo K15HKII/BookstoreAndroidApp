@@ -90,4 +90,8 @@ public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, 
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

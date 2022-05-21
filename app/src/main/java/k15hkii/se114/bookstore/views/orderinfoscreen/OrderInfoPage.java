@@ -79,4 +79,8 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

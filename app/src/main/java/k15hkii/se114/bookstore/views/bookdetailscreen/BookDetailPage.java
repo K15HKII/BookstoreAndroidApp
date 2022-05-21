@@ -75,4 +75,8 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

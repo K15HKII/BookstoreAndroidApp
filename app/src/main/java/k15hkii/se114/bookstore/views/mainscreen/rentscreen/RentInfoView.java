@@ -53,4 +53,8 @@ public class RentInfoView extends BaseFragment<RentInfoViewFragmentBinding, Rent
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

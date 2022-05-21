@@ -37,7 +37,7 @@ public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_rent_book_view_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         addRentBookViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;

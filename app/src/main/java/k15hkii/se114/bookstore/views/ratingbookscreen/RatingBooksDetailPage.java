@@ -73,4 +73,8 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

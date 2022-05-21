@@ -28,6 +28,7 @@
                         android:orientation="horizontal">
                         <android.widget.Button
                                 android:id="@+id/btnOrderPageBackward"
+                                android:onClick="@{()-> BookDetailPageViewModel.onBackWardClick()}"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:scaleX="0.55"

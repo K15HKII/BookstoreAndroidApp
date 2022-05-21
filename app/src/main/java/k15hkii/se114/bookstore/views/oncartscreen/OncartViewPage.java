@@ -74,4 +74,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

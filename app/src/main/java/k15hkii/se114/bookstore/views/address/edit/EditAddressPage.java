@@ -91,4 +91,8 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void BackWard() {
+        getFragmentManager().popBackStack();
+    }
 }

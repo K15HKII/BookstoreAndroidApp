@@ -36,6 +36,7 @@
                     android:layout_height="wrap_content">
                 <android.widget.Button
                         android:id="@+id/btnRatingBookBackward"
+                        android:onClick="@{()-> RatingDetailBookViewViewModel.onBackWardClick()}"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:scaleX="0.5"
