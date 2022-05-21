@@ -5,14 +5,9 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseActivity;
 import lombok.AllArgsConstructor;
 
 @Module
+@AllArgsConstructor
 public class ActivityModule {
 
     private final BaseActivity<?, ?> activity;
-
-    public ActivityModule(BaseActivity<?, ?> activity) {
-        this.activity = activity;
-    }
-
-
 
 }

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable name="ShipmentArrivedViewPageViewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel"/>
-    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage">
+        tools:context=".views.mainscreen.ShipmentScreen.ShipmentArrivedViewPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,4 +30,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
-</layout>

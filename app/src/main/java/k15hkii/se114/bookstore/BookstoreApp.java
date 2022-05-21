@@ -13,9 +13,7 @@ public class BookstoreApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        appComponent = DaggerAppComponent.builder()
-                .application(this)
-                .build();
+        appComponent = DaggerAppComponent.builder().build();
 
         appComponent.inject(this);
     }

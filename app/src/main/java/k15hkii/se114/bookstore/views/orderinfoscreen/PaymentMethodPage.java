@@ -8,15 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.PaymentMethodFragmentBinding;
-import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.viewmodel.PaymentMethodViewModel;
 
-public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding, PaymentMethodViewModel> implements PaymentMethodPageNavigator {
+public class PaymentMethodPage extends Fragment {
 
-    private PaymentMethodFragmentBinding paymentMethodFragmentBinding;
     private PaymentMethodViewModel mViewModel;
 
     public static PaymentMethodPage newInstance() {
@@ -24,27 +20,10 @@ public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding
     }
 
     @Override
-    public int getBindingVariable() {
-        return BR.PaymentMethodPageViewModel;
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.payment_method_fragment;
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        paymentMethodFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(this);
+        View view = inflater.inflate(R.layout.payment_method_fragment, container, false);
         return view;
-    }
-
-    @Override
-    public void performDependencyInjection(FragmentComponent buildComponent) {
-        buildComponent.inject(this);
     }
 
     @Override

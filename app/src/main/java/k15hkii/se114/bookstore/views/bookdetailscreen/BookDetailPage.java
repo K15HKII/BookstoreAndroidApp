@@ -10,19 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.BookDetailViewFragmentBinding;
-import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.viewmodel.BookDetailViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, BookDetailPageViewModel> implements BookDetailPageNavigator {
+public class BookDetailPage extends Fragment {
 
-    private BookDetailViewFragmentBinding bookDetailViewFragmentBinding;
-    private BookDetailPageViewModel mViewModel;
+    private BookDetailViewViewModel mViewModel;
     private RecyclerView rcvCommentsList;
     private CommentViewAdapter commentViewAdapter;
 
@@ -31,21 +27,9 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     }
 
     @Override
-    public int getBindingVariable() {
-        return BR.BookDetailPageViewModel;
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.book_detail_view_fragment;
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        bookDetailViewFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(this);
+        View view = inflater.inflate(R.layout.book_detail_view_fragment, container, false);
 
         String[] names = {"tritran@gm.com","tritran12@gm.com","tritran45@gm.com"};
         List<Comment> arrayName = new ArrayList<Comment>();
@@ -64,14 +48,9 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     }
 
     @Override
-    public void performDependencyInjection(FragmentComponent buildComponent) {
-        buildComponent.inject(this);
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BookDetailPageViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(BookDetailViewViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable name="BookDetailPageViewModel"
-                  type="k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPageViewModel"/>
-    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -181,4 +176,3 @@
         </LinearLayout>
 
 </FrameLayout>
-</layout>

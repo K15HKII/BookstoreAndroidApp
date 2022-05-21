@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable name="AddRentBookDetailViewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel"/>
-    </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".views.mainscreen.rentscreen.add.AddRentBookDetail">
+        tools:context=".views.mainscreen.RentScreen.AddRentBookDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -190,4 +185,3 @@
     </LinearLayout>
 
 </FrameLayout>
-</layout>

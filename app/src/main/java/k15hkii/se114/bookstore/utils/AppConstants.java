@@ -12,8 +12,6 @@ public final class AppConstants {
 
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
 
-    public static final String PREF_NAME = "bookstore_pref";
-
     private AppConstants() {
         // This utility class is not publicly instantiable
     }

@@ -10,19 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.RatingDetailBooksViewFragmentBinding;
-import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.viewmodel.RatingBooksViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RatingBooksDetailPageViewModel> implements RatingBooksDetailPageNavigator {
+public class RatingBooksDetailPage extends Fragment {
 
-    private RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding;
-    private RatingBooksDetailPageViewModel mViewModel;
+    private RatingBooksViewViewModel mViewModel;
     private RecyclerView rcvRatingReport;
     private RatingReportAdapter ratingReportAdapter;
 
@@ -31,21 +27,9 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     }
 
     @Override
-    public int getBindingVariable() {
-        return BR.RatingDetailBookViewViewModel;
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.rating_detail_books_view_fragment;
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        ratingDetailBooksViewFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(this);
+        View view = inflater.inflate(R.layout.rating_detail_books_view_fragment, container, false);
         rcvRatingReport = view.findViewById(R.id.rcvRatingReportViewBooks);
 
         List<RatingReport> lsratingrp = new ArrayList<>();
@@ -62,14 +46,9 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     }
 
     @Override
-    public void performDependencyInjection(FragmentComponent buildComponent) {
-        buildComponent.inject(this);
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RatingBooksDetailPageViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RatingBooksViewViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -10,21 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.OrderInfoPageFragmentBinding;
-import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.viewmodel.OrderPageViewModel;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, OrderInfoPageViewModel> implements OrderInfoPageNavigator {
+public class OrderInfoPage extends Fragment {
 
-    private OrderInfoPageFragmentBinding orderInfoPageFragmentBinding;
-    private OrderInfoPageViewModel mViewModel;
+    private OrderPageViewModel mViewModel;
     private RecyclerView rcvListBooks;
     private OrderBooksViewAdapter orderBooksViewAdapter;
 
@@ -33,21 +29,9 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
     }
 
     @Override
-    public int getBindingVariable() {
-        return BR.OrderInfoPageViewModel;
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.order_info_page_fragment;
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        orderInfoPageFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(this);
+        View view = inflater.inflate(R.layout.order_info_page_fragment, container, false);
 
         String[] items = {"Dac nhan tam", "Nguoi phan xu", "Kteam"};
 
@@ -68,14 +52,9 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
     }
 
     @Override
-    public void performDependencyInjection(FragmentComponent buildComponent) {
-        buildComponent.inject(this);
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(OrderInfoPageViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(OrderPageViewModel.class);
         // TODO: Use the ViewModel
     }
 

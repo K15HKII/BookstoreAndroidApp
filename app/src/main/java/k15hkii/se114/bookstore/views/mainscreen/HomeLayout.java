@@ -12,11 +12,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.viewmodel.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeLayout extends Fragment {
 
-    private HomeLayoutViewModel mViewModel;
+    private HomeViewModel mViewModel;
 
     public static HomeLayout newInstance() {
         return new HomeLayout();
@@ -39,7 +40,7 @@ public class HomeLayout extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeLayoutViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
     }
 
