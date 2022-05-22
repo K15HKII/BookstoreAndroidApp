@@ -4,15 +4,22 @@ import android.app.Application;
 import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
-import k15hkii.se114.bookstore.data.remote.AppAuthentication;
+import k15hkii.se114.bookstore.BuildConfig;
+import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.RestHeader;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.inject.Singleton;
 
@@ -21,12 +28,15 @@ public class AppModule {
 
     @Provides
     @PreferenceInfo
-    String providePrefName() { return AppConstants.PREF_NAME;
-    }
+    String providePrefName() { return AppConstants.PREF_NAME; }
 
     @Provides
     @Singleton
-    Authentication provideAuthentication(AppAuthentication appAuthentication) { return appAuthentication; }
+    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) { return appPreferencesHelper; }
+
+    @Provides
+    @Singleton
+    Authentication provideAuthentication(Retrofit retrofit) { return retrofit.create(Authentication.class); }
 
     @Provides
     @Singleton
@@ -40,6 +50,21 @@ public class AppModule {
                 .registerTypeAdapter(RestHeader.ProtectedRestHeader.class, RestHeader.ProtectedRestHeaderSerializer.getInstance())
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
+    }
+
+    @Provides
+    @Singleton
+    Retrofit provideRetrofit(Gson gson) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+        return new Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL.endsWith("/") ? BuildConfig.BASE_URL : BuildConfig.BASE_URL + "/")
+                .client(client)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
     }
 
     @Provides

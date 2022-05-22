@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.di.component;
 
 import dagger.Component;
 import k15hkii.se114.bookstore.di.module.FragmentModule;
+import k15hkii.se114.bookstore.di.scope.FragmentScope;
 import k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoPage;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.delaccountrequest.DeleteAccount;
@@ -52,6 +53,7 @@ import k15hkii.se114.bookstore.views.registerscreen.Register;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookViewResult;
 
+@FragmentScope
 @Component(modules = {FragmentModule.class}, dependencies = AppComponent.class)
 public interface FragmentComponent {
 

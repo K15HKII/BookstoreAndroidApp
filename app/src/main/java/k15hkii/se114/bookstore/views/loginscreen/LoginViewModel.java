@@ -22,12 +22,13 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     private String user;
     private String pass;
 
-    private Authentication authentication;
+    private final Authentication authentication;
     public ObservableField<String> LoginMessage = new ObservableField<>();
     private List<UserAccount> lsUsers;
 
-    public LoginViewModel(SchedulerProvider schedulerProvider) {
+    public LoginViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
         super(schedulerProvider);
+        this.authentication = authentication;
     }
 
     public void setUser(String user) {
@@ -48,33 +49,30 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         return pass;
     }
 
-    @SuppressLint("CheckResult")
     public void login() {
-        Authentication authentication = null;
-
-        authentication.login(new LoginRequest(user, pass))
+        getCompositeDisposable().add(authentication.login(new LoginRequest(user, pass))
                 .doOnSuccess(response -> {
-
+                    System.out.println(response.toString());
                 })
                 .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
                 .subscribe(userAccount -> {
-
                     getNavigator().openHomeView();
                 }, throwable -> {
                     getNavigator().handleError(throwable);
-                });
+                }));
     }
 
     public void onServerLoginClick() {
-        getNavigator().openHomeView();
+        login();
+//        getNavigator().openHomeView();
     }
 
-    public void onForgotPasswordClick(){
+    public void onForgotPasswordClick() {
         getNavigator().openPasswordForget();
     }
 
-    public void onRegisterClick(){
+    public void onRegisterClick() {
         getNavigator().openRegister();
     }
 

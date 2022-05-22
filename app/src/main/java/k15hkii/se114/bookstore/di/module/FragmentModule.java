@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.di.module;
 
 import dagger.Module;
 import dagger.Provides;
+import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoViewViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPageViewModel;
@@ -67,8 +68,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public LoginViewModel provideLoginViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, LoginViewModel.class, () -> new LoginViewModel(schedulerProvider));
+    public LoginViewModel provideLoginViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
+        return createViewModel(fragment, LoginViewModel.class, () -> new LoginViewModel(schedulerProvider, authentication));
     }
 
     @Provides
