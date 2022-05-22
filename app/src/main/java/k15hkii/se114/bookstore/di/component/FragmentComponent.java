@@ -24,6 +24,10 @@ import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPage;
 import k15hkii.se114.bookstore.views.bankscreen.edit.EditBankPage;
 import k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordPage;
+import k15hkii.se114.bookstore.views.intro.firstpage.IntroFirstPage;
+import k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPage;
+import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPage;
+import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPage;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetail;
@@ -177,4 +181,14 @@ public interface FragmentComponent {
     //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.OTHERNOTIFICATION
 
     void inject(OtherNotification otherNotification);
+
+    //TODO: INTROPAGE
+
+    void inject(IntroFirstPage introFirstPage);
+
+    void inject(IntroSecondPage introsecondPage);
+
+    void inject(IntroThirdPage introThirdPage);
+
+    void inject(IntroFourthPage introFourthPage);
 }

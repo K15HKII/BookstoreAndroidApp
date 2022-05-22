@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="IntroFourthPageViewModel"
+                  type="k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPageViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
@@ -29,6 +34,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"
             android:id="@+id/textView3"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -64,6 +70,7 @@
                   app:layout_constraintVertical_bias="0.067" android:id="@+id/textView5"/>
         <android.widget.Button
                 android:id="@+id/btnIntroPage4"
+                android:onClick="@{()-> IntroFourthPageViewModel.openLoginClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="59dp"
                 android:layout_marginLeft="15dp"
@@ -88,3 +95,4 @@
                   app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

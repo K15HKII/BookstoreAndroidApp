@@ -25,6 +25,10 @@ import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPageViewModel;
 import k15hkii.se114.bookstore.views.bankscreen.edit.EditBankPageViewModel;
 import k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPageViewModel;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordViewModel;
+import k15hkii.se114.bookstore.views.intro.firstpage.IntroFirstPageViewModel;
+import k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPageViewModel;
+import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPageViewModel;
+import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPageViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
@@ -286,5 +290,25 @@ public class FragmentModule {
     @Provides
     public OtherNotificationViewModel provideOtherNotificationViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, OtherNotificationViewModel.class, () -> new OtherNotificationViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public IntroFirstPageViewModel provideIntroFirstPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, IntroFirstPageViewModel.class, () -> new IntroFirstPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public IntroSecondPageViewModel provideIntroSecondPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, IntroSecondPageViewModel.class, () -> new IntroSecondPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public IntroThirdPageViewModel provideIntroThirdPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, IntroThirdPageViewModel.class, () -> new IntroThirdPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public IntroFourthPageViewModel provideIntroFourthPageViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, IntroFourthPageViewModel.class, () -> new IntroFourthPageViewModel(schedulerProvider));
     }
 }

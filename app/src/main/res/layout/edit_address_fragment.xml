@@ -45,14 +45,14 @@
                         android:text="Địa chỉ"
                         android:textColor="@color/black"
                         android:textSize="24dp" android:layout_centerInParent="true"/>
-            <android.widget.Button
-                    android:id="@+id/btnEditAddressDelete"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:background="@drawable/ic_delete_black"/>
+                <android.widget.Button
+                        android:id="@+id/btnEditAddressDelete"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:background="@drawable/ic_delete_black"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <LinearLayout

@@ -1,9 +1,11 @@
 package k15hkii.se114.bookstore.views.mainscreen.page.homepage;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.*;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -56,6 +58,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
         View view = super.onCreateView(inflater, container, savedInstanceState);
         homePageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(HomePage.this);
+
         return view;
     }
 

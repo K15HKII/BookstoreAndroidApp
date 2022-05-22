@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.searchbook;
 
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;

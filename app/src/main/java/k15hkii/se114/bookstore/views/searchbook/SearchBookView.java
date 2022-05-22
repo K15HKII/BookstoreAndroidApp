@@ -108,7 +108,6 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
                 filteredLs.add(item);
             }
         }
-
         recentSearchAdapter.filterlist(filteredLs);
     }
 
@@ -122,6 +121,7 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+        closekeyboard();
     }
 
     @Override
@@ -129,5 +129,14 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class, null).addToBackStack(null).commit();
+        closekeyboard();
+    }
+
+    private void closekeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if(view != null){
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.views.intro.thirdpage;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -8,10 +10,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.IntroThirdPageFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPage;
+import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPage;
 
-public class IntroThirdPage extends Fragment {
+public class IntroThirdPage extends BaseFragment<IntroThirdPageFragmentBinding, IntroThirdPageViewModel> implements IntroThirdPageNavigator {
 
+    private IntroThirdPageFragmentBinding introThirdPageFragmentBinding;
     private IntroThirdPageViewModel mViewModel;
 
     public static IntroThirdPage newInstance() {
@@ -19,10 +28,27 @@ public class IntroThirdPage extends Fragment {
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.IntroThirdPageViewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.intro_third_page_fragment;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.intro_third_page_fragment, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        introThirdPageFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
         return view;
+    }
+
+    @Override
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
     @Override
@@ -32,4 +58,10 @@ public class IntroThirdPage extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void openFinalPage() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, IntroFourthPage.class, null).addToBackStack(null).commit();
+    }
 }
