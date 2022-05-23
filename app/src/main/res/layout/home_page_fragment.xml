@@ -190,7 +190,7 @@
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="410dp"
-                android:name="k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.alltopics.AllTopicPage"
+                android:name="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.alltopics.AllTopicPage"
                 android:id="@+id/fragmentContainerHomeView"/>
 
     </LinearLayout>

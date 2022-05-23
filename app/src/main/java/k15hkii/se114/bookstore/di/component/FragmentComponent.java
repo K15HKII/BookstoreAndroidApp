@@ -30,6 +30,7 @@ import k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPage;
 import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPage;
 import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPage;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookView;
@@ -193,4 +194,8 @@ public interface FragmentComponent {
     void inject(IntroThirdPage introThirdPage);
 
     void inject(IntroFourthPage introFourthPage);
+
+    //TODO: MAINSCREEN.ALLBOOKSPAGE
+
+    void inject(AllBooksPage allBooksPage);
 }

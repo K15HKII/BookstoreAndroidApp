@@ -6,4 +6,7 @@ public interface AccountInfoNavigator extends INavigator {
 
     void BackWard();
 
+    void openChangeNameDialog();
+
+    void openChangePasswordDialog();
 }

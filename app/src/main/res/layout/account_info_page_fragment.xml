@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="AccountInfoViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoViewViewModel"/>
     </data>
 <FrameLayout
@@ -34,7 +34,7 @@
                     app:layout_constraintVertical_bias="0.0">
             <android.widget.Button
                     android:id="@+id/btnAccountInfoBackward"
-                    android:onClick="@{()-> AccountInfoViewModel.onBackWard()}"
+                    android:onClick="@{()-> viewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
@@ -69,6 +69,7 @@
                         android:layout_marginBottom="25dp"/>
                 <LinearLayout
                         android:id="@+id/btnAccountInfoDetailName"
+                        android:onClick="@{()-> viewModel.openChangeNameDialog()}"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -392,6 +393,7 @@
 
                 <LinearLayout
                         android:id="@+id/btnAccountInfoPasswordChange"
+                        android:onClick="@{()-> viewModel.openChangePasswordDialog()}"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"

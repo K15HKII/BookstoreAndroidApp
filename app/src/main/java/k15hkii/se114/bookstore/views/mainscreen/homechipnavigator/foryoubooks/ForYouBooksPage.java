@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.popularbooks;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.foryoubooks;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -11,26 +11,26 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopularBooksPage extends Fragment {
+public class ForYouBooksPage extends Fragment {
 
-    private PopularBooksViewModel mViewModel;
+    private ForYouBooksViewModel mViewModel;
     private RecyclerView rcvListBooks;
     private BookViewAdapter bookViewAdapter;
 
-    public static PopularBooksPage newInstance() {
-        return new PopularBooksPage();
+    public static ForYouBooksPage newInstance() {
+        return new ForYouBooksPage();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.popular_books_fragment, container, false);
+        View view = inflater.inflate(R.layout.for_you_books_fragment, container, false);
 
         String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
 
@@ -39,7 +39,7 @@ public class PopularBooksPage extends Fragment {
             arrayName.add(new BookView(names[i]));
         }
 
-        rcvListBooks = view.findViewById(R.id.lvHomePopularBook);
+        rcvListBooks = view.findViewById(R.id.lvHomeForYouBooks);
         bookViewAdapter = new BookViewAdapter(getActivity(),arrayName);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
@@ -53,7 +53,7 @@ public class PopularBooksPage extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PopularBooksViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ForYouBooksViewModel.class);
         // TODO: Use the ViewModel
     }
 

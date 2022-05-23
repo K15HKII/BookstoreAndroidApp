@@ -1,7 +1,5 @@
 package k15hkii.se114.bookstore.views.searchbook;
 
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -16,8 +14,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SearchBookViewResultFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

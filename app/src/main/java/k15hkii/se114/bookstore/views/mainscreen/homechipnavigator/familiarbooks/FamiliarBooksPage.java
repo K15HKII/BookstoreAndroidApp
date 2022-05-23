@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.familiarbooks;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.familiarbooks;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

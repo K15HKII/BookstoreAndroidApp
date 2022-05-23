@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.alltopics;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.alltopics;
 
 import android.view.LayoutInflater;
 import android.view.View;

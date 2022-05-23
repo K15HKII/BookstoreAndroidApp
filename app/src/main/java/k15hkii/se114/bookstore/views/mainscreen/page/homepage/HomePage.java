@@ -1,11 +1,9 @@
 package k15hkii.se114.bookstore.views.mainscreen.page.homepage;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.*;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -21,11 +19,11 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
 import com.google.android.material.chip.Chip;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.allbooks.AllBooksPage;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.alltopics.AllTopicPage;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.familiarbooks.FamiliarBooksPage;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.foryoubooks.ForYouBooksPage;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.popularbooks.PopularBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.alltopics.AllTopicPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.popularbooks.PopularBooksPage;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 

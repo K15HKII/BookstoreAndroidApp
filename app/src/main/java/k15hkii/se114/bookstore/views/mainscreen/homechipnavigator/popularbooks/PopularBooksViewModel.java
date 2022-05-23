@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.popularbooks;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.popularbooks;
 
 import androidx.lifecycle.ViewModel;
 

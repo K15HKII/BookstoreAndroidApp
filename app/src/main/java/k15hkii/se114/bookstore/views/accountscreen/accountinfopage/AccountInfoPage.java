@@ -19,17 +19,13 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 
 public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding, AccountInfoViewViewModel> implements AccountInfoNavigator {
 
-    private AccountInfoPageFragmentBinding accountInfoPageFragmentBinding;
-    private AccountInfoViewViewModel mViewModel;
-    private LinearLayout btnChangeName, btnPasswordChange;
-
     public static AccountInfoPage newInstance() {
         return new AccountInfoPage();
     }
 
     @Override
     public int getBindingVariable() {
-        return BR.AccountInfoViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -41,25 +37,8 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        accountInfoPageFragmentBinding = getViewDataBinding();
+        AccountInfoPageFragmentBinding accountInfoPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-        btnChangeName = view.findViewById(R.id.btnAccountInfoDetailName);
-        btnPasswordChange = view.findViewById(R.id.btnAccountInfoPasswordChange);
-
-        btnChangeName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openChangeName(Gravity.CENTER);
-            }
-        });
-
-        btnPasswordChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openChangePassword(Gravity.CENTER);
-            }
-        });
 
         return view;
     }
@@ -67,13 +46,6 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AccountInfoViewViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     private void openChangeName(int gravity){
@@ -154,5 +126,15 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openChangeNameDialog() {
+        openChangeName(Gravity.CENTER);
+    }
+
+    @Override
+    public void openChangePasswordDialog() {
+        openChangePassword(Gravity.CENTER);
     }
 }

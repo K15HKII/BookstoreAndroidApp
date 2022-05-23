@@ -5,8 +5,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ public final class BindingUtils {
     private BindingUtils() {
     }
 
+    //Binding adapter recycleview
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
     public static void bindSource(RecyclerView view, List<BookView> source) {
@@ -26,6 +27,7 @@ public final class BindingUtils {
         adapter.notifyDataSetChanged();
     }
 
+    //Binding Adapter spinner
     @BindingAdapter("testSource")
     public static void bindSource(Spinner spinner, List<String> source) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), android.R.layout.simple_spinner_item);

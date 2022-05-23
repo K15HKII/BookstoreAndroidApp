@@ -8,27 +8,22 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.FavoritePageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookView;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FavoritePage extends BaseFragment<FavoritePageFragmentBinding, FavoritePageViewModel> implements FavoritePageNavigator {
 

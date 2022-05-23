@@ -1,7 +1,8 @@
-package k15hkii.se114.bookstore.views.mainscreen.page.favoritepage;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks;
 
 import androidx.databinding.Observable;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
@@ -9,37 +10,21 @@ import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
 import java.util.Arrays;
 import java.util.List;
 
-public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> implements Observable {
+public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookView>> favouriteItemsLiveData = new MutableLiveData<>(
+    private final MutableLiveData<List<BookView>> AllBooksItemsLiveData = new MutableLiveData<>(
             Arrays.asList(new BookView("Sách Dark Nhân Tâm"),
                     new BookView("Sách Kong Nghệ"),
                     new BookView("Dank Nghiệp"),
                     new BookView("Giải tick AKA Giải thích"))
     );
 
-    public List<BookView> getFavouriteItems() {
-        return favouriteItemsLiveData.getValue();
+    public List<BookView> getAllBooksItems() {
+        return AllBooksItemsLiveData.getValue();
     }
 
-    public FavoritePageViewModel(SchedulerProvider schedulerProvider) {
+    public AllBooksViewViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
-    }
-
-    public void onSearchBarClick(){
-        getNavigator().openSearchView();
-    }
-
-    public void onNotificationClick(){
-        getNavigator().openNotificationView();
-    }
-
-    public void onOnCartClick(){
-        getNavigator().openOnCartView();
-    }
-
-    public void onFilterDialog(){
-        getNavigator().openFilterDialog();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation;
+package k15hkii.se114.bookstore.views.mainscreen.homechipnavigator;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

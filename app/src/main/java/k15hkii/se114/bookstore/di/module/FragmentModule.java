@@ -33,10 +33,10 @@ import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPageViewModel;
 import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPageViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
-import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
@@ -314,6 +314,11 @@ public class FragmentModule {
     @Provides
     public IntroFourthPageViewModel provideIntroFourthPageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, IntroFourthPageViewModel.class, () -> new IntroFourthPageViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider));
     }
     //endregion
 

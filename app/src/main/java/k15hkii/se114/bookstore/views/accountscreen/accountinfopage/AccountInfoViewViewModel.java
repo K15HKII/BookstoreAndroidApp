@@ -10,8 +10,16 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         super(schedulerProvider);
     }
 
-    public void onBackWard(){
+    public void onBackWardClick(){
         getNavigator().BackWard();
+    }
+
+    public void openChangeNameDialog(){
+        getNavigator().openChangeNameDialog();
+    }
+
+    public void openChangePasswordDialog(){
+        getNavigator().openChangePasswordDialog();
     }
 
     @Override
