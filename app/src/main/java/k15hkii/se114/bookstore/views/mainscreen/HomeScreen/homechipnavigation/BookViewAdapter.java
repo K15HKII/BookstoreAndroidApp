@@ -11,17 +11,28 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookViewAdapter extends ListAdapter<BookView, BookViewAdapter.BookViewHolder> {
     private Context context;
 
-    BookViewAdapter(List<BookView> lsBookView) {
-        super(lsBookView);
+    /**
+     *
+     * Deprecated constructor: use {@link #BookViewAdapter(Context)} with DI instead
+     *
+     * @param context
+     * @param source
+     */
+    @Deprecated
+    public BookViewAdapter(Context context, List<BookView> source) {
+        super(source);
+        this.context = context;
     }
 
-    public BookViewAdapter(Context context, List<BookView> lsBookView) {
-        super(lsBookView);
+    public BookViewAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

@@ -26,7 +26,7 @@ public class ListDataNotificationAdapter extends ListAdapter<ListDataNotificatio
 
     @Override
     public int getItemViewType(int position) {
-        return super.data.get(position).getType();
+        return super.source.get(position).getType();
     }
 
     @NonNull

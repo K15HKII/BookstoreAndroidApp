@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.di.component;
 
 import android.app.Application;
+import android.content.Context;
 import dagger.BindsInstance;
 import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
@@ -19,6 +20,8 @@ public interface AppComponent {
     SchedulerProvider getSchedulerProvider();
 
     Authentication getAuthentication();
+
+    Context getContext();
 
     @Component.Builder
     interface Builder {

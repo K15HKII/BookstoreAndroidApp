@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.di.module;
 
+import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.remote.Authentication;
@@ -32,6 +33,7 @@ import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPageViewModel;
 import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPageViewModel;
 import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.mainscreen.HomeScreen.homechipnavigation.BookViewAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookView;
@@ -67,6 +69,7 @@ public class FragmentModule {
         this.fragment = fragment;
     }
 
+    //region ViewModels
     @Provides
     public LoginViewModel provideLoginViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
         return createViewModel(fragment, LoginViewModel.class, () -> new LoginViewModel(schedulerProvider, authentication));
@@ -312,4 +315,13 @@ public class FragmentModule {
     public IntroFourthPageViewModel provideIntroFourthPageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, IntroFourthPageViewModel.class, () -> new IntroFourthPageViewModel(schedulerProvider));
     }
+    //endregion
+
+    //region Adapters
+    @Provides
+    public BookViewAdapter provideBookViewAdapter(Context context) {
+        return new BookViewAdapter(context);
+    }
+    //endregion
+
 }

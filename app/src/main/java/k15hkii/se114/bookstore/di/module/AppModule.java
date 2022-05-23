@@ -55,16 +55,17 @@ public class AppModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit(Gson gson) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL.endsWith("/") ? BuildConfig.BASE_URL : BuildConfig.BASE_URL + "/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson));
+
+        /*HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        builder.client(client);*/
 
-        return new Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL.endsWith("/") ? BuildConfig.BASE_URL : BuildConfig.BASE_URL + "/")
-                .client(client)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+        return builder.build();
     }
 
     @Provides

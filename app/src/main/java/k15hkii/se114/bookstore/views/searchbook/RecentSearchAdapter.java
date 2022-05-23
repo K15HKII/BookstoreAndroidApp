@@ -45,7 +45,7 @@ public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchA
     }
 
     public void filterlist(ArrayList<RecentSearch> filterls){
-        this.data = filterls;
+        this.source = filterls;
         notifyDataSetChanged();
     }
 }
