@@ -143,21 +143,36 @@ public class FavoritePage extends BaseFragment<FavoritePageFragmentBinding, Favo
     public void openSearchView() {
         FragmentManager fragmentManager = FavoritePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openNotificationView() {
         FragmentManager fragmentManager = FavoritePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openOnCartView() {
         FragmentManager fragmentManager = FavoritePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
     }
 
     @Override

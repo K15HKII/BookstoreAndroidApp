@@ -53,7 +53,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         loginFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(Login.this);
+        viewModel.setNavigator(this);
         return view;
     }
 
@@ -76,20 +76,35 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     public void openHomeView() {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, HomeLayout.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, HomeLayout.class,null).commit();
     }
 
     @Override
     public void openPasswordForget() {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, ForgotPasswordPage.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, ForgotPasswordPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openRegister() {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, Register.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, Register.class,null).addToBackStack(null).commit();
     }
 }
