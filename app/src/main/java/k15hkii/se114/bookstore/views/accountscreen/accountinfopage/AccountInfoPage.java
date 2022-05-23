@@ -66,7 +66,7 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
-
+        buildComponent.inject(this);
     }
 
     @Override

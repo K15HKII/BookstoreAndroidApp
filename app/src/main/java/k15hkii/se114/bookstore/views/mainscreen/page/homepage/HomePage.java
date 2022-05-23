@@ -123,21 +123,36 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     public void openSearchView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openNotificationView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
     public void openOnCartView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
     }
 
     @Override
@@ -149,34 +164,59 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     public void openAllTopicView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerHomeView, AllTopicPage.class,null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, AllTopicPage.class,null).commit();
     }
 
     @Override
     public void openAllBooksView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerHomeView, AllBooksPage.class,null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, AllBooksPage.class,null).commit();
     }
 
     @Override
     public void openPoppularBooksView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerHomeView, PopularBooksPage.class,null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, PopularBooksPage.class,null).commit();
     }
 
     @Override
     public void openFamiliarBooksView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerHomeView, FamiliarBooksPage.class,null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, FamiliarBooksPage.class,null).commit();
     }
 
     @Override
     public void openForYouBooksView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerHomeView, ForYouBooksPage.class,null).commit();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, ForYouBooksPage.class,null).commit();
     }
 }

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Tên App"
             android:gravity="center"
-            android:textSize="35dp"
+            android:textSize="35sp"
             android:fontFamily="@font/lato_bold"
             android:textColor="@color/btn_blue"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,6 @@
                   app:layout_constraintVertical_bias="0.067" android:id="@+id/textView5"/>
         <android.widget.Button
                 android:id="@+id/btnIntroPage2"
-                android:onClick="@{()-> IntroSecondPageViewModel.openNextPageClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="59dp"
                 android:layout_marginLeft="15dp"
