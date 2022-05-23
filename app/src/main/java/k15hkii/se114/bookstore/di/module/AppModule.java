@@ -16,8 +16,6 @@ import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
