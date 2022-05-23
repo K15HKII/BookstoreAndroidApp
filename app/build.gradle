@@ -18,12 +18,12 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"abc\"")
+            buildConfigField("String", "BASE_URL", "\"https://upbeat-resolver-316305.df.r.appspot.com/\n\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"abc\"")
+            buildConfigField("String", "BASE_URL", "\"https://upbeat-resolver-316305.df.r.appspot.com/\n\"")
         }
     }
     compileOptions {
