@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="RatingBookViewPageViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel"/>
     </data>
 <FrameLayout
@@ -30,7 +30,8 @@
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvRatingOrderView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    source="@{viewModel.ratingBookItems}"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

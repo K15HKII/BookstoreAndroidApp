@@ -10,51 +10,58 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.PopularBooksFragmentBinding;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopularBooksPage extends Fragment {
-
-    private PopularBooksViewModel mViewModel;
-    private RecyclerView rcvListBooks;
-    private BookViewAdapter bookViewAdapter;
+public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, PopularBooksViewModel> implements PopularBooksPageNavigator {
+    @Inject
+    protected BookViewAdapter bookViewAdapter;
 
     public static PopularBooksPage newInstance() {
         return new PopularBooksPage();
     }
 
     @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+    @Override
+    public int getLayoutId() {
+        return R.layout.popular_books_fragment;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.popular_books_fragment, container, false);
-
-        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
-
-        List<BookView> arrayName = new ArrayList<BookView>();
-        for(int i=0;i<names.length;i++){
-            arrayName.add(new BookView(names[i]));
-        }
-
-        rcvListBooks = view.findViewById(R.id.lvHomePopularBook);
-        bookViewAdapter = new BookViewAdapter(getActivity(),arrayName);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        PopularBooksFragmentBinding popularBooksFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        rcvListBooks.setLayoutManager(gridLayoutManager);
-
-        rcvListBooks.setAdapter(bookViewAdapter);
+        popularBooksFragmentBinding.lvHomePopularBook.setLayoutManager(gridLayoutManager);
+        popularBooksFragmentBinding.lvHomePopularBook.setAdapter(bookViewAdapter);
 
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PopularBooksViewModel.class);
-        // TODO: Use the ViewModel
+    public void performDependencyInjection(FragmentComponent buildComponent) {
+        buildComponent.inject(this);
     }
 
 }

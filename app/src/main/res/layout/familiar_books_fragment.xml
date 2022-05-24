@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage">
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksViewModel"/>
+    </data>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:background="@drawable/home_background"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lvHomeFamiliarBook"
+    <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            tools:context=".views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage">
 
-</FrameLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:background="@drawable/home_background"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvHomeFamiliarBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                source="@{viewModel.familiarBooksItems}"/>
+
+    </FrameLayout>
+
+</layout>

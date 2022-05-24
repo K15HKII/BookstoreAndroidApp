@@ -7,6 +7,11 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookView;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderView;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderViewAdapter;
+import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
+import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
+import kotlin.jvm.JvmOverloads;
 
 import java.util.List;
 
@@ -20,6 +25,16 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void bindSource(RecyclerView view, List<BookView> source) {
         BookViewAdapter adapter = (BookViewAdapter) view.getAdapter();
+        if (adapter == null)
+            return;
+        adapter.getSource().clear();
+        adapter.getSource().addAll(source);
+        adapter.notifyDataSetChanged();
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    @BindingAdapter({"source"})
+    public static void bindSource1(RecyclerView view, List<OrderView> source) {
+        OrderViewAdapter adapter = (OrderViewAdapter) view.getAdapter();
         if (adapter == null)
             return;
         adapter.getSource().clear();

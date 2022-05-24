@@ -11,22 +11,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShipmentArrivedViewFragmentBinding;
+import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
+import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderView;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFragmentBinding, ShipmentArrivedViewPageViewModel> implements ShipmentArrivedViewPageNavigator {
 
-    private ShipmentArrivedViewFragmentBinding shipmentArrivedViewFragmentBinding;
-    private ShipmentArrivedViewPageViewModel mViewModel;
-    private RecyclerView rcvOrderView;
-    private OrderViewAdapter orderViewAdapter;
+    @Inject
+    protected OrderViewAdapter orderViewAdapter;
 
     public static ShipmentArrivedViewPage newInstance() {
         return new ShipmentArrivedViewPage();
@@ -34,7 +36,7 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
 
     @Override
     public int getBindingVariable() {
-        return BR.ShipmentArrivedViewPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -46,15 +48,12 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        shipmentArrivedViewFragmentBinding = getViewDataBinding();
+        ShipmentArrivedViewFragmentBinding shipmentArrivedViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvOrderView = view.findViewById(R.id.rcvArrivedOrderView);
-        orderViewAdapter = new OrderViewAdapter(getListBook());
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShipmentArrivedViewPage.this.getContext());
-        rcvOrderView.setLayoutManager(linearLayoutManager);
-        rcvOrderView.setAdapter(orderViewAdapter);
+        shipmentArrivedViewFragmentBinding.rcvArrivedOrderView.setLayoutManager(linearLayoutManager);
+        shipmentArrivedViewFragmentBinding.rcvArrivedOrderView.setAdapter(orderViewAdapter);
         return view;
     }
 
@@ -63,28 +62,5 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
         buildComponent.inject(this);
     }
 
-    private List<OrderView> getListBook() {
-        List<OrderView> lsOrder = new ArrayList<>();
-
-        List<OrderItem> lsBook1 = new ArrayList<>();
-        lsBook1.add(new OrderItem("Dac Nhan Tam"));
-        lsBook1.add(new OrderItem("hello"));
-
-
-        List<OrderItem> lsBook2 = new ArrayList<>();
-        lsBook2.add(new OrderItem("Dac Nhan Tam"));
-
-        lsOrder.add(new OrderView("200.000d","nothing",lsBook1));
-        lsOrder.add(new OrderView("120.000d","nothing",lsBook2));
-
-        return lsOrder;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShipmentArrivedViewPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }
