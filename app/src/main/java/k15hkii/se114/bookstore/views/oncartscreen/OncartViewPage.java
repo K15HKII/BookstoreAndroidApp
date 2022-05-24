@@ -15,16 +15,15 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator {
-
-    private OncartViewFragmentBinding oncartViewFragmentBinding;
-    private OncartViewViewModel mViewModel;
-    RecyclerView rcvListOncart;
-    OncartItemAdapter oncartItemAdapter;
+    @Inject
+    protected OncartItemAdapter oncartItemAdapter;
 
     public static OncartViewPage newInstance() {
         return new OncartViewPage();
@@ -32,7 +31,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
     @Override
     public int getBindingVariable() {
-        return BR.OncartViewPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -41,37 +40,28 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        oncartViewFragmentBinding = getViewDataBinding();
+        OncartViewFragmentBinding oncartViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvListOncart = view.findViewById(R.id.lvOnCartViewListItems);
         String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
 
-        List<OncartItem> arrayName = new ArrayList<OncartItem>();
-        for(int i=0;i<names.length;i++){
-            arrayName.add(new OncartItem(names[i]));
-        }
-
-        oncartItemAdapter = new OncartItemAdapter(getActivity(),arrayName);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        rcvListOncart.setLayoutManager(linearLayoutManager);
-        rcvListOncart.setAdapter(oncartItemAdapter);
+        oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
+        oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
         return view;
     }
 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(OncartViewViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

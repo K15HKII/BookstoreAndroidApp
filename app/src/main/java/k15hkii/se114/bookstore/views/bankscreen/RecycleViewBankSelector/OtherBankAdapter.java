@@ -15,6 +15,7 @@ import k15hkii.se114.bookstore.views.bankscreen.BankAccount;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OtherBankAdapter extends ListAdapter<BankAccount, OtherBankAdapter.OtherBankViewHolder> {
@@ -23,6 +24,11 @@ public class OtherBankAdapter extends ListAdapter<BankAccount, OtherBankAdapter.
 
     public OtherBankAdapter(List<BankAccount> data, Context context) {
         super(data);
+        this.context = context;
+    }
+
+    public OtherBankAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

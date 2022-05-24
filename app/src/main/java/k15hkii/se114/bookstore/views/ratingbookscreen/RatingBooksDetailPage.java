@@ -15,16 +15,16 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RatingDetailBooksViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RatingBooksDetailPageViewModel> implements RatingBooksDetailPageNavigator {
 
-    private RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding;
-    private RatingBooksDetailPageViewModel mViewModel;
-    private RecyclerView rcvRatingReport;
-    private RatingReportAdapter ratingReportAdapter;
+    @Inject
+    protected RatingReportAdapter ratingReportAdapter;
 
     public static RatingBooksDetailPage newInstance() {
         return new RatingBooksDetailPage();
@@ -32,7 +32,7 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
 
     @Override
     public int getBindingVariable() {
-        return BR.RatingDetailBookViewViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -41,22 +41,25 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        ratingDetailBooksViewFragmentBinding = getViewDataBinding();
+        RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-        rcvRatingReport = view.findViewById(R.id.rcvRatingReportViewBooks);
 
         List<RatingReport> lsratingrp = new ArrayList<>();
         lsratingrp.add(new RatingReport("Sách công nghệ"));
         lsratingrp.add(new RatingReport("Đắc Nhân Tâm"));
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RatingBooksDetailPage.this.getContext(),RecyclerView.VERTICAL,false);
-        RatingReportAdapter ratingReportAdapter = new RatingReportAdapter(lsratingrp, RatingBooksDetailPage.this.getContext());
 
-        rcvRatingReport.setLayoutManager(linearLayoutManager);
-        rcvRatingReport.setAdapter(ratingReportAdapter);
+        ratingDetailBooksViewFragmentBinding.rcvRatingReportViewBooks.setLayoutManager(linearLayoutManager);
+        ratingDetailBooksViewFragmentBinding.rcvRatingReportViewBooks.setAdapter(ratingReportAdapter);
 
         return view;
     }
@@ -64,13 +67,6 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RatingBooksDetailPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

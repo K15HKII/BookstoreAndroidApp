@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OncartItemAdapter extends ListAdapter<OncartItem,OncartItemAdapter.oncart_itemHolder> {
@@ -19,6 +20,11 @@ public class OncartItemAdapter extends ListAdapter<OncartItem,OncartItemAdapter.
 
     public OncartItemAdapter(Context context, List<OncartItem> lsOncart) {
         super(lsOncart);
+        this.context = context;
+    }
+
+    public OncartItemAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

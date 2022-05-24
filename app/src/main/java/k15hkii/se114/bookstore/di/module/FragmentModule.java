@@ -19,13 +19,17 @@ import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetti
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel;
+import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherViewAdapter;
+import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.views.address.SelectorAddressPageViewModel;
 import k15hkii.se114.bookstore.views.address.add.AddAddressPageViewModel;
 import k15hkii.se114.bookstore.views.address.edit.EditAddressPageViewModel;
+import k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
 import k15hkii.se114.bookstore.views.bankscreen.SelectorBankPageViewModel;
 import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPageViewModel;
 import k15hkii.se114.bookstore.views.bankscreen.edit.EditBankPageViewModel;
 import k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPageViewModel;
+import k15hkii.se114.bookstore.views.bookdetailscreen.CommentViewAdapter;
 import k15hkii.se114.bookstore.views.forgotpassscreen.ForgotPasswordViewModel;
 import k15hkii.se114.bookstore.views.intro.firstpage.IntroFirstPageViewModel;
 import k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPageViewModel;
@@ -43,6 +47,9 @@ import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetail
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
@@ -54,11 +61,15 @@ import k15hkii.se114.bookstore.views.mainscreen.page.homepage.HomePageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.page.shippingpage.ShippingPageViewModel;
 import k15hkii.se114.bookstore.views.notificationnews.NotificationPageViewModel;
+import k15hkii.se114.bookstore.views.oncartscreen.OncartItemAdapter;
 import k15hkii.se114.bookstore.views.oncartscreen.OncartViewViewModel;
 import k15hkii.se114.bookstore.views.orderinfoscreen.OrderInfoPageViewModel;
 import k15hkii.se114.bookstore.views.orderinfoscreen.PaymentMethodViewModel;
+import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.views.ratingbookscreen.RatingBooksDetailPageViewModel;
+import k15hkii.se114.bookstore.views.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.views.registerscreen.RegisterViewModel;
+import k15hkii.se114.bookstore.views.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookViewViewModel;
 
@@ -347,10 +358,66 @@ public class FragmentModule {
     public BookViewAdapter provideBookViewAdapter(Context context) {
         return new BookViewAdapter(context);
     }
+
     @Provides
-    public OrderViewAdapter orderBooksViewAdapter(Context context) {
+    public OrderViewAdapter orderViewAdapter(Context context) {
         return new OrderViewAdapter(context);
     }
+
+    @Provides
+    public OrderBooksViewAdapter orderBooksViewAdapter(Context context) {
+        return new OrderBooksViewAdapter(context);
+    }
+
+    @Provides
+    public VoucherViewAdapter voucherViewAdapter(Context context) {
+        return new VoucherViewAdapter(context);
+    }
+
+    @Provides
+    public OtherAddressAdapter otherAddressAdapter(Context context) {
+        return new OtherAddressAdapter(context);
+    }
+
+    @Provides
+    public OtherBankAdapter otherBankAdapter(Context context) {
+        return new OtherBankAdapter(context);
+    }
+
+    @Provides
+    public CommentViewAdapter commentViewAdapter(Context context) {
+        return new CommentViewAdapter(context);
+    }
+
+    @Provides
+    public RentViewAdapter rentViewAdapter(Context context) {
+        return new RentViewAdapter(context);
+    }
+
+    @Provides
+    public RentBookItemAdapter rentBookItemAdapter(Context context) {
+        return new RentBookItemAdapter(context);
+    }
+    @Provides
+    public OrderItemAdapter orderItemAdapter(Context context) {
+        return new OrderItemAdapter(context);
+    }
+
+    @Provides
+    public OncartItemAdapter oncartItemAdapter(Context context) {
+        return new OncartItemAdapter(context);
+    }
+
+    @Provides
+    public RatingReportAdapter ratingReportAdapter(Context context) {
+        return new RatingReportAdapter(context);
+    }
+
+    @Provides
+    public RecentSearchAdapter recentSearchAdapter(Context context) {
+        return new RecentSearchAdapter(context);
+    }
+    //endregion
     //endregion
 
 }

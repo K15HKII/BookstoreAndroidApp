@@ -12,6 +12,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentViewViewHolder> {
@@ -20,6 +21,11 @@ public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentV
 
     public RentViewAdapter(List<RentView> rentViewList, Context context) {
         super(rentViewList);
+        this.context = context;
+    }
+
+    public RentViewAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

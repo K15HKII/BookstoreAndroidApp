@@ -19,16 +19,16 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPage;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBinding, SelectorAddressPageViewModel> implements SelectorAddressPageNavigator {
 
-    private SelectorAddressFragmentBinding selectorAddressFragmentBinding;
-    private SelectorAddressPageViewModel mViewModel;
-    private RecyclerView rcvOtherAddress;
-    private OtherAddressAdapter otherAddressAdapter;
+    @Inject
+    protected OtherAddressAdapter otherAddressAdapter;
 
     public static SelectorAddressPage newInstance() {
         return new SelectorAddressPage();
@@ -36,7 +36,7 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
 
     @Override
     public int getBindingVariable() {
-        return BR.SelectorAddressPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -45,25 +45,20 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        selectorAddressFragmentBinding = getViewDataBinding();
+        SelectorAddressFragmentBinding selectorAddressFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvOtherAddress = view.findViewById(R.id.rcvAddressChoiceOtherAddress);
-
-        String[] names = {"Biên Hòa, Đồng Nai","Vạn Ninh, Khánh Hòa"};
-
-        List<Address> arrayName = new ArrayList<Address>();
-        for(int i=0;i<names.length;i++){
-            arrayName.add(new Address(names[i]));
-        }
-
-        otherAddressAdapter = new OtherAddressAdapter(arrayName,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        rcvOtherAddress.setLayoutManager(linearLayoutManager);
-        rcvOtherAddress.setAdapter(otherAddressAdapter);
+        selectorAddressFragmentBinding.rcvAddressChoiceOtherAddress.setLayoutManager(linearLayoutManager);
+        selectorAddressFragmentBinding.rcvAddressChoiceOtherAddress.setAdapter(otherAddressAdapter);
 
         return view;
     }
@@ -71,13 +66,6 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SelectorAddressPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

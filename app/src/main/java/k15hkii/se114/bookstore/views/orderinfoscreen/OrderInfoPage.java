@@ -17,16 +17,14 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
 import k15hkii.se114.bookstore.views.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, OrderInfoPageViewModel> implements OrderInfoPageNavigator {
-
-    private OrderInfoPageFragmentBinding orderInfoPageFragmentBinding;
-    private OrderInfoPageViewModel mViewModel;
-    private RecyclerView rcvListBooks;
-    private OrderBooksViewAdapter orderBooksViewAdapter;
+    @Inject protected OrderBooksViewAdapter orderBooksViewAdapter;
 
     public static OrderInfoPage newInstance() {
         return new OrderInfoPage();
@@ -34,7 +32,7 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
     @Override
     public int getBindingVariable() {
-        return BR.OrderInfoPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -43,26 +41,22 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        orderInfoPageFragmentBinding = getViewDataBinding();
+        OrderInfoPageFragmentBinding orderInfoPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         String[] items = {"Dac nhan tam", "Nguoi phan xu", "Kteam"};
 
-        rcvListBooks = view.findViewById(R.id.lvOrderPageListBooks);
-
-        List<OrderBookView> arrayName = new ArrayList<OrderBookView>();
-        for(int i=0;i<items.length;i++){
-            arrayName.add(new OrderBookView(items[i]));
-        }
-
-        orderBooksViewAdapter = new OrderBooksViewAdapter(arrayName,getContext());
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        rcvListBooks.setLayoutManager(layoutManager);
-        rcvListBooks.setAdapter(orderBooksViewAdapter);
+        orderInfoPageFragmentBinding.lvOrderPageListBooks.setLayoutManager(layoutManager);
+        orderInfoPageFragmentBinding.lvOrderPageListBooks.setAdapter(orderBooksViewAdapter);
 
         return view;
     }
@@ -70,13 +64,6 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(OrderInfoPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

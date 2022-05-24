@@ -19,16 +19,15 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
 import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPage;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, SelectorBankPageViewModel> implements SelectorBankPageNavigator {
 
-    private SelectorBankFragmentBinding selectorBankFragmentBinding;
-    private SelectorBankPageViewModel mViewModel;
-    private OtherBankAdapter otherBankAdapter;
-    private RecyclerView rcvOtherBankAccount;
+    @Inject protected OtherBankAdapter otherBankAdapter;
 
     public static SelectorBankPage newInstance() {
         return new SelectorBankPage();
@@ -36,7 +35,7 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
 
     @Override
     public int getBindingVariable() {
-        return BR.SelectorBankPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -45,24 +44,20 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        selectorBankFragmentBinding = getViewDataBinding();
+        SelectorBankFragmentBinding selectorBankFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvOtherBankAccount = view.findViewById(R.id.rcvBankChoiceOtherBank);
-        String[] names = {"TechComBank","MBBank"};
-
-        List<BankAccount> arrayName = new ArrayList<BankAccount>();
-        for(int i=0;i<names.length;i++){
-            arrayName.add(new BankAccount(names[i]));
-        }
-
-        otherBankAdapter = new OtherBankAdapter(arrayName,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        rcvOtherBankAccount.setLayoutManager(linearLayoutManager);
-        rcvOtherBankAccount.setAdapter(otherBankAdapter);
+        selectorBankFragmentBinding.rcvBankChoiceOtherBank.setLayoutManager(linearLayoutManager);
+        selectorBankFragmentBinding.rcvBankChoiceOtherBank.setAdapter(otherBankAdapter);
 
         return view;
     }
@@ -70,13 +65,6 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SelectorBankPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

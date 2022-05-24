@@ -2,37 +2,37 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="SelectorAddressPageViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.views.address.SelectorAddressPageViewModel"/>
     </data>
-<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="k15hkii.se114.bookstore.views.address.SelectorAddressPage">
-
-    <LinearLayout
+    <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            tools:context="k15hkii.se114.bookstore.views.address.SelectorAddressPage">
 
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="?attr/actionBarTheme"
-                android:minHeight="?attr/actionBarSize"
-                android:id="@+id/toolbarSettingPage">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:theme="?attr/actionBarTheme"
+                    android:minHeight="?attr/actionBarSize"
+                    android:id="@+id/toolbarSettingPage">
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
                         <android.widget.Button
                                 android:id="@+id/btnOrderPageBackward"
-                                android:onClick="@{()-> SelectorAddressPageViewModel.onBackWardClick()}"
+                                android:onClick="@{()-> viewModel.onBackWardClick()}"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:scaleX="0.55"
@@ -56,7 +56,7 @@
 
                         <android.widget.Button
                                 android:id="@+id/btnAddressChoiceAddAddress"
-                                android:onClick="@{()-> SelectorAddressPageViewModel.onOpenAddBankClick()}"
+                                android:onClick="@{()-> viewModel.onOpenAddBankClick()}"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_alignParentEnd="true"
@@ -69,69 +69,70 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:background="@drawable/home_background">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
-                    android:textAlignment="textStart"
-                    android:text="Địa chỉ mặc định"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold"/>
-
+            </androidx.appcompat.widget.Toolbar>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="18dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/address_button_shape">
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                    <RadioButton
-                            android:id="@+id/btnAddressChoiceDefault"
-                            android:layout_width="319dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
-                            android:textSize="17dp"
-                            android:textColor="@color/black"/>
-
-                <ImageView
-                        android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:background="@drawable/home_background">
+                <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textAlignment="textStart"
+                        android:text="Địa chỉ mặc định"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="18dp"
                         android:layout_marginTop="15dp"
-                        android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_arrow_account"/>
-                </RelativeLayout>
+                        android:background="@drawable/address_button_shape">
+                    <RelativeLayout android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                        <RadioButton
+                                android:id="@+id/btnAddressChoiceDefault"
+                                android:layout_width="319dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                                android:textSize="17dp"
+                                android:textColor="@color/black"/>
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_arrow_account"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textAlignment="textStart"
+                        android:text="Địa chỉ khác"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcvAddressChoiceOtherAddress"
+                        android:scrollbars="none"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        source="@{viewModel.addressItems}"/>
+
             </LinearLayout>
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:textAlignment="textStart"
-                    android:text="Địa chỉ khác"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold"/>
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvAddressChoiceOtherAddress"
-                    android:scrollbars="none"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
         </LinearLayout>
-    </LinearLayout>
 
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

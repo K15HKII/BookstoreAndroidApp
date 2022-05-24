@@ -22,19 +22,17 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SearchBookViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, SearchBookViewViewModel> implements SearchBookViewNavigator {
-
-    private SearchBookViewFragmentBinding searchBookViewFragmentBinding;
-    private SearchBookViewViewModel mViewModel;
-
     private EditText sbSearchInput;
-    private RecyclerView rcvRecentSearch;
-    private RecentSearchAdapter recentSearchAdapter;
-    private List<RecentSearch> arrayName;
+    List<RecentSearch> arrayName;
+    @Inject
+    protected RecentSearchAdapter recentSearchAdapter;
 
     public static SearchBookView newInstance() {
         return new SearchBookView();
@@ -42,7 +40,7 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
 
     @Override
     public int getBindingVariable() {
-        return BR.SearchBookViewViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -51,30 +49,28 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        searchBookViewFragmentBinding = getViewDataBinding();
+        SearchBookViewFragmentBinding searchBookViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         sbSearchInput = view.findViewById(R.id.sbSearchViewInput);
         sbSearchInput.requestFocus();
+
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
-        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
-
-        arrayName = new ArrayList<RecentSearch>();
-        for(int i=0;i<names.length;i++){
-            arrayName.add(new RecentSearch(names[i]));
-        }
-
-        rcvRecentSearch = view.findViewById(R.id.rcvSearchViewTitle);
-        recentSearchAdapter = new RecentSearchAdapter(arrayName);
+//        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
-        rcvRecentSearch.setLayoutManager(linearLayoutManager);
-        rcvRecentSearch .setAdapter(recentSearchAdapter);
+        searchBookViewFragmentBinding.rcvSearchViewTitle.setLayoutManager(linearLayoutManager);
+        searchBookViewFragmentBinding.rcvSearchViewTitle.setAdapter(recentSearchAdapter);
 
         sbSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -103,19 +99,13 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
 
     private void filter(String inputTxt){
         ArrayList<RecentSearch> filteredLs = new ArrayList<>();
+
         for(RecentSearch item : arrayName){
             if(item.getTitle().toLowerCase().contains(inputTxt.toLowerCase())) {
                 filteredLs.add(item);
             }
         }
         recentSearchAdapter.filterlist(filteredLs);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SearchBookViewViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

@@ -12,6 +12,7 @@ import k15hkii.se114.bookstore.views.address.Address;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OtherAddressAdapter extends ListAdapter<Address, OtherAddressAdapter.OtherAddressViewHolder> {
@@ -20,6 +21,11 @@ public class OtherAddressAdapter extends ListAdapter<Address, OtherAddressAdapte
 
     public OtherAddressAdapter(List<Address> data, Context context) {
         super(data);
+        this.context = context;
+    }
+
+    public OtherAddressAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

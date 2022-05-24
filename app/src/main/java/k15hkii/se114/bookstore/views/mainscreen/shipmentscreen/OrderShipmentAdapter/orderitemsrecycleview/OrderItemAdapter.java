@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,20 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderItemAdapter extends ListAdapter<OrderItem, OrderItemAdapter.OrderItemHolder> {
 
+    Context context;
+
     public OrderItemAdapter(List<OrderItem> lsOrderItem) {
         super(lsOrderItem);
+    }
+
+    public OrderItemAdapter(Context context) {
+        super(new ArrayList<>());
+        this.context = context;
     }
 
     @NonNull

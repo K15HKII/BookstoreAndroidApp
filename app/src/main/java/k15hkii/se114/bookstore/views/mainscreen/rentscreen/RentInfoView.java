@@ -7,16 +7,23 @@ import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentInfoViewFragmentBinding;
+import k15hkii.se114.bookstore.databinding.RentingViewPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 
 public class RentInfoView extends BaseFragment<RentInfoViewFragmentBinding, RentInfoViewViewModel> implements RentInfoViewNavigator {
 
-    private RentInfoViewFragmentBinding rentInfoViewFragmentBinding;
-    private RentInfoViewViewModel mViewModel;
+    @Inject
+    protected RentViewAdapter rentViewAdapter;
 
     public static RentInfoView newInstance() {
         return new RentInfoView();
@@ -24,7 +31,7 @@ public class RentInfoView extends BaseFragment<RentInfoViewFragmentBinding, Rent
 
     @Override
     public int getBindingVariable() {
-        return BR.RentInfoViewViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -33,24 +40,27 @@ public class RentInfoView extends BaseFragment<RentInfoViewFragmentBinding, Rent
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        rentInfoViewFragmentBinding = getViewDataBinding();
+        RentInfoViewFragmentBinding rentInfoViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        rentInfoViewFragmentBinding.rcvRentInfoBookList.setLayoutManager(linearLayoutManager);
+        rentInfoViewFragmentBinding.rcvRentInfoBookList.setAdapter(rentViewAdapter);
+
         return view;
     }
 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RentInfoViewViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

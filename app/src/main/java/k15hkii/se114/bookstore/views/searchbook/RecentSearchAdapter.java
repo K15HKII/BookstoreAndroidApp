@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.searchbook;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchAdapter.RecentSearchViewHolder> {
+    private Context context;
+
     public RecentSearchAdapter(List<RecentSearch> data) {
         super(data);
+    }
+
+    public RecentSearchAdapter(Context context) {
+        super(new ArrayList<>());
+        this.context = context;
     }
 
     @Override

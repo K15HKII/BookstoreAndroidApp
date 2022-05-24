@@ -19,6 +19,7 @@ import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdap
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
+import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
     @Override
     public int getLayoutId() {
         return R.layout.shipping_view_fragment;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

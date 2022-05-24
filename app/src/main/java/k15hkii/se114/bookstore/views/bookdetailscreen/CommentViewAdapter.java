@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.CommentViewHolder> {
@@ -19,6 +20,11 @@ public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.
 
     public CommentViewAdapter(List<Comment> lsComments, Context context) {
         super(lsComments);
+        this.context = context;
+    }
+
+    public CommentViewAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

@@ -11,14 +11,20 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VoucherViewAdapter extends ListAdapter<Voucher,VoucherViewAdapter.VoucherViewHolder> {
 
-    Context context;
+    private Context context;
 
     public VoucherViewAdapter(List<Voucher> lsVouchers, Context context) {
         super(lsVouchers);
+        this.context = context;
+    }
+
+    public VoucherViewAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 

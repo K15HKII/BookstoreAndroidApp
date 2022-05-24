@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RatingReportAdapter extends ListAdapter<RatingReport,RatingReportAdapter.RatingReportViewHolder> {
@@ -19,6 +20,11 @@ public class RatingReportAdapter extends ListAdapter<RatingReport,RatingReportAd
 
     public RatingReportAdapter(List<RatingReport> lsRatingReport, Context context) {
         super(lsRatingReport);
+        this.context = context;
+    }
+
+    public RatingReportAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 
