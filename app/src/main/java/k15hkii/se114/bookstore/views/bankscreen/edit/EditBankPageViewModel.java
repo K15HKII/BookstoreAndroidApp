@@ -1,11 +1,18 @@
 package k15hkii.se114.bookstore.views.bankscreen.edit;
 
 import androidx.databinding.Observable;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
+import lombok.Getter;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class EditBankPageViewModel extends BaseViewModel<EditBankPageNavigator> implements Observable {
+    @Getter
+    private final MutableLiveData<List<String>> testSource = new MutableLiveData<>(Arrays.asList("VietComBank", "TechComBank", "BIDV"));
     public EditBankPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }

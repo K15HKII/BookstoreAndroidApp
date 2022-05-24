@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="AddBankPageViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.views.bankscreen.add.AddBankPageViewModel"/>
     </data>
 <FrameLayout
@@ -28,6 +28,7 @@
                 android:id="@+id/toolbarAddBank">
             <android.widget.Button
                     android:id="@+id/btnAddBankBackward"
+                    android:onClick="@{()->viewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.5"
@@ -113,18 +114,22 @@
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:background="@drawable/edit_text_background"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <ExpandableListView
-                    android:id="@+id/lvAddBankBank"
+            <android.widget.Spinner
+                    android:id="@+id/spAddBankBankName"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="18dp"
+                    android:paddingTop="18dp"
+                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/home_background"
-                    android:scrollbars="none"
-                    android:divider="#BCFEFE"
-                    android:dividerHeight="10dp"
-                    android:childDivider="#BCFEFE"
-                    android:layoutDirection="rtl"
-                    android:transcriptMode="alwaysScroll"/>
+                    android:layout_alignParentEnd="true"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:inputType="text"
+                    android:popupBackground="@drawable/spinner_shape"
+                    android:background="@drawable/edit_text_background"
+                    testSource="@{viewModel.testSource}"/>
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -136,7 +141,36 @@
                     app:boxBackgroundColor="#FFF"
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
-                    android:hint="CMND/CCCD">
+                    android:hint="Chi nhánh">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddBankBankLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
+                        android:inputType="text"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="20dp"
+                        android:ems="15"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/edit_text_background"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/edit_text_background"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Số tài khoản">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddBankCardNumber"
                         android:layout_width="match_parent"

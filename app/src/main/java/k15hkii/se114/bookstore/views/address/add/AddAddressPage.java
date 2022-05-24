@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.address.add;
 
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import k15hkii.se114.bookstore.views.intro.cityspinneradapter.CitySpinnerAdapter
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, AddAddressPageViewModel> implements AddAddressPageNavigator {
+public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, AddAddressPageViewModel> implements AdapterView.OnItemSelectedListener,AddAddressPageNavigator {
 
     private AddAddressPageFragmentBinding addAddressPageFragmentBinding;
     private AddAddressPageViewModel mViewModel;
@@ -32,7 +33,7 @@ public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, 
 
     @Override
     public int getBindingVariable() {
-        return BR.AddAddressPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -46,34 +47,6 @@ public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         addAddressPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-        spCity = view.findViewById(R.id.spAddAddressCity);
-        spDistrict = view.findViewById(R.id.spAddAddressDistrict);
-        spVillage = view.findViewById(R.id.spAddAddressVillage);
-
-        List<String> lsCity = new ArrayList<>();
-        lsCity.add("Hồ Chí Minh");
-        lsCity.add("Hà Nội");
-        lsCity.add("Hải Phòng");
-
-        List<String> lsDistrict = new ArrayList<>();
-        lsDistrict.add("Quận 7");
-        lsDistrict.add("Quận 2");
-        lsDistrict.add("Quận 1");
-
-        List<String> lsVillage = new ArrayList<>();
-        lsVillage.add("Tân Kiểng");
-        lsVillage.add("Tân Quy");
-        lsVillage.add("Phường 7");
-
-        cityadapter = new CitySpinnerAdapter(getActivity(),lsCity);
-        spCity.setAdapter(cityadapter);
-
-        districtAdapter = new CitySpinnerAdapter(getActivity(),lsDistrict);
-        spDistrict.setAdapter(districtAdapter);
-
-        villageadapter = new CitySpinnerAdapter(getActivity(),lsVillage);
-        spVillage.setAdapter(villageadapter);
 
         return view;
     }
@@ -93,5 +66,15 @@ public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, 
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

@@ -25,14 +25,8 @@ import java.util.Calendar;
 public class Register extends BaseFragment<RegisterFragmentBinding, RegisterViewModel> implements AdapterView.OnItemSelectedListener, RegisterNavigator {
 
     private RegisterFragmentBinding registerFragmentBinding;
-    private RegisterViewModel mViewModel;
-    private Button btnRegister;
-    private EditText etUsername,etDOB,etPhoneNum,etEmail,etPassword,etPasswordConfirm;
-    private Spinner spGender;
-    private TextView tvPolicy;
     private DatePickerDialog.OnDateSetListener datePickerDOB;
     private Calendar DOB;
-    private boolean passwordVisible;
 
     public static Register newInstance() {
         return new Register();
@@ -40,7 +34,7 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
 
     @Override
     public int getBindingVariable() {
-        return BR.RegisterViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -60,13 +54,6 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 //    Thiết lập combobox selected item

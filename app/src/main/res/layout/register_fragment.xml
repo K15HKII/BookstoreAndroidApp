@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="RegisterViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.views.registerscreen.RegisterViewModel"/>
     </data>
 
@@ -36,7 +36,7 @@
                                 android:layout_height="40dp"
                                 android:scaleX="0.7"
                                 android:scaleY="0.7"
-                                android:onClick="@{()-> RegisterViewModel.onBackWardClick()}"
+                                android:onClick="@{()-> viewModel.onBackWardClick()}"
                                 android:background="@drawable/ic_backward"/>
 
                         <View
@@ -81,7 +81,7 @@
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:text="@={RegisterViewModel.user}"
+                            android:text="@={viewModel.user}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -98,7 +98,7 @@
                         android:padding="15dp"
                         android:layout_marginLeft="15dp"
                         android:textSize="18dp"
-                        testSource="@{RegisterViewModel.testSource}"
+                        testSource="@{viewModel.testSource}"
                         android:background="@drawable/edit_text_background"
                         android:inputType="text"
                         android:hint="giới tính">
@@ -125,7 +125,7 @@
                             android:layout_width="188dp"
                             android:layout_height="wrap_content"
                             android:inputType="date"
-                            android:text="@={RegisterViewModel.dob}"
+                            android:text="@={viewModel.dob}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -151,7 +151,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
-                            android:text="@={RegisterViewModel.phonenum}"
+                            android:text="@={viewModel.phonenum}"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="18dp"
                             android:ems="15"
@@ -181,7 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="@={RegisterViewModel.email}"
+                        android:text="@={viewModel.email}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"
@@ -208,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:text="@={RegisterViewModel.pass}"
+                        android:text="@={viewModel.pass}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"
@@ -236,7 +236,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:text="@={RegisterViewModel.passconfirm}"
+                        android:text="@={viewModel.passconfirm}"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="18dp"
                         android:ems="15"

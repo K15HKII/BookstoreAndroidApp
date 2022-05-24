@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.views.dialog.buynow.BuyNowViewModel"/>
+    </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -106,6 +111,7 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="wrap_content">
             <android.widget.Button
+                    android:onClick="@{()-> viewModel.dismissDialog()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -121,4 +127,5 @@
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
+</layout>
 

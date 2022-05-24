@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.address.edit;
 
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -20,12 +21,9 @@ import k15hkii.se114.bookstore.views.intro.cityspinneradapter.CitySpinnerAdapter
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, EditAddressPageViewModel> implements EditAddressPageNavigator {
+public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, EditAddressPageViewModel> implements AdapterView.OnItemSelectedListener,EditAddressPageNavigator {
 
     private EditAddressFragmentBinding editAddressFragmentBinding;
-    private EditAddressPageViewModel mViewModel;
-    private Spinner spCity, spDistrict,spVillage;
-    private CitySpinnerAdapter cityadapter,districtAdapter,villageadapter;
 
     public static EditAddressPage newInstance() {
         return new EditAddressPage();
@@ -33,7 +31,7 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
 
     @Override
     public int getBindingVariable() {
-        return BR.EditAddressPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -48,34 +46,6 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
         editAddressFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        spCity = view.findViewById(R.id.spEditAddressCity);
-        spDistrict = view.findViewById(R.id.spEditAddressDistrict);
-        spVillage = view.findViewById(R.id.spEditAddressVillage);
-
-        List<String> lsCity = new ArrayList<>();
-        lsCity.add("Hồ Chí Minh");
-        lsCity.add("Hà Nội");
-        lsCity.add("Hải Phòng");
-
-        List<String> lsDistrict = new ArrayList<>();
-        lsDistrict.add("Quận 7");
-        lsDistrict.add("Quận 2");
-        lsDistrict.add("Quận 1");
-
-        List<String> lsVillage = new ArrayList<>();
-        lsVillage.add("Tân Kiểng");
-        lsVillage.add("Tân Quy");
-        lsVillage.add("Phường 7");
-
-        cityadapter = new CitySpinnerAdapter(getActivity(),lsCity);
-        spCity.setAdapter(cityadapter);
-
-        districtAdapter = new CitySpinnerAdapter(getActivity(),lsDistrict);
-        spDistrict.setAdapter(districtAdapter);
-
-        villageadapter = new CitySpinnerAdapter(getActivity(),lsVillage);
-        spVillage.setAdapter(villageadapter);
-
         return view;
     }
 
@@ -85,14 +55,17 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditAddressPageViewModel.class);
-        // TODO: Use the ViewModel
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 
     @Override
-    public void BackWard() {
-        getFragmentManager().popBackStack();
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

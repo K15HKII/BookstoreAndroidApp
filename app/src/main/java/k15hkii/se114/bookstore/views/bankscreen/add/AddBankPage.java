@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.bankscreen.add;
 
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -23,14 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, AddBankPageViewModel> implements AddBankPageNavigator {
+public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, AddBankPageViewModel> implements AdapterView.OnItemSelectedListener,AddBankPageNavigator {
 
     private AddBankAccountFragmentBinding addBankAccountFragmentBinding;
-    private AddBankPageViewModel mViewModel;
-    private ExpandableListView lvBank;
-    private List<BankGroup> lsbankgroup;
-    private Map<BankGroup, List<BankItems>> lsbankitem;
-    private ExpandableBankAdapter expandableBankAdapter;
 
     public static AddBankPage newInstance() {
         return new AddBankPage();
@@ -38,7 +34,7 @@ public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, Add
 
     @Override
     public int getBindingVariable() {
-        return BR.AddBankPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -53,13 +49,6 @@ public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, Add
         addBankAccountFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        lvBank = view.findViewById(R.id.lvAddBankBank);
-        lsbankitem = getListItems();
-        lsbankgroup = new ArrayList<>(lsbankitem.keySet());
-
-        expandableBankAdapter = new ExpandableBankAdapter(lsbankgroup,lsbankitem);
-        lvBank.setAdapter(expandableBankAdapter);
-
         return view;
     }
 
@@ -69,36 +58,17 @@ public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, Add
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddBankPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    private Map<BankGroup, List<BankItems>> getListItems(){
-        Map<BankGroup, List<BankItems>> lsMap = new HashMap<>();
-
-        BankGroup bankname = new BankGroup(1,"Ngân hàng");
-        BankGroup location = new BankGroup(2,"Chi nhánh");
-
-        List<BankItems> banksymbol = new ArrayList<>();
-        banksymbol.add(new BankItems(1,"VIETCOMBANK"));
-        banksymbol.add(new BankItems(2,"TECHCOMBANK"));
-        banksymbol.add(new BankItems(3,"AGRIBANK"));
-
-        List<BankItems> banklocation = new ArrayList<>();
-        banklocation.add(new BankItems(1,"Nam sài gòn"));
-        banklocation.add(new BankItems(2,"Phạm thành thái"));
-        banklocation.add(new BankItems(3,"Nguyễn cư trinh"));
-
-        lsMap.put(bankname, banksymbol);
-        lsMap.put(location, banklocation);
-
-        return lsMap;
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 
     @Override
-    public void BackWard() {
-        getFragmentManager().popBackStack();
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

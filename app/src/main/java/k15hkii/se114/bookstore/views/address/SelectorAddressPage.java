@@ -18,6 +18,7 @@ import k15hkii.se114.bookstore.databinding.SelectorAddressFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.address.RecycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.views.address.add.AddAddressPage;
 import k15hkii.se114.bookstore.views.bankscreen.add.AddBankPage;
 import org.jetbrains.annotations.NotNull;
 
@@ -82,6 +83,6 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, AddBankPage.class, null).addToBackStack(null).commit();
+        ).replace(R.id.fragmentContainerView, AddAddressPage.class, null).addToBackStack(null).commit();
     }
 }

@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.views.bankscreen.edit;
 
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -23,22 +24,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, EditBankPageViewModel> implements EditBankPageNavigator {
+public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, EditBankPageViewModel> implements AdapterView.OnItemSelectedListener,EditBankPageNavigator {
 
     public static EditBankPage newInstance() {
         return new EditBankPage();
     }
 
     private EditBankAccountFragmentBinding editBankAccountFragmentBinding;
-    private EditBankPageViewModel mViewModel;
-    private ExpandableListView lvBank;
-    private List<BankGroup> lsbankgroup;
-    private Map<BankGroup, List<BankItems>> lsbankitem;
-    private ExpandableBankAdapter expandableBankAdapter;
 
     @Override
     public int getBindingVariable() {
-        return BR.EditBankPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -53,13 +49,6 @@ public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, E
         editBankAccountFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        lvBank = view.findViewById(R.id.lvEditBankBank);
-        lsbankitem = getListItems();
-        lsbankgroup = new ArrayList<>(lsbankitem.keySet());
-
-        expandableBankAdapter = new ExpandableBankAdapter(lsbankgroup,lsbankitem);
-        lvBank.setAdapter(expandableBankAdapter);
-
         return view;
     }
 
@@ -68,37 +57,18 @@ public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, E
         buildComponent.inject(this);
     }
 
-    private Map<BankGroup, List<BankItems>> getListItems() {
-        Map<BankGroup, List<BankItems>> lsMap = new HashMap<>();
-
-        BankGroup bankname = new BankGroup(1,"Ngân hàng");
-        BankGroup location = new BankGroup(2,"Chi nhánh");
-
-        List<BankItems> banksymbol = new ArrayList<>();
-        banksymbol.add(new BankItems(1,"VIETCOMBANK"));
-        banksymbol.add(new BankItems(2,"TECHCOMBANK"));
-        banksymbol.add(new BankItems(3,"AGRIBANK"));
-
-        List<BankItems> banklocation = new ArrayList<>();
-        banklocation.add(new BankItems(1,"Nam sài gòn"));
-        banklocation.add(new BankItems(2,"Phạm thành thái"));
-        banklocation.add(new BankItems(3,"Nguyễn cư trinh"));
-
-        lsMap.put(bankname, banksymbol);
-        lsMap.put(location, banklocation);
-
-        return lsMap;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditBankPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

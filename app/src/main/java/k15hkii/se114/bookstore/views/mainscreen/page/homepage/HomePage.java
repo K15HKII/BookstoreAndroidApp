@@ -17,6 +17,7 @@ import k15hkii.se114.bookstore.*;
 import k15hkii.se114.bookstore.databinding.HomePageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.views.searchbook.SearchBookView;
 import com.google.android.material.chip.Chip;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage;
@@ -72,51 +73,6 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
         // TODO: Use the ViewModel
     }
 
-    private void openFilter(int gravity){
-        final Dialog dialog = new Dialog(getActivity());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.filter_search_dialog);
-
-        SeekBar skPrice = dialog.findViewById(R.id.skbarFilterSearchPrice);
-        TextView tvPrice = dialog.findViewById(R.id.tvFilterSearchPrice);
-
-        skPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tvPrice.setText("" + String.format("%,.0f",(double)i) + "đ - 2.000.000đ");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        Window window = dialog.getWindow();
-        if(window == null){
-            return;
-        }
-
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        WindowManager.LayoutParams windowAtributes = window.getAttributes();
-        windowAtributes.gravity = gravity;
-        window.setAttributes(windowAtributes);
-
-        if(Gravity.TOP == gravity);
-        {
-            dialog.setCancelable(true);
-        }
-
-        dialog.show();
-    }
-
     @Override
     public void openSearchView() {
         FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
@@ -155,7 +111,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openFilterDialog() {
-        openFilter(Gravity.TOP);
+        FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 
     @Override
