@@ -17,16 +17,14 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentBookItem;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding, RentingViewPageViewModel> implements RentingViewPageNavigator {
-
-    private RentingViewPageFragmentBinding rentingViewPageFragmentBinding;
-    private RentingViewPageViewModel mViewModel;
-    private RecyclerView rcvRentView;
-    private RentViewAdapter rentViewAdapter;
+    @Inject protected RentViewAdapter rentViewAdapter;
 
     public static RentingViewPage newInstance() {
         return new RentingViewPage();
@@ -34,7 +32,7 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
 
     @Override
     public int getBindingVariable() {
-        return BR.RentingViewPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -43,21 +41,22 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        rentingViewPageFragmentBinding = getViewDataBinding();
+        RentingViewPageFragmentBinding rentingViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-        rcvRentView = view.findViewById(R.id.rcvRentingBookView);
 
         //TODO: Fix bug lỗi hiển thị các adapter khi chuyển fragment
 
-        rentViewAdapter = new RentViewAdapter(getListBook(),RentingViewPage.this.getContext());
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
-        rcvRentView.setLayoutManager(linearLayoutManager);
-        rcvRentView.setAdapter(rentViewAdapter);
+        rentingViewPageFragmentBinding.rcvRentingBookView.setLayoutManager(linearLayoutManager);
+        rentingViewPageFragmentBinding.rcvRentingBookView.setAdapter(rentViewAdapter);
 
 //        rentViewAdapter = new OrderViewAdapter(getListBook1(), RentingViewPage.this.getContext());
 //
@@ -72,45 +71,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
     }
-//    private List<OrderView> getListBook1() {
-//        List<OrderView> lsOrder = new ArrayList<>();
-//
-//        List<OrderItem> lsBook1 = new ArrayList<>();
-//        lsBook1.add(new OrderItem("Dac Nhan Tam"));
-//        lsBook1.add(new OrderItem("hello"));
-//
-//
-//        List<OrderItem> lsBook2 = new ArrayList<>();
-//        lsBook2.add(new OrderItem("Dac Nhan Tam"));
-//
-//        lsOrder.add(new OrderView("200.000d","nothing",lsBook1));
-//        lsOrder.add(new OrderView("120.000d","nothing",lsBook2));
-//
-//        return lsOrder;
-//    }
 
-    private List<RentView> getListBook() {
-        List<RentView> lsRentOrder = new ArrayList<>();
-
-        List<RentBookItem> lsBook1 = new ArrayList<>();
-        lsBook1.add(new RentBookItem("Dac Nhan Tam"));
-        lsBook1.add(new RentBookItem("hello"));
-
-
-        List<RentBookItem> lsBook2 = new ArrayList<>();
-        lsBook2.add(new RentBookItem("Dac Nhan Tam"));
-
-        lsRentOrder.add(new RentView("20.000đ","nothing1",lsBook1));
-        lsRentOrder.add(new RentView("10.000đ","nothing2",lsBook2));
-
-        return lsRentOrder;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RentingViewPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }
