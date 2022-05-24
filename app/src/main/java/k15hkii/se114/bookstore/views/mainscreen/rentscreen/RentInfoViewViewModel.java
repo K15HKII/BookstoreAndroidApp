@@ -7,7 +7,7 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
 import k15hkii.se114.bookstore.views.bankscreen.BankAccount;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentBookItem;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentView;
-import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
