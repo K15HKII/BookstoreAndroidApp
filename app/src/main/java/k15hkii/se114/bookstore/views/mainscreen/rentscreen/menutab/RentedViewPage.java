@@ -17,7 +17,9 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentBookItem;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +28,12 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
     public static RentedViewPage newInstance() {
         return new RentedViewPage();
     }
-
-    private RentedViewPageFragmentBinding rentedViewPageFragmentBinding;
-    private RentedViewPageViewModel mViewModel;
-    private RecyclerView rcvRentView;
-    private RentViewAdapter rentViewAdapter;
+    @Inject
+    protected RentViewAdapter rentViewAdapter;
 
     @Override
     public int getBindingVariable() {
-        return BR.RentedViewPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -43,18 +42,20 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        rentedViewPageFragmentBinding = getViewDataBinding();
+        RentedViewPageFragmentBinding rentedViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvRentView = view.findViewById(R.id.rcvRentedBookView);
-        rentViewAdapter = new RentViewAdapter(getListBook(),RentedViewPage.this.getContext());
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentedViewPage.this.getContext());
-        rcvRentView.setLayoutManager(linearLayoutManager);
-        rcvRentView.setAdapter(rentViewAdapter);
+        rentedViewPageFragmentBinding.rcvRentedBookView.setLayoutManager(linearLayoutManager);
+        rentedViewPageFragmentBinding.rcvRentedBookView.setAdapter(rentViewAdapter);
 
         return  view;
     }
@@ -64,28 +65,5 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
         buildComponent.inject(this);
     }
 
-    private List<RentView> getListBook() {
-        List<RentView> lsRentOrder = new ArrayList<>();
-
-        List<RentBookItem> lsBook1 = new ArrayList<>();
-        lsBook1.add(new RentBookItem("Dac Nhan Tam"));
-        lsBook1.add(new RentBookItem("hello"));
-
-
-        List<RentBookItem> lsBook2 = new ArrayList<>();
-        lsBook2.add(new RentBookItem("Dac Nhan Tam"));
-
-        lsRentOrder.add(new RentView("20.000đ","nothing1",lsBook1));
-        lsRentOrder.add(new RentView("10.000đ","nothing2",lsBook2));
-
-        return lsRentOrder;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RentedViewPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }
