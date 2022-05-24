@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialogViewModel"/>
+    </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -23,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={LoginViewModel.user}"
                 android:fontFamily="@font/lato_regular"
                 android:textSize="20dp"
                 android:ems="15"
@@ -33,7 +37,8 @@
                 android:background="@drawable/edit_text_background"/>
     </com.google.android.material.textfield.TextInputLayout>
     <android.widget.Button
-            android:id="@+id/btnChangeNameChangeName"
+            android:id="@+id/btnChangeNameChangeConfirm"
+            android:onClick="@{()-> viewModel.onSubmitClick()}"
             android:fontFamily="@font/lato_bold"
             android:text="Đổi tên"
             android:textColor="@color/white"
@@ -45,3 +50,4 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 </LinearLayout>
+</layout>

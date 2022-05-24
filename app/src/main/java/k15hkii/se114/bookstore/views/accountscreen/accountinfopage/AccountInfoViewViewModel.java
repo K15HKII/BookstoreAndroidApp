@@ -22,6 +22,26 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         getNavigator().openChangePasswordDialog();
     }
 
+    public void openChangePhoneNumberDialog(){
+        getNavigator().openChangePhoneNumDialog();
+    }
+
+    public void openChangeGenderDialog(){
+        getNavigator().openChangeGenderDialog();
+    }
+
+    public void openChangeBirthDialog(){
+        getNavigator().openChangeBirthDialog();
+    }
+
+    public void openSelectorAddressClick(){
+        getNavigator().openSelectAddress();
+    }
+
+    public void openSelectorBankClick(){
+        getNavigator().openSelectBank();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

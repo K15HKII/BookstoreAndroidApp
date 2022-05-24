@@ -6,16 +6,32 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import k15hkii.se114.bookstore.databinding.ActivityMainBinding;
+import k15hkii.se114.bookstore.di.component.ActivityComponent;
+import k15hkii.se114.bookstore.viewmodel.base.BaseActivity;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivityViewModel> {
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("fuck huy", hashCode() + "");
         nav(Login.class);
+    }
+
+    @Override
+    public void performDependencyInjection(ActivityComponent buildComponent) {
     }
 
     public void nav(Class<? extends Fragment> clazz) {
