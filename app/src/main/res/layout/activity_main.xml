@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.MainActivityViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,3 +22,4 @@
                 android:id="@+id/fragmentContainerView"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

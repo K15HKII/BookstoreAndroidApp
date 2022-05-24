@@ -160,6 +160,7 @@
 
             <LinearLayout
                     android:id="@+id/btnAccountInfoPhoneNum"
+                    android:onClick="@{()-> viewModel.openChangePhoneNumberDialog()}"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -205,6 +206,7 @@
 
                 <LinearLayout
                         android:id="@+id/btnAccountInfoDOB"
+                        android:onClick="@{()-> viewModel.openChangeBirthDialog()}"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -250,6 +252,7 @@
 
                 <LinearLayout
                         android:id="@+id/btnAccountInfoGender"
+                        android:onClick="@{()->viewModel.openChangeGenderDialog()}"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -295,6 +298,8 @@
                 </LinearLayout>
 
                 <LinearLayout
+                        android:clickable="true"
+                        android:onClick="@{()-> viewModel.openSelectorAddressClick()}"
                         android:id="@+id/btnAccountInfoLocation"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
@@ -360,6 +365,8 @@
                 </LinearLayout>
                 <LinearLayout
                         android:id="@+id/btnAccountInfoBankAccount"
+                        android:onClick="@{()-> viewModel.openSelectorBankClick()}"
+                        android:clickable="true"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"

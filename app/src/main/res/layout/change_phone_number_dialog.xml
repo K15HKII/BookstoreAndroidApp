@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.views.dialog.changephone.ChangePhoneNumViewModel"/>
+    </data>
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:background="@drawable/dialog_shape">
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_background"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:boxStrokeColor="#FFF"
+                app:boxBackgroundColor="#FFF"
+                app:hintTextColor="@color/btn_blue"
+                android:nextFocusRight="@color/btn_blue"
+                android:hint="Nhập số điện thoại mới">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etChangePhonePhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:fontFamily="@font/lato_regular"
+                    android:textSize="20dp"
+                    android:ems="15"
+                    android:textColor="@color/btn_blue"
+                    android:textColorHint="@color/btn_blue"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@drawable/edit_text_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <android.widget.Button
+                android:id="@+id/btnChangePhoneChangeConfirm"
+                android:onClick="@{()-> viewModel.onSubmitPhoneTextClick()}"
+                android:fontFamily="@font/lato_bold"
+                android:text="Đổi số điện thoại"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="15dp"
+                android:background="@drawable/round_btn"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+    </LinearLayout>
+</layout>
+

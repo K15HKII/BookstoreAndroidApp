@@ -13,7 +13,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.NotificationPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
-import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
 import k15hkii.se114.bookstore.R;
 
 import java.util.ArrayList;

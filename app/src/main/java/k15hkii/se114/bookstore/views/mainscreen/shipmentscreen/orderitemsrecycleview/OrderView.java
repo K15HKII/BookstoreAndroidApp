@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview;
+package k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package k15hkii.se114.bookstore.views.notificationnews;
 
-import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
 
 import java.util.List;
 
