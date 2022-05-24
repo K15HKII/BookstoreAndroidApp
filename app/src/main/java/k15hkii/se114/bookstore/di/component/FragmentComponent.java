@@ -31,6 +31,10 @@ import k15hkii.se114.bookstore.views.intro.secondpage.IntroSecondPage;
 import k15hkii.se114.bookstore.views.intro.thirdpage.IntroThirdPage;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.alltopics.AllTopicPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.popularbooks.PopularBooksPage;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoView;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookView;
@@ -198,4 +202,15 @@ public interface FragmentComponent {
     //TODO: MAINSCREEN.ALLBOOKSPAGE
 
     void inject(AllBooksPage allBooksPage);
+
+    //TODO: MAINSCREEN.FAMILIAR
+    void inject(FamiliarBooksPage familiarBooksPage);
+
+    //TODO: MAINSCREEN.FORYOU
+    void inject(ForYouBooksPage forYouBooksPage);
+
+    //TODO: MAINSCREEN.POPULAR
+    void inject(PopularBooksPage popularBooksPage);
+
+
 }

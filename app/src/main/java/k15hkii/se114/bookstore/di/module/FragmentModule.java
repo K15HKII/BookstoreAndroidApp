@@ -35,11 +35,15 @@ import k15hkii.se114.bookstore.views.loginscreen.LoginViewModel;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.BookViewAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksViewViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.foryoubooks.ForYouBooksViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.popularbooks.PopularBooksViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
+import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.OrderShipmentAdapter.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.views.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
@@ -320,12 +324,32 @@ public class FragmentModule {
     public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider));
     }
+
+    @Provides
+    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider));
+    }
+
     //endregion
 
     //region Adapters
     @Provides
     public BookViewAdapter provideBookViewAdapter(Context context) {
         return new BookViewAdapter(context);
+    }
+    @Provides
+    public OrderViewAdapter orderBooksViewAdapter(Context context) {
+        return new OrderViewAdapter(context);
     }
     //endregion
 

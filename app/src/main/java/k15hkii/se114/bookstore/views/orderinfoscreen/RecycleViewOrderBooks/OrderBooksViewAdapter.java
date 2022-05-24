@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.views.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderBooksViewAdapter extends ListAdapter<OrderBookView,OrderBooksViewAdapter.OrderBooksViewViewHolder> {
@@ -18,6 +19,11 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookView,OrderBooksV
 
     public OrderBooksViewAdapter(List<OrderBookView> lsBookViews, Context context) {
         super(lsBookViews);
+        this.context = context;
+    }
+
+    public OrderBooksViewAdapter(Context context) {
+        super(new ArrayList<>());
         this.context = context;
     }
 
