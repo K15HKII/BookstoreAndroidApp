@@ -3,7 +3,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.foryoubooks.ForYouBooksViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksViewModel"/>
     </data>
 
 
@@ -12,7 +12,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".views.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage">
+            tools:context=".ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage">
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                       android:orientation="vertical"

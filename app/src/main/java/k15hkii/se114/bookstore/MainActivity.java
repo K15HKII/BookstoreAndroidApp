@@ -1,15 +1,14 @@
 package k15hkii.se114.bookstore;
 
 import android.util.Log;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.databinding.ActivityMainBinding;
 import k15hkii.se114.bookstore.di.component.ActivityComponent;
-import k15hkii.se114.bookstore.viewmodel.base.BaseActivity;
-import k15hkii.se114.bookstore.views.loginscreen.Login;
+import k15hkii.se114.bookstore.ui.base.BaseActivity;
+import k15hkii.se114.bookstore.ui.loginscreen.Login;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivityViewModel> {

@@ -3,12 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="LanguageSettingViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.languagesetting.LanguageSettingViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.settingpage.languagesetting.LanguageSettingViewModel"/>
     </data>
 <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.accountscreen.settingpage.languagesetting.LanguageSetting">
+        tools:context=".ui.accountscreen.settingpage.languagesetting.LanguageSetting">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:background="@drawable/home_background"

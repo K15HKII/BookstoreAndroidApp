@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoViewViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel"/>
     </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.accountscreen.accountinfopage.AccountInfoPage">
+        tools:context=".ui.accountscreen.accountinfopage.AccountInfoPage">
 
         <ScrollView
             android:layout_width="match_parent"

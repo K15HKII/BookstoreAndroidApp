@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.ratingbookscreen.RatingBooksDetailPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPageViewModel"/>
     </data>
     <FrameLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".views.ratingbookscreen.RatingBooksDetailPage">
+            tools:context=".ui.ratingbookscreen.RatingBooksDetailPage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

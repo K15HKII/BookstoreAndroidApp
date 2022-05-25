@@ -4,7 +4,7 @@ import androidx.core.util.Supplier;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import k15hkii.se114.bookstore.ViewModelFactory;
-import k15hkii.se114.bookstore.viewmodel.base.BaseViewModel;
+import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 public class ViewModelUtils {
 
