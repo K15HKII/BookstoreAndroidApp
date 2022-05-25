@@ -13,7 +13,7 @@ import k15hkii.se114.bookstore.ui.bankscreen.BankAccount;
 import k15hkii.se114.bookstore.ui.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.Comment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.CommentViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookView;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItem;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemAdapter;
@@ -42,7 +42,7 @@ public final class BindingUtils {
     //Binding adapter recycleview
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void bindSource(RecyclerView view, List<BookView> source) {
+    public static void bindSource(RecyclerView view, List<BookViewModel> source) {
         BookViewAdapter adapter = (BookViewAdapter) view.getAdapter();
         if (adapter == null)
             return;

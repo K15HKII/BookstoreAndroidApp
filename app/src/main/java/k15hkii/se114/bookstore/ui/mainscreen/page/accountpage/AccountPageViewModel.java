@@ -5,6 +5,11 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> implements Observable {
+
+    private String userId;
+
+
+
     public AccountPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }

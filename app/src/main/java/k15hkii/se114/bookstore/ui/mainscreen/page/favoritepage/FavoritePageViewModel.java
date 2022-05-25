@@ -2,23 +2,23 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage;
 
 import androidx.databinding.Observable;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookView;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookView>> favouriteItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new BookView("Sách Dark Nhân Tâm"),
-                    new BookView("Sách Kong Nghệ"),
-                    new BookView("Dank Nghiệp"),
-                    new BookView("Giải tick AKA Giải thích"))
+    private final MutableLiveData<List<BookViewModel>> favouriteItemsLiveData = new MutableLiveData<>(
+            Arrays.asList(new BookViewModel("Sách Dark Nhân Tâm"),
+                    new BookViewModel("Sách Kong Nghệ"),
+                    new BookViewModel("Dank Nghiệp"),
+                    new BookViewModel("Giải tick AKA Giải thích"))
     );
 
-    public List<BookView> getFavouriteItems() {
+    public List<BookViewModel> getFavouriteItems() {
         return favouriteItemsLiveData.getValue();
     }
 
