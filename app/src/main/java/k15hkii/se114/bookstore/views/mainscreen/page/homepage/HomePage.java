@@ -31,7 +31,6 @@ import k15hkii.se114.bookstore.views.oncartscreen.OncartViewPage;
 public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewModel> implements HomePageNavigator {
 
     private HomePageFragmentBinding homePageFragmentBinding;
-    private HomePageViewModel mViewModel;
 //    private ChipGroup chipNavi;
     private Chip chipAllTopics, chipAllBooks, chipPoppularBooks, chipFamiliarBooks, chipForYouBooks;
     private Button btnFilter, btnNotification, btnOncart;
@@ -64,13 +63,6 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override
@@ -112,18 +104,6 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     @Override
     public void openFilterDialog() {
         FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
-    }
-
-    @Override
-    public void openAllTopicView() {
-        FragmentManager fragmentManager = HomePage.this.getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerHomeView, AllTopicPage.class,null).commit();
     }
 
     @Override

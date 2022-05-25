@@ -17,7 +17,6 @@ import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
 public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding, PaymentMethodViewModel> implements PaymentMethodPageNavigator {
 
     private PaymentMethodFragmentBinding paymentMethodFragmentBinding;
-    private PaymentMethodViewModel mViewModel;
 
     public static PaymentMethodPage newInstance() {
         return new PaymentMethodPage();
@@ -45,13 +44,6 @@ public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PaymentMethodViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

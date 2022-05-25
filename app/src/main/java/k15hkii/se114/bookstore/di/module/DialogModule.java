@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialogViewModel
 import k15hkii.se114.bookstore.views.dialog.changepassword.ChangePassDialogViewModel;
 import k15hkii.se114.bookstore.views.dialog.changephone.ChangePhoneNumViewModel;
 import k15hkii.se114.bookstore.views.dialog.filtersearch.FilterSearchViewModel;
+import k15hkii.se114.bookstore.views.dialog.logout.LogOutViewModel;
 import k15hkii.se114.bookstore.views.dialog.oncart.OnCartViewModel;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
@@ -61,6 +62,11 @@ public class DialogModule {
     @Provides
     OnCartViewModel provideOnCartViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, OnCartViewModel.class, () -> new OnCartViewModel(schedulerProvider));
+    }
+
+    @Provides
+    LogOutViewModel provideLogOutViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, LogOutViewModel.class, () -> new LogOutViewModel(schedulerProvider));
     }
 }
 

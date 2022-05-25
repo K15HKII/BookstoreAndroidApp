@@ -52,15 +52,6 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
         RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        List<RatingReport> lsratingrp = new ArrayList<>();
-        lsratingrp.add(new RatingReport("Sách công nghệ"));
-        lsratingrp.add(new RatingReport("Đắc Nhân Tâm"));
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RatingBooksDetailPage.this.getContext(),RecyclerView.VERTICAL,false);
-
-        ratingDetailBooksViewFragmentBinding.rcvRatingReportViewBooks.setLayoutManager(linearLayoutManager);
-        ratingDetailBooksViewFragmentBinding.rcvRatingReportViewBooks.setAdapter(ratingReportAdapter);
-
         return view;
     }
 

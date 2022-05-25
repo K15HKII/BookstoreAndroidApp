@@ -18,6 +18,7 @@ import k15hkii.se114.bookstore.views.dialog.changegender.ChangeGenderDialog;
 import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.views.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.views.dialog.changephone.ChangePhoneNumDialog;
+import k15hkii.se114.bookstore.views.dialog.logout.LogOutDialog;
 
 public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding, AccountInfoViewViewModel> implements AccountInfoNavigator {
 

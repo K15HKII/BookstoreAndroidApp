@@ -106,27 +106,12 @@
                     android:layout_height="wrap_content"
                     app:singleLine="true"
                     app:singleSelection="true">
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chipHomeAllTopics"
-                            android:onClick="@{()-> HomePageViewModel.onAllTopicChip()}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:clickable="true"
-                            android:checkable="true"
-                            android:checked="true"
-                            android:scaleY="1"
-                            android:scaleX="1"
-                            app:chipIconSize="30dp"
-                            app:iconStartPadding="17dp"
-                            app:checkedIconVisible="false"
-                            app:chipIconTint="@color/text_selector"
-                            app:chipBackgroundColor="@color/chip_selector"
-                            app:chipIcon="@drawable/ic_home_selected"/>
             <com.google.android.material.chip.Chip
                     android:id="@+id/chipHomeAllBooks"
                     android:onClick="@{()-> HomePageViewModel.onAllBooksChip()}"
                     android:fontFamily="@font/lato_regular"
+                    android:checkable="true"
+                    android:checked="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -134,7 +119,6 @@
                     android:textSize="15dp"
                     android:clickable="true"
                     android:text="Tất cả"
-                    android:checkable="true"
                     app:checkedIconVisible="false"
                     android:textColor="@color/text_selector"
                     app:chipBackgroundColor="@color/chip_selector"/>
@@ -190,7 +174,7 @@
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="410dp"
-                android:name="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.alltopics.AllTopicPage"
+                android:name="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage"
                 android:id="@+id/fragmentContainerHomeView"/>
 
     </LinearLayout>

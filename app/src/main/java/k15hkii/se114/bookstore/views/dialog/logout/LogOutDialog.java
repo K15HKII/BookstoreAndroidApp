@@ -1,35 +1,36 @@
-package k15hkii.se114.bookstore.views.dialog.buynow;
+package k15hkii.se114.bookstore.views.dialog.logout;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.view.*;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.BuynowSelectorDialogBinding;
 import k15hkii.se114.bookstore.databinding.ChangeNameDialogBinding;
+import k15hkii.se114.bookstore.databinding.LogoutDialogBinding;
 import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.viewmodel.base.BaseDialog;
 import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialogViewModel;
+import k15hkii.se114.bookstore.views.loginscreen.Login;
 
 import javax.inject.Inject;
 
-public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
-    private static final String TAG = "BuyNowDialog";
-    private int amount = 0;
+public class LogOutDialog extends BaseDialog implements LogOutCallBack {
+
+    private static final String TAG = "LogOutDialog";
 
     @Inject
-    BuyNowViewModel buyNowViewModel;
+    LogOutViewModel logOutViewModel;
 
-    public static BuyNowDialog newInstance() {
-        BuyNowDialog fragment = new BuyNowDialog();
+    public static LogOutDialog newInstance() {
+        LogOutDialog fragment = new LogOutDialog();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -37,47 +38,15 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        BuynowSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.buynow_selector_dialog, container, false);
+        LogoutDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.logout_dialog, container, false);
         View view =binding.getRoot();
 
         performDependencyInjection(getBuildComponent());
 
-        binding.setViewModel(buyNowViewModel);
-        buyNowViewModel.setNavigator(this);
+        binding.setViewModel(logOutViewModel);
+        logOutViewModel.setNavigator(this);
 
         this.getDialog().setCanceledOnTouchOutside(true);
-
-        Dialog dlg = this.getDialog();
-        Window window = dlg.getWindow();
-        WindowManager.LayoutParams wlp = window.getAttributes();
-
-        wlp.gravity = Gravity.BOTTOM;
-
-        binding.btnBuyNowPlusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else{
-                    amount++;
-                    binding.tvBuyNowAmount.setText(amount+"");
-                }
-            }
-        });
-
-        binding.btnBuyNowMinusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else {
-                    amount--;
-                    binding.tvBuyNowAmount.setText(amount + "");
-                }
-            }
-        });
 
         return view;
     }
@@ -99,6 +68,19 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
     @Override
     public void dismissDialog() {
+        dismissDialog(TAG);
+    }
+
+    @Override
+    public void openLoginScreen() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, Login.class, null).commit();
         dismissDialog(TAG);
     }
 }
