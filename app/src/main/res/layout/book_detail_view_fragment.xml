@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.bookdetailscreen.BookDetailPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPageViewModel"/>
     </data>
     <FrameLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-            tools:context=".views.bookdetailscreen.BookDetailPage">
+            tools:context=".ui.bookdetailscreen.BookDetailPage">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

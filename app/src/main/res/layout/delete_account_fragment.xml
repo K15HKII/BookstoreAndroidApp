@@ -3,13 +3,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="DeleteAccountViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.helppage.delaccountrequest.DeleteAccountViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.delaccountrequest.DeleteAccountViewModel"/>
     </data>
 <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".views.accountscreen.helppage.delaccountrequest.DeleteAccount">
+        tools:context=".ui.accountscreen.helppage.delaccountrequest.DeleteAccount">
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent">
         <ImageView android:layout_width="match_parent"

@@ -3,7 +3,7 @@
 
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.dialog.logout.LogOutViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.dialog.logout.LogOutViewModel"/>
     </data>
     <LinearLayout
             android:layout_width="match_parent"

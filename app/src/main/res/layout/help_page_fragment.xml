@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="HelpPageViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPageViewModel"/>
     </data>
 
 <LinearLayout

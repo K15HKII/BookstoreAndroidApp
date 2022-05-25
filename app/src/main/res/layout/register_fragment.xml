@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.registerscreen.RegisterViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel"/>
     </data>
 
 <FrameLayout
@@ -12,7 +12,7 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:padding="15dp"
         android:background="@drawable/gradient_background"
-        tools:context=".views.registerscreen.Register">
+        tools:context=".ui.registerscreen.Register">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

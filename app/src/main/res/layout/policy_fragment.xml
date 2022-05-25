@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="PolicyViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.helppage.policy.PolicyViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.policy.PolicyViewModel"/>
     </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.accountscreen.helppage.policy.Policy">
+        tools:context=".ui.accountscreen.helppage.policy.Policy">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                   android:orientation="vertical"

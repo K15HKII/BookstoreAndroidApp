@@ -3,16 +3,16 @@ package k15hkii.se114.bookstore.di.module;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.viewmodel.base.BaseDialog;
-import k15hkii.se114.bookstore.views.dialog.buynow.BuyNowViewModel;
-import k15hkii.se114.bookstore.views.dialog.changebirth.ChangeBirthViewModel;
-import k15hkii.se114.bookstore.views.dialog.changegender.ChangeGenderViewModel;
-import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialogViewModel;
-import k15hkii.se114.bookstore.views.dialog.changepassword.ChangePassDialogViewModel;
-import k15hkii.se114.bookstore.views.dialog.changephone.ChangePhoneNumViewModel;
-import k15hkii.se114.bookstore.views.dialog.filtersearch.FilterSearchViewModel;
-import k15hkii.se114.bookstore.views.dialog.logout.LogOutViewModel;
-import k15hkii.se114.bookstore.views.dialog.oncart.OnCartViewModel;
+import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialogViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialogViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumViewModel;
+import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchViewModel;
+import k15hkii.se114.bookstore.ui.dialog.logout.LogOutViewModel;
+import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartViewModel;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
