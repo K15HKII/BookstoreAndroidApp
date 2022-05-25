@@ -14,18 +14,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookViewAdapter extends ListAdapter<BookView, BookViewAdapter.BookViewHolder> {
+public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.BookViewHolder> {
     private Context context;
 
     /**
-     *
      * Deprecated constructor: use {@link #BookViewAdapter(Context)} with DI instead
      *
      * @param context
      * @param source
      */
     @Deprecated
-    public BookViewAdapter(Context context, List<BookView> source) {
+    public BookViewAdapter(Context context, List<BookViewModel> source) {
         super(source);
         this.context = context;
     }
@@ -40,20 +39,19 @@ public class BookViewAdapter extends ListAdapter<BookView, BookViewAdapter.BookV
     @Override
     //Set View
     public BookViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_view_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_view_adapter, parent, false);
         return new BookViewHolder(view);
     }
 
     //set DATA
     @Override
-    public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, BookView data) {
-        if(data == null){
+    public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, BookViewModel data) {
+        if (data == null) {
             return;
         }
-        holder.tvBookName.setText(data.getName());
     }
 
-    public class BookViewHolder extends RecyclerView.ViewHolder{
+    public class BookViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvBookName;
 
@@ -61,5 +59,6 @@ public class BookViewAdapter extends ListAdapter<BookView, BookViewAdapter.BookV
             super(itemView);
             tvBookName = itemView.findViewById(R.id.tvBookViewBookName);
         }
+
     }
 }

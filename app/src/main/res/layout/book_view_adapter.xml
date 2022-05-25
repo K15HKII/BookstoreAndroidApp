@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
@@ -9,22 +15,26 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         app:cardCornerRadius="10dp">
-    <LinearLayout
+
+        <LinearLayout
             android:layout_width="195dp"
             android:layout_height="match_parent"
             android:padding="15dp"
             android:orientation="vertical">
-        <ImageView
+
+            <ImageView
                 android:id="@+id/imgBookViewBookImage"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:src="@drawable/dac_nhan_tam_book"
-                android:scaleType="fitCenter"/>
-        <LinearLayout
+                android:scaleType="fitCenter" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
-            <TextView
+
+                <TextView
                     android:id="@+id/tvBookViewBookName"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
@@ -32,10 +42,13 @@
                     android:text="Sách Đắc nhân tâm"
                     android:textColor="@color/black"
                     android:textSize="16dp"
-                    android:textStyle="bold"/>
-            <RelativeLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                <ToggleButton
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ToggleButton
                         android:id="@+id/btnBookViewHeart"
                         android:layout_width="61dp"
                         android:layout_height="30dp"
@@ -45,18 +58,20 @@
                         android:textOn=""
                         android:textOff=""
                         android:layout_alignParentEnd="true"
-                        android:background="@drawable/favorite_btn_selector"/>
-            </RelativeLayout>
-        </LinearLayout>
-        <TextView
+                        android:background="@drawable/favorite_btn_selector" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/tvBookViewPrice"
                 android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
                 android:text="120.000đ"
                 android:textColor="#F51F01"
-                android:textSize="17dp"/>
-        <android.widget.Button
+                android:textSize="17dp" />
+
+            <android.widget.Button
                 android:id="@+id/viewBookViewRatingview"
                 android:layout_width="52dp"
                 android:layout_height="29dp"
@@ -68,8 +83,9 @@
                 android:scaleY="1"
                 android:text="4.9"
                 android:textSize="14.5dp"
-                android:textColor="#001C44"/>
-    </LinearLayout>
+                android:textColor="#001C44" />
+        </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
