@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="NotificationSettingViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel"/>
     </data>
 <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@drawable/home_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.accountscreen.settingpage.notificationsetting.NotificationSetting"
+        tools:context=".ui.accountscreen.settingpage.notificationsetting.NotificationSetting"
         android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar

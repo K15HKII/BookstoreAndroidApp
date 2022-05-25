@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="IntroFourthPageViewModel"
-                  type="k15hkii.se114.bookstore.views.intro.fourthpage.IntroFourthPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.intro.fourthpage.IntroFourthPageViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.intro.fourthpage.IntroFourthPage">
+        tools:context=".ui.intro.fourthpage.IntroFourthPage">
 
     <ImageView
             android:layout_width="match_parent"

@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="HomePageViewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.page.homepage.HomePageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel"/>
     </data>
 <LinearLayout
         android:orientation="vertical"
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".views.mainscreen.page.homepage.HomePage" xmlns:app="http://schemas.android.com/apk/res-auto">
+        tools:context=".ui.mainscreen.page.homepage.HomePage" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -174,7 +174,7 @@
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="410dp"
-                android:name="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksPage"
+                android:name="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooksPage"
                 android:id="@+id/fragmentContainerHomeView"/>
 
     </LinearLayout>

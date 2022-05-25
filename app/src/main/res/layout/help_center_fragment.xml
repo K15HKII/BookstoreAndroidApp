@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="HelpCenterPageViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.helppage.helpcenter.HelpCenterViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.helpcenter.HelpCenterViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:background="@drawable/home_background"

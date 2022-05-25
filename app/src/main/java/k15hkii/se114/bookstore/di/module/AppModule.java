@@ -8,6 +8,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.BuildConfig;
+import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
@@ -27,6 +28,10 @@ public class AppModule {
     @Provides
     @PreferenceInfo
     String providePrefName() { return AppConstants.PREF_NAME; }
+
+    @Provides
+    @Singleton
+    DataSession provideDataSession() { return new DataSession(); }
 
     @Provides
     @Singleton

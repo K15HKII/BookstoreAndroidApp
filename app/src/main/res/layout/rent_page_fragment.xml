@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="RentPageViewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.page.rentpage.RentPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPageViewModel"/>
     </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/home_background"
-        tools:context=".views.mainscreen.page.rentpage.RentPage">
+        tools:context=".ui.mainscreen.page.rentpage.RentPage">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

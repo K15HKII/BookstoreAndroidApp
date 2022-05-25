@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="SettingPageViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPageViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"

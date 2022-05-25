@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPageViewModel"/>
     </data>
 
     <FrameLayout
@@ -10,7 +10,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".views.accountscreen.voucherscreen.VoucherPage">
+            tools:context=".ui.accountscreen.voucherscreen.VoucherPage">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

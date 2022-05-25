@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.dialog.filtersearch.FilterSearchViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchViewModel"/>
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
