@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.dialog.changegender.ChangeGenderViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderViewModel"/>
     </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"

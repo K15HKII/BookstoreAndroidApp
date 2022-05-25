@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.dialog.oncart.OnCartViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.dialog.oncart.OnCartViewModel"/>
     </data>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

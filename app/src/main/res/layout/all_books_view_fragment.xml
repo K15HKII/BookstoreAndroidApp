@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.homechipnavigator.allbooks.AllBooksViewViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooksViewViewModel"/>
     </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.mainscreen.homechipnavigator.allbooks.AllBooksPage">
+        tools:context=".ui.mainscreen.homechipnavigator.allbooks.AllBooksPage">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                   android:orientation="vertical"

@@ -2,13 +2,13 @@
 <layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.views.mainscreen.rentscreen.RentInfoViewViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoViewViewModel"/>
     </data>
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/home_background"
-            tools:context=".views.mainscreen.rentscreen.RentInfoView">
+            tools:context=".ui.mainscreen.rentscreen.RentInfoView">
 
         <ScrollView
                 android:layout_width="match_parent"

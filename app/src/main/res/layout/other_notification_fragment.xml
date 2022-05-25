@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="OtherNotificationViewModel"
-                  type="k15hkii.se114.bookstore.views.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel"/>
     </data>
     <LinearLayout
             android:orientation="vertical"
@@ -11,7 +11,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".views.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotification">
+            tools:context=".ui.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotification">
 
         <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"

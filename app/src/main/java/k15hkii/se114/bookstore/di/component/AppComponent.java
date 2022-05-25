@@ -5,6 +5,7 @@ import android.content.Context;
 import dagger.BindsInstance;
 import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
+import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.di.module.AppModule;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -22,6 +23,8 @@ public interface AppComponent {
     Authentication getAuthentication();
 
     Context getContext();
+
+    DataSession getDataSession();
 
     @Component.Builder
     interface Builder {
