@@ -49,7 +49,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         return pass;
     }
 
-    public void login() {
+    public void login(Object obj) {
         getCompositeDisposable().add(authentication.login(new LoginRequest(user, pass))
                 .doOnSuccess(response -> {
                     System.out.println(response.toString());
@@ -57,14 +57,14 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
                 .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
                 .subscribe(userAccount -> {
-                    getNavigator().openHomeView();
+                    getNavigator().openHomeView(obj);
                 }, throwable -> {
                     getNavigator().handleError(throwable);
                 }));
     }
 
     public void onServerLoginClick() {
-        login();
+        login(null);
 //        getNavigator().openHomeView();
     }
 

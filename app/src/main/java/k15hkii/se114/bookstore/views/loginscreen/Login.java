@@ -68,12 +68,12 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     }
 
     @Override
-    public void login() {
+    public void login(Object obj) {
 
     }
 
     @Override
-    public void openHomeView() {
+    public void openHomeView(Object... obj) {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(
@@ -85,7 +85,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     }
 
     @Override
-    public void openPasswordForget() {
+    public void openPasswordForget(Object... obj) {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(
@@ -97,7 +97,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     }
 
     @Override
-    public void openRegister() {
+    public void openRegister(Object... obj) {
         FragmentManager fragmentManager = Login.this.getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(

@@ -5,11 +5,11 @@ import k15hkii.se114.bookstore.viewmodel.base.INavigator;
 public interface LoginNavigator extends INavigator {
     void handleError(Throwable throwable);
 
-    void login();
+    void login(Object obj);
 
-    void openHomeView();
+    void openHomeView(Object... obj);
 
-    void openPasswordForget();
+    void openPasswordForget(Object... obj);
 
-    void openRegister();
+    void openRegister(Object... obj);
 }
