@@ -27,10 +27,6 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
 
     @Inject protected BookViewAdapter bookViewAdapter;
 
-    public static AllBooksPage newInstance() {
-        return new AllBooksPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
