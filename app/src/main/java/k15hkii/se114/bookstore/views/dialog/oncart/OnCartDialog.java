@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 public class OnCartDialog extends BaseDialog implements OnCartCallBack {
     private static final String TAG = "OnCartDialog";
+    private int amount = 0;
 
     @Inject
     OnCartViewModel onCartViewModel;
@@ -49,6 +50,32 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
         WindowManager.LayoutParams wlp = window.getAttributes();
 
         wlp.gravity = Gravity.BOTTOM;
+
+        binding.btnPutToCartDialogPlusAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(amount == 0){
+                    return;
+                }
+                else{
+                    amount++;
+                    binding.tvPutToCartDialogAmount.setText(amount+"");
+                }
+            }
+        });
+
+        binding.btnPutToCartDialogMinusAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(amount == 0){
+                    return;
+                }
+                else {
+                    amount--;
+                    binding.tvPutToCartDialogAmount.setText(amount + "");
+                }
+            }
+        });
 
         return view;
     }

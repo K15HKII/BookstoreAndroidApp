@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.views.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.views.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.views.dialog.changephone.ChangePhoneNumDialog;
 import k15hkii.se114.bookstore.views.dialog.filtersearch.FilterSearchDialog;
+import k15hkii.se114.bookstore.views.dialog.logout.LogOutDialog;
 import k15hkii.se114.bookstore.views.dialog.oncart.OnCartDialog;
 
 @DialogScope
@@ -31,4 +32,6 @@ public interface DialogComponent {
     void inject(BuyNowDialog buyNowDialog);
 
     void inject(OnCartDialog onCartDialog);
+
+    void inject(LogOutDialog logOutDialog);
 }

@@ -25,10 +25,6 @@ public class HomePageViewModel extends BaseViewModel<HomePageNavigator> implemen
         getNavigator().openFilterDialog();
     }
 
-    public void onAllTopicChip(){
-        getNavigator().openAllTopicView();
-    }
-
     public void onAllBooksChip(){
         getNavigator().openAllBooksView();
     }

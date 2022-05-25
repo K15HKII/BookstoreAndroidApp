@@ -12,8 +12,6 @@ public interface HomePageNavigator extends INavigator {
 
     void openFilterDialog();
 
-    void openAllTopicView();
-
     void openAllBooksView();
 
     void openPoppularBooksView();

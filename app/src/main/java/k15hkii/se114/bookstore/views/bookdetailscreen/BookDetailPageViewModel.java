@@ -28,6 +28,14 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         getNavigator().BackWard();
     }
 
+    public void openBuyNowDialog(){
+        getNavigator().openBuyNowDialog();
+    }
+
+    public void openOnCartDialog(){
+        getNavigator().openOnCartDialog();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

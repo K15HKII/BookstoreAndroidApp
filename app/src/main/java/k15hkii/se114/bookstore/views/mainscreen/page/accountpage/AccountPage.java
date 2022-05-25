@@ -19,6 +19,7 @@ import k15hkii.se114.bookstore.views.accountscreen.accountinfopage.AccountInfoPa
 import k15hkii.se114.bookstore.views.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.views.accountscreen.settingpage.SettingPage;
 import k15hkii.se114.bookstore.views.accountscreen.voucherscreen.VoucherPage;
+import k15hkii.se114.bookstore.views.dialog.logout.LogOutDialog;
 import k15hkii.se114.bookstore.views.loginscreen.Login;
 
 public class AccountPage extends BaseFragment<AccountPageFragmentBinding, AccountPageViewModel> implements AccountPageNavigator {
@@ -123,13 +124,6 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
 
     @Override
     public void logOut() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, Login.class,null).commit();
+        LogOutDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 }

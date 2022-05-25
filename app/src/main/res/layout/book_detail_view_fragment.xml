@@ -161,6 +161,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp">
                         <android.widget.Button
+                                android:id="@+id/btnDeltailBookOnCart"
+                                android:onClick="@{()-> viewModel.openOnCartDialog()}"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="20dp"
@@ -169,6 +171,7 @@
                                 android:background="@drawable/ic_add_shopping_cart"/>
                         <android.widget.Button
                                 android:id="@+id/btnDeltailBookBuyNow"
+                                android:onClick="@{()-> viewModel.openBuyNowDialog()}"
                                 android:layout_width="279dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_bold"

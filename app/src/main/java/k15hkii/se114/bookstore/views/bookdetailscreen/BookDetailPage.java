@@ -15,6 +15,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.BookDetailViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.viewmodel.base.BaseFragment;
+import k15hkii.se114.bookstore.views.dialog.buynow.BuyNowDialog;
+import k15hkii.se114.bookstore.views.dialog.oncart.OnCartDialog;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -50,12 +52,6 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
         BookDetailViewFragmentBinding bookDetailViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        String[] names = {"tritran@gm.com","tritran12@gm.com","tritran45@gm.com"};
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        bookDetailViewFragmentBinding.rcvDeltailBookCommentList.setLayoutManager(linearLayoutManager);
-        bookDetailViewFragmentBinding.rcvDeltailBookCommentList.setAdapter(commentViewAdapter);
-
         return view;
     }
 
@@ -67,5 +63,15 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openBuyNowDialog() {
+        BuyNowDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openOnCartDialog() {
+        OnCartDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 }
