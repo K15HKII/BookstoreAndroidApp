@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RegisterFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.loginscreen.LoadingDialog;
 
 import java.util.Calendar;
 
@@ -60,9 +61,10 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
+
+
 }

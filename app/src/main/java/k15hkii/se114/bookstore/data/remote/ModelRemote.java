@@ -37,6 +37,12 @@ public interface ModelRemote {
     @GET("/api/models/bookprofile/{id}")
     Single<BookProfile> getBookprofile(String id);
 
+    @GET("/api/models/bookprofileimage")
+    Single<List<BookProfileImage>> getBookprofileimages();
+
+    @GET("/api/models/bookprofileimage/{id}")
+    Single<BookProfileImage> getBookprofileimage(String id);
+
     @GET("/api/models/transport")
     Single<List<Transport>> getTransports();
 
@@ -55,11 +61,11 @@ public interface ModelRemote {
     @GET("/api/models/transporter/{id}")
     Single<Transporter> getTransporter(String id);
 
-    @GET("/api/models/cartitem")
-    Single<List<CartItem>> getCartitems();
+    @GET("/api/models/cartitem/{userid}")
+    Single<List<CartItem>> getCartitems(String userId);
 
-    @GET("/api/models/cartitem/{id}")
-    Single<CartItem> getCartitem(String id);
+    @GET("/api/models/cartitem/{userid,bookprofileid}")
+    Single<CartItem> getCartitem(String userId, String bookProfileId);
 
     @POST("/api/models/cartitem/{id}")
     Single<CartItem> saveCartitem(Object obj);
