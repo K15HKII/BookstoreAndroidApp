@@ -15,16 +15,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderViewAdapter extends ListAdapter<OrderView, OrderViewAdapter.OrderViewHolder> {
+public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewAdapter.OrderViewHolder> {
 
     private Context context;
 
-    public OrderViewAdapter(List<OrderView> orderViewList, Context context){
+    public OrderViewAdapter(List<OrderViewViewModel> orderViewList, Context context){
         super(orderViewList);
         this.context = context;
     }
 
-    public OrderViewAdapter(List<OrderView> orderViewList){
+    public OrderViewAdapter(List<OrderViewViewModel> orderViewList){
         super(orderViewList);
     }
 
@@ -34,7 +34,7 @@ public class OrderViewAdapter extends ListAdapter<OrderView, OrderViewAdapter.Or
     }
 
     @Override
-    protected void onBindViewHolder(OrderViewHolder holder, OrderView data) {
+    protected void onBindViewHolder(OrderViewHolder holder, OrderViewViewModel data) {
         if(data == null){
             return;
         }

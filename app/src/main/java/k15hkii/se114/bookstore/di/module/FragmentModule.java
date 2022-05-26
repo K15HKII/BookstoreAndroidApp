@@ -4,6 +4,8 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPageViewModel;
@@ -257,6 +259,11 @@ public class FragmentModule {
     }
 
     @Provides
+    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider));
+    }
+
+    @Provides
     public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider));
     }
@@ -416,6 +423,11 @@ public class FragmentModule {
     @Provides
     public RecentSearchAdapter recentSearchAdapter(Context context) {
         return new RecentSearchAdapter(context);
+    }
+
+    @Provides
+    public ListDataNotificationAdapter listDataNotificationAdapter(Context context) {
+        return new ListDataNotificationAdapter(context);
     }
     //endregion
     //endregion

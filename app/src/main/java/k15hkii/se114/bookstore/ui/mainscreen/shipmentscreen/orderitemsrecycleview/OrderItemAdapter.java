@@ -14,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderItemAdapter extends ListAdapter<OrderItem, OrderItemAdapter.OrderItemHolder> {
+public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemAdapter.OrderItemHolder> {
 
     Context context;
 
-    public OrderItemAdapter(List<OrderItem> lsOrderItem) {
+    public OrderItemAdapter(List<OrderItemViewModel> lsOrderItem) {
         super(lsOrderItem);
     }
 
@@ -36,7 +36,7 @@ public class OrderItemAdapter extends ListAdapter<OrderItem, OrderItemAdapter.Or
     }
 
     @Override
-    protected void onBindViewHolder(OrderItemHolder holder, OrderItem data) {
+    protected void onBindViewHolder(OrderItemHolder holder, OrderItemViewModel data) {
         holder.tvBookName.setText(data.getName());
     }
 

@@ -13,14 +13,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ListDataNotificationAdapter extends ListAdapter<ListDataNotification,ListDataNotificationAdapter.ListDataNotificationViewHolder> {
+public class ListDataNotificationAdapter extends ListAdapter<ListDataNotificationViewModel,ListDataNotificationAdapter.ListDataNotificationViewHolder> {
 
     Context context;
     public static final int TYPE_INFO = 1;
     public static final int TYPE_ORDERVIEW = 2;
 
-    public ListDataNotificationAdapter(Context context, List<ListDataNotification> lslistDataNotifications) {
+    public ListDataNotificationAdapter(Context context, List<ListDataNotificationViewModel> lslistDataNotifications) {
         super(lslistDataNotifications);
+        this.context = context;
+    }
+
+    public ListDataNotificationAdapter(Context context) {
+        super(null);
         this.context = context;
     }
 
@@ -38,7 +43,7 @@ public class ListDataNotificationAdapter extends ListAdapter<ListDataNotificatio
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ListDataNotificationViewHolder holder, ListDataNotification data) {
+    public void onBindViewHolder(@NonNull @NotNull ListDataNotificationViewHolder holder, ListDataNotificationViewModel data) {
         if(data == null){
             return;
         }

@@ -1,10 +1,10 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
-public class NotificationInfo {
+public class NotificationInfoViewModel {
     String title;
     String description;
 
-    public NotificationInfo(String title, String description) {
+    public NotificationInfoViewModel(String title, String description) {
         this.title = title;
         this.description = description;
     }

@@ -14,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderView,NotificationOrderViewAdapter.NotificationOrderHolder> {
+public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderViewModel,NotificationOrderViewAdapter.NotificationOrderHolder> {
 
-    public NotificationOrderViewAdapter(List<NotificationOrderView> data) {
+    public NotificationOrderViewAdapter(List<NotificationOrderViewModel> data) {
         super(data);
     }
 
@@ -29,7 +29,7 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationOrderView data) {
+    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationOrderViewModel data) {
 
         holder.tvTitle.setText(data.getTitle());
         holder.tvDescription.setText(data.getDescription());

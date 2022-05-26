@@ -41,7 +41,7 @@ public interface ModelRemote {
     Single<List<BookProfileImage>> getBookprofileimages();
 
     @GET("/api/models/bookprofileimage/{id}")
-    Single<BookProfileImage> getBookprofileimage(String id);
+    Single<BookProfileImage> getBookprofileimage(String id, int i);
 
     @GET("/api/models/transport")
     Single<List<Transport>> getTransports();
@@ -86,7 +86,7 @@ public interface ModelRemote {
     Single<Bill> getBill(String id);
 
     @GET("/api/models/billdetail")
-    Single<List<BillDetail>> getBilldetails();
+    Single<List<BillDetail>> getBilldetails(String billId);
 
     @GET("/api/models/billdetail/{id, boolId}")
     Single<BillDetail> getBilldetail(String id, String bookId);

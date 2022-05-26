@@ -12,9 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class NotificationInfoAdapter extends ListAdapter<NotificationInfo,NotificationInfoAdapter.NotificationInfoHolder> {
+public class NotificationInfoAdapter extends ListAdapter<NotificationInfoViewModel,NotificationInfoAdapter.NotificationInfoHolder> {
 
-    public NotificationInfoAdapter( List<NotificationInfo> lsNotificationInfo) {
+    public NotificationInfoAdapter( List<NotificationInfoViewModel> lsNotificationInfo) {
         super(lsNotificationInfo);
     }
 
@@ -27,7 +27,7 @@ public class NotificationInfoAdapter extends ListAdapter<NotificationInfo,Notifi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull NotificationInfoHolder holder, NotificationInfo data) {
+    public void onBindViewHolder(@NonNull @NotNull NotificationInfoHolder holder, NotificationInfoViewModel data) {
         holder.tvTitle.setText(data.getTitle());
     }
 

@@ -1,6 +1,5 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +12,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.NotificationPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.R;
 
 import java.util.ArrayList;
@@ -60,29 +59,22 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
         buildComponent.inject(this);
     }
 
-    private List<ListDataNotification> GetListDataNotification() {
-        List<ListDataNotification> lsDATA = new ArrayList<>();
-        List<OrderItem> lsBook1 = new ArrayList<>();
-        lsBook1.add(new OrderItem("Dac Nhan Tam"));
-        lsBook1.add(new OrderItem("hello"));
+    private List<ListDataNotificationViewModel> GetListDataNotification() {
+        List<ListDataNotificationViewModel> lsDATA = new ArrayList<>();
+        List<OrderItemViewModel> lsBook1 = new ArrayList<>();
+        lsBook1.add(new OrderItemViewModel("Dac Nhan Tam"));
+        lsBook1.add(new OrderItemViewModel("hello"));
 
-        List<NotificationOrderView> lsOrder = new ArrayList<>();
-        lsOrder.add(new NotificationOrderView("Đơn hàng 1","200.000đ","Đã được xác nhận",lsBook1));
+        List<NotificationOrderViewModel> lsOrder = new ArrayList<>();
+        lsOrder.add(new NotificationOrderViewModel("Đơn hàng 1", "200.000đ", "Đã được xác nhận", lsBook1));
 
-        List<NotificationInfo> lsInfo = new ArrayList<>();
-        lsInfo.add(new NotificationInfo("Chào mừng bạn đến với bookstore","Hello"));
+        List<NotificationInfoViewModel> lsInfo = new ArrayList<>();
+        lsInfo.add(new NotificationInfoViewModel("Chào mừng bạn đến với bookstore", "Hello"));
 
-        lsDATA.add(new ListDataNotification(ListDataNotificationAdapter.TYPE_ORDERVIEW,null,lsOrder));
-        lsDATA.add(new ListDataNotification(ListDataNotificationAdapter.TYPE_INFO,lsInfo,lsOrder));
+        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_ORDERVIEW, null, lsOrder));
+        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_INFO, lsInfo, lsOrder));
         return lsDATA;
 
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(NotificationPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

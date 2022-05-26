@@ -1,20 +1,28 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.List;
 
-public class NotificationOrderView {
+public class NotificationOrderViewModel extends BaseViewModel<NotificationOrderViewNavigator> {
     private String title;
     private String price;
     private String description;
-    private List<OrderItem> lsorderItems;
+    private List<OrderItemViewModel> lsorderItems;
 
-    public NotificationOrderView(String title, String price, String description, List<OrderItem> lsorderItems) {
+    public NotificationOrderViewModel(String title, String price, String description, List<OrderItemViewModel> lsorderItems) {
+        super(null);
         this.title = title;
         this.price = price;
         this.description = description;
         this.lsorderItems = lsorderItems;
+    }
+
+    public NotificationOrderViewModel(SchedulerProvider schedulerProvider) {
+        super(null);
+
     }
 
     public String getTitle() {
@@ -41,11 +49,11 @@ public class NotificationOrderView {
         this.description = description;
     }
 
-    public List<OrderItem> getLsorderItems() {
+    public List<OrderItemViewModel> getLsorderItems() {
         return lsorderItems;
     }
 
-    public void setLsorderItems(List<OrderItem> lsorderItems) {
+    public void setLsorderItems(List<OrderItemViewModel> lsorderItems) {
         this.lsorderItems = lsorderItems;
     }
 }

@@ -19,10 +19,12 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.Ren
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItem;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderView;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationViewModel;
+import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBookViewModel;
@@ -53,7 +55,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void orderViewBindSource(RecyclerView view, List<OrderView> source) {
+    public static void orderViewBindSource(RecyclerView view, List<OrderViewViewModel> source) {
         OrderViewAdapter adapter = (OrderViewAdapter) view.getAdapter();
         if (adapter == null)
             return;
@@ -141,7 +143,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void orderItemBindSource(RecyclerView view, List<OrderItem> source) {
+    public static void orderItemBindSource(RecyclerView view, List<OrderItemViewModel> source) {
         OrderItemAdapter adapter = (OrderItemAdapter) view.getAdapter();
         if (adapter == null)
             return;
@@ -176,6 +178,17 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void searchBindSource(RecyclerView view, List<RecentSearchViewModel> source) {
         RecentSearchAdapter adapter = (RecentSearchAdapter) view.getAdapter();
+        if (adapter == null)
+            return;
+        adapter.getSource().clear();
+        adapter.getSource().addAll(source);
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @BindingAdapter({"source"})
+    public static void listDataNotificationBindSource(RecyclerView view, List<ListDataNotificationViewModel> source) {
+        ListDataNotificationAdapter adapter = (ListDataNotificationAdapter) view.getAdapter();
         if (adapter == null)
             return;
         adapter.getSource().clear();
