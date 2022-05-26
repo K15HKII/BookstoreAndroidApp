@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentViewViewHolder> {
+public class RentViewAdapter extends ListAdapter<RentViewViewModel, RentViewAdapter.RentViewViewHolder> {
 
     Context context;
 
-    public RentViewAdapter(List<RentView> rentViewList, Context context) {
+    public RentViewAdapter(List<RentViewViewModel> rentViewList, Context context) {
         super(rentViewList);
         this.context = context;
     }
@@ -38,7 +38,7 @@ public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RentViewViewHolder holder, RentView data) {
+    public void onBindViewHolder(@NonNull @NotNull RentViewViewHolder holder, RentViewViewModel data) {
         if(data == null){
             return;
         }
@@ -51,7 +51,7 @@ public class RentViewAdapter extends ListAdapter<RentView, RentViewAdapter.RentV
                 false
         );
         // Create sub item view adapter
-        RentBookItemAdapter rentBookItemAdapter = new RentBookItemAdapter(data.getLsRentItem());
+        RentBookItemAdapter rentBookItemAdapter = new RentBookItemAdapter(data.getRentListItem());
         holder.rcvBookList.setLayoutManager(layoutManager);
         holder.rcvBookList.setAdapter(rentBookItemAdapter);
         holder.rcvBookList.setFocusable(false);

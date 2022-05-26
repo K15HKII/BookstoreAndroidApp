@@ -10,12 +10,12 @@ import java.util.List;
 
 public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<OncartItem>> onCartViewItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new OncartItem("Sách Đắc Nhân Tâm"),
-                          new OncartItem("Sách Công Nghệ"))
+    private final MutableLiveData<List<OncartItemViewModel>> onCartViewItemsLiveData = new MutableLiveData<>(
+            Arrays.asList(new OncartItemViewModel("Sách Đắc Nhân Tâm"),
+                          new OncartItemViewModel("Sách Công Nghệ"))
     );
 
-    public List<OncartItem> getOnCartViewItems() {
+    public List<OncartItemViewModel> getOnCartViewItems() {
         return onCartViewItemsLiveData.getValue();
     }
 

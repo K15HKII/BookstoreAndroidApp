@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RecentSearch {
+public class RecentSearchViewModel {
     String title;
 }

@@ -14,15 +14,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RentBookItemAdapter extends ListAdapter<RentBookItem, RentBookItemAdapter.RentBookItemViewHolder> {
+public class RentBookItemAdapter extends ListAdapter<RentBookItemViewModel, RentBookItemAdapter.RentBookItemViewHolder> {
 
     Context context;
 
-    public RentBookItemAdapter(List<RentBookItem> lsRentItem) {
+    public RentBookItemAdapter(List<RentBookItemViewModel> lsRentItem) {
         super(lsRentItem);
     }
 
-    public RentBookItemAdapter(List<RentBookItem> lsRentItem, Context context) {
+    public RentBookItemAdapter(List<RentBookItemViewModel> lsRentItem, Context context) {
         super(lsRentItem);
         this.context = context;
     }
@@ -41,7 +41,7 @@ public class RentBookItemAdapter extends ListAdapter<RentBookItem, RentBookItemA
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RentBookItemViewHolder holder, RentBookItem data) {
+    public void onBindViewHolder(@NonNull @NotNull RentBookItemViewHolder holder, RentBookItemViewModel data) {
         holder.tvBookName.setText(data.getName());
     }
 

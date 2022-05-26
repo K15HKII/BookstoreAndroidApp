@@ -1,6 +1,6 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
-public class OncartItem {
+public class OncartItemViewModel {
     String Name;
 
     public String getName() {
@@ -11,7 +11,7 @@ public class OncartItem {
         Name = name;
     }
 
-    public OncartItem(String name) {
+    public OncartItemViewModel(String name) {
         Name = name;
     }
 }

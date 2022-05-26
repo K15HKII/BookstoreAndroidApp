@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="10dp"
-              android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:id="@+id/imageRentBookAdapterBookView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/dac_nhan_tam_book"/>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemViewModel"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginBottom="10dp"
+                  android:orientation="vertical">
         <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="12dp"
-                android:orientation="vertical">
-            <TextView
-                    android:id="@+id/tvRentBookAdapterNameOfBook"
-                    android:fontFamily="@font/lato_regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sách Đắc Nhân Tâm"
-                    android:textSize="21dp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"/>
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:id="@+id/imageRentBookAdapterBookView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/dac_nhan_tam_book"/>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:orientation="vertical">
                 <TextView
-                        android:id="@+id/tvRentBookAdapterTypeOfBook"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/tvRentBookAdapterNameOfBook"
                         android:fontFamily="@font/lato_regular"
-                        android:textAlignment="textStart"
-                        android:textSize="15dp"
-                        android:text="Bìa cứng"/>
-                <TextView
-                        android:id="@+id/tvRentBookAdapterPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="10.000đ"
-                        android:textSize="15dp"
-                        android:textColor="@color/btn_blue"
-                        android:textAlignment="textEnd"/>
+                        android:text="Sách Đắc Nhân Tâm"
+                        android:textSize="21dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:id="@+id/tvRentBookAdapterTypeOfBook"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:textAlignment="textStart"
+                            android:textSize="15dp"
+                            android:text="Bìa cứng"/>
+                    <TextView
+                            android:id="@+id/tvRentBookAdapterPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="10.000đ"
+                            android:textSize="15dp"
+                            android:textColor="@color/btn_blue"
+                            android:textAlignment="textEnd"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+</layout>

@@ -2,10 +2,13 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage;
 
 import androidx.databinding.Observable;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
+import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +23,16 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
 
     public List<BookViewModel> getFavouriteItems() {
         return favouriteItemsLiveData.getValue();
+    }
+
+    @Inject protected ModelRemote remote;
+
+    private String userId;
+    private User user;
+    public void setUserId(String userId) {
+        this.userId = userId;
+
+        //
     }
 
     public FavoritePageViewModel(SchedulerProvider schedulerProvider) {

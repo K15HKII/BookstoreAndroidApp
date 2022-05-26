@@ -10,11 +10,11 @@ import java.util.List;
 
 public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<Voucher>> voucherListItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new Voucher("20% Giảm giá"),
-                          new Voucher("30% Giảm giá"))
+    private final MutableLiveData<List<VoucherViewModel>> voucherListItemsLiveData = new MutableLiveData<>(
+            Arrays.asList(new VoucherViewModel("20% Giảm giá"),
+                          new VoucherViewModel("30% Giảm giá"))
     );
-    public List<Voucher> getVoucherListItems() {
+    public List<VoucherViewModel> getVoucherListItems() {
         return voucherListItemsLiveData.getValue();
     }
 

@@ -10,12 +10,12 @@ import java.util.List;
 
 public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigator> implements Observable {
 
-    private final MutableLiveData<List<RecentSearch>> searchBookViewItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new RecentSearch("Dac nhan tam"),
-                          new RecentSearch("hi hi"))
+    private final MutableLiveData<List<RecentSearchViewModel>> searchBookViewItemsLiveData = new MutableLiveData<>(
+            Arrays.asList(new RecentSearchViewModel("Dac nhan tam"),
+                          new RecentSearchViewModel("hi hi"))
     );
 
-    public List<RecentSearch> getSearchBookViewItems() {
+    public List<RecentSearchViewModel> getSearchBookViewItems() {
         return searchBookViewItemsLiveData.getValue();
     }
 

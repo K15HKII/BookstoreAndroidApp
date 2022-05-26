@@ -28,7 +28,7 @@ import java.util.List;
 
 public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, SearchBookViewViewModel> implements SearchBookViewNavigator {
     private EditText sbSearchInput;
-    List<RecentSearch> arrayName;
+    List<RecentSearchViewModel> arrayName;
     @Inject
     protected RecentSearchAdapter recentSearchAdapter;
 
@@ -96,9 +96,9 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
     }
 
     private void filter(String inputTxt){
-        ArrayList<RecentSearch> filteredLs = new ArrayList<>();
+        ArrayList<RecentSearchViewModel> filteredLs = new ArrayList<>();
 
-        for(RecentSearch item : arrayName){
+        for(RecentSearchViewModel item : arrayName){
             if(item.getTitle().toLowerCase().contains(inputTxt.toLowerCase())) {
                 filteredLs.add(item);
             }

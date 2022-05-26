@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchAdapter.RecentSearchViewHolder> {
+public class RecentSearchAdapter extends ListAdapter<RecentSearchViewModel, RecentSearchAdapter.RecentSearchViewHolder> {
     private Context context;
 
-    public RecentSearchAdapter(List<RecentSearch> data) {
+    public RecentSearchAdapter(List<RecentSearchViewModel> data) {
         super(data);
     }
 
@@ -27,7 +27,7 @@ public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchA
     }
 
     @Override
-    protected void onBindViewHolder(RecentSearchAdapter.RecentSearchViewHolder holder, RecentSearch data) {
+    protected void onBindViewHolder(RecentSearchAdapter.RecentSearchViewHolder holder, RecentSearchViewModel data) {
         if(data == null){
             return;
         }
@@ -52,7 +52,7 @@ public class RecentSearchAdapter extends ListAdapter<RecentSearch, RecentSearchA
         }
     }
 
-    public void filterlist(ArrayList<RecentSearch> filterls){
+    public void filterlist(ArrayList<RecentSearchViewModel> filterls){
         this.source = filterls;
         notifyDataSetChanged();
     }

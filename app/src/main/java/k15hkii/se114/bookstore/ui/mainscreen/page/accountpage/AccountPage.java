@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.databinding.AccountPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
@@ -21,11 +23,15 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
 
+import javax.inject.Inject;
+
 public class AccountPage extends BaseFragment<AccountPageFragmentBinding, AccountPageViewModel> implements AccountPageNavigator {
 
     private AccountPageFragmentBinding accountPageFragmentBinding;
-    private AccountPageViewModel mViewModel;
+
     private Button btnInfomation, btnSetting, btnHelpCenter;
+
+
 
     public static AccountPage newInstance() {
         return new AccountPage();
@@ -33,7 +39,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
 
     @Override
     public int getBindingVariable() {
-        return BR.AccountPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -64,13 +70,6 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AccountPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

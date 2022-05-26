@@ -14,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OncartItemAdapter extends ListAdapter<OncartItem,OncartItemAdapter.oncart_itemHolder> {
+public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartItemAdapter.oncart_itemHolder> {
 
     Context context;
 
-    public OncartItemAdapter(Context context, List<OncartItem> lsOncart) {
+    public OncartItemAdapter(Context context, List<OncartItemViewModel> lsOncart) {
         super(lsOncart);
         this.context = context;
     }
@@ -37,7 +37,7 @@ public class OncartItemAdapter extends ListAdapter<OncartItem,OncartItemAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItem data) {
+    public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItemViewModel data) {
         holder.tvBookName.setText(data.getName());
     }
 

@@ -14,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VoucherViewAdapter extends ListAdapter<Voucher,VoucherViewAdapter.VoucherViewHolder> {
+public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherViewAdapter.VoucherViewHolder> {
 
     private Context context;
 
-    public VoucherViewAdapter(List<Voucher> lsVouchers, Context context) {
+    public VoucherViewAdapter(List<VoucherViewModel> lsVouchers, Context context) {
         super(lsVouchers);
         this.context = context;
     }
@@ -37,7 +37,7 @@ public class VoucherViewAdapter extends ListAdapter<Voucher,VoucherViewAdapter.V
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, Voucher data) {
+    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, VoucherViewModel data) {
         if(data == null){
             return;
         }
