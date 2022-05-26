@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.FilterSearchDialogBinding;
@@ -15,6 +16,7 @@ import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
 
 import javax.inject.Inject;
 
@@ -42,7 +44,7 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         binding.setViewModel(filterSearchViewModel);
         filterSearchViewModel.setNavigator(this);
 
-        this.getDialog().setCanceledOnTouchOutside(true);
+//        this.getDialog().setCanceledOnTouchOutside(true);
 
         Dialog dlg = this.getDialog();
         Window window = dlg.getWindow();
@@ -87,4 +89,21 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         buildComponent.inject(this);
     }
 
+    @Override
+    public void dismissDialog() {
+        dismissDialog(TAG);
+    }
+
+    @Override
+    public void openSearchResult() {
+        FragmentManager  fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class,null).setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).addToBackStack(null).commit();
+        dismissDialog(TAG);
+    }
 }

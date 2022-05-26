@@ -8,6 +8,12 @@ public class FilterSearchViewModel extends BaseViewModel<FilterSearchCallBack> {
         super(schedulerProvider);
     }
 
+    public void dismissDialog(){
+        getNavigator().dismissDialog();
+    }
 
+    public void openSearchViewResultClick(){
+        getNavigator().openSearchResult();
+    }
 
 }

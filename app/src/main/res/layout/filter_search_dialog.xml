@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchViewModel"/>
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<LinearLayout
+        android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <LinearLayout
@@ -19,10 +19,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sắp xếp"
+
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="28dp"/>
-        <RadioButton
+        <android.widget.RadioButton
                 android:id="@+id/RadbtnFilterFromHighToLow"
                 android:fontFamily="@font/lato_regular"
                 android:padding="18dp"
@@ -99,9 +100,45 @@
         <RatingBar
                 android:id="@+id/rateFilterSearchRating"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:numStars="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.widget.Button
+                    android:id="@+id/btnFilterSearchCancle"
+                    android:clickable="true"
+                    android:onClick="@{()-> viewModel.dismissDialog()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:background="@drawable/round_white_btn"
+                    android:textColor="@color/btn_blue"
+                    android:text="Hủy"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnFilterSearchAccept" app:layout_constraintHorizontal_bias="0.925"
+                    app:layout_constraintVertical_bias="0.0"/>
+            <android.widget.Button
+                    android:id="@+id/btnFilterSearchAccept"
+                    android:onClick="@{()-> viewModel.openSearchViewResultClick()}"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:background="@drawable/dialog_blue_btn"
+                    android:text="Xác nhận"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </LinearLayout>
 </layout>
