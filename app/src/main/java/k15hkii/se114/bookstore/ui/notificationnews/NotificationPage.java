@@ -14,16 +14,16 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.R;
+import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationPage extends BaseFragment<NotificationPageFragmentBinding, NotificationPageViewModel> implements NotificationPageNavigator {
 
-    private NotificationPageFragmentBinding notificationPageFragmentBinding;
-    private NotificationPageViewModel mViewModel;
-    private RecyclerView rcvView;
-    private ListDataNotificationAdapter listDataNotificationAdapter;
+    @Inject protected
+    ListDataNotificationAdapter listDataNotificationAdapter;
 
     public static NotificationPage newInstance() {
         return new NotificationPage();
@@ -31,7 +31,7 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
 
     @Override
     public int getBindingVariable() {
-        return BR.NotificationPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -40,17 +40,20 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        notificationPageFragmentBinding = getViewDataBinding();
+        NotificationPageFragmentBinding notificationPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        rcvView = view.findViewById(R.id.rcvNotificationView);
-        listDataNotificationAdapter = new ListDataNotificationAdapter(NotificationPage.this.getContext(), GetListDataNotification());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NotificationPage.this.getContext());
-        rcvView.setLayoutManager(linearLayoutManager);
-        rcvView.setAdapter(listDataNotificationAdapter);
+        notificationPageFragmentBinding.rcvNotificationView.setLayoutManager(linearLayoutManager);
+        notificationPageFragmentBinding.rcvNotificationView.setAdapter(listDataNotificationAdapter);
         return view;
     }
 

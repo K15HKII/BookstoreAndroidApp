@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="NotificationPageViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.notificationnews.NotificationPageViewModel"/>
     </data>
 <FrameLayout
@@ -31,7 +31,7 @@
 
                 <android.widget.Button
                         android:id="@+id/btnAddAddressBackward"
-                        android:onClick="@{()-> NotificationPageViewModel.onBackWardClick()}"
+                        android:onClick="@{()-> viewModel.onBackWardClick()}"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:scaleX="0.55"
