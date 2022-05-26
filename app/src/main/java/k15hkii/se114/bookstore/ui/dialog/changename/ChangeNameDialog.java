@@ -21,7 +21,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     private static final String TAG = "ChangeNameDialog";
 
-    @Inject ChangeNameDialogViewModel changeNameDialogViewModel;
+    @Inject protected ChangeNameDialogViewModel changeNameDialogViewModel;
 
     public static ChangeNameDialog newInstance() {
         ChangeNameDialog fragment = new ChangeNameDialog();

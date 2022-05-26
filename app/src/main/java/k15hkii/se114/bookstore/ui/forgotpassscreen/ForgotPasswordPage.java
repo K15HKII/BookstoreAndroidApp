@@ -30,7 +30,7 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
 
     @Override
     public int getBindingVariable() {
-        return BR.ForgotPassViewModel;
+        return BR.viewModel;
     }
 
     @Override

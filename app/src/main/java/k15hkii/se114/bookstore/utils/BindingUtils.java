@@ -25,7 +25,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevie
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBookView;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReport;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
@@ -64,7 +64,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void orderBookViewBindSource(RecyclerView view, List<OrderBookView> source) {
+    public static void orderBookViewBindSource(RecyclerView view, List<OrderBookViewModel> source) {
         OrderBooksViewAdapter adapter = (OrderBooksViewAdapter) view.getAdapter();
         if (adapter == null)
             return;

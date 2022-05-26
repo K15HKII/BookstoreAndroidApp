@@ -35,7 +35,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         remote.getBookprofile(id).doOnSuccess(bookProfile -> {
             profile = bookProfile;
         }).subscribe();
-        //TODO: lay data image
+        // Todo: lay image
     }
 
     public BookDetailPageViewModel(SchedulerProvider schedulerProvider) {

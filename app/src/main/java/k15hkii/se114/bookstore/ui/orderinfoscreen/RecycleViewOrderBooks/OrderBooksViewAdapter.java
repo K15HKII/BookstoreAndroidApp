@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderBooksViewAdapter extends ListAdapter<OrderBookView,OrderBooksViewAdapter.OrderBooksViewViewHolder> {
+public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderBooksViewAdapter.OrderBooksViewViewHolder> {
     Context context;
 
-    public OrderBooksViewAdapter(List<OrderBookView> lsBookViews, Context context) {
+    public OrderBooksViewAdapter(List<OrderBookViewModel> lsBookViews, Context context) {
         super(lsBookViews);
         this.context = context;
     }
@@ -36,7 +36,8 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookView,OrderBooksV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull OrderBooksViewAdapter.OrderBooksViewViewHolder holder,OrderBookView data) {
+    public void onBindViewHolder(@NonNull @NotNull OrderBooksViewAdapter.OrderBooksViewViewHolder holder,
+                                 OrderBookViewModel data) {
         if(data == null){
             return;
         }
