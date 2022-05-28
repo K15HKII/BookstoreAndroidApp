@@ -3,5 +3,6 @@ package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevi
 import k15hkii.se114.bookstore.ui.base.INavigator;
 
 public interface OrderViewNavigator extends INavigator {
-    void detailOrderNavigator(String billId);
+//    void detailOrderNavigator(String billId);
+
 }

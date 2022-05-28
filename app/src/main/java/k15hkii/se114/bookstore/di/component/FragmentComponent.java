@@ -50,12 +50,18 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPage;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.OrderInfoPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetail;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
 import k15hkii.se114.bookstore.ui.registerscreen.Register;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
+import k15hkii.se114.bookstore.ui.success.lend.LendSuccess;
+import k15hkii.se114.bookstore.ui.success.order.OrderSuccess;
 
 @FragmentScope
 @Component(modules = {FragmentModule.class}, dependencies = AppComponent.class)
@@ -211,5 +217,21 @@ public interface FragmentComponent {
     //TODO: MAINSCREEN.POPULAR
     void inject(PopularBooksPage popularBooksPage);
 
+    //TODO: ORDERINFOSCREEN.ORDERDETAIL
+    void inject(OrderDetail orderDetail);
 
+    //TODO: SUCCESS.LEND
+    void inject(LendSuccess lendSuccess);
+
+    //TODO: SUCCESS.ORDER
+    void inject(OrderSuccess orderSuccess);
+
+    //TODO: ORDERINFOSCREEN.ORDERCHECKER
+    void inject(OrderChecker orderChecker);
+
+    //TODO: ORDERINFOSCREEN.ORDERRATING
+    void inject(OrderRating orderRating);
+
+    //TODO: ORDERINFOSCREEN.ORDERRATINGDETAIL
+    void inject(OrderRatingDetail orderRatingDetail);
 }

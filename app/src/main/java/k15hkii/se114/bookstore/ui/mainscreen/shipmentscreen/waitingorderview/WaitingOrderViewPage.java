@@ -6,19 +6,32 @@ import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.IOrderNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentBinding, WaitingOrderViewPageViewModel> implements WaitingOrderViewPageNavigator {
+public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentBinding, WaitingOrderViewPageViewModel> implements WaitingOrderViewPageNavigator, IOrderNavigator {
     private WaitingOrderViewPageViewModel mViewModel;
+    private int statusView = 0;
+
+    public int getStatusView(){
+        return this.statusView;
+    }
+
     @Inject
     protected OrderViewAdapter orderViewAdapter;
 
@@ -48,6 +61,7 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
         WaitingOrderViewFragmentBinding waitingOrderViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
+        orderViewAdapter.setOrderNavigator(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(WaitingOrderViewPage.this.getContext());
         waitingOrderViewFragmentBinding.rcvWaitingOrderOrderView.setLayoutManager(linearLayoutManager);
         waitingOrderViewFragmentBinding.rcvWaitingOrderOrderView.setAdapter(orderViewAdapter);
@@ -60,4 +74,16 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
         buildComponent.inject(this);
     }
 
+    @Override
+    public void Navigate(OrderViewViewModel vm) {
+        //TODO: Navigate to Waiting
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerHomeView, OrderDetail.class,null).commit();
+    }
 }

@@ -6,6 +6,11 @@ import dagger.Provides;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetailViewModel;
+import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPageViewModel;
@@ -65,15 +70,16 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPageViewM
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationPageViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.OrderInfoPageViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPageViewModel;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
+import k15hkii.se114.bookstore.ui.success.lend.*;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
@@ -356,6 +362,36 @@ public class FragmentModule {
     @Provides
     public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public LendSuccessViewModel provideLendSuccessViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, LendSuccessViewModel.class, () -> new LendSuccessViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderSuccessViewModel provideOrderSuccessViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderSuccessViewModel.class, () -> new OrderSuccessViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider));
     }
 
     //endregion

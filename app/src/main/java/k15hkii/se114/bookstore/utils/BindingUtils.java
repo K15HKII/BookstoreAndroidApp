@@ -27,8 +27,8 @@ import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationViewModel
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBookViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.RecycleViewOrderBooks.OrderBooksViewAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReport;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchViewModel;

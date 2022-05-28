@@ -2,14 +2,14 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel"/>
     </data>
     <FrameLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.orderinfoscreen.orderConfirm.OrderInfoPage">
+            tools:context=".ui.orderinfoscreen.orderchecker.OrderChecker">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
                         android:textStyle="bold"
-                        android:text="Đặt hàng"
+                        android:text="Chi tiết đơn hàng"
                         android:textColor="@color/black"
                         android:textSize="24dp"/>
             </androidx.appcompat.widget.Toolbar>
@@ -99,7 +99,7 @@
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView
-                                android:id="@+id/tvOrderPageAddressDetail"
+                                android:id="@+id/tvOrderCheckerAddressDetail"
                                 android:fontFamily="@font/lato_regular"
                                 android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
                                 android:textSize="19dp"
@@ -144,7 +144,7 @@
                                     android:layout_marginLeft="3dp"/>
                         </LinearLayout>
                         <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/lvOrderPageListBooks"
+                                android:id="@+id/lvOrderCheckerListBooks"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:scrollbars="none"
@@ -199,7 +199,7 @@
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView
-                                android:id="@+id/tvOrderPageVoucher"
+                                android:id="@+id/tvOrderCheckerVoucher"
                                 android:fontFamily="@font/lato_regular"
                                 android:text="%25 giảm giá"
                                 android:textSize="19dp"
@@ -258,7 +258,7 @@
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView
-                                android:id="@+id/tvOrderPagePaymentMethod"
+                                android:id="@+id/tvOrderCheckerPaymentMethod"
                                 android:fontFamily="@font/lato_regular"
                                 android:text="Thanh toán khi nhận hàng"
                                 android:textSize="19dp"
@@ -295,7 +295,7 @@
                                     android:text="Tổng tiền hàng"
                                     android:textAlignment="textStart"/>
                             <TextView
-                                    android:id="@+id/tvOrderPageTotal"
+                                    android:id="@+id/tvOrderCheckerTotal"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="15dp"
                                     android:layout_width="match_parent"
@@ -319,7 +319,7 @@
                                     android:text="Phí vận chuyển"
                                     android:textAlignment="textStart"/>
                             <TextView
-                                    android:id="@+id/tvOrderPageShipmentPay"
+                                    android:id="@+id/tvOrderCheckerShipmentPay"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_regular"
@@ -343,7 +343,7 @@
                                     android:text="Giảm giá"
                                     android:textAlignment="textStart"/>
                             <TextView
-                                    android:id="@+id/tvOrderPageDiscount"
+                                    android:id="@+id/tvOrderCheckerDiscount"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_regular"
@@ -369,7 +369,7 @@
                                     android:textStyle="bold"
                                     android:textAlignment="textStart"/>
                             <TextView
-                                    android:id="@+id/tvOrderPageTotalMoneyPay"
+                                    android:id="@+id/tvOrderCheckerTotalMoneyPay"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_bold"
@@ -381,21 +381,19 @@
                         </LinearLayout>
                     </LinearLayout>
                     <android.widget.Button
-                            android:id="@+id/btnOrderPageConfirmOrder"
-                            android:onClick="@{()-> viewModel.openSuccessOrder()}"
+                            android:id="@+id/btnOrderCheckerConfirmArrived"
                             android:fontFamily="@font/lato_bold"
                             android:paddingLeft="35dp"
                             android:paddingRight="35dp"
                             android:paddingTop="12dp"
                             android:paddingBottom="12dp"
-                            android:background="@drawable/round_btn"
+                            android:background="@drawable/round_long_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp"
                             android:textAllCaps="false"
                             android:textSize="14sp"
-                            android:drawableStart="@drawable/ic_shopping_white"
-                            android:text="Đặt hàng"
+                            android:text="Xác nhận đơn hàng đã đến tay"
                             android:textColor="@color/white"
                             android:layout_gravity="center"/>
 

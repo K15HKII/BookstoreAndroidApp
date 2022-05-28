@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
@@ -47,6 +52,7 @@
     <android.widget.Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.onBackHomeClick()}"
             android:textAllCaps="false"
             android:text="Quay lại trang chủ"
             android:layout_marginTop="100dp"
@@ -61,3 +67,4 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.493"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
