@@ -2,18 +2,26 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
+import java.util.Date;
+
+@With
+@AllArgsConstructor
+@NoArgsConstructor
 public class WildVoucher {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("profileid")
-    private int profileId;
+    private String profileId;
 
     @Getter
     @Expose
@@ -23,15 +31,15 @@ public class WildVoucher {
     @Getter
     @Expose
     @SerializedName("releasedate")
-    private int releaseDate;
+    private Date releaseDate;
 
     @Getter
     @Expose
     @SerializedName("expirydate")
-    private int expiryDate;
+    private Date expiryDate;
 
     @Getter
     @Expose
     @SerializedName("used")
-    private int used;
+    private boolean used;
 }
