@@ -7,6 +7,7 @@ import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.module.AppModule;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
@@ -21,6 +22,8 @@ public interface AppComponent {
     SchedulerProvider getSchedulerProvider();
 
     Authentication getAuthentication();
+
+    ModelRemote getModelRemote();
 
     Context getContext();
 

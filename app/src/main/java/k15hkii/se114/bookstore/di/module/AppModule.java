@@ -7,11 +7,14 @@ import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
+import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.LocalModelRemote;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.data.remote.RestHeader;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.utils.AppConstants;
@@ -40,6 +43,14 @@ public class AppModule {
     @Provides
     @Singleton
     Authentication provideAuthentication(Retrofit retrofit) { return retrofit.create(Authentication.class); }
+
+    @Provides
+    @Singleton
+    ModelRemote provideModelRemote(Retrofit retrofit) {
+        if (BookstoreApp.IS_LOCAL)
+            return new LocalModelRemote();
+        return retrofit.create(ModelRemote.class);
+    }
 
     @Provides
     @Singleton
