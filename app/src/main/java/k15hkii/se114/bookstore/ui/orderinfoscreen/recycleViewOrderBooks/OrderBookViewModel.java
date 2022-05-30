@@ -21,9 +21,6 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
         remote.getBookprofile(bookId).doOnSuccess(bookProfile -> {
             this.bookProfile = bookProfile;
         }).subscribe();
-        remote.getBilldetail(billId, bookId).doOnSuccess(billDetail -> {
-            this.billDetail = billDetail;
-        }).subscribe();
     }
 
     String name;

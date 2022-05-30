@@ -15,6 +15,11 @@ public class LocalModelRemote implements ModelRemote {
             new User().withEmail(1)
     );
 
+    private List<BookProfile> bookProfiles = Arrays.asList(
+        new BookProfile().withId("1").withName("dark nhan tam"),
+        new BookProfile().withId("2").withName("huhu"),
+        new BookProfile().withId("3").withName("hihi")
+    );
     public LocalModelRemote() {
 
     }
@@ -82,12 +87,19 @@ public class LocalModelRemote implements ModelRemote {
 
     @Override
     public Single<List<BookProfile>> getBookprofiles() {
-        return null;
+        return single(bookProfiles);
     }
 
     @Override
     public Single<BookProfile> getBookprofile(String id) {
-        return null;
+        BookProfile res = null;
+        for (BookProfile bookProfile : bookProfiles) {
+            if (id.equalsIgnoreCase(bookProfile.getId())) {
+                res = bookProfile;
+                break;
+            }
+        }
+        return single(res);
     }
 
     @Override
@@ -167,16 +179,6 @@ public class LocalModelRemote implements ModelRemote {
 
     @Override
     public Single<Bill> getBill(String id) {
-        return null;
-    }
-
-    @Override
-    public Single<List<BillDetail>> getBilldetails(String billId) {
-        return null;
-    }
-
-    @Override
-    public Single<BillDetail> getBilldetail(String id, String bookId) {
         return null;
     }
 

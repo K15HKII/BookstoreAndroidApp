@@ -21,9 +21,6 @@ public class OrderViewViewModel extends BaseViewModel<OrderViewNavigator> {
         remote.getBill(billId).doOnSuccess(bill -> {
             this.bill = bill;
         }).subscribe();
-        remote.getBilldetails(billId).doOnSuccess(billDetails -> {
-            this.billDetails = billDetails;
-        }).subscribe();
     }
     String price;
     String note;

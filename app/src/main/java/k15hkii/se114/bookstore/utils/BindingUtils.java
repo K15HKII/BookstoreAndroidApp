@@ -49,6 +49,10 @@ public final class BindingUtils {
         if (adapter == null)
             return;
         adapter.getSource().clear();
+
+        if (source == null) {
+            return;
+        }
         adapter.getSource().addAll(source);
         adapter.notifyDataSetChanged();
     }

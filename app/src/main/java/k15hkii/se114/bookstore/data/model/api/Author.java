@@ -14,15 +14,15 @@ public class Author {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("name")
-    private int name;
+    private String name;
 
     @Getter
     @Expose
     @SerializedName("description")
-    private int description;
+    private String description;
 }

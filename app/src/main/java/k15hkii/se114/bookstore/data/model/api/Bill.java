@@ -4,29 +4,39 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
+import java.util.Date;
+import java.util.List;
+
 public class Bill {
+
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("date")
-    private int date;
+    private Date date;
 
     @Getter
     @Expose
     @SerializedName("transportid")
-    private int transportId;
+    private String transportId;
 
     @Getter
     @Expose
     @SerializedName("userid")
-    private int userid;
+    private String userid;
 
     @Getter
     @Expose
     @SerializedName("billstatus")
     private int billStatus;
+
+    @Expose
+    @Getter
+    @SerializedName("billdetails")
+    private List<BillDetail> billDetails;
+
 }

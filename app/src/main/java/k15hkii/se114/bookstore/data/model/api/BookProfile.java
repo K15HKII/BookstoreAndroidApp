@@ -2,46 +2,54 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
+import java.util.List;
+
+@With
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookProfile {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("name")
-    private int name;
+    private String name;
 
     @Getter
     @Expose
     @SerializedName("tags")
-    private int tags;
+    private List<String> tags;
 
     @Getter
     @Expose
     @SerializedName("authorid")
-    private int authorId;
+    private String authorId;
 
     @Getter
     @Expose
     @SerializedName("publisherid")
-    private int publisherId;
+    private String publisherId;
 
     @Getter
     @Expose
     @SerializedName("description")
-    private int description;
+    private String description;
 
     @Getter
     @Expose
     @SerializedName("price")
-    private int price;
+    private double price;
 
     @Getter
     @Expose
     @SerializedName("ebookfile")
-    private int ebookFile;
+    private String ebookFile;
 }

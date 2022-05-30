@@ -4,6 +4,7 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
@@ -345,8 +346,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider));
+    public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider, remote));
     }
 
     @Provides

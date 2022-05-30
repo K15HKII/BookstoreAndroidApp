@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.BookViewAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,18 +47,20 @@ public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.
     //set DATA
     @Override
     public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, BookViewModel data) {
-        if (data == null) {
-            return;
-        }
+        holder.setViewModel(data);
     }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvBookName;
+        private BookViewAdapterBinding binding;
 
         public BookViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvBookViewBookName);
+            binding = BookViewAdapterBinding.bind(itemView);
+        }
+
+        public void setViewModel(BookViewModel data) {
+            binding.setViewModel(data);
         }
 
     }

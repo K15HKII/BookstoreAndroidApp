@@ -1,29 +1,42 @@
 package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.model.api.BookProfile;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
-import java.util.Arrays;
+import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookViewModel>> AllBooksItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new BookViewModel("Sách Dark Nhân Tâm"),
-                    new BookViewModel("Sách Kong Nghệ"),
-                    new BookViewModel("Dank Nghiệp"),
-                    new BookViewModel("Giải tick AKA Giải thích"))
-    );
+    public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 
-    public List<BookViewModel> getAllBooksItems() {
-        return AllBooksItemsLiveData.getValue();
+    protected ModelRemote remote;
+
+    public void getData() {
+        remote.getBookprofiles()
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(profiles -> {
+                    List<BookViewModel> list = new ArrayList<>();
+                    for (BookProfile profile : profiles) {
+                        BookViewModel model = new BookViewModel();
+                        model.setBookProfile(profile);
+                        list.add(model);
+                    }
+                    items.set(list);
+                });
     }
 
-    public AllBooksViewViewModel(SchedulerProvider schedulerProvider) {
+    public AllBooksViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
+        this.remote = remote;
+        getData();
     }
 
     @Override

@@ -13,7 +13,7 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel {
 
     private final ObservableBoolean isLoading = new ObservableBoolean();
 
-    @Inject SchedulerProvider schedulerProvider;
+    @Inject @Getter SchedulerProvider schedulerProvider;
 
     public BaseViewModel(SchedulerProvider schedulerProvider) {
         this.schedulerProvider = schedulerProvider;

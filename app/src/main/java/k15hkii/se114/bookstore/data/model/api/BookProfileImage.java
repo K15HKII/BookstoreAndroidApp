@@ -8,7 +8,7 @@ public class BookProfileImage {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose

@@ -8,15 +8,15 @@ public class BillDetail {
     @Getter
     @Expose
     @SerializedName("billid")
-    private int billId;
+    private String billId;
 
     @Getter
     @Expose
     @SerializedName("bookid")
-    private int bookId;
+    private String bookId;
 
     @Getter
     @Expose
     @SerializedName("price")
-    private int price;
+    private double price;
 }

@@ -8,10 +8,10 @@ public class Book {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("profileid")
-    private int profileId;
+    private String profileId;
 }

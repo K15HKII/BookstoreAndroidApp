@@ -22,8 +22,8 @@ public interface ModelRemote {
     @GET("/api/models/useraddress")
     Single<List<UserAddress>> getUseraddresses();
 
-    @GET("/api/models/useraddress/{id,index}")
-    Single<UserAddress> getUseraddress(String id,String index);
+    @GET("/api/models/useraddress/{id}")
+    Single<UserAddress> getUseraddress(String id, String index);//TODO:
 
     @POST("/api/models/useraddress/{id}")
     Single<UserAddress> saveUseraddress(Object obj);
@@ -94,11 +94,6 @@ public interface ModelRemote {
     @GET("/api/models/bill/{id}")
     Single<Bill> getBill(String id);
 
-    @GET("/api/models/billdetail")
-    Single<List<BillDetail>> getBilldetails(String billId);
-
-    @GET("/api/models/billdetail/{id, boolId}")
-    Single<BillDetail> getBilldetail(String id, String bookId);
 
     @GET("/api/models/lend")
     Single<List<Lend>> getLends();

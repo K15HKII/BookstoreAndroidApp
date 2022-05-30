@@ -8,12 +8,12 @@ public class CartItem {
     @Getter
     @Expose
     @SerializedName("userid")
-    private int userid;
+    private String userid;
 
     @Getter
     @Expose
-    @SerializedName("bookprofile")
-    private int bookProfile;
+    @SerializedName("bookprofileid")
+    private String bookProfileid;
 
     @Getter
     @Expose
