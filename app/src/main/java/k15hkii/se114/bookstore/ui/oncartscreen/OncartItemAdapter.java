@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.OncartItemsAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -16,8 +18,9 @@ import java.util.List;
 
 public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartItemAdapter.oncart_itemHolder> {
 
-    Context context;
+    private Context context;
 
+    @Deprecated
     public OncartItemAdapter(Context context, List<OncartItemViewModel> lsOncart) {
         super(lsOncart);
         this.context = context;
@@ -38,16 +41,20 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItemViewModel data) {
-        holder.tvBookName.setText(data.getName());
+        holder.setViewModel(data);
     }
 
     class oncart_itemHolder extends RecyclerView.ViewHolder{
 
-        private TextView tvBookName;
+        private OncartItemsAdapterBinding binding;
 
         public oncart_itemHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvOnCartItemName);
+            binding = OncartItemsAdapterBinding.bind(itemView);
+        }
+
+        public void setViewModel(OncartItemViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

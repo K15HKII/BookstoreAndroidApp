@@ -28,11 +28,11 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
-import k15hkii.se114.bookstore.ui.address.RecycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPageViewModel;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel;
 import k15hkii.se114.bookstore.ui.address.edit.EditAddressPageViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankAdapter;
 import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPageViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.add.AddBankPageViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.edit.EditBankPageViewModel;

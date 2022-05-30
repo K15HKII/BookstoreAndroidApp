@@ -15,7 +15,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SelectorBankFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankAdapter;
 import k15hkii.se114.bookstore.ui.bankscreen.add.AddBankPage;
 import org.jetbrains.annotations.NotNull;
 

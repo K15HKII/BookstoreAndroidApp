@@ -64,7 +64,7 @@
                     android:id="@+id/rcvVoucherViewVoucherList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    source="@{viewModel.voucherListItems}"/>
+                    source="@{viewModel.listvoucher}"/>
 
         </LinearLayout>
 

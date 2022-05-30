@@ -13,11 +13,10 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShipmentArrivedViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.IOrderNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
 import org.jetbrains.annotations.NotNull;
 
@@ -54,6 +53,7 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
         ShipmentArrivedViewFragmentBinding shipmentArrivedViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
+        orderViewAdapter.setOrderNavigator(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShipmentArrivedViewPage.this.getContext());
         shipmentArrivedViewFragmentBinding.rcvArrivedOrderView.setLayoutManager(linearLayoutManager);
         shipmentArrivedViewFragmentBinding.rcvArrivedOrderView.setAdapter(orderViewAdapter);
@@ -75,6 +75,6 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerHomeView, OrderRating.class,null).commit();
+        ).replace(R.id.fragmentContainerView, OrderRating.class,null).addToBackStack(null).commit();
     }
 }

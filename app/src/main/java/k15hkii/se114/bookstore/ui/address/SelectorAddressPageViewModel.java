@@ -1,11 +1,13 @@
 package k15hkii.se114.bookstore.ui.address;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
 import k15hkii.se114.bookstore.data.model.api.UserAddress;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -15,9 +17,9 @@ import java.util.List;
 
 public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<Address>> selectorAddressItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new Address("Biên Hòa, Đồng Nai"),
-                          new Address("Khánh Hòa"))
+    public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>(
+            Arrays.asList(new OtherAddressViewModel("Biên Hòa, Đồng Nai"),
+                          new OtherAddressViewModel("Khánh Hòa"))
     );
 
     @Inject
@@ -33,10 +35,6 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
         remote.getUseraddress(id,index).doOnSuccess(userAddress -> {
             this.userAddress = userAddress;
         }).subscribe();
-    }
-
-    public List<Address> getAddressItems() {
-        return selectorAddressItemsLiveData.getValue();
     }
 
     public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider) {

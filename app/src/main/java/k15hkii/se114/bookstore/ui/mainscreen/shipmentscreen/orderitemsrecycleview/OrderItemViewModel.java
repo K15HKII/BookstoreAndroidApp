@@ -1,10 +1,13 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
+import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.inject.Inject;
 
@@ -31,18 +34,13 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
         }).subscribe();
     }
 
-    String name;
+    @Bindable
+    @Getter
+    @Setter
+    private String Name;
 
     public OrderItemViewModel(String name) {
         super(null);
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 }

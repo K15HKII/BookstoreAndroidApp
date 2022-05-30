@@ -20,10 +20,6 @@ public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBin
 
     private OrderRatingDetailFragmentBinding orderRatingDetailFragmentBinding;
 
-    public static OrderRatingDetail newInstance() {
-        return new OrderRatingDetail();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

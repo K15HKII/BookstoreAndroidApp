@@ -47,8 +47,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         OncartViewFragmentBinding oncartViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);

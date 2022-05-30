@@ -8,17 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.RatingDetailBooksDeltailAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RatingReportAdapter extends ListAdapter<RatingReport,RatingReportAdapter.RatingReportViewHolder> {
+public class RatingReportAdapter extends ListAdapter<RatingReportViewModel,RatingReportAdapter.RatingReportViewHolder> {
 
-    Context context;
+    private Context context;
 
-    public RatingReportAdapter(List<RatingReport> lsRatingReport, Context context) {
+    public RatingReportAdapter(List<RatingReportViewModel> lsRatingReport, Context context) {
         super(lsRatingReport);
         this.context = context;
     }
@@ -37,21 +39,21 @@ public class RatingReportAdapter extends ListAdapter<RatingReport,RatingReportAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, RatingReport data) {
-
-        if(data == null){
-            return;
-        }
-        holder.tvBookName.setText(data.getBookname());
+    public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, RatingReportViewModel data) {
+        holder.setViewModel(data);
     }
 
     class RatingReportViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvBookName;
+        RatingDetailBooksDeltailAdapterBinding binding;
 
         public RatingReportViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvRatingReportNameOfBook);
+            binding = RatingDetailBooksDeltailAdapterBinding.bind(itemView);
+        }
+
+        public void setViewModel(RatingReportViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

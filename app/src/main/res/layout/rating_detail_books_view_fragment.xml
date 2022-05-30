@@ -68,7 +68,7 @@
                     android:id="@+id/rcvRatingReportViewBooks"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    source="@{viewModel.ratingBookDetailItems}"/>
+                    source="@{viewModel.listRate}"/>
         </LinearLayout>
     </FrameLayout>
 </layout>

@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 
+import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.User;
 import k15hkii.se114.bookstore.data.model.api.Voucher;
 import k15hkii.se114.bookstore.data.model.api.VoucherProfile;
@@ -35,6 +36,7 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
         //TODO: lay voucher tu profileId va userId
     }
 
+    @Bindable
     @Getter @Setter private String title;
 
     public VoucherViewModel(String title) {

@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<OncartItemViewModel>> onCartViewItemsLiveData = new MutableLiveData<>(
+    public final ObservableField<List<OncartItemViewModel>> listOncart = new ObservableField<>(
             Arrays.asList(new OncartItemViewModel("Sách Đắc Nhân Tâm"),
                           new OncartItemViewModel("Sách Công Nghệ"))
     );
@@ -25,15 +26,11 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     private List<CartItem> cartItems;
 
-
     public void getCardItems(String userId) {
 
         remote.getCartitems(userId).doOnSuccess(cartItemList -> {
             cartItems = cartItemList;
         }).subscribe();
-    }
-    public List<OncartItemViewModel> getOnCartViewItems() {
-        return onCartViewItemsLiveData.getValue();
     }
 
     public OncartViewViewModel(SchedulerProvider schedulerProvider) {

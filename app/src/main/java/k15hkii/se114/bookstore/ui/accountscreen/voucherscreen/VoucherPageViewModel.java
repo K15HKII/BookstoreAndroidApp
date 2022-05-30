@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -10,13 +11,10 @@ import java.util.List;
 
 public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<VoucherViewModel>> voucherListItemsLiveData = new MutableLiveData<>(
+    public final ObservableField<List<VoucherViewModel>> listvoucher = new ObservableField<>(
             Arrays.asList(new VoucherViewModel("20% Giảm giá"),
                           new VoucherViewModel("30% Giảm giá"))
     );
-    public List<VoucherViewModel> getVoucherListItems() {
-        return voucherListItemsLiveData.getValue();
-    }
 
     public VoucherPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

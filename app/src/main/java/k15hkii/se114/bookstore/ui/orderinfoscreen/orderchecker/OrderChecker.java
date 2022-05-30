@@ -35,7 +35,7 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = onCreateView(inflater, container, savedInstanceState);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         orderCheckerFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;

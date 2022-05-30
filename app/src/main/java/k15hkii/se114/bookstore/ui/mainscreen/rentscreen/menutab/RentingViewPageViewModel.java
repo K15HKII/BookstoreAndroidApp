@@ -26,7 +26,6 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
         for (int i = 0; i < quantity; i++) {
             listItem.add(new RentBookItemViewModel("Dac nhan tam"));
         }
-
         return listItem;
     }
 
@@ -43,5 +42,4 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
     }
-    // TODO: Implement the ViewModel
 }

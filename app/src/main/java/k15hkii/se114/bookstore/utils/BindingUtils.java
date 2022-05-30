@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.Address;
-import k15hkii.se114.bookstore.ui.address.RecycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.BankAccount;
-import k15hkii.se114.bookstore.ui.bankscreen.RecycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.Comment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.CommentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
@@ -31,6 +33,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReport;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 
@@ -92,7 +95,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void addressBindSource(RecyclerView view, List<Address> source) {
+    public static void addressBindSource(RecyclerView view, List<OtherAddressViewModel> source) {
         OtherAddressAdapter adapter = (OtherAddressAdapter) view.getAdapter();
         if (adapter == null)
             return;
@@ -103,7 +106,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void bankAccountBindSource(RecyclerView view, List<BankAccount> source) {
+    public static void bankAccountBindSource(RecyclerView view, List<OtherBankViewModel> source) {
         OtherBankAdapter adapter = (OtherBankAdapter) view.getAdapter();
         if (adapter == null)
             return;
@@ -169,7 +172,7 @@ public final class BindingUtils {
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
-    public static void ratingReportBindSource(RecyclerView view, List<RatingReport> source) {
+    public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
         RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
         if (adapter == null)
             return;

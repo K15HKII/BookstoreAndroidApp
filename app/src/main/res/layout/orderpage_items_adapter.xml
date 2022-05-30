@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel"/>
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_marginTop="10dp"
@@ -24,7 +29,7 @@
                     android:fontFamily="@font/lato_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sách Đắc Nhân Tâm"
+                    android:text="@{viewModel.name}"
                     android:textSize="21dp"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"/>
@@ -62,3 +67,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</layout>

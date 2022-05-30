@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker;
 
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -13,14 +14,10 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
     public OrderCheckerViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
-    private final MutableLiveData<List<OrderBookViewModel>> orderBookInfoItemsLiveData = new MutableLiveData<>(
+    public final ObservableField<List<OrderBookViewModel>> listOrderBooks = new ObservableField<>(
             Arrays.asList(new OrderBookViewModel("Dac nhan tam"),
                     new OrderBookViewModel("Nguoi phan xu"))
     );
-
-    public List<OrderBookViewModel> getOrderBookInfoItems() {
-        return orderBookInfoItemsLiveData.getValue();
-    }
 
     public void onBackWardClick(){
         getNavigator().BackWard();

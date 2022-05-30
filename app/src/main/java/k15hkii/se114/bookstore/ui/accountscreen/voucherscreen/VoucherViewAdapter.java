@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.VoucherItemAdapterBinding;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +19,7 @@ import java.util.List;
 public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherViewAdapter.VoucherViewHolder> {
 
     private Context context;
-
+    @Deprecated
     public VoucherViewAdapter(List<VoucherViewModel> lsVouchers, Context context) {
         super(lsVouchers);
         this.context = context;
@@ -38,20 +40,19 @@ public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherView
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, VoucherViewModel data) {
-        if(data == null){
-            return;
-        }
-        holder.tvItemTilte.setText(data.getTitle());
+        holder.setViewModel(data);
     }
 
     class VoucherViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvItemTilte;
+        private VoucherItemAdapterBinding binding;
 
         public VoucherViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvItemTilte = itemView.findViewById(R.id.tvVoucherItemTitle);
-
+            binding = VoucherItemAdapterBinding.bind(itemView);
+        }
+        public void setViewModel(VoucherViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

@@ -8,15 +8,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.OrderbookAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderBooksViewAdapter.OrderBooksViewViewHolder> {
-    Context context;
+    private Context context;
 
+    @Deprecated
     public OrderBooksViewAdapter(List<OrderBookViewModel> lsBookViews, Context context) {
         super(lsBookViews);
         this.context = context;
@@ -38,20 +41,19 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderB
     @Override
     public void onBindViewHolder(@NonNull @NotNull OrderBooksViewAdapter.OrderBooksViewViewHolder holder,
                                  OrderBookViewModel data) {
-        if(data == null){
-            return;
-        }
-        holder.tvItemTilte.setText(data.getName());
+        holder.setViewModel(data);
     }
 
-    class OrderBooksViewViewHolder extends RecyclerView.ViewHolder{
+    class OrderBooksViewViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvItemTilte;
+        private OrderbookAdapterBinding binding;
 
         public OrderBooksViewViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvItemTilte = itemView.findViewById(R.id.tvBooksNameOfBook);
-
+            binding = OrderbookAdapterBinding.bind(itemView);
+        }
+        public void setViewModel(OrderBookViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

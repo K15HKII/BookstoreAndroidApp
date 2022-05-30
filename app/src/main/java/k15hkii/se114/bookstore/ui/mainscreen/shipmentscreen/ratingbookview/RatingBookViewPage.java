@@ -13,11 +13,10 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.RatingViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.IOrderNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetail;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,6 +52,7 @@ public class RatingBookViewPage extends BaseFragment<RatingViewFragmentBinding, 
         RatingViewFragmentBinding ratingViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
+        orderViewAdapter.setOrderNavigator(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RatingBookViewPage.this.getContext());
         ratingViewFragmentBinding.rcvRatingOrderView.setLayoutManager(linearLayoutManager);
         ratingViewFragmentBinding.rcvRatingOrderView.setAdapter(orderViewAdapter);
@@ -74,6 +74,6 @@ public class RatingBookViewPage extends BaseFragment<RatingViewFragmentBinding, 
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerHomeView, OrderRatingDetail.class,null).commit();
+        ).replace(R.id.fragmentContainerView, OrderRatingDetail.class,null).addToBackStack(null).commit();
     }
 }

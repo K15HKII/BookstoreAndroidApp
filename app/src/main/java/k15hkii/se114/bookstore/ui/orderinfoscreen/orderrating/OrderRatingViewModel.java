@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating;
 
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -10,14 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
-    private final MutableLiveData<List<OrderBookViewModel>> orderBookInfoItemsLiveData = new MutableLiveData<>(
+    public final ObservableField<List<OrderBookViewModel>> listOrderBooks = new ObservableField<>(
             Arrays.asList(new OrderBookViewModel("Dac nhan tam"),
                     new OrderBookViewModel("Nguoi phan xu"))
     );
-
-    public List<OrderBookViewModel> getOrderBookInfoItems() {
-        return orderBookInfoItemsLiveData.getValue();
-    }
 
     public OrderRatingViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

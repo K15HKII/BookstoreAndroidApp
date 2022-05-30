@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.OrderpageItemsAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -16,8 +18,11 @@ import java.util.List;
 
 public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemAdapter.OrderItemHolder> {
 
-    Context context;
-
+    private Context context;
+    @Getter
+    @Setter
+    private IOrderNavigator orderNavigator;
+    @Deprecated
     public OrderItemAdapter(List<OrderItemViewModel> lsOrderItem) {
         super(lsOrderItem);
     }
@@ -37,16 +42,20 @@ public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemA
 
     @Override
     protected void onBindViewHolder(OrderItemHolder holder, OrderItemViewModel data) {
-        holder.tvBookName.setText(data.getName());
+        holder.setViewModel(data);
     }
 
     class OrderItemHolder extends RecyclerView.ViewHolder{
 
-        TextView tvBookName;
+        private OrderpageItemsAdapterBinding binding;
 
         public OrderItemHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvBooksNameOfBook);
+            binding = OrderpageItemsAdapterBinding.bind(itemView);
+        }
+
+        public void setViewModel(OrderItemViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel"/>
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_marginTop="10dp"
               android:layout_width="match_parent"
@@ -24,7 +29,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_bold"
                         android:textSize="21dp"
-                        android:text="Agribank"
+                        android:text="@{viewModel.bank}"
                         android:textStyle="bold"
                         android:textColor="#001C44"/>
                 <LinearLayout android:layout_width="wrap_content"
@@ -69,3 +74,4 @@
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
+</layout>

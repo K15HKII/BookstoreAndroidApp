@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel"/>
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_marginTop="10dp"
@@ -16,7 +21,7 @@
                     android:fontFamily="@font/lato_regular"
                     android:layout_width="319dp"
                     android:layout_height="wrap_content"
-                    android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                    android:text="@{viewModel.address}"
                     android:textSize="17dp"
                     android:textColor="@color/black"/>
 
@@ -30,3 +35,4 @@
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
+</layout>

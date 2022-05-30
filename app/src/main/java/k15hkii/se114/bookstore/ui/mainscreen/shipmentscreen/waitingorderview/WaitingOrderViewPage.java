@@ -13,11 +13,9 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.IOrderNavigator;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
@@ -84,6 +82,6 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerHomeView, OrderDetail.class,null).commit();
+        ).replace(R.id.fragmentContainerView, OrderDetail.class,null).addToBackStack(null).commit();
     }
 }

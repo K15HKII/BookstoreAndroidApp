@@ -15,7 +15,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SelectorAddressFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.address.RecycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPage;
 import org.jetbrains.annotations.NotNull;
 
