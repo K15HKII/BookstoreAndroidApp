@@ -19,43 +19,43 @@ public class User {
     @Getter
     @Expose
     @SerializedName("firstname")
-    private int firstname;
+    private String firstname;
 
     @Getter
     @Expose
     @SerializedName("lastname")
-    private int lastname;
+    private String lastname;
 
     @Getter
     @Expose
     @SerializedName("phone")
-    private int phone;
+    private Number phone;
 
 
     @Getter
     @Expose
     @SerializedName("username")
-    private int username;
+    private String username;
 
     @Getter
     @Expose
     @SerializedName("salt")
-    private int salt;
+    private boolean salt;
 
     @Getter
     @Expose
     @SerializedName("password")
-    private int password;
+    private String password;
 
     @Getter
     @Expose
     @SerializedName("email")
-    private int email;
+    private String email;
 
     @Getter
     @Expose
     @SerializedName("role")
-    private int role;
+    private String role;
 
     @Getter
     @Expose
@@ -65,7 +65,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("created_at")
-    private int created_at;
+    private String created_at;
 
     @Getter
     @Expose

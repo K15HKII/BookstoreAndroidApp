@@ -2,36 +2,44 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
+import java.util.Date;
+
+@With
+@AllArgsConstructor
+@NoArgsConstructor
 public class Voucher {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("userid")
-    private int userid;
+    private String userid;
 
     @Getter
     @Expose
     @SerializedName("profileid")
-    private int profileId;
+    private String profileId;
 
     @Getter
     @Expose
     @SerializedName("vouchercode")
-    private int voucherCode;
+    private String voucherCode;
 
     @Getter
     @Expose
     @SerializedName("expireddate")
-    private int expiredDate;
+    private Date expiredDate;
 
     @Getter
     @Expose
     @SerializedName("useddate")
-    private int usedDate;
+    private Date usedDate;
 }

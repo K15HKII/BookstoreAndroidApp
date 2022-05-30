@@ -2,31 +2,36 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.Getter;
+import lombok.*;
 
+import java.util.Date;
+
+@With
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lend {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @Getter
     @Expose
     @SerializedName("userid")
-    private int userid;
+    private String userid;
 
     @Getter
     @Expose
     @SerializedName("bookprofileid")
-    private int bookProfileId;
+    private String bookProfileId;
 
     @Getter
     @Expose
     @SerializedName("start")
-    private int start;
+    private Date start;
 
     @Getter
     @Expose
     @SerializedName("end")
-    private int end;
+    private Date end;
 }
