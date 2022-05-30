@@ -25,6 +25,7 @@ public class User {
     @SerializedName("phone")
     private int phone;
 
+
     @Getter
     @Expose
     @SerializedName("username")

@@ -19,6 +19,15 @@ public interface ModelRemote {
     @POST("/api/models/user/{id}")
     Single<User> saveUser(Object obj);
 
+    @GET("/api/models/useraddress")
+    Single<List<UserAddress>> getUseraddresses();
+
+    @GET("/api/models/useraddress/{id,index}")
+    Single<UserAddress> getUseraddress(String id,String index);
+
+    @POST("/api/models/useraddress/{id}")
+    Single<UserAddress> saveUseraddress(Object obj);
+
     @GET("/api/models/author")
     Single<List<Author>> getAuthors();
 
