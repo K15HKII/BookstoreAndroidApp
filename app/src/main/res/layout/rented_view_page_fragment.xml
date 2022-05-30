@@ -21,7 +21,7 @@
                     android:id="@+id/rcvRentedBookView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    source="@{viewModel.rentedBookItems}"/>
+                    source="@{viewModel.rentedlist}"/>
         </LinearLayout>
 
 

@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.base;
 
+import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
@@ -9,7 +10,7 @@ import lombok.Getter;
 import javax.inject.Inject;
 import java.lang.ref.WeakReference;
 
-public abstract class BaseViewModel<N extends INavigator> extends ViewModel {
+public abstract class BaseViewModel<N extends INavigator> extends ViewModel implements Observable {
 
     private final ObservableBoolean isLoading = new ObservableBoolean();
 
@@ -45,4 +46,13 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel {
         this.isLoading.set(isLoading);
     }
 
+    @Override
+    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+
+    }
+
+    @Override
+    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+
+    }
 }

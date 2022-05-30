@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -17,11 +19,10 @@ import java.util.List;
 @Getter
 @Setter
 public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implements Observable {
-    private final MutableLiveData<List<RentBookItemViewModel>> rentBookItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new RentBookItemViewModel("Dac nhan tam"),
-                          new RentBookItemViewModel("huhu"))
-    );
 
+    public final ObservableField<List<RentBookItemViewModel>> rentItems = new ObservableField<>(Arrays.asList());
+
+    @Bindable
     @Setter @Getter private String price;
     @Setter @Getter private String note;
     @Setter @Getter private List<RentBookItemViewModel> rentListItem;
@@ -31,17 +32,11 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
     private String userId;
     private String rentBillId;
 
-    // set data rent, waiting for rent
-
-    public List<RentBookItemViewModel> getRentBookItems() {
-        return rentBookItemsLiveData.getValue();
-    }
-
     public RentViewViewModel(String price, String note, List<RentBookItemViewModel> rentListItem) {
         super(null);
         this.price = price;
         this.note = note;
-        this.rentListItem = rentListItem;
+        rentItems.set(rentListItem);
     }
 
     public RentViewViewModel(SchedulerProvider schedulerProvider) {

@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class RentedViewPageViewModel extends BaseViewModel<RentedViewPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<RentViewViewModel>> rentedViewItemsLiveData = new MutableLiveData<>(
+    public final ObservableField<List<RentViewViewModel>> rentedlist = new ObservableField<>(
             Arrays.asList(new RentViewViewModel("240.000", "note", getRentedListItem(2)),
                           new RentViewViewModel("120.000", "note", getRentedListItem(1)))
     );
@@ -27,10 +28,6 @@ public class RentedViewPageViewModel extends BaseViewModel<RentedViewPageNavigat
         }
 
         return listItem;
-    }
-
-    public List<RentViewViewModel> getRentedBookItems() {
-        return rentedViewItemsLiveData.getValue();
     }
 
     public RentedViewPageViewModel(SchedulerProvider schedulerProvider) {

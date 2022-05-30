@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
+import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -32,6 +33,7 @@ public class RentBookItemViewModel extends BaseViewModel<RentBookItemNavigator> 
         // Todo: lay book profile image
     }
 
+    @Bindable
     @Getter @Setter private String Name;
 
     public RentBookItemViewModel(SchedulerProvider schedulerProvider) {

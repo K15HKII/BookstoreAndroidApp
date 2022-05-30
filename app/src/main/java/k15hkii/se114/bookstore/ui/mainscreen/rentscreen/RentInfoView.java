@@ -23,10 +23,6 @@ public class RentInfoView extends BaseFragment<RentInfoViewFragmentBinding, Rent
     @Inject
     protected RentViewAdapter rentViewAdapter;
 
-    public static RentInfoView newInstance() {
-        return new RentInfoView();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

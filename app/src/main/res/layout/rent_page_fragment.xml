@@ -118,7 +118,7 @@
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpRentBookView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="470dp"/>
 
     </LinearLayout>
 </FrameLayout>

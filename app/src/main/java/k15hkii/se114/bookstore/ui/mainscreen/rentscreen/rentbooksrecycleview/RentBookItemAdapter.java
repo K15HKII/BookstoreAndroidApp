@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.RentBookAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,8 +17,9 @@ import java.util.List;
 
 public class RentBookItemAdapter extends ListAdapter<RentBookItemViewModel, RentBookItemAdapter.RentBookItemViewHolder> {
 
-    Context context;
+    private Context context;
 
+    @Deprecated
     public RentBookItemAdapter(List<RentBookItemViewModel> lsRentItem) {
         super(lsRentItem);
     }
@@ -36,22 +38,26 @@ public class RentBookItemAdapter extends ListAdapter<RentBookItemViewModel, Rent
     @NotNull
     @Override
     public RentBookItemViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rent_book_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rent_book_adapter, parent, false);
         return new RentBookItemAdapter.RentBookItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RentBookItemViewHolder holder, RentBookItemViewModel data) {
-        holder.tvBookName.setText(data.getName());
+        holder.setViewModel(data);
     }
 
-    public class RentBookItemViewHolder extends RecyclerView.ViewHolder{
+    public class RentBookItemViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvBookName;
+        private RentBookAdapterBinding binding;
 
         public RentBookItemViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvBookName = itemView.findViewById(R.id.tvRentBookAdapterNameOfBook);
+            binding = RentBookAdapterBinding.bind(itemView);
+        }
+
+        public void setViewModel(RentBookItemViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }
