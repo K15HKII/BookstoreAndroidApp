@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,15 +16,15 @@ public class Transport {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
-    @SerializedName("transporterid")
-    private String transporterId;
+    @SerializedName("raw")
+    private String raw;
 
     @Getter
     @Expose
-    @SerializedName("transportid")
-    private String transportId;
+    @SerializedName("bill")
+    private Bill bill;
 }

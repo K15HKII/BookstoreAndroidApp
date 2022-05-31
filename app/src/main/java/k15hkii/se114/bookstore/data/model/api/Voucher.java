@@ -8,38 +8,19 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 
 import java.util.Date;
+import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Voucher {
+public class Voucher extends BaseVoucher {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
-    @SerializedName("userid")
-    private String userid;
-
-    @Getter
-    @Expose
-    @SerializedName("profileid")
-    private String profileId;
-
-    @Getter
-    @Expose
-    @SerializedName("vouchercode")
-    private String voucherCode;
-
-    @Getter
-    @Expose
-    @SerializedName("expireddate")
-    private Date expiredDate;
-
-    @Getter
-    @Expose
-    @SerializedName("useddate")
-    private Date usedDate;
+    @SerializedName("used_at")
+    private Date usedAt;
 }

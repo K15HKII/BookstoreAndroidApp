@@ -13,16 +13,21 @@ import lombok.With;
 public class BillDetail {
     @Getter
     @Expose
-    @SerializedName("billid")
-    private String billId;
+    @SerializedName("bill_id")
+    private Number billId;
 
     @Getter
     @Expose
-    @SerializedName("bookid")
+    @SerializedName("book_id")
     private String bookId;
 
     @Getter
     @Expose
     @SerializedName("price")
-    private double price;
+    private Number price;
+
+    @Getter
+    @Expose
+    @SerializedName("quantity")
+    private Number quantity;
 }

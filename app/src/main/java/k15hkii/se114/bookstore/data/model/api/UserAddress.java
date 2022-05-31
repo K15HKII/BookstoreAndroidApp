@@ -14,7 +14,7 @@ public class UserAddress {
     @Getter
     @Expose
     @SerializedName("userid")
-    private String userid;
+    private String userId;
 
     @Getter
     @Expose
@@ -23,8 +23,8 @@ public class UserAddress {
 
     @Getter
     @Expose
-    @SerializedName("address")
-    private String address;
+    @SerializedName("street")
+    private String street;
 
     @Getter
     @Expose
@@ -33,18 +33,13 @@ public class UserAddress {
 
     @Getter
     @Expose
-    @SerializedName("state")
-    private String state;
-
-    @Getter
-    @Expose
     @SerializedName("country")
     private String country;
 
     @Getter
     @Expose
-    @SerializedName("zipcode")
-    private String zipcode;
+    @SerializedName("zip")
+    private String zip;
 
     @Getter
     @Expose

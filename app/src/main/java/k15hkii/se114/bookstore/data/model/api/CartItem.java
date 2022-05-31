@@ -13,16 +13,21 @@ import lombok.With;
 public class CartItem {
     @Getter
     @Expose
-    @SerializedName("userid")
-    private String userid;
+    @SerializedName("user_id")
+    private String userId;
 
     @Getter
     @Expose
-    @SerializedName("bookprofileid")
-    private String bookProfileid;
+    @SerializedName("book_id")
+    private String bookId;
+
+    @Getter
+    @Expose
+    @SerializedName("book")
+    private Book book;
 
     @Getter
     @Expose
     @SerializedName("selected")
-    private int selected;
+    private boolean selected;
 }

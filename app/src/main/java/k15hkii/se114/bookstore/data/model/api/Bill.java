@@ -17,17 +17,12 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private Number id;
 
     @Getter
     @Expose
-    @SerializedName("date")
-    private Date date;
-
-    @Getter
-    @Expose
-    @SerializedName("transportid")
-    private String transportId;
+    @SerializedName("transport")
+    private Transport transport;
 
     @Getter
     @Expose
@@ -36,12 +31,12 @@ public class Bill {
 
     @Getter
     @Expose
-    @SerializedName("billstatus")
-    private int billStatus;
+    @SerializedName("status")
+    private String status;
 
     @Expose
     @Getter
-    @SerializedName("billdetails")
-    private List<BillDetail> billDetails;
+    @SerializedName("bill_details")
+    private BillDetail[] billDetails;
 
 }

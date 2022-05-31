@@ -14,7 +14,7 @@ public class Transporter {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private Number id;
 
     @Getter
     @Expose
@@ -25,4 +25,9 @@ public class Transporter {
     @Expose
     @SerializedName("description")
     private String description;
+
+    @Getter
+    @Expose
+    @SerializedName("transports")
+    private Transport[] transports;
 }

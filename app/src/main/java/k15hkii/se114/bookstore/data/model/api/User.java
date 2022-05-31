@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
@@ -31,6 +33,11 @@ public class User {
     @SerializedName("phone")
     private Number phone;
 
+    @Getter
+    @Expose
+    @SerializedName("age")
+    private Number age;
+
 
     @Getter
     @Expose
@@ -40,7 +47,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("salt")
-    private boolean salt;
+    private String salt;
 
     @Getter
     @Expose
@@ -60,7 +67,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("refresh_token")
-    private int refresh_token;
+    private String refresh_token;
 
     @Getter
     @Expose
@@ -91,4 +98,45 @@ public class User {
     @Expose
     @SerializedName("is_blocked")
     private int is_blocked;
+
+    @Getter
+    @Expose
+    @SerializedName("addresses")
+    private UserAddress[] addresses;
+
+    @Getter
+    @Expose
+    @SerializedName("banks")
+    private UserBank[] banks;
+
+    @Getter
+    @Expose
+    @SerializedName("bills")
+    private Bill[] bills;
+
+    @Getter
+    @Expose
+    @SerializedName("lends")
+    private Lend[] lends;
+
+    @Getter
+    @Expose
+    @SerializedName("cart_items")
+    private CartItem[] cartItems;
+
+    @Getter
+    @Expose
+    @SerializedName("vouchers")
+    private Voucher[] vouchers;
+
+    @Getter
+    @Expose
+    @SerializedName("messages")
+    private Message[] messages;
+
+    @Getter
+    @Expose
+    @SerializedName("action_logs")
+    private StorageLog[] actionLogs;
 }
+

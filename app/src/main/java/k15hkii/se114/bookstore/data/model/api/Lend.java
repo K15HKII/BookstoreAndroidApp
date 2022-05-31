@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @With
 @AllArgsConstructor
@@ -13,25 +14,25 @@ public class Lend {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
-    @SerializedName("userid")
-    private String userid;
+    @SerializedName("transport")
+    private Transport transport;
 
     @Getter
     @Expose
-    @SerializedName("bookprofileid")
-    private String bookProfileId;
+    @SerializedName("book")
+    private Book book;
 
     @Getter
     @Expose
-    @SerializedName("start")
-    private Date start;
+    @SerializedName("start_date")
+    private Date startDate;
 
     @Getter
     @Expose
-    @SerializedName("end")
-    private Date end;
+    @SerializedName("end_date")
+    private Date endDate;
 }

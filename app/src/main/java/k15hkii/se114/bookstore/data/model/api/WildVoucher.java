@@ -7,39 +7,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.util.Date;
+import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class WildVoucher {
+public class WildVoucher extends  BaseVoucher{
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
-    @SerializedName("profileid")
-    private String profileId;
+    @SerializedName("remaining_uses")
+    private Number remainingUses;
 
     @Getter
     @Expose
-    @SerializedName("amount")
-    private int amount;
-
-    @Getter
-    @Expose
-    @SerializedName("releasedate")
-    private Date releaseDate;
-
-    @Getter
-    @Expose
-    @SerializedName("expirydate")
-    private Date expiryDate;
-
-    @Getter
-    @Expose
-    @SerializedName("used")
-    private boolean used;
+    @SerializedName("max_uses")
+    private Number maxUses;
 }

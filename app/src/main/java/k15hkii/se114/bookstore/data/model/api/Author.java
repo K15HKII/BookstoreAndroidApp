@@ -14,7 +14,7 @@ public class Author {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private Number id;
 
     @Getter
     @Expose
