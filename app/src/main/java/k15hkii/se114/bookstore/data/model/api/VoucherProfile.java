@@ -36,7 +36,7 @@ public class VoucherProfile {
     @Getter
     @Expose
     @SerializedName("discount")
-    private Number discount;
+    private int discount;
 
     @Getter
     @Expose

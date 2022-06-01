@@ -16,5 +16,5 @@ public class StorageLogDetail{
     @Getter
     @Expose
     @SerializedName("quantity")
-    private Number quantity;
+    private int quantity;
 }

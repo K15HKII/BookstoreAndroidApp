@@ -14,7 +14,7 @@ public class Publisher {
     @Getter
     @Expose
     @SerializedName("id")
-    private Number id;
+    private int id;
 
     @Getter
     @Expose

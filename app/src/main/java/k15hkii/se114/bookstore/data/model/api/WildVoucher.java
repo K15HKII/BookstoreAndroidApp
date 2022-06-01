@@ -21,10 +21,10 @@ public class WildVoucher extends  BaseVoucher{
     @Getter
     @Expose
     @SerializedName("remaining_uses")
-    private Number remainingUses;
+    private double remainingUses;
 
     @Getter
     @Expose
     @SerializedName("max_uses")
-    private Number maxUses;
+    private double maxUses;
 }

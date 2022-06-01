@@ -8,5 +8,5 @@ public class Audio extends File{
     @Getter
     @Expose
     @SerializedName("duration")
-    private Number duration;
+    private double duration;
 }

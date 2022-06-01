@@ -10,10 +10,10 @@ public class Image extends File{
     @Getter
     @Expose
     @SerializedName("width")
-    private Number width;
+    private double width;
 
     @Getter
     @Expose
     @SerializedName("height")
-    private Number height;
+    private double height;
 }

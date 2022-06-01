@@ -8,5 +8,5 @@ public class Document extends File{
     @Getter
     @Expose
     @SerializedName("size")
-    private Number size;
+    private double size;
 }

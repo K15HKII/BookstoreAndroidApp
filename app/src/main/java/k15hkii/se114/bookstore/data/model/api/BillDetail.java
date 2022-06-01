@@ -14,7 +14,7 @@ public class BillDetail {
     @Getter
     @Expose
     @SerializedName("bill_id")
-    private Number billId;
+    private int billId;
 
     @Getter
     @Expose

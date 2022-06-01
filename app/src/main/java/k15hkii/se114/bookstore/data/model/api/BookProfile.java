@@ -32,7 +32,7 @@ public class BookProfile {
     @Getter
     @Expose
     @SerializedName("authorid")
-    private Number authorId;
+    private int authorId;
 
     @Getter
     @Expose
