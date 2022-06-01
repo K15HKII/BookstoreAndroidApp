@@ -2,9 +2,8 @@ package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -27,13 +26,11 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
 
     private String bookProfileId;
 
-    private BookProfile profile;
-    private BookProfileImage image;
+    private Book profile;
+    private Image[] image;
 
-    public void setBookProfileId(String id) {
-        this.bookProfileId = id;
-
-        remote.getBookprofile(id).doOnSuccess(bookProfile -> {
+    public void getData(String id) {
+        remote.getBook(id).doOnSuccess(bookProfile -> {
             profile = bookProfile;
         }).subscribe();
         // Todo: lay image

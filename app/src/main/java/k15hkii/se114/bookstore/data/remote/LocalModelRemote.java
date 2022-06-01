@@ -1,13 +1,18 @@
 package k15hkii.se114.bookstore.data.remote;
 
+import android.os.Build;
+import androidx.annotation.RequiresApi;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class LocalModelRemote implements ModelRemote {
 
     private List<User> users = Arrays.asList(
@@ -31,10 +36,10 @@ public class LocalModelRemote implements ModelRemote {
             new VoucherProfile().withId(UUID.fromString("VP2")),
             new VoucherProfile().withId(UUID.fromString("VP3"))
     );
-    private List<BookProfile> bookProfiles = Arrays.asList(
-            new BookProfile().withId(UUID.fromString("BP1")).withName("dark nhan tam"),
-            new BookProfile().withId(UUID.fromString("BP2")).withName("huhu"),
-            new BookProfile().withId(UUID.fromString("BP3")).withName("hihi")
+    private List<Book> books = Arrays.asList(
+            new Book().withId(UUID.fromString("BP1")).withTitle("dark nhan tam"),
+            new Book().withId(UUID.fromString("BP2")).withTitle("huhu"),
+            new Book().withId(UUID.fromString("BP3")).withTitle("hihi")
     );
     private List<Publisher> publishers = Arrays.asList(
             new Publisher().withId(1).withName("Lmao"),
@@ -50,11 +55,6 @@ public class LocalModelRemote implements ModelRemote {
             new Transport().withId(UUID.fromString("T1")),
             new Transport().withId(UUID.fromString("T2")),
             new Transport().withId(UUID.fromString("T3"))
-    );
-    private List<Book> books = Arrays.asList(
-            new Book().withId(UUID.fromString("B1")).withAuthor(new Author()),
-            new Book().withId(UUID.fromString("B2")).withAuthor(new Author()),
-            new Book().withId(UUID.fromString("B3")).withAuthor(new Author())
     );
     private List<Lend> lends = Arrays.asList(
             new Lend().withId(UUID.fromString("L1")).withBook(new Book()),
@@ -81,11 +81,21 @@ public class LocalModelRemote implements ModelRemote {
             new BillDetail().withBillId(2).withPrice(96969696),
             new BillDetail().withBillId(3).withPrice(0)
     );
-    private List<BookProfileImage> bookProfileImages = Arrays.asList(
-            new BookProfileImage().withId(UUID.fromString("BPI1")).withImage(69696969),
-            new BookProfileImage().withId(UUID.fromString("BPI2")).withImage(96969696),
-            new BookProfileImage().withId(UUID.fromString("BPI3")).withImage(0)
+
+    private List<File> bookFileImages = Arrays.asList(
+            new Image().withId(UUID.fromString("BPI1")).withPath(null),
+            new Image().withId(UUID.fromString("BPI2")).withPath(null),
+            new Image().withId(UUID.fromString("BPI3")).withPath(null)
     );
+
+    List<Image> transferFiletoImage(List<File> files) {
+        List<Image> images = new ArrayList<>();
+        for (File file : files) {
+            images.add((Image) file);
+        }
+        return images;
+    };
+    private List<Image> bookImages = transferFiletoImage(bookFileImages);
     private List<CartItem> cartItems = Arrays.asList(
             new CartItem().withUserId(UUID.fromString("U1")).withBookId(UUID.fromString("B1")),
             new CartItem().withUserId(UUID.fromString("U2")).withBookId(UUID.fromString("B2")),
@@ -183,16 +193,11 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
-    public Single<List<BookProfile>> getBookprofiles() {
-        return single(bookProfiles);
-    }
-
-    @Override
-    public Single<BookProfile> getBookprofile(String id) {
-        BookProfile res = null;
-        for (BookProfile bookProfile : bookProfiles) {
-            if (id.equalsIgnoreCase(bookProfile.getId().toString())) {
-                res = bookProfile;
+    public Single<Book> getBook(String id) {
+        Book res = null;
+        for (Book book : books) {
+            if (id.equalsIgnoreCase(book.getId().toString())) {
+                res = book;
                 break;
             }
         }
@@ -200,16 +205,16 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
-    public Single<List<BookProfileImage>> getBookprofileimages() {
-        return single(bookProfileImages);
+    public Single<List<Image>> getBookImages() {
+        return single(bookImages);
     }
 
     @Override
-    public Single<BookProfileImage> getBookprofileimage(String id, int i) {
-        BookProfileImage res = null;
-        for (BookProfileImage bookProfileImage : bookProfileImages) {
-            if (id.equalsIgnoreCase(bookProfileImage.getId().toString())) {
-                res = bookProfileImage;
+    public Single<Image> getBookImage(String id, int i) {
+        Image res = null;
+        for (File bookImage : bookImages) {
+            if (id.equalsIgnoreCase(bookImage.getId().toString())) {
+                res = (Image) bookImage;
                 break;
             }
         }
@@ -297,18 +302,6 @@ public class LocalModelRemote implements ModelRemote {
     @Override
     public Single<List<Book>> getBooks() {
         return single(books);
-    }
-
-    @Override
-    public Single<Book> getBook(String id) {
-        Book res = null;
-        for (Book book : books) {
-            if (id.equalsIgnoreCase(book.getId().toString())) {
-                res = book;
-                break;
-            }
-        }
-        return single(res);
     }
 
     @Override

@@ -3,7 +3,6 @@ package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;

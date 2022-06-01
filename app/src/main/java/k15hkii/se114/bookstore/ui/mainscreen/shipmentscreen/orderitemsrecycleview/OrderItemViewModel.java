@@ -2,35 +2,37 @@ package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevi
 
 import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.File;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
     @Inject protected ModelRemote remote;
 
     private BillDetail billDetail;
-    private BookProfile bookProfile;
-    private int bookImage;
+    private Book book;
+    private List<Image> bookImages;
     private String billId;
     private String bookProfileId;
 
     public void setBillDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
 
-        remote.getBookprofile(String.valueOf(billDetail.getBookId())).doOnSuccess(bookProfile -> {
-            this.bookProfile = bookProfile;
-            bookProfileId = String.valueOf(bookProfile.getId());
+        remote.getBook(String.valueOf(billDetail.getBookId())).doOnSuccess(book -> {
+            this.book = book;
+            bookProfileId = String.valueOf(book.getId());
         }).subscribe();
 
-        remote.getBookprofileimage(bookProfileId, 1).doOnSuccess(bookProfileImage -> {
-            this.bookImage = bookProfileImage.getImage();
+        remote.getBookImages().doOnSuccess(bookImages -> {
+            this.bookImages = bookImages;
         }).subscribe();
     }
 

@@ -16,4 +16,5 @@ public class Image extends File{
     @Expose
     @SerializedName("height")
     private double height;
+
 }

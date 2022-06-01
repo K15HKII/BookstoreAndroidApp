@@ -43,17 +43,11 @@ public interface ModelRemote {
     @GET("/api/model/voucherprofile/{id}")
     Single<VoucherProfile> getVoucherProfile(String id);
 
-    @GET("/api/model/bookprofile")
-    Single<List<BookProfile>> getBookprofiles();
+    //Todo: get
+    Single<List<Image>> getBookImages();
 
-    @GET("/api/model/bookprofile/{id}")
-    Single<BookProfile> getBookprofile(String id);
-
-    @GET("/api/model/bookprofileimage")
-    Single<List<BookProfileImage>> getBookprofileimages();
-
-    @GET("/api/model/bookprofileimage/{id}")
-    Single<BookProfileImage> getBookprofileimage(String id, int i);
+    //Todo: get
+    Single<Image> getBookImage(String id, int i);
 
     @GET("/api/model/transport")
     Single<List<Transport>> getTransports();

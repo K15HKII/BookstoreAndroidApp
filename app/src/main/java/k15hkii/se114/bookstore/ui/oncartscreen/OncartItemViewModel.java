@@ -1,15 +1,16 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import androidx.databinding.Bindable;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
+import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.CartItem;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 
@@ -27,8 +28,8 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     private String userId;
     private String bookProfileId;
     private CartItem cartItem;
-    private BookProfile bookProfile;
-    private BookProfileImage bookProfileImage;
+    private Book bookProfile;
+    private List<Image> images;
 
     public void getCardItem(String userId, String bookProfileId) {
         this.bookProfileId = bookProfileId;
@@ -36,11 +37,11 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
         remote.getCartitem(userId,bookProfileId).doOnSuccess(cartItem -> {
             this.cartItem = cartItem;
         }).subscribe();
-        remote.getBookprofile(bookProfileId).doOnSuccess(bookProfile -> {
+        remote.getBook(bookProfileId).doOnSuccess(bookProfile -> {
             this.bookProfile = bookProfile;
         }).subscribe();
-        remote.getBookprofileimage(bookProfileId, 1).doOnSuccess(bookProfileImage -> {
-            this.bookProfileImage = bookProfileImage;
+        remote.getBookImages().doOnSuccess(bookProfileImage -> {
+            this.images = bookProfileImage;
         }).subscribe();
     }
 

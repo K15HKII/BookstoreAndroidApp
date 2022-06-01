@@ -2,9 +2,6 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
 import k15hkii.se114.bookstore.data.model.api.CartItem;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;

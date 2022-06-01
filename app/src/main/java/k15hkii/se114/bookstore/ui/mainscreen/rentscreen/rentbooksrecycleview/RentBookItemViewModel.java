@@ -1,8 +1,8 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
 import androidx.databinding.Bindable;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -20,13 +20,13 @@ public class RentBookItemViewModel extends BaseViewModel<RentBookItemNavigator> 
     @Inject
     protected ModelRemote remote;
 
-    private BookProfile profile;
-    private BookProfileImage image;
+    private Book profile;
+    private Image[] images;
 
     public void setBookProfileId(String bookProfileId) {
         this.bookProfileId = bookProfileId;
 
-        remote.getBookprofile(bookProfileId).doOnSuccess(profile -> {
+        remote.getBook(bookProfileId).doOnSuccess(profile -> {
             this.profile = profile;
         }).subscribe();
 

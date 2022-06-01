@@ -3,15 +3,11 @@ package k15hkii.se114.bookstore.ui.registerscreen;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.data.model.api.BookProfile;
-import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
