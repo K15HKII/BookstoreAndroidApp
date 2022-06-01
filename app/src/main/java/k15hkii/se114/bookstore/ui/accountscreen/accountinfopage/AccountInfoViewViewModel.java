@@ -20,26 +20,33 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
 
     @Bindable
     public String getName() {
+        if (user == null) return "";
         return user.getFirstName() + " " + user.getLastName();
     }
 
     @Bindable
     public String getGender() {
+        if (user == null) return "";
+        if (user.getGender() == null) return "";
         return user.getGender().name();
     }
 
     @Bindable
     public String getBirthday() {
+        if (user == null) return "";
+        if (user.getBirthday() == null) return "";
         return user.getBirthday().toString();
     }
 
     @Bindable
     public String getPhone() {
+        if (user == null) return "";
         return user.getPhone();
     }
 
     @Bindable
     public String getEmail() {
+        if (user == null) return "";
         return user.getEmail();
     }
 
