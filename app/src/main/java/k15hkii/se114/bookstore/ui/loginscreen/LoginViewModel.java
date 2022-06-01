@@ -13,8 +13,8 @@ import java.util.List;
 
 public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Observable {
 
-    private String user;
-    private String pass;
+    public final ObservableField<String> username = new ObservableField<>();
+    public final ObservableField<String> password = new ObservableField<>();
 
     private final Authentication authentication;
     public ObservableField<String> LoginMessage = new ObservableField<>();
@@ -25,33 +25,13 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         this.authentication = authentication;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    @Bindable
-    public String getUser() {
-        return user;
-    }
-
-    @Bindable
-    public String getPass() {
-        return pass;
-    }
-
     public void login(Object obj) {
-        getCompositeDisposable().add(authentication.login(new LoginRequest(user, pass))
-                .doOnSuccess(response -> {
-                    System.out.println(response.toString());
-                })
+        getCompositeDisposable().add(authentication.login(new LoginRequest(username.get(), password.get()))
                 .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
-                .subscribe(userAccount -> {
-                    getNavigator().openHomeView(obj);
+                .subscribe(response -> {
+                    if (response.isAuthenticated())
+                        getNavigator().openHomeView(obj);
                 }, throwable -> {
                     getNavigator().handleError(throwable);
                 }));

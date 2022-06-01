@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.accountscreen.accountinfopage;
 
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import k15hkii.se114.bookstore.data.model.api.User;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -14,11 +15,28 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     protected ModelRemote remote;
 
     private User user;
-    private String userId;
+
+    @Bindable
+    public String getName() {
+        return user.getFirstName() + " " + user.getLastName();
+    }
+
+    @Bindable
+    public String getGender() {
+        return user.getGender().name();
+    }
+
+    @Bindable
+    public String getBirthday() {
+        return user.getBirthday().toString();
+    }
+
+    @Bindable
+    public String getPhone() {
+        return user.getPhone();
+    }
 
     public void setUserId(String id) {
-        userId = id;
-
         remote.getUser(id).doOnSuccess(user -> {
             this.user = user;
         }).subscribe();
@@ -29,7 +47,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     }
 
     public void onBackWardClick() {
-        getNavigator().BackWard();
+        getNavigator().backward();
     }
 
     public void openChangeNameDialog() {

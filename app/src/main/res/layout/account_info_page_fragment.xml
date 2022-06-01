@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.accountscreen.accountinfopage.AccountInfoPage">
@@ -16,12 +20,14 @@
             android:layout_height="match_parent"
             android:scrollbars="none"
             android:background="@drawable/home_background">
-        <LinearLayout
+
+            <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/home_background">
-            <androidx.appcompat.widget.Toolbar
+
+                <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -32,30 +38,33 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintVertical_bias="0.0">
-            <android.widget.Button
-                    android:id="@+id/btnAccountInfoBackward"
-                    android:onClick="@{()-> viewModel.onBackWardClick()}"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:scaleX="0.55"
-                    android:scaleY="0.55"
-                    android:background="@drawable/ic_backward"/>
-            </androidx.appcompat.widget.Toolbar>
+
+                    <android.widget.Button
+                        android:id="@+id/btnAccountInfoBackward"
+                        android:onClick="@{()-> viewModel.onBackWardClick()}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward" />
+                </androidx.appcompat.widget.Toolbar>
 
 
-            <LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
-                <ImageButton
+
+                    <ImageButton
                         android:id="@+id/btnAccountInfoAddImage"
                         android:layout_width="135dp"
                         android:layout_height="135dp"
                         android:layout_gravity="center"
                         android:background="@drawable/account_image_view"
-                        android:src="@drawable/login_shark_img"/>
-                <TextView
+                        android:src="@drawable/login_shark_img" />
+
+                    <TextView
                         android:id="@+id/tvAccountInfoUserName"
                         android:fontFamily="@font/lato_bold"
                         android:text="Noth1ng"
@@ -66,8 +75,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:layout_marginBottom="25dp"/>
-                <LinearLayout
+                        android:layout_marginBottom="25dp" />
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoDetailName"
                         android:onClick="@{()-> viewModel.openChangeNameDialog()}"
                         android:layout_height="wrap_content"
@@ -79,9 +89,12 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
                                 android:text="Tên"
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
@@ -89,122 +102,140 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_alignParentLeft="true"
                                 android:textSize="19dp"
-                                android:textColor="@color/black"/>
-                        <LinearLayout android:layout_width="wrap_content"
-                                      android:layout_height="match_parent"
-                                      android:layout_alignParentEnd="true"
-                                      android:orientation="horizontal">
-                    <TextView
-                            android:id="@+id/tvAccountInfoName"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="Trần Hữu Trí"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:layout_width="267dp"
-                            android:layout_marginRight="40dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/ic_arrow_account"/>
-                </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
+                                android:textColor="@color/black" />
 
-            <LinearLayout
-                    android:id="@+id/btnAccountInfoEmail"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@drawable/account_button_3"
-                    style="@android:style/Widget.Button"
-                    android:layout_marginTop="2dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                    <TextView
-                            android:text="Email"
-                            android:fontFamily="@font/lato_regular"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"/>
-                    <LinearLayout android:layout_width="wrap_content"
-                                  android:layout_height="match_parent"
-                                  android:layout_alignParentEnd="true"
-                                  android:orientation="horizontal">
-                <TextView
-                        android:id="@+id/secondTextView"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="tritran5789@gmail.com"
-                        android:textSize="19dp"
-                        android:textColor="@color/black"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:layout_width="252dp"
-                        android:layout_marginRight="40dp"/>
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="2.25dp"
-                        android:src="@drawable/ic_arrow_account"/>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvAccountInfoName"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="@{viewModel.name}"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="textEnd"
+                                    android:layout_width="267dp"
+                                    android:layout_marginRight="40dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account" />
+                            </LinearLayout>
+                        </RelativeLayout>
                     </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                    android:id="@+id/btnAccountInfoPhoneNum"
-                    android:onClick="@{()-> viewModel.openChangePhoneNumberDialog()}"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@drawable/account_button_3"
-                    style="@android:style/Widget.Button"
-                    android:layout_marginTop="2dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                    <TextView
-                            android:text="Số điện thoại"
-                            android:fontFamily="@font/lato_regular"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"/>
-                    <LinearLayout android:layout_width="wrap_content"
-                                  android:layout_height="match_parent"
-                                  android:layout_alignParentEnd="true"
-                                  android:orientation="horizontal">
-                <TextView
-                        android:id="@+id/tvAccountInfoPhoneNum"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="0857350234"
-                        android:textSize="19dp"
-                        android:textColor="@color/black"
+                    <LinearLayout
+                        android:id="@+id/btnAccountInfoEmail"
                         android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:layout_width="188dp"
-                        android:layout_marginRight="40dp"/>
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="2.25dp"
-                        android:src="@drawable/ic_arrow_account"/>
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/account_button_3"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="2dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
 
-                <LinearLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="Email"
+                                android:fontFamily="@font/lato_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="19dp"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/secondTextView"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="@{viewModel.email}"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="textEnd"
+                                    android:layout_width="252dp"
+                                    android:layout_marginRight="40dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btnAccountInfoPhoneNum"
+                        android:onClick="@{()-> viewModel.openChangePhoneNumberDialog()}"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/account_button_3"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="2dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="Số điện thoại"
+                                android:fontFamily="@font/lato_regular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="19dp"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvAccountInfoPhoneNum"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="@{viewModel.phone}"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="textEnd"
+                                    android:layout_width="188dp"
+                                    android:layout_marginRight="40dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoDOB"
                         android:onClick="@{()-> viewModel.openChangeBirthDialog()}"
                         android:layout_height="wrap_content"
@@ -217,40 +248,47 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
                                 android:text="Ngày sinh"
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="19dp"
-                                android:textColor="@color/black"/>
-                        <LinearLayout android:layout_width="wrap_content"
-                                      android:layout_height="match_parent"
-                                      android:layout_alignParentEnd="true"
-                                      android:orientation="horizontal">
-                    <TextView
-                            android:id="@+id/tvAccountInfoDOB"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="15/10/2002"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:layout_width="215dp"
-                            android:layout_marginRight="40dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/ic_arrow_account"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
+                                android:textColor="@color/black" />
 
-                <LinearLayout
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvAccountInfoDOB"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="@{viewModel.birthday}"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="textEnd"
+                                    android:layout_width="215dp"
+                                    android:layout_marginRight="40dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoGender"
                         android:onClick="@{()->viewModel.openChangeGenderDialog()}"
                         android:layout_height="wrap_content"
@@ -263,9 +301,12 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
                                 android:text="Giới tính"
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
@@ -273,31 +314,35 @@
                                 android:layout_marginLeft="8.5dp"
                                 android:layout_marginRight="10dp"
                                 android:textSize="19dp"
-                                android:textColor="@color/black"/>
-                        <LinearLayout android:layout_width="wrap_content"
-                                      android:layout_height="match_parent"
-                                      android:layout_alignParentEnd="true"
-                                      android:orientation="horizontal">
-                    <TextView
-                            android:id="@+id/tvAccountInfoGender"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="Khác"
-                            android:textSize="19dp"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:layout_width="230dp"
-                            android:layout_marginRight="40dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/ic_arrow_account"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
+                                android:textColor="@color/black" />
 
-                <LinearLayout
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvAccountInfoGender"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="@{viewModel.gender}"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="textEnd"
+                                    android:layout_width="230dp"
+                                    android:layout_marginRight="40dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:clickable="true"
                         android:onClick="@{()-> viewModel.openSelectorAddressClick()}"
                         android:id="@+id/btnAccountInfoLocation"
@@ -311,47 +356,57 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <LinearLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                        <RelativeLayout android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-                            <LinearLayout
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="9dp"
-                                android:backgroundTint="@color/btn_blue"
-                                android:src="@drawable/ic_location"/>
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="9dp"
+                                        android:backgroundTint="@color/btn_blue"
+                                        android:src="@drawable/ic_location" />
+
+                                    <TextView
+                                        android:fontFamily="@font/lato_regular"
+                                        android:text="Địa chỉ"
+                                        android:textSize="19dp"
+                                        android:textColor="@color/black"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:layout_width="231dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="84.5dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="end"
+                                        android:layout_marginEnd="2.25dp"
+                                        android:src="@drawable/ic_arrow_account" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
                         <TextView
-                                android:fontFamily="@font/lato_regular"
-                                android:text="Địa chỉ"
-                                android:textSize="19dp"
-                                android:textColor="@color/black"
-                                android:layout_height="wrap_content"
-                                android:textAlignment="textStart"
-                                android:layout_width="231dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="84.5dp"/>
-                            </LinearLayout>
-                            <LinearLayout android:layout_width="wrap_content"
-                                          android:layout_height="match_parent"
-                                          android:layout_alignParentEnd="true"
-                                          android:orientation="horizontal">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginEnd="2.25dp"
-                                android:src="@drawable/ic_arrow_account"/>
-                            </LinearLayout>
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <TextView
                             android:id="@+id/tvAccountInfoLocation"
                             android:fontFamily="@font/lato_regular"
                             android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
@@ -361,9 +416,10 @@
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
                             android:layout_marginTop="25dp"
-                            android:layout_marginLeft="8dp"/>
-                </LinearLayout>
-                <LinearLayout
+                            android:layout_marginLeft="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoBankAccount"
                         android:onClick="@{()-> viewModel.openSelectorBankClick()}"
                         android:clickable="true"
@@ -377,28 +433,33 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView android:layout_width="wrap_content"
-                                  android:layout_height="match_parent"
-                                  android:fontFamily="@font/lato_regular"
-                                  android:layout_alignParentLeft="true"
-                                  android:text="Tài khoản ngân hàng"
-                                  android:textAlignment="textStart"
-                                  android:textSize="19dp"
-                                  android:textColor="@color/black"
-                                  android:layout_marginLeft="10dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="2.25dp"
-                            android:layout_alignParentEnd="true"
-                            android:src="@drawable/ic_arrow_account"/>
-                    </RelativeLayout>
-                </LinearLayout>
 
-                <LinearLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/lato_regular"
+                                android:layout_alignParentLeft="true"
+                                android:text="Tài khoản ngân hàng"
+                                android:textAlignment="textStart"
+                                android:textSize="19dp"
+                                android:textColor="@color/black"
+                                android:layout_marginLeft="10dp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_marginEnd="2.25dp"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_arrow_account" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoPasswordChange"
                         android:onClick="@{()-> viewModel.openChangePasswordDialog()}"
                         android:layout_height="wrap_content"
@@ -411,28 +472,33 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView android:layout_width="wrap_content"
-                                  android:layout_height="match_parent"
-                                  android:layout_alignParentLeft="true"
-                                  android:text="Đổi mật khẩu"
-                                  android:fontFamily="@font/lato_regular"
-                                  android:textAlignment="textStart"
-                                  android:textSize="19dp"
-                                  android:textColor="@color/black"
-                                  android:layout_marginLeft="10dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="end"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/ic_arrow_account"/>
-                    </RelativeLayout>
-                </LinearLayout>
 
-                <LinearLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:text="Đổi mật khẩu"
+                                android:fontFamily="@font/lato_regular"
+                                android:textAlignment="textStart"
+                                android:textSize="19dp"
+                                android:textColor="@color/black"
+                                android:layout_marginLeft="10dp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="2.25dp"
+                                android:src="@drawable/ic_arrow_account" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/btnAccountInfoLinkSocial"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
@@ -444,30 +510,35 @@
                         android:paddingBottom="15dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <TextView android:layout_width="348dp"
-                                  android:layout_height="match_parent"
-                                  android:layout_alignParentLeft="true"
-                                  android:text="Liên kết mạng xã hội"
-                                  android:fontFamily="@font/lato_regular"
-                                  android:textAlignment="textStart"
-                                  android:textSize="19dp"
-                                  android:textColor="@color/black"
-                                  android:layout_marginLeft="10dp"/>
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="2.25dp"
-                            android:src="@drawable/ic_arrow_account"/>
-                    </RelativeLayout>
-                </LinearLayout>
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="348dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:text="Liên kết mạng xã hội"
+                                android:fontFamily="@font/lato_regular"
+                                android:textAlignment="textStart"
+                                android:textSize="19dp"
+                                android:textColor="@color/black"
+                                android:layout_marginLeft="10dp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_marginEnd="2.25dp"
+                                android:src="@drawable/ic_arrow_account" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
         </ScrollView>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

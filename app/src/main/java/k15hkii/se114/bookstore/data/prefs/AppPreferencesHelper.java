@@ -2,11 +2,13 @@ package k15hkii.se114.bookstore.data.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.utils.AppConstants;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class AppPreferencesHelper implements PreferencesHelper {
 
@@ -38,6 +40,7 @@ public class AppPreferencesHelper implements PreferencesHelper {
 
     @Override
     public void setAccessToken(String accessToken) {
+        Log.d("AppPreferencesHelper", "setAccessToken: " + accessToken);
         sharedPreferences.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply();
     }
 
@@ -47,8 +50,9 @@ public class AppPreferencesHelper implements PreferencesHelper {
     }
 
     @Override
-    public void setRefreshToken(String accessToken) {
-        sharedPreferences.edit().putString(PREF_KEY_REFRESH_TOKEN, accessToken).apply();
+    public void setRefreshToken(String refreshToken) {
+        Log.d("AppPreferencesHelper", "setRefreshToken: " + refreshToken);
+        sharedPreferences.edit().putString(PREF_KEY_REFRESH_TOKEN, refreshToken).apply();
     }
 
     @Override
@@ -62,15 +66,15 @@ public class AppPreferencesHelper implements PreferencesHelper {
     }
 
     @Override
-    public Long getCurrentUserId() {
-        long userId = sharedPreferences.getLong(PREF_KEY_CURRENT_USER_ID, AppConstants.NULL_INDEX);
-        return userId == AppConstants.NULL_INDEX ? null : userId;
+    public UUID getCurrentUserId() {
+        String userId = sharedPreferences.getString(PREF_KEY_CURRENT_USER_ID, null);
+        return UUID.fromString(userId);
     }
 
     @Override
-    public void setCurrentUserId(Long userId) {
-        long id = userId == null ? AppConstants.NULL_INDEX : userId;
-        sharedPreferences.edit().putLong(PREF_KEY_CURRENT_USER_ID, id).apply();
+    public void setCurrentUserId(UUID userId) {
+        sharedPreferences.edit().putString(PREF_KEY_CURRENT_USER_ID, userId.toString()).apply();
+        Log.d("AppPreferencesHelper", "setCurrentUserId: " + userId);
     }
 
     @Override

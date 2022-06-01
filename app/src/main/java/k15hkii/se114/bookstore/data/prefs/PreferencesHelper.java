@@ -2,6 +2,8 @@ package k15hkii.se114.bookstore.data.prefs;
 
 import k15hkii.se114.bookstore.data.remote.Authentication;
 
+import java.util.UUID;
+
 public interface PreferencesHelper {
 
     String getAccessToken();
@@ -16,9 +18,9 @@ public interface PreferencesHelper {
 
     void setCurrentUserEmail(String email);
 
-    Long getCurrentUserId();
+    UUID getCurrentUserId();
 
-    void setCurrentUserId(Long userId);
+    void setCurrentUserId(UUID userId);
 
     int getCurrentUserLoggedInMode();
 

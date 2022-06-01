@@ -50,7 +50,7 @@ public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.
         holder.setViewModel(data);
     }
 
-    public class BookViewHolder extends RecyclerView.ViewHolder {
+    public static class BookViewHolder extends RecyclerView.ViewHolder {
 
         private BookViewAdapterBinding binding;
 

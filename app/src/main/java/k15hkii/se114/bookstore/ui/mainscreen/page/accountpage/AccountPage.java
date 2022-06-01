@@ -27,16 +27,6 @@ import javax.inject.Inject;
 
 public class AccountPage extends BaseFragment<AccountPageFragmentBinding, AccountPageViewModel> implements AccountPageNavigator {
 
-    private AccountPageFragmentBinding accountPageFragmentBinding;
-
-    private Button btnInfomation, btnSetting, btnHelpCenter;
-
-
-
-    public static AccountPage newInstance() {
-        return new AccountPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -51,19 +41,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        accountPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-//        loadingDialog.startLoadingDialog();
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        },1000);
-
         return view;
     }
 

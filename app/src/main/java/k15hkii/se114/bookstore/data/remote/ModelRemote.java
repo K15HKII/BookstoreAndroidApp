@@ -10,107 +10,107 @@ import java.util.List;
 
 public interface ModelRemote {
 
-    @GET("/api/models/user")
+    @GET("/api/model/user")
     Single<List<User>> getUsers();
 
-    @GET("/api/models/user/{id}")
+    @GET("/api/model/user/{id}")
     Single<User> getUser(String id);
 
-    @POST("/api/models/user/{id}")
+    @POST("/api/model/user/{id}")
     Single<User> saveUser(Object obj);
 
-    @GET("/api/models/useraddress")
+    @GET("/api/model/useraddress")
     Single<List<UserAddress>> getUseraddresses();
 
-    @GET("/api/models/useraddress/{id}")
+    @GET("/api/model/useraddress/{id}")
     Single<UserAddress> getUseraddress(String id, String index);//TODO:
 
-    @POST("/api/models/useraddress/{id}")
+    @POST("/api/model/useraddress/{id}")
     Single<UserAddress> saveUseraddress(Object obj);
 
-    @GET("/api/models/author")
+    @GET("/api/model/author")
     Single<List<Author>> getAuthors();
 
-    @GET("/api/models/author/{id}")
+    @GET("/api/model/author/{id}")
     Single<Author> getAuthor(String id);
 
-    @GET("/api/models/voucherprofile")
+    @GET("/api/model/voucherprofile")
     Single<List<VoucherProfile>> getVoucherProfiles();
 
-    @GET("/api/models/voucherprofile/{id}")
+    @GET("/api/model/voucherprofile/{id}")
     Single<VoucherProfile> getVoucherProfile(String id);
 
-    @GET("/api/models/bookprofile")
+    @GET("/api/model/bookprofile")
     Single<List<BookProfile>> getBookprofiles();
 
-    @GET("/api/models/bookprofile/{id}")
+    @GET("/api/model/bookprofile/{id}")
     Single<BookProfile> getBookprofile(String id);
 
-    @GET("/api/models/bookprofileimage")
+    @GET("/api/model/bookprofileimage")
     Single<List<BookProfileImage>> getBookprofileimages();
 
-    @GET("/api/models/bookprofileimage/{id}")
+    @GET("/api/model/bookprofileimage/{id}")
     Single<BookProfileImage> getBookprofileimage(String id, int i);
 
-    @GET("/api/models/transport")
+    @GET("/api/model/transport")
     Single<List<Transport>> getTransports();
 
-    @GET("/api/models/transport/{id}")
+    @GET("/api/model/transport/{id}")
     Single<Transport> getTransport(String id);
 
-    @GET("/api/models/publisher")
+    @GET("/api/model/publisher")
     Single<List<Publisher>> getPublishers();
 
-    @GET("/api/models/publisher/{id}")
+    @GET("/api/model/publisher/{id}")
     Single<Publisher> getPublisher(String id);
 
-    @GET("/api/models/transporter")
+    @GET("/api/model/transporter")
     Single<List<Transporter>> getTransporters();
 
-    @GET("/api/models/transporter/{id}")
+    @GET("/api/model/transporter/{id}")
     Single<Transporter> getTransporter(String id);
 
-    @GET("/api/models/cartitem/{userid}")
+    @GET("/api/model/cartitem/{userid}")
     Single<List<CartItem>> getCartitems(String userId);
 
-    @GET("/api/models/cartitem/{userid,bookprofileid}")
+    @GET("/api/model/cartitem/{userid,bookprofileid}")
     Single<CartItem> getCartitem(String userId, String bookProfileId);
 
-    @POST("/api/models/cartitem/{id}")
+    @POST("/api/model/cartitem/{id}")
     Single<CartItem> saveCartitem(Object obj);
 
-    @DELETE("/api/models/cartitem/{id}")
+    @DELETE("/api/model/cartitem/{id}")
     Single<CartItem> deleteCartitem(Object obj);
 
-    @GET("/api/models/book")
+    @GET("/api/model/book")
     Single<List<Book>> getBooks();
 
-    @GET("/api/models/book/{id}")
+    @GET("/api/model/book/{id}")
     Single<Book> getBook(String id);
 
-    @GET("/api/models/bill")
+    @GET("/api/model/bill")
     Single<List<Bill>> getBills();
 
-    @GET("/api/models/bill/{id}")
+    @GET("/api/model/bill/{id}")
     Single<Bill> getBill(String id);
 
 
-    @GET("/api/models/lend")
+    @GET("/api/model/lend")
     Single<List<Lend>> getLends();
 
-    @GET("/api/models/lend/{id}")
+    @GET("/api/model/lend/{id}")
     Single<Lend> getLend(String id);
 
-    @GET("/api/models/voucher")
+    @GET("/api/model/voucher")
     Single<List<Voucher>> getVouchers();
 
-    @GET("/api/models/voucher/{id}")
+    @GET("/api/model/voucher/{id}")
     Single<Voucher> getVoucher(String id);
 
-    @GET("/api/models/wildvoucher")
+    @GET("/api/model/wildvoucher")
     Single<List<WildVoucher>> getWildvouchers();
 
-    @GET("/api/models/wildvoucher/{id}")
+    @GET("/api/model/wildvoucher/{id}")
     Single<WildVoucher> getWildvoucher(String id);
 
 

@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @ToString
 public class LoginResponse {
 
@@ -19,7 +21,12 @@ public class LoginResponse {
     private String refreshToken;
 
     @Expose
-    @SerializedName("status")
+    @SerializedName("user_id")
+    @Getter
+    private UUID userId;
+
+    @Expose
+    @SerializedName("authenticated")
     @Getter
     private boolean authenticated;
 

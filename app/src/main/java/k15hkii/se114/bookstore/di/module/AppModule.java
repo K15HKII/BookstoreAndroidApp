@@ -2,6 +2,8 @@ package k15hkii.se114.bookstore.di.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -12,14 +14,13 @@ import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
-import k15hkii.se114.bookstore.data.remote.Authentication;
-import k15hkii.se114.bookstore.data.remote.LocalModelRemote;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.data.remote.RestHeader;
+import k15hkii.se114.bookstore.data.remote.*;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -42,7 +43,9 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Authentication provideAuthentication(Retrofit retrofit) { return retrofit.create(Authentication.class); }
+    Authentication provideAuthentication(Retrofit retrofit, PreferencesHelper helper) {
+        return new AppAuthentication(retrofit.create(Authentication.class), helper);
+    }
 
     @Provides
     @Singleton
@@ -68,16 +71,29 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson) {
+    Retrofit provideRetrofit(Gson gson, PreferencesHelper preferencesHelper) {
+        final String baseUrl = BuildConfig.BASE_URL.endsWith("/") ? BuildConfig.BASE_URL : BuildConfig.BASE_URL + "/";
+        Log.d("AppModule", "Base URL: " + baseUrl);
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL.endsWith("/") ? BuildConfig.BASE_URL : BuildConfig.BASE_URL + "/")
+                .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson));
 
-        /*HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-        builder.client(client);*/
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        clientBuilder.addInterceptor(loggingInterceptor);
+        clientBuilder.addInterceptor(chain -> {
+            if (preferencesHelper.getAccessToken() != null && preferencesHelper.getRefreshToken() != null) {
+                Request request = chain.request().newBuilder()
+                        .addHeader("access_token", preferencesHelper.getAccessToken())
+                        .addHeader("refresh_token", preferencesHelper.getRefreshToken())
+                        .build();
+                return chain.proceed(request);
+            }
+            return chain.proceed(chain.request());
+        });
+        builder.client(clientBuilder.build());
 
         return builder.build();
     }

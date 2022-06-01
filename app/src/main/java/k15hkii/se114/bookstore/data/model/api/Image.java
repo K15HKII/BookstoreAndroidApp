@@ -16,9 +16,4 @@ public class Image extends File{
     @Expose
     @SerializedName("height")
     private Number height;
-
-    @Getter
-    @Expose
-    @SerializedName("path")
-    private String path;
 }

@@ -31,7 +31,7 @@ public class Book {
     @Getter
     @Expose
     @SerializedName("quantity")
-    private Number quantity;
+    private int quantity;
 
     @Getter
     @Expose
@@ -41,7 +41,7 @@ public class Book {
     @Getter
     @Expose
     @SerializedName("price")
-    private Number price;
+    private int price;
 
     @Getter
     @Expose

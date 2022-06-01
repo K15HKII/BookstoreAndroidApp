@@ -2,11 +2,9 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 @With
@@ -21,28 +19,37 @@ public class User {
     @Getter
     @Expose
     @SerializedName("firstname")
-    private String firstname;
+    private String firstName;
 
     @Getter
     @Expose
     @SerializedName("lastname")
-    private String lastname;
+    private String lastName;
 
     @Getter
     @Expose
     @SerializedName("phone")
-    private Number phone;
+    private String phone;
 
     @Getter
     @Expose
     @SerializedName("age")
-    private Number age;
+    private int age;
 
+    @Getter
+    @Expose
+    @SerializedName("birthday")
+    private Date birthday;
+
+    @Getter
+    @Expose
+    @SerializedName("gender")
+    private Gender gender;
 
     @Getter
     @Expose
     @SerializedName("username")
-    private String username;
+    private String userName;
 
     @Getter
     @Expose

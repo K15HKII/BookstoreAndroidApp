@@ -126,7 +126,7 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
 //    }
 
     @Override
-    public void BackWard() {
+    public void backward() {
         getFragmentManager().popBackStack();
     }
 

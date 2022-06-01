@@ -7,7 +7,7 @@ import lombok.Getter;
 
 public class BookstoreApp extends Application {
 
-    public static final boolean IS_LOCAL = true;
+    public static final boolean IS_LOCAL = false;
     @Getter AppComponent appComponent;
 
     @Override
