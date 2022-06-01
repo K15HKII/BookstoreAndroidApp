@@ -4,12 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
+import java.util.UUID;
+
 public class StorageLogDetail{
 
     @Getter
     @Expose
     @SerializedName("book_id")
-    private String bookId;
+    private UUID bookId;
 
     @Getter
     @Expose

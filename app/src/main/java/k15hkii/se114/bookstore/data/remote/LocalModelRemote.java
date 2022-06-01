@@ -6,89 +6,90 @@ import k15hkii.se114.bookstore.data.model.api.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class LocalModelRemote implements ModelRemote {
 
     private List<User> users = Arrays.asList(
-            new User().withId("a")
+            new User().withId(UUID.fromString("1"))
                     .withEmail("2"),
             new User().withEmail("3")
     );
 
     private List<UserAddress> userAddresss = Arrays.asList(
-            new UserAddress().withUserid("1").withAddress("123").withCity("HCM"),
-            new UserAddress().withUserid("2").withAddress("456").withCity("Dong Nai"),
-            new UserAddress().withUserid("3").withAddress("789").withCity("Tra Vinh")
+            new UserAddress().withUserId(UUID.fromString("U1")).withCountry("123").withCity("HCM"),
+            new UserAddress().withUserId(UUID.fromString("U2")).withCountry("456").withCity("Dong Nai"),
+            new UserAddress().withUserId(UUID.fromString("U3")).withCountry("789").withCity("Tra Vinh")
     );
     private List<Author> authors = Arrays.asList(
-            new Author().withId("1").withName("Ngoc Trinh"),
-            new Author().withId("2").withName("Vu Khac Tiep"),
-            new Author().withId("3").withName("Thay Giao Ba")
+            new Author().withId(1).withName("Ngoc Trinh"),
+            new Author().withId(2).withName("Vu Khac Tiep"),
+            new Author().withId(3).withName("Thay Giao Ba")
     );
     private List<VoucherProfile> voucherProfiles = Arrays.asList(
-            new VoucherProfile().withId("1"),
-            new VoucherProfile().withId("2"),
-            new VoucherProfile().withId("3")
+            new VoucherProfile().withId(UUID.fromString("VP1")),
+            new VoucherProfile().withId(UUID.fromString("VP2")),
+            new VoucherProfile().withId(UUID.fromString("VP3"))
     );
     private List<BookProfile> bookProfiles = Arrays.asList(
-            new BookProfile().withId("1").withName("dark nhan tam"),
-            new BookProfile().withId("2").withName("huhu"),
-            new BookProfile().withId("3").withName("hihi")
+            new BookProfile().withId(UUID.fromString("BP1")).withName("dark nhan tam"),
+            new BookProfile().withId(UUID.fromString("BP2")).withName("huhu"),
+            new BookProfile().withId(UUID.fromString("BP3")).withName("hihi")
     );
     private List<Publisher> publishers = Arrays.asList(
-            new Publisher().withId("1").withName("Lmao"),
-            new Publisher().withId("2").withName("Khoc"),
-            new Publisher().withId("3").withName("Cuoi")
+            new Publisher().withId(1).withName("Lmao"),
+            new Publisher().withId(2).withName("Khoc"),
+            new Publisher().withId(3).withName("Cuoi")
     );
     private List<Transporter> transporters = Arrays.asList(
-            new Transporter().withId("1").withName("Khoi Chim Be"),
-            new Transporter().withId("2").withName("Tri Map"),
-            new Transporter().withId("3").withName("Quoc 20cm")
+            new Transporter().withId(1).withName("Khoi Chim Be"),
+            new Transporter().withId(2).withName("Tri Map"),
+            new Transporter().withId(3).withName("Quoc 20cm")
     );
     private List<Transport> transports = Arrays.asList(
-            new Transport().withId("1"),
-            new Transport().withId("2"),
-            new Transport().withId("3")
+            new Transport().withId(UUID.fromString("T1")),
+            new Transport().withId(UUID.fromString("T2")),
+            new Transport().withId(UUID.fromString("T3"))
     );
     private List<Book> books = Arrays.asList(
-            new Book().withId("1").withProfileId("01"),
-            new Book().withId("2").withProfileId("02"),
-            new Book().withId("3").withProfileId("03")
+            new Book().withId(UUID.fromString("B1")).withAuthor(new Author()),
+            new Book().withId(UUID.fromString("B2")).withAuthor(new Author()),
+            new Book().withId(UUID.fromString("B3")).withAuthor(new Author())
     );
     private List<Lend> lends = Arrays.asList(
-            new Lend().withId("1").withUserid("1"),
-            new Lend().withId("2").withUserid("2"),
-            new Lend().withId("3").withUserid("3")
+            new Lend().withId(UUID.fromString("L1")).withBook(new Book()),
+            new Lend().withId(UUID.fromString("L2")).withBook(new Book()),
+            new Lend().withId(UUID.fromString("L3")).withBook(new Book())
     );
     private List<Voucher> vouchers = Arrays.asList(
-            new Voucher().withId("1").withUserid("1"),
-            new Voucher().withId("2").withUserid("2"),
-            new Voucher().withId("3").withUserid("3")
+            new Voucher().withId(UUID.fromString("V1")),
+            new Voucher().withId(UUID.fromString("V2")),
+            new Voucher().withId(UUID.fromString("V3"))
     );
     private List<WildVoucher> wildVouchers = Arrays.asList(
-            new WildVoucher().withId("1").withProfileId("1"),
-            new WildVoucher().withId("2").withProfileId("2"),
-            new WildVoucher().withId("3").withProfileId("3")
+            new WildVoucher().withId(UUID.fromString("WV1")).withMaxUses(1),
+            new WildVoucher().withId(UUID.fromString("WV2")).withMaxUses(1),
+            new WildVoucher().withId(UUID.fromString("WV3")).withMaxUses(1)
     );
     private List<Bill> bills = Arrays.asList(
-            new Bill().withId("1").withUserid("1"),
-            new Bill().withId("2").withUserid("2"),
-            new Bill().withId("3").withUserid("3")
+            new Bill().withId(1).withUserid(UUID.fromString("U1")),
+            new Bill().withId(2).withUserid(UUID.fromString("U2")),
+            new Bill().withId(3).withUserid(UUID.fromString("U3"))
     );
     private List<BillDetail> billDetails = Arrays.asList(
-            new BillDetail().withBillId("1").withPrice(69696969),
-            new BillDetail().withBillId("2").withPrice(96969696),
-            new BillDetail().withBillId("3").withPrice(0)
+            new BillDetail().withBillId(1).withPrice(69696969),
+            new BillDetail().withBillId(2).withPrice(96969696),
+            new BillDetail().withBillId(3).withPrice(0)
     );
     private List<BookProfileImage> bookProfileImages = Arrays.asList(
-            new BookProfileImage().withId("1").withImage(69696969),
-            new BookProfileImage().withId("2").withImage(96969696),
-            new BookProfileImage().withId("3").withImage(0)
+            new BookProfileImage().withId(UUID.fromString("BPI1")).withImage(69696969),
+            new BookProfileImage().withId(UUID.fromString("BPI2")).withImage(96969696),
+            new BookProfileImage().withId(UUID.fromString("BPI3")).withImage(0)
     );
     private List<CartItem> cartItems = Arrays.asList(
-            new CartItem().withUserid("1").withBookProfileid("1"),
-            new CartItem().withUserid("2").withBookProfileid("2"),
-            new CartItem().withUserid("3").withBookProfileid("3")
+            new CartItem().withUserId(UUID.fromString("U1")).withBookId(UUID.fromString("B1")),
+            new CartItem().withUserId(UUID.fromString("U2")).withBookId(UUID.fromString("B2")),
+            new CartItem().withUserId(UUID.fromString("U3")).withBookId(UUID.fromString("B3"))
     );
     public LocalModelRemote() {
 
@@ -107,7 +108,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<User> getUser(String id) {
         User res = null;
         for (User user : users) {
-            if (id.equalsIgnoreCase(user.getId())) {
+            if (id.equalsIgnoreCase(user.getId().toString())) {
                 res = user;
                 break;
             }
@@ -129,7 +130,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<UserAddress> getUseraddress(String id, String index) {
         UserAddress res = null;
         for (UserAddress userAddress : userAddresss) {
-            if (id.equalsIgnoreCase(userAddress.getUserid())) {
+            if (id.equalsIgnoreCase(userAddress.getUserId().toString())) {
                 res = userAddress;
                 break;
             }
@@ -151,7 +152,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Author> getAuthor(String id) {
         Author res = null;
         for (Author author : authors) {
-            if (id.equalsIgnoreCase(author.getId())) {
+            if (id.equalsIgnoreCase(author.getId().toString())) {
                 res = author;
                 break;
             }
@@ -168,7 +169,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<VoucherProfile> getVoucherProfile(String id) {
         VoucherProfile res = null;
         for (VoucherProfile voucherprofile : voucherProfiles) {
-            if (id.equalsIgnoreCase(voucherprofile.getId())) {
+            if (id.equalsIgnoreCase(voucherprofile.getId().toString())) {
                 res = voucherprofile;
                 break;
             }
@@ -185,7 +186,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<BookProfile> getBookprofile(String id) {
         BookProfile res = null;
         for (BookProfile bookProfile : bookProfiles) {
-            if (id.equalsIgnoreCase(bookProfile.getId())) {
+            if (id.equalsIgnoreCase(bookProfile.getId().toString())) {
                 res = bookProfile;
                 break;
             }
@@ -202,7 +203,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<BookProfileImage> getBookprofileimage(String id, int i) {
         BookProfileImage res = null;
         for (BookProfileImage bookProfileImage : bookProfileImages) {
-            if (id.equalsIgnoreCase(bookProfileImage.getId())) {
+            if (id.equalsIgnoreCase(bookProfileImage.getId().toString())) {
                 res = bookProfileImage;
                 break;
             }
@@ -219,7 +220,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Transport> getTransport(String id) {
         Transport res = null;
         for (Transport transport : transports) {
-            if (id.equalsIgnoreCase(transport.getId())) {
+            if (id.equalsIgnoreCase(transport.getId().toString())) {
                 res = transport;
                 break;
             }
@@ -236,7 +237,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Publisher> getPublisher(String id) {
         Publisher res = null;
         for (Publisher publisher : publishers) {
-            if (id.equalsIgnoreCase(publisher.getId())) {
+            if (id.equalsIgnoreCase(publisher.getId().toString())) {
                 res = publisher;
                 break;
             }
@@ -253,7 +254,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Transporter> getTransporter(String id) {
         Transporter res = null;
         for (Transporter transporter : transporters) {
-            if (id.equalsIgnoreCase(transporter.getId())) {
+            if (id.equalsIgnoreCase(transporter.getId().toString())) {
                 res = transporter;
                 break;
             }
@@ -267,10 +268,10 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
-    public Single<CartItem> getCartitem(String userId, String bookProfileId) {
+    public Single<CartItem> getCartitem(String userId, String bookId) {
         CartItem res = null;
         for (CartItem cartItem : cartItems) {
-            if (userId.equalsIgnoreCase(cartItem.getUserid()) && bookProfileId.equalsIgnoreCase(cartItem.getBookProfileid())) {
+            if (userId.equalsIgnoreCase(cartItem.getUserId().toString()) && bookId.equalsIgnoreCase(cartItem.getBookId().toString())) {
                 res = cartItem;
                 break;
             }
@@ -297,7 +298,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Book> getBook(String id) {
         Book res = null;
         for (Book book : books) {
-            if (id.equalsIgnoreCase(book.getId())) {
+            if (id.equalsIgnoreCase(book.getId().toString())) {
                 res = book;
                 break;
             }
@@ -314,7 +315,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Bill> getBill(String id) {
         Bill res = null;
         for (Bill bill : bills) {
-            if (id.equalsIgnoreCase(bill.getId())) {
+            if (id.equalsIgnoreCase(bill.getId().toString())) {
                 res = bill;
                 break;
             }
@@ -331,7 +332,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Lend> getLend(String id) {
         Lend res = null;
         for (Lend lend : lends) {
-            if (id.equalsIgnoreCase(lend.getId())) {
+            if (id.equalsIgnoreCase(lend.getId().toString())) {
                 res = lend;
                 break;
             }
@@ -348,7 +349,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Voucher> getVoucher(String id) {
         Voucher res = null;
         for (Voucher voucher : vouchers) {
-            if (id.equalsIgnoreCase(voucher.getId())) {
+            if (id.equalsIgnoreCase(voucher.getId().toString())) {
                 res = voucher;
                 break;
             }
@@ -365,7 +366,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<WildVoucher> getWildvoucher(String id) {
         WildVoucher res = null;
         for (WildVoucher wildVoucher : wildVouchers) {
-            if (id.equalsIgnoreCase(wildVoucher.getId())) {
+            if (id.equalsIgnoreCase(wildVoucher.getId().toString())) {
                 res = wildVoucher;
                 break;
             }

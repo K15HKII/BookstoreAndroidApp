@@ -22,7 +22,7 @@ public class ForgotPasswordViewModel extends BaseViewModel<ForgotPassNavigator> 
 
     public void setEmail(String email) {
         remote.getUser(userId).doOnSuccess(user -> {
-            this.email = Integer.toString(user.getEmail());
+            this.email = user.getEmail();
         }).subscribe();
     }
 

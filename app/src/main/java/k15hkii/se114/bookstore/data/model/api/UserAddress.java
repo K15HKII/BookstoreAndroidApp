@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class UserAddress {
     @Getter
     @Expose
     @SerializedName("userid")
-    private String userId;
+    private UUID userId;
 
     @Getter
     @Expose

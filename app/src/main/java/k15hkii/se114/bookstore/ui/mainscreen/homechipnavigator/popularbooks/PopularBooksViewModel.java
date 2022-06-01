@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookViewModel>> PopularBooksItemsLiveData = new MutableLiveData<>(
+    private final ObservableField<List<BookViewModel>> PopularBooksItemsLiveData = new ObservableField<>(
             Arrays.asList(new BookViewModel("Sách Dark Nhân Tâm"),
                           new BookViewModel("Sách Kong Nghệ"),
                           new BookViewModel("Dank Nghiệp"),
@@ -19,7 +20,7 @@ public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigat
     );
 
     public List<BookViewModel> getPopularBooksItems() {
-        return PopularBooksItemsLiveData.getValue();
+        return PopularBooksItemsLiveData.get();
     }
     public PopularBooksViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.BookProfile;
 import k15hkii.se114.bookstore.data.model.api.BookProfileImage;
@@ -14,12 +15,12 @@ import java.util.List;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
 
-    private final MutableLiveData<List<Comment>> commentItemsLiveData = new MutableLiveData<>(
+    private final ObservableField<List<Comment>> commentItemsLiveData = new ObservableField<>(
             Arrays.asList(new Comment("tritran@gm.com"),
                           new Comment("tritran12@gm.com"))
     );
     public List<Comment> getCommentItems() {
-        return commentItemsLiveData.getValue();
+        return commentItemsLiveData.get();
     }
 
     @Inject protected ModelRemote remote;

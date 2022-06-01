@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class BookProfileImage {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose

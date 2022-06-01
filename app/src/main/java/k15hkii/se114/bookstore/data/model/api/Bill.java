@@ -9,6 +9,8 @@ import lombok.With;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +29,7 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("userid")
-    private String userid;
+    private UUID userid;
 
     @Getter
     @Expose

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,12 +16,12 @@ public class CartItem {
     @Getter
     @Expose
     @SerializedName("user_id")
-    private String userId;
+    private UUID userId;
 
     @Getter
     @Expose
     @SerializedName("book_id")
-    private String bookId;
+    private UUID bookId;
 
     @Getter
     @Expose

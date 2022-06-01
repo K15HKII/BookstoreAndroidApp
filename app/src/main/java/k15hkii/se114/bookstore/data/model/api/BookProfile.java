@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 
 import java.util.List;
+import java.util.UUID;
 
 @With
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class BookProfile {
     @Getter
     @Expose
     @SerializedName("id")
-    private String id;
+    private UUID id;
 
     @Getter
     @Expose
@@ -31,7 +32,7 @@ public class BookProfile {
     @Getter
     @Expose
     @SerializedName("authorid")
-    private String authorId;
+    private Number authorId;
 
     @Getter
     @Expose

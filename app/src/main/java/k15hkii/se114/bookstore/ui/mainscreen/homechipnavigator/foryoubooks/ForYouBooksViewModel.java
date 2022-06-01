@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class ForYouBooksViewModel extends BaseViewModel<ForYouBooksNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookViewModel>> ForYouBooksItemsLiveData = new MutableLiveData<>(
+    private final ObservableField<List<BookViewModel>> ForYouBooksItemsLiveData = new ObservableField<>(
             Arrays.asList(new BookViewModel("Sách Dark Nhân Tâm"),
                           new BookViewModel("Sách Kong Nghệ"),
                           new BookViewModel("Dank Nghiệp"),
@@ -28,7 +29,7 @@ public class ForYouBooksViewModel extends BaseViewModel<ForYouBooksNavigator> im
     }
 
     public List<BookViewModel> getForYouBooksItems() {
-        return ForYouBooksItemsLiveData.getValue();
+        return ForYouBooksItemsLiveData.get();
     }
     public ForYouBooksViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
