@@ -136,8 +136,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider));
+    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote));
     }
 
     @Provides

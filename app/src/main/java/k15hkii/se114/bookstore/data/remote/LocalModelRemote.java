@@ -105,6 +105,11 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
+    public Single<User> getSelfUser() {
+        return null;
+    }
+
+    @Override
     public Single<User> getUser(String id) {
         User res = null;
         for (User user : users) {

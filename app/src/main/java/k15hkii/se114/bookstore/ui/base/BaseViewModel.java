@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.base;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
+import androidx.databinding.PropertyChangeRegistry;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -46,13 +47,26 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
         this.isLoading.set(isLoading);
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+    private PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
 
+    @Override
+    public void addOnPropertyChangedCallback(
+            Observable.OnPropertyChangedCallback callback) {
+        callbacks.add(callback);
     }
 
     @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void removeOnPropertyChangedCallback(
+            Observable.OnPropertyChangedCallback callback) {
+        callbacks.remove(callback);
     }
+
+    protected void notifyChange() {
+        callbacks.notifyCallbacks(this, 0, null);
+    }
+
+    protected void notifyPropertyChanged(int fieldId) {
+        callbacks.notifyCallbacks(this, fieldId, null);
+    }
+
 }

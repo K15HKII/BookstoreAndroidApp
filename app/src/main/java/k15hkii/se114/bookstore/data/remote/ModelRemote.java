@@ -13,6 +13,9 @@ public interface ModelRemote {
     @GET("/api/model/user")
     Single<List<User>> getUsers();
 
+    @GET("api/mode/user/self")
+    Single<User> getSelfUser();
+
     @GET("/api/model/user/{id}")
     Single<User> getUser(String id);
 
