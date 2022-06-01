@@ -16,6 +16,11 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
 
     @Inject
     protected ModelRemote remote;
+
+    public AccountPageViewModel(SchedulerProvider schedulerProvider) {
+        super(schedulerProvider);
+    }
+
     public void setUserId(String id) {
         remote.getUser(id).doOnSuccess(user ->  {
             userId = String.valueOf(user.getId());

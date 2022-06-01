@@ -9,6 +9,7 @@ import lombok.Getter;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.lang.reflect.Type;
+import java.util.UUID;
 
 @Singleton
 public class RestHeader {
@@ -43,7 +44,7 @@ public class RestHeader {
             return preferencesHelper.getAccessToken();
         }
 
-        public Long getUserId() {
+        public UUID getUserId() {
             return preferencesHelper.getCurrentUserId();
         }
 

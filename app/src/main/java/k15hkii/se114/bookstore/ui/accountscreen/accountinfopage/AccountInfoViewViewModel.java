@@ -36,6 +36,11 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         return user.getPhone();
     }
 
+    @Bindable
+    public String getEmail() {
+        return user.getEmail();
+    }
+
     public void setUserId(String id) {
         remote.getUser(id).doOnSuccess(user -> {
             this.user = user;

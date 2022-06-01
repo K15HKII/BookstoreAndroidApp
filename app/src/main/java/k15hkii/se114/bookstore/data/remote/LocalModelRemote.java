@@ -152,7 +152,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Author> getAuthor(String id) {
         Author res = null;
         for (Author author : authors) {
-            if (id.equalsIgnoreCase(author.getId().toString())) {
+            if (id.equalsIgnoreCase(String.valueOf(author.getId()))) {
                 res = author;
                 break;
             }
@@ -237,7 +237,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Publisher> getPublisher(String id) {
         Publisher res = null;
         for (Publisher publisher : publishers) {
-            if (id.equalsIgnoreCase(publisher.getId().toString())) {
+            if (id.equalsIgnoreCase(String.valueOf(publisher.getId()))) {
                 res = publisher;
                 break;
             }
@@ -254,7 +254,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Transporter> getTransporter(String id) {
         Transporter res = null;
         for (Transporter transporter : transporters) {
-            if (id.equalsIgnoreCase(transporter.getId().toString())) {
+            if (id.equalsIgnoreCase(String.valueOf(transporter.getId()))) {
                 res = transporter;
                 break;
             }
@@ -315,7 +315,7 @@ public class LocalModelRemote implements ModelRemote {
     public Single<Bill> getBill(String id) {
         Bill res = null;
         for (Bill bill : bills) {
-            if (id.equalsIgnoreCase(bill.getId().toString())) {
+            if (id.equalsIgnoreCase(String.valueOf(bill.getId()))) {
                 res = bill;
                 break;
             }
