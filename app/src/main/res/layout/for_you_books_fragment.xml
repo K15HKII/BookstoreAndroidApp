@@ -21,6 +21,6 @@
                 android:id="@+id/lvHomeForYouBooks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                source="@{viewModel.forYouBooksItems}"/>
+                source="@{viewModel.items}"/>
     </FrameLayout>
 </layout>

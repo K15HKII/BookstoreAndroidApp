@@ -351,18 +351,18 @@ public class FragmentModule {
     }
 
     @Provides
-    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider));
+    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider));
+    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider));
+    public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider, remote));
     }
 
     @Provides

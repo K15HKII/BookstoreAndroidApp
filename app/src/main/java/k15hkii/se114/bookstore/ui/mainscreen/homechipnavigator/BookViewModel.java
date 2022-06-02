@@ -3,27 +3,29 @@ package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class BookViewModel extends BaseViewModel<BookViewNavigator> implements Observable {
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
-    private String bookProfileId;
-
+    private String id;
     private Book book;
 
-    public void setBookProfileId(String id) {
-        this.bookProfileId = id;
-
-        remote.getBook(id).doOnSuccess(bookProfile -> {
-            book = bookProfile;
-        }).subscribe();
-        //TODO: lay data image
+    public void getData(String id) {
+        getCompositeDisposable().add(remote.getBook(id)
+               .subscribeOn(getSchedulerProvider().io())
+               .observeOn(getSchedulerProvider().ui())
+               .doOnSuccess(bookProfile -> {
+                   book = bookProfile;
+               }).subscribe());
     }
 
     public void setBookProfile(Book book) {
@@ -39,6 +41,16 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
         return book == null ? "profile is null" : book.getTitle();
     }
 
+    @Bindable
+    public String getPrice() {
+        return book == null ? "null" : "đ" + String.valueOf(book.getPrice());
+    }
+
+//    @Bindable
+//    public Image getImage() {
+//        return book == null ?  : book.getImages()[0];
+//    }
+
     public BookViewModel(String name) {
         super(null);
     }
@@ -48,7 +60,7 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
     }
 
     public void openDetail() {
-        getNavigator().bookDetailNavigate(bookProfileId);
+        getNavigator().bookDetailNavigate(id);
     }
 
     @Override
