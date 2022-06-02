@@ -15,8 +15,6 @@ import k15hkii.se114.bookstore.ui.bookdetailscreen.Comment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.CommentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
@@ -134,16 +132,16 @@ public final class BindingUtils {
         adapter.notifyDataSetChanged();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    @BindingAdapter({"source"})
-    public static void rentItemBindSource(RecyclerView view, List<RentBookItemViewModel> source) {
-        RentBookItemAdapter adapter = (RentBookItemAdapter) view.getAdapter();
-        if (adapter == null)
-            return;
-        adapter.getSource().clear();
-        adapter.getSource().addAll(source);
-        adapter.notifyDataSetChanged();
-    }
+//    @SuppressLint("NotifyDataSetChanged")
+//    @BindingAdapter({"source"})
+//    public static void rentItemBindSource(RecyclerView view, List<RentBookItemViewModel> source) {
+//        RentBookItemAdapter adapter = (RentBookItemAdapter) view.getAdapter();
+//        if (adapter == null)
+//            return;
+//        adapter.getSource().clear();
+//        adapter.getSource().addAll(source);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})

@@ -13,8 +13,8 @@ public class AddRentBookViewViewModel extends BaseViewModel<AddRentBookViewNavig
         getNavigator().BackWard();
     }
 
-    public void onOpenAddRentBookClick(){
-        getNavigator().openAddRentBookDetail();
+    public void openRentBookDetail(){
+        getNavigator().openRentBookDetail();
     }
 
     @Override

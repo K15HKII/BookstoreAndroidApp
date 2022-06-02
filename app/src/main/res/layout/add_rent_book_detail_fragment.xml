@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="AddRentBookDetailViewModel"
+        <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetailViewModel"/>
     </data>
 <FrameLayout
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content">
                 <android.widget.Button
                         android:id="@+id/btnAddRentBookDetailBackward"
-                        android:onClick="@{()-> AddRentBookDetailViewModel.onBackWardClick()}"
+                        android:onClick="@{()-> viewModel.onBackWardClick()}"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:scaleX="0.55"
@@ -177,6 +177,7 @@
 
         <android.widget.Button
                 android:id="@+id/btnAddRentBookDetailConfirmBook"
+                android:onClick="@{()-> viewModel.openAddRentInfo()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

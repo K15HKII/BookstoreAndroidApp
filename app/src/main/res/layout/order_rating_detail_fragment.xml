@@ -90,12 +90,6 @@
                                             android:layout_marginRight="84.5dp"/>
                                 </LinearLayout>
 
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginEnd="2.25dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:src="@drawable/ic_arrow_account"/>
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView
@@ -189,13 +183,6 @@
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginRight="84.5dp"/>
                                 </LinearLayout>
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="end"
-                                        android:layout_marginEnd="2.25dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:src="@drawable/ic_arrow_account"/>
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView
@@ -248,13 +235,6 @@
                                             android:layout_marginLeft="10dp"
                                             android:layout_marginRight="84.5dp"/>
                                 </LinearLayout>
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="end"
-                                        android:layout_marginEnd="2.25dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:src="@drawable/ic_arrow_account"/>
                             </RelativeLayout>
                         </LinearLayout>
                         <TextView

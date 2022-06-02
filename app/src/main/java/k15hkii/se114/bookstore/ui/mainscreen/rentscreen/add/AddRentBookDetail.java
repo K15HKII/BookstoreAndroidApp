@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -12,19 +14,16 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.AddRentBookDetailFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
 
 public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBinding, AddRentBookDetailViewModel> implements AddRentBookDetailNavigator {
 
     private AddRentBookDetailFragmentBinding addRentBookDetailFragmentBinding;
     private AddRentBookDetailViewModel mViewModel;
 
-    public static AddRentBookDetail newInstance() {
-        return new AddRentBookDetail();
-    }
-
     @Override
     public int getBindingVariable() {
-        return BR.AddRentBookDetailViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -56,5 +55,17 @@ public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBin
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openAddRentInfo() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).replace(R.id.fragmentContainerView, AddRentBookView.class, null).addToBackStack(null).commit();
     }
 }

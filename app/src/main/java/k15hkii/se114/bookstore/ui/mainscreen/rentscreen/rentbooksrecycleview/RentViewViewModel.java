@@ -69,6 +69,4 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
     }
-
-    public void openDetail() {getNavigator().rentDetailNavigator(); }
 }

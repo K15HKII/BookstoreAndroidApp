@@ -2,14 +2,10 @@ package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemViewModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RentedViewPageViewModel extends BaseViewModel<RentedViewPageNavigator> implements Observable {

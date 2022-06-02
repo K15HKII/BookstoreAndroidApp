@@ -17,6 +17,7 @@ import k15hkii.se114.bookstore.databinding.RentPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentBookMenuTabAdapter;
@@ -135,7 +136,7 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, AddRentBookView.class,null).addToBackStack(null).commit();
+        ).replace(R.id.fragmentContainerView, AddRentBookDetail.class,null).addToBackStack(null).commit();
     }
 
     @Override

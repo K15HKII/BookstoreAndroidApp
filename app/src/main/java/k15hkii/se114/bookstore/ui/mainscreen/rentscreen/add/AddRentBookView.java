@@ -14,19 +14,17 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.AddRentBookViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding,AddRentBookViewViewModel> implements AddRentBookViewNavigator {
 
     private AddRentBookViewFragmentBinding addRentBookViewFragmentBinding;
     private AddRentBookViewViewModel mViewModel;
 
-    public static AddRentBookView newInstance() {
-        return new AddRentBookView();
-    }
-
     @Override
     public int getBindingVariable() {
-        return BR.AddRentBookViewViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -61,7 +59,7 @@ public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding
     }
 
     @Override
-    public void openAddRentBookDetail() {
+    public void openRentBookDetail() {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(
@@ -69,6 +67,6 @@ public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, AddRentBookDetail.class, null).addToBackStack(null).commit();
+        ).replace(R.id.fragmentContainerView, RentInfoView.class, null).addToBackStack(null).commit();
     }
 }

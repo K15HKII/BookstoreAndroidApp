@@ -39,6 +39,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPage;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
@@ -234,4 +235,7 @@ public interface FragmentComponent {
 
     //TODO: ORDERINFOSCREEN.ORDERRATINGDETAIL
     void inject(OrderRatingDetail orderRatingDetail);
+
+    //TODO: RENTDETAILBILL
+    void inject(RentDetailBill rentDetailBill);
 }

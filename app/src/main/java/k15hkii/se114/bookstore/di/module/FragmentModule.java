@@ -5,6 +5,8 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
@@ -55,7 +57,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetailVie
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
@@ -395,6 +396,11 @@ public class FragmentModule {
         return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, remote));
     }
 
+    @Provides
+    public RentDetailBillViewModel RentDetailBillViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider));
+    }
+
     //endregion
 
     //region Adapters
@@ -438,10 +444,6 @@ public class FragmentModule {
         return new RentViewAdapter(context);
     }
 
-    @Provides
-    public RentBookItemAdapter rentBookItemAdapter(Context context) {
-        return new RentBookItemAdapter(context);
-    }
     @Provides
     public OrderItemAdapter orderItemAdapter(Context context) {
         return new OrderItemAdapter(context);

@@ -13,6 +13,10 @@ public class AddRentBookDetailViewModel extends BaseViewModel<AddRentBookDetailN
         getNavigator().BackWard();
     }
 
+    public void openAddRentInfo(){
+        getNavigator().openAddRentInfo();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
