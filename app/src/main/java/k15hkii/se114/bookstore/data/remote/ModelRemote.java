@@ -85,7 +85,9 @@ public interface ModelRemote {
     @GET("/api/model/book/{id}")
     Single<Book> getBook(String id);
 
-    @GET("/api/model/bill")
+    @GET("/api/model/bill_details")
+    Single<List<BillDetail>> getBillDetails(int billId);
+
     Single<List<Bill>> getBills();
 
     @GET("/api/model/bill/{id}")

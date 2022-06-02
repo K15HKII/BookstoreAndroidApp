@@ -1,24 +1,68 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm;
 
+import android.util.Log;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.model.api.Bill;
+import k15hkii.se114.bookstore.data.model.api.BillDetail;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 
+import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator> implements Observable {
 
-    public final ObservableField<List<OrderBookViewModel>> listOrderBooks = new ObservableField<>(
-            Arrays.asList(new OrderBookViewModel("Dac nhan tam"),
-                          new OrderBookViewModel("Nguoi phan xu"))
-    );
+    public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
-    public OrderInfoPageViewModel(SchedulerProvider schedulerProvider) {
+    @Inject
+    protected ModelRemote remote;
+
+    private Bill bill;
+    public void getData(int billId) {
+        getCompositeDisposable().add(remote.getBillDetails(billId)
+              .subscribeOn(getSchedulerProvider().io())
+              .observeOn(getSchedulerProvider().ui())
+              .subscribe(billDetails -> {
+                  List<OrderBookViewModel> list = new ArrayList<>();
+                  for (BillDetail billDetail : billDetails) {
+                      OrderBookViewModel viewModel = new OrderBookViewModel();
+                      viewModel.setOrderDetail(billDetail);
+                      list.add(viewModel);
+                  }
+                  items.set(list);
+              }, throwable -> {
+                  Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable);
+              }));
+    }
+
+    @Bindable
+    public String getAddress() {
+        return null;
+    }
+
+    @Bindable
+    public String getPrice() {
+        return "20";
+    }
+
+    @Bindable
+    public String getVoucher() {
+        return "";
+    }
+
+    public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
+        this.remote = remote;
+//        getData(billId);
     }
 
     public void onBackWardClick(){

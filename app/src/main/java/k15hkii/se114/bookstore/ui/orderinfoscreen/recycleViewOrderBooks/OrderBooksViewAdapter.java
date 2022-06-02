@@ -34,7 +34,7 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderB
     @NotNull
     @Override
     public OrderBooksViewAdapter.OrderBooksViewViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderpage_items_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderbook_adapter,parent,false);
         return new OrderBooksViewAdapter.OrderBooksViewViewHolder(view);
     }
 

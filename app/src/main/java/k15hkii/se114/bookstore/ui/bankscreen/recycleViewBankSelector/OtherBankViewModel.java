@@ -3,11 +3,11 @@ package k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.model.api.UserBank;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.inject.Inject;
 
@@ -15,13 +15,42 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
     @Inject
     protected ModelRemote remote;
 
-    public final ObservableField<String> bank = new ObservableField<>();
+    UserBank bank;
+    User user;
+
+    private void setUser(String userId) {
+            getCompositeDisposable().add(remote.getUser(userId)
+                   .subscribeOn(getSchedulerProvider().io())
+                   .observeOn(getSchedulerProvider().ui())
+                   .doOnSuccess(user -> {
+                       this.user = user;
+                   }).subscribe());
+    }
+
+    @Bindable
+    public String getName() {
+        return user == null ? "profile is null" : user.getUserName();
+    }
+
+    @Bindable
+    public String getBankAccountNumber() {
+        return bank == null ? "profile is null" : bank.getIban();
+    }
+
+    @Bindable
+    public String getBankName() {
+        return bank == null ? "profile is null" : bank.getBankName();
+    }
 
     public OtherBankViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
-    public OtherBankViewModel(String Bank) {
+    public OtherBankViewModel() {
         super(null);
-        this.bank.set(Bank);
+    }
+
+    public void setBank(UserBank bank, String userId) {
+        this.bank = bank;
+        setUser(userId);
     }
 }

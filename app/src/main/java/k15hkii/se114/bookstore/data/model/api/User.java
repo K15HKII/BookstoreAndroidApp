@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -114,7 +115,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("banks")
-    private UserBank[] banks;
+    private List<UserBank> banks;
 
     @Getter
     @Expose

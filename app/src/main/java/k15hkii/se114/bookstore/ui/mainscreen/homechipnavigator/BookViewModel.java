@@ -23,8 +23,8 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
         getCompositeDisposable().add(remote.getBook(id)
                .subscribeOn(getSchedulerProvider().io())
                .observeOn(getSchedulerProvider().ui())
-               .doOnSuccess(bookProfile -> {
-                   book = bookProfile;
+               .doOnSuccess(book -> {
+                   this.book = book;
                }).subscribe());
     }
 

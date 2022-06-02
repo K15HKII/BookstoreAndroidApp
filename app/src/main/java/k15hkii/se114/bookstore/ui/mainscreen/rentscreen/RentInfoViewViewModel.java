@@ -2,18 +2,21 @@ package k15hkii.se114.bookstore.ui.mainscreen.rentscreen;
 
 import androidx.databinding.Observable;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentBookItemViewModel;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> implements Observable {
 
     private final MutableLiveData<List<RentViewViewModel>> rentInfoViewItemsLiveData = new MutableLiveData<>();
+
+    @Inject protected ModelRemote remote;
 
     public List<RentBookItemViewModel> getRentListItem(int quantity) {
 
@@ -30,8 +33,9 @@ public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> 
         return rentInfoViewItemsLiveData.getValue();
     }
 
-    public RentInfoViewViewModel(SchedulerProvider schedulerProvider) {
+    public RentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
+        this.remote = remote;
     }
 
     public void onBackWardClick(){

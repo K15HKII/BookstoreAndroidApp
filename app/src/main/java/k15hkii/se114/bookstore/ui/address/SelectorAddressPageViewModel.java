@@ -1,37 +1,55 @@
 package k15hkii.se114.bookstore.ui.address;
 
+import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.UserAddress;
+import k15hkii.se114.bookstore.data.model.api.UserBank;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
+import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressPageNavigator> implements Observable {
 
-    public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>(
-            Arrays.asList(new OtherAddressViewModel("Biên Hòa, Đồng Nai"),
-                          new OtherAddressViewModel("Khánh Hòa"))
-    );
+    public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>();
 
     @Inject
     protected ModelRemote remote;
 
-    private String userId;
-    private String index;
-    private UserAddress userAddress;
+//    private String userId;
+//    private String index;
+//    private UserAddress userAddress;
+//
+//    public void setUserAddress(String id, String index) {
+//        this.userId = id;
+//        this.index = index;
+//        remote.getUseraddress(id,index).doOnSuccess(userAddress -> {
+//            this.userAddress = userAddress;
+//        }).subscribe();
+//    }
 
-    public void setUserAddress(String id, String index) {
-        this.userId = id;
-        this.index = index;
-        remote.getUseraddress(id,index).doOnSuccess(userAddress -> {
-            this.userAddress = userAddress;
-        }).subscribe();
+    public void getData(String userId) {
+        getCompositeDisposable().add(remote.getUser(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(user -> {
+                                               List<OtherAddressViewModel> list = new ArrayList<>();
+                                               for (UserAddress address : user.getAddresses()) {
+                                                   OtherAddressViewModel model = new OtherAddressViewModel();
+                                                   model.setAddress(address, userId);
+                                                   list.add(model);
+                                               }
+                                               listAddress.set(list);
+                                           }, throwable -> {
+                                               Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
+                                           }));
     }
 
     public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider) {

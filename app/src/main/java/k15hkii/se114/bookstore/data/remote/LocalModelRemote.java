@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class LocalModelRemote implements ModelRemote {
@@ -202,6 +201,11 @@ public class LocalModelRemote implements ModelRemote {
             }
         }
         return single(res);
+    }
+
+    @Override
+    public Single<List<BillDetail>> getBillDetails(int billId) {
+        return null;
     }
 
     @Override

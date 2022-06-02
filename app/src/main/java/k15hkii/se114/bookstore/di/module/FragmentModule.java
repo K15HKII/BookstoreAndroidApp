@@ -231,13 +231,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider));
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider));
+    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, remote));
     }
 
     @Provides
@@ -366,8 +366,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider));
+    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, remote));
     }
 
     @Provides
@@ -381,18 +381,18 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider));
+    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider));
+    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider));
+    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, remote));
     }
 
     //endregion

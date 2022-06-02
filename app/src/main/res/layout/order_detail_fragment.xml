@@ -149,7 +149,7 @@
                                 android:layout_height="wrap_content"
                                 android:scrollbars="none"
                                 android:padding="10dp"
-                                source="@{viewModel.listOrderBooks}"/>
+                                source="@{viewModel.items}"/>
                     </LinearLayout>
 
                     <LinearLayout

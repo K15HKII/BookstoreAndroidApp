@@ -9,6 +9,7 @@ import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> 
 
     public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 
-    protected ModelRemote remote;
+    @Inject  protected ModelRemote remote;
 
     public void getData() {
         getCompositeDisposable().add(remote.getBooks()

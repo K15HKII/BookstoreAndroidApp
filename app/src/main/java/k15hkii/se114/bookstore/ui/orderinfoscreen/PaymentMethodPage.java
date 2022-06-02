@@ -14,8 +14,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 
 public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding, PaymentMethodViewModel> implements PaymentMethodPageNavigator {
 
-    private PaymentMethodFragmentBinding paymentMethodFragmentBinding;
-
     public static PaymentMethodPage newInstance() {
         return new PaymentMethodPage();
     }
@@ -34,7 +32,7 @@ public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        paymentMethodFragmentBinding = getViewDataBinding();
+        PaymentMethodFragmentBinding paymentMethodFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;
     }
