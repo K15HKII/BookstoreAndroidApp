@@ -19,7 +19,7 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("id")
-    private int id;
+    private UUID id;
 
     @Getter
     @Expose

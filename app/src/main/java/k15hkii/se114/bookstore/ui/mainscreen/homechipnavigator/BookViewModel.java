@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 public class BookViewModel extends BaseViewModel<BookViewNavigator> implements Observable {
 
@@ -19,7 +20,7 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
     private String id;
     private Book book;
 
-    public void getData(String id) {
+    public void getData(UUID id) {
         getCompositeDisposable().add(remote.getBook(id)
                .subscribeOn(getSchedulerProvider().io())
                .observeOn(getSchedulerProvider().ui())

@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
 
@@ -29,7 +30,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     private Book profile;
     private Image[] image;
 
-    public void getData(String id) {
+    public void getData(UUID id) {
         remote.getBook(id).doOnSuccess(bookProfile -> {
             profile = bookProfile;
         }).subscribe();

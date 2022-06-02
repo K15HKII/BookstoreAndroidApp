@@ -71,14 +71,14 @@ public class LocalModelRemote implements ModelRemote {
             new WildVoucher().withId(UUID.fromString("WV3")).withMaxUses(1)
     );
     private List<Bill> bills = Arrays.asList(
-            new Bill().withId(1).withUserid(UUID.fromString("U1")),
-            new Bill().withId(2).withUserid(UUID.fromString("U2")),
-            new Bill().withId(3).withUserid(UUID.fromString("U3"))
+//            new Bill().withId(1).withUserid(UUID.fromString("U1")),
+//            new Bill().withId(2).withUserid(UUID.fromString("U2")),
+//            new Bill().withId(3).withUserid(UUID.fromString("U3"))
     );
     private List<BillDetail> billDetails = Arrays.asList(
-            new BillDetail().withBillId(1).withPrice(69696969),
-            new BillDetail().withBillId(2).withPrice(96969696),
-            new BillDetail().withBillId(3).withPrice(0)
+//            new BillDetail().withBillId(1).withPrice(69696969),
+//            new BillDetail().withBillId(2).withPrice(96969696),
+//            new BillDetail().withBillId(3).withPrice(0)
     );
 
     private List<File> bookFileImages = Arrays.asList(
@@ -192,14 +192,14 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
-    public Single<Book> getBook(String id) {
+    public Single<Book> getBook(UUID id) {
         Book res = null;
-        for (Book book : books) {
-            if (id.equalsIgnoreCase(book.getId().toString())) {
-                res = book;
-                break;
-            }
-        }
+//        for (Book book : books) {
+//            if (id.equalsIgnoreCase(book.getId().toString())) {
+//                res = book;
+//                break;
+//            }
+//        }
         return single(res);
     }
 
@@ -282,16 +282,10 @@ public class LocalModelRemote implements ModelRemote {
     }
 
     @Override
-    public Single<CartItem> getCartitem(String userId, String bookId) {
-        CartItem res = null;
-        for (CartItem cartItem : cartItems) {
-            if (userId.equalsIgnoreCase(cartItem.getUserId().toString()) && bookId.equalsIgnoreCase(cartItem.getBookId().toString())) {
-                res = cartItem;
-                break;
-            }
-        }
-        return single(res);
+    public Single<CartItem> getCartitem(UUID userId, UUID bookProfileId) {
+        return null;
     }
+
 
     @Override
     public Single<CartItem> saveCartitem(Object obj) {

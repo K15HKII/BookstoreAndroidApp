@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,20 +16,20 @@ public class BillDetail {
     @Getter
     @Expose
     @SerializedName("bill_id")
-    private int billId;
+    private UUID billId;
 
     @Getter
     @Expose
     @SerializedName("book_id")
-    private String bookId;
+    private UUID bookId;
 
     @Getter
     @Expose
     @SerializedName("price")
-    private Number price;
+    private double price;
 
     @Getter
     @Expose
     @SerializedName("quantity")
-    private Number quantity;
+    private int quantity;
 }

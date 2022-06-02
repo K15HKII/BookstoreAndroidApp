@@ -26,7 +26,7 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
     public void setBillDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
 
-        remote.getBook(String.valueOf(billDetail.getBookId())).doOnSuccess(book -> {
+        remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
             this.book = book;
             bookProfileId = String.valueOf(book.getId());
         }).subscribe();

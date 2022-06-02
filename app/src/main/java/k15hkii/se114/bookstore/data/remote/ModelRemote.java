@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ModelRemote {
 
@@ -71,7 +72,7 @@ public interface ModelRemote {
     Single<List<CartItem>> getCartitems(String userId);
 
     @GET("/api/model/cartitem/{userid,bookprofileid}")
-    Single<CartItem> getCartitem(String userId, String bookProfileId);
+    Single<CartItem> getCartitem(UUID userId, UUID bookProfileId);
 
     @POST("/api/model/cartitem/{id}")
     Single<CartItem> saveCartitem(Object obj);
@@ -79,11 +80,11 @@ public interface ModelRemote {
     @DELETE("/api/model/cartitem/{id}")
     Single<CartItem> deleteCartitem(Object obj);
 
-    @GET("/api/model/book")
+    @GET("/api/book")
     Single<List<Book>> getBooks();
 
-    @GET("/api/model/book/{id}")
-    Single<Book> getBook(String id);
+    @GET("/api/book/{id}")
+    Single<Book> getBook(UUID id);
 
     @GET("/api/model/bill_details")
     Single<List<BillDetail>> getBillDetails(int billId);

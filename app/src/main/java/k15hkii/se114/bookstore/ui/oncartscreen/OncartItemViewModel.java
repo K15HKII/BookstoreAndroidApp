@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 
@@ -31,9 +32,9 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     private Book bookProfile;
     private List<Image> images;
 
-    public void getCardItem(String userId, String bookProfileId) {
-        this.bookProfileId = bookProfileId;
-        this.userId = userId;
+    public void getCardItem(UUID userId, UUID bookProfileId) {
+//        this.bookProfileId = bookProfileId;
+//        this.userId = userId;
         remote.getCartitem(userId,bookProfileId).doOnSuccess(cartItem -> {
             this.cartItem = cartItem;
         }).subscribe();
