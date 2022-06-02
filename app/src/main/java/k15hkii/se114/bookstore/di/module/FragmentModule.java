@@ -126,8 +126,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider));
+    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote));
     }
 
     @Provides
@@ -276,8 +276,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider));
+    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider, remote));
     }
 
     @Provides

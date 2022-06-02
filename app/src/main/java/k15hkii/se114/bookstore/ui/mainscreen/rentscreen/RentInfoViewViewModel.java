@@ -13,9 +13,7 @@ import java.util.List;
 
 public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> implements Observable {
 
-    private final MutableLiveData<List<RentViewViewModel>> rentInfoViewItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new RentViewViewModel("20.000", "note", getRentListItem(2)))
-    );
+    private final MutableLiveData<List<RentViewViewModel>> rentInfoViewItemsLiveData = new MutableLiveData<>();
 
     public List<RentBookItemViewModel> getRentListItem(int quantity) {
 

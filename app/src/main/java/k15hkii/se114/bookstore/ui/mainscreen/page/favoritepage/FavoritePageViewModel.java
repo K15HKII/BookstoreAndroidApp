@@ -1,42 +1,46 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage;
 
+import android.util.Log;
 import androidx.databinding.Observable;
-import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.data.model.api.User;
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> implements Observable {
 
-    private final MutableLiveData<List<BookViewModel>> favouriteItemsLiveData = new MutableLiveData<>(
-            Arrays.asList(new BookViewModel("Sách Dark Nhân Tâm"),
-                    new BookViewModel("Sách Kong Nghệ"),
-                    new BookViewModel("Dank Nghiệp"),
-                    new BookViewModel("Giải tick AKA Giải thích"))
-    );
-
-    public List<BookViewModel> getFavouriteItems() {
-        return favouriteItemsLiveData.getValue();
-    }
+    public final ObservableField<List<BookViewModel>> favouriteItems = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
-
-    private String userId;
-    private User user;
-    public void setUserId(String userId) {
-        this.userId = userId;
-
-        //
+    public void getData() {
+        getCompositeDisposable().add(remote.getBooks()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(books -> {
+                    List<BookViewModel> list = new ArrayList<>();
+                    for (Book book : books) {
+                        BookViewModel model = new BookViewModel();
+                        model.setBookProfile(book);
+                        list.add(model);
+                    }
+                    favouriteItems.set(list);
+                }, throwable -> {
+                    Log.d("FavoriteBooksViewModel", "getData: " + throwable.getMessage(), throwable);
+                }));
     }
 
-    public FavoritePageViewModel(SchedulerProvider schedulerProvider) {
+
+    public FavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
+        this.remote=remote;
+        getData();
     }
 
     public void onSearchBarClick(){

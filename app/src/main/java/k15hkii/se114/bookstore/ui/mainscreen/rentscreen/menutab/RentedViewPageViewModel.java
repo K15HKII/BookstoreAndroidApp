@@ -14,21 +14,7 @@ import java.util.List;
 
 public class RentedViewPageViewModel extends BaseViewModel<RentedViewPageNavigator> implements Observable {
 
-    public final ObservableField<List<RentViewViewModel>> rentedlist = new ObservableField<>(
-            Arrays.asList(new RentViewViewModel("240.000", "note", getRentedListItem(2)),
-                          new RentViewViewModel("120.000", "note", getRentedListItem(1)))
-    );
-
-    public List<RentBookItemViewModel> getRentedListItem(int quantity) {
-
-        List<RentBookItemViewModel> listItem = new ArrayList<>();
-
-        for (int i = 0; i < quantity; i++) {
-            listItem.add(new RentBookItemViewModel("Dac nhan tam"));
-        }
-
-        return listItem;
-    }
+    public final ObservableField<List<RentViewViewModel>> rentedlist = new ObservableField<>();
 
     public RentedViewPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

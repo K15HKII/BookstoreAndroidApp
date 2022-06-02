@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -23,8 +24,7 @@ public class RentBookItemViewModel extends BaseViewModel<RentBookItemNavigator> 
     private Book profile;
     private Image[] images;
 
-    public void setBookProfileId(String bookProfileId) {
-        this.bookProfileId = bookProfileId;
+    public void getBookProfileId(Book book) {
 
         remote.getBook(bookProfileId).doOnSuccess(profile -> {
             this.profile = profile;
@@ -45,6 +45,9 @@ public class RentBookItemViewModel extends BaseViewModel<RentBookItemNavigator> 
         Name = name;
     }
 
+    public RentBookItemViewModel(){
+        super(null);
+    }
     public void openDetail(String bookProfileId) {getNavigator().bookDetailNavigator(bookProfileId); }
 
 }
