@@ -23,11 +23,6 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     private List<CartItem> cartItems;
 
-    public void getCardItems(String userId) {
-        remote.getCarts(userId).doOnSuccess(cartItemList -> {
-            cartItems = cartItemList;
-        }).subscribe();
-    }
 
     public OncartViewViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

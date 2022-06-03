@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressPageNavigator> implements Observable {
 
@@ -35,15 +36,15 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 //        }).subscribe();
 //    }
 
-    public void getData(String userId) {
-        getCompositeDisposable().add(remote.getUserAddresses(userId)
+    public void getData(UUID userId) {
+        getCompositeDisposable().add(remote.getAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
                                            .subscribe(addresses -> {
                                                List<OtherAddressViewModel> list = new ArrayList<>();
                                                for (UserAddress address : addresses) {
                                                    OtherAddressViewModel model = new OtherAddressViewModel();
-                                                   model.setAddress(address, userId);
+                                                   model.setAddress(address, userId.toString());
                                                    list.add(model);
                                                }
                                                listAddress.set(list);

@@ -10,13 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ModelRemote {
-
-    @GET("/api/book/search")
-    Single<List<Book>> getBooks();
-
-    @GET("/api/book/info/{id}")
-    Single<Book> getBook(UUID id);
-
+    //User
     @GET("/api/model/user")
     Single<List<User>> getUsers();
 
@@ -26,21 +20,15 @@ public interface ModelRemote {
     @GET("/api/model/user/{id}")
     Single<User> getUser(String id);
 
-    @GET("/api/user/banks/{user_id}")
-    Single<List<UserBank>> getUserBanks(String id);
-
-    @GET("/api/user/addresses/{user_id}")
-    Single<List<UserAddress>> getUserAddresses(String id);
-
     //Author
     @GET("/api/author/{id}")
-    Single<Author> getAuthor();
+    Single<Author> getAuthor(int id);
 
     @POST("api/author/{id}")
-    Single<Author> updateAuthor();
+    Single<Author> updateAuthor(int id);
 
     @DELETE("api/author/{id}")
-    void deleteAuthor();
+    void deleteAuthor(int id);
 
     @GET("/api/author")
     Single<List<Author>> getAuthors();
@@ -48,16 +36,21 @@ public interface ModelRemote {
     @POST("api/author")
     Single<Author> createAuthor();
     //Book
+    @GET("/api/book/search")
+    Single<List<Book>> getBooks();
+
+    @GET("/api/book/info/{id}")
+    Single<Book> getBook(UUID id);
 
     //Publisher
     @GET("/api/publisher/{id}")
-    Single<Publisher> getPublisher();
+    Single<Publisher> getPublisher(int id);
 
     @POST("api/publisher/{id}")
-    Single<Publisher> updatePublisher();
+    Single<Publisher> updatePublisher(int id);
 
     @DELETE("api/publisher/{id}")
-    void deletePublisher();
+    void deletePublisher(int id);
 
     @GET("/api/publisher")
     Single<List<Publisher>> getPublishers();
@@ -67,13 +60,13 @@ public interface ModelRemote {
 
     //Transporter
     @GET("/api/transporter/{id}")
-    Single<Transporter> getTransporter();
+    Single<Transporter> getTransporter(int id);
 
     @POST("api/transporter/{id}")
-    Single<Transporter> updateTransporter();
+    Single<Transporter> updateTransporter(int id);
 
     @DELETE("api/transporter/{id}")
-    void deleteTransporter();
+    void deleteTransporter(int id);
 
     @GET("/api/transporter")
     Single<List<Transporter>> getTransporters();
@@ -84,74 +77,74 @@ public interface ModelRemote {
     //User
     //RecentBook
     @GET("/api/user/recents/{user_id}")
-    Single<List<Book>> getRecentBooks();
+    Single<List<Book>> getRecentBooks(UUID user_id);
 
     @POST("/api/user/recent/{user_id}")
-    Single<Book> createRecentBook();
+    Single<Book> createRecentBook(UUID user_id);
 
     //FavoriteBook
     @GET("/api/user/favorites/{user_id}")
-    Single<List<Book>> getFavoriteBooks();
+    Single<List<Book>> getFavoriteBooks(UUID user_id);
 
     @POST("/api/user/favorite/{user_id}")
-    Single<Book> createFavoriteBook();
+    Single<Book> createFavoriteBook(UUID user_id);
 
     @DELETE("/api/user/favorite/{user_id}")
-    void deleteFavoriteBook();
+    void deleteFavoriteBook(UUID user_id);
     //CartItem
     @GET("/api/user/carts/{user_id}")
-    Single<List<CartItem>> getCarts(String user_id);
+    Single<List<CartItem>> getCarts(UUID user_id);
 
     @POST("/api/user/cart/{user_id}")
-    Single<CartItem> createCart();
+    Single<CartItem> createCart(UUID user_id);
 
     @DELETE("/api/user/cart/{user_id}")
-    void deleteCart();
+    void deleteCart(UUID user_id);
 
     //Bill
     @GET("/api/bill/{id}")
     Single<Bill> getBill(int billId);
 
     @GET("/api/user/bills/{user_id}")
-    Single<List<Bill>> getBills();
+    Single<List<Bill>> getBills(UUID user_id);
 
     @POST("/api/user/bill/{user_id}")
-    Single<Bill> createBill();
+    Single<Bill> createBill(UUID user_id);
 
     @DELETE("/api/user/bill/{user_id}")
-    void deleteBill();
+    void deleteBill(UUID user_id);
 
     //Address
     @GET("/api/user/addresses/{user_id}")
-    Single<List<UserAddress>> getAddresss();
+    Single<List<UserAddress>> getAddresses(UUID user_id);
 
     @POST("/api/user/address/{user_id}")
-    Single<UserAddress> createAddress();
+    Single<UserAddress> createAddress(UUID user_id);
 
     @DELETE("/api/user/address/{user_id}")
-    void deleteAddress();
+    void deleteAddress(UUID user_id);
 
     //Bank
     @GET("/api/user/banks/{user_id}")
-    Single<List<UserBank>> getBanks();
+    Single<List<UserBank>> getBanks(UUID user_id);
 
     @POST("/api/user/bank/{user_id}")
-    Single<UserBank> createBank();
+    Single<UserBank> createBank(UUID user_id);
 
     @DELETE("/api/user/bank/{user_id}")
-    void deleteBank();
+    void deleteBank(UUID user_id);
 
     //Lend
     @GET("/api/user/lends/{user_id}")
-    Single<List<Lend>> getLends();
+    Single<List<Lend>> getLends(UUID user_id);
 
     @POST("/api/user/lend/{user_id}")
-    Single<Lend> createLend();
+    Single<Lend> createLend(UUID user_id);
 
     @DELETE("/api/user/lend/{user_id}")
-    void deleteLend();
+    void deleteLend(UUID user_id);
 
     //Voucher
     @GET("/api/user/vouchers/{user_id}")
-    Single<List<Voucher>> getVouchers();
+    Single<List<Voucher>> getVouchers(UUID user_id);
 }

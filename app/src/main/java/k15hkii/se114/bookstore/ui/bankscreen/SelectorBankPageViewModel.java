@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNavigator> implements Observable {
 
@@ -25,15 +26,15 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
     protected ModelRemote remote;
 
     String userId;
-    public void getData(String userId) {
-        getCompositeDisposable().add(remote.getUserBanks(userId)
+    public void getData(UUID userId) {
+        getCompositeDisposable().add(remote.getBanks(userId)
            .subscribeOn(getSchedulerProvider().io())
            .observeOn(getSchedulerProvider().ui())
            .subscribe(banks -> {
                List<OtherBankViewModel> list = new ArrayList<>();
                for (UserBank bank : banks) {
                    OtherBankViewModel model = new OtherBankViewModel();
-                   model.setBank(bank, userId);
+                   model.setBank(bank, userId.toString());
                    list.add(model);
                }
                listBanks.set(list);
