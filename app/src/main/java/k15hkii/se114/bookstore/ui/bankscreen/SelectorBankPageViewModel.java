@@ -26,12 +26,12 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
 
     String userId;
     public void getData(String userId) {
-        getCompositeDisposable().add(remote.getUser(userId)
+        getCompositeDisposable().add(remote.getUserBanks(userId)
            .subscribeOn(getSchedulerProvider().io())
            .observeOn(getSchedulerProvider().ui())
-           .subscribe(user -> {
+           .subscribe(banks -> {
                List<OtherBankViewModel> list = new ArrayList<>();
-               for (UserBank bank : user.getBanks()) {
+               for (UserBank bank : banks) {
                    OtherBankViewModel model = new OtherBankViewModel();
                    model.setBank(bank, userId);
                    list.add(model);

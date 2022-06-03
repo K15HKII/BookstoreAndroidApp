@@ -24,8 +24,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     private List<CartItem> cartItems;
 
     public void getCardItems(String userId) {
-
-        remote.getCartitems(userId).doOnSuccess(cartItemList -> {
+        remote.getCarts(userId).doOnSuccess(cartItemList -> {
             cartItems = cartItemList;
         }).subscribe();
     }

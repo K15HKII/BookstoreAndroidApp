@@ -11,12 +11,12 @@ import java.util.UUID;
 public class LoginResponse {
 
     @Expose
-    @SerializedName("access_token")
+    @SerializedName("x-access-token")
     @Getter
     private String accessToken;
 
     @Expose
-    @SerializedName("refresh_token")
+    @SerializedName("x-refresh-token")
     @Getter
     private String refreshToken;
 

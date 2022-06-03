@@ -23,12 +23,12 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     protected ModelRemote remote;
 
     public void getData(int billId) {
-        getCompositeDisposable().add(remote.getBillDetails(billId)
+        getCompositeDisposable().add(remote.getBill(billId)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(billDetails -> {
+                                           .subscribe(bill -> {
                                                List<OrderBookViewModel> list = new ArrayList<>();
-                                               for (BillDetail billDetail : billDetails) {
+                                               for (BillDetail billDetail : bill.getBillDetails()) {
                                                    OrderBookViewModel viewModel = new OrderBookViewModel();
                                                    viewModel.setOrderDetail(billDetail);
                                                    list.add(viewModel);

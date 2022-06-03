@@ -35,15 +35,15 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     public void getCardItem(UUID userId, UUID bookProfileId) {
 //        this.bookProfileId = bookProfileId;
 //        this.userId = userId;
-        remote.getCartitem(userId,bookProfileId).doOnSuccess(cartItem -> {
+        /*remote.getCarts(userId,bookProfileId).doOnSuccess(cartItem -> {
             this.cartItem = cartItem;
-        }).subscribe();
+        }).subscribe();*/ //TODO
         remote.getBook(bookProfileId).doOnSuccess(bookProfile -> {
             this.bookProfile = bookProfile;
         }).subscribe();
-        remote.getBookImages().doOnSuccess(bookProfileImage -> {
+        /*remote.getBookImages().doOnSuccess(bookProfileImage -> {
             this.images = bookProfileImage;
-        }).subscribe();
+        }).subscribe();*/ //TODO:
     }
 
     public void openItemDetail(String bookProfileId){

@@ -36,12 +36,12 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 //    }
 
     public void getData(String userId) {
-        getCompositeDisposable().add(remote.getUser(userId)
+        getCompositeDisposable().add(remote.getUserAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(user -> {
+                                           .subscribe(addresses -> {
                                                List<OtherAddressViewModel> list = new ArrayList<>();
-                                               for (UserAddress address : user.getAddresses()) {
+                                               for (UserAddress address : addresses) {
                                                    OtherAddressViewModel model = new OtherAddressViewModel();
                                                    model.setAddress(address, userId);
                                                    list.add(model);

@@ -31,9 +31,9 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
             bookProfileId = String.valueOf(book.getId());
         }).subscribe();
 
-        remote.getBookImages().doOnSuccess(bookImages -> {
+        /*remote.getBookImages().doOnSuccess(bookImages -> {
             this.bookImages = bookImages;
-        }).subscribe();
+        }).subscribe();*/ //TODO:
     }
 
     @Bindable

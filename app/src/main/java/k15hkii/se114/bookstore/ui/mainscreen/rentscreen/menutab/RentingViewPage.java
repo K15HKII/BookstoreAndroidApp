@@ -25,7 +25,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 
 public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding, RentingViewPageViewModel> implements RentingViewPageNavigator, RentViewNavigator {
-    @Inject protected RentViewAdapter rentViewAdapter;
+
+    @Inject
+    protected RentViewAdapter rentViewAdapter;
 
     public static RentingViewPage newInstance() {
         return new RentingViewPage();
@@ -84,4 +86,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
+    }
+
 }

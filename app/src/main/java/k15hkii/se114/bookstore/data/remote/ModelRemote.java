@@ -10,6 +10,28 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ModelRemote {
+
+    @GET("/api/book/search")
+    Single<List<Book>> getBooks();
+
+    @GET("/api/book/info/{id}")
+    Single<Book> getBook(UUID id);
+
+    @GET("/api/model/user")
+    Single<List<User>> getUsers();
+
+    @GET("api/mode/user/self")
+    Single<User> getSelfUser();
+
+    @GET("/api/model/user/{id}")
+    Single<User> getUser(String id);
+
+    @GET("/api/user/banks/{user_id}")
+    Single<List<UserBank>> getUserBanks(String id);
+
+    @GET("/api/user/addresses/{user_id}")
+    Single<List<UserAddress>> getUserAddresses(String id);
+
     //Author
     @GET("/api/author/{id}")
     Single<Author> getAuthor();
@@ -78,7 +100,7 @@ public interface ModelRemote {
     void deleteFavoriteBook();
     //CartItem
     @GET("/api/user/carts/{user_id}")
-    Single<List<CartItem>> getCarts();
+    Single<List<CartItem>> getCarts(String user_id);
 
     @POST("/api/user/cart/{user_id}")
     Single<CartItem> createCart();
@@ -87,6 +109,9 @@ public interface ModelRemote {
     void deleteCart();
 
     //Bill
+    @GET("/api/bill/{id}")
+    Single<Bill> getBill(int billId);
+
     @GET("/api/user/bills/{user_id}")
     Single<List<Bill>> getBills();
 

@@ -29,9 +29,9 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
 //        remote.getVoucher().doOnSuccess(voucher -> {
 //            this.voucher = voucher;
 //        }).subscribe();
-        remote.getVoucherProfile(id).doOnSuccess(voucherProfile -> {
+        /*remote.getVoucherProfile(id).doOnSuccess(voucherProfile -> {
             profile = voucherProfile;
-        }).subscribe();
+        }).subscribe();*/
 
         //TODO: lay voucher tu profileId va userId
     }

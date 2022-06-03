@@ -21,9 +21,9 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     @Inject protected ModelRemote remote;
 
     private Bill bill;
-    private String billId;
+    private int billId;
     private List<BillDetail> billDetails;
-    public void setListOrder(String billId) {
+    public void setListOrder(int billId) {
         this.billId = billId;
 
         remote.getBill(billId).doOnSuccess(bill -> {
