@@ -18,17 +18,23 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     @Bindable
     @Getter @Setter
     private String Name;
+    private CartItem cartItem;
 
     public OncartItemViewModel(String name) {
         super(null);
         Name = name;
+    }
+    public OncartItemViewModel(){
+        super(null);
+    }
+    public void setCartItem(CartItem cartItem) {
+        this.cartItem = cartItem;
     }
     @Inject
     protected ModelRemote remote;
 
     private String userId;
     private String bookProfileId;
-    private CartItem cartItem;
     private Book bookProfile;
     private List<Image> images;
 
