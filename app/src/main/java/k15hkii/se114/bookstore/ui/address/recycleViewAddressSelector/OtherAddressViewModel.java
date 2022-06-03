@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator> {
     @Inject
@@ -23,7 +24,7 @@ public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator>
         super(null);
     }
 
-    private void setUser(String userId) {
+    private void setUser(UUID userId) {
         getCompositeDisposable().add(remote.getUser(userId)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
@@ -37,13 +38,13 @@ public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator>
         return address == null ? "profile is null" : address.getCity();
     }
 
-    public OtherAddressViewModel(UserAddress address, String userId) {
+    public OtherAddressViewModel(UserAddress address, UUID userId) {
         super(null);
         this.address = address;
         setUser(userId);
     }
 
-    public void setAddress(UserAddress address, String userId) {
+    public void setAddress(UserAddress address, UUID userId) {
         this.address = address;
         setUser(userId);
     }

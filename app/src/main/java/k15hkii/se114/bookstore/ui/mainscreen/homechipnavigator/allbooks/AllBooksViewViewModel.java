@@ -27,7 +27,7 @@ public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> 
                     List<BookViewModel> list = new ArrayList<>();
                     for (Book profile : profiles) {
                         BookViewModel model = new BookViewModel();
-                        model.setBookProfile(profile);
+                        model.setBook(profile);
                         list.add(model);
                     }
                     items.set(list);

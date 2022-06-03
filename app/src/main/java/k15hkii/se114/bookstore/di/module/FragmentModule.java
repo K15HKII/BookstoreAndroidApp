@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.di.module;
 import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
@@ -127,8 +128,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote));
+    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
@@ -357,8 +358,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider, remote));
+    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides

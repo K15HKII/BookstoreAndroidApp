@@ -10,7 +10,6 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigator> implements Observable {
@@ -26,12 +25,12 @@ public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigat
                                                List<BookViewModel> list = new ArrayList<>();
                                                for (Book book : books) {
                                                    BookViewModel model = new BookViewModel();
-                                                   model.setBookProfile(book);
+                                                   model.setBook(book);
                                                    list.add(model);
                                                }
                                                items.set(list);
                                            }, throwable -> {
-                                               Log.d("FamiliarBooksViewModel", "getData: " + throwable.getMessage(), throwable);
+                                               Log.d("PopularBooksViewModel", "getData: " + throwable.getMessage(), throwable);
                                            }));
     }
     public PopularBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {

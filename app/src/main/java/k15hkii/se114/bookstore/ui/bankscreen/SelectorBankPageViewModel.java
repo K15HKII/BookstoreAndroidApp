@@ -34,7 +34,7 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
                List<OtherBankViewModel> list = new ArrayList<>();
                for (UserBank bank : banks) {
                    OtherBankViewModel model = new OtherBankViewModel();
-                   model.setBank(bank, userId.toString());
+                   model.setBank(bank, userId);
                    list.add(model);
                }
                listBanks.set(list);

@@ -1,25 +1,18 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
 import android.util.Log;
-import android.view.textclassifier.ConversationAction;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import io.reactivex.Completable;
 import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //@AllArgsConstructor
@@ -40,7 +33,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
                     for (Book book : books) {
                         price += book.getPrice();
                         BookViewModel model = new BookViewModel();
-                        model.setBookProfile(book);
+                        model.setBook(book);
                         list.add(model);
                     }
                     rentItems.set(list);

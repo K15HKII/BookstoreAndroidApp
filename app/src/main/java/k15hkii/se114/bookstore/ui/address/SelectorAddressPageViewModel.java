@@ -44,7 +44,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
                                                List<OtherAddressViewModel> list = new ArrayList<>();
                                                for (UserAddress address : addresses) {
                                                    OtherAddressViewModel model = new OtherAddressViewModel();
-                                                   model.setAddress(address, userId.toString());
+                                                   model.setAddress(address, userId);
                                                    list.add(model);
                                                }
                                                listAddress.set(list);

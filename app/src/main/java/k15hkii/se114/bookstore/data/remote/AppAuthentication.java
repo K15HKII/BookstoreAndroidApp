@@ -22,6 +22,7 @@ public class AppAuthentication implements Authentication {
             }
             preferencesHelper.setAccessToken(response.getAccessToken());
             preferencesHelper.setRefreshToken(response.getRefreshToken());
+            preferencesHelper.setCurrentUserId(response.getUserId());
         });
     }
 

@@ -6,6 +6,7 @@ import dagger.BindsInstance;
 import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.data.DataSession;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.module.AppModule;
@@ -18,6 +19,8 @@ import javax.inject.Singleton;
 public interface AppComponent {
 
     void inject(BookstoreApp app);
+
+    PreferencesHelper getPreferencesHelper();
 
     SchedulerProvider getSchedulerProvider();
 

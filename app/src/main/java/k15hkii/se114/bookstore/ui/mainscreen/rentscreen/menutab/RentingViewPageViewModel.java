@@ -26,7 +26,7 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
                     List<BookViewModel> list = new ArrayList<>();
                     for (Book book : books) {
                         BookViewModel model = new BookViewModel();
-                        model.setBookProfile(book);
+                        model.setBook(book);
                         list.add(model);
                     }
                     rentList.set(list);

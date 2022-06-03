@@ -3,7 +3,6 @@ package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.familiarbooks;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
@@ -11,7 +10,6 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FamiliarBooksViewModel extends BaseViewModel<FamiliarBooksPageNavigator> implements Observable {
@@ -27,7 +25,7 @@ public class FamiliarBooksViewModel extends BaseViewModel<FamiliarBooksPageNavig
                                                List<BookViewModel> list = new ArrayList<>();
                                                for (Book book : books) {
                                                    BookViewModel model = new BookViewModel();
-                                                   model.setBookProfile(book);
+                                                   model.setBook(book);
                                                    list.add(model);
                                                }
                                                items.set(list);

@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> implements Observable {
     @Inject
@@ -18,7 +19,7 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
     UserBank bank;
     User user;
 
-    private void setUser(String userId) {
+    private void setUser(UUID userId) {
             getCompositeDisposable().add(remote.getUser(userId)
                    .subscribeOn(getSchedulerProvider().io())
                    .observeOn(getSchedulerProvider().ui())
@@ -49,7 +50,7 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
         super(null);
     }
 
-    public void setBank(UserBank bank, String userId) {
+    public void setBank(UserBank bank, UUID userId) {
         this.bank = bank;
         setUser(userId);
     }

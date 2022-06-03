@@ -8,6 +8,7 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> implements Observable {
 
@@ -21,7 +22,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
         super(schedulerProvider);
     }
 
-    public void setUserId(String id) {
+    public void setUserId(UUID id) {
         remote.getUser(id).doOnSuccess(user ->  {
             userId = String.valueOf(user.getId());
         }).subscribe();
