@@ -5,18 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.di.component.DaggerFragmentComponent;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.di.module.FragmentModule;
 
 import javax.inject.Inject;
+import java.util.function.Consumer;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
@@ -113,6 +116,12 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
                 .appComponent(((BookstoreApp) (getContext().getApplicationContext())).getAppComponent())
                 .fragmentModule(new FragmentModule(this))
                 .build();
+    }
+
+    public FragmentTransaction createTransaction(@IdRes int containerId, Class<? extends Fragment> clazz, @Nullable Bundle bundle) {
+        return this.getParentFragmentManager().beginTransaction()
+                .replace(containerId, clazz, bundle)
+                .addToBackStack(null);
     }
 
     public interface Callback {
