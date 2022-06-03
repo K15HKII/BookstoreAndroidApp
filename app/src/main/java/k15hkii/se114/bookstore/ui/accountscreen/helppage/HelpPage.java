@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.HelpPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.delaccountrequest.DeleteAccount;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.helpcenter.HelpCenter;
@@ -66,49 +67,45 @@ public class HelpPage extends BaseFragment<HelpPageFragmentBinding, HelpPageView
 
     @Override
     public void openHelpCenter() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, HelpCenter.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, HelpCenter.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openAppIntroduction() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, Introduction.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, Introduction.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openPolicy() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, Policy.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, Policy.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openDeleteAccountRequest() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, DeleteAccount.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, DeleteAccount.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

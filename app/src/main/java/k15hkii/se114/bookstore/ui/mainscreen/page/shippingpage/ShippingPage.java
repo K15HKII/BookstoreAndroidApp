@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
@@ -83,38 +84,35 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
 
     @Override
     public void openSearchView() {
-        FragmentManager fragmentManager = ShippingPage.this.getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, SearchBookView.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, SearchBookView.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openNotificationView() {
-        FragmentManager fragmentManager = ShippingPage.this.getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, NotificationPage.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openOnCartView() {
-        FragmentManager fragmentManager = ShippingPage.this.getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, OncartViewPage.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override

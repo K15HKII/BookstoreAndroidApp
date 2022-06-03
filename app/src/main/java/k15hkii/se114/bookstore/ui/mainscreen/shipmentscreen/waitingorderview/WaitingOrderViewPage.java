@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
@@ -75,13 +76,12 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
     @Override
     public void Navigate(OrderViewViewModel vm) {
         //TODO: Navigate to Waiting
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, OrderDetail.class,null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, OrderDetail.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

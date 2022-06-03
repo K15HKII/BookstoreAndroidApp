@@ -19,6 +19,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SearchBookViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import org.jetbrains.annotations.NotNull;
 
@@ -114,9 +115,13 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
 
     @Override
     public void openSearchViewResult() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class, null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, SearchBookViewResult.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
         closekeyboard();
     }
 

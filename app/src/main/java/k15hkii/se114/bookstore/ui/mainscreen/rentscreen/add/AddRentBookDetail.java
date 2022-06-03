@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.AddRentBookDetailFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
 
@@ -59,13 +60,12 @@ public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBin
 
     @Override
     public void openAddRentInfo() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, AddRentBookView.class, null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, AddRentBookView.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }
