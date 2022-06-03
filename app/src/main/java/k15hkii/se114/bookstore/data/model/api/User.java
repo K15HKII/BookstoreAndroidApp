@@ -119,6 +119,16 @@ public class User {
 
     @Getter
     @Expose
+    @SerializedName("banks")
+    private List<FavoriteBook> favoriteBooks;
+
+    @Getter
+    @Expose
+    @SerializedName("banks")
+    private List<RecentBook> recentBooks;
+
+    @Getter
+    @Expose
     @SerializedName("bills")
     private Bill[] bills;
 
@@ -146,5 +156,6 @@ public class User {
     @Expose
     @SerializedName("action_logs")
     private StorageLog[] actionLogs;
+
 }
 

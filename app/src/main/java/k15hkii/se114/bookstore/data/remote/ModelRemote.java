@@ -10,108 +10,123 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ModelRemote {
+    //Author
+    @GET("/api/author/{id}")
+    Single<Author> getAuthor();
 
-    @GET("/api/model/user")
-    Single<List<User>> getUsers();
+    @POST("api/author/{id}")
+    Single<Author> updateAuthor();
 
-    @GET("api/mode/user/self")
-    Single<User> getSelfUser();
+    @DELETE("api/author/{id}")
+    void deleteAuthor();
 
-    @GET("/api/model/user/{id}")
-    Single<User> getUser(String id);
-
-    @POST("/api/model/user/{id}")
-    Single<User> saveUser(Object obj);
-
-    @GET("/api/model/useraddress")
-    Single<List<UserAddress>> getUseraddresses();
-
-    @GET("/api/model/useraddress/{id}")
-    Single<UserAddress> getUseraddress(String id, String index);//TODO:
-
-    @POST("/api/model/useraddress/{id}")
-    Single<UserAddress> saveUseraddress(Object obj);
-
-    @GET("/api/model/author")
+    @GET("/api/author")
     Single<List<Author>> getAuthors();
 
-    @GET("/api/model/author/{id}")
-    Single<Author> getAuthor(String id);
+    @POST("api/author")
+    Single<Author> createAuthor();
+    //Book
 
-    @GET("/api/model/voucherprofile")
-    Single<List<VoucherProfile>> getVoucherProfiles();
+    //Publisher
+    @GET("/api/publisher/{id}")
+    Single<Publisher> getPublisher();
 
-    @GET("/api/model/voucherprofile/{id}")
-    Single<VoucherProfile> getVoucherProfile(String id);
+    @POST("api/publisher/{id}")
+    Single<Publisher> updatePublisher();
 
-    //Todo: get
-    Single<List<Image>> getBookImages();
+    @DELETE("api/publisher/{id}")
+    void deletePublisher();
 
-    //Todo: get
-    Single<Image> getBookImage(String id, int i);
-
-    @GET("/api/model/transport")
-    Single<List<Transport>> getTransports();
-
-    @GET("/api/model/transport/{id}")
-    Single<Transport> getTransport(String id);
-
-    @GET("/api/model/publisher")
+    @GET("/api/publisher")
     Single<List<Publisher>> getPublishers();
 
-    @GET("/api/model/publisher/{id}")
-    Single<Publisher> getPublisher(String id);
+    @POST("api/publisher")
+    Single<Publisher> createPublisher();
 
-    @GET("/api/model/transporter")
+    //Transporter
+    @GET("/api/transporter/{id}")
+    Single<Transporter> getTransporter();
+
+    @POST("api/transporter/{id}")
+    Single<Transporter> updateTransporter();
+
+    @DELETE("api/transporter/{id}")
+    void deleteTransporter();
+
+    @GET("/api/transporter")
     Single<List<Transporter>> getTransporters();
 
-    @GET("/api/model/transporter/{id}")
-    Single<Transporter> getTransporter(String id);
+    @POST("api/transporter")
+    Single<Transporter> createTransporter();
 
-    @GET("/api/model/cartitem/{userid}")
-    Single<List<CartItem>> getCartitems(String userId);
+    //User
+    //RecentBook
+    @GET("/api/user/recents/{user_id}")
+    Single<List<RecentBook>> getRecentBooks();
 
-    @GET("/api/model/cartitem/{userid,bookprofileid}")
-    Single<CartItem> getCartitem(UUID userId, UUID bookProfileId);
+    @POST("/api/user/recent/{user_id}")
+    Single<RecentBook> createRecentBook();
 
-    @POST("/api/model/cartitem/{id}")
-    Single<CartItem> saveCartitem(Object obj);
+    //FavoriteBook
+    @GET("/api/user/favorites/{user_id}")
+    Single<List<FavoriteBook>> getFavoriteBooks();
 
-    @DELETE("/api/model/cartitem/{id}")
-    Single<CartItem> deleteCartitem(Object obj);
+    @POST("/api/user/favorite/{user_id}")
+    Single<FavoriteBook> createFavoriteBook();
 
-    @GET("/api/book")
-    Single<List<Book>> getBooks();
+    @DELETE("/api/user/favorite/{user_id}")
+    void deleteFavoriteBook();
+    //CartItem
+    @GET("/api/user/carts/{user_id}")
+    Single<List<CartItem>> getCarts();
 
-    @GET("/api/book/{id}")
-    Single<Book> getBook(UUID id);
+    @POST("/api/user/cart/{user_id}")
+    Single<CartItem> createCart();
 
-    @GET("/api/model/bill_details")
-    Single<List<BillDetail>> getBillDetails(int billId);
+    @DELETE("/api/user/cart/{user_id}")
+    void deleteCart();
 
+    //Bill
+    @GET("/api/user/bills/{user_id}")
     Single<List<Bill>> getBills();
 
-    @GET("/api/model/bill/{id}")
-    Single<Bill> getBill(String id);
+    @POST("/api/user/bill/{user_id}")
+    Single<Bill> createBill();
 
+    @DELETE("/api/user/bill/{user_id}")
+    void deleteBill();
 
-    @GET("/api/model/lend")
+    //Address
+    @GET("/api/user/addresses/{user_id}")
+    Single<List<UserAddress>> getAddresss();
+
+    @POST("/api/user/address/{user_id}")
+    Single<UserAddress> createAddress();
+
+    @DELETE("/api/user/address/{user_id}")
+    void deleteAddress();
+
+    //Bank
+    @GET("/api/user/banks/{user_id}")
+    Single<List<UserBank>> getBanks();
+
+    @POST("/api/user/bank/{user_id}")
+    Single<UserBank> createBank();
+
+    @DELETE("/api/user/bank/{user_id}")
+    void deleteBank();
+
+    //Lend
+    @GET("/api/user/lends/{user_id}")
     Single<List<Lend>> getLends();
 
-    @GET("/api/model/lend/{id}")
-    Single<Lend> getLend(String id);
+    @POST("/api/user/lend/{user_id}")
+    Single<Lend> createLend();
 
-    @GET("/api/model/voucher")
+    @DELETE("/api/user/lend/{user_id}")
+    void deleteLend();
+
+    //Voucher
+    @GET("/api/user/vouchers/{user_id}")
     Single<List<Voucher>> getVouchers();
-
-    @GET("/api/model/voucher/{id}")
-    Single<Voucher> getVoucher(String id);
-
-    @GET("/api/model/wildvoucher")
-    Single<List<WildVoucher>> getWildvouchers();
-
-    @GET("/api/model/wildvoucher/{id}")
-    Single<WildVoucher> getWildvoucher(String id);
-
-
 }
