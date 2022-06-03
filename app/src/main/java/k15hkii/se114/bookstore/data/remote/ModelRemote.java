@@ -62,17 +62,17 @@ public interface ModelRemote {
     //User
     //RecentBook
     @GET("/api/user/recents/{user_id}")
-    Single<List<RecentBook>> getRecentBooks();
+    Single<List<Book>> getRecentBooks();
 
     @POST("/api/user/recent/{user_id}")
-    Single<RecentBook> createRecentBook();
+    Single<Book> createRecentBook();
 
     //FavoriteBook
     @GET("/api/user/favorites/{user_id}")
-    Single<List<FavoriteBook>> getFavoriteBooks();
+    Single<List<Book>> getFavoriteBooks();
 
     @POST("/api/user/favorite/{user_id}")
-    Single<FavoriteBook> createFavoriteBook();
+    Single<Book> createFavoriteBook();
 
     @DELETE("/api/user/favorite/{user_id}")
     void deleteFavoriteBook();

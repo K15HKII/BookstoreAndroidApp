@@ -107,55 +107,5 @@ public class User {
     @SerializedName("is_blocked")
     private int is_blocked;
 
-    @Getter
-    @Expose
-    @SerializedName("addresses")
-    private UserAddress[] addresses;
-
-    @Getter
-    @Expose
-    @SerializedName("banks")
-    private List<UserBank> banks;
-
-    @Getter
-    @Expose
-    @SerializedName("banks")
-    private List<FavoriteBook> favoriteBooks;
-
-    @Getter
-    @Expose
-    @SerializedName("banks")
-    private List<RecentBook> recentBooks;
-
-    @Getter
-    @Expose
-    @SerializedName("bills")
-    private Bill[] bills;
-
-    @Getter
-    @Expose
-    @SerializedName("lends")
-    private Lend[] lends;
-
-    @Getter
-    @Expose
-    @SerializedName("cart_items")
-    private CartItem[] cartItems;
-
-    @Getter
-    @Expose
-    @SerializedName("vouchers")
-    private Voucher[] vouchers;
-
-    @Getter
-    @Expose
-    @SerializedName("messages")
-    private Message[] messages;
-
-    @Getter
-    @Expose
-    @SerializedName("action_logs")
-    private StorageLog[] actionLogs;
-
 }
 
