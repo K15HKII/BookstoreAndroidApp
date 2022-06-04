@@ -18,6 +18,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     private String email;
     private String name;
     private UUID userId;
+    private String address;
 
     PreferencesHelper preferencesHelper;
 

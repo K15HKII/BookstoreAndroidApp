@@ -5,8 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class BaseVoucher {
+
+    @Getter
+    @Expose
+    @SerializedName("id")
+    private UUID id;
+
     @Getter
     @Expose
     @SerializedName("code")
@@ -21,4 +28,9 @@ public class BaseVoucher {
     @Expose
     @SerializedName("expired_at")
     private Date expired_at;
+
+    @Getter
+    @Expose
+    @SerializedName("profile_id")
+    private UUID profileId;
 }

@@ -18,7 +18,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     protected ModelRemote remote;
 
     private User user;
-    private UserAddress userAddress;
+    private String address;
     @Bindable
     public String getName() {
         if (user == null) return "";
@@ -51,7 +51,13 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         return user.getEmail();
     }
 
-    private void getUser() {
+    @Bindable
+    public String getAddress() {
+        if (address == null) return "null";
+        return address;
+    }
+
+    private void getData() {
         getCompositeDisposable().add(remote.getSelfUser()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
@@ -61,23 +67,24 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 }, throwable -> {
                     Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
                 }));
-    }
 
-//    private void getUserAddress(){
-//        getCompositeDisposable().add(remote.getAddresses()
-//                .subscribeOn(getSchedulerProvider().io())
-//                .observeOn(getSchedulerProvider().ui())
-//                .subscribe(user -> {
-//                    this.user = user;
-//                    this.notifyChange();
-//                }, throwable -> {
-//                    Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
-//                }));
-//    }
+        // set address
+        getCompositeDisposable().add(remote.getAddresses(user.getId())
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(addresses -> {
+                                               for (UserAddress address : addresses)
+                                               {
+                                                   if (address.is_primary()){
+                                                       this.address = address.getCity();
+                                                   }
+                                               }
+                                           }));
+    }
     public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
-        getUser();
+        getData();
     }
 
     public void onBackWardClick() {

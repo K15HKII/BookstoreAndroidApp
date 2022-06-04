@@ -16,8 +16,8 @@ import java.util.UUID;
 public class Voucher extends BaseVoucher {
     @Getter
     @Expose
-    @SerializedName("id")
-    private UUID id;
+    @SerializedName("user_id")
+    private UUID userId;
 
     @Getter
     @Expose

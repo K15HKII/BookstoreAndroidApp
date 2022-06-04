@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.data.remote;
 
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
 import retrofit2.http.DELETE;
@@ -147,4 +148,7 @@ public interface ModelRemote {
     //Voucher
     @GET("/api/user/vouchers/{user_id}")
     Single<List<Voucher>> getVouchers(UUID user_id);
+
+    @GET("/api/user/vouchers/{user_id}")
+    Single<VoucherProfile> getVoucherProfile(UUID id);
 }

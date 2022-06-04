@@ -15,11 +15,6 @@ import java.util.UUID;
 public class WildVoucher extends  BaseVoucher{
     @Getter
     @Expose
-    @SerializedName("id")
-    private UUID id;
-
-    @Getter
-    @Expose
     @SerializedName("remaining_uses")
     private double remainingUses;
 

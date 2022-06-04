@@ -153,8 +153,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider));
+    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides

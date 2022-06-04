@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -41,10 +42,10 @@ public class VoucherProfile {
     @Getter
     @Expose
     @SerializedName("vouchers")
-    private Voucher[] vouchers;
+    private List<Voucher> vouchers;
 
     @Getter
     @Expose
     @SerializedName("wild_vouchers")
-    private WildVoucher[] wildVouchers;
+    private List<WildVoucher> wildVouchers;
 }

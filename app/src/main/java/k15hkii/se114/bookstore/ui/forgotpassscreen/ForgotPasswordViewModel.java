@@ -25,6 +25,7 @@ public class ForgotPasswordViewModel extends BaseViewModel<ForgotPassNavigator> 
         remote.getUser(userId).doOnSuccess(user -> {
             this.email = user.getEmail();
         }).subscribe();
+        //todo
     }
 
     public ForgotPasswordViewModel(SchedulerProvider schedulerProvider) {

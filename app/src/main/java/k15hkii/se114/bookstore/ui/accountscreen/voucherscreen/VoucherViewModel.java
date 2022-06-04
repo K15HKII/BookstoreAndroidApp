@@ -1,46 +1,54 @@
 package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
-import k15hkii.se114.bookstore.data.model.api.User;
-import k15hkii.se114.bookstore.data.model.api.Voucher;
-import k15hkii.se114.bookstore.data.model.api.VoucherProfile;
-import k15hkii.se114.bookstore.data.model.api.WildVoucher;
+import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
 
     @Inject protected ModelRemote remote;
 
-    private String voucherProfileId;
-//    private Voucher voucher;
-//    private WildVoucher wildVoucher;
-
-    private VoucherProfile profile;
+    private VoucherProfile voucherProfile;
     private Voucher voucher;
     private User user;
+    private String discount;
+    private String discountType;
+    private Date expiredDate;
+    private String maxCondition;
 
-    public void setVoucherProfileId(String id) {
-//        remote.getVoucher().doOnSuccess(voucher -> {
-//            this.voucher = voucher;
-//        }).subscribe();
-        /*remote.getVoucherProfile(id).doOnSuccess(voucherProfile -> {
-            profile = voucherProfile;
-        }).subscribe();*/
+    public void setData() {
+        getCompositeDisposable().add(remote.getVoucherProfile(voucher.getProfileId())
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(voucherProfile -> {
+                                               this.voucherProfile = voucherProfile;
+                                           }, throwable -> {
+                                               Log.d("VoucherViewModel", "getData: " + throwable.getMessage(), throwable);
+                                           }));
+    }
 
-        //TODO: lay voucher tu profileId va userId
+    public VoucherViewModel() {
+        super(null);
     }
 
     @Bindable
-    @Getter @Setter private String title;
+    public String getDiscount() {
+        return discount == null ? "null" : String.valueOf(voucherProfile.getDiscount());
+    }
 
-    public VoucherViewModel(String title) {
-        super(null);
-        this.title = title;
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
+        setData();
     }
 }
