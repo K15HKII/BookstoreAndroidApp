@@ -193,8 +193,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorAddressPageViewModel provideSelectorAddressPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SelectorAddressPageViewModel.class, () -> new SelectorAddressPageViewModel(schedulerProvider));
+    public SelectorAddressPageViewModel provideSelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, SelectorAddressPageViewModel.class, () -> new SelectorAddressPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
@@ -228,8 +228,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OncartViewViewModel provideOncartViewViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OncartViewViewModel.class, () -> new OncartViewViewModel(schedulerProvider));
+    public OncartViewViewModel provideOncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, OncartViewViewModel.class, () -> new OncartViewViewModel(schedulerProvider,remote,preferencesHelper ));
     }
 
     @Provides

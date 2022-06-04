@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.UserAddress;
 import k15hkii.se114.bookstore.data.model.api.UserBank;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
@@ -23,19 +24,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 
     @Inject
     protected ModelRemote remote;
-
-//    private String userId;
-//    private String index;
-//    private UserAddress userAddress;
-//
-//    public void setUserAddress(String id, String index) {
-//        this.userId = id;
-//        this.index = index;
-//        remote.getUseraddress(id,index).doOnSuccess(userAddress -> {
-//            this.userAddress = userAddress;
-//        }).subscribe();
-//    }
-
+    private UUID user_id;
     public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
@@ -49,12 +38,15 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
                                                }
                                                listAddress.set(list);
                                            }, throwable -> {
-                                               Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
+                                               Log.d("AddressPageViewModel", "getData: " + throwable.getMessage(), throwable);
                                            }));
     }
 
-    public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider) {
+    public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
+        this.remote = remote;
+        this.user_id = preferencesHelper.getCurrentUserId();
+        getData(user_id);
     }
 
     public void onBackWardClick(){

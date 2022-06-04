@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.CartItem;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> implements Observable {
 
@@ -22,7 +24,6 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     @Inject
     protected ModelRemote remote;
-
     private UUID userId;
     public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getCarts(userId)
@@ -41,8 +42,11 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                 }));
     }
 
-    public OncartViewViewModel(SchedulerProvider schedulerProvider) {
+    public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
+        this.remote = remote;
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
     public void onBackWardClick(){
