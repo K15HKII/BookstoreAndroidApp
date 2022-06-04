@@ -278,8 +278,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider, remote));
+    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides

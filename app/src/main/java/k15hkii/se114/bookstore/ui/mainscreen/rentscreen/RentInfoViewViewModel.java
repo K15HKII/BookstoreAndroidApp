@@ -11,6 +11,7 @@ import java.util.List;
 
 public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> implements Observable {
 
+
     ModelRemote remote;
     public RentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);

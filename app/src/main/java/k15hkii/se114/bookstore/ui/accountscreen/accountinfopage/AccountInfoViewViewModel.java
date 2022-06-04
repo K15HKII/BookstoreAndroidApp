@@ -6,6 +6,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.model.api.UserAddress;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -17,7 +18,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     protected ModelRemote remote;
 
     private User user;
-
+    private UserAddress userAddress;
     @Bindable
     public String getName() {
         if (user == null) return "";
@@ -62,6 +63,17 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 }));
     }
 
+//    private void getUserAddress(){
+//        getCompositeDisposable().add(remote.getAddresses()
+//                .subscribeOn(getSchedulerProvider().io())
+//                .observeOn(getSchedulerProvider().ui())
+//                .subscribe(user -> {
+//                    this.user = user;
+//                    this.notifyChange();
+//                }, throwable -> {
+//                    Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
+//                }));
+//    }
     public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
