@@ -133,8 +133,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider, preferencesHelper ));
     }
 
     @Provides
@@ -208,8 +208,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider));
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper));
     }
 
     @Provides

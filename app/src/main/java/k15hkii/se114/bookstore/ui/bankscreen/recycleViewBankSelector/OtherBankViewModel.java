@@ -19,13 +19,13 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
     UserBank bank;
     User user;
 
-    private void setUser(UUID userId) {
-            getCompositeDisposable().add(remote.getUser(userId)
-                   .subscribeOn(getSchedulerProvider().io())
-                   .observeOn(getSchedulerProvider().ui())
-                   .doOnSuccess(user -> {
-                       this.user = user;
-                   }).subscribe());
+    public void setUser(UUID userId) {
+        getCompositeDisposable().add(remote.getUser(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .doOnSuccess(user -> {
+                                               this.user = user;
+                                           }).subscribe());
     }
 
     @Bindable
@@ -50,8 +50,8 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
         super(null);
     }
 
-    public void setBank(UserBank bank, UUID userId) {
+    public void setBank(UserBank bank) {
         this.bank = bank;
-        setUser(userId);
+        setUser(bank.getUserId());
     }
 }

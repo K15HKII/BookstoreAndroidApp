@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.address;
 
 import android.util.Log;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.UserAddress;
@@ -25,6 +26,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
     @Inject
     protected ModelRemote remote;
     private UUID user_id;
+    private String primaryAddress;
     public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
@@ -33,13 +35,21 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
                                                List<OtherAddressViewModel> list = new ArrayList<>();
                                                for (UserAddress address : addresses) {
                                                    OtherAddressViewModel model = new OtherAddressViewModel();
-                                                   model.setAddress(address, userId);
+                                                   model.setAddress(address);
                                                    list.add(model);
+                                                   if(address.is_primary()){
+                                                       primaryAddress = address.getCity();
+                                                   }
                                                }
                                                listAddress.set(list);
                                            }, throwable -> {
                                                Log.d("AddressPageViewModel", "getData: " + throwable.getMessage(), throwable);
                                            }));
+    }
+
+    @Bindable
+    public String getPrimaryAddress() {
+        return primaryAddress == null ? "profile is null" : primaryAddress;
     }
 
     public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {

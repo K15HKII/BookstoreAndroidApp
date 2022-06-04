@@ -23,29 +23,22 @@ public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator>
     public OtherAddressViewModel() {
         super(null);
     }
-
-    private void setUser(UUID userId) {
-        getCompositeDisposable().add(remote.getUser(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .doOnSuccess(user -> {
-                                               this.user = user;
-                                           }).subscribe());
-    }
+//
+//    private void getData(UUID userId) {
+//        getCompositeDisposable().add(remote.getUser(userId)
+//                                           .subscribeOn(getSchedulerProvider().io())
+//                                           .observeOn(getSchedulerProvider().ui())
+//                                           .doOnSuccess(user -> {
+//                                               this.user = user;
+//                                           }).subscribe());
+//    }
 
     @Bindable
     public String getAddress() {
         return address == null ? "profile is null" : address.getCity();
     }
 
-    public OtherAddressViewModel(UserAddress address, UUID userId) {
-        super(null);
+    public void setAddress(UserAddress address) {
         this.address = address;
-        setUser(userId);
-    }
-
-    public void setAddress(UserAddress address, UUID userId) {
-        this.address = address;
-        setUser(userId);
     }
 }

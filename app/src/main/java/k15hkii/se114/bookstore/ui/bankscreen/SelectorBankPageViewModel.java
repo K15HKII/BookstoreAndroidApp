@@ -1,11 +1,14 @@
 package k15hkii.se114.bookstore.ui.bankscreen;
 
 import android.util.Log;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.User;
 import k15hkii.se114.bookstore.data.model.api.UserBank;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
@@ -24,9 +27,16 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
 
     @Inject
     protected ModelRemote remote;
+    PreferencesHelper preferencesHelper;
 
-    String userId;
-    public void getData(UUID userId) {
+    UserBank bank;
+    String bankName;
+    String userName;
+    String ban;
+    UUID userId;
+    User user;
+
+    public void getData() {
         getCompositeDisposable().add(remote.getBanks(userId)
            .subscribeOn(getSchedulerProvider().io())
            .observeOn(getSchedulerProvider().ui())
@@ -34,17 +44,46 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
                List<OtherBankViewModel> list = new ArrayList<>();
                for (UserBank bank : banks) {
                    OtherBankViewModel model = new OtherBankViewModel();
-                   model.setBank(bank, userId);
+                   model.setBank(bank);
                    list.add(model);
+                   //Todo: get primary bank
                }
                listBanks.set(list);
            }, throwable -> {
                Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
            }));
+
+        getCompositeDisposable().add(remote.getUser(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(user -> {
+                                               this.user = user;
+                                           }, throwable -> {
+                                               Log.d("User", "getData: " + throwable.getMessage(), throwable);
+                                           }));
     }
 
-    public SelectorBankPageViewModel(SchedulerProvider schedulerProvider) {
+    public void setUserId() {
+        this.userId = preferencesHelper.getCurrentUserId();
+    }
+    @Bindable
+    public String getBankName() {
+        return bankName == null ? "profile is null" : bank.getBankName();
+    }
+    @Bindable
+    public String getUserName() {
+        return userName == null ? "profile is null" : user.getUserName();
+    }
+    @Bindable
+    public String getBan() {
+        return ban == null ? "profile is null" : bank.getIban();
+    }
+
+
+    public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
+        this.preferencesHelper = preferencesHelper;
+        setUserId();
     }
 
     public void onBackWardClick(){
