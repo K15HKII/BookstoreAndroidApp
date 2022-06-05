@@ -2,34 +2,28 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.BillDetail;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.ViewModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
-    protected ViewModelRemote remote;
+    protected ViewModelMapper mapper;
 
     public void getData(int billId) {
-        dispose(remote.getBill(billId),
+        dispose(mapper.getBill(billId),
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public OrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote) {
+    public OrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
-        this.remote = remote;
+        this.mapper = mapper;
     }
 
     public void onBackWardClick(){

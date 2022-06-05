@@ -4,7 +4,7 @@ import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
-import k15hkii.se114.bookstore.ui.ViewModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -17,17 +17,17 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     public final ObservableField<List<RatingReportViewModel>> listRate = new ObservableField<>();
 
     @Inject
-    protected ViewModelRemote remote;
+    protected ViewModelMapper mapper;
     private final UUID userId;
     public void getData() {
-        dispose(remote.getRatings(userId),
+        dispose(mapper.getRatings(userId),
                 listRate::set,
                 throwable -> Log.d("RateDetailViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public RateDetailViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote, PreferencesHelper preferencesHelper) {
+    public RateDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
-        this.remote = remote;
+        this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
         getData();
     }

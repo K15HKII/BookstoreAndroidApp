@@ -10,7 +10,7 @@ import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.module.AppModule;
-import k15hkii.se114.bookstore.ui.ViewModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Singleton;
@@ -29,7 +29,7 @@ public interface AppComponent {
 
     ModelRemote getModelRemote();
 
-    ViewModelRemote getViewModelRemote();
+    ViewModelMapper getViewModelMapper();
 
     Context getContext();
 

@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Singleton
-public class ViewModelRemote {
+public class ViewModelMapper {
 
     private final ModelRemote remote;
 
     @Inject
-    public ViewModelRemote(ModelRemote remote) {
+    public ViewModelMapper(ModelRemote remote) {
         this.remote = remote;
     }
 

@@ -9,14 +9,13 @@ import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.*;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
-import k15hkii.se114.bookstore.ui.ViewModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -40,7 +39,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    ViewModelRemote provideViewModelRemote(ModelRemote remote) { return new ViewModelRemote(remote); }
+    ViewModelMapper provideViewModelMapper(ModelRemote remote) { return new ViewModelMapper(remote); }
 
     @Provides
     @Singleton

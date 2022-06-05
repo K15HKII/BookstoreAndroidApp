@@ -3,17 +3,12 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.BillDetail;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.ViewModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
@@ -21,17 +16,17 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
     @Inject
-    protected ViewModelRemote remote;
+    protected ViewModelMapper mapper;
 
     public void getData(int billId) {
-        dispose(remote.getBill(billId),
+        dispose(mapper.getBill(billId),
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote) {
+    public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
-        this.remote = remote;
+        this.mapper = mapper;
         getData(1);
     }
 
