@@ -258,8 +258,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RatingBooksDetailPageViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RatingBooksDetailPageViewModel.class, () -> new RatingBooksDetailPageViewModel(schedulerProvider));
+    public RatingBooksDetailPageViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(fragment, RatingBooksDetailPageViewModel.class, () -> new RatingBooksDetailPageViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
@@ -273,8 +273,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider));
+    public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper){
+        return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
@@ -288,8 +288,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SearchBookViewResultViewModel provideSearchBookViewResultViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SearchBookViewResultViewModel.class, () -> new SearchBookViewResultViewModel(schedulerProvider));
+    public SearchBookViewResultViewModel provideSearchBookViewResultViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        return createViewModel(fragment, SearchBookViewResultViewModel.class, () -> new SearchBookViewResultViewModel(schedulerProvider, remote));
     }
 
     @Provides
