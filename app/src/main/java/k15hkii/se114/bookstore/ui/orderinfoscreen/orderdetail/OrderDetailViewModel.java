@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -20,26 +21,15 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
     @Inject
-    protected ModelRemote remote;
+    protected ViewModelRemote remote;
 
     public void getData(int billId) {
-        getCompositeDisposable().add(remote.getBill(billId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(bill -> {
-                                               List<OrderBookViewModel> list = new ArrayList<>();
-                                               for (BillDetail billDetail : bill.getBillDetails()) {
-                                                   OrderBookViewModel viewModel = new OrderBookViewModel();
-                                                   viewModel.setOrderDetail(billDetail);
-                                                   list.add(viewModel);
-                                               }
-                                               items.set(list);
-                                           }, throwable -> {
-                                               Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+        dispose(remote.getBill(billId),
+                items::set,
+                throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public OrderDetailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
         getData(1);

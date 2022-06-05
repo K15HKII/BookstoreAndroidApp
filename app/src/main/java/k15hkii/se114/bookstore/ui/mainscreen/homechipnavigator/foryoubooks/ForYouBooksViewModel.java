@@ -6,6 +6,7 @@ import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -19,40 +20,21 @@ public class ForYouBooksViewModel extends BaseViewModel<ForYouBooksNavigator> im
 
     public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
-    private UUID userId;
-    public void getData(UUID userId) {
-        getCompositeDisposable().add(remote.getRecentBooks(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(books -> {
-                                               List<BookViewModel> list = new ArrayList<>();
-                                               for (Book book : books) {
-                                                   BookViewModel model = new BookViewModel();
-                                                   model.setBook(book);
-                                                   list.add(model);
-                                               }
-                                               items.set(list);
-                                           }, throwable -> {
-                                               Log.d("ForYouBooksViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+    @Inject
+    protected ViewModelRemote remote;
+    private final UUID userId;
+
+    public void getData() {
+        dispose(remote.getRecentBooks(userId),
+                items::set,
+                throwable -> Log.d("ForYouBooksViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public ForYouBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+    public ForYouBooksViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData(userId);
+        getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

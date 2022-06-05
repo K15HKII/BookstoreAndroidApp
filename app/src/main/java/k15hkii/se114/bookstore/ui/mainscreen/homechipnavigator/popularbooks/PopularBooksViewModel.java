@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -16,24 +17,13 @@ public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigat
 
     public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 
-    protected ModelRemote remote;
+    protected ViewModelRemote remote;
     public void getData() {
-        getCompositeDisposable().add(remote.getBooks()
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(books -> {
-                                               List<BookViewModel> list = new ArrayList<>();
-                                               for (Book book : books) {
-                                                   BookViewModel model = new BookViewModel();
-                                                   model.setBook(book);
-                                                   list.add(model);
-                                               }
-                                               items.set(list);
-                                           }, throwable -> {
-                                               Log.d("PopularBooksViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+        dispose(remote.getBooks(),
+                items::set,
+                throwable -> Log.d("PopularBooksViewModel", "getData: " + throwable.getMessage(), throwable));
     }
-    public PopularBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public PopularBooksViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
         getData();

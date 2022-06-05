@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -17,39 +18,18 @@ public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> 
 
     public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 
-    @Inject  protected ModelRemote remote;
+    protected ViewModelRemote remote;
 
-    public void getData() {
-        getCompositeDisposable().add(remote.getBooks()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(profiles -> {
-                    List<BookViewModel> list = new ArrayList<>();
-                    for (Book profile : profiles) {
-                        BookViewModel model = new BookViewModel();
-                        model.setBook(profile);
-                        list.add(model);
-                    }
-                    items.set(list);
-                }, throwable -> {
-                    Log.d("AllBooksViewViewModel", "getData: " + throwable.getMessage(), throwable);
-                }));
-    }
-
-    public AllBooksViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public AllBooksViewViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
         getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void getData() {
+        dispose(remote.getBooks(),
+                items::set,
+                throwable -> Log.d("AllBooksViewViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

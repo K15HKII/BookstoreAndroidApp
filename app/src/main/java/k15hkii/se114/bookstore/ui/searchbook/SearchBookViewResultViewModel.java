@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
@@ -21,26 +22,15 @@ public class SearchBookViewResultViewModel extends BaseViewModel<SearchBookViewR
 
     public final ObservableField<List<BookViewModel>> listSearch = new ObservableField<>();
 
-    @Inject  protected ModelRemote remote;
+    protected ViewModelRemote remote;
 
     public void getData() {
-        getCompositeDisposable().add(remote.getBooks()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(books -> {
-                    List<BookViewModel> list = new ArrayList<>();
-                    for (Book book : books) {
-                        BookViewModel model = new BookViewModel();
-                        model.setBook(book);
-                        list.add(model);
-                    }
-                    listSearch.set(list);
-                }, throwable -> {
-                    Log.d("SearchBooksViewModel", "getData: " + throwable.getMessage(), throwable);
-                }));
+        dispose(remote.getBooks(),
+                listSearch::set,
+                throwable -> Log.d("SearchBooksViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public SearchBookViewResultViewModel(SchedulerProvider schedulerProvide, ModelRemote remote) {
+    public SearchBookViewResultViewModel(SchedulerProvider schedulerProvide, ViewModelRemote remote) {
         super(schedulerProvide);
         this.remote = remote;
         getData();
@@ -50,14 +40,4 @@ public class SearchBookViewResultViewModel extends BaseViewModel<SearchBookViewR
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

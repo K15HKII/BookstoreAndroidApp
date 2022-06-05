@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.*;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -36,6 +37,10 @@ public class AppModule {
     @Provides
     @Singleton
     DataSession provideDataSession() { return new DataSession(); }
+
+    @Provides
+    @Singleton
+    ViewModelRemote provideViewModelRemote(ModelRemote remote) { return new ViewModelRemote(remote); }
 
     @Provides
     @Singleton

@@ -7,6 +7,7 @@ import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -21,39 +22,20 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
 
     public final ObservableField<List<RentViewViewModel>> rentList = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
-    private UUID userId;
+    protected ViewModelRemote remote;
+    private final UUID userId;
+
     public void getData() {
-        getCompositeDisposable().add(remote.getLends(userId)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(lends -> {
-                    List<RentViewViewModel> list = new ArrayList<>();
-                    for (Lend lend : lends) {
-                        RentViewViewModel model = new RentViewViewModel();
-                        model.setLend(lend);
-                        list.add(model);
-                    }
-                    rentList.set(list);
-                }, throwable -> {
-                    Log.d("RentingPageViewModel", "getData: " + throwable.getMessage(), throwable);
-                }));
+        dispose(remote.getLends(userId),
+                rentList::set,
+                throwable -> Log.d("RentingPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public RentingViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+    public RentingViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
         getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
 }

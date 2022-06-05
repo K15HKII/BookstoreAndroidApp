@@ -28,7 +28,7 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
 
     private Bill bill;
     public void getData(int billId) {
-        getCompositeDisposable().add(remote.getBill(billId)
+        /*getCompositeDisposable().add(remote.getBill(billId)
               .subscribeOn(getSchedulerProvider().io())
               .observeOn(getSchedulerProvider().ui())
               .subscribe(bill -> {
@@ -41,7 +41,9 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
                   items.set(list);
               }, throwable -> {
                   Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable);
-              }));
+              }));*/
+
+        //TODO:
     }
 
     @Bindable
@@ -62,7 +64,6 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
     public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
-//        getData(billId);
     }
 
     public void onBackWardClick(){

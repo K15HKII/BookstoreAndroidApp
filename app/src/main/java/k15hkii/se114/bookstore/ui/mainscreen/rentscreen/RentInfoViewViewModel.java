@@ -11,7 +11,6 @@ import java.util.List;
 
 public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> implements Observable {
 
-
     ModelRemote remote;
     public RentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
@@ -26,14 +25,4 @@ public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> 
         getNavigator().openRentSuccess();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }
