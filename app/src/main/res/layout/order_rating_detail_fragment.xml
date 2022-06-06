@@ -188,7 +188,7 @@
                         <TextView
                                 android:id="@+id/tvOrderRatingDetailVoucher"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="%25 giảm giá"
+                                android:text="@{viewModel.discount}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -240,7 +240,7 @@
                         <TextView
                                 android:id="@+id/tvOrderRatingDetailPaymentMethod"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="Thanh toán khi nhận hàng"
+                                android:text="@{viewModel.payment}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -282,7 +282,7 @@
                                     android:layout_height="wrap_content"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/black"
-                                    android:text="240.000đ"/>
+                                    android:text="10"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
