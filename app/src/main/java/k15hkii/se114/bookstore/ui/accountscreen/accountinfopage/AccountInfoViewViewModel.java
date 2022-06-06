@@ -7,17 +7,21 @@ import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.User;
 import k15hkii.se114.bookstore.data.model.api.UserAddress;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator> implements Observable {
 
+    @Inject
     protected ModelRemote remote;
 
     private User user;
+    private UUID user_id;
     private String address;
     @Bindable
     public String getName() {
@@ -57,7 +61,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         return address;
     }
 
-    private void getData() {
+    private void getData(UUID userId) {
         getCompositeDisposable().add(remote.getSelfUser()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
@@ -69,7 +73,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 }));
 
         // set address
-        getCompositeDisposable().add(remote.getAddresses(user.getId())
+        getCompositeDisposable().add(remote.getAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
                                            .subscribe(addresses -> {
@@ -81,10 +85,11 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                                                }
                                            }));
     }
-    public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
-        getData();
+        this.user_id = preferencesHelper.getCurrentUserId();
+        getData(user_id);
     }
 
     public void onBackWardClick() {

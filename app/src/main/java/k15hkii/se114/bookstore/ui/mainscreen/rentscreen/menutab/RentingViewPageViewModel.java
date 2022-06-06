@@ -19,7 +19,7 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
     protected ViewModelMapper mapper;
     private final UUID userId;
 
-    public void getData() {
+    public void getData(UUID userId) {
         dispose(mapper.getLends(userId),
                 rentList::set,
                 throwable -> Log.d("RentingPageViewModel", "getData: " + throwable.getMessage(), throwable));
@@ -29,7 +29,7 @@ public class RentingViewPageViewModel extends BaseViewModel<RentingViewPageNavig
         super(schedulerProvider);
         this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData();
+        getData(userId);
     }
 
 }
