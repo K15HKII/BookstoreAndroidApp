@@ -99,7 +99,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openAllBooksView() {
-        createTransaction(R.id.fragmentContainerView, AllBooksPage.class, null)
+        createTransaction(R.id.fragmentContainerHomeView, AllBooksPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -110,7 +110,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openPoppularBooksView() {
-        createTransaction(R.id.fragmentContainerView, PopularBooksPage.class, null)
+        createTransaction(R.id.fragmentContainerHomeView, PopularBooksPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -121,7 +121,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openFamiliarBooksView() {
-        createTransaction(R.id.fragmentContainerView, FamiliarBooksPage.class, null)
+        createTransaction(R.id.fragmentContainerHomeView, FamiliarBooksPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -132,7 +132,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openForYouBooksView() {
-        createTransaction(R.id.fragmentContainerView, ForYouBooksPage.class, null)
+        createTransaction(R.id.fragmentContainerHomeView, ForYouBooksPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
