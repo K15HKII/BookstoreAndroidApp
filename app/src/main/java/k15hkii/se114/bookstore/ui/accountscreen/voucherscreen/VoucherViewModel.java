@@ -4,20 +4,14 @@ import android.util.Log;
 import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
 
-    @Inject protected ModelRemote remote;
+    protected final ModelRemote remote;
 
     private VoucherProfile voucherProfile;
     private Voucher voucher;
@@ -38,8 +32,9 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
                                            }));
     }
 
-    public VoucherViewModel() {
+    public VoucherViewModel(ModelRemote remote) {
         super(null);
+        this.remote = remote;
     }
 
     @Bindable

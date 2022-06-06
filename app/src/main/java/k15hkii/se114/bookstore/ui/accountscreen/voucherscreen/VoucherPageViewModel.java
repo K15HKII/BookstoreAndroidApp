@@ -3,18 +3,14 @@ package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.data.model.api.UserAddress;
 import k15hkii.se114.bookstore.data.model.api.Voucher;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,7 +27,7 @@ public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> im
                                            .subscribe(vouchers -> {
                                                List<VoucherViewModel> list = new ArrayList<>();
                                                for (Voucher voucher : vouchers) {
-                                                   VoucherViewModel model = new VoucherViewModel();
+                                                   VoucherViewModel model = new VoucherViewModel(remote);
                                                    model.setVoucher(voucher);
                                                    list.add(model);
                                                }
