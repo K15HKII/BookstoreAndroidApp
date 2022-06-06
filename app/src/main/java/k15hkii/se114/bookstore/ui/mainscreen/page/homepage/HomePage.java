@@ -29,11 +29,6 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     private Chip chipAllTopics, chipAllBooks, chipPoppularBooks, chipFamiliarBooks, chipForYouBooks;
     private Button btnFilter, btnNotification, btnOncart;
 
-
-    public static HomePage newInstance() {
-        return new HomePage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.HomePageViewModel;

@@ -8,6 +8,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.List;
+import java.util.UUID;
 
 public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
 

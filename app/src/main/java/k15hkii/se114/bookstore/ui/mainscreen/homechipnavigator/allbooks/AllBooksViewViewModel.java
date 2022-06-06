@@ -10,7 +10,7 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.List;
 
-public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> implements Observable {
+public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> implements Observable{
 
     public final ObservableField<List<BookViewModel>> items = new ObservableField<>();
 

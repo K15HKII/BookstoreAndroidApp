@@ -5,6 +5,7 @@ import androidx.databinding.Bindable;
 import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -50,6 +51,13 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     public String getQuantity() {
         return billDetail == null ? "null" : billDetail.getQuantity() + "";
     }
+
+    @Bindable
+    public String getDiscount(){
+        return bill == null ? "null" : "Giảm giá " + bill.getVoucherProfile().getDiscount() +" %";
+    }
+
+
 
     public OrderBookViewModel() {
         super(null);

@@ -85,13 +85,13 @@ public interface ModelRemote {
     Single<Book> createRecentBook(@Path("user_id") UUID user_id);
 
     //FavoriteBook
-    @GET("/api/user/favorites/{user_id}")
+    @GET("/api/user/favourites/{user_id}")
     Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
-    @POST("/api/user/favorite/{user_id}")
+    @POST("/api/user/favourite/{user_id}")
     Single<Book> createFavoriteBook(@Path("user_id") UUID user_id);
 
-    @DELETE("/api/user/favorite/{user_id}")
+    @DELETE("/api/user/favourite/{user_id}")
     void deleteFavoriteBook(@Path("user_id") UUID user_id);
     //CartItem
     @GET("/api/user/carts/{user_id}")

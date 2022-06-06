@@ -19,7 +19,7 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("id")
-    private UUID id;
+    private int id;
 
     @Getter
     @Expose
@@ -41,4 +41,18 @@ public class Bill {
     @SerializedName("bill_details")
     private BillDetail[] billDetails;
 
+    @Expose
+    @Getter
+    @SerializedName("user_address")
+    private UserAddress  userAddress;
+
+    @Expose
+    @Getter
+    @SerializedName("voucher_profile")
+    private VoucherProfile voucherProfile;
+
+    @Expose
+    @Getter
+    @SerializedName("payment")
+    private String payment;
 }

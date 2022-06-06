@@ -4,12 +4,14 @@ import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.bankscreen.BankExpandableListView.BankItems;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
 
@@ -17,7 +19,7 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
 
     @Inject
     protected ViewModelMapper mapper;
-
+    private UUID billId;
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
                 items::set,
