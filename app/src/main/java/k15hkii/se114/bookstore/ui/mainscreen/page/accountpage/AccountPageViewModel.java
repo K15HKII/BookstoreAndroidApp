@@ -1,9 +1,8 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.accountpage;
 
-import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
-import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;

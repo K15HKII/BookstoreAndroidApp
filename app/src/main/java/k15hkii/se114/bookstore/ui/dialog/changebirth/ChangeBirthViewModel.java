@@ -1,6 +1,6 @@
 package k15hkii.se114.bookstore.ui.dialog.changebirth;
 
-import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;

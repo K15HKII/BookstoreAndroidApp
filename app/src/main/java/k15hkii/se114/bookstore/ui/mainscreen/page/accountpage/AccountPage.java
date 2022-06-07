@@ -1,9 +1,5 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.accountpage;
 
-import android.widget.Button;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,11 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
-import k15hkii.se114.bookstore.data.model.api.User;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.databinding.AccountPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoPage;
@@ -23,8 +16,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
-
-import javax.inject.Inject;
 
 public class AccountPage extends BaseFragment<AccountPageFragmentBinding, AccountPageViewModel> implements AccountPageNavigator {
 

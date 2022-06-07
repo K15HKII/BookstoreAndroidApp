@@ -4,18 +4,15 @@ import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.UserAddress;
-import k15hkii.se114.bookstore.data.model.api.UserBank;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 

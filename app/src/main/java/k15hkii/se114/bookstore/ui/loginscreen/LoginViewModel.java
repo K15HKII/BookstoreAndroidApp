@@ -1,15 +1,11 @@
 package k15hkii.se114.bookstore.ui.loginscreen;
 
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.auth.LoginRequest;
 import k15hkii.se114.bookstore.data.remote.Authentication;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.data.model.api.UserAccount;
-
-import java.util.List;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Observable {
 
@@ -18,7 +14,6 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
 
     private final Authentication authentication;
     public ObservableField<String> LoginMessage = new ObservableField<>();
-    private List<UserAccount> lsUsers;
 
     public LoginViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
         super(schedulerProvider);

@@ -4,10 +4,7 @@ import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
-import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.UserBankCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.user.*;
 import retrofit2.http.*;
 
 import java.util.Date;
