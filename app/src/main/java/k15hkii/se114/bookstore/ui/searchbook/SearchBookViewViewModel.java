@@ -11,10 +11,7 @@ import java.util.List;
 
 public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigator> implements Observable {
 
-    private final ObservableField<List<RecentSearchViewModel>> searchBookViewItemsLiveData = new ObservableField<>(
-            Arrays.asList(new RecentSearchViewModel("Dac nhan tam"),
-                          new RecentSearchViewModel("hi hi"))
-    );
+    private final ObservableField<List<RecentSearchViewModel>> searchBookViewItemsLiveData = new ObservableField<>();
 
     public ObservableField<String> etSearchBookText = new ObservableField<>();
 

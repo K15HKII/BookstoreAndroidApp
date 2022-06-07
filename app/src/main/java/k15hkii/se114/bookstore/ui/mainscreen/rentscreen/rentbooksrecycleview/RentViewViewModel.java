@@ -37,9 +37,16 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
     }
     @Bindable
     public String getPrice() {
-        return lend.getBook() == null ? "null" : "đ" + String.valueOf(lend.getBook().getPrice());
+        return lend == null ? "null" :String.valueOf(lend.getBook().getPrice()) + "đ";
     }
-
+    @Bindable
+    public String getName() {
+        return lend == null ? "null" :String.valueOf(lend.getBook().getTitle());
+    }
+    @Bindable
+    public String getAuthor() {
+        return lend == null ? "null" :String.valueOf(lend.getBook().getAuthor().getName());
+    }
     public RentViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;

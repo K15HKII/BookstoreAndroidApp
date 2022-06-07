@@ -33,7 +33,7 @@ public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator>
 
     @Bindable
     public String getAddress() {
-        return address == null ? "profile is null" : address.getCity();
+        return address == null ? "profile is null" : address.getNumber() + ", "+ address.getStreet() + ", "  + address.getCity() + ", " + address.getCountry();
     }
 
     public void setAddress(UserAddress address) {

@@ -20,7 +20,6 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 
     public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>();
 
-    public final ObservableField<String> defaultAddress = new ObservableField<>();
 
     @Inject
     protected ModelRemote remote;
@@ -37,7 +36,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
                                                    model.setAddress(address);
                                                    list.add(model);
                                                    if(address.is_primary()){
-                                                       primaryAddress = address.getCity();
+                                                       primaryAddress = address.getNumber() + ", "+ address.getStreet() + ", "  + address.getCity() + ", " + address.getCountry();
                                                    }
                                                }
                                                listAddress.set(list);

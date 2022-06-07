@@ -38,7 +38,7 @@
                             android:fontFamily="@font/lato_regular"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dac Nhan Tam"
+                            android:text="@{viewModel.name}"
                             android:textSize="21dp"
                             android:textAlignment="textStart"
                             android:textColor="@color/black"/>
@@ -56,11 +56,11 @@
                                 android:textSize="15dp"
                                 android:text="Bìa cứng"/>
                         <TextView
-                                android:id="@+id/tvRentBookAdapterPrice"
+                                android:id="@+id/tvRentBookAdapterAuthor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="10.000đ"
+                                android:text="@{viewModel.author}"
                                 android:textSize="15dp"
                                 android:textColor="@color/btn_blue"
                                 android:textAlignment="textEnd"/>

@@ -7,11 +7,13 @@ import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
+import javax.inject.Inject;
 import java.util.Date;
 
 public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
 
-    protected final ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
     private VoucherProfile voucherProfile;
     private Voucher voucher;
@@ -36,10 +38,27 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
         super(null);
         this.remote = remote;
     }
-
+    public VoucherViewModel(){
+        super(null);
+    }
     @Bindable
     public String getDiscount() {
-        return discount == null ? "null" : String.valueOf(voucherProfile.getDiscount());
+        return voucherProfile == null ? "null" : String.valueOf(voucherProfile.getDiscount());
+    }
+
+    @Bindable
+    public String getDate(){
+        return voucher == null ? "null" : String.valueOf(voucher.getUsedAt());
+    }
+
+    @Bindable
+    public String getMinValue(){
+        return voucherProfile == null ? "null" : "Áp dụng cho đơn hàng trên " + String.valueOf(voucherProfile.getMinValue()) + "đ";
+    }
+
+    @Bindable
+    public String getDiscountType(){
+        return voucherProfile == null ? "null" : voucherProfile.getDiscountType();
     }
 
     public void setVoucher(Voucher voucher) {

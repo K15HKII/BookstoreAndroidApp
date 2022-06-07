@@ -28,6 +28,7 @@ public class Book {
     @SerializedName("description")
     private String description;
 
+
     @Getter
     @Expose
     @SerializedName("quantity")

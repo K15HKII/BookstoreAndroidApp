@@ -33,6 +33,11 @@ public class Lend {
 
     @Getter
     @Expose
+    @SerializedName("lend_status")
+    private LendStatus lendStatus;
+
+    @Getter
+    @Expose
     @SerializedName("start_date")
     private Date startDate;
 
@@ -40,4 +45,6 @@ public class Lend {
     @Expose
     @SerializedName("end_date")
     private Date endDate;
+
+
 }

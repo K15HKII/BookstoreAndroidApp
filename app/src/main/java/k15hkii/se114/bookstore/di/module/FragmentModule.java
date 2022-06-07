@@ -239,8 +239,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, remote));
+    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, mapper));
     }
 
     @Provides
