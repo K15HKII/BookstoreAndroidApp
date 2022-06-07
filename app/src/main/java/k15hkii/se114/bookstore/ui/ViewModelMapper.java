@@ -5,9 +5,12 @@ import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -51,13 +54,24 @@ public class ViewModelMapper {
 
     // ORDER MAPPER
 
+    public Single<List<OrderViewViewModel>> toOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                OrderViewViewModel vm = new OrderViewViewModel(remote);
+                vm.setBill(bill);
+                list.add(vm);
+            }
+            return list;
+        });
+    }
+
     public Single<List<OrderViewViewModel>> toWaitingOrderViewModel(Single<List<Bill>> single) {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.WAITING.toString()))
-                {
-                    OrderViewViewModel vm = new OrderViewViewModel();
+                if (bill.getStatus().toString().equals(BillStatus.WAITING.toString())) {
+                    OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
                 }
@@ -70,9 +84,8 @@ public class ViewModelMapper {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.PROCESSING.toString()))
-                {
-                    OrderViewViewModel vm = new OrderViewViewModel();
+                if (bill.getStatus().toString().equals(BillStatus.PROCESSING.toString())) {
+                    OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
                 }
@@ -85,9 +98,8 @@ public class ViewModelMapper {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString()))
-                {
-                    OrderViewViewModel vm = new OrderViewViewModel();
+                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString())) {
+                    OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
                 }
@@ -95,13 +107,13 @@ public class ViewModelMapper {
             return list;
         });
     }
+
     public Single<List<OrderViewViewModel>> toRatingOrderViewModel(Single<List<Bill>> single) {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString()))
-                {
-                    OrderViewViewModel vm = new OrderViewViewModel();
+                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString())) {
+                    OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
                 }
@@ -114,9 +126,8 @@ public class ViewModelMapper {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.CANCELED.toString()))
-                {
-                    OrderViewViewModel vm = new OrderViewViewModel();
+                if (bill.getStatus().toString().equals(BillStatus.CANCELED.toString())) {
+                    OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
                 }
@@ -151,6 +162,10 @@ public class ViewModelMapper {
         return toBookViewModel(remote.getRecentBooks(userId));
     }
 
+    public Single<List<BookViewModel>> getFavouriteBooks(UUID userId) {
+        return toBookViewModel(remote.getFavoriteBooks(userId));
+    }
+
     public Single<List<BookViewModel>> getBooks() {
         return toBookViewModel(remote.getBooks());
     }
@@ -161,6 +176,30 @@ public class ViewModelMapper {
             for (BillDetail billDetail : bill.getBillDetails()) {
                 OrderBookViewModel viewModel = new OrderBookViewModel();
                 viewModel.setOrderDetail(billDetail);
+                list.add(viewModel);
+            }
+            return list;
+        });
+    }
+
+    public Single<List<OrderItemViewModel>> getBillItem(int billId) {
+        return remote.getBill(billId).map(bill -> {
+            List<OrderItemViewModel> list = new ArrayList<>();
+            for (BillDetail billDetail : bill.getBillDetails()) {
+                OrderItemViewModel viewModel = new OrderItemViewModel(remote);
+                viewModel.setBillDetail(billDetail);
+                list.add(viewModel);
+            }
+            return list;
+        });
+    }
+
+    public Single<List<OrderViewViewModel>> getBills(UUID userId) {
+        return remote.getBills(userId).map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                OrderViewViewModel viewModel = new OrderViewViewModel(remote);
+                viewModel.setBill(bill);
                 list.add(viewModel);
             }
             return list;

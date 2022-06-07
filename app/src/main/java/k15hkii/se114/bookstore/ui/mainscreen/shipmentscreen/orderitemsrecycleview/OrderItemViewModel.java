@@ -7,6 +7,7 @@ import k15hkii.se114.bookstore.data.model.api.File;
 import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,30 +20,34 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
     private BillDetail billDetail;
     private Book book;
+
     private List<Image> bookImages;
-    private String billId;
-    private String bookProfileId;
+
+    // todo: binding data
+    @Bindable
+    public String getName() {
+        return billDetail == null ? "profile is null" : book.getTitle();
+    }
+
+    @Bindable
+    public String getPrice() {
+        return billDetail == null ? "profile is null" : String.valueOf(book.getPrice());
+    }
+
+    public OrderItemViewModel(ModelRemote remote) {
+        super(null);
+        this.remote = remote;
+    }
 
     public void setBillDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
 
         remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
             this.book = book;
-            bookProfileId = String.valueOf(book.getId());
         }).subscribe();
 
         /*remote.getBookImages().doOnSuccess(bookImages -> {
             this.bookImages = bookImages;
         }).subscribe();*/ //TODO:
-    }
-
-    @Bindable
-    @Getter
-    @Setter
-    private String Name;
-
-    public OrderItemViewModel(String name) {
-        super(null);
-        this.Name = name;
     }
 }

@@ -57,8 +57,6 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
         return bill == null ? "null" : "Giảm giá " + bill.getVoucherProfile().getDiscount() +" %";
     }
 
-
-
     public OrderBookViewModel() {
         super(null);
         setData();

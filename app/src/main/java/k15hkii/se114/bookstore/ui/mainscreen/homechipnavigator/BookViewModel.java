@@ -18,22 +18,22 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
     private String id;
     private Book book;
 
-    public void getData(UUID id) {
-        getCompositeDisposable().add(remote.getBook(id)
-               .subscribeOn(getSchedulerProvider().io())
-               .observeOn(getSchedulerProvider().ui())
-               .doOnSuccess(book -> {
-                   this.book = book;
-               }).subscribe());
-    }
+//    public void getData(UUID id) {
+//        getCompositeDisposable().add(remote.getBook(id)
+//               .subscribeOn(getSchedulerProvider().io())
+//               .observeOn(getSchedulerProvider().ui())
+//               .doOnSuccess(book -> {
+//                   this.book = book;
+//               }).subscribe());
+//    }
 
     public void setBook(Book book) {
         this.book = book;
     }
 
-    public BookViewModel(SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
-    }
+//    public BookViewModel(SchedulerProvider schedulerProvider) {
+//        super(schedulerProvider);
+//    }
 
     @Bindable
     public String getName() {
@@ -49,10 +49,6 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
 //    public Image getImage() {
 //        return book == null ?  : book.getImages()[0];
 //    }
-
-    public BookViewModel(String name) {
-        super(null);
-    }
 
     public BookViewModel() {
         super(null);

@@ -8,6 +8,7 @@ import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
@@ -401,6 +402,11 @@ public class FragmentModule {
     public RentDetailBillViewModel RentDetailBillViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider));
     }
+
+//    @Provides
+//    public OrderViewViewModel provideOrderViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+//        return createViewModel(fragment, OrderViewViewModel.class, () -> new OrderViewViewModel(schedulerProvider, mapper));
+//    }
 
     //endregion
 

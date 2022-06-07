@@ -24,7 +24,7 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
     private UUID userId;
 
     public void getData() {
-        dispose(mapper.getRecentBooks(userId),
+        dispose(mapper.getFavouriteBooks(userId),
                 items::set,
                 throwable -> Log.d("FavoritePageViewModel", "getData: " + throwable.getMessage(), throwable));
     }

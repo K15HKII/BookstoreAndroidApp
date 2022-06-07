@@ -26,7 +26,7 @@ public class WaitingOrderViewPageViewModel extends BaseViewModel<WaitingOrderVie
     private UUID userId;
 
     public void getData() {
-        dispose(mapper.getWaitingBills(userId),
+        dispose(mapper.getBills(userId),
                 items::set,
                 throwable -> Log.d("WaitingOrderViewPageVM","getData: " + throwable.getMessage(), throwable));
     }

@@ -54,7 +54,7 @@ public interface ModelRemote {
 
     //User
     //RecentBook
-    @GET("/api/user/recents/{user_id}")
+    @GET("/api/user/recent/{user_id}")
     Single<List<Book>> getRecentBooks(@Path("user_id") UUID user_id);
 
     /**
@@ -107,7 +107,7 @@ public interface ModelRemote {
     @GET("/api/bill/{id}")
     Single<Bill> getBill(@Path("id") int id);
 
-    @GET("/api/user/bills/{user_id}")
+    @GET("/api/user/bill/{user_id}")
     Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bill/{user_id}")
