@@ -13,8 +13,12 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.CancleOrderFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 
-public class CancleOrder extends BaseFragment<CancleOrderFragmentBinding, CancleOrderViewModel> implements CancleOrderNavigator {
+public class CancleOrder extends BaseFragment<CancleOrderFragmentBinding, CancleOrderViewModel> implements CancleOrderNavigator, IOrderNavigator {
 
     @Override
     public int getBindingVariable() {
@@ -38,5 +42,16 @@ public class CancleOrder extends BaseFragment<CancleOrderFragmentBinding, Cancle
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
+    }
+
+    @Override
+    public void Navigate(OrderViewViewModel vm) {
+        createTransaction(R.id.fragmentContainerView, OrderDetail.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

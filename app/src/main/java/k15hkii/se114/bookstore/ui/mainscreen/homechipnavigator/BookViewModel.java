@@ -54,10 +54,6 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
         super(null);
     }
 
-    public void openDetail() {
-        getNavigator().bookDetailNavigate(id);
-    }
-
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

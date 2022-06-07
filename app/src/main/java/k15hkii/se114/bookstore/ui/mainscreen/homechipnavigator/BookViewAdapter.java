@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.BookViewAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -17,7 +20,9 @@ import java.util.List;
 
 public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.BookViewHolder> {
     private Context context;
-
+    @Getter
+    @Setter
+    private BookViewNavigator bookViewNavigator;
     /**
      * Deprecated constructor: use {@link #BookViewAdapter(Context)} with DI instead
      *
@@ -25,9 +30,10 @@ public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.
      * @param source
      */
     @Deprecated
-    public BookViewAdapter(Context context, List<BookViewModel> source) {
+    public BookViewAdapter(Context context, List<BookViewModel> source, BookViewNavigator bookViewNavigator) {
         super(source);
         this.context = context;
+        this.bookViewNavigator = bookViewNavigator;
     }
 
     public BookViewAdapter(Context context) {
@@ -47,6 +53,9 @@ public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.
     //set DATA
     @Override
     public void onBindViewHolder(@NonNull @NotNull BookViewHolder holder, BookViewModel data) {
+        holder.itemView.setOnClickListener(d -> {
+            getBookViewNavigator().Navigate(data);
+        });
         holder.setViewModel(data);
     }
 

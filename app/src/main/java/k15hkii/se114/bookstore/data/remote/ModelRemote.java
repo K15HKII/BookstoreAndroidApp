@@ -2,7 +2,7 @@ package k15hkii.se114.bookstore.data.remote;
 
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
-import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
+import k15hkii.se114.bookstore.data.model.api.CartItem;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
 import k15hkii.se114.bookstore.data.model.api.user.*;
 import retrofit2.http.*;
