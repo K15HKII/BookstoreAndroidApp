@@ -58,23 +58,11 @@ public class ViewModelMapper {
 
     // ORDER MAPPER
 
-    public Single<List<OrderViewViewModel>> toOrderViewModel(Single<List<Bill>> single) {
+    public Single<List<OrderViewViewModel>> toOrderViewModel(Single<List<Bill>> single, String type) {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                OrderViewViewModel vm = new OrderViewViewModel(remote);
-                vm.setBill(bill);
-                list.add(vm);
-            }
-            return list;
-        });
-    }
-
-    public Single<List<OrderViewViewModel>> toWaitingOrderViewModel(Single<List<Bill>> single) {
-        return single.map(bills -> {
-            List<OrderViewViewModel> list = new ArrayList<>();
-            for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.WAITING.toString())) {
+                if (bill.getStatus().toString().equals(type)) {
                     OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
@@ -211,23 +199,23 @@ public class ViewModelMapper {
     }
 
     public Single<List<OrderViewViewModel>> getWaitingBills(UUID userId) {
-        return toWaitingOrderViewModel(remote.getBills(userId));
+        return toOrderViewModel(remote.getBills(userId), BillStatus.WAITING.name());
     }
 
     public Single<List<OrderViewViewModel>> getShippingBills(UUID userId) {
-        return toShippingOrderViewModel(remote.getBills(userId));
+        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING.name());
     }
 
     public Single<List<OrderViewViewModel>> getCompletedBills(UUID userId) {
-        return toShipmentArrivedOrderViewModel(remote.getBills(userId));
+        return toOrderViewModel(remote.getBills(userId), BillStatus.COMPLETED.name());
     }
 
     public Single<List<OrderViewViewModel>> getRatingBills(UUID userId) {
-        return toRatingOrderViewModel(remote.getBills(userId));
+        return toOrderViewModel(remote.getBills(userId), BillStatus.CANCELED.name());
     }
 
     public Single<List<OrderViewViewModel>> getCancelBills(UUID userId) {
-        return toCanceledOrderViewModel(remote.getBills(userId));
+        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING.toString());
     }
 
 }
