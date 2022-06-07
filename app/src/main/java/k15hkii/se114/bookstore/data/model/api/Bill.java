@@ -33,7 +33,7 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("status")
-    private String status;
+    private BillStatus status;
 
     @Expose
     @Getter

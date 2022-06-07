@@ -23,7 +23,7 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
     @Inject protected ViewModelMapper mapper;
     private UUID userId;
 
-    public void getData(UUID user_id) {
+    public void getData() {
         dispose(mapper.getRecentBooks(userId),
                 items::set,
                 throwable -> Log.d("FavoritePageViewModel", "getData: " + throwable.getMessage(), throwable));
@@ -33,7 +33,7 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
         super(schedulerProvider);
         this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData(userId);
+        getData();
     }
 
     public void onSearchBarClick(){

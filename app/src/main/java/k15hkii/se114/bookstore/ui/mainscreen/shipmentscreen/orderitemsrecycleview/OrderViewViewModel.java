@@ -24,6 +24,12 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     private Bill bill;
     private int billId;
     private List<BillDetail> billDetails;
+
+    public OrderViewViewModel() {
+        super(null);
+
+    }
+
     public void setListOrder(int billId) {
         this.billId = billId;
 
@@ -44,4 +50,7 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
         orderItems.set(lsOrderItem);
     }
 
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
 }

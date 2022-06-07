@@ -293,23 +293,23 @@ public class FragmentModule {
     }
 
     @Provides
-    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider));
+    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider));
+    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider));
+    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider));
+    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides

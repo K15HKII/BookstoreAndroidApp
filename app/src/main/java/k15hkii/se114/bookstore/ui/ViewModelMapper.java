@@ -1,13 +1,11 @@
 package k15hkii.se114.bookstore.ui;
 
 import io.reactivex.Single;
-import k15hkii.se114.bookstore.data.model.api.Bill;
-import k15hkii.se114.bookstore.data.model.api.BillDetail;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Lend;
+import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 
@@ -51,6 +49,84 @@ public class ViewModelMapper {
         });
     }
 
+    // ORDER MAPPER
+
+    public Single<List<OrderViewViewModel>> toWaitingOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                if (bill.getStatus().toString().equals(BillStatus.WAITING.toString()))
+                {
+                    OrderViewViewModel vm = new OrderViewViewModel();
+                    vm.setBill(bill);
+                    list.add(vm);
+                }
+            }
+            return list;
+        });
+    }
+
+    public Single<List<OrderViewViewModel>> toShippingOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                if (bill.getStatus().toString().equals(BillStatus.PROCESSING.toString()))
+                {
+                    OrderViewViewModel vm = new OrderViewViewModel();
+                    vm.setBill(bill);
+                    list.add(vm);
+                }
+            }
+            return list;
+        });
+    }
+
+    public Single<List<OrderViewViewModel>> toShipmentArrivedOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString()))
+                {
+                    OrderViewViewModel vm = new OrderViewViewModel();
+                    vm.setBill(bill);
+                    list.add(vm);
+                }
+            }
+            return list;
+        });
+    }
+    public Single<List<OrderViewViewModel>> toRatingOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString()))
+                {
+                    OrderViewViewModel vm = new OrderViewViewModel();
+                    vm.setBill(bill);
+                    list.add(vm);
+                }
+            }
+            return list;
+        });
+    }
+
+    public Single<List<OrderViewViewModel>> toCanceledOrderViewModel(Single<List<Bill>> single) {
+        return single.map(bills -> {
+            List<OrderViewViewModel> list = new ArrayList<>();
+            for (Bill bill : bills) {
+                if (bill.getStatus().toString().equals(BillStatus.CANCELED.toString()))
+                {
+                    OrderViewViewModel vm = new OrderViewViewModel();
+                    vm.setBill(bill);
+                    list.add(vm);
+                }
+            }
+            return list;
+        });
+    }
+
+    // RATING MAPPER
+
     public Single<List<RatingReportViewModel>> toRatingViewModel(Single<List<Bill>> single) {
         return single.map(bills -> {
             List<RatingReportViewModel> list = new ArrayList<>();
@@ -89,6 +165,26 @@ public class ViewModelMapper {
             }
             return list;
         });
+    }
+
+    public Single<List<OrderViewViewModel>> getWaitingBills(UUID userId) {
+        return toWaitingOrderViewModel(remote.getBills(userId));
+    }
+
+    public Single<List<OrderViewViewModel>> getShippingBills(UUID userId) {
+        return toShippingOrderViewModel(remote.getBills(userId));
+    }
+
+    public Single<List<OrderViewViewModel>> getCompletedBills(UUID userId) {
+        return toShipmentArrivedOrderViewModel(remote.getBills(userId));
+    }
+
+    public Single<List<OrderViewViewModel>> getRatingBills(UUID userId) {
+        return toRatingOrderViewModel(remote.getBills(userId));
+    }
+
+    public Single<List<OrderViewViewModel>> getCancelBills(UUID userId) {
+        return toCanceledOrderViewModel(remote.getBills(userId));
     }
 
 }
