@@ -34,7 +34,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
 
     public void onServerLoginClick() {
         login(null);
-//        getNavigator().openHomeView();
+        getNavigator().openHomeView();
     }
 
     public void onForgotPasswordClick() {
