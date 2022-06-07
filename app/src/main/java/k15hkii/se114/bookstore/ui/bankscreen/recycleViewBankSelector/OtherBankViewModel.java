@@ -2,14 +2,14 @@ package k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector;
 
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
-import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.User;
-import k15hkii.se114.bookstore.data.model.api.UserBank;
+import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> implements Observable {
     @Inject
@@ -18,13 +18,13 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
     UserBank bank;
     User user;
 
-    private void setUser(String userId) {
-            getCompositeDisposable().add(remote.getUser(userId)
-                   .subscribeOn(getSchedulerProvider().io())
-                   .observeOn(getSchedulerProvider().ui())
-                   .doOnSuccess(user -> {
-                       this.user = user;
-                   }).subscribe());
+    public void setUser(UUID userId) {
+        getCompositeDisposable().add(remote.getUser(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .doOnSuccess(user -> {
+                                               this.user = user;
+                                           }).subscribe());
     }
 
     @Bindable
@@ -49,8 +49,8 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
         super(null);
     }
 
-    public void setBank(UserBank bank, String userId) {
+    public void setBank(UserBank bank) {
         this.bank = bank;
-        setUser(userId);
+        setUser(bank.getUserId());
     }
 }

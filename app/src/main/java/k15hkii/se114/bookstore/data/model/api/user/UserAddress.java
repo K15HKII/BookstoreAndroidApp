@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -20,8 +20,9 @@ public class UserAddress {
 
     @Getter
     @Expose
-    @SerializedName("index")
-    private String index;
+    @SerializedName("number")
+    private String number;
+
 
     @Getter
     @Expose
@@ -42,6 +43,11 @@ public class UserAddress {
     @Expose
     @SerializedName("zip")
     private String zip;
+
+    @Getter
+    @Expose
+    @SerializedName("updated_at")
+    private String update_at;
 
     @Getter
     @Expose

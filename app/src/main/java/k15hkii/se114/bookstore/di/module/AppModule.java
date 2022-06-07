@@ -9,13 +9,13 @@ import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.*;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -39,6 +39,10 @@ public class AppModule {
 
     @Provides
     @Singleton
+    ViewModelMapper provideViewModelMapper(ModelRemote remote) { return new ViewModelMapper(remote); }
+
+    @Provides
+    @Singleton
     PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) { return appPreferencesHelper; }
 
     @Provides
@@ -50,8 +54,6 @@ public class AppModule {
     @Provides
     @Singleton
     ModelRemote provideModelRemote(Retrofit retrofit) {
-        if (BookstoreApp.IS_LOCAL)
-            return new LocalModelRemote();
         return retrofit.create(ModelRemote.class);
     }
 
@@ -86,8 +88,8 @@ public class AppModule {
         clientBuilder.addInterceptor(chain -> {
             if (preferencesHelper.getAccessToken() != null && preferencesHelper.getRefreshToken() != null) {
                 Request request = chain.request().newBuilder()
-                        .addHeader("access_token", preferencesHelper.getAccessToken())
-                        .addHeader("refresh_token", preferencesHelper.getRefreshToken())
+                        .addHeader("x-access-token", preferencesHelper.getAccessToken())
+                        .addHeader("x-refresh-token", preferencesHelper.getRefreshToken())
                         .build();
                 return chain.proceed(request);
             }

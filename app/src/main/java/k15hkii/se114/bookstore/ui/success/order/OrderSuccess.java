@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OrderSuccessBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
@@ -45,13 +46,12 @@ public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccess
 
     @Override
     public void BackHome() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, HomePage.class, null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, HomePage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

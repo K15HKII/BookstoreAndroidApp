@@ -5,14 +5,15 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack> {
 
     @Inject protected ModelRemote remote;
-    private String userId;
+    private UUID userId;
     private String userName;
 
-    public void setUserId(String userId) {
+    public void setUserId(UUID userId) {
         this.userId = userId;
 
         remote.getUser(userId).doOnSuccess(user -> {

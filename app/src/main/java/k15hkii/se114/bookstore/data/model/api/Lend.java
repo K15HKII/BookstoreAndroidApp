@@ -18,6 +18,11 @@ public class Lend {
 
     @Getter
     @Expose
+    @SerializedName("userId")
+    private UUID userId;
+
+    @Getter
+    @Expose
     @SerializedName("transport")
     private Transport transport;
 

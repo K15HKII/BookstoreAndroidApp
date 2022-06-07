@@ -2,13 +2,12 @@ package k15hkii.se114.bookstore.data.model.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @With
@@ -19,7 +18,7 @@ public class Bill {
     @Getter
     @Expose
     @SerializedName("id")
-    private UUID id;
+    private int id;
 
     @Getter
     @Expose
@@ -41,4 +40,18 @@ public class Bill {
     @SerializedName("bill_details")
     private BillDetail[] billDetails;
 
+    @Expose
+    @Getter
+    @SerializedName("user_address")
+    private UserAddress userAddress;
+
+    @Expose
+    @Getter
+    @SerializedName("voucher_profile")
+    private VoucherProfile voucherProfile;
+
+    @Expose
+    @Getter
+    @SerializedName("payment")
+    private String payment;
 }

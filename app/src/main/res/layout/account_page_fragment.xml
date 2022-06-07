@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:fontFamily="@font/lato_bold"
-                      android:text="Trần Hữu Trí"
+                      android:text="@{viewModel.name}"
                       android:textStyle="bold"
                       android:textSize="30dp"
                       android:layout_marginTop="10dp"
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:fontFamily="@font/lato_regular"
-                      android:text="20520327@gm.uit.edu.vn"
+                      android:text="@{viewModel.email}"
                       android:textSize="16dp"
                       android:textStyle="normal"
                       android:textColor="@color/btn_blue"/>

@@ -3,9 +3,10 @@ package k15hkii.se114.bookstore.di.module;
 import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
@@ -75,7 +76,7 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPageViewModel;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
@@ -101,303 +102,303 @@ public class FragmentModule {
     }
 
     @Provides
-    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider){
+    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, ForgotPasswordViewModel.class, () -> new ForgotPasswordViewModel(schedulerProvider));
     }
 
     @Provides
-    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider){
+    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider));
     }
 
     //TODO: MainScreen
     @Provides
-    public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider){
+    public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HomePageViewModel.class, () -> new HomePageViewModel(schedulerProvider));
     }
 
     @Provides
-    public RentPageViewModel provideRentPageViewModel(SchedulerProvider schedulerProvider){
+    public RentPageViewModel provideRentPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RentPageViewModel.class, () -> new RentPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public ShippingPageViewModel provideShippingPageViewModel(SchedulerProvider schedulerProvider){
+    public ShippingPageViewModel provideShippingPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, ShippingPageViewModel.class, () -> new ShippingPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote));
+    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider, preferencesHelper));
     }
 
     @Provides
-    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote));
+    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
-    public HelpPageViewModel provideHelpPageViewModel(SchedulerProvider schedulerProvider){
+    public HelpPageViewModel provideHelpPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HelpPageViewModel.class, () -> new HelpPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public SettingPageViewModel provideSettingPageViewModel(SchedulerProvider schedulerProvider){
+    public SettingPageViewModel provideSettingPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, SettingPageViewModel.class, () -> new SettingPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider));
+    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
-    public HelpCenterViewModel provideHelpCenterViewModel(SchedulerProvider schedulerProvider){
+    public HelpCenterViewModel provideHelpCenterViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HelpCenterViewModel.class, () -> new HelpCenterViewModel(schedulerProvider));
     }
 
     @Provides
-    public IntroductionViewModel provideIntroductionViewModel(SchedulerProvider schedulerProvider){
+    public IntroductionViewModel provideIntroductionViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, IntroductionViewModel.class, () -> new IntroductionViewModel(schedulerProvider));
     }
 
     @Provides
-    public PolicyViewModel providePolicyViewModel(SchedulerProvider schedulerProvider){
+    public PolicyViewModel providePolicyViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, PolicyViewModel.class, () -> new PolicyViewModel(schedulerProvider));
     }
 
     @Provides
-    public DeleteAccountViewModel provideDeleteAccountViewModel(SchedulerProvider schedulerProvider){
+    public DeleteAccountViewModel provideDeleteAccountViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, DeleteAccountViewModel.class, () -> new DeleteAccountViewModel(schedulerProvider));
     }
 
     @Provides
-    public NotificationSettingViewModel provideNotificationSettingViewModel(SchedulerProvider schedulerProvider){
+    public NotificationSettingViewModel provideNotificationSettingViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, NotificationSettingViewModel.class, () -> new NotificationSettingViewModel(schedulerProvider));
     }
 
     @Provides
-    public PrivacySettingViewModel providePrivacySettingViewModel(SchedulerProvider schedulerProvider){
+    public PrivacySettingViewModel providePrivacySettingViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, PrivacySettingViewModel.class, () -> new PrivacySettingViewModel(schedulerProvider));
     }
 
     @Provides
-    public LanguageSettingViewModel provideLanguageSettingViewModel(SchedulerProvider schedulerProvider){
+    public LanguageSettingViewModel provideLanguageSettingViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, LanguageSettingViewModel.class, () -> new LanguageSettingViewModel(schedulerProvider));
     }
 
     @Provides
-    public SelectorAddressPageViewModel provideSelectorAddressPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SelectorAddressPageViewModel.class, () -> new SelectorAddressPageViewModel(schedulerProvider));
+    public SelectorAddressPageViewModel provideSelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, SelectorAddressPageViewModel.class, () -> new SelectorAddressPageViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
-    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider){
+    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider){
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider));
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper));
     }
 
     @Provides
-    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider){
+    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider){
+    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public PaymentMethodViewModel providePaymentMethodViewModel(SchedulerProvider schedulerProvider){
+    public PaymentMethodViewModel providePaymentMethodViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, PaymentMethodViewModel.class, () -> new PaymentMethodViewModel(schedulerProvider));
     }
 
     @Provides
-    public OncartViewViewModel provideOncartViewViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, OncartViewViewModel.class, () -> new OncartViewViewModel(schedulerProvider));
+    public OncartViewViewModel provideOncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, OncartViewViewModel.class, () -> new OncartViewViewModel(schedulerProvider, remote, preferencesHelper));
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider){
+    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public AddRentBookViewViewModel provideAddRentBookViewViewModel(SchedulerProvider schedulerProvider){
+    public AddRentBookViewViewModel provideAddRentBookViewViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, AddRentBookViewViewModel.class, () -> new AddRentBookViewViewModel(schedulerProvider));
     }
 
     @Provides
-    public AddRentBookDetailViewModel provideAddRentBookDetailViewModel(SchedulerProvider schedulerProvider){
+    public AddRentBookDetailViewModel provideAddRentBookDetailViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, AddRentBookDetailViewModel.class, () -> new AddRentBookDetailViewModel(schedulerProvider));
     }
 
     @Provides
-    public RatingBooksDetailPageViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RatingBooksDetailPageViewModel.class, () -> new RatingBooksDetailPageViewModel(schedulerProvider));
+    public RateDetailViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, RateDetailViewModel.class, () -> new RateDetailViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
-    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider){
+    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider){
+    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider));
     }
 
     @Provides
-    public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider));
+    public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider, remote));
+    public RentingViewPageViewModel provideRentingViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, RentingViewPageViewModel.class, () -> new RentingViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider){
+    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider));
     }
 
     @Provides
-    public SearchBookViewResultViewModel provideSearchBookViewResultViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(fragment, SearchBookViewResultViewModel.class, () -> new SearchBookViewResultViewModel(schedulerProvider));
+    public SearchBookViewResultViewModel provideSearchBookViewResultViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, SearchBookViewResultViewModel.class, () -> new SearchBookViewResultViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider){
+    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider){
+    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider){
+    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider){
+    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public MyOrderNotificationViewModel provideMyOrderNotificationViewModel(SchedulerProvider schedulerProvider){
+    public MyOrderNotificationViewModel provideMyOrderNotificationViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, MyOrderNotificationViewModel.class, () -> new MyOrderNotificationViewModel(schedulerProvider));
     }
 
     @Provides
-    public VoucherNotificaitonViewModel provideVoucherNotificaitonViewModel(SchedulerProvider schedulerProvider){
+    public VoucherNotificaitonViewModel provideVoucherNotificaitonViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, VoucherNotificaitonViewModel.class, () -> new VoucherNotificaitonViewModel(schedulerProvider));
     }
 
     @Provides
-    public OtherNotificationViewModel provideOtherNotificationViewModel(SchedulerProvider schedulerProvider){
+    public OtherNotificationViewModel provideOtherNotificationViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, OtherNotificationViewModel.class, () -> new OtherNotificationViewModel(schedulerProvider));
     }
 
     @Provides
-    public IntroFirstPageViewModel provideIntroFirstPageViewModel(SchedulerProvider schedulerProvider){
+    public IntroFirstPageViewModel provideIntroFirstPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, IntroFirstPageViewModel.class, () -> new IntroFirstPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public IntroSecondPageViewModel provideIntroSecondPageViewModel(SchedulerProvider schedulerProvider){
+    public IntroSecondPageViewModel provideIntroSecondPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, IntroSecondPageViewModel.class, () -> new IntroSecondPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public IntroThirdPageViewModel provideIntroThirdPageViewModel(SchedulerProvider schedulerProvider){
+    public IntroThirdPageViewModel provideIntroThirdPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, IntroThirdPageViewModel.class, () -> new IntroThirdPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public IntroFourthPageViewModel provideIntroFourthPageViewModel(SchedulerProvider schedulerProvider){
+    public IntroFourthPageViewModel provideIntroFourthPageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, IntroFourthPageViewModel.class, () -> new IntroFourthPageViewModel(schedulerProvider));
     }
 
     @Provides
-    public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider, remote));
+    public AllBooksViewViewModel provideAllBooksViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, AllBooksViewViewModel.class, () -> new AllBooksViewViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider, remote));
+    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider, remote));
+    public ForYouBooksViewModel provideForYouBooksViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, ForYouBooksViewModel.class, () -> new ForYouBooksViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider, remote));
+    public PopularBooksViewModel providePopularBooksViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, PopularBooksViewModel.class, () -> new PopularBooksViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, remote));
+    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public LendSuccessViewModel provideLendSuccessViewModel(SchedulerProvider schedulerProvider){
+    public LendSuccessViewModel provideLendSuccessViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, LendSuccessViewModel.class, () -> new LendSuccessViewModel(schedulerProvider));
     }
 
     @Provides
-    public OrderSuccessViewModel provideOrderSuccessViewModel(SchedulerProvider schedulerProvider){
+    public OrderSuccessViewModel provideOrderSuccessViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, OrderSuccessViewModel.class, () -> new OrderSuccessViewModel(schedulerProvider));
     }
 
     @Provides
-    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, remote));
+    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, remote));
+    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
-        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, remote));
+    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public RentDetailBillViewModel RentDetailBillViewModel(SchedulerProvider schedulerProvider){
+    public RentDetailBillViewModel RentDetailBillViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider));
     }
 

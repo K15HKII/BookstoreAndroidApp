@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RatingBooksDetailPageViewModel> implements RatingBooksDetailPageNavigator {
+public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator {
 
     @Inject
     protected RatingReportAdapter ratingReportAdapter;

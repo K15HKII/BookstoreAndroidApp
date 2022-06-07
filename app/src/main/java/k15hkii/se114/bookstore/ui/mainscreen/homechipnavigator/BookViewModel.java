@@ -3,13 +3,11 @@ package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
-import java.util.List;
 import java.util.UUID;
 
 public class BookViewModel extends BaseViewModel<BookViewNavigator> implements Observable {
@@ -29,7 +27,7 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
                }).subscribe());
     }
 
-    public void setBookProfile(Book book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 

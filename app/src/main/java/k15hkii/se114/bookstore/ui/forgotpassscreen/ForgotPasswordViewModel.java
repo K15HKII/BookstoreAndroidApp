@@ -7,13 +7,14 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class ForgotPasswordViewModel extends BaseViewModel<ForgotPassNavigator> implements Observable {
 
     @Inject
     protected ModelRemote remote;
     private String email;
-    private String userId;
+    private UUID userId;
 
     @Bindable
     public String getEmail() {
@@ -24,13 +25,14 @@ public class ForgotPasswordViewModel extends BaseViewModel<ForgotPassNavigator> 
         remote.getUser(userId).doOnSuccess(user -> {
             this.email = user.getEmail();
         }).subscribe();
+        //todo
     }
 
     public ForgotPasswordViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
 
-    public ForgotPasswordViewModel(String userId, SchedulerProvider schedulerProvider) {
+    public ForgotPasswordViewModel(UUID userId, SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
         this.userId = userId;
     }

@@ -100,7 +100,7 @@
                                 android:layout_width="319dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                                android:text="@{viewModel.primaryAddress}"
                                 android:textSize="17dp"
                                 android:textColor="@color/black"/>
 

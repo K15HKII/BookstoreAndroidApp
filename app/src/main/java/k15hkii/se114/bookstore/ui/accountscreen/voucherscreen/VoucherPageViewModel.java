@@ -1,23 +1,52 @@
 package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 
+import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.model.api.Voucher;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
-import java.util.Arrays;
+import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> implements Observable {
 
-    public final ObservableField<List<VoucherViewModel>> listvoucher = new ObservableField<>(
-            Arrays.asList(new VoucherViewModel("20% Giảm giá"),
-                          new VoucherViewModel("30% Giảm giá"))
-    );
+    PreferencesHelper preferencesHelper;
+    @Inject protected ModelRemote remote;
+    public final ObservableField<List<VoucherViewModel>> listVoucher = new ObservableField<>();
+    private UUID userId;
+    public void getData() {
+        getCompositeDisposable().add(remote.getVouchers(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(vouchers -> {
+                                               List<VoucherViewModel> list = new ArrayList<>();
+                                               for (Voucher voucher : vouchers) {
+                                                   VoucherViewModel model = new VoucherViewModel(remote);
+                                                   model.setVoucher(voucher);
+                                                   list.add(model);
+                                               }
+                                               listVoucher.set(list);
+                                           }, throwable -> {
+                                               Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable);
+                                           }));
+    }
 
-    public VoucherPageViewModel(SchedulerProvider schedulerProvider) {
+    public void setUserId() {
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData();
+    }
+
+    public VoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
+        this.remote = remote;
+        this.preferencesHelper = preferencesHelper;
+        setUserId();
     }
 
     public void onBackWardClick(){

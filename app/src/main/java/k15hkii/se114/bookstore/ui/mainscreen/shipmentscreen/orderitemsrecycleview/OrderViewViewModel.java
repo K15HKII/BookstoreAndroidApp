@@ -13,6 +13,7 @@ import lombok.Setter;
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implements Observable {
 
@@ -21,9 +22,9 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     @Inject protected ModelRemote remote;
 
     private Bill bill;
-    private String billId;
+    private int billId;
     private List<BillDetail> billDetails;
-    public void setListOrder(String billId) {
+    public void setListOrder(int billId) {
         this.billId = billId;
 
         remote.getBill(billId).doOnSuccess(bill -> {

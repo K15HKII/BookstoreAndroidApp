@@ -44,7 +44,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void bindSource(RecyclerView view, List<BookViewModel> source) {
         BookViewAdapter adapter = (BookViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
 
@@ -59,7 +59,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void orderViewBindSource(RecyclerView view, List<OrderViewViewModel> source) {
         OrderViewAdapter adapter = (OrderViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -70,7 +70,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void orderBookViewBindSource(RecyclerView view, List<OrderBookViewModel> source) {
         OrderBooksViewAdapter adapter = (OrderBooksViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -81,7 +81,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void voucherBindSource(RecyclerView view, List<VoucherViewModel> source) {
         VoucherViewAdapter adapter = (VoucherViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -92,7 +92,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void addressBindSource(RecyclerView view, List<OtherAddressViewModel> source) {
         OtherAddressAdapter adapter = (OtherAddressAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -103,7 +103,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void bankAccountBindSource(RecyclerView view, List<OtherBankViewModel> source) {
         OtherBankAdapter adapter = (OtherBankAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -114,7 +114,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void commentBindSource(RecyclerView view, List<Comment> source) {
         CommentViewAdapter adapter = (CommentViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -125,8 +125,9 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void rentViewBindSource(RecyclerView view, List<RentViewViewModel> source) {
         RentViewAdapter adapter = (RentViewAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
+
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
         adapter.notifyDataSetChanged();
@@ -136,7 +137,7 @@ public final class BindingUtils {
 //    @BindingAdapter({"source"})
 //    public static void rentItemBindSource(RecyclerView view, List<RentBookItemViewModel> source) {
 //        RentBookItemAdapter adapter = (RentBookItemAdapter) view.getAdapter();
-//        if (adapter == null)
+//        if (adapter == null || source == null)
 //            return;
 //        adapter.getSource().clear();
 //        adapter.getSource().addAll(source);
@@ -147,7 +148,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void orderItemBindSource(RecyclerView view, List<OrderItemViewModel> source) {
         OrderItemAdapter adapter = (OrderItemAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -158,7 +159,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void onCartItemBindSource(RecyclerView view, List<OncartItemViewModel> source) {
         OncartItemAdapter adapter = (OncartItemAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -169,7 +170,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
         RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -180,7 +181,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void searchBindSource(RecyclerView view, List<RecentSearchViewModel> source) {
         RecentSearchAdapter adapter = (RecentSearchAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);
@@ -191,7 +192,7 @@ public final class BindingUtils {
     @BindingAdapter({"source"})
     public static void listDataNotificationBindSource(RecyclerView view, List<ListDataNotificationViewModel> source) {
         ListDataNotificationAdapter adapter = (ListDataNotificationAdapter) view.getAdapter();
-        if (adapter == null)
+        if (adapter == null || source == null)
             return;
         adapter.getSource().clear();
         adapter.getSource().addAll(source);

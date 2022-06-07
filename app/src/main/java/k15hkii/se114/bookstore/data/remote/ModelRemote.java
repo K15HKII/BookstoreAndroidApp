@@ -2,131 +2,161 @@ package k15hkii.se114.bookstore.data.remote;
 
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
+import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
+import k15hkii.se114.bookstore.data.model.api.user.*;
+import retrofit2.http.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public interface ModelRemote {
+    //User
+    @GET("/api/model/user")
+    Single<List<User>> getUsers();
+
+    @GET("api/mode/user/self")
+    Single<User> getSelfUser();
+
+    @GET("/api/model/user/{id}")
+    Single<User> getUser(@Path("id") UUID id);
+
     //Author
     @GET("/api/author/{id}")
-    Single<Author> getAuthor();
-
-    @POST("api/author/{id}")
-    Single<Author> updateAuthor();
-
-    @DELETE("api/author/{id}")
-    void deleteAuthor();
+    Single<Author> getAuthor(@Path("id") int id);
 
     @GET("/api/author")
     Single<List<Author>> getAuthors();
 
-    @POST("api/author")
-    Single<Author> createAuthor();
     //Book
+    @GET("/api/book/search")
+    Single<List<Book>> getBooks();
+
+    @GET("/api/book/info/{id}")
+    Single<Book> getBook(@Path("id") UUID id);
 
     //Publisher
     @GET("/api/publisher/{id}")
-    Single<Publisher> getPublisher();
+    Single<Publisher> getPublisher(@Path("id") int id);
 
-    @POST("api/publisher/{id}")
-    Single<Publisher> updatePublisher();
-
-    @DELETE("api/publisher/{id}")
-    void deletePublisher();
+    void deletePublisher(@Path("id") int id);
 
     @GET("/api/publisher")
     Single<List<Publisher>> getPublishers();
 
-    @POST("api/publisher")
-    Single<Publisher> createPublisher();
-
     //Transporter
     @GET("/api/transporter/{id}")
-    Single<Transporter> getTransporter();
-
-    @POST("api/transporter/{id}")
-    Single<Transporter> updateTransporter();
-
-    @DELETE("api/transporter/{id}")
-    void deleteTransporter();
+    Single<Transporter> getTransporter(@Path("id") int id);
 
     @GET("/api/transporter")
     Single<List<Transporter>> getTransporters();
 
-    @POST("api/transporter")
-    Single<Transporter> createTransporter();
-
     //User
     //RecentBook
     @GET("/api/user/recents/{user_id}")
-    Single<List<RecentBook>> getRecentBooks();
+    Single<List<Book>> getRecentBooks(@Path("user_id") UUID user_id);
 
+    /**
+     *
+     * Tạo hoặc cập nhật một sách gần đây
+     *
+     * @param user_id
+     * @param request
+     * @return
+     */
     @POST("/api/user/recent/{user_id}")
-    Single<RecentBook> createRecentBook();
+    Single<Book> createRecentBook(@Path("user_id") UUID user_id, @Body RecentBookCRUDRequest request);
 
     //FavoriteBook
-    @GET("/api/user/favorites/{user_id}")
-    Single<List<FavoriteBook>> getFavoriteBooks();
+    @GET("/api/user/favourites/{user_id}")
+    Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
-    @POST("/api/user/favorite/{user_id}")
-    Single<FavoriteBook> createFavoriteBook();
+    /**
+     *
+     * Tạo hoặc cập nhật một sách yêu thích
+     *
+     * @param user_id
+     * @param request
+     * @return
+     */
+    @POST("/api/user/favourite/{user_id}")
+    Single<Book> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
 
-    @DELETE("/api/user/favorite/{user_id}")
-    void deleteFavoriteBook();
+    @DELETE("/api/user/favourite/{user_id}")
+    void deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
     //CartItem
     @GET("/api/user/carts/{user_id}")
-    Single<List<CartItem>> getCarts();
+    Single<List<CartItem>> getCarts(@Path("user_id") UUID user_id);
 
+    /**
+     *
+     * Tạo hoặc cập nhật CartItem
+     *
+     * @param user_id
+     * @param cartItem
+     * @return
+     */
     @POST("/api/user/cart/{user_id}")
-    Single<CartItem> createCart();
+    Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItem cartItem);
 
     @DELETE("/api/user/cart/{user_id}")
-    void deleteCart();
+    void deleteCart(@Path("user_id") UUID user_id, @Body String book_id);
 
     //Bill
+    @GET("/api/bill/{id}")
+    Single<Bill> getBill(@Path("id") int id);
+
     @GET("/api/user/bills/{user_id}")
-    Single<List<Bill>> getBills();
+    Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bill/{user_id}")
-    Single<Bill> createBill();
+    Single<Bill> createBill(@Path("user_id") UUID user_id);
 
+    /**
+     *
+     * Cancel order
+     *
+     * @param user_id
+     * @param billId
+     */
     @DELETE("/api/user/bill/{user_id}")
-    void deleteBill();
+    void deleteBill(@Path("user_id") UUID user_id, int billId);
 
     //Address
     @GET("/api/user/addresses/{user_id}")
-    Single<List<UserAddress>> getAddresss();
+    Single<List<UserAddress>> getAddresses(@Path("user_id") UUID user_id);
 
     @POST("/api/user/address/{user_id}")
-    Single<UserAddress> createAddress();
+    Single<UserAddress> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
 
     @DELETE("/api/user/address/{user_id}")
-    void deleteAddress();
+    void deleteAddress(@Path("user_id") UUID user_id, @Body Date date);
 
     //Bank
     @GET("/api/user/banks/{user_id}")
-    Single<List<UserBank>> getBanks();
+    Single<List<UserBank>> getBanks(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bank/{user_id}")
-    Single<UserBank> createBank();
+    Single<UserBank> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
 
     @DELETE("/api/user/bank/{user_id}")
-    void deleteBank();
+    void deleteBank(@Path("user_id") UUID user_id, @Body Date date);
 
     //Lend
     @GET("/api/user/lends/{user_id}")
-    Single<List<Lend>> getLends();
+    Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
 
     @POST("/api/user/lend/{user_id}")
-    Single<Lend> createLend();
+    Single<Lend> createLend(@Path("user_id") UUID user_id, @Body LendRequest request);
 
     @DELETE("/api/user/lend/{user_id}")
-    void deleteLend();
+    void deleteLend(@Path("user_id") UUID user_id);
 
     //Voucher
     @GET("/api/user/vouchers/{user_id}")
-    Single<List<Voucher>> getVouchers();
+    Single<List<Voucher>> getVouchers(@Path("user_id") UUID user_id);
+
+    @GET("/api/user/vouchers/{id}")
+    Single<VoucherProfile> getVoucherProfile(@Path("id") UUID id);
 }

@@ -39,7 +39,7 @@
                             android:fontFamily="@font/lato_bold"
                             android:textColor="@color/btn_blue"
                             android:textSize="28dp"
-                            android:text="@{viewModel.title}"
+                            android:text="@{viewModel.discount}"
                             android:textStyle="bold"/>
                     <LinearLayout
                             android:layout_width="wrap_content"

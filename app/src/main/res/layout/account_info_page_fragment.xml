@@ -380,7 +380,7 @@
 
                                     <TextView
                                         android:fontFamily="@font/lato_regular"
-                                        android:text="Địa chỉ"
+                                        android:text="Dia chi"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
@@ -409,7 +409,7 @@
                         <TextView
                             android:id="@+id/tvAccountInfoLocation"
                             android:fontFamily="@font/lato_regular"
-                            android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                            android:text="@{viewModel.address}"
                             android:textSize="19dp"
                             android:textColor="@color/black"
                             android:textAlignment="textStart"

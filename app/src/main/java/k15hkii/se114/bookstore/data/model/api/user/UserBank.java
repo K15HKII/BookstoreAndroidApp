@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,24 +12,25 @@ import java.util.UUID;
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartItem {
+public class UserBank {
     @Getter
     @Expose
-    @SerializedName("user_id")
+    @SerializedName("userid")
     private UUID userId;
 
     @Getter
     @Expose
-    @SerializedName("book_id")
-    private UUID bookId;
+    @SerializedName("bank_name")
+    private String bankName;
 
     @Getter
     @Expose
-    @SerializedName("book")
-    private Book book;
+    @SerializedName("iban")
+    private String iban;
 
     @Getter
     @Expose
-    @SerializedName("selected")
-    private boolean selected;
+    @SerializedName("bic")
+    private String bic;
 }
+

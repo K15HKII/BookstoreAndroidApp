@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
@@ -25,16 +26,34 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
 
     @Inject protected ModelRemote remote;
 
-    private String bookProfileId;
-
-    private Book profile;
-    private Image[] image;
+    Book book;
+    private String name;
+    private String price;
+    private String description;
+    private String remainQuantity;
 
     public void getData(UUID id) {
-        remote.getBook(id).doOnSuccess(bookProfile -> {
-            profile = bookProfile;
-        }).subscribe();
-        // Todo: lay image
+
+    }
+    @Bindable
+    public String getName() {
+        return name == null ? "profile is null" : book.getTitle();
+    }
+    @Bindable
+    public String getPrice() {
+        return price == null ? "profile is null" : String.valueOf(book.getPrice());
+    }
+    @Bindable
+    public String getDescription() {
+        return description == null ? "profile is null" : book.getDescription();
+    }
+    @Bindable
+    public String getRemainQuantity() {
+        return remainQuantity == null ? "profile is null" : String.valueOf(book.getQuantity());
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public BookDetailPageViewModel(SchedulerProvider schedulerProvider) {

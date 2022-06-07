@@ -4,7 +4,9 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.PropertyChangeRegistry;
 import androidx.lifecycle.ViewModel;
+import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 
@@ -15,13 +17,16 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
 
     private final ObservableBoolean isLoading = new ObservableBoolean();
 
-    @Inject @Getter SchedulerProvider schedulerProvider;
+    @Inject
+    @Getter
+    SchedulerProvider schedulerProvider;
 
     public BaseViewModel(SchedulerProvider schedulerProvider) {
         this.schedulerProvider = schedulerProvider;
     }
 
-    @Getter private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    @Getter
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     private WeakReference<N> navigator = new WeakReference<>(null);
 
@@ -48,6 +53,15 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
     }
 
     private PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
+
+    protected <T> void dispose(Single<T> single, Consumer<? super T> onSuccess, Consumer<? super Throwable> onError) {
+        compositeDisposable.add(single
+                .doOnSubscribe(disposable -> isLoading.set(true))
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
+                .doFinally(() -> isLoading.set(false))
+                .subscribe(onSuccess, onError));
+    }
 
     @Override
     public void addOnPropertyChangedCallback(

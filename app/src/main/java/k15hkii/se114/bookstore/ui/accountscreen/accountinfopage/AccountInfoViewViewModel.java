@@ -3,21 +3,24 @@ package k15hkii.se114.bookstore.ui.accountscreen.accountinfopage;
 import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
-import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.BR;
-import k15hkii.se114.bookstore.data.model.api.User;
+import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator> implements Observable {
 
+    @Inject
     protected ModelRemote remote;
 
     private User user;
-
+    private UUID user_id;
+    private String address;
     @Bindable
     public String getName() {
         if (user == null) return "";
@@ -50,7 +53,13 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
         return user.getEmail();
     }
 
-    private void getUser() {
+    @Bindable
+    public String getAddress() {
+        if (address == null) return "null";
+        return address;
+    }
+
+    private void getData(UUID userId) {
         getCompositeDisposable().add(remote.getSelfUser()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
@@ -60,12 +69,25 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 }, throwable -> {
                     Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
                 }));
-    }
 
-    public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        // set address
+        getCompositeDisposable().add(remote.getAddresses(userId)
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(addresses -> {
+                                               for (UserAddress address : addresses)
+                                               {
+                                                   if (address.is_primary()){
+                                                       this.address = address.getCity();
+                                                   }
+                                               }
+                                           }));
+    }
+    public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
-        getUser();
+        this.user_id = preferencesHelper.getCurrentUserId();
+        getData(user_id);
     }
 
     public void onBackWardClick() {

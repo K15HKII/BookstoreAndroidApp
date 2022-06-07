@@ -18,6 +18,7 @@ import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
+import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding, AccountInfoViewViewModel> implements AccountInfoNavigator {
 
@@ -156,26 +157,24 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
 
     @Override
     public void openSelectAddress() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, SelectorAddressPage.class, null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, SelectorAddressPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
     @Override
     public void openSelectBank() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).replace(R.id.fragmentContainerView, SelectorBankPage.class, null).addToBackStack(null).commit();
+        createTransaction(R.id.fragmentContainerView, SelectorBankPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
 

@@ -25,14 +25,4 @@ public class RentInfoViewViewModel extends BaseViewModel<RentInfoViewNavigator> 
         getNavigator().openRentSuccess();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }
