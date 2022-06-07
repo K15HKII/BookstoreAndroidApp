@@ -10,6 +10,14 @@ public class MyOrderNotificationViewModel extends BaseViewModel<MyOrderNotificat
         super(schedulerProvider);
     }
 
+    public void SoundPermission(){}
+
+    public void ShakePermisstion(){}
+
+    public void LightPermisstion(){}
+
+    public void EmailPermission(){}
+
     public void onBackWardClick(){
         getNavigator().BackWard();
     }

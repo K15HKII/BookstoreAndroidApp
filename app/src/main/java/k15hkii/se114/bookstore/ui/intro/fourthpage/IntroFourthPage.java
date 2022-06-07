@@ -20,12 +20,6 @@ import k15hkii.se114.bookstore.ui.loginscreen.Login;
 public class IntroFourthPage extends BaseFragment<IntroFourthPageFragmentBinding, IntroFourthPageViewModel> implements IntroFourthPageNavigator {
 
     private IntroFourthPageFragmentBinding introFourthPageFragmentBinding;
-    private IntroFourthPageViewModel mViewModel;
-
-
-    public static IntroFourthPage newInstance() {
-        return new IntroFourthPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -49,13 +43,6 @@ public class IntroFourthPage extends BaseFragment<IntroFourthPageFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(IntroFourthPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

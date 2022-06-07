@@ -17,10 +17,6 @@ public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, Add
 
     private AddBankAccountFragmentBinding addBankAccountFragmentBinding;
 
-    public static AddBankPage newInstance() {
-        return new AddBankPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

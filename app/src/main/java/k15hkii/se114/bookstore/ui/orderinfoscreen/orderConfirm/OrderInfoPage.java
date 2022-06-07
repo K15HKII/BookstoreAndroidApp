@@ -26,10 +26,6 @@ import javax.inject.Inject;
 public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, OrderInfoPageViewModel> implements OrderInfoPageNavigator {
     @Inject protected OrderBooksViewAdapter orderBooksViewAdapter;
 
-    public static OrderInfoPage newInstance() {
-        return new OrderInfoPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

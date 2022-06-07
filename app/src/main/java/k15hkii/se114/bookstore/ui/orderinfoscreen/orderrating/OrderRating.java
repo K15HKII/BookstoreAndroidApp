@@ -17,9 +17,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderRatingViewModel> implements OrderRatingNavigator {
 
     private OrderRatingFragmentBinding orderRatingFragmentBinding;
-    public static OrderRating newInstance() {
-        return new OrderRating();
-    }
 
     @Override
     public int getBindingVariable() {

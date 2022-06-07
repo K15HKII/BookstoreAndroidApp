@@ -26,15 +26,6 @@ import k15hkii.se114.bookstore.ui.registerscreen.Register;
 public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> implements LoginNavigator {
 
     private LoginFragmentBinding loginFragmentBinding;
-    private LoginViewModel loginViewModel;
-    private EditText etUsername,etPassword;
-    private Button btnLogin, btnLoginWithGoogle, btnLoginWithFacebook;
-    private TextView tvPassforget,tvRegister;
-    private boolean passwordVisible;
-
-    public static Login newInstance() {
-        return new Login();
-    }
 
     @Override
     public int getBindingVariable() {

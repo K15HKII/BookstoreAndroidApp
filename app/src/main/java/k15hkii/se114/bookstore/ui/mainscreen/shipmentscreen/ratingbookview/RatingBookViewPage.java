@@ -27,10 +27,6 @@ public class RatingBookViewPage extends BaseFragment<RatingViewFragmentBinding, 
 
     @Inject protected OrderViewAdapter orderViewAdapter;
 
-    public static RatingBookViewPage newInstance() {
-        return new RatingBookViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

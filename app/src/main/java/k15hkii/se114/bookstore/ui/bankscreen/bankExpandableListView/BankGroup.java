@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.bankscreen.BankExpandableListView;
+package k15hkii.se114.bookstore.ui.bankscreen.bankExpandableListView;
 
 public class BankGroup {
     private int _id;

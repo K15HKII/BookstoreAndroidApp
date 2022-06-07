@@ -18,6 +18,8 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     public final ObservableField<List<OncartItemViewModel>> items = new ObservableField<>();
 
+    public final ObservableField<String> totalPrice = new ObservableField<>();
+
     @Inject
     protected ModelRemote remote;
     private UUID userId;

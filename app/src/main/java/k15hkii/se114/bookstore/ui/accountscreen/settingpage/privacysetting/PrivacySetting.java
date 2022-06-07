@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class PrivacySetting extends BaseFragment<PrivacySettingFragmentBinding, PrivacySettingViewModel> implements PrivacySettingNavigator {
 
     private PrivacySettingFragmentBinding privacySettingFragmentBinding;
-    private PrivacySettingViewModel mViewModel;
-
-    public static PrivacySetting newInstance() {
-        return new PrivacySetting();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class PrivacySetting extends BaseFragment<PrivacySettingFragmentBinding, 
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PrivacySettingViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

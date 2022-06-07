@@ -23,6 +23,11 @@ import java.util.UUID;
 @Setter
 public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implements Observable {
 
+    public final ObservableField<String> bookName = new ObservableField<>();
+    public final ObservableField<String> bookType = new ObservableField<>();
+    public final ObservableField<String> bookPrice = new ObservableField<>();
+    public final ObservableField<String> rentNote = new ObservableField<>();
+    public final ObservableField<String> rentPrice = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
     public double price = 0;

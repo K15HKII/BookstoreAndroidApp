@@ -20,11 +20,6 @@ import k15hkii.se114.bookstore.ui.intro.thirdpage.IntroThirdPage;
 public class IntroSecondPage extends BaseFragment<IntroSecondPageFragmentBinding, IntroSecondPageViewModel> implements IntroSecondPageNavigator {
 
     private IntroSecondPageFragmentBinding introSecondPageFragmentBinding;
-    private IntroSecondPageViewModel mViewModel;
-
-    public static IntroSecondPage newInstance() {
-        return new IntroSecondPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -48,13 +43,6 @@ public class IntroSecondPage extends BaseFragment<IntroSecondPageFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(IntroSecondPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

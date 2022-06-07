@@ -26,9 +26,6 @@ import javax.inject.Inject;
 
 public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, RentedViewPageViewModel> implements RentedViewPageNavigator, RentViewNavigator {
 
-    public static RentedViewPage newInstance() {
-        return new RentedViewPage();
-    }
     @Inject
     protected RentViewAdapter rentViewAdapter;
 

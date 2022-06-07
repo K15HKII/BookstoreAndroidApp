@@ -21,9 +21,6 @@ public class FamiliarBooksPage extends BaseFragment<FamiliarBooksFragmentBinding
 
     @Inject
     protected BookViewAdapter bookViewAdapter;
-    public static FamiliarBooksPage newInstance() {
-        return new FamiliarBooksPage();
-    }
 
     @Override
     public int getBindingVariable() {

@@ -25,9 +25,6 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewModel> implements HomePageNavigator {
 
     private HomePageFragmentBinding homePageFragmentBinding;
-//    private ChipGroup chipNavi;
-    private Chip chipAllTopics, chipAllBooks, chipPoppularBooks, chipFamiliarBooks, chipForYouBooks;
-    private Button btnFilter, btnNotification, btnOncart;
 
     @Override
     public int getBindingVariable() {

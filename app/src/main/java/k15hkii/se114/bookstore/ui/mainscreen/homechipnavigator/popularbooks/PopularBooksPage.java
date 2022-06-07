@@ -21,10 +21,6 @@ public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, 
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
-    public static PopularBooksPage newInstance() {
-        return new PopularBooksPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

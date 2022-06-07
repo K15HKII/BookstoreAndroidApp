@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class HelpCenter extends BaseFragment<HelpCenterFragmentBinding, HelpCenterViewModel> implements HelpCenterNavigator {
 
     private HelpCenterFragmentBinding helpCenterFragmentBinding;
-    private HelpCenterViewModel mViewModel;
-
-    public static HelpCenter newInstance() {
-        return new HelpCenter();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class HelpCenter extends BaseFragment<HelpCenterFragmentBinding, HelpCent
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HelpCenterViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

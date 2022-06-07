@@ -20,10 +20,6 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     @Inject
     protected RatingReportAdapter ratingReportAdapter;
 
-    public static RatingBooksDetailPage newInstance() {
-        return new RatingBooksDetailPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

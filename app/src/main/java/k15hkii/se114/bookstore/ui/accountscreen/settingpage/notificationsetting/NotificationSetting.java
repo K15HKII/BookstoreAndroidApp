@@ -22,11 +22,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 public class NotificationSetting extends BaseFragment<NotificationSettingFragmentBinding, NotificationSettingViewModel> implements NotificationSettingNavigator {
 
     private NotificationSettingFragmentBinding notificationSettingFragmentBinding;
-    private NotificationSettingViewModel mViewModel;
-
-    public static NotificationSetting newInstance() {
-        return new NotificationSetting();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -50,13 +45,6 @@ public class NotificationSetting extends BaseFragment<NotificationSettingFragmen
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(NotificationSettingViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

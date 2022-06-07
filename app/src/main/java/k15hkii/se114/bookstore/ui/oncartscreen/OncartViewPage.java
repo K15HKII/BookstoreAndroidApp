@@ -21,10 +21,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
 
-    public static OncartViewPage newInstance() {
-        return new OncartViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

@@ -16,6 +16,8 @@ public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigat
                           new RecentSearchViewModel("hi hi"))
     );
 
+    public ObservableField<String> etSearchBookText = new ObservableField<>();
+
     public List<RecentSearchViewModel> getSearchBookViewItems() {
         return searchBookViewItemsLiveData.get();
     }

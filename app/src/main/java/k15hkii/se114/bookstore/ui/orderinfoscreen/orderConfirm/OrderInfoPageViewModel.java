@@ -23,6 +23,14 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<String> voucher = new ObservableField<>();
+    public final ObservableField<String> paymentMethod = new ObservableField<>();
+    public final ObservableField<String> orderCheck = new ObservableField<>();
+    public final ObservableField<String> shippingPay = new ObservableField<>();
+    public final ObservableField<String> discount = new ObservableField<>();
+    public final ObservableField<String> total = new ObservableField<>();
+
     @Inject
     protected ModelRemote remote;
 
