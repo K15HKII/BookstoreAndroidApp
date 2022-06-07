@@ -21,6 +21,16 @@ public class AddAddressPageViewModel extends BaseViewModel<AddAddressPageNavigat
     @Getter
     public final ObservableField<List<String>> lsVillage = new ObservableField<>(Arrays.asList("Tân Kiểng", "Tân Phong", "Phường 7"));
 
+    public final ObservableField<String> city = new ObservableField<>();
+    public final ObservableField<String> district = new ObservableField<>();
+    public final ObservableField<String> village = new ObservableField<>();
+    public final ObservableField<String> addressNumber = new ObservableField<>();
+    public final ObservableField<Boolean> defaultAddress = new ObservableField<>();
+
+    public void Accept(){
+        //TODO: save address
+    }
+
     public AddAddressPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }

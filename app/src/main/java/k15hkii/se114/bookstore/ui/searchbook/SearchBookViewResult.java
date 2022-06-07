@@ -22,10 +22,6 @@ public class SearchBookViewResult extends BaseFragment<SearchBookViewResultFragm
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
-    public static SearchBookViewResult newInstance() {
-        return new SearchBookViewResult();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

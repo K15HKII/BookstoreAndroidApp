@@ -12,7 +12,19 @@ import java.util.List;
 
 public class EditBankPageViewModel extends BaseViewModel<EditBankPageNavigator> implements Observable {
     @Getter
-    private final ObservableField<List<String>> testSource = new ObservableField<>(Arrays.asList("VietComBank", "TechComBank", "BIDV"));
+    private final ObservableField<List<String>> lsBank = new ObservableField<>(Arrays.asList("VietComBank", "TechComBank", "BIDV"));
+
+    public final ObservableField<String> ownerName = new ObservableField<>();
+    public final ObservableField<String> ownerCMND = new ObservableField<>();
+    public final ObservableField<String> ownerBank = new ObservableField<>();
+    public final ObservableField<String> ownerBankAddress = new ObservableField<>();
+    public final ObservableField<String> ownerBankNumber = new ObservableField<>();
+    public final ObservableField<Boolean> defaultBank = new ObservableField<>();
+
+    public void Accept(){
+        //TODO: save Bank
+    }
+
     public EditBankPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }

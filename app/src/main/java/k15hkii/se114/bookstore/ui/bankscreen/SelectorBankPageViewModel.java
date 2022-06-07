@@ -25,10 +25,14 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
     protected ModelRemote remote;
     PreferencesHelper preferencesHelper;
 
+    public final ObservableField<String> bankName = new ObservableField<>();
+    public final ObservableField<String> userName = new ObservableField<>();
+    public final ObservableField<String> ban = new ObservableField<>();
+
     UserBank bank;
-    String bankName;
-    String userName;
-    String ban;
+//    String bankName;
+//    String userName;
+//    String ban;
     UUID userId;
     User user;
 

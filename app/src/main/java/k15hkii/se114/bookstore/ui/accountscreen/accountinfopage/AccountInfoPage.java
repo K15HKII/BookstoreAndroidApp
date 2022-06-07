@@ -22,10 +22,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding, AccountInfoViewViewModel> implements AccountInfoNavigator {
 
-    public static AccountInfoPage newInstance() {
-        return new AccountInfoPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

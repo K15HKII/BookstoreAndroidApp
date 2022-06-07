@@ -30,14 +30,9 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageViewModel> implements RentPageNavigator {
 
     private RentPageFragmentBinding rentPageFragmentBinding;
-    private RentPageViewModel mViewModel;
     private TabLayout tabMenuNav;
     private FloatingActionButton btnAdd;
     private ViewPager RentView;
-
-    public static RentPage newInstance() {
-        return new RentPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -83,13 +78,6 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RentPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

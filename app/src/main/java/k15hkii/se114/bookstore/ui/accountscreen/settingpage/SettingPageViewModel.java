@@ -9,6 +9,10 @@ public class SettingPageViewModel extends BaseViewModel<SettingPagenavigator> im
         super(schedulerProvider);
     }
 
+    public void changeTheme(){
+
+    }
+
     public void onBackWardClick(){
         getNavigator().BackWard();
     }

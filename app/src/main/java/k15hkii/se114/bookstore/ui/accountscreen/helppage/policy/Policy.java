@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class Policy extends BaseFragment<PolicyFragmentBinding, PolicyViewModel> implements PolicyNavigator {
 
     private PolicyFragmentBinding policyFragmentBinding;
-    private PolicyViewModel mViewModel;
-
-    public static Policy newInstance() {
-        return new Policy();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class Policy extends BaseFragment<PolicyFragmentBinding, PolicyViewModel>
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PolicyViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

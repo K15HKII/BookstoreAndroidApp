@@ -26,10 +26,6 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
 
     @Inject protected OtherBankAdapter otherBankAdapter;
 
-    public static SelectorBankPage newInstance() {
-        return new SelectorBankPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

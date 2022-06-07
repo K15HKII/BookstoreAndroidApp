@@ -14,6 +14,14 @@ public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<String> voucher = new ObservableField<>();
+    public final ObservableField<String> paymentMethod = new ObservableField<>();
+    public final ObservableField<String> orderCheck = new ObservableField<>();
+    public final ObservableField<String> shippingPay = new ObservableField<>();
+    public final ObservableField<String> discount = new ObservableField<>();
+    public final ObservableField<String> total = new ObservableField<>();
+
     protected ViewModelMapper mapper;
 
     public void getData(int billId) {

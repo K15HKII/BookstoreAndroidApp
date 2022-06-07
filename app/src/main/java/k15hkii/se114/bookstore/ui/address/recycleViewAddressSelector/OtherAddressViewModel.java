@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector;
 
 import androidx.databinding.Bindable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -14,6 +15,8 @@ public class OtherAddressViewModel extends BaseViewModel<IOtherAddressNavigator>
 
     UserAddress address;
     User user;
+
+    public final ObservableField<String> Address = new ObservableField<>();
 
     public OtherAddressViewModel() {
         super(null);

@@ -15,10 +15,6 @@ import k15hkii.se114.bookstore.R;
 
 public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, EditBankPageViewModel> implements AdapterView.OnItemSelectedListener,EditBankPageNavigator {
 
-    public static EditBankPage newInstance() {
-        return new EditBankPage();
-    }
-
     private EditBankAccountFragmentBinding editBankAccountFragmentBinding;
 
     @Override

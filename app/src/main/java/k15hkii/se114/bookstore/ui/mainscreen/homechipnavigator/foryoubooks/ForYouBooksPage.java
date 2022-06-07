@@ -21,10 +21,6 @@ public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, Fo
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
-    public static ForYouBooksPage newInstance() {
-        return new ForYouBooksPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

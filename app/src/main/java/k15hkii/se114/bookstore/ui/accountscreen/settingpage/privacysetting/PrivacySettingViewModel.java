@@ -10,6 +10,18 @@ public class PrivacySettingViewModel extends BaseViewModel<PrivacySettingNavigat
         super(schedulerProvider);
     }
 
+    public void CameraPermission(){
+
+    }
+
+    public void ImagePermission(){
+
+    }
+
+    public void GPSPermission(){
+
+    }
+
     public void onBackWardClick(){
         getNavigator().BackWard();
     }

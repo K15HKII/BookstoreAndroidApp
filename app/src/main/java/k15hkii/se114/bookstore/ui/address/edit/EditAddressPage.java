@@ -17,10 +17,6 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
 
     private EditAddressFragmentBinding editAddressFragmentBinding;
 
-    public static EditAddressPage newInstance() {
-        return new EditAddressPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

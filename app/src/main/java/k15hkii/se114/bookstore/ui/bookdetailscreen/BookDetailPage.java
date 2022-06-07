@@ -20,10 +20,6 @@ import javax.inject.Inject;
 public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, BookDetailPageViewModel> implements BookDetailPageNavigator {
     @Inject protected CommentViewAdapter commentViewAdapter;
 
-    public static BookDetailPage newInstance() {
-        return new BookDetailPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

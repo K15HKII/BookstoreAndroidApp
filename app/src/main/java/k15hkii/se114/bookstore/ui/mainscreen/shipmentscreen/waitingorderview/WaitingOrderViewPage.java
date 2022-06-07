@@ -34,10 +34,6 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
     @Inject
     protected OrderViewAdapter orderViewAdapter;
 
-    public static WaitingOrderViewPage newInstance() {
-        return new WaitingOrderViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

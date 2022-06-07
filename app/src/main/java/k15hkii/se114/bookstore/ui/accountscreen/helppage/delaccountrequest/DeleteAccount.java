@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class DeleteAccount extends BaseFragment<DeleteAccountFragmentBinding, DeleteAccountViewModel> implements DeleteAccountNavigator {
 
     private DeleteAccountFragmentBinding deleteAccountFragmentBinding;
-    private DeleteAccountViewModel mViewModel;
-
-    public static DeleteAccount newInstance() {
-        return new DeleteAccount();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class DeleteAccount extends BaseFragment<DeleteAccountFragmentBinding, De
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DeleteAccountViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

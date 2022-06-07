@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class MyOrderNotification extends BaseFragment<MyOrderNotificationFragmentBinding, MyOrderNotificationViewModel> implements MyOrderNotificationNavigator {
 
     private MyOrderNotificationFragmentBinding myOrderNotificationFragmentBinding;
-    private MyOrderNotificationViewModel mViewModel;
-
-    public static MyOrderNotification newInstance() {
-        return new MyOrderNotification();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class MyOrderNotification extends BaseFragment<MyOrderNotificationFragmen
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MyOrderNotificationViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

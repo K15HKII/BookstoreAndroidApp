@@ -26,10 +26,6 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
     @Inject
     protected OtherAddressAdapter otherAddressAdapter;
 
-    public static SelectorAddressPage newInstance() {
-        return new SelectorAddressPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

@@ -13,6 +13,14 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<String> voucher = new ObservableField<>();
+    public final ObservableField<String> paymentMethod = new ObservableField<>();
+    public final ObservableField<String> orderCheck = new ObservableField<>();
+    public final ObservableField<String> shippingPay = new ObservableField<>();
+    public final ObservableField<String> discount = new ObservableField<>();
+    public final ObservableField<String> total = new ObservableField<>();
+
     protected ViewModelMapper mapper;
 
     public OrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {

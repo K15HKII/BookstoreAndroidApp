@@ -19,14 +19,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBinding, ForgotPasswordViewModel>implements ForgotPassNavigator {
 
     private ForgotPasswordFragmentBinding forgotPasswordFragmentBinding;
-    private ForgotPasswordViewModel mViewModel;
-    private Button btnNext, btnBackward;
-    private TextView tvRegister;
-    private EditText etRegister;
-
-    public static ForgotPasswordPage newInstance() {
-        return new ForgotPasswordPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -50,13 +42,6 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ForgotPasswordViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

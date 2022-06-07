@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class OtherNotification extends BaseFragment<OtherNotificationFragmentBinding, OtherNotificationViewModel> implements OtherNotificationNavigator {
 
     private OtherNotificationFragmentBinding otherNotificationFragmentBinding;
-    private OtherNotificationViewModel mViewModel;
-
-    public static OtherNotification newInstance() {
-        return new OtherNotification();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class OtherNotification extends BaseFragment<OtherNotificationFragmentBin
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(OtherNotificationViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

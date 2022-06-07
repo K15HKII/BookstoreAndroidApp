@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class VoucherNotificaiton extends BaseFragment<VoucherNotificaitonFragmentBinding, VoucherNotificaitonViewModel> implements VoucherNotificaitonNavigator {
 
     private VoucherNotificaitonFragmentBinding voucherNotificaitonFragmentBinding;
-    private VoucherNotificaitonViewModel mViewModel;
-
-    public static VoucherNotificaiton newInstance() {
-        return new VoucherNotificaiton();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class VoucherNotificaiton extends BaseFragment<VoucherNotificaitonFragmen
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(VoucherNotificaitonViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

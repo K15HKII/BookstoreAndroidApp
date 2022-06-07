@@ -33,6 +33,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        AccountPageFragmentBinding accountPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;
     }

@@ -16,10 +16,6 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
 
     OrderDetailFragmentBinding orderDetailFragmentBinding;
 
-    public static OrderDetail newInstance() {
-        return new OrderDetail();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

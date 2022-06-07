@@ -22,11 +22,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.Priva
 public class SettingPage extends BaseFragment<SettingPageFragmentBinding, SettingPageViewModel> implements SettingPagenavigator {
 
     private SettingPageFragmentBinding settingPageFragmentBinding;
-    private SettingPageViewModel mViewModel;
-
-    public static SettingPage newInstance() {
-        return new SettingPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -50,13 +45,6 @@ public class SettingPage extends BaseFragment<SettingPageFragmentBinding, Settin
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SettingPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

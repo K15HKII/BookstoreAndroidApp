@@ -21,7 +21,6 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding,AddRentBookViewViewModel> implements AddRentBookViewNavigator {
 
     private AddRentBookViewFragmentBinding addRentBookViewFragmentBinding;
-    private AddRentBookViewViewModel mViewModel;
 
     @Override
     public int getBindingVariable() {
@@ -45,13 +44,6 @@ public class AddRentBookView extends BaseFragment<AddRentBookViewFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddRentBookViewViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

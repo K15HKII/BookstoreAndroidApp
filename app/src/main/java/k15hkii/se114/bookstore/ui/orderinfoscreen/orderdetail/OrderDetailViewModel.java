@@ -4,7 +4,6 @@ import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
-import k15hkii.se114.bookstore.ui.bankscreen.BankExpandableListView.BankItems;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -16,6 +15,14 @@ import java.util.UUID;
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
+
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<String> voucher = new ObservableField<>();
+    public final ObservableField<String> paymentMethod = new ObservableField<>();
+    public final ObservableField<String> orderCheck = new ObservableField<>();
+    public final ObservableField<String> shippingPay = new ObservableField<>();
+    public final ObservableField<String> discount = new ObservableField<>();
+    public final ObservableField<String> total = new ObservableField<>();
 
     @Inject
     protected ViewModelMapper mapper;

@@ -36,6 +36,10 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         getNavigator().BackWard();
     }
 
+    public void ConfirmRating(){
+        //TODO: Confirm Rating
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

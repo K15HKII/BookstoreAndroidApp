@@ -27,10 +27,6 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
 
     @Inject protected OrderViewAdapter orderViewAdapter;
 
-    public static ShippingViewPage newInstance() {
-        return new ShippingViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

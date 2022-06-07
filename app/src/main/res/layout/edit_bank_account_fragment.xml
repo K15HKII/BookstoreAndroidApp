@@ -146,7 +146,7 @@
                         android:inputType="text"
                         android:popupBackground="@drawable/spinner_shape"
                         android:background="@drawable/edit_text_background"
-                        testSource="@{viewModel.testSource}"/>
+                        testSource="@{viewModel.lsBank}"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"

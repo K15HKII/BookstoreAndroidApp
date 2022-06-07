@@ -20,6 +20,8 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 
     public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>();
 
+    public final ObservableField<String> defaultAddress = new ObservableField<>();
+
     @Inject
     protected ModelRemote remote;
     private UUID user_id;

@@ -18,10 +18,6 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
 
     OrderCheckerFragmentBinding orderCheckerFragmentBinding;
 
-    public static OrderChecker newInstance() {
-        return new OrderChecker();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

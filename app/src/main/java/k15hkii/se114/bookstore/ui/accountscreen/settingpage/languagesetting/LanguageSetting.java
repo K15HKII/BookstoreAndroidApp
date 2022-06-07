@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class LanguageSetting extends BaseFragment<LanguageSettingFragmentBinding, LanguageSettingViewModel> implements LanguageSettingNavigator {
 
     private LanguageSettingFragmentBinding languageSettingFragmentBinding;
-    private LanguageSettingViewModel mViewModel;
-
-    public static LanguageSetting newInstance() {
-        return new LanguageSetting();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class LanguageSetting extends BaseFragment<LanguageSettingFragmentBinding
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(LanguageSettingViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

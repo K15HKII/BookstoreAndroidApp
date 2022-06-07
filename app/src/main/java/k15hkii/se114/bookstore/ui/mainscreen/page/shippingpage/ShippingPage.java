@@ -25,7 +25,6 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, ShippingPageViewModel> implements ShippingPageNavigator {
 
     private ShippingPageFragmentBinding shippingPageFragmentBinding;
-    private ShippingPageViewModel mViewModel;
     private TabLayout tabmenuNav;
     private ViewPager orderView;
 
@@ -73,13 +72,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShippingPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override
