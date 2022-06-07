@@ -14,21 +14,8 @@ import java.util.List;
 
 public class WaitingOrderViewPageViewModel extends BaseViewModel<WaitingOrderViewPageNavigator> implements Observable {
 
-    public final ObservableField<List<OrderViewViewModel>> listOrder = new ObservableField<>(
-            Arrays.asList(new OrderViewViewModel("240.000", "note", getOrderListItem(2)),
-                          new OrderViewViewModel("120.000", "note", getOrderListItem(1)))
-    );
+    public final ObservableField<List<OrderViewViewModel>> listOrder = new ObservableField<>();
 
-    public List<OrderItemViewModel> getOrderListItem(int quantity) {
-
-        List<OrderItemViewModel> orderListItem = new ArrayList<>();
-
-        for (int i = 0; i < quantity; i++) {
-            orderListItem.add(new OrderItemViewModel("Dac nhan tam"));
-        }
-
-        return orderListItem;
-    }
 
     public WaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
