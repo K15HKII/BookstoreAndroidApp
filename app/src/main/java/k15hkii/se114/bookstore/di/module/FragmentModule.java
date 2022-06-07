@@ -128,8 +128,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote, preferencesHelper));
+    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
