@@ -54,7 +54,7 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RentingViewPageFragmentBinding rentingViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
+        rentViewAdapter.setRentViewNavigator(this);
         //TODO: Fix bug lỗi hiển thị các adapter khi chuyển fragment
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());

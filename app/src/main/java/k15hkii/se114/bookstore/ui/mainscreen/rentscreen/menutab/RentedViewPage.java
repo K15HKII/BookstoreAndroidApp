@@ -50,6 +50,7 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RentedViewPageFragmentBinding rentedViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        rentViewAdapter.setRentViewNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentedViewPage.this.getContext());
         rentedViewPageFragmentBinding.rcvRentedBookView.setLayoutManager(linearLayoutManager);
