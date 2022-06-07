@@ -36,6 +36,11 @@ public class VoucherProfile {
 
     @Getter
     @Expose
+    @SerializedName("min_value")
+    private double minValue;
+
+    @Getter
+    @Expose
     @SerializedName("discount")
     private int discount;
 

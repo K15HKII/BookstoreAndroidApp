@@ -25,9 +25,6 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
     protected ModelRemote remote;
     PreferencesHelper preferencesHelper;
 
-    public final ObservableField<String> bankName = new ObservableField<>();
-    public final ObservableField<String> userName = new ObservableField<>();
-    public final ObservableField<String> ban = new ObservableField<>();
 
     UserBank bank;
 //    String bankName;
@@ -36,7 +33,7 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
     UUID userId;
     User user;
 
-    public void getData() {
+    public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getBanks(userId)
            .subscribeOn(getSchedulerProvider().io())
            .observeOn(getSchedulerProvider().ui())
@@ -63,27 +60,25 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
                                            }));
     }
 
-    public void setUserId() {
-        this.userId = preferencesHelper.getCurrentUserId();
-    }
     @Bindable
     public String getBankName() {
-        return bankName == null ? "profile is null" : bank.getBankName();
+        return bank == null ? "profile is null" : bank.getBankName();
     }
     @Bindable
     public String getUserName() {
-        return userName == null ? "profile is null" : user.getUserName();
+        return bank == null ? "profile is null" : user.getUserName();
     }
     @Bindable
     public String getBan() {
-        return ban == null ? "profile is null" : bank.getIban();
+        return bank == null ? "profile is null" : bank.getIban();
     }
 
 
     public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.preferencesHelper = preferencesHelper;
-        setUserId();
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
     public void onBackWardClick(){

@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implements Observable {
 
-    public final ObservableField<List<OrderItemViewModel>> orderItems = new ObservableField<>(Arrays.asList());
+    public final ObservableField<List<OrderItemViewModel>> orderItems = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
 

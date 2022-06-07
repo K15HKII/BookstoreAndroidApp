@@ -26,7 +26,7 @@ public class ShipmentArrivedViewPageViewModel extends BaseViewModel<ShipmentArri
 
     private UUID userId;
 
-    public void getData() {
+    public void getData(UUID userId) {
         dispose(mapper.getCompletedBills(userId),
                 items::set,
                 throwable -> Log.d("ShipmentArrivedVPageVM", "getData: " + throwable.getMessage(), throwable));
@@ -36,7 +36,7 @@ public class ShipmentArrivedViewPageViewModel extends BaseViewModel<ShipmentArri
         super(schedulerProvider);
         this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData();
+        getData(userId);
     }
 
     @Override
