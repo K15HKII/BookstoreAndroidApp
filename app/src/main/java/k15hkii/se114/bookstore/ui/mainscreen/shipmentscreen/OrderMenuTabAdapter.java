@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
@@ -30,6 +31,8 @@ public class OrderMenuTabAdapter extends FragmentStatePagerAdapter {
                 return new ShipmentArrivedViewPage();
             case 3:
                 return new RatingBookViewPage();
+            case 4:
+                return new CancleOrder();
             default:
                 return new WaitingOrderViewPage();
         }
@@ -37,7 +40,7 @@ public class OrderMenuTabAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Nullable
@@ -57,6 +60,9 @@ public class OrderMenuTabAdapter extends FragmentStatePagerAdapter {
                 break;
             case 3:
                 title = "Đánh giá";
+                break;
+            case 4:
+                title = "Đơn huỷ";
                 break;
         }
         return title;

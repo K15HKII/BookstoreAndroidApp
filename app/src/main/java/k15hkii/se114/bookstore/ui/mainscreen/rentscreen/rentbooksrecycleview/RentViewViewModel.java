@@ -28,6 +28,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
     public final ObservableField<String> bookPrice = new ObservableField<>();
     public final ObservableField<String> rentNote = new ObservableField<>();
     public final ObservableField<String> rentPrice = new ObservableField<>();
+    public final ObservableField<String> rentDescription = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
     public double price = 0;
