@@ -1,59 +1,52 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
-import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 //@AllArgsConstructor
-@Getter
-@Setter
 public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implements Observable {
 
-    public final ObservableField<String> bookName = new ObservableField<>();
+    public final ObservableField<String> name = new ObservableField<>();
     public final ObservableField<String> bookType = new ObservableField<>();
-    public final ObservableField<String> bookPrice = new ObservableField<>();
+    public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> rentNote = new ObservableField<>();
     public final ObservableField<String> rentPrice = new ObservableField<>();
-    public final ObservableField<String> rentDescription = new ObservableField<>();
+    public final ObservableField<String> description = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
-    public double price = 0;
     private Lend lend;
+    private Book book;
     public void setLend(Lend lend){
+        if(lend==null) return;
         this.lend=lend;
+        getData(this.lend.getBookId());
     }
-    @Bindable
-    public String getPrice() {
-        return lend == null ? "null" :String.valueOf(lend.getBook().getPrice()) + "đ";
+
+    public void getData(UUID id) {
+        getCompositeDisposable().add(remote.getBook(id)
+               .subscribeOn(getSchedulerProvider().io())
+               .observeOn(getSchedulerProvider().ui())
+               .doOnSuccess(book -> {
+                   this.book = book;
+                   this.name.set(book.getTitle());
+                   this.price.set(String.valueOf(book.getPrice()));
+               }).subscribe());
     }
-    @Bindable
-    public String getName() {
-        return lend == null ? "null" :String.valueOf(lend.getBook().getTitle());
-    }
-    @Bindable
-    public String getAuthor() {
-        return lend == null ? "null" :String.valueOf(lend.getBook().getAuthor().getName());
-    }
+
+
     public RentViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
     }
 
-    public RentViewViewModel() { super(null); }
 
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {

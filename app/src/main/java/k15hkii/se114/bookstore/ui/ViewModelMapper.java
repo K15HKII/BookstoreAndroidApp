@@ -22,11 +22,15 @@ import java.util.UUID;
 public class ViewModelMapper {
 
     private final ModelRemote remote;
+    private final SchedulerProvider schedulerProvider;
 
     @Inject
-    public ViewModelMapper(ModelRemote remote) {
+    public ViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        this.schedulerProvider = schedulerProvider;
         this.remote = remote;
     }
+
+
 
     public Single<List<BookViewModel>> toBookViewModel(Single<List<Book>> single) {
         return single.map(books -> {
@@ -44,7 +48,7 @@ public class ViewModelMapper {
         return single.map(lends -> {
             List<RentViewViewModel> list = new ArrayList<>();
             for (Lend lend : lends) {
-                RentViewViewModel vm = new RentViewViewModel();
+                RentViewViewModel vm = new RentViewViewModel(schedulerProvider,remote);
                 vm.setLend(lend);
                 list.add(vm);
             }

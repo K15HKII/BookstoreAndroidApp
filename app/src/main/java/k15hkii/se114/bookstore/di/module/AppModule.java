@@ -39,7 +39,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    ViewModelMapper provideViewModelMapper(ModelRemote remote) { return new ViewModelMapper(remote); }
+    ViewModelMapper provideViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) { return new ViewModelMapper(schedulerProvider,remote); }
 
     @Provides
     @Singleton
