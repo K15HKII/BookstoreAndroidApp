@@ -4,6 +4,6 @@ import k15hkii.se114.bookstore.ui.base.INavigator;
 
 public interface BookViewNavigator extends INavigator {
 
-    void bookDetailNavigate(Object o);
+    void Navigate(BookViewModel vm);
 
 }

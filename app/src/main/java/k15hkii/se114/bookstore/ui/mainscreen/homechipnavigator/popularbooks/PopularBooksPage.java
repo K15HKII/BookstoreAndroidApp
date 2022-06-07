@@ -12,12 +12,15 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.PopularBooksFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, PopularBooksViewModel> implements PopularBooksPageNavigator {
+public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, PopularBooksViewModel> implements PopularBooksPageNavigator, BookViewNavigator {
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
@@ -41,6 +44,7 @@ public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         PopularBooksFragmentBinding popularBooksFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        bookViewAdapter.setBookViewNavigator(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         popularBooksFragmentBinding.lvHomePopularBook.setLayoutManager(gridLayoutManager);
@@ -54,4 +58,14 @@ public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, 
         buildComponent.inject(this);
     }
 
+    @Override
+    public void Navigate(BookViewModel vm) {
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
 }
