@@ -107,7 +107,7 @@ public interface ModelRemote {
     @GET("/api/bill/{id}")
     Single<Bill> getBill(@Path("id") int id);
 
-    @GET("/api/user/bill/{user_id}")
+    @GET("/api/user/bills/{user_id}")
     Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bill/{user_id}")
@@ -146,6 +146,9 @@ public interface ModelRemote {
     //Lend
     @GET("/api/user/lends/{user_id}")
     Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
+
+    @GET("/api/lend/{lend_id}")
+    Single<Lend> getLend(@Path("lend_id") UUID lend_id);
 
     @POST("/api/user/lend/{user_id}")
     Single<Lend> createLend(@Path("user_id") UUID user_id, @Body LendRequest request);

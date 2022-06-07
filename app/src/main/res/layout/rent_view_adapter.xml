@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel"/>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                  android:orientation="vertical"
+    <LinearLayout
+            android:orientation="vertical"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_marginTop="15dp"
@@ -15,8 +14,8 @@
                  android:layout_marginRight="10dp"
                  android:layout_marginBottom="10dp"
                  android:background="@drawable/listview_shape">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:layout_width="match_parent"
+        <LinearLayout
+                android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
             <LinearLayout
@@ -54,13 +53,13 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:textAlignment="textStart"
                                 android:textSize="15dp"
-                                android:text="@{viewModel.bookType}"/>
+                                android:text="@{viewModel.price}"/>
                         <TextView
                                 android:id="@+id/tvRentBookAdapterAuthor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.author}"
+                                android:text="@{viewModel.description}"
                                 android:textSize="15dp"
                                 android:textColor="@color/btn_blue"
                                 android:textAlignment="textEnd"/>
@@ -87,7 +86,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="@{viewModel.rentDescription}"/>
+                            android:text="@{viewModel.description}"/>
 
                     <LinearLayout
                             android:layout_width="wrap_content"
