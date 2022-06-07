@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.ui.accountscreen.accountinfopage;
 import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
@@ -15,56 +16,73 @@ import java.util.UUID;
 
 public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator> implements Observable {
 
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> gender = new ObservableField<>();
+    public final ObservableField<String> birthday = new ObservableField<>();
+    public final ObservableField<String> phone = new ObservableField<>();
+    public final ObservableField<String> email = new ObservableField<>();
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<String> userName = new ObservableField<>();
     @Inject
     protected ModelRemote remote;
-
     private User user;
     private UUID user_id;
-    private String address;
-    @Bindable
-    public String getName() {
-        if (user == null) return "";
+//    @Bindable
+//    public String getName() {
+//        if (user == null) return "";
+//        return user.getFirstName() + " " + user.getLastName();
+//    }
+//
+//    @Bindable
+//    public String getGender() {
+//        if (user == null) return "";
+//        if (user.getGender() == null) return "";
+//        return user.getGender().name();
+//    }
+//
+//    @Bindable
+//    public String getBirthday() {
+//        if (user == null) return "";
+//        if (user.getBirthday() == null) return "";
+//        return user.getBirthday().toString();
+//    }
+//
+//    @Bindable
+//    public String getPhone() {
+//        if (user == null) return "";
+//        return user.getPhone();
+//    }
+//
+//    @Bindable
+//    public String getEmail() {
+//        if (user == null) return "";
+//        return user.getEmail();
+//    }
+//
+//    @Bindable
+//    public String getAddress() {
+//        if (address == null) return "null";
+//        return address;
+//    }
+
+    private String toAddess(UserAddress address){
+        return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
+    }
+    private String toUserName(User user){
         return user.getFirstName() + " " + user.getLastName();
     }
-
-    @Bindable
-    public String getGender() {
-        if (user == null) return "";
-        if (user.getGender() == null) return "";
-        return user.getGender().name();
-    }
-
-    @Bindable
-    public String getBirthday() {
-        if (user == null) return "";
-        if (user.getBirthday() == null) return "";
-        return user.getBirthday().toString();
-    }
-
-    @Bindable
-    public String getPhone() {
-        if (user == null) return "";
-        return user.getPhone();
-    }
-
-    @Bindable
-    public String getEmail() {
-        if (user == null) return "";
-        return user.getEmail();
-    }
-
-    @Bindable
-    public String getAddress() {
-        if (address == null) return "null";
-        return address;
-    }
-
     private void getData(UUID userId) {
         getCompositeDisposable().add(remote.getSelfUser()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(user -> {
                     this.user = user;
+                    this.name.set(toUserName(user));
+                    this.email.set(user.getEmail());
+                    this.gender.set(String.valueOf(user.getGender()));
+                    this.phone.set(user.getPhone());
+                    this.birthday.set(String.valueOf(user.getBirthday()));
+                    this.userName.set(String.valueOf(user.getUserName()));
                     this.notifyChange();
                 }, throwable -> {
                     Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
@@ -78,7 +96,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                                                for (UserAddress address : addresses)
                                                {
                                                    if (address.is_primary()){
-                                                       this.address = address.getCity();
+                                                       this.address.set(toAddess(address));
                                                    }
                                                }
                                            }));
