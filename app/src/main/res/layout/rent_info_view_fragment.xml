@@ -170,58 +170,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                        android:id="@+id/btnRentInfoVoucher"
-                        android:layout_height="wrap_content"
-                        android:layout_width="match_parent"
-                        android:orientation="vertical"
-                        android:background="@drawable/account_button_3"
-                        style="@android:style/Widget.Button"
-                        android:layout_marginTop="5dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="15dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp">
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                        <RelativeLayout android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-                            <LinearLayout android:layout_width="wrap_content"
-                                          android:layout_height="wrap_content"
-                                          android:orientation="horizontal">
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:src="@drawable/ic_voucher"/>
-                                <TextView
-                                        android:text="Voucher"
-                                        android:fontFamily="@font/lato_bold"
-                                        android:textStyle="bold"
-                                        android:textSize="19dp"
-                                        android:textColor="@color/black"
-                                        android:layout_height="wrap_content"
-                                        android:textAlignment="textStart"
-                                        android:layout_width="220dp"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginRight="84.5dp"/>
-                            </LinearLayout>
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <TextView
-                            android:id="@+id/tvRentInfoVoucher"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="Không có"
-                            android:textSize="18dp"
-                            android:textColor="@color/black"
-                            android:textAlignment="textStart"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="25dp"
-                            android:layout_marginLeft="8dp"/>
-                </LinearLayout>
-
-                <LinearLayout
                         android:id="@+id/btnAddRentBookPaymentMethod"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
