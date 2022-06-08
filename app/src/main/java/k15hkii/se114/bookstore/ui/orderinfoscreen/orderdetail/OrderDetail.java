@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderDetailFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
@@ -32,6 +33,9 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderDetailFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        Bundle bundle = this.getArguments();
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        viewModel.setBill(bill);
         return view;
     }
 

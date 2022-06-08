@@ -71,8 +71,11 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
-        //TODO: Navigate to Waiting
-        createTransaction(R.id.fragmentContainerView, OrderDetail.class, null)
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("bill", vm.getBill());
+
+        createTransaction(R.id.fragmentContainerView, OrderDetail.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

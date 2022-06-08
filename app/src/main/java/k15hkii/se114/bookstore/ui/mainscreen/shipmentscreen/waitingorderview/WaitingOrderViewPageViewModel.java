@@ -38,16 +38,6 @@ public class WaitingOrderViewPageViewModel extends BaseViewModel<WaitingOrderVie
         getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
 
     // TODO: Implement the ViewModel
 }

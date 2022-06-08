@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -31,6 +32,10 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         dispose(mapper.getBill(billId),
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+    }
+
+    public void setBill(Bill bill) {
+        //TODO: update
     }
 
     public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {

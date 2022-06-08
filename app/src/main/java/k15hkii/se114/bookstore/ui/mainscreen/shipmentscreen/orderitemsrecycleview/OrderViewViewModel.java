@@ -27,7 +27,7 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     @Inject protected ViewModelMapper mapper;
     @Inject protected ModelRemote remote;
 
-    private Bill bill;
+    @Getter private Bill bill;
 
     private String note;
     private String price;
