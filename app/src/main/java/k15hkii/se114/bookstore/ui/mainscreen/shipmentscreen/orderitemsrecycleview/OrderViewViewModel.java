@@ -24,48 +24,51 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
 
     public final ObservableField<List<OrderItemViewModel>> items = new ObservableField<>();
 
-    @Inject protected ViewModelMapper mapper;
     @Inject protected ModelRemote remote;
 
     @Getter private Bill bill;
 
+    private int billId;
     private String note;
     private String price;
 
     @Bindable
     public String getNote() {
-        return note == null ? "profile is null" : note;
+        return bill == null ? "profile is null" : bill.getStatus().name();
     }
 
     @Bindable
     public String getPrice() {
-        return price == null ? "profile is null" : price;
+        return bill == null ? "profile is null" : price;
     }
-    //todo: tinh' tong? gia'
-
-//    public OrderViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-//        super(schedulerProvider);
-//        this.mapper = mapper;
-//        getData();
-//    }
 
     public OrderViewViewModel(ModelRemote remote) {
         super(null);
         this.remote = remote;
     }
+    double totalPrice = 0;
 
     public void getData() {
+
         List<OrderItemViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : bill.getBillDetails()) {
             OrderItemViewModel item = new OrderItemViewModel(this.remote);
             item.setBillDetail(billDetail);
+
+            remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
+                totalPrice += book.getPrice();
+            }).subscribe();
+
             list.add(item);
         }
         items.set(list);
+        price = String.valueOf(totalPrice);
     }
 
     public void setBill(Bill bill) {
         this.bill = bill;
         getData();
     }
+
+
 }

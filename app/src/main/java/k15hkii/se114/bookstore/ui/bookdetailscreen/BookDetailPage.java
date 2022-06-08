@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Bill;
+import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.databinding.BookDetailViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
@@ -41,6 +43,10 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         BookDetailViewFragmentBinding bookDetailViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
+        Bundle bundle = this.getArguments();
+        Book book = (Book) bundle.getSerializable("book");
+        viewModel.setBook(book);
 
         return view;
     }

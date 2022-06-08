@@ -166,7 +166,7 @@ public class ViewModelMapper {
         return remote.getBill(billId).map(bill -> {
             List<OrderBookViewModel> list = new ArrayList<>();
             for (BillDetail billDetail : bill.getBillDetails()) {
-                OrderBookViewModel viewModel = new OrderBookViewModel();
+                OrderBookViewModel viewModel = new OrderBookViewModel(remote);
                 viewModel.setOrderDetail(billDetail);
                 list.add(viewModel);
             }

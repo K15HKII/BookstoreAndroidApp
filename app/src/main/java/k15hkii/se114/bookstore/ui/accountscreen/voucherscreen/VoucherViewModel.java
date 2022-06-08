@@ -58,7 +58,7 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> {
 
     @Bindable
     public String getDiscountType(){
-        return voucherProfile == null ? "null" : voucherProfile.getDiscountType();
+        return voucherProfile == null ? "null" : String.valueOf(voucherProfile.getDiscountType());
     }
 
     public void setVoucher(Voucher voucher) {

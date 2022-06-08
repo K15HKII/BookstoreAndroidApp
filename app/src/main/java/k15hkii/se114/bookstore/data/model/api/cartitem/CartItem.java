@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartItem {
+
     @Getter
     @Expose
     @SerializedName("user_id")
@@ -26,11 +27,12 @@ public class CartItem {
 
     @Getter
     @Expose
-    @SerializedName("book")
-    private Book book;
+    @SerializedName("quantity")
+    private int quantity;
 
     @Getter
     @Expose
     @SerializedName("selected")
     private boolean selected;
+
 }

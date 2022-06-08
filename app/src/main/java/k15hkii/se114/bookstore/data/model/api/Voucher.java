@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Voucher extends BaseVoucher {
+    
     @Getter
     @Expose
     @SerializedName("user_id")
@@ -23,4 +24,5 @@ public class Voucher extends BaseVoucher {
     @Expose
     @SerializedName("used_at")
     private Date usedAt;
+
 }

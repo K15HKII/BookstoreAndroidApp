@@ -8,13 +8,26 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderCheckerFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewNavigator;
 
-public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,OrderCheckerViewModel> implements OrderCheckerNavigator {
+import javax.inject.Inject;
+
+public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,OrderCheckerViewModel> implements OrderCheckerNavigator,
+                                                                                                             OrderBooksViewNavigator {
+
+    @Inject protected OrderBooksViewAdapter adapter;
 
     OrderCheckerFragmentBinding orderCheckerFragmentBinding;
 
@@ -34,6 +47,12 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderCheckerFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        orderCheckerFragmentBinding.lvOrderCheckerListBooks.setLayoutManager(layoutManager);
+        orderCheckerFragmentBinding.lvOrderCheckerListBooks.setAdapter(adapter);
+        adapter.setNavigator(this);
+
         return view;
     }
 
@@ -45,5 +64,18 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void Navigate(OrderBookViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

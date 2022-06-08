@@ -8,6 +8,11 @@ public class Feedback extends Message{
 
     @Getter
     @Expose
+    @SerializedName("bill_id")
+    private int billId;
+
+    @Getter
+    @Expose
     @SerializedName("replies")
     private ReplyFeedback[] replies;
 
@@ -15,4 +20,5 @@ public class Feedback extends Message{
     @Expose
     @SerializedName("rating")
     private double rating;
+
 }

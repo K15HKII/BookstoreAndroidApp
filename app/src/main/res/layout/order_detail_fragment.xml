@@ -95,7 +95,7 @@
                         <TextView
                                 android:id="@+id/tvOrderDetailAddressDetail"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                                android:text="@{viewModel.address}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -188,7 +188,7 @@
                         <TextView
                                 android:id="@+id/tvOrderDetailVoucher"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="%25 giảm giá"
+                                android:text="@{viewModel.discount}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -240,7 +240,7 @@
                         <TextView
                                 android:id="@+id/tvOrderDetailPaymentMethod"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="Thanh toán khi nhận hàng"
+                                android:text="@{viewModel.paymentMethod}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -357,7 +357,7 @@
                                     android:textColor="@color/black"
                                     android:textSize="24dp"
                                     android:textStyle="bold"
-                                    android:text="200.000đ"/>
+                                    android:text="@{viewModel.price}"/>
                         </LinearLayout>
                     </LinearLayout>
                     <android.widget.Button

@@ -11,6 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Lend {
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -20,7 +21,6 @@ public class Lend {
     @Expose
     @SerializedName("user_id")
     private UUID userId;
-
 
     @Getter
     @Expose

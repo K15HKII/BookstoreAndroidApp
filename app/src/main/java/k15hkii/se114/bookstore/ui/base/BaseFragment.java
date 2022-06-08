@@ -19,7 +19,6 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.di.module.FragmentModule;
 
 import javax.inject.Inject;
-import java.util.function.Consumer;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
@@ -67,6 +66,8 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         mRootView = viewDataBinding.getRoot();
+        if (getArguments() != null)
+            viewModel.initializeFromBundle(getArguments());
         return mRootView;
     }
 

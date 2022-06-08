@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 public class Message {
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -26,4 +27,5 @@ public class Message {
     @Expose
     @SerializedName("videos")
     private Video[] videos;
+
 }

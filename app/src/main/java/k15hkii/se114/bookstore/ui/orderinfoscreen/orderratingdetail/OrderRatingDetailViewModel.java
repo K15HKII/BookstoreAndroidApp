@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail;
 
+import android.os.Bundle;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Bill;
@@ -8,8 +10,10 @@ import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class OrderRatingDetailViewModel extends BaseViewModel<OrderRatingDetailNavigator> {
@@ -28,29 +32,48 @@ public class OrderRatingDetailViewModel extends BaseViewModel<OrderRatingDetailN
     private Bill bill;
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
-                items::set,
+                billdetails -> {
+                    items.set(billdetails);
+//                    setPrice(bill.getPrice());
+
+                    //todo: get address
+//                    this.voucher.set(bill.getVoucherProfile().getName());
+//                    this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+
+                    double totalPrice = 0;
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+
+                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                    }
+
+                    this.total.set(String.valueOf(totalPrice));
+                },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData(bill.getId());
     }
 
     public OrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
         this.mapper = mapper;
-        getData(1);
-    }
-    @Bindable
-    public String getPayment(){
-        return bill == null ? "null" : bill.getPayment().toString();
     }
 
-    @Bindable
-    public  String getDiscount(){
-        return bill == null ? "null" : "Giảm giá " + bill.getVoucherProfile().getDiscount() + " %";
+    @Override
+    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        if (bill != null) {
+            setBill(bill);
+        }
     }
 
-    @Bindable
-    public String getAddress(){
-        return bill == null ? "null" : bill.getUserAddress().getNumber() + ", " + bill.getUserAddress().getStreet() + ", " + bill.getUserAddress().getCity()+ ", " + bill.getUserAddress().getCountry();
-    }
     public void onBackWardClick(){
         getNavigator().BackWard();
     }

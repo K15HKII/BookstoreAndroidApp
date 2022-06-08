@@ -7,12 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.Date;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAddress {
+
+    @Getter
+    @Expose
+    @SerializedName("sub_id")
+    private long subId;
+
     @Getter
     @Expose
     @SerializedName("userid")

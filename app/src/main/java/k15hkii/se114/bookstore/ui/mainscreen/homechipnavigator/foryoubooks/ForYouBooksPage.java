@@ -61,7 +61,9 @@ public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, Fo
 
     @Override
     public void Navigate(BookViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

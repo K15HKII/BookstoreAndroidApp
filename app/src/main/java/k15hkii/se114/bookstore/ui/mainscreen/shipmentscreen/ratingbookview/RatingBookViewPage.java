@@ -64,7 +64,12 @@ public class RatingBookViewPage extends BaseFragment<RatingViewFragmentBinding, 
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, OrderRatingDetail.class, null)
+
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("bill", vm.getBill());
+
+        createTransaction(R.id.fragmentContainerView, OrderRatingDetail.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

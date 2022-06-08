@@ -71,6 +71,7 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
+
         Bundle bundle = new Bundle();
 
         bundle.putSerializable("bill", vm.getBill());

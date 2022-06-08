@@ -27,5 +27,6 @@ public class File {
     @Expose
     @SerializedName("path")
     private String path;
+
 }
 

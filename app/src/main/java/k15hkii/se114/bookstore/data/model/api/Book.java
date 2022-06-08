@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Book implements Serializable {
     @Getter
     @Expose
     @SerializedName("id")
@@ -31,41 +33,37 @@ public class Book {
 
     @Getter
     @Expose
-    @SerializedName("quantity")
-    private int quantity;
+    @SerializedName("stock")
+    private int stock;
 
     @Getter
     @Expose
-    @SerializedName("author")
-    private Author author;
+    @SerializedName("author_id")
+    private int authorId;
 
     @Getter
     @Expose
     @SerializedName("price")
-    private int price;
+    private double price;
 
     @Getter
     @Expose
-    @SerializedName("publisher")
-    private Publisher publisher;
+    @SerializedName("publisher_id")
+    private int publisher;
+
+    @Getter
+    @Expose
+    @SerializedName("book_tag")
+    private BookTag[] booktags;
 
     @Getter
     @Expose
     @SerializedName("images")
-    private Image[] images;
+    private List<Image> images;
 
     @Getter
     @Expose
     @SerializedName("videos")
-    private Video[] videos;
+    private List<Video> videos;
 
-    @Getter
-    @Expose
-    @SerializedName("ebook")
-    private Document[] ebook;
-
-    @Getter
-    @Expose
-    @SerializedName("feedbacks")
-    private Feedback[] feedbacks;
 }

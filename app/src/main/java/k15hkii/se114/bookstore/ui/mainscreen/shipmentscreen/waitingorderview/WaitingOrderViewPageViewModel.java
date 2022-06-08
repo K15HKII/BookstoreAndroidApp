@@ -38,6 +38,5 @@ public class WaitingOrderViewPageViewModel extends BaseViewModel<WaitingOrderVie
         getData();
     }
 
-
     // TODO: Implement the ViewModel
 }
