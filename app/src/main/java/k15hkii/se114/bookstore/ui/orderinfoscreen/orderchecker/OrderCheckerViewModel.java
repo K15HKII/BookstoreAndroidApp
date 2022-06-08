@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -22,11 +23,11 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
     public final ObservableField<String> total = new ObservableField<>();
 
     protected ViewModelMapper mapper;
+    private Bill bill;
 
     public OrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
         this.mapper = mapper;
-        getData(1);
     }
 
     public void getData(int billId) {
@@ -37,5 +38,10 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
 
     public void onBackWardClick(){
         getNavigator().BackWard();
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData(bill.getId());
     }
 }

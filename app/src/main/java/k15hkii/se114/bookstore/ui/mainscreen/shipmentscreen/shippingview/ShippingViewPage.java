@@ -65,8 +65,13 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
+
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("bill", vm.getBill());
+
         //TODO: Navigate to Shipping
-        createTransaction(R.id.fragmentContainerView, OrderChecker.class, null)
+        createTransaction(R.id.fragmentContainerView, OrderChecker.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

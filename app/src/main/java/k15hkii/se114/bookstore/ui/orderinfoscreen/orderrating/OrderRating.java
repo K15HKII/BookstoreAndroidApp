@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderRatingFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
@@ -33,7 +34,9 @@ public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderR
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderRatingFragmentBinding = getViewDataBinding();
-        viewModel.setNavigator(this);
+        Bundle bundle = this.getArguments();
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        viewModel.setBill(bill);
         return view;
     }
 

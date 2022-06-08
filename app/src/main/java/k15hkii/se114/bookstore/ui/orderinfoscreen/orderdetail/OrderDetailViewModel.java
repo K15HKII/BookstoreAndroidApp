@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -38,7 +39,7 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
 
-        for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+        for (OrderBookViewModel item : items.get()) {
             totalPrice += Double.parseDouble(item.getPrice());
         }
     }

@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -23,6 +24,7 @@ public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
     public final ObservableField<String> total = new ObservableField<>();
 
     protected ViewModelMapper mapper;
+    private Bill bill;
 
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
@@ -37,5 +39,10 @@ public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
 
     public void onBackWardClick(){
         getNavigator().BackWard();
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData(bill.getId());
     }
 }
