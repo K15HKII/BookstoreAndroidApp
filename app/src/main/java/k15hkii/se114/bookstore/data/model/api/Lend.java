@@ -42,5 +42,8 @@ public class Lend {
     @SerializedName("end_date")
     private Date endDate;
 
-
+    @Getter
+    @Expose
+    @SerializedName("payment")
+    private Payment payment;
 }

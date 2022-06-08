@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
+import android.os.Bundle;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
@@ -11,6 +13,7 @@ import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -28,14 +31,21 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     public final ObservableField<String> description = new ObservableField<>();
     public final ObservableField<String> remainQuantity = new ObservableField<>();
     @Inject protected ModelRemote remote;
-    private Book book;
 
+    private Book book;
     public void setBook(Book book) {
         this.book = book;
         name.set(book.getTitle());
         price.set(String.valueOf(book.getPrice()));
         description.set(book.getDescription());
         price.set(String.valueOf(book.getStock()));
+    }
+
+    @Override
+    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Book book = (Book) bundle.getSerializable("book");
+        if(book != null) setBook(book);
     }
 
     public BookDetailPageViewModel(SchedulerProvider schedulerProvider) {

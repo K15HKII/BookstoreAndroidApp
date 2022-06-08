@@ -10,8 +10,8 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
         super(schedulerProvider);
     }
 
-    public final ObservableField<String> bookName = new ObservableField<>();
-    public final ObservableField<String> bookType = new ObservableField<>();
+    public final ObservableField<String> bookName = new ObservableField<>(); //title
+    public final ObservableField<String> bookType = new ObservableField<>(); //description
     public final ObservableField<String> bookImage = new ObservableField<>();
     public final ObservableField<String> bookRentPrice = new ObservableField<>();
     public final ObservableField<String> expiredDate = new ObservableField<>();
