@@ -32,7 +32,17 @@ public class VoucherProfile {
     @Getter
     @Expose
     @SerializedName("discount_type")
-    private String discountType;
+    private DiscountType discountType;
+
+    @Getter
+    @Expose
+    @SerializedName("book_tag")
+    private BookTag[] bookTags;
+
+    @Getter
+    @Expose
+    @SerializedName("discount_max")
+    private double discountMax;
 
     @Getter
     @Expose

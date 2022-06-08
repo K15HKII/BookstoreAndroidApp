@@ -31,13 +31,13 @@ public class Book {
 
     @Getter
     @Expose
-    @SerializedName("quantity")
-    private int quantity;
+    @SerializedName("stock")
+    private int stock;
 
     @Getter
     @Expose
-    @SerializedName("author")
-    private Author author;
+    @SerializedName("author_id")
+    private int authorId;
 
     @Getter
     @Expose
@@ -46,26 +46,11 @@ public class Book {
 
     @Getter
     @Expose
-    @SerializedName("publisher")
-    private Publisher publisher;
+    @SerializedName("publisher_id")
+    private int publisher;
 
     @Getter
     @Expose
-    @SerializedName("images")
-    private Image[] images;
-
-    @Getter
-    @Expose
-    @SerializedName("videos")
-    private Video[] videos;
-
-    @Getter
-    @Expose
-    @SerializedName("ebook")
-    private Document[] ebook;
-
-    @Getter
-    @Expose
-    @SerializedName("feedbacks")
-    private Feedback[] feedbacks;
+    @SerializedName("book_tag")
+    private BookTag[] booktags;
 }

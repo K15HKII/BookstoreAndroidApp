@@ -26,8 +26,8 @@ public class CartItem {
 
     @Getter
     @Expose
-    @SerializedName("book")
-    private Book book;
+    @SerializedName("quantity")
+    private int quantity;
 
     @Getter
     @Expose

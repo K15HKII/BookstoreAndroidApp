@@ -20,8 +20,13 @@ public class Transport {
 
     @Getter
     @Expose
-    @SerializedName("raw")
-    private String raw;
+    @SerializedName("transporter_id")
+    private int transporterId;
+
+    @Getter
+    @Expose
+    @SerializedName("tracking")
+    private String tracking;
 
     @Getter
     @Expose

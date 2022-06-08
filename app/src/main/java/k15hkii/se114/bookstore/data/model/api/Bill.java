@@ -23,8 +23,8 @@ public class Bill implements Serializable {
 
     @Getter
     @Expose
-    @SerializedName("transport")
-    private Transport transport;
+    @SerializedName("transport_id")
+    private String transportId;
 
     @Getter
     @Expose
