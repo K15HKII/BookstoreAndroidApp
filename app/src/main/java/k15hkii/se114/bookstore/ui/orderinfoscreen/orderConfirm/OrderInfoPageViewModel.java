@@ -36,20 +36,9 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
 
     private Bill bill;
     public void getData(int billId) {
-        /*getCompositeDisposable().add(remote.getBill(billId)
-              .subscribeOn(getSchedulerProvider().io())
-              .observeOn(getSchedulerProvider().ui())
-              .subscribe(bill -> {
-                  List<OrderBookViewModel> list = new ArrayList<>();
-                  for (BillDetail billDetail : bill.getBillDetails()) {
-                      OrderBookViewModel viewModel = new OrderBookViewModel();
-                      viewModel.setOrderDetail(billDetail);
-                      list.add(viewModel);
-                  }
-                  items.set(list);
-              }, throwable -> {
-                  Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable);
-              }));*/
+        remote.getBill(billId).doOnSuccess(bill -> {
+
+        }).subscribe();
 
         //TODO:
     }
