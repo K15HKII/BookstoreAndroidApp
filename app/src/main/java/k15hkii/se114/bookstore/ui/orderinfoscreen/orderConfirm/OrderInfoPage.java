@@ -48,7 +48,7 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
         OrderInfoPageFragmentBinding orderInfoPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        String[] items = {"Dac nhan tam", "Nguoi phan xu", "Kteam"};
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         orderInfoPageFragmentBinding.lvOrderPageListBooks.setLayoutManager(layoutManager);

@@ -9,6 +9,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
@@ -28,7 +29,26 @@ public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
 
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
-                items::set,
+                billdetails -> {
+                    items.set(billdetails);
+//                    setPrice(bill.getPrice());
+
+                    //todo: get address
+//                    this.voucher.set(bill.getVoucherProfile().getName());
+//                    this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+
+                    double totalPrice = 0;
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+
+                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                    }
+
+                    this.total.set(String.valueOf(totalPrice));
+                },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 

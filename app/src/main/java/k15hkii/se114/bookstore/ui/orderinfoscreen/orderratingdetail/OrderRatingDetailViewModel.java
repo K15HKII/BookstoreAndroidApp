@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class OrderRatingDetailViewModel extends BaseViewModel<OrderRatingDetailNavigator> {
@@ -28,29 +29,39 @@ public class OrderRatingDetailViewModel extends BaseViewModel<OrderRatingDetailN
     private Bill bill;
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
-                items::set,
+                billdetails -> {
+                    items.set(billdetails);
+//                    setPrice(bill.getPrice());
+
+                    //todo: get address
+//                    this.voucher.set(bill.getVoucherProfile().getName());
+//                    this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+
+                    double totalPrice = 0;
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+
+                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                    }
+
+                    this.total.set(String.valueOf(totalPrice));
+                },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData(bill.getId());
     }
 
     public OrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
         this.mapper = mapper;
-        getData(1);
-    }
-    @Bindable
-    public String getPayment(){
-        return bill == null ? "null" : bill.getPayment().toString();
     }
 
-    @Bindable
-    public  String getDiscount(){
-        return bill == null ? "null" : "Giảm giá " + bill.getVoucherProfile().getDiscount() + " %";
-    }
-
-    @Bindable
-    public String getAddress(){
-        return bill == null ? "null" : bill.getUserAddress().getNumber() + ", " + bill.getUserAddress().getStreet() + ", " + bill.getUserAddress().getCity()+ ", " + bill.getUserAddress().getCountry();
-    }
     public void onBackWardClick(){
         getNavigator().BackWard();
     }

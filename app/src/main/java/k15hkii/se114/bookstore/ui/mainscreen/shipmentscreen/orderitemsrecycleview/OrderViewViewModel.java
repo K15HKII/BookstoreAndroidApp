@@ -34,20 +34,12 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
 
     @Bindable
     public String getNote() {
-        return note == null ? "profile is null" : note;
+        return bill == null ? "profile is null" : bill.getStatus().name();
     }
 
     @Bindable
     public String getPrice() {
-        return price == null ? "profile is null" : price;
-    }
-
-    public void setPrice() {
-        this.price = String.valueOf(totalPrice);
-    }
-
-    public int getBillId() {
-        return bill.getId();
+        return bill == null ? "profile is null" : price;
     }
 
     public OrderViewViewModel(ModelRemote remote) {

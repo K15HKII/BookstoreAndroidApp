@@ -53,8 +53,8 @@ public class Bill implements Serializable {
     @SerializedName("payment")
     private Payment payment;
 
-    @Expose
-    @Getter
-    @Setter
-    private String price;
+//    @Expose
+//    @Getter
+//    @Setter
+//    private String price;
 }

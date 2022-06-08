@@ -5,6 +5,9 @@ import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Bill;
+import k15hkii.se114.bookstore.data.model.api.Transport;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -21,38 +24,39 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
 
     public final ObservableField<String> address = new ObservableField<>();
     public final ObservableField<String> voucher = new ObservableField<>();
+    public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
-    public final ObservableField<String> orderCheck = new ObservableField<>();
-    public final ObservableField<String> shippingPay = new ObservableField<>();
     public final ObservableField<String> discount = new ObservableField<>();
 
-    String totalPrice;
+    double totalPrice = 0;
     private Bill bill;
-
-    @Bindable
-    public String getPrice() {
-        return billId == null ? "profile is null" : totalPrice;
-    }
-    @Bindable
-    public void setPrice(String price) {
-        totalPrice = price;
-    }
 
     @Inject
     protected ViewModelMapper mapper;
-    private UUID billId;
+    @Inject
+    protected ModelRemote remote;
+
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
                 billdetails -> {
                     items.set(billdetails);
-                    setPrice(bill.getPrice());
-//                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
-//
-//                        totalPrice += Double.parseDouble(item.get);
-//                    }
+//                    setPrice(bill.getPrice());
+
+                    //todo: get address
+//                    this.voucher.set(bill.getVoucherProfile().getName());
+//                    this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+
+                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                    }
+
+                    this.price.set(String.valueOf(totalPrice));
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
-
 
     }
 

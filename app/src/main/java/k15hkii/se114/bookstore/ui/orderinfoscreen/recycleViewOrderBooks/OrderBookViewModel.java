@@ -2,10 +2,12 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks;
 
 import android.util.Log;
 import androidx.databinding.Bindable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.Voucher;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -21,46 +23,29 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     @Inject
     protected ModelRemote remote;
 
+    public final ObservableField<String> price = new ObservableField<>();
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> quantity = new ObservableField<>();
+
     private Book book;
     private BillDetail billDetail;
-    private Bill bill;
-    private int billId;
-    private String bookId;
 
     private void setData() {
         remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
             this.book = book;
+            this.price.set(String.valueOf(book.getPrice()));
+            this.name.set(book.getTitle());
+            this.quantity.set(String.valueOf(billDetail.getQuantity()));
         }).subscribe();
     }
 
     public void setOrderDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
-    }
-
-    @Bindable
-    public String getName() {
-        return billDetail == null ? "profile is null" : book.getTitle();
-    }
-
-    @Bindable
-    public String getPrice() {
-        return billDetail == null ? "null" : "đ" + String.valueOf(billDetail.getPrice());
-    }
-
-    @Bindable
-    public String getQuantity() {
-        return billDetail == null ? "null" : billDetail.getQuantity() + "";
-    }
-
-    @Bindable
-    public String getDiscount(){
-        return bill == null ? "null" : "Giảm giá " + bill.getVoucherProfile().getDiscount() +" %";
-    }
-
-    public OrderBookViewModel() {
-        super(null);
         setData();
     }
 
-
+    public OrderBookViewModel(ModelRemote remote) {
+        super(null);
+        this.remote = remote;
+    }
 }
