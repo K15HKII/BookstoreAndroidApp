@@ -3,10 +3,7 @@ package k15hkii.se114.bookstore.data.model.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -55,4 +52,9 @@ public class Bill implements Serializable {
     @Getter
     @SerializedName("payment")
     private Payment payment;
+
+    @Expose
+    @Getter
+    @Setter
+    private String price;
 }

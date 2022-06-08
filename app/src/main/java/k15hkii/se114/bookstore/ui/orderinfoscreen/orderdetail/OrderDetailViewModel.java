@@ -26,12 +26,16 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<String> shippingPay = new ObservableField<>();
     public final ObservableField<String> discount = new ObservableField<>();
 
-    double totalPrice = 0;
+    String totalPrice;
     private Bill bill;
 
     @Bindable
     public String getPrice() {
-        return billId == null ? "profile is null" : String.valueOf(totalPrice);
+        return billId == null ? "profile is null" : totalPrice;
+    }
+    @Bindable
+    public void setPrice(String price) {
+        totalPrice = price;
     }
 
     @Inject
@@ -41,10 +45,11 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         dispose(mapper.getBill(billId),
                 billdetails -> {
                     items.set(billdetails);
-
-                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
-                        totalPrice += Double.parseDouble(item.getPrice());
-                    }
+                    setPrice(bill.getPrice());
+//                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+//
+//                        totalPrice += Double.parseDouble(item.get);
+//                    }
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
 
