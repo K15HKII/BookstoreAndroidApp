@@ -53,10 +53,8 @@ public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBin
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         orderRatingDetailFragmentBinding.lvOrderRatingDetailListBooks.setLayoutManager(linearLayoutManager);
         orderRatingDetailFragmentBinding.lvOrderRatingDetailListBooks.setAdapter(adapter);
+        adapter.setNavigator(this);
 
-        Bundle bundle = this.getArguments();
-        Bill bill = (Bill) bundle.getSerializable("bill");
-        viewModel.setBill(bill);
         return view;
     }
 
@@ -72,6 +70,8 @@ public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBin
 
     @Override
     public void Navigate(OrderBookViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
         createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter

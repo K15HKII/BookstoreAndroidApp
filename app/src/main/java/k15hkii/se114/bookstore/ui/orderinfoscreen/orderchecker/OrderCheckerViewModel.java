@@ -1,12 +1,15 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker;
 
+import android.os.Bundle;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -54,6 +57,15 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
                     this.total.set(String.valueOf(totalPrice));
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+    }
+
+    @Override
+    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        if (bill != null) {
+            setBill(bill);
+        }
     }
 
     public void onBackWardClick(){

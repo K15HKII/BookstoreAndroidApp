@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm;
 
+import android.os.Bundle;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
@@ -14,6 +16,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -63,6 +66,15 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
 
 
         //TODO:
+    }
+
+    @Override
+    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        if (bill != null) {
+            setBill(bill);
+        }
     }
 
     @Bindable

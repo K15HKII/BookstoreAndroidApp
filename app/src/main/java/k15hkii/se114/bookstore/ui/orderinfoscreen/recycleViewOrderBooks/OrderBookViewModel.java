@@ -27,6 +27,7 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableField<String> quantity = new ObservableField<>();
 
+    @Getter
     private Book book;
     private BillDetail billDetail;
 

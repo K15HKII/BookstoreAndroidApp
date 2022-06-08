@@ -48,9 +48,12 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderDetailFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         orderDetailFragmentBinding.lvOrderDetailListBooks.setLayoutManager(linearLayoutManager);
         orderDetailFragmentBinding.lvOrderDetailListBooks.setAdapter(adapter);
+        adapter.setNavigator(this);
+
         return view;
     }
 
@@ -66,7 +69,9 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
 
     @Override
     public void Navigate(OrderBookViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

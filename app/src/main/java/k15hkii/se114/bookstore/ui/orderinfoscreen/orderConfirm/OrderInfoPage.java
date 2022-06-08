@@ -30,7 +30,7 @@ import javax.inject.Inject;
 
 public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, OrderInfoPageViewModel> implements OrderInfoPageNavigator,
                                                                                                                  OrderBooksViewNavigator {
-    @Inject protected OrderBooksViewAdapter orderBooksViewAdapter;
+    @Inject protected OrderBooksViewAdapter adapter;
 
     @Override
     public int getBindingVariable() {
@@ -56,11 +56,9 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         orderInfoPageFragmentBinding.lvOrderPageListBooks.setLayoutManager(layoutManager);
-        orderInfoPageFragmentBinding.lvOrderPageListBooks.setAdapter(orderBooksViewAdapter);
+        orderInfoPageFragmentBinding.lvOrderPageListBooks.setAdapter(adapter);
+        adapter.setNavigator(this);
 
-        Bundle bundle = this.getArguments();
-        Bill bill = (Bill) bundle.getSerializable("bill");
-        viewModel.setBill(bill);
         return view;
     }
 
@@ -87,6 +85,8 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
     @Override
     public void Navigate(OrderBookViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
         createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter

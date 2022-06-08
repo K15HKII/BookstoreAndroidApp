@@ -30,8 +30,6 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
     public final ObservableField<String> discount = new ObservableField<>();
-
-    double totalPrice = 0;
     private Bill bill;
 
     @Inject
@@ -51,6 +49,8 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
 //                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
 //                        shippingPay.set(transporter.getName());
 //                    }).subscribe();
+
+                    double totalPrice = 0;
 
                     for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
 

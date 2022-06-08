@@ -23,7 +23,7 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderB
 
     @Getter
     @Setter
-    OrderBooksViewNavigator navigator;
+    private OrderBooksViewNavigator navigator;
 
     @Deprecated
     public OrderBooksViewAdapter(List<OrderBookViewModel> lsBookViews, Context context, OrderBooksViewNavigator navigator) {
