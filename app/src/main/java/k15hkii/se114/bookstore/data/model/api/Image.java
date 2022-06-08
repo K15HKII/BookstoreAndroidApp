@@ -6,7 +6,7 @@ import lombok.Getter;
 
 import java.util.UUID;
 
-public class Image extends File{
+public class Image extends File {
     @Getter
     @Expose
     @SerializedName("width")

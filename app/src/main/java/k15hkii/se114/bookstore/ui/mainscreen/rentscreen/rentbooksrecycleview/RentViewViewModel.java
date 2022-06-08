@@ -40,10 +40,11 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
                    this.book = book;
                    this.name.set(book.getTitle());
                    this.price.set(String.valueOf(book.getPrice()));
-                   for (BookTag tag : book.getBooktags()) {
-                       bt+= tag.name() + " ";
-                   }
-                   booktag.set(bt);
+//                   for (BookTag tag : book.getBooktags()) {
+//                       bt+= tag.name() + " ";
+//                   }
+//                   booktag.set(bt);
+                   this.booktag.set("Hài hước");
                }).subscribe());
     }
 

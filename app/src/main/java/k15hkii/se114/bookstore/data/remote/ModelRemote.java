@@ -1,18 +1,11 @@
 package k15hkii.se114.bookstore.data.remote;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import io.reactivex.Single;
-import k15hkii.se114.bookstore.data.model.api.Author;
-import k15hkii.se114.bookstore.data.model.api.Bill;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.CartItem;
-import k15hkii.se114.bookstore.data.model.api.Lend;
-import k15hkii.se114.bookstore.data.model.api.Publisher;
-import k15hkii.se114.bookstore.data.model.api.Transporter;
-import k15hkii.se114.bookstore.data.model.api.Voucher;
-import k15hkii.se114.bookstore.data.model.api.VoucherProfile;
+import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
 import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
@@ -50,8 +43,19 @@ public interface ModelRemote {
     @GET("/api/book/search")
     Single<List<Book>> getBooks();
 
-    @GET("/api/book/info/{id}")
-    Single<Book> getBook(@Path("id") UUID id);
+    @GET("/api/book/info/{book_id}")
+    Single<Book> getBook(@Path("book_id") UUID id);
+
+    //BookSold
+    @GET("/api/statistic/book/{book_id}/sold")
+    Single<StatisticResult> getOneBookSold(@Path("book_id") UUID id);
+
+    @GET("/api/statistic/book/sold")
+    Single<StatisticResult> getBookSolds();
+
+    //BookRate
+    @GET("/api/statistic/book/{book_id}/rate")
+    Single<StatisticResult> getBookRate(@Path("book_id") UUID id);
 
     //Publisher
     @GET("/api/publisher/{id}")
@@ -119,14 +123,19 @@ public interface ModelRemote {
     void deleteCart(@Path("book_id") UUID book_id);
 
     //Bill
-    @GET("/api/bill/{id}")
-    Single<Bill> getBill(@Path("id") int id);
+    @GET("/api/bill/{bill_id}")
+    Single<Bill> getBill(@Path("bill_id") int id);
 
-    @GET("/api/user/bills/{user_id}")
+    @GET("/api/bill/{bill_id}/vouchers")
+    Single<List<VoucherProfile>> getBillVouchers(@Path("bill_id") int bill_id);
+
+    @GET("/api/bill/from/{user_id}")
     Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
-    @POST("/api/user/bill/{user_id}")
-    Single<Bill> createBill(@Path("user_id") UUID user_id);
+    @POST("/api/bill/{bill_id}")
+    Single<Bill> createBill(@Path("bill_id") int bill_id);
+
+
 
     /**
      * Cancel order
@@ -142,7 +151,7 @@ public interface ModelRemote {
     Single<List<UserAddress>> getAddresses(@Path("user_id") UUID user_id);
 
     @GET("/api/user/address/{address_id}/{user_id}")
-    Single<List<UserAddress>> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
+    Single<UserAddress> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @DELETE("/api/user/address/{address_id}/{user_id}")
     void deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
@@ -170,7 +179,7 @@ public interface ModelRemote {
     void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
     //Lend
-    @GET("/api/user/lends/{user_id}")
+    @GET("/api/lend/from/{user_id}")
     Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
 
     @GET("/api/lend/{lend_id}")
@@ -183,9 +192,12 @@ public interface ModelRemote {
     void deleteLend(@Path("user_id") UUID user_id);
 
     //Voucher
-    @GET("/api/user/vouchers/{user_id}")
-    Single<List<Voucher>> getVouchers(@Path("user_id") UUID user_id);
+    @GET("/api/voucher/profile/{profile_id}")
+    Single<VoucherProfile> getVoucherProfile(@Path("profile_id") UUID id);
 
-    @GET("/api/user/vouchers/{id}")
-    Single<VoucherProfile> getVoucherProfile(@Path("id") UUID id);
+    @GET("/api/voucher/profiles")
+    Single<List<VoucherProfile>> getVoucherProfiles();
+
+    @GET("/api/voucher/{voucher_id}")
+    Single<Voucher> getVoucher(@Path("voucher_id") Date usedAt);
 }

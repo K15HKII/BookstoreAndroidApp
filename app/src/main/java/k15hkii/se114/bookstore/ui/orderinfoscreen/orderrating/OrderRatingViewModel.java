@@ -73,6 +73,10 @@ public class OrderRatingViewModel extends BaseViewModel<OrderRatingNavigator> {
         getNavigator().BackWard();
     }
 
+    public void openRating(){
+        getNavigator().openRating();
+    }
+
     public void setBill(Bill bill) {
         this.bill = bill;
         getData(bill.getId());

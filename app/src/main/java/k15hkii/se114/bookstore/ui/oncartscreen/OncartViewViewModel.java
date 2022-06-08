@@ -3,7 +3,6 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.CartItem;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
