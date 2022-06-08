@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail;
 
 import android.util.Log;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
@@ -22,7 +23,12 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<String> orderCheck = new ObservableField<>();
     public final ObservableField<String> shippingPay = new ObservableField<>();
     public final ObservableField<String> discount = new ObservableField<>();
-    public final ObservableField<String> total = new ObservableField<>();
+
+    double totalPrice = 0;
+    @Bindable
+    public String getPrice() {
+        return billId == null ? "profile is null" : String.valueOf(totalPrice);
+    }
 
     @Inject
     protected ViewModelMapper mapper;
@@ -31,6 +37,14 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         dispose(mapper.getBill(billId),
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+
+        for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+            totalPrice += Double.parseDouble(item.getPrice());
+        }
+    }
+
+    public void setBill(Bill bill) {
+        //TODO: update
     }
 
     public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {

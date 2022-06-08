@@ -42,7 +42,7 @@ public class Book {
     @Getter
     @Expose
     @SerializedName("price")
-    private int price;
+    private double price;
 
     @Getter
     @Expose
