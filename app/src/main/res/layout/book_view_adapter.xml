@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:src="@drawable/dac_nhan_tam_book"
+                image="@{viewModel.image}"
                 android:scaleType="fitCenter" />
 
             <LinearLayout

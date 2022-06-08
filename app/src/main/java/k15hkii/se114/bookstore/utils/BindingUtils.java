@@ -2,9 +2,13 @@ package k15hkii.se114.bookstore.utils;
 
 import android.annotation.SuppressLint;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import k15hkii.se114.bookstore.BuildConfig;
+import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
@@ -39,7 +43,19 @@ public final class BindingUtils {
     private BindingUtils() {
     }
 
-    //Binding adapter recycleview
+    @BindingAdapter({"image"})
+    public static void bindImage(ImageView view, Image image) {
+        if (image == null)
+            return;
+
+        final String url = BuildConfig.BASE_URL + "images/" + image.getId().toString() + ".png";
+
+        Glide.with(view)
+                .load(url)
+                .into(view);
+    }
+
+    //region Binding adapter recycleview
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})
     public static void bindSource(RecyclerView view, List<BookViewModel> source) {
@@ -199,7 +215,7 @@ public final class BindingUtils {
         adapter.notifyDataSetChanged();
     }
 
-    //Binding Adapter spinner
+    //endregion Binding Adapter spinner
     @BindingAdapter("testSource")
     public static void bindSource(Spinner spinner, List<String> source) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), android.R.layout.simple_spinner_item);

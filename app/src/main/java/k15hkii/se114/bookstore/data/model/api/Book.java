@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -54,5 +55,15 @@ public class Book implements Serializable {
     @Expose
     @SerializedName("book_tag")
     private BookTag[] booktags;
+
+    @Getter
+    @Expose
+    @SerializedName("images")
+    private List<Image> images;
+
+    @Getter
+    @Expose
+    @SerializedName("videos")
+    private List<Video> videos;
 
 }
