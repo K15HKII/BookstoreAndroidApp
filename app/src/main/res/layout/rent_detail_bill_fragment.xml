@@ -141,7 +141,7 @@
                         android:textColor="@color/black"
                         android:textSize="18dp"
                         android:fontFamily="@font/lato_regular"
-                        android:text="02/02/2020"/>
+                        android:text="@{viewModel.expiredDate}"/>
             </LinearLayout>
 
             <LinearLayout

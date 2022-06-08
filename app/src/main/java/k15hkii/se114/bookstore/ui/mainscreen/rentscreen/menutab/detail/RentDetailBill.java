@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.databinding.RentDetailBillFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
@@ -32,6 +34,11 @@ public class RentDetailBill extends BaseFragment<RentDetailBillFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RentDetailBillFragmentBinding rentDetailBillFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
+        Bundle bundle = this.getArguments();
+        Lend lend = (Lend) bundle.getSerializable("lend");
+        viewModel.setLend(lend);
+
         return view;
     }
 

@@ -4,13 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Lend {
+public class Lend implements Serializable {
 
     @Getter
     @Expose
