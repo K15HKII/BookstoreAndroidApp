@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OncartItemsAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -19,6 +22,10 @@ import java.util.List;
 public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartItemAdapter.oncart_itemHolder> {
 
     private Context context;
+
+    @Getter
+    @Setter
+    private OncartItemNavigator oncartItemNavigator;
 
     @Deprecated
     public OncartItemAdapter(Context context, List<OncartItemViewModel> lsOncart) {
@@ -41,6 +48,9 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItemViewModel data) {
+        holder.itemView.setOnClickListener(d -> {
+            getOncartItemNavigator().openBookDetailNavigator(data);
+        });
         holder.setViewModel(data);
     }
 

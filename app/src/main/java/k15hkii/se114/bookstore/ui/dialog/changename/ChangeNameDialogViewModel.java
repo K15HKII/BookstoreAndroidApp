@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.ui.dialog.changename;
 
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -10,19 +12,22 @@ import java.util.UUID;
 public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack> {
 
     @Inject protected ModelRemote remote;
-    private UUID userId;
-    private String userName;
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    PreferencesHelper preferencesHelper;
 
+    public final ObservableField<String> username = new ObservableField<>();
+
+    public void getData(UUID userId) {
         remote.getUser(userId).doOnSuccess(user -> {
-            userName = user.getFirstName() + " " + user.getLastName();
+            username.set(user.getFirstName() + " " + user.getLastName());
         }).subscribe();
     }
 
-    public ChangeNameDialogViewModel(SchedulerProvider schedulerProvider) {
+    public ChangeNameDialogViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
+        this.preferencesHelper = preferencesHelper;
+        this.remote = remote;
+        getData(preferencesHelper.getCurrentUserId());
     }
 
     public void onSubmitClick(){

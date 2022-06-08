@@ -10,14 +10,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator {
+public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator,
+                                                                                                            OncartItemNavigator {
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
 
@@ -43,6 +48,11 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         OncartViewFragmentBinding oncartViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
+//        Bundle bundle = getArguments();
+//        Book book = (Book) bundle.getSerializable("book");
+//        int quantity = bundle.getInt("quantity");
+//        viewModel.setOnCartItem(book, quantity);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
@@ -57,5 +67,18 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openBookDetailNavigator(OncartItemViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

@@ -47,7 +47,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     }
 
     public void openBuyNowDialog(){
-        getNavigator().openBuyNowDialog();
+        getNavigator().openBuyNowDialog(book);
     }
 
     public void openOnCartDialog(){

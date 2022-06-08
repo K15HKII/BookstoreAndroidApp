@@ -2,6 +2,8 @@ package k15hkii.se114.bookstore.di.module;
 
 import dagger.Module;
 import dagger.Provides;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
@@ -25,28 +27,28 @@ public class DialogModule {
     }
 
     @Provides
-    ChangeNameDialogViewModel provideChangeNameDialogViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, ChangeNameDialogViewModel.class, () -> new ChangeNameDialogViewModel(schedulerProvider));
+    ChangeNameDialogViewModel provideChangeNameDialogViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangeNameDialogViewModel.class, () -> new ChangeNameDialogViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
-    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider));
+    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper){
+        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider, helper));
     }
 
     @Provides
-    ChangePhoneNumViewModel provideChangePhoneNumViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, ChangePhoneNumViewModel.class, () -> new ChangePhoneNumViewModel(schedulerProvider));
+    ChangePhoneNumViewModel provideChangePhoneNumViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangePhoneNumViewModel.class, () -> new ChangePhoneNumViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
-    ChangeGenderViewModel provideChangeGenderViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, ChangeGenderViewModel.class, () -> new ChangeGenderViewModel(schedulerProvider));
+    ChangeGenderViewModel provideChangeGenderViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangeGenderViewModel.class, () -> new ChangeGenderViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
-    ChangeBirthViewModel provideChangeBirthViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, ChangeBirthViewModel.class, () -> new ChangeBirthViewModel(schedulerProvider));
+    ChangeBirthViewModel provideChangeBirthViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangeBirthViewModel.class, () -> new ChangeBirthViewModel(schedulerProvider,remote, helper));
     }
 
     @Provides

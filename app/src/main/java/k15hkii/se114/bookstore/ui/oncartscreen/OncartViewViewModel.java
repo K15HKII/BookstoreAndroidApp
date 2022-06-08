@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.CartItem;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -23,6 +24,8 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     @Inject
     protected ModelRemote remote;
     private UUID userId;
+    private Book book;
+
     public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getCarts(userId)
                 .subscribeOn(getSchedulerProvider().io())
@@ -30,7 +33,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                 .subscribe(cartItems -> {
                     List<OncartItemViewModel> list = new ArrayList<>();
                     for (CartItem cartItem : cartItems) {
-                        OncartItemViewModel model = new OncartItemViewModel();
+                        OncartItemViewModel model = new OncartItemViewModel(remote);
                         model.setCartItem(cartItem);
                         list.add(model);
                     }
@@ -38,6 +41,10 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                 }, throwable -> {
                     Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
                 }));
+    }
+
+    public void setData() {
+        //todo: set CartItem (chua post)
     }
 
     public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
@@ -60,5 +67,9 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
     }
+
+//    public void setOnCartItem(Book book, int quantity) {
+//        this.book = book;
+//    }
     // TODO: Implement the ViewModel
 }
