@@ -22,4 +22,5 @@ public class WildVoucher extends  BaseVoucher{
     @Expose
     @SerializedName("max_uses")
     private double maxUses;
+
 }

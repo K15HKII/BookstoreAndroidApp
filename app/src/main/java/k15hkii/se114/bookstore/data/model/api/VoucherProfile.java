@@ -54,13 +54,4 @@ public class VoucherProfile {
     @SerializedName("discount")
     private int discount;
 
-    @Getter
-    @Expose
-    @SerializedName("vouchers")
-    private List<Voucher> vouchers;
-
-    @Getter
-    @Expose
-    @SerializedName("wild_vouchers")
-    private List<WildVoucher> wildVouchers;
 }

@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transport {
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -28,8 +29,4 @@ public class Transport {
     @SerializedName("tracking")
     private String tracking;
 
-    @Getter
-    @Expose
-    @SerializedName("bill")
-    private Bill bill;
 }

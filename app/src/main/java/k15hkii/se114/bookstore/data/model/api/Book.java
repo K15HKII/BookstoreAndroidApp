@@ -54,4 +54,5 @@ public class Book implements Serializable {
     @Expose
     @SerializedName("book_tag")
     private BookTag[] booktags;
+
 }

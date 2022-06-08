@@ -11,6 +11,7 @@ import lombok.With;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author {
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -25,4 +26,5 @@ public class Author {
     @Expose
     @SerializedName("description")
     private String description;
+
 }

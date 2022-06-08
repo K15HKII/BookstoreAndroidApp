@@ -20,4 +20,5 @@ public class Feedback extends Message{
     @Expose
     @SerializedName("rating")
     private double rating;
+
 }

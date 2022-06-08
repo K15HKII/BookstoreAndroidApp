@@ -18,7 +18,7 @@ public class UserBank {
     @Getter
     @Expose
     @SerializedName("sub_id")
-    private Date subId;
+    private long subId;
 
     @Getter
     @Expose

@@ -11,6 +11,7 @@ import lombok.With;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transporter {
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -26,8 +27,4 @@ public class Transporter {
     @SerializedName("description")
     private String description;
 
-    @Getter
-    @Expose
-    @SerializedName("transports")
-    private Transport[] transports;
 }
