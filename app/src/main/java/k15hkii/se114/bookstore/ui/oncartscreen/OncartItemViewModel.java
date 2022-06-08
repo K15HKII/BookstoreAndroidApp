@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import androidx.databinding.Bindable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.Image;
@@ -15,44 +16,32 @@ import java.util.UUID;
 
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 
-    @Bindable
-    @Getter @Setter
-    private String Name;
+    public ObservableField<String> name = new ObservableField<>();
+    public ObservableField<String> price = new ObservableField<>();
+    public ObservableField<String> quantity = new ObservableField<>();
+
+    @Inject protected ModelRemote remote;
+
     private CartItem cartItem;
 
-    public OncartItemViewModel(String name) {
+    @Getter @Setter Book book;
+
+    public OncartItemViewModel(ModelRemote remote){
         super(null);
-        Name = name;
+        this.remote = remote;
     }
-    public OncartItemViewModel(){
-        super(null);
+
+    void getData() {
+        remote.getBook(cartItem.getBookId())
+              .doOnSuccess(book -> {
+//            this.book = book;
+//            this.name.set(book.getTitle());
+//            this.price.set(String.valueOf(book.getPrice()));
+        }).subscribe();
     }
+
     public void setCartItem(CartItem cartItem) {
         this.cartItem = cartItem;
-    }
-    @Inject
-    protected ModelRemote remote;
-
-    private String userId;
-    private String bookProfileId;
-    private Book bookProfile;
-    private List<Image> images;
-
-    public void getCardItem(UUID userId, UUID bookProfileId) {
-//        this.bookProfileId = bookProfileId;
-//        this.userId = userId;
-        /*remote.getCarts(userId,bookProfileId).doOnSuccess(cartItem -> {
-            this.cartItem = cartItem;
-        }).subscribe();*/ //TODO
-        remote.getBook(bookProfileId).doOnSuccess(bookProfile -> {
-            this.bookProfile = bookProfile;
-        }).subscribe();
-        /*remote.getBookImages().doOnSuccess(bookProfileImage -> {
-            this.images = bookProfileImage;
-        }).subscribe();*/ //TODO:
-    }
-
-    public void openItemDetail(String bookProfileId){
-        getNavigator().openBookDetailNavigator(bookProfileId);
+        getData();
     }
 }
