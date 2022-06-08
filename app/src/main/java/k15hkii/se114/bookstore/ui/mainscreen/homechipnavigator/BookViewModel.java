@@ -6,6 +6,7 @@ import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import lombok.Getter;
 
 import javax.inject.Inject;
 import java.util.UUID;
@@ -16,7 +17,8 @@ public class BookViewModel extends BaseViewModel<BookViewNavigator> implements O
     protected ModelRemote remote;
 
     private String id;
-    private Book book;
+  @Getter
+  private Book book;
 
 //    public void getData(UUID id) {
 //        getCompositeDisposable().add(remote.getBook(id)

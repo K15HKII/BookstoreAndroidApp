@@ -7,12 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Book implements Serializable {
     @Getter
     @Expose
     @SerializedName("id")

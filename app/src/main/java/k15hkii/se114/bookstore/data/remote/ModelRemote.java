@@ -127,11 +127,15 @@ public interface ModelRemote {
     @GET("/api/user/addresses/{user_id}")
     Single<List<UserAddress>> getAddresses(@Path("user_id") UUID user_id);
 
+    @GET("/api/user/address/{address_id}/{user_id}")
+    Single<List<UserAddress>> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
+
+    @DELETE("/api/user/address/{address_id}/{user_id}")
+    void deleteAddress(@Path("user_id") UUID user_id,@Path("address_id") long address_id);
+
     @POST("/api/user/address/{user_id}")
     Single<UserAddress> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
 
-    @DELETE("/api/user/address/{user_id}")
-    void deleteAddress(@Path("user_id") UUID user_id, @Body Date date);
 
     //Bank
     @GET("/api/user/banks/{user_id}")
@@ -140,8 +144,12 @@ public interface ModelRemote {
     @POST("/api/user/bank/{user_id}")
     Single<UserBank> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
 
-    @DELETE("/api/user/bank/{user_id}")
-    void deleteBank(@Path("user_id") UUID user_id, @Body Date date);
+    @GET("/api/user/bank/{bank_id}/{user_id}")
+    Single<List<UserBank>> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
+
+    @DELETE("/api/user/bank/{bank_id}/{user_id}")
+    void deleteBank(@Path("user_id") UUID user_id,@Path("bank_id") long bank_id);
+
 
     //Lend
     @GET("/api/user/lends/{user_id}")

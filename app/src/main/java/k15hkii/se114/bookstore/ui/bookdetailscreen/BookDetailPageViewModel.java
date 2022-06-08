@@ -1,13 +1,16 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import lombok.Setter;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -16,44 +19,23 @@ import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
 
-    private final ObservableField<List<Comment>> commentItemsLiveData = new ObservableField<>(
-            Arrays.asList(new Comment("tritran@gm.com"),
-                          new Comment("tritran12@gm.com"))
-    );
+    private final ObservableField<List<Comment>> commentItemsLiveData = new ObservableField<>();
     public List<Comment> getCommentItems() {
         return commentItemsLiveData.get();
     }
-
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> price = new ObservableField<>();
+    public final ObservableField<String> description = new ObservableField<>();
+    public final ObservableField<String> remainQuantity = new ObservableField<>();
     @Inject protected ModelRemote remote;
-
-    Book book;
-    private String name;
-    private String price;
-    private String description;
-    private String remainQuantity;
-
-    public void getData(UUID id) {
-
-    }
-    @Bindable
-    public String getName() {
-        return name == null ? "profile is null" : book.getTitle();
-    }
-    @Bindable
-    public String getPrice() {
-        return price == null ? "profile is null" : String.valueOf(book.getPrice());
-    }
-    @Bindable
-    public String getDescription() {
-        return description == null ? "profile is null" : book.getDescription();
-    }
-    @Bindable
-    public String getRemainQuantity() {
-        return remainQuantity == null ? "profile is null" : String.valueOf(book.getStock());
-    }
+    private Book book;
 
     public void setBook(Book book) {
         this.book = book;
+        name.set(book.getTitle());
+        price.set(String.valueOf(book.getPrice()));
+        description.set(book.getDescription());
+        price.set(String.valueOf(book.getStock()));
     }
 
     public BookDetailPageViewModel(SchedulerProvider schedulerProvider) {
@@ -81,5 +63,4 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
     }
-    // TODO: Implement the ViewModel
 }
