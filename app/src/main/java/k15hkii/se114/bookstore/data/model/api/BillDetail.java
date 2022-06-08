@@ -25,11 +25,12 @@ public class BillDetail {
 
     @Getter
     @Expose
-    @SerializedName("price")
+    @SerializedName("unit_price")
     private double price;
 
     @Getter
     @Expose
     @SerializedName("quantity")
     private int quantity;
+
 }

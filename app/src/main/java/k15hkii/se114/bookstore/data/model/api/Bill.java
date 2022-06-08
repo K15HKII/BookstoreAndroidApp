@@ -22,8 +22,8 @@ public class Bill {
 
     @Getter
     @Expose
-    @SerializedName("transport")
-    private Transport transport;
+    @SerializedName("transport_id")
+    private String transportId;
 
     @Getter
     @Expose
