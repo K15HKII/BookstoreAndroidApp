@@ -4,17 +4,13 @@ import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
@@ -38,7 +34,6 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     protected ViewModelMapper mapper;
     private UUID billId;
     public void getData(int billId) {
-
         dispose(mapper.getBill(billId),
                 items::set,
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
@@ -46,6 +41,10 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
             totalPrice += Double.parseDouble(item.getPrice());
         }
+    }
+
+    public void setBill(Bill bill) {
+        //TODO: update
     }
 
     public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
