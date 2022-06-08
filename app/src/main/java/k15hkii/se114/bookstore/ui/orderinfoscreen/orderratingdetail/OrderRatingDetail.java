@@ -14,6 +14,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderRatingDetailFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
@@ -25,7 +26,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 
 import javax.inject.Inject;
 
-public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBinding, OrderRatingViewModel> implements OrderRatingNavigator,
+public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBinding, OrderRatingDetailViewModel> implements OrderRatingDetailNavigator,
                                                                                                                        OrderBooksViewNavigator {
 
     private OrderRatingDetailFragmentBinding orderRatingDetailFragmentBinding;
