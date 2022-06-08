@@ -7,7 +7,7 @@ import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.Author;
 import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.CartItem;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.model.api.Publisher;
 import k15hkii.se114.bookstore.data.model.api.Transporter;
