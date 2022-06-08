@@ -9,6 +9,7 @@ import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.data.model.api.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -18,6 +19,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator> implements Observable {
 
@@ -32,13 +34,33 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
     public final ObservableField<String> total = new ObservableField<>();
 
     @Inject
-    protected ModelRemote remote;
+    protected ViewModelMapper mapper;
 
     private Bill bill;
     public void getData(int billId) {
-        remote.getBill(billId).doOnSuccess(bill -> {
+        dispose(mapper.getBill(billId),
+                billdetails -> {
+                    items.set(billdetails);
+//                    setPrice(bill.getPrice());
 
-        }).subscribe();
+                    //todo: get address
+//                    this.voucher.set(bill.getVoucherProfile().getName());
+//                    this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+
+                    double totalPrice = 0;
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+
+                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                    }
+
+                    this.total.set(String.valueOf(totalPrice));
+                },
+                throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
+
 
         //TODO:
     }
@@ -58,9 +80,9 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
         return "";
     }
 
-    public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
-        this.remote = remote;
+        this.mapper = mapper;
     }
 
     public void onBackWardClick(){
@@ -79,6 +101,11 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
     @Override
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData(bill.getId());
     }
     // TODO: Implement the ViewModel
 }

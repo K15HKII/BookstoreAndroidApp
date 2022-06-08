@@ -11,6 +11,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OrderbookAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -19,10 +21,15 @@ import java.util.List;
 public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderBooksViewAdapter.OrderBooksViewViewHolder> {
     private Context context;
 
+    @Getter
+    @Setter
+    OrderBooksViewNavigator navigator;
+
     @Deprecated
-    public OrderBooksViewAdapter(List<OrderBookViewModel> lsBookViews, Context context) {
+    public OrderBooksViewAdapter(List<OrderBookViewModel> lsBookViews, Context context, OrderBooksViewNavigator navigator) {
         super(lsBookViews);
         this.context = context;
+        this.navigator = navigator;
     }
 
     public OrderBooksViewAdapter(Context context) {
@@ -41,6 +48,9 @@ public class OrderBooksViewAdapter extends ListAdapter<OrderBookViewModel,OrderB
     @Override
     public void onBindViewHolder(@NonNull @NotNull OrderBooksViewAdapter.OrderBooksViewViewHolder holder,
                                  OrderBookViewModel data) {
+        holder.itemView.setOnClickListener(d -> {
+            getNavigator().Navigate(data);
+        });
         holder.setViewModel(data);
     }
 

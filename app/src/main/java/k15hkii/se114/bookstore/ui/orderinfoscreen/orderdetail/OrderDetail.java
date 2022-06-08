@@ -13,15 +13,19 @@ import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderDetailFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewNavigator;
 
 import javax.inject.Inject;
 import java.util.List;
 
-public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderDetailViewModel> implements OrderDetailNavigator {
+public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderDetailViewModel> implements OrderDetailNavigator,
+                                                                                                           OrderBooksViewNavigator {
 
     OrderDetailFragmentBinding orderDetailFragmentBinding;
 
@@ -62,5 +66,16 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void Navigate(OrderBookViewModel vm) {
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

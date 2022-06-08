@@ -235,8 +235,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote));
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, mapper));
     }
 
     @Provides

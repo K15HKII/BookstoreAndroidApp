@@ -14,8 +14,13 @@ import k15hkii.se114.bookstore.data.model.api.Bill;
 import k15hkii.se114.bookstore.databinding.OrderCheckerFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewNavigator;
 
-public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,OrderCheckerViewModel> implements OrderCheckerNavigator {
+public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,OrderCheckerViewModel> implements OrderCheckerNavigator,
+                                                                                                             OrderBooksViewNavigator {
 
     OrderCheckerFragmentBinding orderCheckerFragmentBinding;
 
@@ -49,5 +54,16 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void Navigate(OrderBookViewModel vm) {
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }
