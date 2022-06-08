@@ -49,7 +49,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     }
     @Bindable
     public String getRemainQuantity() {
-        return remainQuantity == null ? "profile is null" : String.valueOf(book.getQuantity());
+        return remainQuantity == null ? "profile is null" : String.valueOf(book.getStock());
     }
 
     public void setBook(Book book) {

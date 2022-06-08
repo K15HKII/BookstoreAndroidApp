@@ -34,6 +34,7 @@ public class OrderChecker extends BaseFragment<OrderCheckerFragmentBinding,Order
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderCheckerFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
         Bundle bundle = this.getArguments();
         Bill bill = (Bill) bundle.getSerializable("bill");
         viewModel.setBill(bill);

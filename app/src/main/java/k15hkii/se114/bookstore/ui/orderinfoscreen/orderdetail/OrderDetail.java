@@ -33,6 +33,7 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderDetailFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+
         Bundle bundle = this.getArguments();
         Bill bill = (Bill) bundle.getSerializable("bill");
         viewModel.setBill(bill);

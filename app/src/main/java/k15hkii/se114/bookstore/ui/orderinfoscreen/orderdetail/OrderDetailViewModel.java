@@ -12,6 +12,7 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
@@ -26,6 +27,8 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<String> discount = new ObservableField<>();
 
     double totalPrice = 0;
+    private Bill bill;
+
     @Bindable
     public String getPrice() {
         return billId == null ? "profile is null" : String.valueOf(totalPrice);
@@ -36,22 +39,26 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     private UUID billId;
     public void getData(int billId) {
         dispose(mapper.getBill(billId),
-                items::set,
+                billdetails -> {
+                    items.set(billdetails);
+
+                    for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
+                        totalPrice += Double.parseDouble(item.getPrice());
+                    }
+                },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
 
-        for (OrderBookViewModel item : items.get()) {
-            totalPrice += Double.parseDouble(item.getPrice());
-        }
+
     }
 
     public void setBill(Bill bill) {
-        //TODO: update
+        this.bill = bill;
+        getData(bill.getId());
     }
 
     public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
         super(schedulerProvider);
         this.mapper = mapper;
-        getData(1);
     }
 
     public void onBackWardClick(){

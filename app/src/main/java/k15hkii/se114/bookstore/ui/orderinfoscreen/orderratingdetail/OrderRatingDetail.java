@@ -36,6 +36,7 @@ public class OrderRatingDetail extends BaseFragment<OrderRatingDetailFragmentBin
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         orderRatingDetailFragmentBinding = getViewDataBinding();
+        viewModel.setNavigator(this);
         Bundle bundle = this.getArguments();
         Bill bill = (Bill) bundle.getSerializable("bill");
         viewModel.setBill(bill);
