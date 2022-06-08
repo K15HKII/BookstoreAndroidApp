@@ -1,6 +1,9 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail;
 
+import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
@@ -58,6 +61,15 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
 
+    }
+
+    @Override
+    public void initializeFromBundle(@NonNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Bill bill = (Bill) bundle.getSerializable("bill");
+        if (bill != null) {
+            setBill(bill);
+        }
     }
 
     public void setBill(Bill bill) {

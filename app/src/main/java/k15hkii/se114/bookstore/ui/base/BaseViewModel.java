@@ -1,5 +1,8 @@
 package k15hkii.se114.bookstore.ui.base;
 
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.PropertyChangeRegistry;
@@ -32,6 +35,10 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
 
     public N getNavigator() {
         return navigator.get();
+    }
+
+    public void initializeFromBundle(@NonNull Bundle bundle) {
+
     }
 
     public void setNavigator(N navigator) {

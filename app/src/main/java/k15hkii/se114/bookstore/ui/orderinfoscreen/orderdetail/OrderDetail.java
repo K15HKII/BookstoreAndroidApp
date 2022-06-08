@@ -51,10 +51,6 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         orderDetailFragmentBinding.lvOrderDetailListBooks.setLayoutManager(linearLayoutManager);
         orderDetailFragmentBinding.lvOrderDetailListBooks.setAdapter(adapter);
-
-        Bundle bundle = this.getArguments();
-        Bill bill = (Bill) bundle.getSerializable("bill");
-        viewModel.setBill(bill);
         return view;
     }
 

@@ -169,7 +169,6 @@ public interface ModelRemote {
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
     void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
-
     //Lend
     @GET("/api/user/lends/{user_id}")
     Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
