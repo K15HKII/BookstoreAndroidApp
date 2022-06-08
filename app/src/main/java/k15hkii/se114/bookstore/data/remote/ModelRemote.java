@@ -1,15 +1,32 @@
 package k15hkii.se114.bookstore.data.remote;
 
-import io.reactivex.Single;
-import k15hkii.se114.bookstore.data.model.api.*;
-import k15hkii.se114.bookstore.data.model.api.CartItem;
-import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
-import k15hkii.se114.bookstore.data.model.api.user.*;
-import retrofit2.http.*;
-
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import io.reactivex.Single;
+import k15hkii.se114.bookstore.data.model.api.Author;
+import k15hkii.se114.bookstore.data.model.api.Bill;
+import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.CartItem;
+import k15hkii.se114.bookstore.data.model.api.Lend;
+import k15hkii.se114.bookstore.data.model.api.Publisher;
+import k15hkii.se114.bookstore.data.model.api.Transporter;
+import k15hkii.se114.bookstore.data.model.api.Voucher;
+import k15hkii.se114.bookstore.data.model.api.VoucherProfile;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
+import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.user.UserBank;
+import k15hkii.se114.bookstore.data.model.api.user.UserBankCRUDRequest;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ModelRemote {
     //User
@@ -58,7 +75,6 @@ public interface ModelRemote {
     Single<List<Book>> getRecentBooks(@Path("user_id") UUID user_id);
 
     /**
-     *
      * Tạo hoặc cập nhật một sách gần đây
      *
      * @param user_id
@@ -73,7 +89,6 @@ public interface ModelRemote {
     Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
     /**
-     *
      * Tạo hoặc cập nhật một sách yêu thích
      *
      * @param user_id
@@ -85,12 +100,12 @@ public interface ModelRemote {
 
     @DELETE("/api/user/favourite/{user_id}")
     void deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+
     //CartItem
     @GET("/api/user/carts/{user_id}")
     Single<List<CartItem>> getCarts(@Path("user_id") UUID user_id);
 
     /**
-     *
      * Tạo hoặc cập nhật CartItem
      *
      * @param user_id
@@ -98,10 +113,10 @@ public interface ModelRemote {
      * @return
      */
     @POST("/api/user/cart/{user_id}")
-    Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItem cartItem);
+    Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
 
-    @DELETE("/api/user/cart/{user_id}")
-    void deleteCart(@Path("user_id") UUID user_id, @Body String book_id);
+    @DELETE("/api/user/cart/{book_id}")
+    void deleteCart(@Path("book_id") UUID book_id);
 
     //Bill
     @GET("/api/bill/{id}")
@@ -114,7 +129,6 @@ public interface ModelRemote {
     Single<Bill> createBill(@Path("user_id") UUID user_id);
 
     /**
-     *
      * Cancel order
      *
      * @param user_id
@@ -131,11 +145,13 @@ public interface ModelRemote {
     Single<List<UserAddress>> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @DELETE("/api/user/address/{address_id}/{user_id}")
-    void deleteAddress(@Path("user_id") UUID user_id,@Path("address_id") long address_id);
+    void deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @POST("/api/user/address/{user_id}")
     Single<UserAddress> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
 
+    @POST("/api/user/address/{address_id}/{user_id}")
+    Single<UserAddress> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
 
     //Bank
     @GET("/api/user/banks/{user_id}")
@@ -144,11 +160,14 @@ public interface ModelRemote {
     @POST("/api/user/bank/{user_id}")
     Single<UserBank> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
 
+    @POST("/api/user/bank/{bank_id}/{user_id}")
+    Single<UserBank> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
+
     @GET("/api/user/bank/{bank_id}/{user_id}")
     Single<List<UserBank>> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
-    void deleteBank(@Path("user_id") UUID user_id,@Path("bank_id") long bank_id);
+    void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
 
     //Lend
