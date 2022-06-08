@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
 import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
