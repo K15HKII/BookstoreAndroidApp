@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel"/>
@@ -64,11 +64,129 @@
                             android:background="@drawable/ic_done"/>
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvRatingReportViewBooks"
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    source="@{viewModel.listRate}"/>
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:background="@drawable/listview_shape"
+                                android:orientation="vertical">
+                            <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                <ImageView
+                                        android:id="@+id/imageRatingReportBookView"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:src="@drawable/dac_nhan_tam_book"/>
+                                <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="12dp"
+                                        android:orientation="vertical">
+                                    <TextView
+                                            android:id="@+id/tvRatingReportNameOfBook"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/lato_bold"
+                                            android:text="Sách Đắc Nhân Tâm"
+                                            android:textSize="21dp"
+                                            android:textAlignment="textStart"
+                                            android:textColor="@color/black"/>
+                                    <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                        <TextView
+                                                android:id="@+id/tvRatingReportTypeOfBook"
+                                                android:fontFamily="@font/lato_regular"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textAlignment="textStart"
+                                                android:text="Bìa cứng"/>
+                                        <TextView
+                                                android:id="@+id/tvRatingReportNumberOfBooks"
+                                                android:fontFamily="@font/lato_bold"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="x 1"
+                                                android:textSize="19dp"
+                                                android:textColor="@color/black"
+                                                android:textAlignment="textEnd"/>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <RatingBar
+                                android:id="@+id/ratebarRatingReportScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="Hình ảnh"
+                                android:textSize="20dp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:text="Đánh giá chi tiết"
+                                android:textSize="20dp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"/>
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginRight="10dp"
+                                android:padding="10dp"
+                                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                                android:background="@drawable/edit_text_background"
+                                app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/etRatingReportDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:lines="6"
+                                    android:hint="Placeholder"
+                                    android:gravity="top|start"
+                                    android:inputType="textMultiLine"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:scrollHorizontally="false"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </FrameLayout>
 </layout>

@@ -16,7 +16,6 @@ import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetailViewModel;
 import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
@@ -62,7 +61,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageV
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPageViewModel;
@@ -78,7 +76,6 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageView
 import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
@@ -294,11 +291,6 @@ public class FragmentModule {
     }
 
     @Provides
-    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
-    }
-
-    @Provides
     public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
         return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
@@ -394,11 +386,6 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, mapper));
-    }
-
-    @Provides
     public RentDetailBillViewModel provideRentDetailBillViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider, remote));
     }
@@ -474,11 +461,6 @@ public class FragmentModule {
     @Provides
     public OncartItemAdapter oncartItemAdapter(Context context) {
         return new OncartItemAdapter(context);
-    }
-
-    @Provides
-    public RatingReportAdapter ratingReportAdapter(Context context) {
-        return new RatingReportAdapter(context);
     }
 
     @Provides

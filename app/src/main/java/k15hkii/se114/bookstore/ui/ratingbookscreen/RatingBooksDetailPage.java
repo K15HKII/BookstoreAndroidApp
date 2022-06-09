@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -21,10 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 import java.util.LinkedList;
 
-public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator, IRatingReportAdapterNavigator {
-
-    @Inject
-    protected RatingReportAdapter ratingReportAdapter;
+public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator {
 
     private final LinkedList<Consumer<Uri>> callbacks = new LinkedList<>();
     private final ActivityResultLauncher<String> GetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
@@ -54,8 +50,6 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-
         return view;
     }
 
@@ -68,16 +62,4 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
-
-    @Override
-    public void getPicture(RatingReportViewModel viewModel) {
-
-    }
-
-    @Override
-    public void getPicture(Consumer<Uri> callback) {
-        callbacks.add(callback);
-        GetContent.launch("image/* video/*");
-    }
-
 }

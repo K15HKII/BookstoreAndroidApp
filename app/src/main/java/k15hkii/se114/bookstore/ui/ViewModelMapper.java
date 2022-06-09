@@ -5,11 +5,9 @@ import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -130,21 +128,21 @@ public class ViewModelMapper {
 
     // RATING MAPPER
 
-    public Single<List<RatingReportViewModel>> toRatingViewModel(Single<List<Bill>> single) {
-        return single.map(bills -> {
-            List<RatingReportViewModel> list = new ArrayList<>();
-            for (Bill bill : bills) {
-                RatingReportViewModel vm = new RatingReportViewModel();
-                vm.setRate(bill);
-                list.add(vm);
-            }
-            return list;
-        });
-    }
-
-    public Single<List<RatingReportViewModel>> getRatings(UUID uuid) {
-        return toRatingViewModel(remote.getBills(uuid));
-    }
+//    public Single<List<RatingReportViewModel>> toRatingViewModel(Single<List<Bill>> single) {
+//        return single.map(bills -> {
+//            List<RatingReportViewModel> list = new ArrayList<>();
+//            for (Bill bill : bills) {
+//                RatingReportViewModel vm = new RatingReportViewModel();
+//                vm.setRate(bill);
+//                list.add(vm);
+//            }
+//            return list;
+//        });
+//    }
+//
+//    public Single<List<RatingReportViewModel>> getRatings(UUID uuid) {
+//        return toRatingViewModel(remote.getBills(uuid));
+//    }
 
     public Single<List<RentViewViewModel>> getLends(UUID userId) {
         return toLendViewModel(remote.getLends(userId));

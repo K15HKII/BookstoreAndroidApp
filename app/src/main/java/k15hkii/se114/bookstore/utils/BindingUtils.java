@@ -31,8 +31,6 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 
@@ -194,16 +192,16 @@ public final class BindingUtils {
         adapter.notifyDataSetChanged();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    @BindingAdapter({"source"})
-    public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
-        RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
-        if (adapter == null || source == null)
-            return;
-        adapter.getSource().clear();
-        adapter.getSource().addAll(source);
-        adapter.notifyDataSetChanged();
-    }
+//    @SuppressLint("NotifyDataSetChanged")
+//    @BindingAdapter({"source"})
+//    public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
+//        RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
+//        if (adapter == null || source == null)
+//            return;
+//        adapter.getSource().clear();
+//        adapter.getSource().addAll(source);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})

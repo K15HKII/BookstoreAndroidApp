@@ -15,6 +15,7 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowDialog;
 import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartDialog;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -74,5 +75,16 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     @Override
     public void openOnCartDialog() {
         OnCartDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openRatingBook() {
+        createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class,null).
+                setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).commit();
     }
 }
