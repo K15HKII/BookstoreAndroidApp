@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.OncartSelectorDialogBinding;
 import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
@@ -18,15 +19,17 @@ import javax.inject.Inject;
 
 public class OnCartDialog extends BaseDialog implements OnCartCallBack {
     private static final String TAG = "OnCartDialog";
-    private int amount = 0;
 
     @Inject
     OnCartViewModel onCartViewModel;
 
-    public static OnCartDialog newInstance() {
+    private Book book;
+
+    public static OnCartDialog newInstance(Book book) {
         OnCartDialog fragment = new OnCartDialog();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
+//        Bundle bundle = new Bundle();
+//        fragment.setArguments(bundle);
+        fragment.book = book;
         return fragment;
     }
 
@@ -46,31 +49,7 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
 
         wlp.gravity = Gravity.BOTTOM;
 
-        binding.btnPutToCartDialogPlusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else{
-                    amount++;
-                    binding.tvPutToCartDialogAmount.setText(amount+"");
-                }
-            }
-        });
-
-        binding.btnPutToCartDialogMinusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else {
-                    amount--;
-                    binding.tvPutToCartDialogAmount.setText(amount + "");
-                }
-            }
-        });
+        onCartViewModel.setData(book);
 
         return view;
     }

@@ -89,7 +89,7 @@ public interface ModelRemote {
     Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
 
     @DELETE("/api/user/cart/{book_id}")
-    void deleteCart(@Path("book_id") UUID book_id);
+    Single<Integer> deleteCart(@Path("book_id") UUID book_id);
     //endregion
 
     //region Address

@@ -72,8 +72,9 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     }
 
     @Override
-    public void openOnCartDialog() {
-        OnCartDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    public void openOnCartDialog(Book book) {
+        OnCartDialog onCartDialog = OnCartDialog.newInstance(book);
+        onCartDialog.show(getActivity().getSupportFragmentManager());
     }
 
     @Override

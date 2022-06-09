@@ -57,7 +57,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     }
 
     public void openOnCartDialog(){
-        getNavigator().openOnCartDialog();
+        getNavigator().openOnCartDialog(book);
     }
 
     public void openRatingBook() {

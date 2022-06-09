@@ -6,8 +6,10 @@ import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
 
@@ -17,11 +19,13 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
     @Inject
     protected ModelRemote remote;
     private Book book;
+    private UUID userId;
 
-    public BuyNowViewModel(ModelRemote remote, PreferencesHelper helper) {
-        super(null);
+    public BuyNowViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
+        super(schedulerProvider);
         this.remote = remote;
         this.helper = helper;
+        this.userId = helper.getCurrentUserId();
     }
 
     public void dismissDialog(){
@@ -34,7 +38,9 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
         CartItemCRUDRequest request = new CartItemCRUDRequest();
         request.setBookId(book.getId());
         request.setQuantity(quantity.get());
-        remote.createCart(helper.getCurrentUserId(), request);
+        dispose(remote.createCart(userId, request),
+                cartItem -> {},
+                throwable -> {});
     }
 
     public void setData(Book book) {

@@ -45,9 +45,6 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
         wlp.gravity = Gravity.BOTTOM;
 
-        //get bundle
-//        Bundle bundle = this.getArguments();
-//        Book book = (Book) bundle.getSerializable("book");
         buyNowViewModel.setData(book);
 
         return view;
@@ -68,11 +65,6 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
     @Override
     public void openCartPage() {
-        //todo: truyen book
-
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("book", book);
-//        bundle.putInt("quantity", amount);
 
         getParentFragmentManager().beginTransaction()
                                   .replace(R.id.fragmentContainerView, OncartViewPage.class, null)

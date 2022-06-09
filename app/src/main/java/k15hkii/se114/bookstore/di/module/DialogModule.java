@@ -57,13 +57,13 @@ public class DialogModule {
     }
 
     @Provides
-    BuyNowViewModel provideBuyNowViewModel(ModelRemote remote, PreferencesHelper helper){
-        return createViewModel(dialog, BuyNowViewModel.class, () -> new BuyNowViewModel(remote, helper));
+    BuyNowViewModel provideBuyNowViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, BuyNowViewModel.class, () -> new BuyNowViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
-    OnCartViewModel provideOnCartViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, OnCartViewModel.class, () -> new OnCartViewModel(schedulerProvider));
+    OnCartViewModel provideOnCartViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, OnCartViewModel.class, () -> new OnCartViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides

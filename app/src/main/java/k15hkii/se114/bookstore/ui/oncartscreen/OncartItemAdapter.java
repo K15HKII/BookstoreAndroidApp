@@ -45,21 +45,24 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
         this.context = context;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @NonNull
     @NotNull
     @Override
     public oncart_itemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.oncart_items_adapter,parent,false);
 
-        CheckBox checkBox = (CheckBox) view.findViewById(R.id.cbOnCartItemCheck);
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                viewModel.isSelectedItem.set(true);
-            }
-            else {
-                viewModel.isSelectedItem.set(false);
-            }
-        });
+//        CheckBox checkBox = (CheckBox) view.findViewById(R.id.cbOnCartItemCheck);
+//        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            if (isChecked) {
+////                viewModel.isSelectedItem.set(true);
+////                notifyDataSetChanged();
+//            }
+//            else {
+////                viewModel.isSelectedItem.set(false);
+////                notifyDataSetChanged();
+//            }
+//        });
 
         return new OncartItemAdapter.oncart_itemHolder(view);
     }
@@ -71,7 +74,6 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
             getOncartItemNavigator().openBookDetailNavigator(data);
         });
         holder.setViewModel(data);
-
 //        notifyDataSetChanged();
     }
 
