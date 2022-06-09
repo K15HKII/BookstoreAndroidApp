@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.Voucher;
+import k15hkii.se114.bookstore.data.model.api.VoucherProfile;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -20,26 +21,26 @@ public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> im
     @Inject protected ModelRemote remote;
     public final ObservableField<List<VoucherViewModel>> listVoucher = new ObservableField<>();
     private UUID userId;
-    public void getData() {
-        getCompositeDisposable().add(remote.getVouchers(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(vouchers -> {
-                                               List<VoucherViewModel> list = new ArrayList<>();
-                                               for (Voucher voucher : vouchers) {
-                                                   VoucherViewModel model = new VoucherViewModel(remote);
-                                                   model.setVoucher(voucher);
-                                                   list.add(model);
-                                               }
-                                               listVoucher.set(list);
-                                           }, throwable -> {
-                                               Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
-    }
+//    public void getData() {
+//        getCompositeDisposable().add(remote.getVoucherProfiles(userId)
+//                                           .subscribeOn(getSchedulerProvider().io())
+//                                           .observeOn(getSchedulerProvider().ui())
+//                                           .subscribe(voucherProfiles -> {
+//                                               List<VoucherViewModel> list = new ArrayList<>();
+//                                               for (VoucherProfile voucherProfile : voucherProfiles) {
+//                                                   VoucherViewModel model = new VoucherViewModel(remote);
+//                                                   model.setVoucher(voucher);
+//                                                   list.add(model);
+//                                               }
+//                                               listVoucher.set(list);
+//                                           }, throwable -> {
+//                                               Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable);
+//                                           }));
+//    }
 
     public void setUserId() {
         this.userId = preferencesHelper.getCurrentUserId();
-        getData();
+//        getData();
     }
 
     public VoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {

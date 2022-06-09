@@ -36,17 +36,17 @@ public class VoucherProfile {
 
     @Getter
     @Expose
-    @SerializedName("book_tag")
+    @SerializedName("require_   book_tag")
     private BookTag[] bookTags;
 
     @Getter
     @Expose
-    @SerializedName("discount_max")
-    private double discountMax;
+    @SerializedName("require_book_count")
+    private int require_book;
 
     @Getter
     @Expose
-    @SerializedName("min_value")
+    @SerializedName("require_min_value")
     private double minValue;
 
     @Getter

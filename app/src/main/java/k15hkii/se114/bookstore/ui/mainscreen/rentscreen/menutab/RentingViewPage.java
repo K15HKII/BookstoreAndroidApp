@@ -78,8 +78,9 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
 
     @Override
     public void Navigate(RentViewViewModel vm) {
-        //TODO: Navigate to Waiting
-        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, null)
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("lend", vm.getLend());
+        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

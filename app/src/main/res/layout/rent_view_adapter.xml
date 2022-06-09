@@ -26,6 +26,7 @@
                         android:id="@+id/imageRentBookAdapterBookView"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        image="@{viewModel.image}"
                         android:src="@drawable/dac_nhan_tam_book"/>
                 <LinearLayout
                         android:layout_width="match_parent"

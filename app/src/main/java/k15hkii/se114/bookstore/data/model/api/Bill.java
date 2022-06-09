@@ -40,13 +40,9 @@ public class Bill implements Serializable {
 
     @Expose
     @Getter
-    @SerializedName("user_address")
-    private UserAddress userAddress;
+    @SerializedName("address_id")
+    private long userAddress;
 
-    @Expose
-    @Getter
-    @SerializedName("voucher_profile")
-    private VoucherProfile voucherProfile;
 
     @Expose
     @Getter
