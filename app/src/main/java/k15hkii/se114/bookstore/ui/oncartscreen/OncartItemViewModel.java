@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import android.util.Log;
 import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableParcelable;
 import k15hkii.se114.bookstore.data.model.api.Book;
@@ -17,7 +18,7 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.UUID;
 
-public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
+public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> implements Observable {
 
     public ObservableField<String> name = new ObservableField<>();
     public ObservableField<String> price = new ObservableField<>();
@@ -43,8 +44,8 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
                 book -> {
                     this.book = book;
                     this.name.set(book.getTitle());
-                    this.price.set(String.valueOf(book.getPrice()));
                     this.quantity.set(cartItem.getQuantity());
+                    this.price.set(String.valueOf(book.getPrice() * quantity.get()));
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
@@ -68,6 +69,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
             return;
         } else {
             quantity.set((quantity.get() + 1));
+            this.price.set(String.valueOf(book.getPrice() * quantity.get()));
         }
     }
 
@@ -76,6 +78,18 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
             return;
         } else {
             quantity.set((quantity.get() - 1));
+            this.price.set(String.valueOf(book.getPrice() * quantity.get()));
+        }
+    }
+
+    public void CheckHandle() {
+        if (Boolean.TRUE.equals(isSelectedItem.get())) {
+            cartItem.setSelected(true);
+            getNavigator().checkItemHandle();
+        }
+        else {
+            cartItem.setSelected(false);
+            getNavigator().checkItemHandle();
         }
     }
 }
