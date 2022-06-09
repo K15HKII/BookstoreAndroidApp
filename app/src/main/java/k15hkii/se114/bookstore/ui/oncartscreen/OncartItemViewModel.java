@@ -24,48 +24,49 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     public ObservableField<Integer> quantity = new ObservableField<>();
     public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
     private CartItem cartItem;
 
-    @Getter @Setter Book book;
+    @Getter
+    @Setter
+    Book book;
 
-    public OncartItemViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+    public OncartItemViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
     }
 
     void getData() {
-        getCompositeDisposable().add(remote.getBook(cartItem.getBookId())
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(book -> {
-                                               this.book = book;
-                                               this.name.set(book.getTitle());
-                                               this.price.set(String.valueOf(book.getPrice()));
-                                               this.quantity.set(cartItem.getQuantity());
-                                           }, throwable -> {
-                                               Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+        dispose(remote.getBook(cartItem.getBookId()),
+                book -> {
+                    this.book = book;
+                    this.name.set(book.getTitle());
+                    this.price.set(String.valueOf(book.getPrice()));
+                    this.quantity.set(cartItem.getQuantity());
+                    this.isSelectedItem.set(cartItem.isSelected());
+                },
+                throwable -> Log.d("OncartViewViewModel",
+                                                     "getData: " + throwable.getMessage(), throwable));
     }
 
     public void setCartItem(CartItem cartItem) {
         this.cartItem = cartItem;
-        cartItem.setSelected(false);
+        this.cartItem.setSelected(false);
         quantity.set(cartItem.getQuantity());
-        //todo: get data
         getData();
     }
 
     public void deleteItem() {
-        remote.deleteCart(book.getId());
+        dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
+//        remote.deleteCart(book.getId());
     }
 
     public void plusQuantity() {
         if (quantity.get() >= book.getStock()) {
             return;
-        }
-        else {
+        } else {
             quantity.set((quantity.get() + 1));
         }
     }
@@ -73,8 +74,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
     public void minusQuantity() {
         if (quantity.get() == 0) {
             return;
-        }
-        else {
+        } else {
             quantity.set((quantity.get() - 1));
         }
     }

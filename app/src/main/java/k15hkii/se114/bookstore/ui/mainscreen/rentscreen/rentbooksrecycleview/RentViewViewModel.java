@@ -51,7 +51,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
 //                   }
 //                   booktag.set(bt);
                    this.booktag.set("Hài hước");
-               }).subscribe());
+               }).subscribe((book1, throwable) -> {}));
     }
 
 

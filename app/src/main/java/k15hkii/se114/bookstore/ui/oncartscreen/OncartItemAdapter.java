@@ -53,7 +53,7 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
 
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.cbOnCartItemCheck);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
+            if (isChecked && !Boolean.TRUE.equals(viewModel.isSelectedItem.get())) {
                 viewModel.isSelectedItem.set(true);
             }
             else {
