@@ -36,9 +36,15 @@ public class RentDetailBill extends BaseFragment<RentDetailBillFragmentBinding, 
         viewModel.setNavigator(this);
 
         Bundle bundle = this.getArguments();
-        Lend lend = (Lend) bundle.getSerializable("lend");
-        viewModel.setLend(lend);
 
+        if (bundle.containsKey("lending")) {
+            Lend lending = (Lend) bundle.getSerializable("lending");
+            viewModel.setLend(lending);
+        }
+        else if (bundle.containsKey("lended")) {
+            Lend lended = (Lend) bundle.getSerializable("lended");
+            viewModel.setLend(lended);
+        }
         return view;
     }
 

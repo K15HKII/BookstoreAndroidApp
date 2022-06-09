@@ -48,9 +48,6 @@ public class RatingReportAdapter extends ListAdapter<RatingReportViewModel,Ratin
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, RatingReportViewModel data) {
-        holder.binding.btnRatingReportAddImage1.setOnClickListener(d -> {
-            getNavigator().getPicture(data);
-        });
         holder.setViewModel(data);
     }
 

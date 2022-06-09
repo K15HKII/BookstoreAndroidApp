@@ -115,7 +115,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpRentBookView"
                 android:layout_width="match_parent"
                 android:layout_height="470dp"/>
