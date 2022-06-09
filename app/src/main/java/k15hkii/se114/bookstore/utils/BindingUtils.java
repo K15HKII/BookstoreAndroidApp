@@ -55,6 +55,18 @@ public final class BindingUtils {
                 .into(view);
     }
 
+    @BindingAdapter({"image"})
+    public static void bindImage(ImageView view, String image) {
+        if (image == null)
+            return;
+
+        final String url = BuildConfig.BASE_URL + "images/" + image + ".png";
+
+        Glide.with(view)
+                .load(url)
+                .into(view);
+    }
+
     //region Binding adapter recycleview
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})

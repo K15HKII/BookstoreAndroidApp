@@ -122,8 +122,34 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+                <!--            TODO: Thêm hạn trả icon-->
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:text="  Ngày thuê"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_date_book_return"/>
+                <TextView
+                        android:id="@+id/tvRentDetailBillDateLend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@{viewModel.expiredDate}"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:layout_marginTop="5dp"
                     android:padding="10dp"
                     android:orientation="vertical">
                 <!--            TODO: Thêm hạn trả icon-->
@@ -143,58 +169,7 @@
                         android:textColor="@color/black"
                         android:textSize="18dp"
                         android:fontFamily="@font/lato_regular"
-                        android:text="@{viewModel.expiredDate}"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:id="@+id/btnAddRentBookVoucher"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:background="@drawable/account_button_3"
-                    style="@android:style/Widget.Button"
-                    android:layout_marginTop="5dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <LinearLayout android:layout_width="wrap_content"
-                                      android:layout_height="wrap_content"
-                                      android:orientation="horizontal">
-                            <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/ic_voucher"/>
-                            <TextView
-                                    android:text="Voucher"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textStyle="bold"
-                                    android:textSize="19dp"
-                                    android:textColor="@color/black"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:layout_width="220dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="84.5dp"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
-                <TextView
-                        android:id="@+id/tvRentDetailBillVoucher"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="Không có"
-                        android:textSize="18dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="textStart"
-                        android:layout_height="wrap_content"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginLeft="8dp"/>
+                        android:text="@{viewModel.lendDate}"/>
             </LinearLayout>
 
             <LinearLayout
@@ -269,14 +244,15 @@
                             android:layout_width="185dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_regular"
-                            android:textSize="15dp"
+                            android:textSize="24dp"
                             android:textColor="@color/black"
-                            android:text="Tiền thuê"
+                            android:textStyle="bold"
+                            android:text="Tên sách"
                             android:textAlignment="textStart"/>
                     <TextView
                             android:id="@+id/tvRentDetailBillTotal"
                             android:fontFamily="@font/lato_regular"
-                            android:textSize="15dp"
+                            android:textSize="24dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="textEnd"
@@ -290,25 +266,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_width="185dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="15dp"
-                            android:textColor="@color/black"
-                            android:text="Giảm giá"
-                            android:textAlignment="textStart"/>
-                    <TextView
-                            android:id="@+id/tvRentDetailBillDiscount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="15dp"
-                            android:textAlignment="textEnd"
-                            android:textColor="@color/black"
-                            android:text="-60.000đ"/>
-                </LinearLayout>
+                        android:orientation="horizontal"/>
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -343,7 +301,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{()-> viewModel.onBackWardClick()}"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:text="Quay lại"
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/btn_blue"

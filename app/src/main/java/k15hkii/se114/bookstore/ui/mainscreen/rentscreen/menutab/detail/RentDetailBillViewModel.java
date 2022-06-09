@@ -28,6 +28,7 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
     public final ObservableField<String> bookType = new ObservableField<>(); //description
     public final ObservableField<Image> bookImage = new ObservableField<>();
     public final ObservableField<String> bookRentPrice = new ObservableField<>();
+    public final ObservableField<String> lendDate = new ObservableField<>();
     public final ObservableField<String> expiredDate = new ObservableField<>();
     public final ObservableField<String> voucherInfo = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
@@ -66,6 +67,7 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
         this.lend=lend;
         getData(this.lend.getBookId());
         this.expiredDate.set(String.valueOf(this.lend.getEndDate()));
+        this.lendDate.set(String.valueOf(this.lend.getStartDate()));
     }
     @Override
     public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {

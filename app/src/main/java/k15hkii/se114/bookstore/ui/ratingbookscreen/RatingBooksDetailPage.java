@@ -1,24 +1,37 @@
 package k15hkii.se114.bookstore.ui.ratingbookscreen;
 
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RatingDetailBooksViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.utils.Consumer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.util.LinkedList;
 
-public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator,IRatingReportAdapterNavigator {
+public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator, IRatingReportAdapterNavigator {
 
     @Inject
     protected RatingReportAdapter ratingReportAdapter;
+
+    private final LinkedList<Consumer<Uri>> callbacks = new LinkedList<>();
+    private final ActivityResultLauncher<String> GetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            uri -> {
+                while (!callbacks.isEmpty())
+                    callbacks.remove().accept(uri);
+            });
 
     @Override
     public int getBindingVariable() {
@@ -42,6 +55,7 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
         RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
+
         return view;
     }
 
@@ -59,4 +73,11 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     public void getPicture(RatingReportViewModel viewModel) {
 
     }
+
+    @Override
+    public void getPicture(Consumer<Uri> callback) {
+        callbacks.add(callback);
+        GetContent.launch("image/* video/*");
+    }
+
 }

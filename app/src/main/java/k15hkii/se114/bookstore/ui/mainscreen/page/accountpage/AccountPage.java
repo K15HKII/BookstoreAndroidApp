@@ -51,7 +51,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
+                ).commit();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
+                ).commit();
     }
 
     @Override
@@ -73,7 +73,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
+                ).commit();
     }
 
     @Override
@@ -84,7 +84,7 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
+                ).commit();
     }
 
     @Override

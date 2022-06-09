@@ -22,7 +22,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
     public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> rentNote = new ObservableField<>();
     public final ObservableField<String> rentPrice = new ObservableField<>();
-    public final ObservableField<String> description = new ObservableField<>();
+    public final ObservableField<String> endDate = new ObservableField<>();
     public final ObservableField<Image> image = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
@@ -33,6 +33,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
         if(lend==null) return;
         this.lend=lend;
         getData(this.lend.getBookId());
+        this.endDate.set(String.valueOf(lend.getEndDate()));
     }
 
     public void getData(UUID id) {
@@ -43,7 +44,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
                    String bt = "";
                    this.book = book;
                    this.name.set(book.getTitle());
-                   this.price.set(String.valueOf(book.getPrice()));
+                   this.price.set(String.valueOf(book.getPrice()) + " đ");
                    this.image.set(book.getImages().get(0));
 //                   for (BookTag tag : book.getBooktags()) {
 //                       bt+= tag.name() + " ";

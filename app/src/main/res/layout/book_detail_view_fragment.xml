@@ -58,6 +58,7 @@
                                     android:id="@+id/imageViewDeltailBookImage"
                                     android:layout_width="match_parent"
                                     android:layout_height="300dp"
+                                    image="@{viewModel.image}"
                                     android:src="@drawable/dac_nhan_tam_book"/>
 
                             <LinearLayout

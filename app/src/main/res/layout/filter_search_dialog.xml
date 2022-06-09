@@ -43,7 +43,8 @@
                 android:text="Giá từ thấp lên cao"
                 android:textColor="@color/black"
                 android:textSize="21dp"
-                android:background="@drawable/account_button_3"/>
+                android:background="@drawable/account_button_3" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         <RadioButton
                 android:id="@+id/RadbtnFilterHighlyRecommend"
                 android:fontFamily="@font/lato_regular"
