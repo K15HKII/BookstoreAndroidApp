@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
@@ -26,7 +28,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
 
     private ShippingPageFragmentBinding shippingPageFragmentBinding;
     private TabLayout tabmenuNav;
-    private ViewPager orderView;
+    private ViewPager2 orderView;
 
     public static ShippingPage newInstance() {
         return new ShippingPage();
@@ -63,9 +65,31 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
 //        },500);
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
-                                                    FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+                this.getLifecycle());
         orderView.setAdapter(orderMenuTabAdapter);
-        tabmenuNav.setupWithViewPager(orderView);
+        new TabLayoutMediator(tabmenuNav, orderView,
+                (tab, position) -> {
+                    String title = "";
+                    switch (position) {
+                        case 0:
+                            title = "Chờ xác nhận";
+                            break;
+                        case 1:
+                            title = "Đang vận chuyển";
+                            break;
+                        case 2:
+                            title = "Đã vận chuyển";
+                            break;
+                        case 3:
+                            title = "Đánh giá";
+                            break;
+                        case 4:
+                            title = "Đơn huỷ";
+                            break;
+                    }
+                    tab.setText(title);
+                }
+        ).attach();
         return view;
     }
 
