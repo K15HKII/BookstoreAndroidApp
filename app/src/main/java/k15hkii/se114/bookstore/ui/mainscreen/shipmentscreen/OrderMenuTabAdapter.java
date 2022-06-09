@@ -28,8 +28,6 @@ public class OrderMenuTabAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch(position){
-            case 0:
-                return new WaitingOrderViewPage();
             case 1:
                 return new ShippingViewPage();
             case 2:

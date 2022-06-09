@@ -16,11 +16,8 @@ import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.model.api.user.UserBankCRUDRequest;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import okhttp3.RequestBody;
+import retrofit2.http.*;
 
 public interface ModelRemote {
     //User
@@ -201,4 +198,13 @@ public interface ModelRemote {
 
     @GET("/api/voucher/{voucher_id}")
     Single<Voucher> getVoucher(@Path("voucher_id") Date usedAt);
+
+    @Multipart
+    @POST("/upload/image")
+    Single<Image> uploadImage(@Part RequestBody body);
+
+    @Multipart
+    @POST("/upload/video")
+    Single<Video> uploadVideo(@Part RequestBody body);
+
 }
