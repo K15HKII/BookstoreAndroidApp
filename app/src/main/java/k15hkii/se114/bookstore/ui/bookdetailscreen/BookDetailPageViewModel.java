@@ -66,6 +66,10 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         getNavigator().openOnCartDialog(book);
     }
 
+    public void openRatingBook() {
+        getNavigator().openRatingBook();
+    }
+
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
 

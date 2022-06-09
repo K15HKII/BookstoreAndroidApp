@@ -81,9 +81,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
                             title = "Đã vận chuyển";
                             break;
                         case 3:
-                            title = "Đánh giá";
-                            break;
-                        case 4:
                             title = "Đơn huỷ";
                             break;
                     }

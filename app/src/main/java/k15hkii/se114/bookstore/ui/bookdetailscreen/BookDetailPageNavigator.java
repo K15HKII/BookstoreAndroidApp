@@ -8,5 +8,7 @@ public interface BookDetailPageNavigator extends INavigator {
 
     void openBuyNowDialog(Book book);
 
-    void openOnCartDialog(Book book);
+    void openOnCartDialog();
+
+    void openRatingBook();
 }
