@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RatingDetailBooksDeltailAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -19,10 +23,14 @@ import java.util.List;
 public class RatingReportAdapter extends ListAdapter<RatingReportViewModel,RatingReportAdapter.RatingReportViewHolder> {
 
     private Context context;
+    @Getter
+    @Setter
+    IRatingReportAdapterNavigator navigator;
 
-    public RatingReportAdapter(List<RatingReportViewModel> lsRatingReport, Context context) {
+    public RatingReportAdapter(List<RatingReportViewModel> lsRatingReport, Context context, IRatingReportAdapterNavigator navigator) {
         super(lsRatingReport);
         this.context = context;
+        this.navigator = navigator;
     }
 
     public RatingReportAdapter(Context context) {
@@ -40,6 +48,9 @@ public class RatingReportAdapter extends ListAdapter<RatingReportViewModel,Ratin
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RatingReportViewHolder holder, RatingReportViewModel data) {
+        holder.binding.btnRatingReportAddImage1.setOnClickListener(d -> {
+            getNavigator().getPicture(data);
+        });
         holder.setViewModel(data);
     }
 

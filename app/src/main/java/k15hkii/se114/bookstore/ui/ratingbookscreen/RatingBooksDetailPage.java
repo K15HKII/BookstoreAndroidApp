@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator {
+public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator,IRatingReportAdapterNavigator {
 
     @Inject
     protected RatingReportAdapter ratingReportAdapter;
@@ -53,5 +53,10 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void getPicture(RatingReportViewModel viewModel) {
+
     }
 }

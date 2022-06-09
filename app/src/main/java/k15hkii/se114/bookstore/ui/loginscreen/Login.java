@@ -82,7 +82,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).commit();
+                ).addToBackStack(null).commit();
     }
 
     @Override
@@ -93,6 +93,6 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).commit();
+                ).addToBackStack(null).commit();
     }
 }

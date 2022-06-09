@@ -26,7 +26,7 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
     private int remainQuantity = 0;
 
     @Inject
-    BuyNowViewModel buyNowViewModel;
+    protected BuyNowViewModel buyNowViewModel;
 
     private Book book;
 
@@ -45,7 +45,6 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
         BuynowSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.buynow_selector_dialog, container, false);
         View view =binding.getRoot();
 
