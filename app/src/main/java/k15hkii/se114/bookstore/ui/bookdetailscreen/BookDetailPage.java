@@ -63,8 +63,11 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
 
     @Override
     public void openBuyNowDialog(Book book) {
-        BuyNowDialog buyNowDialog = BuyNowDialog.newInstance();
-        buyNowDialog.setData(book);
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("book", book);
+
+        BuyNowDialog buyNowDialog = BuyNowDialog.newInstance(book);
         buyNowDialog.show(getActivity().getSupportFragmentManager());
     }
 

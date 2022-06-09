@@ -72,6 +72,7 @@
                     android:layout_height="40dp"
                     android:scaleX="0.7"
                     android:scaleY="0.7"
+                    android:onClick="@{()-> viewModel.deleteItem()}"
                     android:background="@drawable/ic_delete_black" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.959"
@@ -89,13 +90,14 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="#98BDC7"
+                        android:onClick="@{()->viewModel.minusQuantity()}"
                         android:src="@drawable/ic_minus"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/lato_regular"
-                        android:text="@{viewModel.quantity}"
+                        android:text="@{viewModel.quantity.toString()}"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:paddingLeft="10dp"
@@ -108,6 +110,7 @@
                         android:layout_gravity="center"
                         android:layout_alignParentRight="true"
                         android:background="#98BDC7"
+                        android:onClick="@{()->viewModel.plusQuantity()}"
                         android:src="@drawable/ic_plus"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

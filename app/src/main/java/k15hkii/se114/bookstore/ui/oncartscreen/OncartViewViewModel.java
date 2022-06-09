@@ -19,38 +19,48 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     public final ObservableField<List<OncartItemViewModel>> items = new ObservableField<>();
 
-    public final ObservableField<String> totalPrice = new ObservableField<>();
+    public final ObservableField<Double> totalPrice = new ObservableField<>();
 
     @Inject
     protected ModelRemote remote;
     private UUID userId;
     private Book book;
+    private double total;
 
     public void getData(UUID userId) {
+
+        total = 0d;
+
         getCompositeDisposable().add(remote.getCarts(userId)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(cartItems -> {
                     List<OncartItemViewModel> list = new ArrayList<>();
+                    List<OncartItemViewModel> selectedItemList = new ArrayList<>();
                     for (CartItem cartItem : cartItems) {
-                        OncartItemViewModel model = new OncartItemViewModel(remote);
+                        OncartItemViewModel model = new OncartItemViewModel(getSchedulerProvider(), remote);
                         model.setCartItem(cartItem);
                         list.add(model);
+
+                        if(cartItem.isSelected()) {
+                            OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
+                            vm.setCartItem(cartItem);
+                            selectedItemList.add(vm);
+                            total += Double.parseDouble(vm.price.get());
+                        }
                     }
+                    totalPrice.set(total);
                     items.set(list);
                 }, throwable -> {
                     Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
                 }));
     }
 
-    public void setData() {
-        //todo: set CartItem (chua post)
-    }
-
     public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
+        totalPrice.set(0d);
         getData(userId);
     }
 
@@ -68,8 +78,5 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     }
 
-//    public void setOnCartItem(Book book, int quantity) {
-//        this.book = book;
-//    }
     // TODO: Implement the ViewModel
 }

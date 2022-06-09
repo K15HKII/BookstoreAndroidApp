@@ -20,25 +20,16 @@ import javax.inject.Inject;
 
 public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
     private static final String TAG = "BuyNowDialog";
-    private int amount = 0;
-    private int remainQuantity = 0;
 
     @Inject
     protected BuyNowViewModel buyNowViewModel;
 
     private Book book;
 
-    public static BuyNowDialog newInstance() {
+    public static BuyNowDialog newInstance(Book book) {
         BuyNowDialog fragment = new BuyNowDialog();
-        Bundle bundle = new Bundle();
-        //todo
-        fragment.setArguments(bundle);
+        fragment.book = book;
         return fragment;
-    }
-
-    public void setData(Book book) {
-        this.book = book;
-        this.remainQuantity = book.getStock();
     }
 
     @Override
@@ -57,28 +48,10 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
         wlp.gravity = Gravity.BOTTOM;
 
-        binding.btnBuyNowPlusAmount.setOnClickListener(v -> {
-            if(amount >= remainQuantity){
-                return;
-            }
-            else{
-                amount++;
-                binding.tvBuyNowAmount.setText(amount+"");
-            }
-        });
-
-        binding.btnBuyNowMinusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else {
-                    amount--;
-                    binding.tvBuyNowAmount.setText(amount + "");
-                }
-            }
-        });
+        //get bundle
+//        Bundle bundle = this.getArguments();
+//        Book book = (Book) bundle.getSerializable("book");
+        buyNowViewModel.setData(book);
 
         return view;
     }

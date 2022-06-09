@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,10 +22,11 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator,
-                                                                                                            OncartItemNavigator {
+public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
+
+    OncartViewFragmentBinding oncartViewFragmentBinding;
 
     @Override
     public int getBindingVariable() {
@@ -41,21 +43,23 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        OncartViewFragmentBinding oncartViewFragmentBinding = getViewDataBinding();
+        oncartViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-//        Bundle bundle = getArguments();
-//        Book book = (Book) bundle.getSerializable("book");
-//        int quantity = bundle.getInt("quantity");
-//        viewModel.setOnCartItem(book, quantity);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
+//        oncartItemAdapter.notifyDataSetChanged();
+
+        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+
+        oncartItemAdapter.setOncartItemNavigator(this);
+
         return view;
     }
 
@@ -81,4 +85,15 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
+//    @Override
+//    public void resetView() {
+//        oncartItemAdapter.notifyDataSetChanged();
+//    }
+
+    //    @Override
+//    public void deleteItem(int index) {
+//        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+//        oncartItemAdapter.notifyItemRemoved(index);
+//    }
 }

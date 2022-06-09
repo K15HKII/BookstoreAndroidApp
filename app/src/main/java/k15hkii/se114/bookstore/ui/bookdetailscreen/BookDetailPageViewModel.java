@@ -29,8 +29,8 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> description = new ObservableField<>();
-    public final ObservableField<String> remainQuantity = new ObservableField<>();
     public final ObservableField<Image> image = new ObservableField<>();
+    public final ObservableField<String> remainQuantity = new ObservableField<>();
     @Inject protected ModelRemote remote;
 
     private Book book;
@@ -39,7 +39,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         name.set(book.getTitle());
         price.set(String.valueOf(book.getPrice()));
         description.set(book.getDescription());
-        price.set(String.valueOf(book.getStock()));
+        remainQuantity.set(String.valueOf(book.getStock()));
         image.set(book.getImages().get(0));
     }
 
