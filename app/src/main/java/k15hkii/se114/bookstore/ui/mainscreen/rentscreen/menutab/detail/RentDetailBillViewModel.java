@@ -6,6 +6,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.BookTag;
 import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.model.api.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -40,6 +41,14 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
     private Book book;
     private Lend lend;
 
+//    private String toBookType(BookTag[] bookTags){
+//        String bt = "";
+//        for(BookTag bookTag : bookTags){
+//            bt += bookTag + "  ";
+//        }
+//        return bt;
+//    }
+
     public void getData(UUID id) {
         getCompositeDisposable().add(remote.getBook(id)
                 .subscribeOn(getSchedulerProvider().io())
@@ -48,8 +57,9 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
                     this.book = book;
                     this.bookName.set(this.book.getTitle());
                     this.bookImage.set(this.book.getImages().get(0));
-                    this.bookRentPrice.set(String.valueOf(this.book.getPrice()));
-                    this.totalPrice.set(String.valueOf(this.book.getPrice()));
+                    this.bookRentPrice.set(String.valueOf(this.book.getPrice()) + " đ");
+                    this.totalPrice.set(String.valueOf(this.book.getPrice())+ " đ");
+                    this.bookType.set("Khôi 5cm, Trí 3cm");
                 }).subscribe());
     }
     public void setLend(Lend lend){
