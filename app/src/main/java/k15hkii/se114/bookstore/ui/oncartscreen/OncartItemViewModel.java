@@ -1,12 +1,15 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableParcelable;
 import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +21,8 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 
     public ObservableField<String> name = new ObservableField<>();
     public ObservableField<String> price = new ObservableField<>();
-    public ObservableField<String> quantity = new ObservableField<>();
+    public ObservableField<Integer> quantity = new ObservableField<>();
+    public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
 
@@ -26,22 +30,52 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 
     @Getter @Setter Book book;
 
-    public OncartItemViewModel(ModelRemote remote){
-        super(null);
+    public OncartItemViewModel(SchedulerProvider schedulerProvider, ModelRemote remote){
+        super(schedulerProvider);
         this.remote = remote;
     }
 
-    void getData() {
-        remote.getBook(cartItem.getBookId())
-              .doOnSuccess(book -> {
-//            this.book = book;
-//            this.name.set(book.getTitle());
-//            this.price.set(String.valueOf(book.getPrice()));
-        }).subscribe();
-    }
+//    void getData() {
+//        getCompositeDisposable().add(remote.getBook(cartItem.getBookId())
+//                                           .subscribeOn(getSchedulerProvider().io())
+//                                           .observeOn(getSchedulerProvider().ui())
+//                                           .subscribe(book -> {
+//                                               this.book = book;
+//                                               this.name.set(book.getTitle());
+//                                               this.price.set(String.valueOf(book.getPrice()));
+//                                               this.quantity.set(String.valueOf(cartItem.getQuantity()));
+//                                           }, throwable -> {
+//                                               Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
+//                                           }));
+//    }
 
     public void setCartItem(CartItem cartItem) {
         this.cartItem = cartItem;
-        getData();
+        cartItem.setSelected(false);
+        quantity.set(cartItem.getQuantity());
+        //todo: get data
+//        getData();
+    }
+
+    public void deleteItem() {
+        remote.deleteCart(book.getId());
+    }
+
+    public void plusQuantity() {
+        if (quantity.get() >= book.getStock()) {
+            return;
+        }
+        else {
+            quantity.set((quantity.get() + 1));
+        }
+    }
+
+    public void minusQuantity() {
+        if (quantity.get() == 0) {
+            return;
+        }
+        else {
+            quantity.set((quantity.get() - 1));
+        }
     }
 }

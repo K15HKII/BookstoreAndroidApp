@@ -57,8 +57,8 @@ public class DialogModule {
     }
 
     @Provides
-    BuyNowViewModel provideBuyNowViewModel(SchedulerProvider schedulerProvider){
-        return createViewModel(dialog, BuyNowViewModel.class, () -> new BuyNowViewModel(schedulerProvider));
+    BuyNowViewModel provideBuyNowViewModel(ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, BuyNowViewModel.class, () -> new BuyNowViewModel(remote, helper));
     }
 
     @Provides

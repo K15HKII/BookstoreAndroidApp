@@ -3,10 +3,7 @@ package k15hkii.se114.bookstore.data.model.api.cartitem;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.Book;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -31,6 +28,7 @@ public class CartItem {
     private int quantity;
 
     @Getter
+    @Setter
     @Expose
     @SerializedName("selected")
     private boolean selected;

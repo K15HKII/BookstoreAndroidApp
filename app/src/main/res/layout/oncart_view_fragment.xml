@@ -95,7 +95,7 @@
                             android:fontFamily="@font/lato_regular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="120.000đ"
+                            android:text="@{viewModel.totalPrice.toString()}"
                             android:textSize="21dp"
                             android:textColor="@color/red_orange"/>
                 </LinearLayout>
