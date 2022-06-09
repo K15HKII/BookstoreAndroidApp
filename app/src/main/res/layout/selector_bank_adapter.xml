@@ -16,6 +16,9 @@
             android:clickable="true"
             android:background="@drawable/edit_text_background"
             android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
