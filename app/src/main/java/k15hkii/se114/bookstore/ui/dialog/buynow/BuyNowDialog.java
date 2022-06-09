@@ -14,9 +14,7 @@ import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 
 import javax.inject.Inject;
 
@@ -47,8 +45,6 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         BuynowSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.buynow_selector_dialog, container, false);
         View view =binding.getRoot();
-
-        performDependencyInjection(getBuildComponent());
 
         binding.setViewModel(buyNowViewModel);
         buyNowViewModel.setNavigator(this);
@@ -91,14 +87,7 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

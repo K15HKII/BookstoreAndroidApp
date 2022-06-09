@@ -48,7 +48,7 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
         SelectorAddressFragmentBinding selectorAddressFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         selectorAddressFragmentBinding.rcvAddressChoiceOtherAddress.setLayoutManager(linearLayoutManager);
         selectorAddressFragmentBinding.rcvAddressChoiceOtherAddress.setAdapter(otherAddressAdapter);
 

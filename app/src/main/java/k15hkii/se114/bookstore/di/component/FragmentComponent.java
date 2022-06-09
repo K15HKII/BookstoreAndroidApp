@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotification;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaiton;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySetting;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.SelectorVoucher;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPage;
@@ -242,4 +243,7 @@ public interface FragmentComponent {
 
     //TODO: CANCLEORDER
     void inject(CancleOrder cancleOrder);
+
+    //TODO: SELECTORVOUCHER
+    void inject(SelectorVoucher selectorVoucher);
 }

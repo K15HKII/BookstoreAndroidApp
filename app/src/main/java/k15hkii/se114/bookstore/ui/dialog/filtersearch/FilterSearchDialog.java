@@ -39,8 +39,6 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         FilterSearchDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.filter_search_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(filterSearchViewModel);
         filterSearchViewModel.setNavigator(this);
 
@@ -78,14 +76,7 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

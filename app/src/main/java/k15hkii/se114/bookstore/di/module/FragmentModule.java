@@ -7,9 +7,10 @@ import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrderViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
@@ -31,8 +32,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPageViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPageViewModel;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel;
@@ -409,6 +408,11 @@ public class FragmentModule {
         return createViewModel(fragment, CancleOrderViewModel.class, () -> new CancleOrderViewModel(schedulerProvider));
     }
 
+    @Provides
+    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    }
+
 //    @Provides
 //    public OrderViewViewModel provideOrderViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
 //        return createViewModel(fragment, OrderViewViewModel.class, () -> new OrderViewViewModel(schedulerProvider, mapper));
@@ -417,6 +421,11 @@ public class FragmentModule {
     //endregion
 
     //region Adapters
+    @Provides
+    public VoucherItemAdapter provideVoucherItemAdapter(Context context) {
+        return new VoucherItemAdapter(context);
+    }
+
     @Provides
     public BookViewAdapter provideBookViewAdapter(Context context) {
         return new BookViewAdapter(context);

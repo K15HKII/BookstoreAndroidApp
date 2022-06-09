@@ -24,7 +24,8 @@ import javax.inject.Inject;
 
 public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, SelectorBankPageViewModel> implements SelectorBankPageNavigator {
 
-    @Inject protected OtherBankAdapter otherBankAdapter;
+    @Inject
+    protected OtherBankAdapter otherBankAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -48,7 +49,7 @@ public class SelectorBankPage extends BaseFragment<SelectorBankFragmentBinding, 
         SelectorBankFragmentBinding selectorBankFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         selectorBankFragmentBinding.rcvBankChoiceOtherBank.setLayoutManager(linearLayoutManager);
         selectorBankFragmentBinding.rcvBankChoiceOtherBank.setAdapter(otherBankAdapter);
 

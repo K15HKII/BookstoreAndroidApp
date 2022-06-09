@@ -36,8 +36,6 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
         ChangeGenderDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_gender_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(changeGenderViewModel);
         changeGenderViewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
@@ -49,14 +47,7 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 
