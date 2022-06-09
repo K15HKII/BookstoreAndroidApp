@@ -35,8 +35,6 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
         OncartSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.oncart_selector_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(onCartViewModel);
         onCartViewModel.setNavigator(this);
 
@@ -81,14 +79,7 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

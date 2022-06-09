@@ -81,8 +81,15 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewDataBinding.setVariable(getBindingVariable(), viewModel);
-        viewDataBinding.setLifecycleOwner(this);
+        //viewDataBinding.setLifecycleOwner(this);
         viewDataBinding.executePendingBindings();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewDataBinding.unbind();
+        viewDataBinding = null;
     }
 
     public BaseActivity getBaseActivity() {
