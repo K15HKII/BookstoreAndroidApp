@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.OncartSelectorDialogBinding;
 import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;

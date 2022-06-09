@@ -2,7 +2,7 @@ package k15hkii.se114.bookstore.ui.dialog.oncart;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;

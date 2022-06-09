@@ -1,5 +1,7 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
+import android.util.Log;
+import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
@@ -42,7 +44,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
-                                                     "getData: " + throwable.getMessage(), throwable));
+                                   "getData: " + throwable.getMessage(), throwable));
     }
 
     public void setCartItem(CartItem cartItem) {
