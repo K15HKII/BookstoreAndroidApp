@@ -79,7 +79,7 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
     @Override
     public void Navigate(RentViewViewModel vm) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("lend", vm.getLend());
+        bundle.putSerializable("lending", vm.getLend());
         createTransaction(R.id.fragmentContainerView, RentDetailBill.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter

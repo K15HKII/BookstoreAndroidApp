@@ -400,8 +400,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RentDetailBillViewModel provideRentDetailBillViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider));
+    public RentDetailBillViewModel provideRentDetailBillViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider, remote));
     }
 
     @Provides
