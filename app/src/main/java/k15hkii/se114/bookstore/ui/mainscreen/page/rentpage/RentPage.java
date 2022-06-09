@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentPageFragmentBinding;
@@ -19,6 +21,7 @@ import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentBookMenuTabAdapter;
@@ -32,7 +35,7 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
     private RentPageFragmentBinding rentPageFragmentBinding;
     private TabLayout tabMenuNav;
     private FloatingActionButton btnAdd;
-    private ViewPager RentView;
+    private ViewPager2 RentView;
 
     @Override
     public int getBindingVariable() {
@@ -66,11 +69,23 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
 
         btnAdd.setImageTintList(ColorStateList.valueOf(Color.rgb(255,255,255)));
 
-        RentBookMenuTabAdapter rentBookView = new RentBookMenuTabAdapter(
-                getActivity().getSupportFragmentManager(),
-                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        RentBookMenuTabAdapter rentBookView = new RentBookMenuTabAdapter(getActivity().getSupportFragmentManager(),
+                this.getLifecycle());
         RentView.setAdapter(rentBookView);
-        tabMenuNav.setupWithViewPager(RentView);
+        new TabLayoutMediator(tabMenuNav, RentView,
+                (tab, position) -> {
+                    String title = "";
+                    switch (position){
+                        case 0:
+                            title = "Đang thuê";
+                            break;
+                        case 1:
+                            title = "Đã thuê";
+                            break;
+                    }
+                    tab.setText(title);
+                }
+        ).attach();
 
         return view;
     }

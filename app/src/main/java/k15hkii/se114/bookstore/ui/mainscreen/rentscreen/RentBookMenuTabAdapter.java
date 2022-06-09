@@ -5,21 +5,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPage;
 import org.jetbrains.annotations.NotNull;
 
-public class RentBookMenuTabAdapter extends FragmentStatePagerAdapter {
+public class RentBookMenuTabAdapter extends FragmentStateAdapter {
 
 
-    public RentBookMenuTabAdapter(@NonNull @NotNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
+    public RentBookMenuTabAdapter(@NonNull @NotNull FragmentManager fm, Lifecycle lifecycle) {
+        super(fm, lifecycle);
     }
 
     @NonNull
     @NotNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         switch (position){
             case 0:
                 return new RentingViewPage();
@@ -31,23 +33,7 @@ public class RentBookMenuTabAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return 2;
-    }
-
-    @Nullable
-    @org.jetbrains.annotations.Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        String title = "";
-        switch (position){
-            case 0:
-                title = "Đang thuê";
-                break;
-            case 1:
-                title = "Đã thuê";
-                break;
-        }
-        return title;
     }
 }
