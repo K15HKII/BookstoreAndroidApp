@@ -35,26 +35,26 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
         this.remote = remote;
     }
 
-//    void getData() {
-//        getCompositeDisposable().add(remote.getBook(cartItem.getBookId())
-//                                           .subscribeOn(getSchedulerProvider().io())
-//                                           .observeOn(getSchedulerProvider().ui())
-//                                           .subscribe(book -> {
-//                                               this.book = book;
-//                                               this.name.set(book.getTitle());
-//                                               this.price.set(String.valueOf(book.getPrice()));
-//                                               this.quantity.set(String.valueOf(cartItem.getQuantity()));
-//                                           }, throwable -> {
-//                                               Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
-//                                           }));
-//    }
+    void getData() {
+        getCompositeDisposable().add(remote.getBook(cartItem.getBookId())
+                                           .subscribeOn(getSchedulerProvider().io())
+                                           .observeOn(getSchedulerProvider().ui())
+                                           .subscribe(book -> {
+                                               this.book = book;
+                                               this.name.set(book.getTitle());
+                                               this.price.set(String.valueOf(book.getPrice()));
+                                               this.quantity.set(cartItem.getQuantity());
+                                           }, throwable -> {
+                                               Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
+                                           }));
+    }
 
     public void setCartItem(CartItem cartItem) {
         this.cartItem = cartItem;
         cartItem.setSelected(false);
         quantity.set(cartItem.getQuantity());
         //todo: get data
-//        getData();
+        getData();
     }
 
     public void deleteItem() {

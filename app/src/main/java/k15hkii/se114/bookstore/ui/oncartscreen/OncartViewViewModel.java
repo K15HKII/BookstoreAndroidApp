@@ -42,12 +42,12 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                         model.setCartItem(cartItem);
                         list.add(model);
 
-                        if(cartItem.isSelected()) {
-                            OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
-                            vm.setCartItem(cartItem);
-                            selectedItemList.add(vm);
-                            total += Double.parseDouble(vm.price.get());
-                        }
+//                        if(cartItem.isSelected()) {
+//                            OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
+//                            vm.setCartItem(cartItem);
+//                            selectedItemList.add(vm);
+//                            total += Double.parseDouble(vm.price.get());
+//                        }
                     }
                     totalPrice.set(total);
                     items.set(list);
