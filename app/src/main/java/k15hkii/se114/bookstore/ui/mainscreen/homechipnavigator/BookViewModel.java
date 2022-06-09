@@ -3,15 +3,13 @@ package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 
 import javax.inject.Inject;
-import java.util.UUID;
 
 public class BookViewModel extends BaseViewModel<BookViewNavigator> implements Observable {
 

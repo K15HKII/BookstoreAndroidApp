@@ -1,24 +1,18 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
 import android.os.Bundle;
-import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
 

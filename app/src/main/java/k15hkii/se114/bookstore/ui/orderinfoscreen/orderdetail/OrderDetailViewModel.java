@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Bill;
-import k15hkii.se114.bookstore.data.model.api.Transport;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -19,7 +16,6 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> implements Observable {
 

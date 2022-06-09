@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.bill;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,21 +12,25 @@ import java.util.UUID;
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class File {
+public class BillDetail {
     @Getter
     @Expose
-    @SerializedName("id")
-    private UUID id;
+    @SerializedName("bill_id")
+    private int billId;
 
     @Getter
     @Expose
-    @SerializedName("name")
-    private String name;
+    @SerializedName("book_id")
+    private UUID bookId;
 
     @Getter
     @Expose
-    @SerializedName("path")
-    private String path;
+    @SerializedName("unit_price")
+    private double price;
+
+    @Getter
+    @Expose
+    @SerializedName("quantity")
+    private int quantity;
 
 }
-

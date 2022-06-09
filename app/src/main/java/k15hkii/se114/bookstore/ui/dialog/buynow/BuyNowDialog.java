@@ -6,13 +6,10 @@ import android.view.*;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.BuynowSelectorDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 

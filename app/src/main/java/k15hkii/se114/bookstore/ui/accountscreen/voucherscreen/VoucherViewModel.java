@@ -2,8 +2,9 @@ package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 
 import android.util.Log;
 import androidx.databinding.Bindable;
-import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
+import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 

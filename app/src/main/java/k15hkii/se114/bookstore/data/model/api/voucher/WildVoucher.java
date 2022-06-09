@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.voucher;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,21 +10,15 @@ import lombok.With;
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Author {
+public class WildVoucher extends BaseVoucher {
+    @Getter
+    @Expose
+    @SerializedName("remaining_uses")
+    private double remainingUses;
 
     @Getter
     @Expose
-    @SerializedName("id")
-    private int id;
-
-    @Getter
-    @Expose
-    @SerializedName("name")
-    private String name;
-
-    @Getter
-    @Expose
-    @SerializedName("description")
-    private String description;
+    @SerializedName("max_uses")
+    private double maxUses;
 
 }

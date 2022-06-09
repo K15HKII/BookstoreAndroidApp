@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.book;
 
 public enum BookTag {
     DRAMA,COMEDY,HORROR,THRILLER,ROMANCE,MYSTERY,FANTASY,SCIENCEFICTION,BIOGRAPHY,
