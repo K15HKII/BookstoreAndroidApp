@@ -54,16 +54,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
         orderView = view.findViewById(R.id.vpReceiptOrderView);
 
-//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-//        loadingDialog.startLoadingDialog();
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        },500);
-
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                 this.getLifecycle());
         orderView.setAdapter(orderMenuTabAdapter);

@@ -41,7 +41,9 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
                 false
         );
 
-        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(data.getLsorderItems());
+        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(null);
+        orderItemAdapter.getSource().addAll(data.getLsorderItems());
+        orderItemAdapter.notifyDataSetChanged();
         holder.rcvListOrders.setLayoutManager(linearLayoutManager);
         holder.rcvListOrders.setAdapter(orderItemAdapter);
         holder.rcvListOrders.setFocusable(false);

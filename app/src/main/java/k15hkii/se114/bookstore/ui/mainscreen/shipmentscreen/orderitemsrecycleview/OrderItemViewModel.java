@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
@@ -14,21 +16,12 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
     @Inject protected ModelRemote remote;
 
+    public final ObservableField<Image> image = new ObservableField<>();
+    public final ObservableField<String> title = new ObservableField<>();
+    public final ObservableField<Long> price = new ObservableField<>();
+
     private BillDetail billDetail;
     private Book book;
-
-    private List<Image> bookImages;
-
-    // todo: binding data
-    @Bindable
-    public String getName() {
-        return billDetail == null ? "profile is null" : book.getTitle();
-    }
-
-    @Bindable
-    public String getPrice() {
-        return billDetail == null ? "profile is null" : String.valueOf(book.getPrice());
-    }
 
     public OrderItemViewModel(ModelRemote remote) {
         super(null);
@@ -37,13 +30,19 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
     public void setBillDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
-
         remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
-            this.book = book;
+            setBook(book);
         }).subscribe();
+    }
 
-        /*remote.getBookImages().doOnSuccess(bookImages -> {
-            this.bookImages = bookImages;
-        }).subscribe();*/ //TODO:
+    public void setBook(Book book) {
+        if (book == null)
+            return;
+        this.book = book;
+        if (book.getImages() != null && book.getImages().size() > 0) {
+            image.set(book.getImages().get(0));
+        }
+        title.set(book.getTitle());
+        price.set((long) book.getPrice());
     }
 }

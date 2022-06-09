@@ -1,9 +1,7 @@
 package k15hkii.se114.bookstore.utils;
 
 import android.annotation.SuppressLint;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.*;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -34,6 +32,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBoo
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public final class BindingUtils {
@@ -46,11 +45,7 @@ public final class BindingUtils {
         if (image == null)
             return;
 
-        final String url = BuildConfig.BASE_URL + "images/" + image.getId().toString() + ".png";
-
-        Glide.with(view)
-                .load(url)
-                .into(view);
+        bindImage(view, image.getId().toString());
     }
 
     @BindingAdapter({"image"})
@@ -63,6 +58,18 @@ public final class BindingUtils {
         Glide.with(view)
                 .load(url)
                 .into(view);
+    }
+
+    @BindingAdapter("price")
+    public static void bindText(TextView view, long price) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        view.setText(formatter.format(price));
+    }
+
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("rating")
+    public static void bindText(TextView view, double rating) {
+        view.setText(String.format("%,.1f", rating));
     }
 
     //region Binding adapter recycleview
