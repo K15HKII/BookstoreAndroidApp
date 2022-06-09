@@ -1,13 +1,13 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.voucher;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import k15hkii.se114.bookstore.data.model.api.book.BookTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.util.List;
 import java.util.UUID;
 
 @With

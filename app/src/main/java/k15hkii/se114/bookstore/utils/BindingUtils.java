@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import k15hkii.se114.bookstore.BuildConfig;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;

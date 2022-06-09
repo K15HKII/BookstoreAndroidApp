@@ -1,12 +1,8 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
-import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableParcelable;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
-import k15hkii.se114.bookstore.data.model.api.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -14,8 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.List;
-import java.util.UUID;
 
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
 

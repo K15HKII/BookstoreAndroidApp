@@ -1,8 +1,8 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.bill;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.model.api.Payment;
 import lombok.*;
 
 import java.io.Serializable;

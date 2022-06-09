@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.voucher;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,24 +7,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.Date;
+import java.util.UUID;
+
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Transporter {
+public class Voucher extends BaseVoucher {
 
     @Getter
     @Expose
-    @SerializedName("id")
-    private int id;
+    @SerializedName("user_id")
+    private UUID userId;
 
     @Getter
     @Expose
-    @SerializedName("name")
-    private String name;
-
-    @Getter
-    @Expose
-    @SerializedName("description")
-    private String description;
+    @SerializedName("used_at")
+    private Date usedAt;
 
 }

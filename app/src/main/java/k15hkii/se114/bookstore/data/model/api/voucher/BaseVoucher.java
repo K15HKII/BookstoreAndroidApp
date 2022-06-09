@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.voucher;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

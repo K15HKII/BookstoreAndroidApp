@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.data.model.api;
+package k15hkii.se114.bookstore.data.model.api.file;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,8 +12,7 @@ import java.util.UUID;
 @With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Transport {
-
+public class File {
     @Getter
     @Expose
     @SerializedName("id")
@@ -21,12 +20,13 @@ public class Transport {
 
     @Getter
     @Expose
-    @SerializedName("transporter_id")
-    private int transporterId;
+    @SerializedName("name")
+    private String name;
 
     @Getter
     @Expose
-    @SerializedName("tracking")
-    private String tracking;
+    @SerializedName("path")
+    private String path;
 
 }
+
