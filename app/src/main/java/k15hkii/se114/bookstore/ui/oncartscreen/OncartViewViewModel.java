@@ -27,7 +27,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     private Book book;
     private double total;
 
-    public void getData(UUID userId) {
+    public void getData() {
 
         total = 0d;
 
@@ -46,9 +46,12 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                             OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
                             vm.setCartItem(cartItem);
                             selectedItemList.add(vm);
-                            total += Double.parseDouble(vm.price.get());
+                            if (vm.price.get() != null) {
+                                total += vm.price.get();
+                            }
                         }
                     }
+
                     totalPrice.set(total);
                     items.set(list);
                 }, throwable -> {
@@ -61,7 +64,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
         totalPrice.set(0d);
-        getData(userId);
+        getData();
     }
 
     public void onBackWardClick(){

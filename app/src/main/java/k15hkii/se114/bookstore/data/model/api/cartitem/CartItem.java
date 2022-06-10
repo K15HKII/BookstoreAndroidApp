@@ -27,7 +27,6 @@ public class CartItem {
     private int quantity;
 
     @Getter
-    @Setter
     @Expose
     @SerializedName("selected")
     private boolean selected;

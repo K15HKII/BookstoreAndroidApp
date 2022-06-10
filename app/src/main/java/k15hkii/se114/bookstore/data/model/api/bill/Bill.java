@@ -3,9 +3,11 @@ package k15hkii.se114.bookstore.data.model.api.bill;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.Payment;
+import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -21,7 +23,7 @@ public class Bill implements Serializable {
     @Getter
     @Expose
     @SerializedName("transport_id")
-    private String transportId;
+    private int transportId;
 
     @Getter
     @Expose
@@ -41,7 +43,12 @@ public class Bill implements Serializable {
     @Expose
     @Getter
     @SerializedName("address_id")
-    private long userAddress;
+    private long userAddressId;
+
+    @Expose
+    @Getter
+    @SerializedName("used_vouchers")
+    private List<VoucherProfile> usedVouchers;
 
 
     @Expose

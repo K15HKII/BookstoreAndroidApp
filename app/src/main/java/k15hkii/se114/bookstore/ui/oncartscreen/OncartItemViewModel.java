@@ -5,6 +5,7 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -16,7 +17,7 @@ import javax.inject.Inject;
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> implements Observable {
 
     public ObservableField<String> name = new ObservableField<>();
-    public ObservableField<String> price = new ObservableField<>();
+    public ObservableField<Double> price = new ObservableField<>();
     public ObservableField<Integer> quantity = new ObservableField<>();
     public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
@@ -40,18 +41,18 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.book = book;
                     this.name.set(book.getTitle());
                     this.quantity.set(cartItem.getQuantity());
-                    this.price.set(String.valueOf(book.getPrice() * quantity.get()));
+                    this.price.set(book.getPrice() * quantity.get());
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
                                    "getData: " + throwable.getMessage(), throwable));
     }
 
-    public void setCartItem(CartItem cartItem) {
+    public void setCartItem(CartItem cartItem) throws InterruptedException {
         this.cartItem = cartItem;
-        this.cartItem.setSelected(false);
         quantity.set(cartItem.getQuantity());
         getData();
+//        wait();
     }
 
     public void deleteItem() {
@@ -64,27 +65,39 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             return;
         } else {
             quantity.set((quantity.get() + 1));
-            this.price.set(String.valueOf(book.getPrice() * quantity.get()));
+            this.price.set(book.getPrice() * quantity.get());
         }
     }
 
     public void minusQuantity() {
-        if (quantity.get() == 0) {
+        if (quantity.get() == 1) {
             return;
         } else {
             quantity.set((quantity.get() - 1));
-            this.price.set(String.valueOf(book.getPrice() * quantity.get()));
+            this.price.set(book.getPrice() * quantity.get());
         }
     }
 
     public void CheckHandle() {
-        if (Boolean.TRUE.equals(isSelectedItem.get())) {
-            cartItem.setSelected(true);
-            getNavigator().checkItemHandle();
+        if (cartItem.isSelected() == false && isSelectedItem.get()) {
+            isSelectedItem.set(true);
+            postCart(true);
+//            this.getNavigator().checkItemHandle();
         }
-        else {
-            cartItem.setSelected(false);
-            getNavigator().checkItemHandle();
+        else if (cartItem.isSelected() == true){
+            isSelectedItem.set(false);
+            postCart(false);
+//            this.getNavigator().checkItemHandle();
         }
+    }
+
+    void postCart(boolean status) {
+        CartItemCRUDRequest request = new CartItemCRUDRequest();
+        request.setBookId(book.getId());
+        request.setQuantity(quantity.get());
+        request.setSelected(status);
+        dispose(remote.createCart(cartItem.getUserId(), request),
+                cartItem -> {},
+                throwable -> {});
     }
 }

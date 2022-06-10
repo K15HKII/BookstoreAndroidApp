@@ -22,6 +22,7 @@ public class CartItemCRUDRequest {
     private int quantity;
 
     @Expose
+    @Setter
     @Getter
     @SerializedName("selected")
     private boolean selected;

@@ -25,6 +25,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
     OncartViewFragmentBinding oncartViewFragmentBinding;
 
+    @Inject protected OncartViewViewModel viewModel;
+
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -86,7 +88,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void checkItemHandle() {
-        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
     }
 
     //    @Override

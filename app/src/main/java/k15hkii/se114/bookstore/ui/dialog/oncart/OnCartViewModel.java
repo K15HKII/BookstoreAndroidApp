@@ -40,6 +40,7 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
         CartItemCRUDRequest request = new CartItemCRUDRequest();
         request.setBookId(book.getId());
         request.setQuantity(quantity.get());
+        request.setSelected(false);
         dispose(remote.createCart(userId, request),
                 cartItem -> {},
                 throwable -> {});
@@ -54,7 +55,7 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
     }
 
     public void minusQuantity() {
-        if (quantity.get() == 0) {
+        if (quantity.get() == 1) {
             return;
         } else {
             quantity.set((quantity.get() - 1));

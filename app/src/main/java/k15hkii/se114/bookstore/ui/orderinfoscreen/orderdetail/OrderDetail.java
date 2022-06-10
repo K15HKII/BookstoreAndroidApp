@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,7 @@ public class OrderDetail extends BaseFragment<OrderDetailFragmentBinding, OrderD
         return R.layout.order_detail_fragment;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

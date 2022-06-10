@@ -183,15 +183,7 @@ public class ViewModelMapper {
     }
 
     public Single<List<OrderViewViewModel>> getBills(UUID userId) {
-        return remote.getBills(userId).map(bills -> {
-            List<OrderViewViewModel> list = new ArrayList<>();
-            for (Bill bill : bills) {
-                OrderViewViewModel viewModel = new OrderViewViewModel(remote);
-                viewModel.setBill(bill);
-                list.add(viewModel);
-            }
-            return list;
-        });
+        return toOrderViewModel(remote.getBills(userId), "WAITING");
     }
 
     public Single<List<OrderViewViewModel>> getWaitingBills(UUID userId) {

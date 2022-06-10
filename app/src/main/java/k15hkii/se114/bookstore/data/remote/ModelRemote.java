@@ -188,7 +188,7 @@ public interface ModelRemote {
      * @param billId
      */
     @DELETE("/api/user/bill/{user_id}")
-    void deleteBill(@Path("user_id") UUID user_id, int billId);
+    Single<Integer> deleteBill(@Path("user_id") UUID user_id, int billId);
     //endregion
 
     //region Lend
