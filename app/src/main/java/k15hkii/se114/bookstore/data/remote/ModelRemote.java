@@ -175,11 +175,11 @@ public interface ModelRemote {
     @GET("/api/bill/{bill_id}/vouchers")
     Single<List<VoucherProfile>> getBillVouchers(@Path("bill_id") int bill_id);
 
-    @GET("/api/bill/from/{user_id}")
+    @GET("/api/user/bills/{user_id}")
     Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
-    @POST("/api/bill/{bill_id}")
-    Single<Bill> createBill(@Path("bill_id") int bill_id);
+    @POST("/api/user/bill/{user_id}")
+    Single<Bill> createBill(@Path("user_id") UUID userId);
 
     /**
      * Cancel order

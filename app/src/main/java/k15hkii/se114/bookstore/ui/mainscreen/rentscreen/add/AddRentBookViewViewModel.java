@@ -29,14 +29,4 @@ public class AddRentBookViewViewModel extends BaseViewModel<AddRentBookViewNavig
         getNavigator().openRentBookDetail();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

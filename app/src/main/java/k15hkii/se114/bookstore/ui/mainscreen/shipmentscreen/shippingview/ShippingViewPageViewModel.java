@@ -39,14 +39,4 @@ public class ShippingViewPageViewModel extends BaseViewModel<ShippingViewPageNav
         getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

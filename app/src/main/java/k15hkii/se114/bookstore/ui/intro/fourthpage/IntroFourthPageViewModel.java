@@ -13,14 +13,4 @@ public class IntroFourthPageViewModel extends BaseViewModel<IntroFourthPageNavig
         getNavigator().openLogin();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }
