@@ -22,10 +22,6 @@ public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemA
     @Getter
     @Setter
     private IOrderNavigator orderNavigator;
-    @Deprecated
-    public OrderItemAdapter(List<OrderItemViewModel> lsOrderItem) {
-        super(lsOrderItem);
-    }
 
     public OrderItemAdapter(Context context) {
         super(new ArrayList<>());

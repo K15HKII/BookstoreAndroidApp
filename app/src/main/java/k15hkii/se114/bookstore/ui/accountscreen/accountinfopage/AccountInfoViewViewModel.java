@@ -1,15 +1,14 @@
 package k15hkii.se114.bookstore.ui.accountscreen.accountinfopage;
 
 import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.UUID;
@@ -27,50 +26,15 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     protected ModelRemote remote;
     private User user;
     private UUID user_id;
-//    @Bindable
-//    public String getName() {
-//        if (user == null) return "";
-//        return user.getFirstName() + " " + user.getLastName();
-//    }
-//
-//    @Bindable
-//    public String getGender() {
-//        if (user == null) return "";
-//        if (user.getGender() == null) return "";
-//        return user.getGender().name();
-//    }
-//
-//    @Bindable
-//    public String getBirthday() {
-//        if (user == null) return "";
-//        if (user.getBirthday() == null) return "";
-//        return user.getBirthday().toString();
-//    }
-//
-//    @Bindable
-//    public String getPhone() {
-//        if (user == null) return "";
-//        return user.getPhone();
-//    }
-//
-//    @Bindable
-//    public String getEmail() {
-//        if (user == null) return "";
-//        return user.getEmail();
-//    }
-//
-//    @Bindable
-//    public String getAddress() {
-//        if (address == null) return "null";
-//        return address;
-//    }
 
-    private String toAddess(UserAddress address){
+    private String toAddress(UserAddress address){
         return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
     }
+
     private String toUserName(User user){
         return user.getFirstName() + " " + user.getLastName();
     }
+
     private void getData(UUID userId) {
         getCompositeDisposable().add(remote.getSelfUser()
                 .subscribeOn(getSchedulerProvider().io())
@@ -85,7 +49,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                     this.userName.set(String.valueOf(user.getUserName()));
                     this.notifyChange();
                 }, throwable -> {
-                    Log.d("AccInfoViewViewModel", "getUser: " + throwable.getMessage(), throwable);
+                    Log.d("AccInfoViewViewModel", "getSelfUser: " + throwable.getMessage(), throwable);
                 }));
 
         // set address
@@ -96,7 +60,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                                                for (UserAddress address : addresses)
                                                {
                                                    if (address.is_primary()){
-                                                       this.address.set(toAddess(address));
+                                                       this.address.set(toAddress(address));
                                                    }
                                                }
                                            }));

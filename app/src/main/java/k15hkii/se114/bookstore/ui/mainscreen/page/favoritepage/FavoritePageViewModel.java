@@ -49,14 +49,4 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
         getNavigator().openFilterDialog();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

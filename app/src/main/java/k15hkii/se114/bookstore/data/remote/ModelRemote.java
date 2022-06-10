@@ -32,13 +32,13 @@ import retrofit2.http.*;
 public interface ModelRemote {
 
     //region User
-    @GET("/api/model/user")
+    @GET("/api/user")
     Single<List<User>> getUsers();
 
-    @GET("api/mode/user/self")
+    @GET("api/user/profile")
     Single<User> getSelfUser();
 
-    @GET("/api/model/user/{id}")
+    @GET("/api/user/profile/{id}")
     Single<User> getUser(@Path("id") UUID id);
 
     //region RecentBook

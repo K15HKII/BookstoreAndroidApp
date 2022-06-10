@@ -46,7 +46,7 @@ public class Book implements Serializable {
     @Getter
     @Expose
     @SerializedName("price")
-    private double price;
+    private int price;
 
     @Getter
     @Expose
