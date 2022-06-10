@@ -71,4 +71,8 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
         getNavigator().BackWard();
     }
 
+    public void openOrderPage() {
+        getNavigator().OrderPageNavigator();
+    }
+
 }

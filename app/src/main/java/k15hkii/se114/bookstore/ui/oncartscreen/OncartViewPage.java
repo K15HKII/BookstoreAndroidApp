@@ -87,7 +87,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
-    public void OrderPageNavigate() {
+    public void OrderPageNavigator() {
         createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
