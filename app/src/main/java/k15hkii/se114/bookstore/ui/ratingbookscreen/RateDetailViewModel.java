@@ -14,22 +14,20 @@ import java.util.UUID;
 
 public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavigator> implements Observable {
 
-    public final ObservableField<List<RatingReportViewModel>> listRate = new ObservableField<>();
-
     @Inject
     protected ViewModelMapper mapper;
     private final UUID userId;
-    public void getData() {
-        dispose(mapper.getRatings(userId),
-                listRate::set,
-                throwable -> Log.d("RateDetailViewModel", "getData: " + throwable.getMessage(), throwable));
-    }
+//    public void getData() {
+//        dispose(mapper.getRatings(userId),
+//                listRate::set,
+//                throwable -> Log.d("RateDetailViewModel", "getData: " + throwable.getMessage(), throwable));
+//    }
 
     public RateDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData();
+//        getData();
     }
 
     public void onBackWardClick(){

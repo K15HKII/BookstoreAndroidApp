@@ -3,16 +3,13 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,14 +49,4 @@ public class FavoritePageViewModel extends BaseViewModel<FavoritePageNavigator> 
         getNavigator().openFilterDialog();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

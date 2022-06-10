@@ -24,8 +24,6 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewModel> implements HomePageNavigator {
 
-    private HomePageFragmentBinding homePageFragmentBinding;
-
     @Override
     public int getBindingVariable() {
         return BR.HomePageViewModel;
@@ -40,9 +38,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        homePageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(HomePage.this);
-
         return view;
     }
 

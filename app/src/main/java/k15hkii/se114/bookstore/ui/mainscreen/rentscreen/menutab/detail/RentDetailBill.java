@@ -1,17 +1,14 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail;
 
 import androidx.databinding.library.baseAdapters.BR;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Lend;
+import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.databinding.RentDetailBillFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;

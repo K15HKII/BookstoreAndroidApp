@@ -1,14 +1,12 @@
 package k15hkii.se114.bookstore.utils;
 
 import android.annotation.SuppressLint;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.*;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import k15hkii.se114.bookstore.BuildConfig;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
@@ -31,11 +29,10 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public final class BindingUtils {
@@ -48,11 +45,7 @@ public final class BindingUtils {
         if (image == null)
             return;
 
-        final String url = BuildConfig.BASE_URL + "images/" + image.getId().toString() + ".png";
-
-        Glide.with(view)
-                .load(url)
-                .into(view);
+        bindImage(view, image.getId().toString());
     }
 
     @BindingAdapter({"image"})
@@ -65,6 +58,18 @@ public final class BindingUtils {
         Glide.with(view)
                 .load(url)
                 .into(view);
+    }
+
+    @BindingAdapter("price")
+    public static void bindText(TextView view, long price) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        view.setText(formatter.format(price));
+    }
+
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("rating")
+    public static void bindText(TextView view, double rating) {
+        view.setText(String.format("%,.1f", rating));
     }
 
     //region Binding adapter recycleview
@@ -194,16 +199,16 @@ public final class BindingUtils {
         adapter.notifyDataSetChanged();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    @BindingAdapter({"source"})
-    public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
-        RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
-        if (adapter == null || source == null)
-            return;
-        adapter.getSource().clear();
-        adapter.getSource().addAll(source);
-        adapter.notifyDataSetChanged();
-    }
+//    @SuppressLint("NotifyDataSetChanged")
+//    @BindingAdapter({"source"})
+//    public static void ratingReportBindSource(RecyclerView view, List<RatingReportViewModel> source) {
+//        RatingReportAdapter adapter = (RatingReportAdapter) view.getAdapter();
+//        if (adapter == null || source == null)
+//            return;
+//        adapter.getSource().clear();
+//        adapter.getSource().addAll(source);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})

@@ -11,13 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.data.model.api.Book;
 import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -27,6 +24,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     protected OncartItemAdapter oncartItemAdapter;
 
     OncartViewFragmentBinding oncartViewFragmentBinding;
+
+    @Inject protected OncartViewViewModel viewModel;
 
     @Override
     public int getBindingVariable() {
@@ -86,7 +85,13 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                 ).commit();
     }
 
-//    @Override
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void checkItemHandle() {
+//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+    }
+
+    //    @Override
 //    public void resetView() {
 //        oncartItemAdapter.notifyDataSetChanged();
 //    }

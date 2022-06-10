@@ -42,7 +42,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
@@ -58,7 +57,6 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetail;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
 import k15hkii.se114.bookstore.ui.registerscreen.Register;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
@@ -159,8 +157,6 @@ public interface FragmentComponent {
 
     //TODO: MAINSCREEN.SHIPMENTSCREEN
 
-    void inject(RatingBookViewPage ratingBookViewPage);
-
     void inject(ShipmentArrivedViewPage shipmentArrivedViewPage);
 
     void inject(ShippingViewPage shippingViewPage);
@@ -234,9 +230,6 @@ public interface FragmentComponent {
 
     //TODO: ORDERINFOSCREEN.ORDERRATING
     void inject(OrderRating orderRating);
-
-    //TODO: ORDERINFOSCREEN.ORDERRATINGDETAIL
-    void inject(OrderRatingDetail orderRatingDetail);
 
     //TODO: RENTDETAILBILL
     void inject(RentDetailBill rentDetailBill);

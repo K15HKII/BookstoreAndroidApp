@@ -2,10 +2,9 @@ package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.BookTag;
-import k15hkii.se114.bookstore.data.model.api.Image;
-import k15hkii.se114.bookstore.data.model.api.Lend;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -51,7 +50,7 @@ public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implemen
 //                   }
 //                   booktag.set(bt);
                    this.booktag.set("Hài hước");
-               }).subscribe());
+               }).subscribe((book1, throwable) -> {}));
     }
 
 

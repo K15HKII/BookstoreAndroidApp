@@ -6,8 +6,16 @@ import java.util.UUID;
 
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.bill.Transporter;
+import k15hkii.se114.bookstore.data.model.api.book.Author;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.book.Publisher;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.file.Video;
+import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
 import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
@@ -16,63 +24,24 @@ import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.model.api.user.UserBankCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
+import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
 import okhttp3.RequestBody;
 import retrofit2.http.*;
 
 public interface ModelRemote {
-    //User
-    @GET("/api/model/user")
+
+    //region User
+    @GET("/api/user")
     Single<List<User>> getUsers();
 
-    @GET("api/mode/user/self")
+    @GET("api/user/profile")
     Single<User> getSelfUser();
 
-    @GET("/api/model/user/{id}")
+    @GET("/api/user/profile/{id}")
     Single<User> getUser(@Path("id") UUID id);
 
-    //Author
-    @GET("/api/author/{id}")
-    Single<Author> getAuthor(@Path("id") int id);
-
-    @GET("/api/author")
-    Single<List<Author>> getAuthors();
-
-    //Book
-    @GET("/api/book/search")
-    Single<List<Book>> getBooks();
-
-    @GET("/api/book/info/{book_id}")
-    Single<Book> getBook(@Path("book_id") UUID id);
-
-    //BookSold
-    @GET("/api/statistic/book/{book_id}/sold")
-    Single<StatisticResult> getOneBookSold(@Path("book_id") UUID id);
-
-    @GET("/api/statistic/book/sold")
-    Single<StatisticResult> getBookSolds();
-
-    //BookRate
-    @GET("/api/statistic/book/{book_id}/rate")
-    Single<StatisticResult> getBookRate(@Path("book_id") UUID id);
-
-    //Publisher
-    @GET("/api/publisher/{id}")
-    Single<Publisher> getPublisher(@Path("id") int id);
-
-    void deletePublisher(@Path("id") int id);
-
-    @GET("/api/publisher")
-    Single<List<Publisher>> getPublishers();
-
-    //Transporter
-    @GET("/api/transporter/{id}")
-    Single<Transporter> getTransporter(@Path("id") int id);
-
-    @GET("/api/transporter")
-    Single<List<Transporter>> getTransporters();
-
-    //User
-    //RecentBook
+    //region RecentBook
     @GET("/api/user/recent/{user_id}")
     Single<List<Book>> getRecentBooks(@Path("user_id") UUID user_id);
 
@@ -85,8 +54,9 @@ public interface ModelRemote {
      */
     @POST("/api/user/recent/{user_id}")
     Single<Book> createRecentBook(@Path("user_id") UUID user_id, @Body RecentBookCRUDRequest request);
+    //endregion
 
-    //FavoriteBook
+    //region FavouriteBook
     @GET("/api/user/favourites/{user_id}")
     Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
@@ -102,8 +72,9 @@ public interface ModelRemote {
 
     @DELETE("/api/user/favourite/{user_id}")
     void deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+    //endregion
 
-    //CartItem
+    //region CartItem
     @GET("/api/user/carts/{user_id}")
     Single<List<CartItem>> getCarts(@Path("user_id") UUID user_id);
 
@@ -118,33 +89,10 @@ public interface ModelRemote {
     Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
 
     @DELETE("/api/user/cart/{book_id}")
-    void deleteCart(@Path("book_id") UUID book_id);
+    Single<Integer> deleteCart(@Path("book_id") UUID book_id);
+    //endregion
 
-    //Bill
-    @GET("/api/bill/{bill_id}")
-    Single<Bill> getBill(@Path("bill_id") int id);
-
-    @GET("/api/bill/{bill_id}/vouchers")
-    Single<List<VoucherProfile>> getBillVouchers(@Path("bill_id") int bill_id);
-
-    @GET("/api/bill/from/{user_id}")
-    Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
-
-    @POST("/api/bill/{bill_id}")
-    Single<Bill> createBill(@Path("bill_id") int bill_id);
-
-
-
-    /**
-     * Cancel order
-     *
-     * @param user_id
-     * @param billId
-     */
-    @DELETE("/api/user/bill/{user_id}")
-    void deleteBill(@Path("user_id") UUID user_id, int billId);
-
-    //Address
+    //region Address
     @GET("/api/user/addresses/{user_id}")
     Single<List<UserAddress>> getAddresses(@Path("user_id") UUID user_id);
 
@@ -160,7 +108,7 @@ public interface ModelRemote {
     @POST("/api/user/address/{address_id}/{user_id}")
     Single<UserAddress> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
 
-    //Bank
+    //region Bank
     @GET("/api/user/banks/{user_id}")
     Single<List<UserBank>> getBanks(@Path("user_id") UUID user_id);
 
@@ -175,8 +123,75 @@ public interface ModelRemote {
 
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
     void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
+    //endregion
+    //endregion
+    //endregion
 
-    //Lend
+    //region Author
+    @GET("/api/author/{id}")
+    Single<Author> getAuthor(@Path("id") int id);
+
+    @GET("/api/author")
+    Single<List<Author>> getAuthors();
+    //endregion
+
+    //region Book
+    @GET("/api/book/search")
+    Single<List<Book>> getBooks();
+
+    @GET("/api/book/info/{book_id}")
+    Single<Book> getBook(@Path("book_id") UUID id);
+
+    @GET("/api/statistic/book/{book_id}/sold")
+    Single<StatisticResult> getOneBookSold(@Path("book_id") UUID id);
+
+    @GET("/api/statistic/book/sold")
+    Single<StatisticResult> getBookSolds();
+
+    @GET("/api/statistic/book/{book_id}/rate")
+    Single<StatisticResult> getBookRate(@Path("book_id") UUID id);
+    //endregion
+
+    //region Publisher
+    @GET("/api/publisher/{id}")
+    Single<Publisher> getPublisher(@Path("id") int id);
+
+    @GET("/api/publisher")
+    Single<List<Publisher>> getPublishers();
+    //endregion
+
+    //region Transporter
+    @GET("/api/transporter/{id}")
+    Single<Transporter> getTransporter(@Path("id") int id);
+
+    @GET("/api/transporter")
+    Single<List<Transporter>> getTransporters();
+    //endregion
+
+    //region Bill
+    @GET("/api/bill/{bill_id}")
+    Single<Bill> getBill(@Path("bill_id") int id);
+
+    @GET("/api/bill/{bill_id}/vouchers")
+    Single<List<VoucherProfile>> getBillVouchers(@Path("bill_id") int bill_id);
+
+    @GET("/api/bill/from/{user_id}")
+    Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
+
+    @POST("/api/bill/{bill_id}")
+    Single<Bill> createBill(@Path("bill_id") int bill_id);
+
+    /**
+     * Cancel order
+     *
+     * @param user_id
+     * @param billId
+     */
+    @DELETE("/api/user/bill/{user_id}")
+    Single<Integer> deleteBill(@Path("user_id") UUID user_id, int billId);
+    //endregion
+
+    //region Lend
     @GET("/api/lend/from/{user_id}")
     Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
 
@@ -188,8 +203,9 @@ public interface ModelRemote {
 
     @DELETE("/api/user/lend/{user_id}")
     void deleteLend(@Path("user_id") UUID user_id);
+    //endregion
 
-    //Voucher
+    //region Voucher
     @GET("/api/voucher/profile/{profile_id}")
     Single<VoucherProfile> getVoucherProfile(@Path("profile_id") UUID id);
 
@@ -198,7 +214,9 @@ public interface ModelRemote {
 
     @GET("/api/voucher/{voucher_id}")
     Single<Voucher> getVoucher(@Path("voucher_id") Date usedAt);
+    //endregion
 
+    //region File
     @Multipart
     @POST("/upload/image")
     Single<Image> uploadImage(@Part RequestBody body);
@@ -206,5 +224,6 @@ public interface ModelRemote {
     @Multipart
     @POST("/upload/video")
     Single<Video> uploadVideo(@Part RequestBody body);
+    //endregion
 
 }

@@ -1,16 +1,19 @@
 package k15hkii.se114.bookstore.ui;
 
 import io.reactivex.Single;
-import k15hkii.se114.bookstore.data.model.api.*;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
+import k15hkii.se114.bookstore.data.model.api.bill.BillStatus;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -30,13 +33,11 @@ public class ViewModelMapper {
         this.remote = remote;
     }
 
-
-
     public Single<List<BookViewModel>> toBookViewModel(Single<List<Book>> single) {
         return single.map(books -> {
             List<BookViewModel> list = new ArrayList<>();
             for (Book book : books) {
-                BookViewModel vm = new BookViewModel();
+                BookViewModel vm = new BookViewModel(schedulerProvider, remote);
                 vm.setBook(book);
                 list.add(vm);
             }
@@ -48,7 +49,7 @@ public class ViewModelMapper {
         return single.map(lends -> {
             List<RentViewViewModel> list = new ArrayList<>();
             for (Lend lend : lends) {
-                RentViewViewModel vm = new RentViewViewModel(schedulerProvider,remote);
+                RentViewViewModel vm = new RentViewViewModel(schedulerProvider, remote);
                 vm.setLend(lend);
                 list.add(vm);
             }
@@ -58,11 +59,11 @@ public class ViewModelMapper {
 
     // ORDER MAPPER
 
-    public Single<List<OrderViewViewModel>> toOrderViewModel(Single<List<Bill>> single, String type) {
+    public Single<List<OrderViewViewModel>> toOrderViewModel(Single<List<Bill>> single, BillStatus type) {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(type)) {
+                if (bill.getStatus() == type) {
                     OrderViewViewModel vm = new OrderViewViewModel(remote);
                     vm.setBill(bill);
                     list.add(vm);
@@ -87,20 +88,15 @@ public class ViewModelMapper {
     }
 
     public Single<List<OrderViewViewModel>> toShipmentArrivedOrderViewModel(Single<List<Bill>> single) {
-        return single.map(bills -> {
-            List<OrderViewViewModel> list = new ArrayList<>();
-            for (Bill bill : bills) {
-                if (bill.getStatus().toString().equals(BillStatus.COMPLETED.toString())) {
-                    OrderViewViewModel vm = new OrderViewViewModel(remote);
-                    vm.setBill(bill);
-                    list.add(vm);
-                }
-            }
-            return list;
-        });
+        return toOrderViewViewModel(single);
     }
 
     public Single<List<OrderViewViewModel>> toRatingOrderViewModel(Single<List<Bill>> single) {
+        return toOrderViewViewModel(single);
+    }
+
+    @NotNull
+    private Single<List<OrderViewViewModel>> toOrderViewViewModel(Single<List<Bill>> single) {
         return single.map(bills -> {
             List<OrderViewViewModel> list = new ArrayList<>();
             for (Bill bill : bills) {
@@ -130,21 +126,21 @@ public class ViewModelMapper {
 
     // RATING MAPPER
 
-    public Single<List<RatingReportViewModel>> toRatingViewModel(Single<List<Bill>> single) {
-        return single.map(bills -> {
-            List<RatingReportViewModel> list = new ArrayList<>();
-            for (Bill bill : bills) {
-                RatingReportViewModel vm = new RatingReportViewModel();
-                vm.setRate(bill);
-                list.add(vm);
-            }
-            return list;
-        });
-    }
-
-    public Single<List<RatingReportViewModel>> getRatings(UUID uuid) {
-        return toRatingViewModel(remote.getBills(uuid));
-    }
+//    public Single<List<RatingReportViewModel>> toRatingViewModel(Single<List<Bill>> single) {
+//        return single.map(bills -> {
+//            List<RatingReportViewModel> list = new ArrayList<>();
+//            for (Bill bill : bills) {
+//                RatingReportViewModel vm = new RatingReportViewModel();
+//                vm.setRate(bill);
+//                list.add(vm);
+//            }
+//            return list;
+//        });
+//    }
+//
+//    public Single<List<RatingReportViewModel>> getRatings(UUID uuid) {
+//        return toRatingViewModel(remote.getBills(uuid));
+//    }
 
     public Single<List<RentViewViewModel>> getLends(UUID userId) {
         return toLendViewModel(remote.getLends(userId));
@@ -199,23 +195,23 @@ public class ViewModelMapper {
     }
 
     public Single<List<OrderViewViewModel>> getWaitingBills(UUID userId) {
-        return toOrderViewModel(remote.getBills(userId), BillStatus.WAITING.name());
+        return toOrderViewModel(remote.getBills(userId), BillStatus.WAITING);
     }
 
     public Single<List<OrderViewViewModel>> getShippingBills(UUID userId) {
-        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING.name());
+        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING);
     }
 
     public Single<List<OrderViewViewModel>> getCompletedBills(UUID userId) {
-        return toOrderViewModel(remote.getBills(userId), BillStatus.COMPLETED.name());
+        return toOrderViewModel(remote.getBills(userId), BillStatus.COMPLETED);
     }
 
     public Single<List<OrderViewViewModel>> getRatingBills(UUID userId) {
-        return toOrderViewModel(remote.getBills(userId), BillStatus.CANCELED.name());
+        return toOrderViewModel(remote.getBills(userId), BillStatus.CANCELED);
     }
 
     public Single<List<OrderViewViewModel>> getCancelBills(UUID userId) {
-        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING.toString());
+        return toOrderViewModel(remote.getBills(userId), BillStatus.TRANSPORTING);
     }
 
 }

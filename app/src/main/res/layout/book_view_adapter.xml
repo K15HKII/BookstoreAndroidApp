@@ -25,9 +25,8 @@
                 android:id="@+id/imgBookViewBookImage"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/dac_nhan_tam_book"
                 image="@{viewModel.image}"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +38,7 @@
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@{viewModel.name}"
+                    android:text="@{viewModel.title}"
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -67,7 +66,7 @@
                 android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
-                android:text="@{viewModel.price}"
+                price="@{viewModel.price}"
                 android:textColor="#F51F01"
                 android:textSize="17dp" />
 
@@ -81,7 +80,7 @@
                     android:drawableStart="@drawable/ic_star"
                     android:scaleX="1"
                     android:scaleY="1"
-                    android:text="4.9"
+                    rating="@{viewModel.rating}"
                     android:textSize="14.5dp"
                     android:textColor="#001C44"/>
         </LinearLayout>

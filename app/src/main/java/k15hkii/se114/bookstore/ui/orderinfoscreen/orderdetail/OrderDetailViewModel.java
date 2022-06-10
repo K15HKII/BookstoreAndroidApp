@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Bill;
-import k15hkii.se114.bookstore.data.model.api.Transport;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -29,26 +26,25 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
     public final ObservableField<String> voucher = new ObservableField<>();
     public final ObservableField<String> price = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
-    public final ObservableField<String> discount = new ObservableField<>();
+    public final ObservableField<Double> discount = new ObservableField<>();
+    public final ObservableField<Double> shipPay = new ObservableField<>();
+    public final ObservableField<Double> total = new ObservableField<>();
+
     private Bill bill;
+
+    private int billId;
+    private UUID userId;
 
     @Inject
     protected ViewModelMapper mapper;
     @Inject
     protected ModelRemote remote;
 
-    public void getData(int billId) {
+    public void getData() {
         dispose(mapper.getBill(billId),
                 billdetails -> {
                     items.set(billdetails);
 //                    setPrice(bill.getPrice());
-
-                    //todo: get address
-//                    this.voucher.set(bill.getVoucherProfile().getName());
-//                    this.paymentMethod.set(bill.getPayment().name());
-//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
-//                        shippingPay.set(transporter.getName());
-//                    }).subscribe();
 
                     double totalPrice = 0;
 
@@ -60,7 +56,6 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
                     this.price.set(String.valueOf(totalPrice));
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
-
     }
 
     @Override
@@ -74,7 +69,24 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
 
     public void setBill(Bill bill) {
         this.bill = bill;
-        getData(bill.getId());
+
+        userId = bill.getUserid();
+        billId = bill.getId();
+
+        //get address
+        dispose(remote.getAddress(userId, billId),
+                address -> this.voucher.set(address.getCity()),
+                throwable -> {});
+        // get voucher
+        dispose(remote.getBillVouchers(billId),
+                vouchers -> this.voucher.set(vouchers.get(0).getName()),
+                throwable -> {});
+        // get payment
+        this.paymentMethod.set(bill.getPayment().name());
+//                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
+//                        shippingPay.set(transporter.getName());
+//                    }).subscribe();
+        getData();
     }
 
     public OrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
@@ -82,8 +94,14 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         this.mapper = mapper;
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
+    }
+
+    public void DeleteOrderClick() {
+        dispose(remote.deleteBill(userId, bill.getId()),
+                a -> { },
+                throwable -> Log.d("", "Delete: " + throwable.getMessage(), throwable));
     }
 
     @Override

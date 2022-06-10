@@ -54,16 +54,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
         orderView = view.findViewById(R.id.vpReceiptOrderView);
 
-//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-//        loadingDialog.startLoadingDialog();
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        },500);
-
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                 this.getLifecycle());
         orderView.setAdapter(orderMenuTabAdapter);
@@ -81,9 +71,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
                             title = "Đã vận chuyển";
                             break;
                         case 3:
-                            title = "Đánh giá";
-                            break;
-                        case 4:
                             title = "Đơn huỷ";
                             break;
                     }

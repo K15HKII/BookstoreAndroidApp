@@ -35,7 +35,6 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
     public OrderViewAdapter(List<OrderViewViewModel> orderViewList) {
         super(orderViewList);
     }
-
     public OrderViewAdapter(Context context) {
         super(new ArrayList<>());
         this.context = context;

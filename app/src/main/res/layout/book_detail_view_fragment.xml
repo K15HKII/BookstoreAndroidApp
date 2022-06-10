@@ -158,6 +158,15 @@
                             android:scrollbars="none"
                             android:background="@drawable/detail_book_shape"
                             source="@{viewModel.commentItems}"/>
+                    <android.widget.Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()-> viewModel.openRatingBook()}"
+                            android:text="Thêm đánh giá"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/lato_bold"
+                            android:textAllCaps="false"
+                            android:background="@drawable/round_btn"/>
                     <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
