@@ -55,7 +55,7 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{viewModel.date}"/>
+                                android:text="@{viewModel.expiredDate}"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
-                    android:text="Tối đa 100.000đ"
+                    android:text="@{viewModel.discountType}"
                     android:textSize="15dp"
                     android:textColor="@color/btn_blue"/>
             <TextView
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     android:textSize="12.5dp"
-                    android:text="@{viewModel.discountType}"
+                    android:text="@{viewModel.bookType}"
             />
         </LinearLayout>
     </LinearLayout>

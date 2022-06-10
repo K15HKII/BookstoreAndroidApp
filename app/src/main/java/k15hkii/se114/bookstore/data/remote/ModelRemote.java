@@ -175,8 +175,11 @@ public interface ModelRemote {
     @GET("/api/bill/{bill_id}/vouchers")
     Single<List<VoucherProfile>> getBillVouchers(@Path("bill_id") int bill_id);
 
-    @GET("/api/bill/from/{user_id}")
+    @GET("/api/user/bills/{user_id}")
     Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
+
+//    @GET("/api/bill/from/{user_id}")
+//    Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
     @POST("/api/bill/{bill_id}")
     Single<Bill> createBill(@Path("bill_id") int bill_id);
@@ -195,6 +198,9 @@ public interface ModelRemote {
     @GET("/api/lend/from/{user_id}")
     Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
 
+//    @GET("/api/user/lend/{user_id}")
+//    Single<List<Lend>> getLends(@Path("user_id") UUID user_id);
+
     @GET("/api/lend/{lend_id}")
     Single<Lend> getLend(@Path("lend_id") UUID lend_id);
 
@@ -208,6 +214,9 @@ public interface ModelRemote {
     //region Voucher
     @GET("/api/voucher/profile/{profile_id}")
     Single<VoucherProfile> getVoucherProfile(@Path("profile_id") UUID id);
+
+    @GET("/api/user/vouchers/{user_id}")
+    Single<List<Voucher>> getVouchers(@Path("user_id") UUID user_id);
 
     @GET("/api/voucher/profiles")
     Single<List<VoucherProfile>> getVoucherProfiles();
