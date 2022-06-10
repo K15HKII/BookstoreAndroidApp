@@ -257,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
-                            android:text="240.000đ"/>
+                            android:text="@{viewModel.bookName}"/>
                 </LinearLayout>
 
                 <LinearLayout
