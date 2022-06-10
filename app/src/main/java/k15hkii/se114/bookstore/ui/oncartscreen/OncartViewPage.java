@@ -56,9 +56,9 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
 //        oncartItemAdapter.notifyDataSetChanged();
 
-        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
-
         oncartItemAdapter.setOncartItemNavigator(this);
+
+        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
 
         return view;
     }

@@ -47,7 +47,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
                             dispose(remote.getBook(cartItem.getBookId()),
                                     book -> {
-                                        totalPrice.set(book.getPrice() + totalPrice.get());
+                                        totalPrice.set((book.getPrice() * cartItem.getQuantity()) + totalPrice.get());
                                     },
                                     throwable -> {
                                     });

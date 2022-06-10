@@ -71,6 +71,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         } else {
             quantity.set((quantity.get() + 1));
             this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+            postCart(isSelectedItem.get());
         }
     }
 
@@ -80,9 +81,11 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         } else {
             quantity.set((quantity.get() - 1));
             this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+            postCart(isSelectedItem.get());
         }
     }
 
+    //todo: selected post len co isSelected = false nhung tra ve` la true
     public void CheckHandle() {
         if (cartItem.isSelected() == false && isSelectedItem.get()) {
             isSelectedItem.set(true);
