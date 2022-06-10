@@ -16,32 +16,25 @@ import java.util.List;
 public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implements Observable {
 
     public final ObservableField<List<OrderItemViewModel>> items = new ObservableField<>();
+    public final ObservableField<String> note = new ObservableField<>();
+    public final ObservableField<Integer> price = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
 
     @Getter private Bill bill;
 
     private int billId;
-    private String note;
-    private String price;
-
-    @Bindable
-    public String getNote() {
-        return bill == null ? "profile is null" : bill.getStatus().name();
-    }
-
-    @Bindable
-    public String getPrice() {
-        return bill == null ? "profile is null" : price;
-    }
 
     public OrderViewViewModel(ModelRemote remote) {
         super(null);
         this.remote = remote;
     }
-    double totalPrice = 0;
+
+    int totalPrice;
 
     public void getData() {
+
+        totalPrice = 0;
 
         List<OrderItemViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : bill.getBillDetails()) {
@@ -55,13 +48,11 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
             list.add(item);
         }
         items.set(list);
-        price = String.valueOf(totalPrice);
+        price.set(totalPrice);
     }
 
     public void setBill(Bill bill) {
         this.bill = bill;
         getData();
     }
-
-
 }

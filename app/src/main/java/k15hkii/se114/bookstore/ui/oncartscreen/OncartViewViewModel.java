@@ -44,11 +44,11 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
                         if(cartItem.isSelected()) {
                             OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
+                            dispose(remote.getBook(cartItem.getBookId()),
+                                    book -> total += book.getPrice(), //todo: d get duoc book
+                                    throwable -> {});
                             vm.setCartItem(cartItem);
                             selectedItemList.add(vm);
-                            if (vm.price.get() != null) {
-                                total += vm.price.get();
-                            }
                         }
                     }
 

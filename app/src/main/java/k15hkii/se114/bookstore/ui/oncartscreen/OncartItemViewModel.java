@@ -6,6 +6,7 @@ import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -19,6 +20,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
     public ObservableField<String> name = new ObservableField<>();
     public ObservableField<Double> price = new ObservableField<>();
     public ObservableField<Integer> quantity = new ObservableField<>();
+    public final ObservableField<Image> image = new ObservableField<>();
     public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
     @Inject
@@ -42,6 +44,9 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.name.set(book.getTitle());
                     this.quantity.set(cartItem.getQuantity());
                     this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+                    if (book.getImages() != null && book.getImages().size() > 0) {
+                        image.set(book.getImages().get(0));
+                    }
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
