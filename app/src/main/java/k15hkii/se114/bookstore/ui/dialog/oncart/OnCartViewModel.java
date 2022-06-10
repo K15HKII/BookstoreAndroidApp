@@ -39,11 +39,21 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
     void postCart() {
         CartItemCRUDRequest request = new CartItemCRUDRequest();
         request.setBookId(book.getId());
-        request.setQuantity(quantity.get());
         request.setSelected(false);
+        dispose(remote.getCarts(userId),
+                cartItems -> {
+                    for (CartItem item : cartItems) {
+                        if (item.getBookId() == book.getId()) {
+//                            int q = item.getQuantity() + this.quantity.get();
+                            request.setQuantity(10);
+                        }
+                    }
+                },
+                throwable -> { });
         dispose(remote.createCart(userId, request),
-                cartItem -> {},
-                throwable -> {});
+                cartItem -> { },
+                throwable -> { });
+        return;
     }
 
     public void plusQuantity() {

@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import android.util.Log;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
@@ -19,7 +20,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     public final ObservableField<List<OncartItemViewModel>> items = new ObservableField<>();
 
-    public final ObservableField<Double> totalPrice = new ObservableField<>();
+    public final ObservableDouble totalPrice = new ObservableDouble();
 
     @Inject
     protected ModelRemote remote;
@@ -28,9 +29,6 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     private double total;
 
     public void getData() {
-
-        total = 0d;
-
         getCompositeDisposable().add(remote.getCarts(userId)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
@@ -42,17 +40,19 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                         model.setCartItem(cartItem);
                         list.add(model);
 
-                        if(cartItem.isSelected()) {
+                        if (cartItem.isSelected()) {
                             OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
                             vm.setCartItem(cartItem);
                             selectedItemList.add(vm);
-                            if (vm.price.get() != null) {
-                                total += vm.price.get();
-                            }
+
+                            dispose(remote.getBook(cartItem.getBookId()),
+                                    book -> {
+                                        totalPrice.set(book.getPrice() + totalPrice.get());
+                                    },
+                                    throwable -> {
+                                    });
                         }
                     }
-
-                    totalPrice.set(total);
                     items.set(list);
                 }, throwable -> {
                     Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
@@ -67,19 +67,12 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
         getData();
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void openOrderPage() {
+        getNavigator().OrderPageNavigator();
     }
 
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    // TODO: Implement the ViewModel
 }

@@ -14,9 +14,9 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     @Inject
     protected ModelRemote remote;
 
-    public final ObservableField<String> price = new ObservableField<>();
+    public final ObservableField<Integer> price = new ObservableField<>();
     public final ObservableField<String> name = new ObservableField<>();
-    public final ObservableField<String> quantity = new ObservableField<>();
+    public final ObservableField<Integer> quantity = new ObservableField<>();
 
     @Getter
     private Book book;
@@ -25,9 +25,9 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     private void setData() {
         remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
             this.book = book;
-            this.price.set(String.valueOf(book.getPrice()));
+            this.price.set(book.getPrice());
             this.name.set(book.getTitle());
-            this.quantity.set(String.valueOf(billDetail.getQuantity()));
+            this.quantity.set(billDetail.getQuantity());
         }).subscribe();
     }
 

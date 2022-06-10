@@ -39,14 +39,4 @@ public class ShipmentArrivedViewPageViewModel extends BaseViewModel<ShipmentArri
         getData(userId);
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

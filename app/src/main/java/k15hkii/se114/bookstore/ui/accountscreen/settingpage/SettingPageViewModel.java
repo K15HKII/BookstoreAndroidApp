@@ -29,14 +29,4 @@ public class SettingPageViewModel extends BaseViewModel<SettingPagenavigator> im
         getNavigator().openLanguageSetting();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

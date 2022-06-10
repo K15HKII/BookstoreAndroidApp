@@ -26,7 +26,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:padding="5dp"
-                    android:src="@drawable/dac_nhan_tam_book"
+                    image="@{viewModel.image}"
             />
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

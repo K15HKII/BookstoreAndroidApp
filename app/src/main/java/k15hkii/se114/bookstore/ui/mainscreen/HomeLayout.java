@@ -40,7 +40,6 @@ public class HomeLayout extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeLayoutViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }

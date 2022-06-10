@@ -25,14 +25,4 @@ public class ShippingPageViewModel extends BaseViewModel<ShippingPageNavigator> 
         getNavigator().openFilterDialog();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

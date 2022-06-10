@@ -20,14 +20,4 @@ public class NotificationPageViewModel extends BaseViewModel<NotificationPageNav
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

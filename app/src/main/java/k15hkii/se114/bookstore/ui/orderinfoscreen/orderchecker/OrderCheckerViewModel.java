@@ -51,7 +51,7 @@ public class OrderCheckerViewModel extends BaseViewModel<OrderCheckerNavigator> 
 
                     for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
 
-                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                        totalPrice += item.price.get();
                     }
 
                     this.total.set(String.valueOf(totalPrice));

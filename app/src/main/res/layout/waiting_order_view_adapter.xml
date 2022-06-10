@@ -60,7 +60,7 @@
                     <TextView
                             android:id="@+id/tvWaitingOrderItemsPrice"
                             android:fontFamily="@font/lato_regular"
-                            android:text="@{viewModel.price}"
+                            android:text="@{viewModel.price.toString()}"
                             android:textColor="@color/red_orange"
                             android:textSize="21dp"
                             android:layout_width="wrap_content"

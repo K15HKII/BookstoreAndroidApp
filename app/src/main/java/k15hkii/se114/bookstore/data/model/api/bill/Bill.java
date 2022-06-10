@@ -23,11 +23,11 @@ public class Bill implements Serializable {
     @Getter
     @Expose
     @SerializedName("transport_id")
-    private int transportId;
+    private UUID transportId;
 
     @Getter
     @Expose
-    @SerializedName("userid")
+    @SerializedName("user_id")
     private UUID userid;
 
     @Getter

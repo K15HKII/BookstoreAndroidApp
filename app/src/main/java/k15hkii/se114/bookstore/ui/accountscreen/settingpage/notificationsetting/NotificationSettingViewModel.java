@@ -25,14 +25,4 @@ public class NotificationSettingViewModel extends BaseViewModel<NotificationSett
         getNavigator().openVoucherNotificationSetting();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

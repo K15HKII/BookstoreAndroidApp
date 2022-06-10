@@ -13,14 +13,4 @@ public class PolicyViewModel extends BaseViewModel<PolicyNavigator> implements O
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }
