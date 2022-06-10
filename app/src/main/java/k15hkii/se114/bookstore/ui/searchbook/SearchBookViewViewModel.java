@@ -23,22 +23,12 @@ public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigat
         super(schedulerProvider);
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void onSubmitSearchQuerry(){
+    public void onSubmitSearchQuerry() {
         getNavigator().openSearchViewResult();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

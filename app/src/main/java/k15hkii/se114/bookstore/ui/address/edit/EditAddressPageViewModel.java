@@ -37,14 +37,4 @@ public class EditAddressPageViewModel extends BaseViewModel<EditAddressPageNavig
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

@@ -41,14 +41,4 @@ public class HomePageViewModel extends BaseViewModel<HomePageNavigator> implemen
         getNavigator().openForYouBooksView();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

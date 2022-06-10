@@ -89,14 +89,4 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
         getNavigator().openAddBankAccount();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

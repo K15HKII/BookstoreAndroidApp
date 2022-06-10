@@ -56,9 +56,6 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
                     this.total.set(String.valueOf(totalPrice));
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
-
-
-        //TODO:
     }
 
     @Override
@@ -98,19 +95,8 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
         getNavigator().SucceedOrder();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
     public void setBill(Bill bill) {
         this.bill = bill;
         getData(bill.getId());
     }
-    // TODO: Implement the ViewModel
 }

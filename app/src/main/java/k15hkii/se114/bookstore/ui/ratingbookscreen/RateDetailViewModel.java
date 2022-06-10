@@ -38,14 +38,4 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         //TODO: Confirm Rating
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

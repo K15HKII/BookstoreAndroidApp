@@ -108,8 +108,6 @@ public class FragmentModule {
     public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider));
     }
-
-    //TODO: MainScreen
     @Provides
     public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HomePageViewModel.class, () -> new HomePageViewModel(schedulerProvider));

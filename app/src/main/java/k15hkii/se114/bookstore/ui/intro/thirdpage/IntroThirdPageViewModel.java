@@ -14,14 +14,4 @@ public class IntroThirdPageViewModel extends BaseViewModel<IntroThirdPageNavigat
         getNavigator().openFinalPage();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }
