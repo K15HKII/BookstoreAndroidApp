@@ -41,7 +41,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.book = book;
                     this.name.set(book.getTitle());
                     this.quantity.set(cartItem.getQuantity());
-                    this.price.set(book.getPrice() * quantity.get());
+                    this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
@@ -65,7 +65,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             return;
         } else {
             quantity.set((quantity.get() + 1));
-            this.price.set(book.getPrice() * quantity.get());
+            this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
         }
     }
 
@@ -74,7 +74,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             return;
         } else {
             quantity.set((quantity.get() - 1));
-            this.price.set(book.getPrice() * quantity.get());
+            this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
         }
     }
 
