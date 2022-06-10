@@ -24,11 +24,11 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
 
     public final ObservableField<String> address = new ObservableField<>();
     public final ObservableField<String> voucher = new ObservableField<>();
-    public final ObservableField<String> price = new ObservableField<>();
+    public final ObservableField<Integer> price = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
     public final ObservableField<Double> discount = new ObservableField<>();
-    public final ObservableField<Double> shipPay = new ObservableField<>();
-    public final ObservableField<Double> total = new ObservableField<>();
+    public final ObservableField<Integer> shipPay = new ObservableField<>();
+    public final ObservableField<Integer> total = new ObservableField<>();
 
     private Bill bill;
 
@@ -44,16 +44,16 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
         dispose(mapper.getBill(billId),
                 billdetails -> {
                     items.set(billdetails);
-//                    setPrice(bill.getPrice());
 
-                    double totalPrice = 0;
+                    int totalPrice = 0;
 
                     for (OrderBookViewModel item : Objects.requireNonNull(items.get())) {
 
-                        totalPrice += Double.parseDouble(Objects.requireNonNull(item.price.get()));
+                        totalPrice += item.price.get();
                     }
 
-                    this.price.set(String.valueOf(totalPrice));
+                    this.price.set(totalPrice);
+                    this.total.set(totalPrice - shipPay.get());
                 },
                 throwable -> Log.d("OrderInfoPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
@@ -83,6 +83,7 @@ public class OrderDetailViewModel extends BaseViewModel<OrderDetailNavigator> im
                 throwable -> {});
         // get payment
         this.paymentMethod.set(bill.getPayment().name());
+        this.shipPay.set(10);
 //                    remote.getTransporter(bill.getTransportId()).doOnSuccess(transporter -> {
 //                        shippingPay.set(transporter.getName());
 //                    }).subscribe();

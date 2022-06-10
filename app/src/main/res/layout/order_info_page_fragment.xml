@@ -101,7 +101,7 @@
                         <TextView
                                 android:id="@+id/tvOrderPageAddressDetail"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="KTX khu A, phường Linh Trung, Tp. Thủ Đức, Tp.Hồ Chí Minh"
+                                android:text="@{viewModel.address}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -201,7 +201,7 @@
                         <TextView
                                 android:id="@+id/tvOrderPageVoucher"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="%25 giảm giá"
+                                android:text="@{viewModel.voucher}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -260,7 +260,7 @@
                         <TextView
                                 android:id="@+id/tvOrderPagePaymentMethod"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="Thanh toán khi nhận hàng"
+                                android:text="@{viewModel.paymentMethod}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -302,7 +302,7 @@
                                     android:layout_height="wrap_content"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/black"
-                                    android:text="240.000đ"/>
+                                    android:text="@{viewModel.price.toString()}"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -326,7 +326,7 @@
                                     android:textSize="15dp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/black"
-                                    android:text="240.000đ"/>
+                                    android:text="@{viewModel.shipPay.toString()}"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -350,7 +350,7 @@
                                     android:textSize="15dp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/black"
-                                    android:text="-60.000đ"/>
+                                    android:text="@{viewModel.discount.toString()}"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -377,7 +377,7 @@
                                     android:textColor="@color/black"
                                     android:textSize="24dp"
                                     android:textStyle="bold"
-                                    android:text="200.000đ"/>
+                                    android:text="@{viewModel.total.toString()}"/>
                         </LinearLayout>
                     </LinearLayout>
                     <android.widget.Button
