@@ -31,7 +31,7 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     public void setBook(Book book) {
         this.book = book;
         name.set(book.getTitle());
-        price.set(String.valueOf(book.getPrice()));
+        price.set(String.valueOf(book.getPrice()) + " đ");
         description.set(book.getDescription());
         remainQuantity.set(String.valueOf(book.getStock()));
         image.set(book.getImages().get(0));
