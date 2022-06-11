@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.*;
 import k15hkii.se114.bookstore.databinding.HomePageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
@@ -24,6 +27,9 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewModel> implements HomePageNavigator {
 
+    private TabLayout tabmenuNav;
+    private ViewPager2 newsView;
+
     @Override
     public int getBindingVariable() {
         return BR.HomePageViewModel;
@@ -38,6 +44,30 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        HomePageFragmentBinding binding = getViewDataBinding();
+        tabmenuNav = binding.tabMenuHomeNav;
+        newsView = binding.vpHomeBookView;
+        HomeMenuTab adapter = new HomeMenuTab(getActivity().getSupportFragmentManager(), this.getLifecycle());
+        newsView.setAdapter(adapter);
+        new TabLayoutMediator(tabmenuNav, newsView,
+                (tab, position) -> {
+                    String title = "";
+                    switch (position) {
+                        case 0:
+                            title = "Tất cả";
+                            break;
+                        case 1:
+                            title = "Phổ biến";
+                            break;
+                        case 2:
+                            title = "Gần đây";
+                            break;
+                        case 3:
+                            title = "Dành cho bạn";
+                            break;
+                    }
+                    tab.setText(title);
+                }).attach();
         viewModel.setNavigator(HomePage.this);
         return view;
     }
