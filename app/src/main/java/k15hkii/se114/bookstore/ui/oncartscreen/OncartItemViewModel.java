@@ -23,6 +23,9 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
     public final ObservableField<Image> image = new ObservableField<>();
     public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
+    private int postition;
+    private static int counter = 0;
+
     @Inject
     protected ModelRemote remote;
 
@@ -57,12 +60,15 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         this.cartItem = cartItem;
         quantity.set(cartItem.getQuantity());
         getData();
+        this.postition = counter++;
 //        wait();
     }
 
     public void deleteItem() {
         dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
-        // TODO: cập nhật lại OnCartPage để load lại list cart
+        getNavigator().deleteItem(postition);
+        updateCounter();
+        // TODO: Fix bug delete no reset view, delete van duoc nhung ma view khong cap nhat, phai out ra cart roi vo ai moi duoc
     }
 
     public void plusQuantity() {
@@ -118,4 +124,6 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                 cartItem -> {},
                 throwable -> {});
     }
+
+    public void updateCounter(){counter = 0;}
 }

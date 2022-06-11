@@ -45,7 +45,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         super.onViewCreated(view, savedInstanceState);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -56,11 +55,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
-//        oncartItemAdapter.notifyDataSetChanged();
 
         oncartItemAdapter.setOncartItemNavigator(this);
-
-        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
 
         return view;
     }
@@ -115,9 +111,9 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 //        oncartItemAdapter.notifyDataSetChanged();
 //    }
 
-    //    @Override
-//    public void deleteItem(int index) {
-//        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-//        oncartItemAdapter.notifyItemRemoved(index);
-//    }
+    @Override
+    public void deleteItem(int index) {
+        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+        oncartItemAdapter.notifyItemRemoved(index);
+    }
 }
