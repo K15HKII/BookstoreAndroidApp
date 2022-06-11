@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.changename;
+package k15hkii.se114.bookstore.ui.dialog.changebirth.changename;
 
 import k15hkii.se114.bookstore.ui.base.INavigator;
 

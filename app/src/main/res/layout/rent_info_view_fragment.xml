@@ -7,7 +7,7 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_background"
+            android:background="@color/new_background_color"
             tools:context=".ui.mainscreen.rentscreen.RentInfoView">
 
         <ScrollView
@@ -65,7 +65,7 @@
                             android:fontFamily="@font/lato_bold"
                             android:textSize="20dp"
                             android:textColor="@color/black"
-                            android:drawableStart="@drawable/ic_shopping"/>
+                            android:drawableStart="@drawable/ic_shopping_blue"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
@@ -325,7 +325,7 @@
                             android:fontFamily="@font/lato_bold"
                             android:textColor="@color/btn_blue"
                             android:textAllCaps="false"
-                            android:background="@drawable/round_white_btn_med" app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/new_btn_white_small" app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/button2"/>
                     <android.widget.Button
@@ -338,7 +338,7 @@
                             android:fontFamily="@font/lato_bold"
                             android:textColor="@color/white"
                             android:textAllCaps="false"
-                            android:background="@drawable/round_btn"
+                            android:background="@drawable/new_btn_sky_small"
                             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>

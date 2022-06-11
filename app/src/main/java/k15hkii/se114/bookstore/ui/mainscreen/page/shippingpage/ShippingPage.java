@@ -30,10 +30,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     private TabLayout tabmenuNav;
     private ViewPager2 orderView;
 
-    public static ShippingPage newInstance() {
-        return new ShippingPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.ShippingPageViewModel;

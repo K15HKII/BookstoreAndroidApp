@@ -78,4 +78,32 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
         getNavigator().logOut();
     }
 
+    public void openChangeNameDialog() {
+        getNavigator().openChangeNameDialog();
+    }
+
+    public void openChangePasswordDialog() {
+        getNavigator().openChangePasswordDialog();
+    }
+
+    public void openChangePhoneNumberDialog() {
+        getNavigator().openChangePhoneNumDialog();
+    }
+
+    public void openChangeGenderDialog() {
+        getNavigator().openChangeGenderDialog();
+    }
+
+    public void openChangeBirthDialog() {
+        getNavigator().openChangeBirthDialog();
+    }
+
+    public void openSelectorAddressClick() {
+        getNavigator().openSelectAddress();
+    }
+
+    public void openSelectorBankClick() {
+        getNavigator().openSelectBank();
+    }
+
 }

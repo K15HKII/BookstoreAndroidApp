@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/home_background"
+        android:background="@color/new_background_color"
         tools:context=".ui.mainscreen.rentscreen.add.AddRentBookView">
     <ScrollView
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/account_button_1"
                 android:padding="10dp"
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical">
@@ -66,7 +66,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:drawableStart="@drawable/ic_shopping"/>
+                    android:drawableStart="@drawable/ic_shopping_blue"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
@@ -360,7 +360,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/white"
                     android:textAllCaps="false"
-                    android:background="@drawable/round_btn"
+                    android:background="@drawable/new_btn_sky_medium"
                     />
 
         </LinearLayout>

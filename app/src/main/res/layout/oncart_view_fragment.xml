@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/home_background"
+            android:background="@color/new_background_color"
             tools:context=".ui.oncartscreen.OncartViewPage">
 
         <androidx.appcompat.widget.Toolbar
@@ -100,23 +100,25 @@
                                 android:textColor="@color/red_orange"/>
                     </LinearLayout>
                 </LinearLayout>
-                <android.widget.Button
+                <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnOnCartViewConfirmOrderOncart"
                         android:fontFamily="@font/lato_bold"
-                        android:layout_width="match_parent"
+                        android:layout_width="200dp"
                         android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:paddingTop="20dp"
-                        android:paddingBottom="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingLeft="30dp"
+                        android:layout_marginLeft="70dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingLeft="15dp"
                         android:text="Mua hàng"
                         android:textAllCaps="false"
                         android:textSize="16dp"
                         android:textColor="@color/white"
-                        android:drawableStart="@drawable/ic_shopping"
+                        app:icon="@drawable/ic_shopping"
+                        app:iconGravity="textStart"
+                        app:backgroundTint="#21A1E9"
                         android:drawableTint="@color/white"
-                        android:background="@drawable/oncart_btn"
+                        android:background="@drawable/new_btn_sky_medium"
                         android:onClick="@{()->viewModel.openOrderPage()}"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

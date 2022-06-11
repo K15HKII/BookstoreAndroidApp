@@ -9,17 +9,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/home_background"
+        android:background="@color/new_background_color"
         tools:context=".ui.mainscreen.page.rentpage.RentPage">
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/receipt_background"
-                android:paddingBottom="200dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -97,7 +88,7 @@
                     android:id="@+id/tabMenuRentNav"
                     android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/home_background"
+                    android:background="@color/new_background_color"
                     android:minHeight="?attr/actionBarSize"
                     app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                     app:tabSelectedTextColor="@color/black"
@@ -109,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_add_white"
-                    app:backgroundTint="#0C5776"
+                    app:backgroundTint="@color/color_of_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>

@@ -6,7 +6,7 @@ import k15hkii.se114.bookstore.di.scope.DialogScope;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowDialog;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
-import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
