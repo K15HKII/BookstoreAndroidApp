@@ -2,7 +2,9 @@ package k15hkii.se114.bookstore.ui.registerscreen;
 
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import lombok.Getter;
@@ -14,43 +16,15 @@ import java.util.List;
 @Setter
 public class RegisterViewModel extends BaseViewModel<RegisterNavigator> implements Observable {
 
-    private String user, gender, dob, phonenum, email, pass, passconfirm;
-    @Getter private final MutableLiveData<List<String>> testSource = new MutableLiveData<>(Arrays.asList("Nam", "Nữ", "Khác"));
+    @Getter public final ObservableField<List<String>> gender = new ObservableField<>(Arrays.asList("Nam", "Nữ", "Khác"));
+    @Getter public final ObservableField<String> userName = new ObservableField<>();
+    @Getter public final ObservableField<String> dob = new ObservableField<>();
+    @Getter public final ObservableField<String> phoneNumber = new ObservableField<>();
+    @Getter public final ObservableField<String> email = new ObservableField<>();
+    @Getter public final ObservableField<String> password = new ObservableField<>();
+    @Getter public final ObservableField<String> passConfirm = new ObservableField<>();
 
-    @Bindable
-    public String getUser() {
-        return user;
-    }
-
-    @Bindable
-    public String getGender() {
-        return gender;
-    }
-
-    @Bindable
-    public String getDob() {
-        return dob;
-    }
-
-    @Bindable
-    public String getPhonenum() {
-        return phonenum;
-    }
-
-    @Bindable
-    public String getEmail() {
-        return email;
-    }
-
-    @Bindable
-    public String getPass() {
-        return pass;
-    }
-
-    @Bindable
-    public String getPassconfirm() {
-        return passconfirm;
-    }
+    //TODO: post
 
     public RegisterViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);

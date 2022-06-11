@@ -30,7 +30,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     private String toAddress(UserAddress address){
         return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
     }
-
+    //TODO: getUser
     private String toUserName(User user){
         return user.getFirstName() + " " + user.getLastName();
     }
@@ -41,6 +41,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(user -> {
                     this.user = user;
+                    this.user_id= user.getId();
                     this.name.set(toUserName(user));
                     this.email.set(user.getEmail());
                     this.gender.set(String.valueOf(user.getGender()));
@@ -53,7 +54,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 }));
 
         // set address
-        getCompositeDisposable().add(remote.getAddresses(userId)
+        getCompositeDisposable().add(remote.getAddresses(user_id)
                                            .subscribeOn(getSchedulerProvider().io())
                                            .observeOn(getSchedulerProvider().ui())
                                            .subscribe(addresses -> {

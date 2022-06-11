@@ -33,6 +33,7 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implem
     private User user;
     private String maxCondition;
 
+    //TODO: k thấy dữ liệu
     public void getData() {
         getCompositeDisposable().add(remote.getVoucherProfile(voucher.getProfileId())
                                            .subscribeOn(getSchedulerProvider().io())

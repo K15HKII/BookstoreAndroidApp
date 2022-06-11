@@ -22,7 +22,7 @@ public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> im
     protected ViewModelMapper mapper;
     private UUID userId;
 
-    public void getData() {
+    public void getData(UUID userId) {
         dispose(mapper.getVouchers(userId),
                 listVoucher::set,
                 throwable -> Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable));
@@ -33,7 +33,7 @@ public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> im
         super(schedulerProvider);
         this.mapper = mapper;
         this.userId = preferencesHelper.getCurrentUserId();
-
+        getData(userId);
     }
 
     public void onBackWardClick(){
