@@ -15,7 +15,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
-
+    //TODO: thêm vào yêu thích, đổ màu trái tim, khi không select vào trái tim thì delete khỏi yêu thích
     private final ObservableField<List<Comment>> commentItemsLiveData = new ObservableField<>();
     public List<Comment> getCommentItems() {
         return commentItemsLiveData.get();

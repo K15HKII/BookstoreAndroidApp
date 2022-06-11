@@ -23,6 +23,8 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rx2androidnetworking.Rx2AndroidNetworking.post;
+
 public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartItemAdapter.oncart_itemHolder> {
 
     private Context context;
@@ -45,7 +47,6 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
         this.context = context;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @NonNull
     @NotNull
     @Override

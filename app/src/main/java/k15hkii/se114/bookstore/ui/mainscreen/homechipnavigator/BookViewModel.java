@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 public class BookViewModel extends BaseViewModel<BookViewNavigator> {
 
+    //TODO: thêm vào yêu thích, đổ màu trái tim, khi không select vào trái tim thì delete khỏi yêu thích
     public final ObservableField<Image> image = new ObservableField<>();
     public final ObservableField<String> title = new ObservableField<>();
     public final ObservableField<Long> price = new ObservableField<>();

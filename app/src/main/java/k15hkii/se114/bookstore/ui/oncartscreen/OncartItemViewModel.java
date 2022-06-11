@@ -18,7 +18,7 @@ import javax.inject.Inject;
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> implements Observable {
 
     public ObservableField<String> name = new ObservableField<>();
-    public ObservableField<Double> price = new ObservableField<>();
+    public ObservableField<Integer> price = new ObservableField<>();
     public ObservableField<Integer> quantity = new ObservableField<>();
     public final ObservableField<Image> image = new ObservableField<>();
     public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
@@ -43,7 +43,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.book = book;
                     this.name.set(book.getTitle());
                     this.quantity.set(cartItem.getQuantity());
-                    this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+                    this.price.set(book.getPrice() * quantity.get());
                     if (book.getImages() != null && book.getImages().size() > 0) {
                         image.set(book.getImages().get(0));
                     }
@@ -62,7 +62,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
 
     public void deleteItem() {
         dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
-//        remote.deleteCart(book.getId());
+        // TODO: cập nhật lại OnCartPage để load lại list cart
     }
 
     public void plusQuantity() {
@@ -70,7 +70,11 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             return;
         } else {
             quantity.set((quantity.get() + 1));
-            this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+            this.price.set(book.getPrice() * quantity.get());
+            //cart item is selected
+            if (isSelectedItem.get()) {
+                // TODO: cập nhật lại tổng tiền của OnCartPage
+            }
             postCart(isSelectedItem.get());
         }
     }
@@ -80,7 +84,11 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             return;
         } else {
             quantity.set((quantity.get() - 1));
-            this.price.set(Double.parseDouble(String.valueOf(book.getPrice() * quantity.get())));
+            this.price.set(book.getPrice() * quantity.get());
+            //cart item is selected
+            if (isSelectedItem.get()) {
+                // TODO: cập nhật lại tổng tiền của OnCartPage
+            }
             postCart(isSelectedItem.get());
         }
     }
@@ -90,11 +98,13 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         if (cartItem.isSelected() == false && isSelectedItem.get()) {
             isSelectedItem.set(true);
             postCart(true);
+            // TODO: cập nhật lại tổng tiền của OnCartPage
 //            this.getNavigator().checkItemHandle();
         }
         else if (cartItem.isSelected() == true){
             isSelectedItem.set(false);
             postCart(false);
+            // TODO: cập nhật lại tổng tiền của OnCartPage
 //            this.getNavigator().checkItemHandle();
         }
     }

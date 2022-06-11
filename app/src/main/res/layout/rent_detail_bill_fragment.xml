@@ -214,7 +214,7 @@
                 <TextView
                         android:id="@+id/tvRentDetailBillPaymentMethod"
                         android:fontFamily="@font/lato_regular"
-                        android:text="Thẻ ATM"
+                        android:text="@{viewModel.paymentMethod}"
                         android:textSize="18dp"
                         android:textColor="@color/black"
                         android:textAlignment="textStart"

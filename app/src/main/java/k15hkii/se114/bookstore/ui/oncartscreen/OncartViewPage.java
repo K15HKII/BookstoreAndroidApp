@@ -19,6 +19,8 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
 public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
     @Inject
@@ -87,8 +89,13 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
-    public void OrderPageNavigator() {
-        createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, null)
+    public void OrderPageNavigator(OncartViewViewModel viewModel) {
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("orderList", (Serializable) viewModel.selectedItemList);
+        bundle.putSerializable("userId", viewModel.userId);
+
+        createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
