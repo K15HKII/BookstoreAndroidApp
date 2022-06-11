@@ -16,7 +16,6 @@ import k15hkii.se114.bookstore.ui.components.ListAdapter;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +27,13 @@ public final class BindingUtils {
     @BindingAdapter({"address"})
     public static void bindAddress(TextView view, UserAddress address) {
         if (address != null) {
-            view.setText(address.getCity() + ", " + address.getStreet()); //TODO: get full address
+            view.setText(String.format("{0}, {1}, {2}, {3}, {4}, (5), (6)",
+                    address.getAddress(),
+                    address.getStreet(),
+                    address.getProject(),
+                    address.getWard(),
+                    address.getDistrict(),
+                    address.getCity()));
         }
     }
 

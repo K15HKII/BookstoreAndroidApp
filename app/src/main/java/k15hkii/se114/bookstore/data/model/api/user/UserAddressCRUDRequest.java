@@ -12,6 +12,12 @@ import lombok.Setter;
 public class UserAddressCRUDRequest {
 
     @Expose
+    @SerializedName("address")
+    @Getter
+    @Setter
+    private String address;
+
+    @Expose
     @SerializedName("street")
     @Getter
     @Setter
@@ -24,15 +30,27 @@ public class UserAddressCRUDRequest {
     private String city;
 
     @Expose
-    @SerializedName("zip")
+    @SerializedName("ward")
     @Getter
     @Setter
-    private String zip;
+    private String ward;
 
     @Expose
-    @SerializedName("country")
+    @SerializedName("project")
     @Getter
     @Setter
-    private String country;
+    private String project;
+
+    @Expose
+    @SerializedName("district")
+    @Getter
+    @Setter
+    private String district;
+
+    @Expose
+    @SerializedName("is_primary")
+    @Getter
+    @Setter
+    private boolean isPrimary;
 
 }
