@@ -89,17 +89,6 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
     }
 
     @Override
-    public void openNotificationView() {
-        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
     public void openOnCartView() {
         createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
                 .setCustomAnimations(
@@ -115,19 +104,4 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
         FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 
-    @Override
-    public void openAllBooksView() {
-    }
-
-    @Override
-    public void openPoppularBooksView() {
-    }
-
-    @Override
-    public void openFamiliarBooksView() {
-    }
-
-    @Override
-    public void openForYouBooksView() {
-    }
 }
