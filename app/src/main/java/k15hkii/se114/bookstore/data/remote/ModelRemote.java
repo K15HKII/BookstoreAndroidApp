@@ -21,13 +21,7 @@ import k15hkii.se114.bookstore.data.model.api.message.Feedback;
 import k15hkii.se114.bookstore.data.model.api.message.FeedbackCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.message.ReplyCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
-import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.User;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
-import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
-import k15hkii.se114.bookstore.data.model.api.user.UserBank;
-import k15hkii.se114.bookstore.data.model.api.user.UserBankCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.user.*;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
 import okhttp3.RequestBody;
@@ -48,6 +42,9 @@ public interface ModelRemote {
     //region RecentBook
     @GET("/api/user/recent/{user_id}")
     Single<List<Book>> getRecentBooks(@Path("user_id") UUID user_id);
+
+    @POST("api/user/profile")
+    Single<User> updateSelfUser(@Body ProfileUpdateRequest request);
 
     /**
      * Tạo hoặc cập nhật một sách gần đây

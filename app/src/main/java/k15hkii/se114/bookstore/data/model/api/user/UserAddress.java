@@ -54,10 +54,10 @@ public class UserAddress {
     @Getter
     @Expose
     @SerializedName("updated_at")
-    private String update_at;
+    private String updateAt;
 
     @Getter
     @Expose
     @SerializedName("is_primary")
-    private boolean is_primary;
+    private boolean isPrimary;
 }

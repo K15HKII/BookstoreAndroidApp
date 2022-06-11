@@ -27,6 +27,9 @@ import java.util.UUID;
 
 public class OrderInfoPageViewModel extends BaseOrderViewModel<OrderInfoPageNavigator> {
 
+    // TODO: T nghĩ cần BillRequest để gắn phương thức thanh toán, địa chỉ, đơn hàng, voucher này kia
+    // ở đây set data cho view thì bill chưa được tạo, bấm nút đặt hàng rồi thì mới post bill
+
     public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
         super(schedulerProvider, mapper, remote);
     }

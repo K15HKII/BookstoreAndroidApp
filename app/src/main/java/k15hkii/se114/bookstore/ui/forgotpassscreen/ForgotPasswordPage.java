@@ -15,6 +15,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ForgotPasswordFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
+import k15hkii.se114.bookstore.ui.registerscreen.Register;
 
 public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBinding, ForgotPasswordViewModel>implements ForgotPassNavigator {
 
@@ -36,6 +38,8 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
         View view = super.onCreateView(inflater, container, savedInstanceState);
         forgotPasswordFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(ForgotPasswordPage.this);
+
+
         return view;
     }
 
@@ -47,5 +51,18 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void OpenRegister() {
+        getParentFragmentManager().beginTransaction()
+                                  .replace(R.id.fragmentContainerView, Register.class, null)
+                                  .addToBackStack(null)
+                                  .setCustomAnimations(
+                                          R.anim.slide_in,  // enter
+                                          R.anim.fade_out,  // exit
+                                          R.anim.fade_in,   // popEnter
+                                          R.anim.slide_out  // popExit
+                                  ).commit();
     }
 }
