@@ -14,11 +14,16 @@ import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.Vouc
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
+import k15hkii.se114.bookstore.ui.news.NewsViewModel;
+import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
+import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBookViewModel;
 import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
@@ -400,6 +405,31 @@ public class FragmentModule {
     @Provides
     public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ExplorerViewModel provideExplorerViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, ExplorerViewModel.class, () -> new ExplorerViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RateListBookViewModel provideRateListBookViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, RateListBookViewModel.class, () -> new RateListBookViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PopularNewsViewModel providePopularNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, PopularNewsViewModel.class, () -> new PopularNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public FollowViewModel provideFollowViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, FollowViewModel.class, () -> new FollowViewModel(schedulerProvider));
     }
 
 //    @Provides
