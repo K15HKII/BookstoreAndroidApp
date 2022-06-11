@@ -36,6 +36,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(cartItems -> {
+                    totalPrice.set(0d);
                     List<OncartItemViewModel> list = new ArrayList<>();
                     for (CartItem cartItem : cartItems) {
                         OncartItemViewModel model = new OncartItemViewModel(getSchedulerProvider(), remote);
@@ -66,6 +67,10 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
         totalPrice.set(0d);
+        getData();
+    }
+
+    public void clear() {
         getData();
     }
 

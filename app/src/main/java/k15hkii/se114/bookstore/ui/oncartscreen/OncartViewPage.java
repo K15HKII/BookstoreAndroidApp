@@ -117,6 +117,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     public void deleteItem(int index) {
 //        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
 //        oncartItemAdapter.notifyItemRemoved(index);
-        viewModel.getData();
+        viewModel.clear();
     }
 }

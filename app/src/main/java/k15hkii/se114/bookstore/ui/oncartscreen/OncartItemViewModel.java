@@ -106,7 +106,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             // TODO: cập nhật lại tổng tiền của OnCartPage
 //            this.getNavigator().checkItemHandle();
         }
-        else if (cartItem.isSelected() == true){
+        else if (cartItem.isSelected() == true && !isSelectedItem.get()){
             isSelectedItem.set(false);
             postCart(false);
             // TODO: cập nhật lại tổng tiền của OnCartPage
