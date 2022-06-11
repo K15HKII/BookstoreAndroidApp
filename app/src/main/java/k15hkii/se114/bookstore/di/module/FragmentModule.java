@@ -129,8 +129,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider, preferencesHelper));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, preferencesHelper));
     }
 
     @Provides

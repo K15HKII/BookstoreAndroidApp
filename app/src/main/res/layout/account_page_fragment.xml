@@ -39,7 +39,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_bold"
-                                android:text="@{viewModel.name}"
+                                android:text="@{viewModel.userName}"
                                 android:textStyle="bold"
                                 android:textSize="30dp"
                                 android:layout_marginTop="10dp"
@@ -151,17 +151,18 @@
                                         android:id="@+id/tvAccountInfoPhoneNum"
                                         android:fontFamily="@font/lato_regular"
                                         android:textSize="19dp"
+                                        android:text="@{viewModel.phone}"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
                                         android:textAlignment="textEnd"
                                         android:layout_width="188dp"
-                                        android:layout_marginRight="40dp" />
+                                        android:layout_marginRight="40dp"/>
 
                                 <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_marginEnd="2.25dp"
-                                        android:src="@drawable/ic_arrow_account" />
+                                        android:src="@drawable/ic_arrow_account"/>
                             </LinearLayout>
                         </RelativeLayout>
                     </LinearLayout>
@@ -202,7 +203,7 @@
                                 <TextView
                                         android:id="@+id/tvAccountInfoDOB"
                                         android:fontFamily="@font/lato_regular"
-
+                                        android:text="@{viewModel.birthday}"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
@@ -256,7 +257,7 @@
                                 <TextView
                                         android:id="@+id/tvAccountInfoGender"
                                         android:fontFamily="@font/lato_regular"
-
+                                        android:text="@{viewModel.gender}"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
@@ -341,6 +342,7 @@
                                 android:id="@+id/tvAccountInfoLocation"
                                 android:fontFamily="@font/lato_regular"
                                 android:textSize="19dp"
+                                android:text="@{viewModel.address}"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
                                 android:layout_height="wrap_content"
@@ -385,7 +387,7 @@
                                     android:layout_gravity="end"
                                     android:layout_marginEnd="2.25dp"
                                     android:layout_alignParentEnd="true"
-                                    android:src="@drawable/ic_arrow_account" />
+                                    android:src="@drawable/ic_arrow_account"/>
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -558,7 +560,7 @@
 
                                 <TextView
                                         android:fontFamily="@font/lato_regular"
-                                        android:text="123@gmail.com"
+                                        android:text="@{viewModel.email}"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
