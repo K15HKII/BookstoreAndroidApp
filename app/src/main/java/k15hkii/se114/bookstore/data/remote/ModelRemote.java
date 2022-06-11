@@ -17,6 +17,10 @@ import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.model.api.file.Video;
 import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.model.api.lend.LendRequest;
+import k15hkii.se114.bookstore.data.model.api.message.Feedback;
+import k15hkii.se114.bookstore.data.model.api.message.FeedbackCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.message.ReplyCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
 import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
@@ -233,6 +237,14 @@ public interface ModelRemote {
     @Multipart
     @POST("/upload/video")
     Single<Video> uploadVideo(@Part RequestBody body);
+    //endregion
+
+    //region Feedback
+    @POST("/api/message/feedback")
+    public Single<Feedback> sendFeedback(@Body FeedbackCRUDRequest feedback);
+
+    @POST("/api/message/{feedback_id}")
+    public Single<ReplyFeedback> sendReply(@Body ReplyCRUDRequest request);
     //endregion
 
 }

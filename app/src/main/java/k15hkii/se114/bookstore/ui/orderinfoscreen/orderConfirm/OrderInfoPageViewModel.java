@@ -96,12 +96,10 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
     }
 
     public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
-        super(schedulerProvider);
-        this.mapper = mapper;
-        this.remote = remote;
+        super(schedulerProvider, mapper, remote);
     }
 
-    public void onBackWardClick() {
+    public void onBackWardClick(){
         getNavigator().BackWard();
     }
 

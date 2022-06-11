@@ -28,7 +28,7 @@ public class Bill implements Serializable {
     @Getter
     @Expose
     @SerializedName("user_id")
-    private UUID userid;
+    private UUID userId;
 
     @Getter
     @Expose
@@ -38,7 +38,7 @@ public class Bill implements Serializable {
     @Expose
     @Getter
     @SerializedName("bill_details")
-    private BillDetail[] billDetails;
+    private List<BillDetail> billDetails;
 
     @Expose
     @Getter
