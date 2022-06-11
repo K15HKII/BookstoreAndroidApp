@@ -61,7 +61,6 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         quantity.set(cartItem.getQuantity());
         getData();
         this.postition = counter++;
-//        wait();
     }
 
     public void deleteItem() {

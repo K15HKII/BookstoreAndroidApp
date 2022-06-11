@@ -33,7 +33,7 @@
                 android:ems="15"
                 android:textColor="@color/btn_blue"
                 android:textColorHint="@color/btn_blue"
-                android:text="@{viewModel.username}"
+                android:text="@{viewModel.newName}"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@drawable/new_edit_text_shape_large"/>
     </com.google.android.material.textfield.TextInputLayout>

@@ -58,6 +58,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
         oncartItemAdapter.setOncartItemNavigator(this);
 
+        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+
         return view;
     }
 
@@ -113,7 +115,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
     @Override
     public void deleteItem(int index) {
-        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-        oncartItemAdapter.notifyItemRemoved(index);
+//        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+//        oncartItemAdapter.notifyItemRemoved(index);
+        viewModel.getData();
     }
 }

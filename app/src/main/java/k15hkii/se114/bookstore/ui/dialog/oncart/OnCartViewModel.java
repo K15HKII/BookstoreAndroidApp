@@ -44,7 +44,7 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
         request.setSelected(false);
         request.setQuantity(quantity.get());
 
-        //TODO: cong don` cart item quantity, lỗi chỗ dispose, tao mot remote get cart qua userId + bookId maybe giai quyet duoc van de khong:(
+        //TODO: cong don` cart item quantity, lỗi chỗ dispose
         dispose(remote.getCarts(userId),
                 cartItems -> {
                     q = 0;
