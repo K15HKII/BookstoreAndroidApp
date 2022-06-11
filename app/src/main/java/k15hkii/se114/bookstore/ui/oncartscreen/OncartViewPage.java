@@ -104,7 +104,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                 ).commit();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+
     @Override
     public void checkItemHandle() {
 //        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());

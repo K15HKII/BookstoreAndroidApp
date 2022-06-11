@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.BaseOrderViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
@@ -24,76 +25,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator> implements Observable {
-
-    public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
-
-    public final ObservableField<String> address = new ObservableField<>();
-    public final ObservableField<String> voucher = new ObservableField<>();
-    public final ObservableField<Integer> price = new ObservableField<>();
-    public final ObservableField<String> paymentMethod = new ObservableField<>();
-    public final ObservableField<Integer> discount = new ObservableField<>();
-    public final ObservableField<Integer> shipPay = new ObservableField<>();
-    public final ObservableField<Integer> total = new ObservableField<>();
-
-    @Inject
-    protected ViewModelMapper mapper;
-
-    @Inject
-    protected ModelRemote remote;
-
-    private Bill bill;
-
-    private int billId;
-    private UUID userId;
-
-    List<OncartItemViewModel> onCartItems;
-
-    public void getData() {
-        List<OrderBookViewModel> orderList = new ArrayList<>();
-        int p = 0;
-        for (OncartItemViewModel item : onCartItems) {
-            OrderBookViewModel orderBookViewModel = new OrderBookViewModel(remote);
-            orderBookViewModel.name.set(item.name.get());
-            orderBookViewModel.quantity.set(item.quantity.get());
-            orderBookViewModel.price.set(item.price.get());
-            orderList.add(orderBookViewModel);
-            p += item.price.get();
-        }
-        items.set(orderList);
-        dispose(remote.getAddresses(userId),
-                userAddresses -> {
-                    for (UserAddress addressItem : userAddresses) {
-                        if (addressItem.is_primary()) {
-                            address.set(addressItem.getCity());
-                            return;
-                        }
-                    }
-                    voucher.set("Chọn");
-                    paymentMethod.set("Chọn");
-                },
-                throwable -> { });
-
-        price.set(p);
-        discount.set(0);
-        shipPay.set(0);
-        total.set(price.get() + shipPay.get() - discount.get());
-    }
-
-    //todo: create bill
-    public void setData() {
-//        if (!Objects.equals(voucher.get(), "Chọn")) {
-//            discount.set();
-//        }
-    }
-
-    @Override
-    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
-        super.initializeFromBundle(bundle);
-        onCartItems = (List<OncartItemViewModel>) bundle.getSerializable("orderList");
-        userId = (UUID) bundle.getSerializable("userId");
-        getData();
-    }
+public class OrderInfoPageViewModel extends BaseOrderViewModel<OrderInfoPageNavigator> {
 
     public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
         super(schedulerProvider, mapper, remote);
@@ -103,8 +35,8 @@ public class OrderInfoPageViewModel extends BaseViewModel<OrderInfoPageNavigator
         getNavigator().BackWard();
     }
 
-    public void openSuccessOrder() {
-        //TODO: Create Bill, chưa fix hàm create
+    public void openSuccessOrder(){
         getNavigator().SucceedOrder();
     }
+
 }
