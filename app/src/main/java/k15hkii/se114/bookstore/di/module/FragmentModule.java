@@ -15,6 +15,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetai
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
 import k15hkii.se114.bookstore.ui.news.NewsViewModel;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNewsViewModel;
 import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
 import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
 import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
@@ -430,6 +431,11 @@ public class FragmentModule {
     @Provides
     public FollowViewModel provideFollowViewModel (SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, FollowViewModel.class, () -> new FollowViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
     }
 
 //    @Provides

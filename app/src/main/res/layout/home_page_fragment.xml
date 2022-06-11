@@ -88,12 +88,7 @@
             <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/vpHomeBookView"
                     android:layout_width="match_parent"
-                    android:layout_height="450dp"/>
-        <androidx.fragment.app.FragmentContainerView
-                android:layout_width="match_parent"
-                android:layout_height="460dp"
-                android:name="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooksPage"
-                android:id="@+id/fragmentContainerHomeView"/>
+                    android:layout_height="460dp"/>
 
     </LinearLayout>
 

@@ -51,6 +51,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPage;
 import k15hkii.se114.bookstore.ui.news.News;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNews;
 import k15hkii.se114.bookstore.ui.news.explorer.Explorer;
 import k15hkii.se114.bookstore.ui.news.follow.Follow;
 import k15hkii.se114.bookstore.ui.news.popularnews.PopularNews;
@@ -218,4 +219,6 @@ public interface FragmentComponent {
     void inject(PopularNews popularNews);
 
     void inject(RateListBook rateListBook);
+
+    void inject(CreateNews createNews);
 }
