@@ -50,8 +50,10 @@
     <color name="color_of_signup">#024C5E</color>
     <color name="color_of_signup2">#0c5776</color>
     <color name="forgot_password_square">#72C0D4</color>
-    <color name="new_background_color">#EFEFEF</color>
+    <color name="new_background_color">#F3F5F9</color>
+    <color name="new_background_color2">#EFEFEFF2</color>
     <color name="new_voucher_bg_color">#72C0D4</color>
     <color name="new_search_bg_color">#DFDCDC</color>
     <color name="dialog_bg_color">#72C0D4</color>
+    <color name="color_account_text">#636363</color>
 </resources>

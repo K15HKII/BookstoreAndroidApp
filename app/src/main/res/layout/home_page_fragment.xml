@@ -63,103 +63,32 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <android.widget.Button
-                            android:id="@+id/btnHomeNotification"
-                            android:onClick="@{()-> HomePageViewModel.onNotificationClick()}"
-                            android:scaleX="0.63"
-                            android:scaleY="0.65"
-                            android:background="@drawable/notification_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                    <android.widget.Button
                             android:id="@+id/btnHomeShoppingCart"
                             android:onClick="@{()-> HomePageViewModel.onOnCartClick()}"
                             android:scaleX="0.58"
                             android:scaleY="0.58"
                             android:background="@drawable/ic_shopping"
+                            android:layout_marginRight="22dp"
                             android:layout_width="50dp"
                             android:layout_height="50dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-    <!--Danh mục cái navigation item-->
-        <HorizontalScrollView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:scrollbars="none"
-                android:layout_height="50dp">
 
-            <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipgrpHomeChipNavigation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:singleLine="true"
-                    app:singleSelection="true">
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomeAllBooks"
-                        android:onClick="@{()-> HomePageViewModel.onAllBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:checkable="true"
-                        android:checked="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:padding="10dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Tất cả"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomePopularBooks"
-                        android:onClick="@{()-> HomePageViewModel.onPoppularBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Phổ biến"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        android:background="@drawable/new_chip_btn1"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomeFamiliarBooks"
-                        android:onClick="@{()-> HomePageViewModel.onFamiliarBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Gần đây"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomeForYouBooks"
-                        android:onClick="@{()-> HomePageViewModel.onForYouBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Dành cho bạn"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
 
-            </com.google.android.material.chip.ChipGroup>
-
-        </HorizontalScrollView>
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabMenuHomeNav"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/new_background_color"
+                    android:minHeight="?attr/actionBarSize"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabIndicatorColor="@color/black"/>
+            <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vpHomeBookView"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"/>
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="460dp"

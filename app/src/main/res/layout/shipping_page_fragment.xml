@@ -16,72 +16,45 @@
             android:layout_height="match_parent"
             android:background="@color/new_background_color"
             android:orientation="vertical">
-        <LinearLayout
+
+        <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:orientation="horizontal">
-            <RelativeLayout
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
+
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                //TODO: thêm backward function
+                <android.widget.Button
+                        android:id="@+id/btnOrderPageBackward"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward"/>
+                <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/searchbox_shape"
-                        android:orientation="horizontal">
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        android:text="Đơn hàng"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"/>
+            </LinearLayout>
 
-                    <TextView
-                            android:id="@+id/etShipmentSearchBox"
-                            android:onClick="@{()-> ShippingPageViewModel.onSearchBarClick()}"
-                            android:fontFamily="@font/lato_regular"
-                            android:drawableStart="@drawable/ic_search"
-                            android:layout_marginLeft="5dp"
-                            android:textSize="16dp"
-                            android:paddingTop="13dp"
-                            android:paddingBottom="13dp"
-                            android:paddingRight="15dp"
-                            android:paddingLeft="10dp"
-                            android:text="   Tìm kiếm"
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"/>
-                    <android.widget.Button
-                            android:id="@+id/etShipmentFilterbox"
-                            android:onClick="@{()-> ShippingPageViewModel.onFilterDialog()}"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:scaleX="0.5"
-                            android:scaleY="0.5"
-                            android:background="@drawable/ic_filter"/>
-                </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <LinearLayout
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <android.widget.Button
-                            android:id="@+id/btnShipmentNotification"
-                            android:onClick="@{()-> ShippingPageViewModel.onNotificationClick()}"
-                            android:scaleX="0.63"
-                            android:scaleY="0.65"
-                            android:backgroundTint="@color/btn_blue"
-                            android:background="@drawable/notification_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                    <android.widget.Button
-                            android:id="@+id/btnShipmentShoppingCart"
-                            android:onClick="@{()-> ShippingPageViewModel.onOnCartClick()}"
-                            android:scaleX="0.58"
-                            android:scaleY="0.58"
-                            android:backgroundTint="@color/btn_blue"
-                            android:background="@drawable/ic_shopping"
-                            android:layout_width="43dp"
-                            android:layout_height="50dp"/>
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabMenuReceiptNav"
                 android:layout_width="match_parent"
