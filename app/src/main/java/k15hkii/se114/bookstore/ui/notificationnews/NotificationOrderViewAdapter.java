@@ -58,10 +58,7 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
 
         public NotificationOrderHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvNotificationTitle);
-            tvDescription = itemView.findViewById(R.id.tvNotificationDescription);
-            tvPrice = itemView.findViewById(R.id.tvNotificationItemsPrice);
-            rcvListOrders = itemView.findViewById(R.id.rcvNotificaitonOrderView);
+            //TODO: viết adapter cho notification order
         }
     }
 }

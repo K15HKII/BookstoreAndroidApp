@@ -13,32 +13,12 @@ public class HomePageViewModel extends BaseViewModel<HomePageNavigator> implemen
         getNavigator().openSearchView();
     }
 
-    public void onNotificationClick(){
-        getNavigator().openNotificationView();
-    }
-
     public void onOnCartClick(){
         getNavigator().openOnCartView();
     }
 
     public void onFilterDialog(){
         getNavigator().openFilterDialog();
-    }
-
-    public void onAllBooksChip(){
-        getNavigator().openAllBooksView();
-    }
-
-    public void onFamiliarBooksChip(){
-        getNavigator().openFamiliarBooksView();
-    }
-
-    public void onPoppularBooksChip(){
-        getNavigator().openPoppularBooksView();
-    }
-
-    public void onForYouBooksChip(){
-        getNavigator().openForYouBooksView();
     }
 
 }
