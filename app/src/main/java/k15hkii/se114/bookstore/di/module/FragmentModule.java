@@ -100,8 +100,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ForgotPasswordViewModel.class, () -> new ForgotPasswordViewModel(schedulerProvider));
+    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, ForgotPasswordViewModel.class, () -> new ForgotPasswordViewModel(schedulerProvider, remote));
     }
 
     @Provides
