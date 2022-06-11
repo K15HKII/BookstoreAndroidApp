@@ -20,11 +20,12 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 
     public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>();
 
+    public final ObservableField<String> primaryAddress = new ObservableField<>();
+
 
     @Inject
     protected ModelRemote remote;
     private UUID user_id;
-    private String primaryAddress;
     public void getData(UUID userId) {
         getCompositeDisposable().add(remote.getAddresses(userId)
                                            .subscribeOn(getSchedulerProvider().io())
@@ -35,19 +36,14 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
                                                    OtherAddressViewModel model = new OtherAddressViewModel();
                                                    model.setAddress(address);
                                                    list.add(model);
-                                                   if(address.is_primary()){
-                                                       primaryAddress = address.getNumber() + ", "+ address.getStreet() + ", "  + address.getCity() + ", " + address.getCountry();
+                                                   if(address.isPrimary()){
+                                                       primaryAddress.set(address.getNumber() + ", "+ address.getStreet() + ", "  + address.getCity() + ", " + address.getCountry());
                                                    }
                                                }
                                                listAddress.set(list);
                                            }, throwable -> {
                                                Log.d("AddressPageViewModel", "getData: " + throwable.getMessage(), throwable);
                                            }));
-    }
-
-    @Bindable
-    public String getPrimaryAddress() {
-        return primaryAddress == null ? "profile is null" : primaryAddress;
     }
 
     public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {

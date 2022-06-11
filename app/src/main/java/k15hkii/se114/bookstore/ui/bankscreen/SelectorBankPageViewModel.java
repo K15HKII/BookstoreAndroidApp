@@ -20,16 +20,15 @@ import java.util.UUID;
 public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNavigator> implements Observable {
 
     public final ObservableField<List<OtherBankViewModel>> listBanks = new ObservableField<>();
+    public final ObservableField<String> userName = new ObservableField<>();
+    public final ObservableField<String> bankName = new ObservableField<>();
+    public final ObservableField<String> ban = new ObservableField<>();
 
     @Inject
     protected ModelRemote remote;
     PreferencesHelper preferencesHelper;
 
-
     UserBank bank;
-//    String bankName;
-//    String userName;
-//    String ban;
     UUID userId;
     User user;
 
@@ -43,34 +42,15 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
                    OtherBankViewModel model = new OtherBankViewModel();
                    model.setBank(bank);
                    list.add(model);
-                   //Todo: get primary bank
+                   if(bank.isPrimary()){
+                       bankName.set(bank.getBankName());
+                       ban.set(bank.getIban());
+                   }
                }
                listBanks.set(list);
            }, throwable -> {
                Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
            }));
-
-        getCompositeDisposable().add(remote.getUser(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(user -> {
-                                               this.user = user;
-                                           }, throwable -> {
-                                               Log.d("User", "getData: " + throwable.getMessage(), throwable);
-                                           }));
-    }
-
-    @Bindable
-    public String getBankName() {
-        return bank == null ? "profile is null" : bank.getBankName();
-    }
-    @Bindable
-    public String getUserName() {
-        return bank == null ? "profile is null" : user.getUserName();
-    }
-    @Bindable
-    public String getBan() {
-        return bank == null ? "profile is null" : bank.getIban();
     }
 
 
@@ -78,6 +58,7 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
         super(schedulerProvider);
         this.preferencesHelper = preferencesHelper;
         this.userId = preferencesHelper.getCurrentUserId();
+        userName.set(preferencesHelper.getCurrentUserName());
         getData(userId);
     }
 

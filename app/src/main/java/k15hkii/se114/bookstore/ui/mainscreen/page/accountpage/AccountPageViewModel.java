@@ -27,7 +27,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     @Inject
     protected ModelRemote remote;
     private User user;
-    private UUID user_id;
+    private UUID userId;
 
     private String toAddress(UserAddress address){
         return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
@@ -43,7 +43,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(user -> {
                     this.user = user;
-                    this.user_id= user.getId();
+                    this.userId = user.getId();
                     this.name.set(toUserName(user));
                     this.email.set(user.getEmail());
                     this.gender.set(String.valueOf(user.getGender()));
@@ -56,13 +56,13 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
                 }));
 
         // set address
-        getCompositeDisposable().add(remote.getAddresses(user_id)
+        getCompositeDisposable().add(remote.getAddresses(userId)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(addresses -> {
                     for (UserAddress address : addresses)
                     {
-                        if (address.is_primary()){
+                        if (address.isPrimary()){
                             this.address.set(toAddress(address));
                         }
                     }
@@ -72,8 +72,8 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     public AccountPageViewModel(SchedulerProvider schedulerProvider,ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
-        this.user_id = preferencesHelper.getCurrentUserId();
-        getData(user_id);
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
     public void onAccountInfoClick(){
