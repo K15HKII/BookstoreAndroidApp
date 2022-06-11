@@ -50,14 +50,21 @@ public class Bill implements Serializable {
     @SerializedName("used_vouchers")
     private List<VoucherProfile> usedVouchers;
 
-
     @Expose
     @Getter
     @SerializedName("payment")
     private Payment payment;
 
-//    @Expose
-//    @Getter
-//    @Setter
-//    private String price;
+    //region Extra variables
+    @Expose
+    @Getter
+    @SerializedName("total_details")
+    private long totalDetails;
+
+    @Expose
+    @Getter
+    @SerializedName("ship_cost")
+    private long shipCost;
+    //endregion
+
 }

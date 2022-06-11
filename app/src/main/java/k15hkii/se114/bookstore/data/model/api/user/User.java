@@ -11,6 +11,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+
+    public String getName() {
+        return getFirstName() + " " + getLastName();
+    }
+
     @Getter
     @Expose
     @SerializedName("id")

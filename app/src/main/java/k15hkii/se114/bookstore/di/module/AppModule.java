@@ -15,6 +15,7 @@ import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.*;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.AppConstants;
 import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
@@ -25,6 +26,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.inject.Singleton;
+import java.util.UUID;
 
 @Module
 public class AppModule {
@@ -44,6 +46,12 @@ public class AppModule {
     @Provides
     @Singleton
     PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) { return appPreferencesHelper; }
+
+    @Provides
+    @UserId
+    UUID provideUserId(PreferencesHelper helper) {
+        return helper.getCurrentUserId();
+    }
 
     @Provides
     @Singleton

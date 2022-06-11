@@ -5,7 +5,9 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
@@ -81,6 +83,8 @@ import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
 import k15hkii.se114.bookstore.ui.success.lend.*;
+
+import java.util.UUID;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
@@ -194,13 +198,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider));
+    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, LocationRepository locationRepository, @UserId UUID userId) {
+        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider, remote, locationRepository, userId));
     }
 
     @Provides
-    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider));
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository repository) {
+        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider, repository));
     }
 
     @Provides

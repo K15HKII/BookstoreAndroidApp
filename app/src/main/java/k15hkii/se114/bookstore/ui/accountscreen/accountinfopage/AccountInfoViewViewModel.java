@@ -60,7 +60,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                                            .subscribe(addresses -> {
                                                for (UserAddress address : addresses)
                                                {
-                                                   if (address.is_primary()){
+                                                   if (address.isPrimary()){
                                                        this.address.set(toAddress(address));
                                                    }
                                                }

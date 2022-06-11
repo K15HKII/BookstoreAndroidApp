@@ -21,58 +21,43 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
 
     public final ObservableField<List<OtherBankViewModel>> listBanks = new ObservableField<>();
 
-    @Inject
     protected ModelRemote remote;
     PreferencesHelper preferencesHelper;
 
-
-    UserBank bank;
-//    String bankName;
-//    String userName;
-//    String ban;
-    UUID userId;
-    User user;
+    public final ObservableField<UserBank> bank = new ObservableField<>();
+    public final ObservableField<String> bankName = new ObservableField<>();
+    public final ObservableField<String> iBan = new ObservableField<>();
+    private final UUID userId;
+    private User user;
+    public final ObservableField<String> userName = new ObservableField<>();
 
     public void getData(UUID userId) {
-        getCompositeDisposable().add(remote.getBanks(userId)
-           .subscribeOn(getSchedulerProvider().io())
-           .observeOn(getSchedulerProvider().ui())
-           .subscribe(banks -> {
-               List<OtherBankViewModel> list = new ArrayList<>();
-               for (UserBank bank : banks) {
-                   OtherBankViewModel model = new OtherBankViewModel();
-                   model.setBank(bank);
-                   list.add(model);
-                   //Todo: get primary bank
-               }
-               listBanks.set(list);
-           }, throwable -> {
-               Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
-           }));
+        dispose(remote.getBanks(userId),
+                banks -> {
+                    List<OtherBankViewModel> list = new ArrayList<>();
+                    for (UserBank bank : banks) {
+                        if (bank.isPrimary()) {
+                            this.bank.set(bank);
+                            bankName.set(bank.getBankName());
+                            iBan.set(bank.getIban());
+                        } else {
+                            OtherBankViewModel model = new OtherBankViewModel();
+                            model.setBank(bank);
+                            list.add(model);
+                        }
+                    }
+                    listBanks.set(list);
+                }, throwable -> {
+                    Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
+                });
 
-        getCompositeDisposable().add(remote.getUser(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(user -> {
-                                               this.user = user;
-                                           }, throwable -> {
-                                               Log.d("User", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+        dispose(remote.getUser(userId), user -> {
+            this.user = user;
+            this.userName.set(user.getName());
+        }, throwable -> {
+            Log.d("User", "getData: " + throwable.getMessage(), throwable);
+        });
     }
-
-    @Bindable
-    public String getBankName() {
-        return bank == null ? "profile is null" : bank.getBankName();
-    }
-    @Bindable
-    public String getUserName() {
-        return bank == null ? "profile is null" : user.getUserName();
-    }
-    @Bindable
-    public String getBan() {
-        return bank == null ? "profile is null" : bank.getIban();
-    }
-
 
     public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
@@ -81,11 +66,11 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
         getData(userId);
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void onOpenAddBankClick(){
+    public void onOpenAddBankClick() {
         getNavigator().openAddBankAccount();
     }
 

@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.util.Date;
 import java.util.UUID;
 
 @With
@@ -59,5 +58,5 @@ public class UserAddress {
     @Getter
     @Expose
     @SerializedName("is_primary")
-    private boolean is_primary;
+    private boolean isPrimary;
 }

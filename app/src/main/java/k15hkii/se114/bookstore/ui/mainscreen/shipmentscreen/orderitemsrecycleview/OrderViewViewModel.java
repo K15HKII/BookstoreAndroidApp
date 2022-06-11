@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
@@ -19,9 +20,11 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     public final ObservableField<String> note = new ObservableField<>();
     public final ObservableField<Integer> price = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
-    @Getter private Bill bill;
+    @Getter
+    private Bill bill;
 
     private int billId;
 
@@ -41,9 +44,11 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
             OrderItemViewModel item = new OrderItemViewModel(this.remote);
             item.setBillDetail(billDetail);
 
-            remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
+            dispose(remote.getBook(billDetail.getBookId()), book -> {
                 totalPrice += book.getPrice();
-            }).subscribe();
+            }, throwable -> {
+                Log.d("", "GetBook: " + throwable.getMessage(), throwable);
+            });
 
             list.add(item);
         }
@@ -55,4 +60,5 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
         this.bill = bill;
         getData();
     }
+
 }

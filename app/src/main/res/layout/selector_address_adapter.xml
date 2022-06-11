@@ -21,7 +21,7 @@
                     android:fontFamily="@font/lato_regular"
                     android:layout_width="319dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.address}"
+                    address="@{viewModel.address}"
                     android:textSize="17dp"
                     android:textColor="@color/btn_blue"/>
 

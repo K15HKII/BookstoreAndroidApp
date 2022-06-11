@@ -101,7 +101,7 @@
                                 android:layout_height="wrap_content"
                                 android:checked="true"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.primaryAddress}"
+                                address="@{viewModel.primaryAddress}"
                                 android:textSize="17dp"
                                 android:textColor="@color/black"/>
 

@@ -30,9 +30,11 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
     public void setBillDetail(BillDetail billDetail) {
         this.billDetail = billDetail;
-        remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
+        dispose(remote.getBook(billDetail.getBookId()), book -> {
             setBook(book);
-        }).subscribe();
+        }, throwable -> {
+            Log.d("", "GetBook: " + throwable.getMessage(), throwable);
+        });
     }
 
     public void setBook(Book book) {

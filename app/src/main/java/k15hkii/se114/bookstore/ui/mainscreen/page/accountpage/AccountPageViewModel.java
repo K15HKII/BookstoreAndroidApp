@@ -1,7 +1,6 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.accountpage;
 
 import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
@@ -62,7 +61,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
                 .subscribe(addresses -> {
                     for (UserAddress address : addresses)
                     {
-                        if (address.is_primary()){
+                        if (address.isPrimary()){
                             this.address.set(toAddress(address));
                         }
                     }

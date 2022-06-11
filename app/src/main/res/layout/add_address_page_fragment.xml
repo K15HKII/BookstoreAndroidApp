@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context="k15hkii.se114.bookstore.ui.address.add.AddAddressPage">
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/new_background_color">
-        <androidx.appcompat.widget.Toolbar
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
                 android:id="@+id/toolbarSettingPage">
-            <android.widget.Button
+
+                <android.widget.Button
                     android:id="@+id/btnAddAddressBackward"
                     android:onClick="@{()-> viewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
-                    android:background="@drawable/ic_backward"/>
+                    android:background="@drawable/ic_backward" />
 
-            <TextView
+                <TextView
                     android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,22 +46,26 @@
                     android:textStyle="bold"
                     android:text="Thêm địa chỉ"
                     android:textColor="@color/black"
-                    android:textSize="24dp"/>
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout
+                    android:textSize="24dp" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="20dp"
                 android:orientation="vertical">
-            <LinearLayout
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <RelativeLayout
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                    <android.widget.Spinner
+
+                        <android.widget.Spinner
                             android:id="@+id/spAddAddressCity"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
@@ -69,8 +79,10 @@
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
                             android:background="@drawable/new_edit_text_shape_large"
-                            testSource="@{viewModel.lsCity}"/>
-                    <android.widget.Spinner
+                            android:selectedItemPosition="@={viewModel.cityIndex}"
+                            source="@{viewModel.cities}"/>
+
+                        <android.widget.Spinner
                             android:id="@+id/spAddAddressDistrict"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
@@ -85,10 +97,12 @@
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
                             android:background="@drawable/new_edit_text_shape_large"
-                            testSource="@{viewModel.lsDistrict}"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <android.widget.Spinner
+                            android:selectedItemPosition="@={viewModel.districtIndex}"
+                            source="@{viewModel.districts}" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <android.widget.Spinner
                     android:id="@+id/spAddAddressVillage"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
@@ -103,8 +117,10 @@
                     android:inputType="text"
                     android:popupBackground="@drawable/spinner_shape"
                     android:background="@drawable/new_edit_text_shape_large"
-                    testSource="@{viewModel.lsVillage}"/>
-            <com.google.android.material.textfield.TextInputLayout
+                    android:selectedItemPosition="@={viewModel.wardIndex}"
+                    source="@{viewModel.wards}" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -116,7 +132,8 @@
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
                     android:hint="Số nhà">
-                <com.google.android.material.textfield.TextInputEditText
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddAddressAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,16 +145,18 @@
                         android:textColor="@color/btn_blue"
                         android:textColorHint="@color/btn_blue"
                         android:textCursorDrawable="@drawable/cursor_color"
-                        android:background="@drawable/new_edit_text_shape_large"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <CheckBox
+                        android:background="@drawable/new_edit_text_shape_large" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
                     android:id="@+id/cbAddAddressCheckDefaultAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     android:backgroundTint="@color/black"
-                    android:text="Đặt làm địa chỉ mặc định"/>
-            <android.widget.Button
+                    android:text="Đặt làm địa chỉ mặc định" />
+
+                <android.widget.Button
                     android:id="@+id/btnAddAddressConfirmInfo"
                     android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
@@ -148,10 +167,10 @@
                     android:background="@drawable/new_btn_sky_medium"
                     android:text="Xong"
                     android:textColor="@color/white"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false" />
 
-    </LinearLayout>
-    </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

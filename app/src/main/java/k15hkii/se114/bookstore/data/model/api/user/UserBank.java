@@ -39,5 +39,10 @@ public class UserBank {
     @Expose
     @SerializedName("bic")
     private String bic;
+
+    @Getter
+    @Expose
+    @SerializedName("is_primary")
+    private boolean isPrimary;
 }
 

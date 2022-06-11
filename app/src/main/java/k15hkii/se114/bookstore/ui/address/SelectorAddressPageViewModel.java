@@ -1,7 +1,6 @@
 package k15hkii.se114.bookstore.ui.address;
 
 import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
@@ -20,48 +19,41 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
 
     public final ObservableField<List<OtherAddressViewModel>> listAddress = new ObservableField<>();
 
-
     @Inject
     protected ModelRemote remote;
-    private UUID user_id;
-    private String primaryAddress;
-    public void getData(UUID userId) {
-        getCompositeDisposable().add(remote.getAddresses(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(addresses -> {
-                                               List<OtherAddressViewModel> list = new ArrayList<>();
-                                               for (UserAddress address : addresses) {
-                                                   OtherAddressViewModel model = new OtherAddressViewModel();
-                                                   model.setAddress(address);
-                                                   list.add(model);
-                                                   if(address.is_primary()){
-                                                       primaryAddress = address.getNumber() + ", "+ address.getStreet() + ", "  + address.getCity() + ", " + address.getCountry();
-                                                   }
-                                               }
-                                               listAddress.set(list);
-                                           }, throwable -> {
-                                               Log.d("AddressPageViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
-    }
+    private final UUID userId;
+    public final ObservableField<UserAddress> primaryAddress = new ObservableField<>();
 
-    @Bindable
-    public String getPrimaryAddress() {
-        return primaryAddress == null ? "profile is null" : primaryAddress;
+    public void getData(UUID userId) {
+        dispose(remote.getAddresses(userId), addresses -> {
+            List<OtherAddressViewModel> list = new ArrayList<>();
+            for (UserAddress address : addresses) {
+                if (address.isPrimary()) {
+                    primaryAddress.set(address);
+                } else {
+                    OtherAddressViewModel model = new OtherAddressViewModel();
+                    model.setAddress(address);
+                    list.add(model);
+                }
+            }
+            listAddress.set(list);
+        }, throwable -> {
+            Log.d("AddressPageViewModel", "getData: " + throwable.getMessage(), throwable);
+        });
     }
 
     public SelectorAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
-        this.user_id = preferencesHelper.getCurrentUserId();
-        getData(user_id);
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void onOpenAddBankClick(){
+    public void onOpenAddBankClick() {
         getNavigator().openAddBank();
     }
 
