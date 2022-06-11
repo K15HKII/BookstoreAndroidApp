@@ -13,7 +13,7 @@ import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPage;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
-import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialog;
+import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
 

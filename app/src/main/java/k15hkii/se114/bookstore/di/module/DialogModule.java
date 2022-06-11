@@ -9,7 +9,7 @@ import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthViewModel;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderViewModel;
-import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialogViewModel;
+import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialogViewModel;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialogViewModel;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumViewModel;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchViewModel;
