@@ -64,13 +64,4 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         getNavigator().openRatingBook();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
 }

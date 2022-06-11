@@ -117,45 +117,17 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
 
     @Override
     public void openAllBooksView() {
-        createTransaction(R.id.fragmentContainerHomeView, AllBooksPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
     }
 
     @Override
     public void openPoppularBooksView() {
-        createTransaction(R.id.fragmentContainerHomeView, PopularBooksPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
     }
 
     @Override
     public void openFamiliarBooksView() {
-        createTransaction(R.id.fragmentContainerHomeView, FamiliarBooksPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
     }
 
     @Override
     public void openForYouBooksView() {
-        createTransaction(R.id.fragmentContainerHomeView, ForYouBooksPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
     }
 }

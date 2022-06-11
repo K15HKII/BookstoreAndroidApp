@@ -498,7 +498,7 @@
                                 android:id="@+id/tvAccountInfoLocation"
                                 android:fontFamily="@font/lato_regular"
                                 android:textSize="19dp"
-                                android:text="@{viewModel.address}"
+                                address="@{viewModel.address}"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
                                 android:layout_height="wrap_content"

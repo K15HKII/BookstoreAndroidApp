@@ -20,7 +20,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     public final ObservableField<String> birthday = new ObservableField<>();
     public final ObservableField<String> phone = new ObservableField<>();
     public final ObservableField<String> email = new ObservableField<>();
-    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<UserAddress> address = new ObservableField<>();
     public final ObservableField<String> userName = new ObservableField<>();
 
     @Inject
@@ -28,9 +28,6 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     private User user;
     private UUID userId;
 
-    private String toAddress(UserAddress address){
-        return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
-    }
     //TODO: getUser, UserBank, Sửa thông tin
     private String toUserName(User user){
         return user.getFirstName() + " " + user.getLastName();
@@ -62,7 +59,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
                     for (UserAddress address : addresses)
                     {
                         if (address.isPrimary()){
-                            this.address.set(toAddress(address));
+                            this.address.set(address);
                         }
                     }
                 }));
