@@ -133,7 +133,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="15dp"
-                                    android:text="@{viewModel.ban}"
+                                    android:text="@{viewModel.iBan}"
                                     android:textColor="#001C44"/>
                         </LinearLayout>
                         <android.widget.Button

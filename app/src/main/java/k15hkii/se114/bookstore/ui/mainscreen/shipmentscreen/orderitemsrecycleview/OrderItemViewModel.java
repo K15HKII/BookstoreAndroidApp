@@ -8,6 +8,7 @@ import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -23,8 +24,8 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
     private BillDetail billDetail;
     private Book book;
 
-    public OrderItemViewModel(ModelRemote remote) {
-        super(null);
+    public OrderItemViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
         this.remote = remote;
     }
 

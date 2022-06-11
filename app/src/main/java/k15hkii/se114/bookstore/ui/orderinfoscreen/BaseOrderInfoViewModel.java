@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.UUID;
 
-public class BaseOrderViewModel<N extends INavigator> extends BaseViewModel<N> {
+public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<N> {
 
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
 
@@ -43,7 +43,7 @@ public class BaseOrderViewModel<N extends INavigator> extends BaseViewModel<N> {
     protected final ViewModelMapper mapper;
     protected final ModelRemote remote;
 
-    public BaseOrderViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+    public BaseOrderInfoViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
         super(schedulerProvider);
         this.mapper = mapper;
         this.remote = remote;

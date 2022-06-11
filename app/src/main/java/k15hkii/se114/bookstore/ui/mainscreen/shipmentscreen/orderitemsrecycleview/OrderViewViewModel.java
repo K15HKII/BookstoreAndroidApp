@@ -8,6 +8,7 @@ import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 
 import javax.inject.Inject;
@@ -28,8 +29,8 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
 
     private int billId;
 
-    public OrderViewViewModel(ModelRemote remote) {
-        super(null);
+    public OrderViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
         this.remote = remote;
     }
 
@@ -41,7 +42,7 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
 
         List<OrderItemViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : bill.getBillDetails()) {
-            OrderItemViewModel item = new OrderItemViewModel(this.remote);
+            OrderItemViewModel item = new OrderItemViewModel(this.getSchedulerProvider(), this.remote);
             item.setBillDetail(billDetail);
 
             dispose(remote.getBook(billDetail.getBookId()), book -> {

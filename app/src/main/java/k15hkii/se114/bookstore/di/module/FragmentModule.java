@@ -12,7 +12,8 @@ import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrderViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
@@ -65,7 +66,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevie
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel;
@@ -303,8 +303,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
+    public WaitingOrderListViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, WaitingOrderListViewModel.class, () -> new WaitingOrderListViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
@@ -393,8 +393,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public CancleOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, CancleOrderViewModel.class, () -> new CancleOrderViewModel(schedulerProvider));
+    public CancelOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, CancelOrderViewModel.class, () -> new CancelOrderViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides

@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.dialog.changebirth.changename;
 
+import android.util.Log;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
@@ -14,20 +15,23 @@ import java.util.UUID;
 
 public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack> {
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
     PreferencesHelper preferencesHelper;
 
     public final ObservableField<String> newName = new ObservableField<>();
 
     String oldName;
-    User user;
+    private User user;
 
     public void getData(UUID userId) {
-        remote.getUser(userId).doOnSuccess(user -> {
+        dispose(remote.getUser(userId), user -> {
             this.user = user;
             newName.set(user.getFirstName() + " " + user.getLastName());
-        }).subscribe();
+        }, throwable -> {
+            Log.d("ChangeNameDialog", "getData: " + throwable.getMessage());
+        });
     }
 
     public ChangeNameDialogViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
@@ -37,15 +41,18 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
         getData(preferencesHelper.getCurrentUserId());
     }
 
-    public void onSubmitClick(){
+    public void onSubmitClick() {
         if (!Objects.equals(newName.get(), (user.getFirstName() + " " + user.getLastName()))) {
             ProfileUpdateRequest request = new ProfileUpdateRequest();
             request.setFirstname(newName.get());
 
             dispose(remote.updateSelfUser(request),
-                    user -> {},
-                    throwable -> {});
+                    user -> {
+                    },
+                    throwable -> {
+                    });
         }
         getNavigator().dismissDialog();
     }
+
 }
