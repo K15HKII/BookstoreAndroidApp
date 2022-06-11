@@ -51,7 +51,7 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/home_background"
+                    android:background="@color/new_background_color"
                     android:padding="20dp">
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_marginBottom="20dp"
@@ -85,7 +85,7 @@
                     android:layout_marginTop="35dp"
                     android:layout_width="120dp"
                                    android:layout_height="45dp"
-                                   android:background="@drawable/btn_forgotpassword"
+                                   android:background="@drawable/new_btn_sky_small"
                                    android:textSize="16dp"
                                    android:textColor="@color/white"
                                    android:text="Xác nhận"

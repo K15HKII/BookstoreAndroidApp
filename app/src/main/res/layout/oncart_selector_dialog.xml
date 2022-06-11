@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
                 android:text="Loại"
+                android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>
         <com.google.android.material.chip.ChipGroup
@@ -59,8 +60,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="@font/lato_regular"
-            android:layout_marginTop="10dp"
             android:text="Số lượng"
             android:textColor="@color/black"
             android:textSize="14dp"/>
@@ -118,6 +119,6 @@
             android:textSize="15dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:background="@drawable/round_long_btn"/>
+            android:background="@drawable/new_btn_sky_large"/>
 </LinearLayout>
 </layout>

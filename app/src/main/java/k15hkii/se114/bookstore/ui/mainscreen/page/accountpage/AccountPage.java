@@ -9,12 +9,19 @@ import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.AccountPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
+import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoPage;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialog;
+import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
+import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
+import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
 
 public class AccountPage extends BaseFragment<AccountPageFragmentBinding, AccountPageViewModel> implements AccountPageNavigator {
@@ -90,5 +97,52 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     @Override
     public void logOut() {
         LogOutDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openChangeNameDialog() {
+        ChangeNameDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openChangePasswordDialog() {
+        ChangePassDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openChangePhoneNumDialog() {
+        ChangePhoneNumDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openChangeGenderDialog() {
+        ChangeGenderDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openChangeBirthDialog() {
+        ChangeBirthDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openSelectAddress() {
+        createTransaction(R.id.fragmentContainerView, SelectorAddressPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openSelectBank() {
+        createTransaction(R.id.fragmentContainerView, SelectorBankPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

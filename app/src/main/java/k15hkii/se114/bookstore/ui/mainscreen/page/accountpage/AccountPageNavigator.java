@@ -6,6 +6,20 @@ public interface AccountPageNavigator extends INavigator {
 
     void openAccountInfo();
 
+    void openChangeNameDialog();
+
+    void openChangePasswordDialog();
+
+    void openChangePhoneNumDialog();
+
+    void openChangeGenderDialog();
+
+    void openChangeBirthDialog();
+
+    void openSelectAddress();
+
+    void openSelectBank();
+
     void openVoucher();
 
     void openSetting();

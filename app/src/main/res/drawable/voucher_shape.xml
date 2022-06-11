@@ -13,7 +13,7 @@
             <size
                     android:width="300dp"
                     android:height="100dp" />
-            <solid android:color="#F8DAD0" />
+            <solid android:color="@color/new_voucher_bg_color" />
         </shape>
     </item>
 
@@ -24,7 +24,7 @@
             android:top="48dp"
             android:bottom="48dp">
         <shape android:shape="oval">
-            <solid android:color="#BCFEFE" />
+            <solid android:color="@color/new_background_color" />
         </shape>
     </item>
 
@@ -35,7 +35,7 @@
             android:top="48dp"
             android:bottom="48dp">
         <shape android:shape="oval">
-            <solid android:color="#BCFEFE" />
+            <solid android:color="@color/new_background_color" />
         </shape>
     </item>
 

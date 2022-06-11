@@ -25,10 +25,6 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
     @Inject protected
     ListDataNotificationAdapter listDataNotificationAdapter;
 
-    public static NotificationPage newInstance() {
-        return new NotificationPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

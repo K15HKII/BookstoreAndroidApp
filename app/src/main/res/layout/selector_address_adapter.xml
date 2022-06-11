@@ -23,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.address}"
                     android:textSize="17dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/btn_blue"/>
 
             <ImageView
                     android:layout_width="wrap_content"

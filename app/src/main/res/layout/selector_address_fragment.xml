@@ -76,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="20dp"
-                    android:background="@drawable/home_background">
+                    android:background="@color/new_background_color">
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                         android:layout_marginTop="45dp"
                         android:fontFamily="@font/lato_bold"
                         android:textAlignment="textStart"
-                        android:text="Địa chỉ khác"
+                        android:text="Tất cả"
                         android:textColor="@color/black"
                         android:textSize="22dp"
                         android:textStyle="bold"/>
@@ -147,7 +147,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:background="@drawable/round_long_btn"
+                    android:background="@drawable/new_btn_sky_large"
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"

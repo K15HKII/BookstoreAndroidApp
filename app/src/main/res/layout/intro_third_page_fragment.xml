@@ -9,6 +9,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/new_gradient_intro_color1"
         tools:context=".ui.intro.thirdpage.IntroThirdPage">
 
     <ImageView
@@ -78,7 +79,7 @@
                 android:textAllCaps="false"
                 android:textSize="16dp"
                 android:textColor="@color/btn_blue"
-                android:background="@drawable/btn_intro"
+                android:background="@drawable/new_btn_white_large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"

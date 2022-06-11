@@ -14,7 +14,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/home_background"
+                android:background="@color/new_background_color"
                 android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
@@ -125,7 +125,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="0dp"
                                     android:backgroundTint="@color/black"
-                                    android:src="@drawable/ic_shopping"/>
+                                    android:src="@drawable/ic_shopping_blue"/>
                             <TextView
                                     android:text="Đơn hàng"
                                     android:fontFamily="@font/lato_bold"
@@ -367,7 +367,7 @@
                             android:paddingRight="35dp"
                             android:paddingTop="12dp"
                             android:paddingBottom="12dp"
-                            android:background="@drawable/dialog_white_btn"
+                            android:background="@drawable/new_btn_sky_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp"
@@ -375,7 +375,7 @@
                             android:textSize="14sp"
                             android:text="Huỷ đơn hàng"
                             android:onClick="@{()->viewModel.DeleteOrderClick()}"
-                            android:textColor="@color/red_orange"
+                            android:textColor="@color/white"
                             android:layout_gravity="center"/>
 
                 </LinearLayout>
