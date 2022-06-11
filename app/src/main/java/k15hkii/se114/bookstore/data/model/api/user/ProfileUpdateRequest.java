@@ -44,5 +44,5 @@ public class ProfileUpdateRequest {
     @Setter
     private Date birthday;
 
-
+    // TODO: Add Password Property
 }
