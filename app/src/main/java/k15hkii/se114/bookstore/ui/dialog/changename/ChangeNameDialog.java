@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.changebirth.changename;
+package k15hkii.se114.bookstore.ui.dialog.changename;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

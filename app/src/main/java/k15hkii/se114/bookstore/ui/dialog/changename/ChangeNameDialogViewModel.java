@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.changebirth.changename;
+package k15hkii.se114.bookstore.ui.dialog.changename;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
