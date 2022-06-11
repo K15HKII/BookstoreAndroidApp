@@ -226,7 +226,7 @@ public interface ModelRemote {
     Single<List<VoucherProfile>> getVoucherProfiles();
 
     @GET("/api/voucher/{voucher_id}")
-    Single<Voucher> getVoucher(@Path("voucher_id") Date usedAt);
+    Single<Voucher> getVoucher(@Path("voucher_id") UUID voucher_id);
     //endregion
 
     //region File

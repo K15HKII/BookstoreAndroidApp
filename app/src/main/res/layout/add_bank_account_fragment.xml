@@ -28,7 +28,7 @@
                 android:id="@+id/toolbarAddBank">
             <android.widget.Button
                     android:id="@+id/btnAddBankBackward"
-                    android:onClick="@{()->viewModel.onBackWardClick()}"
+                    android:onClick="@{() -> viewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.5"
@@ -67,7 +67,7 @@
                     app:boxBackgroundColor="#FFF"
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
-                    android:hint="Tên chủ sở hữu">
+                    android:hint="Tên chủ tài khoản">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddBankOwnerName"
                         android:layout_width="match_parent"
@@ -78,6 +78,7 @@
                         android:paddingTop="18dp"
                         android:inputType="text"
                         android:fontFamily="@font/lato_regular"
+                        android:text="@={viewModel.name}"
                         android:textSize="20dp"
                         android:ems="15"
                         android:textColor="@color/btn_blue"
@@ -96,7 +97,7 @@
                     app:boxBackgroundColor="#FFF"
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
-                    android:hint="CMND/CCCD">
+                    android:hint="Số tài khoản">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddBankIdentifyNumber"
                         android:layout_width="match_parent"
@@ -108,6 +109,7 @@
                         android:inputType="text"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="20dp"
+                        android:text="@={viewModel.iban}"
                         android:ems="15"
                         android:textColor="@color/btn_blue"
                         android:textColorHint="@color/btn_blue"
@@ -141,7 +143,7 @@
                     app:boxBackgroundColor="#FFF"
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
-                    android:hint="Chi nhánh">
+                    android:hint="Mã ngân hàng">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddBankBankLocation"
                         android:layout_width="match_parent"
@@ -170,7 +172,7 @@
                     app:boxBackgroundColor="#FFF"
                     app:hintTextColor="@color/btn_blue"
                     android:nextFocusRight="@color/btn_blue"
-                    android:hint="Số tài khoản">
+                    android:hint="Chi nhánh">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddBankCardNumber"
                         android:layout_width="match_parent"
