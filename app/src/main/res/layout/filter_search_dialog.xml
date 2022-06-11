@@ -6,27 +6,31 @@
     </data>
 <LinearLayout
         android:orientation="vertical"
+        android:background="@color/white"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:background="#98BDC7">
+            android:padding="24dp">
         <TextView
                 android:fontFamily="@font/lato_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Sắp xếp"
-
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="28dp"/>
-        <android.widget.RadioButton
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        <RadioButton
                 android:id="@+id/RadbtnFilterFromHighToLow"
                 android:fontFamily="@font/lato_regular"
-                android:padding="18dp"
+                android:padding="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Giá từ cao xuống thấp"
@@ -36,7 +40,8 @@
         <RadioButton
                 android:id="@+id/RadbtnFilterFromLowToHigh"
                 android:fontFamily="@font/lato_regular"
-                android:padding="18dp"
+                android:padding="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -48,7 +53,8 @@
         <RadioButton
                 android:id="@+id/RadbtnFilterHighlyRecommend"
                 android:fontFamily="@font/lato_regular"
-                android:padding="18dp"
+                android:padding="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -56,6 +62,7 @@
                 android:textColor="@color/black"
                 android:textSize="21dp"
                 android:background="@drawable/account_button_2"/>
+        </RadioGroup>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +121,7 @@
                     android:onClick="@{()-> viewModel.dismissDialog()}"
                     android:layout_width="wrap_content"
                     android:layout_height="42dp"
-                    android:background="@drawable/round_white_btn"
+                    android:background="@drawable/new_btn_white_small"
                     android:textColor="@color/btn_blue"
                     android:text="Hủy"
                     android:textAllCaps="false"
@@ -130,7 +137,7 @@
                     android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="42dp"
-                    android:background="@drawable/dialog_blue_btn"
+                    android:background="@drawable/new_btn_sky_small"
                     android:text="Xác nhận"
                     android:textColor="@color/white"
                     android:textAllCaps="false"

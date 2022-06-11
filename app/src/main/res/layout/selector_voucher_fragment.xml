@@ -10,17 +10,8 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/new_background_color"
             tools:context=".ui.accountscreen.voucherscreen.SelectorVoucher">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/home_background">
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/busy_shark"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -79,7 +70,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:background="@drawable/round_long_btn"
+                    android:background="@drawable/new_btn_sky_large"
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"

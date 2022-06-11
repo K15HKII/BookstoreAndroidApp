@@ -359,8 +359,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, mapper));
+    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides
@@ -374,13 +374,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, mapper));
+    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides
-    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, mapper));
+    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel"/>
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal"
+    <LinearLayout
+            android:orientation="horizontal"
                   android:layout_marginTop="10dp"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:background="@drawable/home_background">
+                  android:background="@color/new_background_color">
         <CheckBox
                 android:id="@+id/cbOnCartItemCheck"
                 android:checked="@{viewModel.isSelectedItem}"
@@ -78,7 +78,7 @@
                         android:background="@drawable/ic_delete_black" app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.959"
-                        app:layout_constraintVertical_bias="0.4"/>
+                        app:layout_constraintVertical_bias="0.266"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="#98BDC7"
+                            android:background="#B6BCBD"
                             android:onClick="@{()->viewModel.minusQuantity()}"
                             android:src="@drawable/ic_minus"/>
                     <TextView
@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_alignParentRight="true"
-                            android:background="#98BDC7"
+                            android:background="#B6BCBD"
                             android:onClick="@{()->viewModel.plusQuantity()}"
                             android:src="@drawable/ic_plus"/>
                 </LinearLayout>

@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
@@ -24,9 +25,11 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
 
     @Inject
     protected ModelRemote remote;
-    private UUID userId;
+    public UUID userId;
     private Book book;
     private double total;
+
+    List<OncartItemViewModel> selectedItemList = new ArrayList<>();
 
     public void getData() {
         getCompositeDisposable().add(remote.getCarts(userId)
@@ -34,7 +37,6 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(cartItems -> {
                     List<OncartItemViewModel> list = new ArrayList<>();
-                    List<OncartItemViewModel> selectedItemList = new ArrayList<>();
                     for (CartItem cartItem : cartItems) {
                         OncartItemViewModel model = new OncartItemViewModel(getSchedulerProvider(), remote);
                         model.setCartItem(cartItem);
@@ -72,7 +74,7 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     }
 
     public void openOrderPage() {
-        getNavigator().OrderPageNavigator();
+        getNavigator().OrderPageNavigator(this);
     }
 
 }

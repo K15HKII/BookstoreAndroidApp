@@ -44,31 +44,31 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
         request.setSelected(false);
         request.setQuantity(quantity.get());
 
-        //todo: cong don` cart item quantity, tao mot remote get cart qua userId + bookId maybe giai quyet duoc van de khong:(
-//        dispose(remote.getCarts(userId),
-//                cartItems -> {
-//                    q = 0;
-//                    for (CartItem item : cartItems) {
-//                        if (item.getBookId() == book.getId()) {
-////                            if (item.getQuantity() == 0) {
-////                                q = this.quantity.get();
-////                            }
-////                            else {
-//                            q = item.getQuantity() + this.quantity.get();
-////                            }
-//                            request.setQuantity(q);
-//                        }
-//                    }
-//                    dispose(remote.createCart(userId, request),
-//                            cartItem -> { },
-//                            throwable -> { });
-//                },
-//                throwable -> { });
-//        if (q == -1) {
+        //TODO: cong don` cart item quantity, lỗi chỗ dispose, tao mot remote get cart qua userId + bookId maybe giai quyet duoc van de khong:(
+        dispose(remote.getCarts(userId),
+                cartItems -> {
+                    q = 0;
+                    for (CartItem item : cartItems) {
+                        if (item.getBookId() == book.getId()) {
+//                            if (item.getQuantity() == 0) {
+//                                q = this.quantity.get();
+//                            }
+//                            else {
+                            q = item.getQuantity() + this.quantity.get();
+//                            }
+                            request.setQuantity(q);
+                        }
+                    }
+                    dispose(remote.createCart(userId, request),
+                            cartItem -> { },
+                            throwable -> { });
+                },
+                throwable -> { });
+        if (q == -1) {
             dispose(remote.createCart(userId, request),
                     cartItem -> { },
                     throwable -> { });
-//        }
+        }
         return;
     }
 

@@ -13,7 +13,7 @@
     <LinearLayout android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  android:orientation="vertical"
-                 android:background="@drawable/gradient_background">
+                 android:background="@drawable/new_login_bg">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -37,7 +37,7 @@
                           android:textAppearance="@style/AppName"
                           android:text="App Name"
                           android:textSize="31dp"
-                          android:textColor="@color/btn_blue"
+                          android:textColor="#001C44"
                           android:textAlignment="center"
                           android:fontFamily="@font/lato_bold"/>
 
@@ -52,6 +52,8 @@
                         app:boxBackgroundColor="#FFF"
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
+                        app:startIconDrawable="@drawable/ic_account_selected"
+                        app:startIconTint="@color/black"
                         android:hint="Tên đăng nhập">
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etLoginUser"
@@ -80,6 +82,8 @@
                         app:boxBackgroundColor="#FFF"
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
+                        app:startIconDrawable="@drawable/ic_lock"
+                        app:startIconTint="@color/black"
                         android:hint="Mật khẩu">
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etLoginPassword"
@@ -114,7 +118,7 @@
                 <android.widget.Button
                         android:id="@+id/btnLoginLogin"
                         android:onClick="@{()-> LoginViewModel.onServerLoginClick()}"
-                        android:background="@drawable/round_btn"
+                        android:background="@drawable/new_btn_sky_medium"
                         android:radius="45dp"
                         android:layout_width="155dp"
                         android:layout_height="48dp"
@@ -175,7 +179,7 @@
                                 android:textSize="12sp"
                                 android:layout_height="match_parent"
                                 android:text="Bạn chưa có tài khoản?"
-                                android:textColor="#024C5E"
+                                android:textColor="@color/color_of_signup"
                                 android:textAlignment="center"/>
                         <TextView
                                 android:id="@+id/tvLoginRegister"
@@ -184,7 +188,7 @@
                                 android:text="Đăng kí"
                                 android:textAppearance="@style/Dang_ki"
                                 android:textSize="29sp"
-                                android:textColor="#024C5E"
+                                android:textColor="@color/color_of_signup"
                                 android:fontFamily="@font/lato_bold"
                                 android:layout_weight="700"
                                 android:layout_width="wrap_content"

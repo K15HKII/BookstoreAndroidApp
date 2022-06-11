@@ -66,6 +66,7 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
         getData(this.lend.getBookId());
         this.expiredDate.set(String.valueOf(this.lend.getEndDate()));
         this.lendDate.set(String.valueOf(this.lend.getStartDate()));
+        paymentMethod.set(lend.getPayment().name());
     }
     @Override
     public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {

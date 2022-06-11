@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/home_background">
+            android:background="@color/new_background_color">
         <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                             android:textSize="16dp"
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
-                            android:background="@drawable/edit_text_background"
+                            android:background="@drawable/new_edit_text_shape_large"
                             testSource="@{viewModel.lsCity}"
                     />
                     <android.widget.Spinner
@@ -96,7 +96,7 @@
                             android:textSize="16dp"
                             android:inputType="text"
                             android:popupBackground="@drawable/spinner_shape"
-                            android:background="@drawable/edit_text_background"
+                            android:background="@drawable/new_edit_text_shape_large"
                             testSource="@{viewModel.lsDistrict}"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -113,13 +113,13 @@
                     android:textSize="16dp"
                     android:inputType="text"
                     android:popupBackground="@drawable/spinner_shape"
-                    android:background="@drawable/edit_text_background"
+                    android:background="@drawable/new_edit_text_shape_large"
                     testSource="@{viewModel.lsVillage}"/>
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/edit_text_background"
+                    android:background="@drawable/new_edit_text_shape_large"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
                     app:boxStrokeColor="#FFF"
@@ -139,7 +139,7 @@
                         android:textColor="@color/btn_blue"
                         android:textColorHint="@color/btn_blue"
                         android:textCursorDrawable="@drawable/cursor_color"
-                        android:background="@drawable/edit_text_background"/>
+                        android:background="@drawable/new_edit_text_shape_large"/>
             </com.google.android.material.textfield.TextInputLayout>
             <CheckBox
                     android:id="@+id/cbEditAddressCheckDefaultAddress"
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/round_btn"
+                    android:background="@drawable/new_btn_sky_medium"
                     android:text="Xong"
                     android:textColor="@color/white"
                     android:textAllCaps="false"/>

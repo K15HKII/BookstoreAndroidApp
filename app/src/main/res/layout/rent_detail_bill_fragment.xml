@@ -9,7 +9,7 @@
 <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_background"
+        android:background="@color/new_background_color"
         tools:context=".ui.mainscreen.rentscreen.menutab.detail.RentDetailBill">
 
     <ScrollView
@@ -214,7 +214,7 @@
                 <TextView
                         android:id="@+id/tvRentDetailBillPaymentMethod"
                         android:fontFamily="@font/lato_regular"
-                        android:text="Thẻ ATM"
+                        android:text="@{viewModel.paymentMethod}"
                         android:textSize="18dp"
                         android:textColor="@color/black"
                         android:textAlignment="textStart"
@@ -306,7 +306,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/btn_blue"
                     android:textAllCaps="false"
-                    android:background="@drawable/round_white_btn_med"
+                    android:background="@drawable/new_btn_white_medium"
             />
 
         </LinearLayout>

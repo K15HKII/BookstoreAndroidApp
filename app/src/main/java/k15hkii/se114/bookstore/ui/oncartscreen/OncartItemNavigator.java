@@ -8,5 +8,5 @@ public interface OncartItemNavigator extends INavigator {
 
     void checkItemHandle();
 
-//    void deleteItem(int index);
+    void deleteItem(int index);
 }

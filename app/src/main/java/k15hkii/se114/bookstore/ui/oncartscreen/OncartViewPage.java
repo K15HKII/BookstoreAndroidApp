@@ -19,6 +19,8 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
 public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
     @Inject
@@ -43,7 +45,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         super.onViewCreated(view, savedInstanceState);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -54,11 +55,8 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
-//        oncartItemAdapter.notifyDataSetChanged();
 
         oncartItemAdapter.setOncartItemNavigator(this);
-
-        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
 
         return view;
     }
@@ -87,8 +85,13 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
-    public void OrderPageNavigator() {
-        createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, null)
+    public void OrderPageNavigator(OncartViewViewModel viewModel) {
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("orderList", (Serializable) viewModel.selectedItemList);
+        bundle.putSerializable("userId", viewModel.userId);
+
+        createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -97,7 +100,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                 ).commit();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+
     @Override
     public void checkItemHandle() {
 //        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
@@ -108,9 +111,9 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 //        oncartItemAdapter.notifyDataSetChanged();
 //    }
 
-    //    @Override
-//    public void deleteItem(int index) {
-//        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-//        oncartItemAdapter.notifyItemRemoved(index);
-//    }
+    @Override
+    public void deleteItem(int index) {
+        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+        oncartItemAdapter.notifyItemRemoved(index);
+    }
 }

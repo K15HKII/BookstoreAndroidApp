@@ -4,8 +4,6 @@ import android.view.*;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.AccountInfoPageFragmentBinding;
@@ -15,10 +13,9 @@ import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPage;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
-import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding, AccountInfoViewViewModel> implements AccountInfoNavigator {
 

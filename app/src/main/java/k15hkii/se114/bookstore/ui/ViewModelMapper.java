@@ -176,16 +176,21 @@ public class ViewModelMapper {
         return toBookViewModel(remote.getBooks());
     }
 
-    public Single<List<OrderBookViewModel>> getBill(int billId) {
+    public Single<List<OrderBookViewModel>> getBillDetails(int billId) {
         return remote.getBill(billId).map(bill -> {
-            List<OrderBookViewModel> list = new ArrayList<>();
-            for (BillDetail billDetail : bill.getBillDetails()) {
-                OrderBookViewModel viewModel = new OrderBookViewModel(remote);
-                viewModel.setOrderDetail(billDetail);
-                list.add(viewModel);
-            }
-            return list;
+            return toOrderBookViewModels(bill.getBillDetails());
         });
+    }
+
+    @NotNull
+    public List<OrderBookViewModel> toOrderBookViewModels(List<BillDetail> details) {
+        List<OrderBookViewModel> list = new ArrayList<>();
+        for (BillDetail billDetail : details) {
+            OrderBookViewModel viewModel = new OrderBookViewModel(remote);
+            viewModel.setOrderDetail(billDetail);
+            list.add(viewModel);
+        }
+        return list;
     }
 
     public Single<List<OrderItemViewModel>> getBillItem(int billId) {

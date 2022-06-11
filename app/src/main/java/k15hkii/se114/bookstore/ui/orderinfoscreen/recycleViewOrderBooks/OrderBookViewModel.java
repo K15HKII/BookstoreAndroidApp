@@ -20,6 +20,7 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
 
     @Getter
     private Book book;
+    @Getter
     private BillDetail billDetail;
 
     private void setData() {

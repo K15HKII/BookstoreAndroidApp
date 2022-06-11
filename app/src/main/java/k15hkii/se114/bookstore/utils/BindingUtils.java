@@ -6,7 +6,9 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import k15hkii.se114.bookstore.BuildConfig;
+import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
@@ -40,6 +42,20 @@ public final class BindingUtils {
     private BindingUtils() {
     }
 
+    @BindingAdapter({"address"})
+    public static void bindAddress(TextView view, UserAddress address) {
+        if (address != null) {
+            view.setText(address.getCity() + ", " + address.getStreet()); //TODO: get full address
+        }
+    }
+
+    @BindingAdapter({"payment"})
+    public static void bindPayment(TextView view, Payment payment) {
+        if (payment != null) {
+            view.setText(payment.name()); //TODO: get full payment info
+        }
+    }
+
     @BindingAdapter({"image"})
     public static void bindImage(ImageView view, Image image) {
         if (image == null)
@@ -61,7 +77,13 @@ public final class BindingUtils {
     }
 
     @BindingAdapter("price")
-    public static void bindText(TextView view, long price) {
+    public static void bindPrice(TextView view, long price) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        view.setText(formatter.format(price));
+    }
+
+    @BindingAdapter("price")
+    public static void bindPrice(TextView view, double price) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         view.setText(formatter.format(price));
     }
