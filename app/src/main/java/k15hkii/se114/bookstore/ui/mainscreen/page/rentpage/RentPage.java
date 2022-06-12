@@ -32,14 +32,13 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageViewModel> implements RentPageNavigator {
 
-    private RentPageFragmentBinding rentPageFragmentBinding;
     private TabLayout tabMenuNav;
     private FloatingActionButton btnAdd;
     private ViewPager2 RentView;
 
     @Override
     public int getBindingVariable() {
-        return BR.RentPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -51,21 +50,13 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        rentPageFragmentBinding = getViewDataBinding();
+        RentPageFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
-//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-//        loadingDialog.startLoadingDialog();
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        },500);
+        btnAdd = binding.btnRentBookAdd;
+        tabMenuNav = binding.tabMenuRentNav;
+        RentView = binding.vpRentBookView;
 
-        btnAdd = view.findViewById(R.id.btnRentBookAdd);
-        tabMenuNav = view.findViewById(R.id.tabMenuRentNav);
-        RentView = view.findViewById(R.id.vpRentBookView);
+        //TODO: set position cho menutab
 
         btnAdd.setImageTintList(ColorStateList.valueOf(Color.rgb(255,255,255)));
 
@@ -96,36 +87,8 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
     }
 
     @Override
-    public void openSearchView() {
-        createTransaction(R.id.fragmentContainerView, SearchBookView.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openNotificationView() {
-        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
-    }
-
-    @Override
-    public void openOnCartView() {
-        createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 
     @Override
@@ -137,10 +100,5 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
-    }
-
-    @Override
-    public void openFilterDialog() {
-        FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 }

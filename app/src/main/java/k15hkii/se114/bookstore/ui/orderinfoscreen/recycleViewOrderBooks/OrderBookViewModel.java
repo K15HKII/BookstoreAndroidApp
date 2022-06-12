@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks;
 
+import android.util.Log;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
@@ -24,12 +25,14 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     private BillDetail billDetail;
 
     private void setData() {
-        remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
+        dispose(remote.getBook(billDetail.getBookId()), book -> {
             this.book = book;
             this.price.set(book.getPrice());
             this.name.set(book.getTitle());
             this.quantity.set(billDetail.getQuantity());
-        }).subscribe();
+        }, throwable -> {
+            Log.d("", "GetBook: " + throwable.getMessage(), throwable);
+        });
     }
 
     public void setOrderDetail(BillDetail billDetail) {

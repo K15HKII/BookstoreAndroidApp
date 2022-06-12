@@ -26,13 +26,12 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, ShippingPageViewModel> implements ShippingPageNavigator {
 
-    private ShippingPageFragmentBinding shippingPageFragmentBinding;
     private TabLayout tabmenuNav;
     private ViewPager2 orderView;
 
     @Override
     public int getBindingVariable() {
-        return BR.ShippingPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -44,11 +43,13 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        shippingPageFragmentBinding = getViewDataBinding();
+        ShippingPageFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
-        orderView = view.findViewById(R.id.vpReceiptOrderView);
+        tabmenuNav = binding.tabMenuReceiptNav;
+        orderView = binding.vpReceiptOrderView;
+
+        //TODO: set position cho menutab
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                 this.getLifecycle());
@@ -82,40 +83,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     }
 
     @Override
-    public void openSearchView() {
-        createTransaction(R.id.fragmentContainerView, SearchBookView.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openNotificationView() {
-        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openOnCartView() {
-        createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openFilterDialog() {
-        FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 }

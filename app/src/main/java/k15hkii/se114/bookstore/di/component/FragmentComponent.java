@@ -50,6 +50,11 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPage;
+import k15hkii.se114.bookstore.ui.news.News;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNews;
+import k15hkii.se114.bookstore.ui.news.explorer.Explorer;
+import k15hkii.se114.bookstore.ui.news.follow.Follow;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNews;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
@@ -58,6 +63,7 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBook;
 import k15hkii.se114.bookstore.ui.registerscreen.Register;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
@@ -204,4 +210,15 @@ public interface FragmentComponent {
 
     void inject(SelectorVoucher selectorVoucher);
 
+    void inject(News news);
+
+    void inject(Explorer explorer);
+
+    void inject(Follow follow);
+
+    void inject(PopularNews popularNews);
+
+    void inject(RateListBook rateListBook);
+
+    void inject(CreateNews createNews);
 }

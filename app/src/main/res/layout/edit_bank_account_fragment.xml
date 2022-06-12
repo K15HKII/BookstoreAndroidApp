@@ -54,15 +54,15 @@
                             android:textSize="24dp"/>
                 </LinearLayout>
 
-            <android.widget.Button
-                    android:id="@+id/btnEditBank"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/ic_delete_black"/>
+                <android.widget.Button
+                        android:id="@+id/btnEditBank"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/ic_delete_black"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
             <LinearLayout

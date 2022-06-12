@@ -20,18 +20,15 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     public final ObservableField<String> birthday = new ObservableField<>();
     public final ObservableField<String> phone = new ObservableField<>();
     public final ObservableField<String> email = new ObservableField<>();
-    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableField<UserAddress> address = new ObservableField<>();
     public final ObservableField<String> userName = new ObservableField<>();
     @Inject
     protected ModelRemote remote;
     private User user;
     private UUID user_id;
 
-    private String toAddress(UserAddress address){
-        return address.getNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
-    }
     //TODO: getUser
-    private String toUserName(User user){
+    private String toUserName(User user) {
         return user.getFirstName() + " " + user.getLastName();
     }
 
@@ -41,7 +38,7 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(user -> {
                     this.user = user;
-                    this.user_id= user.getId();
+                    this.user_id = user.getId();
                     this.name.set(toUserName(user));
                     this.email.set(user.getEmail());
                     this.gender.set(String.valueOf(user.getGender()));
@@ -55,17 +52,17 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
 
         // set address
         getCompositeDisposable().add(remote.getAddresses(user_id)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(addresses -> {
-                                               for (UserAddress address : addresses)
-                                               {
-                                                   if (address.isPrimary()){
-                                                       this.address.set(toAddress(address));
-                                                   }
-                                               }
-                                           }));
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(addresses -> {
+                    for (UserAddress address : addresses) {
+                        if (address.isPrimary()) {
+                            this.address.set(address);
+                        }
+                    }
+                }));
     }
+
     public AccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
@@ -104,4 +101,5 @@ public class AccountInfoViewViewModel extends BaseViewModel<AccountInfoNavigator
     public void openSelectorBankClick() {
         getNavigator().openSelectBank();
     }
+
 }

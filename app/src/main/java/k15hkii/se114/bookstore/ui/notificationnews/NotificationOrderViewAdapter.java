@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,17 +8,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.databinding.NotificationOrderAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderViewModel,NotificationOrderViewAdapter.NotificationOrderHolder> {
 
-    public NotificationOrderViewAdapter(List<NotificationOrderViewModel> data) {
-        super(data);
+    private Context context;
+
+    public NotificationOrderViewAdapter(Context context) {
+        super(new ArrayList<>());
+        this.context = context;
     }
 
     @NonNull
@@ -30,38 +37,20 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationOrderViewModel data) {
-
-        holder.tvTitle.setText(data.getTitle());
-        holder.tvDescription.setText(data.getDescription());
-        holder.tvPrice.setText(data.getPrice());
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                holder.rcvListOrders.getContext(),
-                RecyclerView.VERTICAL,
-                false
-        );
-
-        OrderItemAdapter orderItemAdapter = new OrderItemAdapter(null);
-        orderItemAdapter.getSource().addAll(data.getLsorderItems());
-        orderItemAdapter.notifyDataSetChanged();
-        holder.rcvListOrders.setLayoutManager(linearLayoutManager);
-        holder.rcvListOrders.setAdapter(orderItemAdapter);
-        holder.rcvListOrders.setFocusable(false);
+        holder.setViewModel(data);
     }
 
     class NotificationOrderHolder extends RecyclerView.ViewHolder{
 
-        TextView tvTitle;
-        TextView tvDescription;
-        TextView tvPrice;
-        RecyclerView rcvListOrders;
+        NotificationOrderAdapterBinding binding;
 
         public NotificationOrderHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvNotificationTitle);
-            tvDescription = itemView.findViewById(R.id.tvNotificationDescription);
-            tvPrice = itemView.findViewById(R.id.tvNotificationItemsPrice);
-            rcvListOrders = itemView.findViewById(R.id.rcvNotificaitonOrderView);
+            //TODO: viết adapter cho notification order
+            binding = NotificationOrderAdapterBinding.bind(itemView);
+        }
+        public void setViewModel(NotificationOrderViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }

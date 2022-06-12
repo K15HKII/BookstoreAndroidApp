@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 
 public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, PopularBooksViewModel> implements PopularBooksPageNavigator, BookViewNavigator {
+
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
@@ -50,6 +51,11 @@ public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, 
         popularBooksFragmentBinding.lvHomePopularBook.setLayoutManager(gridLayoutManager);
         popularBooksFragmentBinding.lvHomePopularBook.setAdapter(bookViewAdapter);
 
+        BannerAdapter bannerAdapter = new BannerAdapter(this.getContext());
+
+        getViewDataBinding().vpPopularBooks.setAdapter(bannerAdapter);
+        getViewDataBinding().ciPopularBooks.setViewPager(getViewDataBinding().vpPopularBooks);
+        bannerAdapter.registerAdapterDataObserver(getViewDataBinding().ciPopularBooks.getAdapterDataObserver());
         return view;
     }
 

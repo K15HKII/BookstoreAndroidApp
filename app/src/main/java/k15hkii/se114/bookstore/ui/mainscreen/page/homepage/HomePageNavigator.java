@@ -6,18 +6,9 @@ public interface HomePageNavigator extends INavigator {
 
     void openSearchView();
 
-    void openNotificationView();
-
     void openOnCartView();
 
     void openFilterDialog();
 
-    void openAllBooksView();
-
-    void openPoppularBooksView();
-
-    void openFamiliarBooksView();
-
-    void openForYouBooksView();
 
 }

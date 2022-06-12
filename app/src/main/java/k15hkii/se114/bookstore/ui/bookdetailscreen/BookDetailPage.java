@@ -41,7 +41,7 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        BookDetailViewFragmentBinding bookDetailViewFragmentBinding = getViewDataBinding();
+        BookDetailViewFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         Bundle bundle = this.getArguments();

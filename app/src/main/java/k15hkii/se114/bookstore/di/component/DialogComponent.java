@@ -6,10 +6,12 @@ import k15hkii.se114.bookstore.di.scope.DialogScope;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowDialog;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
-import k15hkii.se114.bookstore.ui.dialog.changebirth.changename.ChangeNameDialog;
+import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
+import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
+import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
 import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartDialog;
 
@@ -34,4 +36,8 @@ public interface DialogComponent {
     void inject(OnCartDialog onCartDialog);
 
     void inject(LogOutDialog logOutDialog);
+
+    void inject(LoginCheckDialog loginCheckDialog);
+
+    void inject(FailedCheckDialog failedCheckDialog);
 }

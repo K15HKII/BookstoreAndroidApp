@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.databinding.NotificationWelcomeAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,16 +29,19 @@ public class NotificationInfoAdapter extends ListAdapter<NotificationInfoViewMod
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull NotificationInfoHolder holder, NotificationInfoViewModel data) {
-        holder.tvTitle.setText(data.getTitle());
+        holder.setViewModel(data);
     }
 
     class NotificationInfoHolder extends RecyclerView.ViewHolder {
 
-        TextView tvTitle;
+        NotificationWelcomeAdapterBinding binding;
 
         public NotificationInfoHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvNotificationWelcomeTitle);
+            binding = NotificationWelcomeAdapterBinding.bind(itemView);
+        }
+        public void setViewModel(NotificationInfoViewModel data) {
+            binding.setViewModel(data);
         }
     }
 }
