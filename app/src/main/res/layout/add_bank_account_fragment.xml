@@ -78,7 +78,7 @@
                         android:paddingTop="18dp"
                         android:inputType="text"
                         android:fontFamily="@font/lato_regular"
-                        android:text="@={viewModel.name}"
+                        android:text="@={viewModel.bankName}"
                         android:textSize="20dp"
                         android:ems="15"
                         android:textColor="@color/btn_blue"
@@ -131,7 +131,7 @@
                     android:inputType="text"
                     android:popupBackground="@drawable/spinner_shape"
                     android:background="@drawable/new_edit_text_shape_large"
-                    testSource="@{viewModel.lsBank}"/>
+                    source="@{viewModel.bankDb}"/>
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,6 +206,7 @@
             </LinearLayout>
             <android.widget.Button
                     android:id="@+id/btnAddBankDone"
+                    android:onClick="@{()-> viewModel.Accept()}"
                     android:textAllCaps="false"
                     android:background="@drawable/new_btn_sky_medium"
                     android:fontFamily="@font/lato_bold"

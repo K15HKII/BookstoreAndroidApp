@@ -6,6 +6,7 @@ import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.model.api.file.Video;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Message {
@@ -23,11 +24,11 @@ public class Message {
     @Getter
     @Expose
     @SerializedName("images")
-    private Image[] images;
+    private List<Image> images;
 
     @Getter
     @Expose
     @SerializedName("videos")
-    private Video[] videos;
+    private List<Video> videos;
 
 }

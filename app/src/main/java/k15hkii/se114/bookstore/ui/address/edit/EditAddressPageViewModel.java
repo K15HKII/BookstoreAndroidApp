@@ -1,27 +1,36 @@
 package k15hkii.se114.bookstore.ui.address.edit;
 
+import android.util.Log;
 import androidx.databinding.Observable;
-import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.remote.LocationRepository;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.address.BaseAddressUpdateViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.UUID;
 
 public class EditAddressPageViewModel extends BaseAddressUpdateViewModel<EditAddressPageNavigator> implements Observable {
 
-    public final ObservableField<String> addressNumber = new ObservableField<>();
-    public final ObservableField<Boolean> defaultAddress = new ObservableField<>();
-
     public void Accept(){
-        //TODO: save address
+        dispose(remote.updateAddress(userId, subId, toRequest()), result -> {
+
+        }, throwable -> {
+            Log.d(getClass().getSimpleName(), "Error: " + throwable.getMessage());
+        });
     }
 
-    public EditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository locationRepository) {
+    @Setter
+    private long subId;
+
+    private final ModelRemote remote;
+    private final UUID userId;
+
+    public EditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository locationRepository, ModelRemote remote, @UserId UUID userId) {
         super(schedulerProvider, locationRepository);
+        this.remote = remote;
+        this.userId = userId;
     }
 
     public void onBackWardClick(){

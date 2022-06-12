@@ -15,8 +15,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 
 public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, EditAddressPageViewModel> implements AdapterView.OnItemSelectedListener,EditAddressPageNavigator {
 
-    private EditAddressFragmentBinding editAddressFragmentBinding;
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -31,7 +29,7 @@ public class EditAddressPage extends BaseFragment<EditAddressFragmentBinding, Ed
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        editAddressFragmentBinding = getViewDataBinding();
+        EditAddressFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         return view;

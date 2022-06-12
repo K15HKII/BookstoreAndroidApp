@@ -1,36 +1,35 @@
 package k15hkii.se114.bookstore.ui.bankscreen.add;
 
+import android.util.Log;
 import androidx.databinding.Observable;
-import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
+import k15hkii.se114.bookstore.ui.bankscreen.BaseBankUpdateViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.UUID;
 
-public class AddBankPageViewModel extends BaseViewModel<AddBankPageNavigator> implements Observable {
-    @Getter
-    public final ObservableField<List<String>> lsBank = new ObservableField<>(Arrays.asList("VietComBank", "TechComBank", "BIDV"));
-    @Getter
-    public final ObservableField<String> name = new ObservableField<>();
-    @Getter
-    public final ObservableField<String> iban = new ObservableField<>();
-//    public final ObservableField<String> bankName = new ObservableField<>();
-//    public final ObservableField<String> bankId = new ObservableField<>();
-//    public final ObservableField<String> branch = new ObservableField<>();
-//    public final ObservableField<Boolean> defaultBank = new ObservableField<>();
+public class AddBankPageViewModel extends BaseBankUpdateViewModel<AddBankPageNavigator> implements Observable {
 
-    public void Accept(){
-        //TODO: save Bank
+    public void Accept() {
+        dispose(remote.createBank(userId, toRequest()),
+                bank -> {
+
+                }, throwable -> {
+                    Log.d("AddBankPageViewModel", throwable.getMessage());
+                });
     }
 
-    public AddBankPageViewModel(SchedulerProvider schedulerProvider) {
+    private final ModelRemote remote;
+    private final UUID userId;
+
+    public AddBankPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
         super(schedulerProvider);
+        this.remote = remote;
+        this.userId = userId;
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 

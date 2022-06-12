@@ -25,4 +25,10 @@ public class UserBankCRUDRequest {
     @Setter
     private String bic;
 
+    @Expose
+    @SerializedName("primary")
+    @Getter
+    @Setter
+    private boolean primary;
+
 }

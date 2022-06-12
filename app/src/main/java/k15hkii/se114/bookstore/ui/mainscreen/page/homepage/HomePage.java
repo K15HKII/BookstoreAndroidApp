@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.homepage;
 
 import android.view.*;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
@@ -55,6 +56,10 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
                     switch (position) {
                         case 0:
                             title = "Tất cả";
+                            View v = LayoutInflater.from(getContext()).inflate(R.layout.adapter_menutab, tabmenuNav, false);
+                            TextView tv = v.findViewById(R.id.tvAdapterMenuTab);
+                            tv.setText(title);
+                            tab.setCustomView(v);
                             break;
                         case 1:
                             title = "Phổ biến";

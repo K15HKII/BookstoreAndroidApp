@@ -45,7 +45,7 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
                     this.gender.set(String.valueOf(user.getGender()));
                     this.phone.set(user.getPhone());
                     this.birthday.set(String.valueOf(user.getBirthday()));
-                    this.userName.set(String.valueOf(user.getUserName()));
+                    this.userName.set(String.valueOf(user.getUsername()));
                     this.notifyChange();
                 }, throwable -> {
                     Log.d("AccInfoViewViewModel", "getSelfUser: " + throwable.getMessage(), throwable);

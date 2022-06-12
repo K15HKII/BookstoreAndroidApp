@@ -146,7 +146,7 @@
                         android:inputType="text"
                         android:popupBackground="@drawable/spinner_shape"
                         android:background="@drawable/new_edit_text_shape_large"
-                        testSource="@{viewModel.lsBank}"/>
+                        source="@{viewModel.bankDb}"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -224,6 +224,7 @@
                 </LinearLayout>
                 <android.widget.Button
                         android:id="@+id/btnEditBankDone"
+                        android:onClick="@{()-> viewModel.Accept()}"
                         android:textAllCaps="false"
                         android:background="@drawable/new_btn_sky_medium"
                         android:fontFamily="@font/lato_bold"
