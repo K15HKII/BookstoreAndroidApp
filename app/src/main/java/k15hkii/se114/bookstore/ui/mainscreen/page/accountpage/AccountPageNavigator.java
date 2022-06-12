@@ -32,6 +32,7 @@ public interface AccountPageNavigator extends INavigator {
 
     void openRent();
 
+    void openRencentBook();
 
     void logOut();
 }

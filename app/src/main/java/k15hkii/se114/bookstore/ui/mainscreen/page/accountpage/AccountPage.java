@@ -24,6 +24,7 @@ import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
 import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePage;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBook;
 import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPage;
 
@@ -122,6 +123,17 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     @Override
     public void openRent() {
         createTransaction(R.id.fragmentContainerView, RentPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openRencentBook() {
+        createTransaction(R.id.fragmentContainerView, RecentListBook.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

@@ -35,6 +35,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooks
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksPage;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBook;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
@@ -221,4 +222,6 @@ public interface FragmentComponent {
     void inject(RateListBook rateListBook);
 
     void inject(CreateNews createNews);
+
+    void inject(RecentListBook recentListBook);
 }

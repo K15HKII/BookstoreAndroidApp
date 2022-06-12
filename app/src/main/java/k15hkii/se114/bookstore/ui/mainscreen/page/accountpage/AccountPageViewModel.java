@@ -131,4 +131,8 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
     public void openFavoritePage(){
         getNavigator().openFavoritePage();
     }
+
+    public void openRecentBook(){
+        getNavigator().openRencentBook();
+    }
 }

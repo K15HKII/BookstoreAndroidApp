@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
@@ -214,8 +215,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper));
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper, ModelRemote remote) {
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper, remote));
     }
 
     @Provides
@@ -436,6 +437,11 @@ public class FragmentModule {
     @Provides
     public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RecentListBookViewModel provideRecentListBookViewModel (SchedulerProvider schedulerProvider,ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, RecentListBookViewModel.class, () -> new RecentListBookViewModel(schedulerProvider,mapper, helper));
     }
 
 //    @Provides

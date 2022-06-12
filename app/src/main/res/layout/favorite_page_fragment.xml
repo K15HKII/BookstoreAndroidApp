@@ -4,99 +4,92 @@
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel"/>
     </data>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.mainscreen.page.favoritepage.FavoritePage">
-
     <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/new_background_color"
-            android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
+            android:orientation="vertical"
+            tools:context=".ui.mainscreen.page.favoritepage.FavoritePage">
+
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="?attr/actionBarTheme"
-                android:minHeight="?attr/actionBarSize"
-                android:id="@+id/toolbarSettingPage">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                //TODO: thêm backward function
-                <android.widget.Button
-                        android:id="@+id/btnOrderPageBackward"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:scaleX="0.55"
-                        android:scaleY="0.55"
-                        android:background="@drawable/ic_backward"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
-                        android:text="Danh sách yêu thích"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="24dp"
-                        android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-
-        <ScrollView
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="505dp">
-            <LinearLayout
+                android:layout_height="match_parent"
+                android:background="@color/new_background_color"
+                android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <TextView
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        android:textSize="31sp"
-                        android:text="Gần đây"
-                        android:textColor="@color/black"/>
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/lvLoveRecentlyBook"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        source="@{viewModel.items}"/>
-                <TextView
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        android:textSize="31sp"
-                        android:text="Tất cả"
-                        android:textColor="@color/black"/>
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/lvLoveAllBook"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        source="@{viewModel.items}"/>
-            </LinearLayout>
-        </ScrollView>
+                    android:background="@color/white"
+                    android:theme="?attr/actionBarTheme"
+                    android:minHeight="?attr/actionBarSize"
+                    android:id="@+id/toolbarSettingPage">
 
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                    <android.widget.Button
+                            android:id="@+id/btnOrderPageBackward"
+                            android:onClick="@{()-> viewModel.onBackWardClick()}"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleX="0.55"
+                            android:scaleY="0.55"
+                            android:background="@drawable/ic_backward"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center"
+                            android:text="Danh sách yêu thích"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="24dp"
+                            android:textColor="@color/black"/>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <ScrollView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <!--<TextView
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
+                            android:textSize="31sp"
+                            android:text="Gần đây"
+                            android:textColor="@color/black"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lvLoveRecentlyBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            source="@{viewModel.items}"/>-->
+                    <TextView
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
+                            android:textSize="31sp"
+                            android:text="Tất cả"
+                            android:textColor="@color/black"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lvLoveAllBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            source="@{viewModel.items}"/>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>

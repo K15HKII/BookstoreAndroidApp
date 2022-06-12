@@ -39,7 +39,8 @@
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="50dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:orientation="vertical">
@@ -155,18 +156,19 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:text="Cập nhật đơn hàng"
                         android:textColor="@color/black"
                         android:textSize="20dp"/>
 
-                //TODO: thêm list thông báo
+                <!--//TODO: thêm list thông báo-->
                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcvNotificationView"
                         android:layout_marginTop="0dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="10dp"/>
+                        android:padding="20dp"/>
             </LinearLayout>
 
         </LinearLayout>

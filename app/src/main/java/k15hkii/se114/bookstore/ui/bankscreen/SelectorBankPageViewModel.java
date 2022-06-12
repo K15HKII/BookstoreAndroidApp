@@ -59,10 +59,11 @@ public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNav
         });
     }
 
-    public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
+    public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper, ModelRemote remote) {
         super(schedulerProvider);
         this.preferencesHelper = preferencesHelper;
         this.userId = preferencesHelper.getCurrentUserId();
+        this.remote = remote;
         getData(userId);
     }
 
