@@ -20,14 +20,6 @@ public class AccountPageViewModel extends BaseUserInfoViewModel<AccountPageNavig
         super(schedulerProvider, remote, userId);
     }
 
-    public void onAccountInfoClick(){
-        getNavigator().openAccountInfo();
-    }
-
-    public void onVoucherClick(){
-        getNavigator().openVoucher();
-    }
-
     public void onSettingClick(){
         getNavigator().openSetting();
     }

@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPageViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel"/>
     </data>
 
     <FrameLayout
@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/new_background_color"
-            tools:context=".ui.accountscreen.voucherscreen.VoucherPage">
+            tools:context=".ui.voucherscreen.VoucherPage">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

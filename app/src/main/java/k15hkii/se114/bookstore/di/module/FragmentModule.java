@@ -9,8 +9,11 @@ import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
+import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherViewAdapter;
+import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
@@ -509,6 +512,11 @@ public class FragmentModule {
     @Provides
     public ListDataNotificationAdapter listDataNotificationAdapter(Context context) {
         return new ListDataNotificationAdapter(context);
+    }
+
+    @Provides
+    public NewsAdapter NewsAdapter(Context context) {
+        return new NewsAdapter(context);
     }
     //endregion
     //endregion

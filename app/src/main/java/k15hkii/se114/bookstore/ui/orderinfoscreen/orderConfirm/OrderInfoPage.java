@@ -12,7 +12,7 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OrderInfoPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.SelectorVoucher;
+import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucher;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;

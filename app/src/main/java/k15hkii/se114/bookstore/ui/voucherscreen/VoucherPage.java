@@ -1,10 +1,8 @@
-package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
+package k15hkii.se114.bookstore.ui.voucherscreen;
 
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.SelectorVoucherFragmentBinding;
+import k15hkii.se114.bookstore.databinding.VoucherViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class SelectorVoucher extends BaseFragment<SelectorVoucherFragmentBinding, SelectorVoucherViewModel> implements SelectorVoucherNavigator {
+public class VoucherPage extends BaseFragment<VoucherViewFragmentBinding, VoucherPageViewModel> implements VoucherPageNavigator {
 
-    @Inject
-    protected VoucherItemAdapter adapter;
+    @Inject protected VoucherViewAdapter voucherViewAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -32,7 +28,7 @@ public class SelectorVoucher extends BaseFragment<SelectorVoucherFragmentBinding
 
     @Override
     public int getLayoutId() {
-        return R.layout.selector_voucher_fragment;
+        return R.layout.voucher_view_fragment;
     }
 
     @Override
@@ -44,12 +40,12 @@ public class SelectorVoucher extends BaseFragment<SelectorVoucherFragmentBinding
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        SelectorVoucherFragmentBinding binding = getViewDataBinding();
+        VoucherViewFragmentBinding voucherViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        binding.rcvVoucherSelectViewVoucherList.setLayoutManager(layoutManager);
-        binding.rcvVoucherSelectViewVoucherList.setAdapter(adapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        voucherViewFragmentBinding.rcvVoucherViewVoucherList.setLayoutManager(layoutManager);
+        voucherViewFragmentBinding.rcvVoucherViewVoucherList.setAdapter(voucherViewAdapter);
 
         return view;
     }

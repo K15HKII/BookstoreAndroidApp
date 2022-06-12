@@ -2,17 +2,21 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
-        <RadioButton
-                android:id="@+id/radbtn"
+        <ToggleButton
                 android:layout_width="31dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:textOn=""
+                android:textOff=""
+                android:scaleX="0.8"
+                android:scaleY="0.19"
+                android:background="@drawable/radio_selector"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:background="@drawable/voucher_shape"
