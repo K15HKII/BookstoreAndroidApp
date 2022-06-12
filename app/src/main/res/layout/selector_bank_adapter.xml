@@ -16,9 +16,14 @@
             android:clickable="true"
             android:background="@drawable/edit_text_background"
             android:orientation="horizontal">
-        <RadioButton
+        <ToggleButton
             android:layout_width="30dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:textOn=""
+            android:textOff=""
+            android:scaleX="1"
+            android:scaleY="0.45"
+            android:background="@drawable/radio_selector"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
