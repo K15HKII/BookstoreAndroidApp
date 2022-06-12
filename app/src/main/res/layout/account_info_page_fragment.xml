@@ -409,7 +409,7 @@
                         <TextView
                             android:id="@+id/tvAccountInfoLocation"
                             android:fontFamily="@font/lato_regular"
-                            android:text="@{viewModel.address}"
+                            address="@{viewModel.address}"
                             android:textSize="19dp"
                             android:textColor="@color/black"
                             android:textAlignment="textStart"

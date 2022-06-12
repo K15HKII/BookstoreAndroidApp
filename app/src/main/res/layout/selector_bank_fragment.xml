@@ -114,7 +114,7 @@
                                         android:fontFamily="@font/lato_regular"
                                         android:textSize="15dp"
                                         android:layout_marginTop="5dp"
-                                        android:text="Họ và tên: "
+                                        android:text="Chủ tài khoản: "
                                         android:textColor="#001C44"/>
                                 <TextView
                                         android:id="@+id/tvBankChoiceOwnerName"
@@ -133,7 +133,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="15dp"
-                                    android:text="@{viewModel.ban}"
+                                    android:text="@{viewModel.iBan}"
                                     android:textColor="#001C44"/>
                         </LinearLayout>
                         <android.widget.Button
@@ -170,25 +170,25 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             source="@{viewModel.listBanks}"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <android.widget.Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Chọn"
+                                android:fontFamily="@font/lato_bold"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:background="@drawable/new_btn_sky_large"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                           android:layout_height="match_parent"
-        >
-            <android.widget.Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Chọn"
-                    android:fontFamily="@font/lato_bold"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:background="@drawable/new_btn_sky_large"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

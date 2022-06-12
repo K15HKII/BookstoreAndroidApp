@@ -6,13 +6,10 @@ import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
@@ -23,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentBinding, WaitingOrderViewPageViewModel> implements WaitingOrderViewPageNavigator, IOrderNavigator {
-    private WaitingOrderViewPageViewModel mViewModel;
+public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentBinding, WaitingOrderListViewModel> implements WaitingOrderViewPageNavigator, IOrderNavigator {
+    private WaitingOrderListViewModel mViewModel;
     private int statusView = 0;
 
     public int getStatusView(){

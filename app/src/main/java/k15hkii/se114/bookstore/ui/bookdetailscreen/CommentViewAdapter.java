@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +53,9 @@ public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.
         public CommentViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvUserEmail = itemView.findViewById(R.id.tvCommentViewUserEmail);
+            SpannableString content = new SpannableString("Content");
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            tvUserEmail.setText(content);
         }
     }
 }

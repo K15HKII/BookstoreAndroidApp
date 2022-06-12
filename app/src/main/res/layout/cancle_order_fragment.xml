@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrderViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel"/>
     </data>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

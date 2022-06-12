@@ -20,53 +20,57 @@ import java.util.UUID;
 public class SelectorBankPageViewModel extends BaseViewModel<SelectorBankPageNavigator> implements Observable {
 
     public final ObservableField<List<OtherBankViewModel>> listBanks = new ObservableField<>();
-    public final ObservableField<String> userName = new ObservableField<>();
-    public final ObservableField<String> bankName = new ObservableField<>();
-    public final ObservableField<String> ban = new ObservableField<>();
 
-    @Inject
     protected ModelRemote remote;
     PreferencesHelper preferencesHelper;
 
-    UserBank bank;
-    UUID userId;
-    User user;
+    public final ObservableField<UserBank> bank = new ObservableField<>();
+    public final ObservableField<String> bankName = new ObservableField<>();
+    public final ObservableField<String> iBan = new ObservableField<>();
+    private final UUID userId;
+    private User user;
+    public final ObservableField<String> userName = new ObservableField<>();
 
     public void getData(UUID userId) {
-        getCompositeDisposable().add(remote.getBanks(userId)
-           .subscribeOn(getSchedulerProvider().io())
-           .observeOn(getSchedulerProvider().ui())
-           .subscribe(banks -> {
-               List<OtherBankViewModel> list = new ArrayList<>();
-               for (UserBank bank : banks) {
-                   OtherBankViewModel model = new OtherBankViewModel();
-                   model.setBank(bank);
-                   list.add(model);
-                   if(bank.isPrimary()){
-                       bankName.set(bank.getBankName());
-                       ban.set(bank.getIban());
-                   }
-               }
-               listBanks.set(list);
-           }, throwable -> {
-               Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
-           }));
-    }
+        dispose(remote.getBanks(userId),
+                banks -> {
+                    List<OtherBankViewModel> list = new ArrayList<>();
+                    for (UserBank bank : banks) {
+                        if (bank.isPrimary()) {
+                            this.bank.set(bank);
+                            bankName.set(bank.getBankName());
+                            iBan.set(bank.getIban());
+                        } else {
+                            OtherBankViewModel model = new OtherBankViewModel();
+                            model.setBank(bank);
+                            list.add(model);
+                        }
+                    }
+                    listBanks.set(list);
+                }, throwable -> {
+                    Log.d("BankPageViewModel", "getData: " + throwable.getMessage(), throwable);
+                });
 
+        dispose(remote.getUser(userId), user -> {
+            this.user = user;
+            this.userName.set(user.getName());
+        }, throwable -> {
+            Log.d("User", "getData: " + throwable.getMessage(), throwable);
+        });
+    }
 
     public SelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.preferencesHelper = preferencesHelper;
         this.userId = preferencesHelper.getCurrentUserId();
-        userName.set(preferencesHelper.getCurrentUserName());
         getData(userId);
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void onOpenAddBankClick(){
+    public void onOpenAddBankClick() {
         getNavigator().openAddBankAccount();
     }
 

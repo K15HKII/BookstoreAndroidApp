@@ -5,17 +5,26 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrderViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
+import k15hkii.se114.bookstore.ui.news.NewsViewModel;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNewsViewModel;
+import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
+import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBookViewModel;
 import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
@@ -63,7 +72,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevie
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel;
@@ -81,6 +89,8 @@ import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
 import k15hkii.se114.bookstore.ui.success.lend.*;
+
+import java.util.UUID;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
@@ -194,13 +204,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider));
+    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, LocationRepository locationRepository, @UserId UUID userId) {
+        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider, remote, locationRepository, userId));
     }
 
     @Provides
-    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider));
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository repository) {
+        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider, repository));
     }
 
     @Provides
@@ -299,8 +309,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
+    public WaitingOrderListViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, WaitingOrderListViewModel.class, () -> new WaitingOrderListViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
@@ -389,13 +399,43 @@ public class FragmentModule {
     }
 
     @Provides
-    public CancleOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, CancleOrderViewModel.class, () -> new CancleOrderViewModel(schedulerProvider));
+    public CancelOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, CancelOrderViewModel.class, () -> new CancelOrderViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
     public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ExplorerViewModel provideExplorerViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, ExplorerViewModel.class, () -> new ExplorerViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RateListBookViewModel provideRateListBookViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, RateListBookViewModel.class, () -> new RateListBookViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PopularNewsViewModel providePopularNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, PopularNewsViewModel.class, () -> new PopularNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public FollowViewModel provideFollowViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, FollowViewModel.class, () -> new FollowViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
     }
 
 //    @Provides

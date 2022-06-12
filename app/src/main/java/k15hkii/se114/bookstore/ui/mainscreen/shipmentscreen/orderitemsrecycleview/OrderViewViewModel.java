@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
@@ -7,6 +8,7 @@ import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 
 import javax.inject.Inject;
@@ -19,14 +21,16 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
     public final ObservableField<String> note = new ObservableField<>();
     public final ObservableField<Integer> price = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
-    @Getter private Bill bill;
+    @Getter
+    private Bill bill;
 
     private int billId;
 
-    public OrderViewViewModel(ModelRemote remote) {
-        super(null);
+    public OrderViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
         this.remote = remote;
     }
 
@@ -38,12 +42,14 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
 
         List<OrderItemViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : bill.getBillDetails()) {
-            OrderItemViewModel item = new OrderItemViewModel(this.remote);
+            OrderItemViewModel item = new OrderItemViewModel(this.getSchedulerProvider(), this.remote);
             item.setBillDetail(billDetail);
 
-            remote.getBook(billDetail.getBookId()).doOnSuccess(book -> {
+            dispose(remote.getBook(billDetail.getBookId()), book -> {
                 totalPrice += book.getPrice();
-            }).subscribe();
+            }, throwable -> {
+                Log.d("", "GetBook: " + throwable.getMessage(), throwable);
+            });
 
             list.add(item);
         }
@@ -55,4 +61,5 @@ public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implement
         this.bill = bill;
         getData();
     }
+
 }

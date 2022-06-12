@@ -7,19 +7,14 @@
         android:icon="@drawable/home_selector"
         android:iconTint="@color/btn_blue"/>
     <item
-            android:id="@+id/receipt_view"
-            android:title="Purchase"
-            android:icon="@drawable/receipt_selector"
+            android:id="@+id/notification_view"
+            android:title="Notification"
+            android:icon="@drawable/notification_icon_selected"
             android:iconTint="@color/btn_blue"/>
     <item
-            android:id="@+id/love_view"
-            android:title="Favorite"
-            android:icon="@drawable/love_selector"
-            android:iconTint="@color/btn_blue"/>
-    <item
-            android:id="@+id/rent_view"
-            android:title="Rent"
-            android:icon="@drawable/ic_rent_selector"
+            android:id="@+id/news_view"
+            android:title="News"
+            android:icon="@drawable/ic_description"
             android:iconTint="@color/btn_blue"/>
     <item
             android:id="@+id/account_view"

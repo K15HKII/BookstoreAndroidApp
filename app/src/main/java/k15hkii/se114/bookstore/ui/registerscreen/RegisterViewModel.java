@@ -4,6 +4,7 @@ import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -14,15 +15,16 @@ import java.util.Arrays;
 import java.util.List;
 
 @Setter
-public class RegisterViewModel extends BaseViewModel<RegisterNavigator> implements Observable {
+public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
 
-    @Getter public final ObservableField<List<String>> gender = new ObservableField<>(Arrays.asList("Nam", "Nữ", "Khác"));
-    @Getter public final ObservableField<String> userName = new ObservableField<>();
-    @Getter public final ObservableField<String> dob = new ObservableField<>();
-    @Getter public final ObservableField<String> phoneNumber = new ObservableField<>();
-    @Getter public final ObservableField<String> email = new ObservableField<>();
-    @Getter public final ObservableField<String> password = new ObservableField<>();
-    @Getter public final ObservableField<String> passConfirm = new ObservableField<>();
+    public final ObservableField<List<String>> gender = new ObservableField<>(Arrays.asList("Nam", "Nữ", "Khác"));
+    public final ObservableField<String> userName = new ObservableField<>();
+    public final ObservableField<String> dob = new ObservableField<>();
+    public final ObservableField<String> phoneNumber = new ObservableField<>();
+
+    public final ObservableField<String> email = new ObservableField<>();
+    public final ObservableField<String> password = new ObservableField<>();
+    public final ObservableField<String> passConfirm = new ObservableField<>();
 
     //TODO: post
 
@@ -30,8 +32,8 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> implemen
         super(schedulerProvider);
     }
 
-    public void onBackWardClick(){
-        getNavigator().BackWard();
+    public void onBackWardClick() {
+        String temp = phoneNumber.get();
     }
 
 }
