@@ -60,6 +60,9 @@ public interface ModelRemote {
     @GET("/api/user/favourites/{user_id}")
     Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
+    @GET("/api/user/favourite/{book_id}/{user_id}")
+    Single<CRUDItemResponse<Boolean>> isFavouriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
+
     /**
      * Tạo hoặc cập nhật một sách yêu thích
      *
@@ -70,8 +73,8 @@ public interface ModelRemote {
     @POST("/api/user/favourite/{user_id}")
     Single<CRUDStatusResponse> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
 
-    @DELETE("/api/user/favourite/{user_id}")
-    Single<CRUDStatusResponse> deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+    @DELETE("/api/user/favourite/{book_id}/{user_id}")
+    Single<CRUDStatusResponse> deleteFavoriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
     //endregion
 
     //region CartItem
@@ -138,6 +141,9 @@ public interface ModelRemote {
     //region Book
     @GET("/api/book/search")
     Single<List<Book>> getBooks();
+
+    @GET("/api/book/search")
+    Single<List<Book>> getBooks(@Query("search") String search);
 
     @GET("/api/book/info/{book_id}")
     Single<Book> getBook(@Path("book_id") UUID id);

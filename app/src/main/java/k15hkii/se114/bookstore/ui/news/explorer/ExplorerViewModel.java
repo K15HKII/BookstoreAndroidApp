@@ -8,5 +8,5 @@ public class ExplorerViewModel extends BaseViewModel<ExplorerNavigator> {
     public ExplorerViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
-    // TODO: Implement the ViewModel
+
 }

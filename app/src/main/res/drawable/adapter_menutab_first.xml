@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/color_of_button" />
+    <gradient
+        android:angle="45"
+        android:endColor="#55D0FF"
+        android:centerColor="#2EC6E8"
+        android:startColor="#00ABFF"
+        android:type="linear" />
     <corners android:topLeftRadius="50dp"
              android:bottomLeftRadius="50dp"/>
 </shape>

@@ -19,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.BookViewHolder> {
+
     private Context context;
     @Getter
     @Setter
     private BookViewNavigator bookViewNavigator;
+
     /**
      * Deprecated constructor: use {@link #BookViewAdapter(Context)} with DI instead
      *
@@ -73,4 +75,5 @@ public class BookViewAdapter extends ListAdapter<BookViewModel, BookViewAdapter.
         }
 
     }
+
 }

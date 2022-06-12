@@ -35,19 +35,27 @@ public class AppModule {
 
     @Provides
     @PreferenceInfo
-    String providePrefName() { return AppConstants.PREF_NAME; }
+    String providePrefName() {
+        return AppConstants.PREF_NAME;
+    }
 
     @Provides
     @Singleton
-    DataSession provideDataSession() { return new DataSession(); }
+    DataSession provideDataSession() {
+        return new DataSession();
+    }
 
     @Provides
     @Singleton
-    ViewModelMapper provideViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) { return new ViewModelMapper(schedulerProvider,remote); }
+    ViewModelMapper provideViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID uuid) {
+        return new ViewModelMapper(schedulerProvider, remote, uuid);
+    }
 
     @Provides
     @Singleton
-    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) { return appPreferencesHelper; }
+    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) {
+        return appPreferencesHelper;
+    }
 
     @Provides
     @UserId
@@ -69,7 +77,9 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Context provideContext(Application application) { return application; }
+    Context provideContext(Application application) {
+        return application;
+    }
 
     @Provides
     @Singleton
