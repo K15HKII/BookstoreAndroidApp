@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.loginscreen;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,10 +19,14 @@ import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
+import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
+import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
 import k15hkii.se114.bookstore.ui.forgotpassscreen.ForgotPasswordPage;
 import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.registerscreen.Register;
+import android.os.Handler;
 //import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
 
 public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> implements LoginNavigator {
@@ -92,5 +97,24 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void openWrongDialog() {
+        FailedCheckDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openCorrectDialog() {
+        LoginCheckDialog dialog = new LoginCheckDialog();
+        dialog.show(getActivity().getSupportFragmentManager());
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                dialog.dismissDialog();
+            }
+        }, 500);
     }
 }

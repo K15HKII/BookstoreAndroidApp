@@ -39,8 +39,6 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         tmOrder = binding.tabMenuReceiptNav;
         vpOrder = binding.vpReceiptOrderView;
 
-        //TODO: set position cho menutab
-
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                 this.getLifecycle());
         vpOrder.setAdapter(orderMenuTabAdapter);

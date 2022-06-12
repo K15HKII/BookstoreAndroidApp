@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<LinearLayout
               xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
@@ -7,15 +8,30 @@
               android:background="@drawable/new_comment_shape"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-    <TextView
-            android:id="@+id/tvCommentViewUserEmail"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/tvCommentViewUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:text="abc@gm.uit.edu.vn"
+                android:textSize="18dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/tvCommentViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:textColor="@color/black"
-            android:text="abc@gm.uit.edu.vn"
-            android:textSize="18dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="11 tháng 6"
+            android:textSize="18dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/tvCommentViewUserEmail"
+            app:layout_constraintHorizontal_bias="1.0"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <RatingBar
             android:id="@+id/rateBarCommentViewUserRate"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
@@ -34,15 +50,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.526" app:layout_constraintVertical_bias="1.0"
             app:layout_constraintTop_toBottomOf="@+id/rateBarCommentViewUserRate"/>
-    <TextView
-            android:id="@+id/tvCommentViewDate"
-            android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvCommentImages"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="@color/black"
-            android:text="11 tháng 6"
-            android:textSize="18dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/tvCommentViewUserEmail"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
