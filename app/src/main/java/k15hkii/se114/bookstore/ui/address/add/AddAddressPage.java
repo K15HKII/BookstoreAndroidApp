@@ -18,8 +18,6 @@ import k15hkii.se114.bookstore.ui.intro.cityspinneradapter.CitySpinnerAdapter;
 
 public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, AddAddressPageViewModel> implements AdapterView.OnItemSelectedListener,AddAddressPageNavigator {
 
-    private AddAddressPageFragmentBinding addAddressPageFragmentBinding;
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -34,7 +32,7 @@ public class AddAddressPage extends BaseFragment<AddAddressPageFragmentBinding, 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        addAddressPageFragmentBinding = getViewDataBinding();
+        AddAddressPageFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         return view;
