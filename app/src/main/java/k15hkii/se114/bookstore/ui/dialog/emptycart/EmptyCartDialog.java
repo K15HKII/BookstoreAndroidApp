@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.missinginfo;
+package k15hkii.se114.bookstore.ui.dialog.emptycart;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,24 +8,22 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.LoginCheckDialogBinding;
-import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
+import k15hkii.se114.bookstore.databinding.EmptyCartDialogBinding;
+import k15hkii.se114.bookstore.databinding.ErrorDataDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 
 import javax.inject.Inject;
 
-public class MissingInfoDialog extends BaseDialog implements MissingInfoNavigator {
+public class EmptyCartDialog extends BaseDialog implements EmptyCartNavigator {
 
-    private static final String TAG = "MissingInfoDialog";
+    private static final String TAG = "EmptyCartDialog";
 
-    @Inject
-    MissingInfoViewModel missingInfoViewModel;
+    @Inject protected EmptyCartViewModel emptyCartViewModel;
 
-    public static MissingInfoDialog newInstance() {
-        MissingInfoDialog fragment = new MissingInfoDialog();
+    public static EmptyCartDialog newInstance() {
+        EmptyCartDialog fragment = new EmptyCartDialog();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -33,21 +31,21 @@ public class MissingInfoDialog extends BaseDialog implements MissingInfoNavigato
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        MissingInfoDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.missing_info_dialog, container, false);
+        EmptyCartDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.empty_cart_dialog, container, false);
         View view = binding.getRoot();
-        binding.setViewModel(missingInfoViewModel);
-        missingInfoViewModel.setNavigator(this);
+        binding.setViewModel(emptyCartViewModel);
+        emptyCartViewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
         return view;
-    }
-
-    public void show(FragmentManager fragmentManager) {
-        super.show(fragmentManager, TAG);
     }
 
     @Override
     public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
+    }
+
+    public void show(FragmentManager fragmentManager) {
+        super.show(fragmentManager, TAG);
     }
 
     @Override

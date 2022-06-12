@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.missinginfo;
+package k15hkii.se114.bookstore.ui.dialog.missingdata;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,24 +8,24 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.LoginCheckDialogBinding;
-import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
+import k15hkii.se114.bookstore.databinding.FailedCheckDialogBinding;
+import k15hkii.se114.bookstore.databinding.MissingDataDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
+import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 
 import javax.inject.Inject;
 
-public class MissingInfoDialog extends BaseDialog implements MissingInfoNavigator {
+public class MissingDataDialog extends BaseDialog implements MissingDataNavigator{
 
-    private static final String TAG = "MissingInfoDialog";
+    private static final String TAG = "MissingDataDialog";
 
     @Inject
-    MissingInfoViewModel missingInfoViewModel;
+    protected MissingDataViewModel viewModel;
 
-    public static MissingInfoDialog newInstance() {
-        MissingInfoDialog fragment = new MissingInfoDialog();
+    public static MissingDataDialog newInstance() {
+        MissingDataDialog fragment = new MissingDataDialog();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -33,10 +33,10 @@ public class MissingInfoDialog extends BaseDialog implements MissingInfoNavigato
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        MissingInfoDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.missing_info_dialog, container, false);
-        View view = binding.getRoot();
-        binding.setViewModel(missingInfoViewModel);
-        missingInfoViewModel.setNavigator(this);
+        MissingDataDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.missing_data_dialog, container, false);
+        View view =binding.getRoot();
+        binding.setViewModel(viewModel);
+        viewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
         return view;
     }

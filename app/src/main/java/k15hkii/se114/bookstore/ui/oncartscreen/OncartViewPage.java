@@ -28,8 +28,6 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
 
-    OncartViewFragmentBinding oncartViewFragmentBinding;
-
     @Inject protected OncartViewViewModel viewModel;
 
     @Override
@@ -51,12 +49,12 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        oncartViewFragmentBinding = getViewDataBinding();
+        OncartViewFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
-        oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
+        binding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
+        binding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
 
         oncartItemAdapter.setOncartItemNavigator(this);
 
