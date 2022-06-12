@@ -59,7 +59,7 @@
                 <ScrollView
                     android:background="#F3F5F9"
                     android:scrollbars="none"
-                    android:layout_marginBottom="60dp"
+                    android:layout_marginBottom="55dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
