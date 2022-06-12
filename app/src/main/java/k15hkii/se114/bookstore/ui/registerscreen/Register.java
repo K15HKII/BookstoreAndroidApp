@@ -18,8 +18,7 @@ import k15hkii.se114.bookstore.ui.loginscreen.LoadingDialog;
 import java.util.Calendar;
 
 public class Register extends BaseFragment<RegisterFragmentBinding, RegisterViewModel> implements AdapterView.OnItemSelectedListener, RegisterNavigator {
-
-    private RegisterFragmentBinding registerFragmentBinding;
+    
     private DatePickerDialog.OnDateSetListener datePickerDOB;
     private Calendar DOB;
 
@@ -37,7 +36,7 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        registerFragmentBinding = getViewDataBinding();
+        RegisterFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(Register.this);
         return view;
     }

@@ -26,8 +26,6 @@ import k15hkii.se114.bookstore.ui.registerscreen.Register;
 
 public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> implements LoginNavigator {
 
-    private LoginFragmentBinding loginFragmentBinding;
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -43,7 +41,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        loginFragmentBinding = getViewDataBinding();
+        LoginFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
         return view;
     }

@@ -5,6 +5,10 @@
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel"/>
     </data>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -862,4 +866,21 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
+                loading="@{viewModel.loading}"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:backgroundTint="@color/color_of_button"
+                loading="@{viewModel.loading}"/>
+    </FrameLayout>
 </layout>
