@@ -38,8 +38,6 @@ public class LogOutDialog extends BaseDialog implements LogOutCallBack {
         LogoutDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.logout_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(logOutViewModel);
         logOutViewModel.setNavigator(this);
 
@@ -52,14 +50,7 @@ public class LogOutDialog extends BaseDialog implements LogOutCallBack {
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

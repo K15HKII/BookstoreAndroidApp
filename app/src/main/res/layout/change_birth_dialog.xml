@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/new_edit_text_shape_large"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:boxStrokeColor="#FFF"
@@ -31,10 +31,11 @@
                 android:fontFamily="@font/lato_regular"
                 android:textSize="16dp"
                 android:ems="15"
+                android:text="@{viewModel.userBirth.toString()}"
                 android:textColor="@color/btn_blue"
                 android:textColorHint="@color/btn_blue"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:background="@drawable/edit_text_background"/>
+                android:background="@drawable/new_edit_text_shape_large"/>
     </com.google.android.material.textfield.TextInputLayout>
     <android.widget.Button
             android:id="@+id/btnChangeBirthConfirmChange"
@@ -44,7 +45,7 @@
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="15dp"
-            android:background="@drawable/round_btn"
+            android:background="@drawable/new_btn_sky_medium"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

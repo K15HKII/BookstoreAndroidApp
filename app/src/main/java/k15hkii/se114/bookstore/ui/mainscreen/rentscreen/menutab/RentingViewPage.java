@@ -54,8 +54,7 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RentingViewPageFragmentBinding rentingViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-        //TODO: Fix bug lỗi hiển thị các adapter khi chuyển fragment
+        rentViewAdapter.setRentViewNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
         rentingViewPageFragmentBinding.rcvRentingBookView.setLayoutManager(linearLayoutManager);
@@ -78,8 +77,9 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
 
     @Override
     public void Navigate(RentViewViewModel vm) {
-        //TODO: Navigate to Waiting
-        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, null)
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("lending", vm.getLend());
+        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

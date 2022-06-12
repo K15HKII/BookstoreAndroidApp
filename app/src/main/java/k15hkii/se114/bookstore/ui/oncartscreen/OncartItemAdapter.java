@@ -1,24 +1,40 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.databinding.OncartItemsAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.rx2androidnetworking.Rx2AndroidNetworking.post;
 
 public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartItemAdapter.oncart_itemHolder> {
 
     private Context context;
+
+    @Getter
+    @Setter
+    protected OncartItemNavigator oncartItemNavigator;
+
+    @Inject
+    protected OncartItemViewModel viewModel;
 
     @Deprecated
     public OncartItemAdapter(Context context, List<OncartItemViewModel> lsOncart) {
@@ -39,9 +55,15 @@ public class OncartItemAdapter extends ListAdapter<OncartItemViewModel,OncartIte
         return new OncartItemAdapter.oncart_itemHolder(view);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull @NotNull oncart_itemHolder holder, OncartItemViewModel data) {
+        holder.itemView.setOnClickListener(d -> {
+            getOncartItemNavigator().openBookDetailNavigator(data);
+        });
         holder.setViewModel(data);
+        data.setNavigator(oncartItemNavigator);
+//        notifyDataSetChanged();
     }
 
     class oncart_itemHolder extends RecyclerView.ViewHolder{

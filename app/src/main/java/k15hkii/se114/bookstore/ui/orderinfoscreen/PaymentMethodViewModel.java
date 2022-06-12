@@ -13,14 +13,8 @@ public class PaymentMethodViewModel extends BaseViewModel<PaymentMethodPageNavig
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void AcceptPayment(){
+        //TODO: chọn phương thức thanh toán
     }
 
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

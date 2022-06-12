@@ -16,11 +16,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 public class Introduction extends BaseFragment<IntroductionFragmentBinding, IntroductionViewModel> implements IntroductionNavigator {
 
     private IntroductionFragmentBinding introductionFragmentBinding;
-    private IntroductionViewModel mViewModel;
-
-    public static Introduction newInstance() {
-        return new Introduction();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +39,6 @@ public class Introduction extends BaseFragment<IntroductionFragmentBinding, Intr
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(IntroductionViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

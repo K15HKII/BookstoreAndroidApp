@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotification;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaiton;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySetting;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.SelectorVoucher;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPage;
@@ -40,7 +41,7 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPage;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
@@ -49,6 +50,11 @@ import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPage;
 import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPage;
+import k15hkii.se114.bookstore.ui.news.News;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNews;
+import k15hkii.se114.bookstore.ui.news.explorer.Explorer;
+import k15hkii.se114.bookstore.ui.news.follow.Follow;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNews;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationPage;
 import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
@@ -56,8 +62,8 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetail;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBook;
 import k15hkii.se114.bookstore.ui.registerscreen.Register;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
@@ -82,8 +88,6 @@ public interface FragmentComponent {
 
     void inject(FavoritePage favoritePage);
 
-    //TODO: ACCOUNT
-
     void inject(AccountPage accountPage);
 
     void inject(AccountInfoPage accountInfoPage);
@@ -94,8 +98,6 @@ public interface FragmentComponent {
 
     void inject(VoucherPage voucherPage);
 
-    //TODO: HELP
-
     void inject(HelpCenter helpCenter);
 
     void inject(Introduction introduction);
@@ -104,15 +106,11 @@ public interface FragmentComponent {
 
     void inject(DeleteAccount deleteAccount);
 
-    //TODO: SETTING
-
     void inject(NotificationSetting notificationSetting);
 
     void inject(PrivacySetting privacySetting);
 
     void inject(LanguageSetting languageSetting);
-
-    //TODO: BANK
 
     void inject(SelectorBankPage selectorBankPage);
 
@@ -120,44 +118,27 @@ public interface FragmentComponent {
 
     void inject(EditBankPage editBankPage);
 
-    //TODO: ADDRESS
-
     void inject(SelectorAddressPage selectorAddressPage);
 
     void inject(AddAddressPage addAddressPage);
 
     void inject(EditAddressPage editAddressPage);
 
-    //TODO: ORDERINFO
-
     void inject(OrderInfoPage orderInfoPage);
 
     void inject(PaymentMethodPage paymentMethodPage);
 
-    //TODO: ONCARTVIEW
-
     void inject(OncartViewPage oncartViewPage);
 
-    //TODO: MAINSCREEN
-    //TODO: MAINSCREEN.RENTSCREEN
-
     void inject(RentInfoView rentInfoView);
-
-    //TODO: MAINSCREEN.RENTSCREEN.ADD
 
     void inject(AddRentBookView addRentBookView);
 
     void inject(AddRentBookDetail addRentBookDetail);
 
-    //TODO: MAINSCREEN.RENTSCREEN.MENUTAB
-
     void inject(RentedViewPage rentedViewPage);
 
     void inject(RentingViewPage rentingViewPage);
-
-    //TODO: MAINSCREEN.SHIPMENTSCREEN
-
-    void inject(RatingBookViewPage ratingBookViewPage);
 
     void inject(ShipmentArrivedViewPage shipmentArrivedViewPage);
 
@@ -165,37 +146,25 @@ public interface FragmentComponent {
 
     void inject(WaitingOrderViewPage waitingOrderViewPage);
 
-    //TODO: BOOKDETAILPAGE
-
     void inject(BookDetailPage bookDetailPage);
-
-    //TODO: RATINGBOOKSDETAILPAGE
 
     void inject(RatingBooksDetailPage ratingBooksDetailPage);
 
-    //TODO: NOTIFICATIONPAGE
-
     void inject(NotificationPage notificationPage);
-
-    //TODO: SEARCHBOOK
 
     void inject(SearchBookView searchBookView);
 
     void inject(SearchBookViewResult searchBookViewResult);
 
-    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.MYORDERNOTIFICATION
 
     void inject(MyOrderNotification myOrderNotification);
 
-    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.VOUCHERNOTIFICATION
 
     void inject(VoucherNotificaiton voucherNotificaiton);
 
-    //TODO: ACCOUTNSCREEN.NOTIFICATIONSETTING.OTHERNOTIFICATION
 
     void inject(OtherNotification otherNotification);
 
-    //TODO: INTROPAGE
 
     void inject(IntroFirstPage introFirstPage);
 
@@ -205,37 +174,51 @@ public interface FragmentComponent {
 
     void inject(IntroFourthPage introFourthPage);
 
-    //TODO: MAINSCREEN.ALLBOOKSPAGE
 
     void inject(AllBooksPage allBooksPage);
 
-    //TODO: MAINSCREEN.FAMILIAR
+
     void inject(FamiliarBooksPage familiarBooksPage);
 
-    //TODO: MAINSCREEN.FORYOU
+
     void inject(ForYouBooksPage forYouBooksPage);
 
-    //TODO: MAINSCREEN.POPULAR
+
     void inject(PopularBooksPage popularBooksPage);
 
-    //TODO: ORDERINFOSCREEN.ORDERDETAIL
+
     void inject(OrderDetail orderDetail);
 
-    //TODO: SUCCESS.LEND
+
     void inject(LendSuccess lendSuccess);
 
-    //TODO: SUCCESS.ORDER
+
     void inject(OrderSuccess orderSuccess);
 
-    //TODO: ORDERINFOSCREEN.ORDERCHECKER
+
     void inject(OrderChecker orderChecker);
 
-    //TODO: ORDERINFOSCREEN.ORDERRATING
+
     void inject(OrderRating orderRating);
 
-    //TODO: ORDERINFOSCREEN.ORDERRATINGDETAIL
-    void inject(OrderRatingDetail orderRatingDetail);
 
-    //TODO: RENTDETAILBILL
     void inject(RentDetailBill rentDetailBill);
+
+
+    void inject(CancleOrder cancleOrder);
+
+
+    void inject(SelectorVoucher selectorVoucher);
+
+    void inject(News news);
+
+    void inject(Explorer explorer);
+
+    void inject(Follow follow);
+
+    void inject(PopularNews popularNews);
+
+    void inject(RateListBook rateListBook);
+
+    void inject(CreateNews createNews);
 }

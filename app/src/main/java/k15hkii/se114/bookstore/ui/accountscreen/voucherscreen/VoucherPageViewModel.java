@@ -3,9 +3,10 @@ package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
 import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Voucher;
+import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -16,51 +17,27 @@ import java.util.UUID;
 
 public class VoucherPageViewModel extends BaseViewModel<VoucherPageNavigator> implements Observable {
 
-    PreferencesHelper preferencesHelper;
-    @Inject protected ModelRemote remote;
+
     public final ObservableField<List<VoucherViewModel>> listVoucher = new ObservableField<>();
+    protected ViewModelMapper mapper;
     private UUID userId;
-    public void getData() {
-        getCompositeDisposable().add(remote.getVouchers(userId)
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(vouchers -> {
-                                               List<VoucherViewModel> list = new ArrayList<>();
-                                               for (Voucher voucher : vouchers) {
-                                                   VoucherViewModel model = new VoucherViewModel(remote);
-                                                   model.setVoucher(voucher);
-                                                   list.add(model);
-                                               }
-                                               listVoucher.set(list);
-                                           }, throwable -> {
-                                               Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+
+    public void getData(UUID userId) {
+        dispose(mapper.getVouchers(userId),
+                listVoucher::set,
+                throwable -> Log.d("VoucherPageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
 
-    public void setUserId() {
-        this.userId = preferencesHelper.getCurrentUserId();
-        getData();
-    }
 
-    public VoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+    public VoucherPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
-        this.remote = remote;
-        this.preferencesHelper = preferencesHelper;
-        setUserId();
+        this.mapper = mapper;
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
     public void onBackWardClick(){
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

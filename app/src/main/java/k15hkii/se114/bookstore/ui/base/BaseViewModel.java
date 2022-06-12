@@ -1,5 +1,9 @@
 package k15hkii.se114.bookstore.ui.base;
 
+import android.os.Bundle;
+
+import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.PropertyChangeRegistry;
@@ -34,6 +38,10 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
         return navigator.get();
     }
 
+    public void initializeFromBundle(@NonNull Bundle bundle) {
+
+    }
+
     public void setNavigator(N navigator) {
         this.navigator = new WeakReference<>(navigator);
     }
@@ -56,6 +64,9 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
 
     protected <T> void dispose(Single<T> single, Consumer<? super T> onSuccess, Consumer<? super Throwable> onError) {
         compositeDisposable.add(single
+                .doOnError(throwable -> {
+                    Log.d(getClass().getSimpleName(), "dispose: " + throwable.getMessage(), throwable);
+                })
                 .doOnSubscribe(disposable -> isLoading.set(true))
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())

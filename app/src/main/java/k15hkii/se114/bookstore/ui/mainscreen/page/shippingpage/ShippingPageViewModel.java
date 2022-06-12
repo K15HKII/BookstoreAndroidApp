@@ -9,30 +9,8 @@ public class ShippingPageViewModel extends BaseViewModel<ShippingPageNavigator> 
         super(schedulerProvider);
     }
 
-    public void onSearchBarClick(){
-        getNavigator().openSearchView();
+    public void onBackWardClick(){
+        getNavigator().BackWard();
     }
 
-    public void onNotificationClick(){
-        getNavigator().openNotificationView();
-    }
-
-    public void onOnCartClick(){
-        getNavigator().openOnCartView();
-    }
-
-    public void onFilterDialog(){
-        getNavigator().openFilterDialog();
-    }
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

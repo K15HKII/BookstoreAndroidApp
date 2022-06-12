@@ -14,10 +14,6 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 
 public class PaymentMethodPage extends BaseFragment<PaymentMethodFragmentBinding, PaymentMethodViewModel> implements PaymentMethodPageNavigator {
 
-    public static PaymentMethodPage newInstance() {
-        return new PaymentMethodPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.PaymentMethodPageViewModel;

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
@@ -24,18 +26,12 @@ import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, ShippingPageViewModel> implements ShippingPageNavigator {
 
-    private ShippingPageFragmentBinding shippingPageFragmentBinding;
-    private ShippingPageViewModel mViewModel;
     private TabLayout tabmenuNav;
-    private ViewPager orderView;
-
-    public static ShippingPage newInstance() {
-        return new ShippingPage();
-    }
+    private ViewPager2 orderView;
 
     @Override
     public int getBindingVariable() {
-        return BR.ShippingPageViewModel;
+        return BR.viewModel;
     }
 
     @Override
@@ -47,26 +43,37 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        shippingPageFragmentBinding = getViewDataBinding();
+        ShippingPageFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        tabmenuNav = view.findViewById(R.id.tabMenuReceiptNav);
-        orderView = view.findViewById(R.id.vpReceiptOrderView);
+        tabmenuNav = binding.tabMenuReceiptNav;
+        orderView = binding.vpReceiptOrderView;
 
-//        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
-//        loadingDialog.startLoadingDialog();
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        },500);
+        //TODO: set position cho menutab
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
-                                                    FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+                this.getLifecycle());
         orderView.setAdapter(orderMenuTabAdapter);
-        tabmenuNav.setupWithViewPager(orderView);
+        new TabLayoutMediator(tabmenuNav, orderView,
+                (tab, position) -> {
+                    String title = "";
+                    switch (position) {
+                        case 0:
+                            title = "Chờ xác nhận";
+                            break;
+                        case 1:
+                            title = "Đang vận chuyển";
+                            break;
+                        case 2:
+                            title = "Đã vận chuyển";
+                            break;
+                        case 3:
+                            title = "Đơn huỷ";
+                            break;
+                    }
+                    tab.setText(title);
+                }
+        ).attach();
         return view;
     }
 
@@ -76,47 +83,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShippingPageViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    @Override
-    public void openSearchView() {
-        createTransaction(R.id.fragmentContainerView, SearchBookView.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openNotificationView() {
-        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openOnCartView() {
-        createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openFilterDialog() {
-        FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 }

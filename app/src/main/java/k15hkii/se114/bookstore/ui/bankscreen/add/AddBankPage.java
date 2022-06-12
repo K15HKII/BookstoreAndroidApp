@@ -15,12 +15,6 @@ import k15hkii.se114.bookstore.R;
 
 public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, AddBankPageViewModel> implements AdapterView.OnItemSelectedListener,AddBankPageNavigator {
 
-    private AddBankAccountFragmentBinding addBankAccountFragmentBinding;
-
-    public static AddBankPage newInstance() {
-        return new AddBankPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -35,7 +29,7 @@ public class AddBankPage extends BaseFragment<AddBankAccountFragmentBinding, Add
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        addBankAccountFragmentBinding = getViewDataBinding();
+        AddBankAccountFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         return view;

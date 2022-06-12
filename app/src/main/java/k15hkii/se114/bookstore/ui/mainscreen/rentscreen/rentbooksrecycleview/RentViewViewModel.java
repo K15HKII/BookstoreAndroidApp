@@ -1,46 +1,64 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview;
 
-import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Lend;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 //@AllArgsConstructor
-@Getter
-@Setter
 public class RentViewViewModel extends BaseViewModel<RentViewNavigator> implements Observable {
 
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> booktag = new ObservableField<>();
+    public final ObservableField<String> price = new ObservableField<>();
+    public final ObservableField<String> rentNote = new ObservableField<>();
+    public final ObservableField<String> rentPrice = new ObservableField<>();
+    public final ObservableField<String> endDate = new ObservableField<>();
+    public final ObservableField<Image> image = new ObservableField<>();
 
     @Inject protected ModelRemote remote;
-    public double price = 0;
+    @Getter
     private Lend lend;
+    private Book book;
     public void setLend(Lend lend){
+        if(lend==null) return;
         this.lend=lend;
+        getData(this.lend.getBookId());
+        this.endDate.set(String.valueOf(lend.getEndDate()));
     }
-    @Bindable
-    public String getPrice() {
-        return lend.getBook() == null ? "null" : "đ" + String.valueOf(lend.getBook().getPrice());
+
+    public void getData(UUID id) {
+        getCompositeDisposable().add(remote.getBook(id)
+               .subscribeOn(getSchedulerProvider().io())
+               .observeOn(getSchedulerProvider().ui())
+               .doOnSuccess(book -> {
+                   String bt = "";
+                   this.book = book;
+                   this.name.set(book.getTitle());
+                   this.price.set(String.valueOf(book.getPrice()) + " đ");
+                   this.image.set(book.getImages().get(0));
+//                   for (BookTag tag : book.getBooktags()) {
+//                       bt+= tag.name() + " ";
+//                   }
+//                   booktag.set(bt);
+                   this.booktag.set("Hài hước");
+               }).subscribe((book1, throwable) -> {}));
     }
+
 
     public RentViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
     }
 
-    public RentViewViewModel() { super(null); }
 
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {

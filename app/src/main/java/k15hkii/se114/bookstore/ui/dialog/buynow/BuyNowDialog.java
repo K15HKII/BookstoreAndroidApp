@@ -6,27 +6,26 @@ import android.view.*;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.BuynowSelectorDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 import javax.inject.Inject;
 
 public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
     private static final String TAG = "BuyNowDialog";
-    private int amount = 0;
 
     @Inject
-    BuyNowViewModel buyNowViewModel;
+    protected BuyNowViewModel buyNowViewModel;
 
-    public static BuyNowDialog newInstance() {
+    private Book book;
+
+    public static BuyNowDialog newInstance(Book book) {
         BuyNowDialog fragment = new BuyNowDialog();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
+        fragment.book = book;
         return fragment;
     }
 
@@ -34,8 +33,6 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         BuynowSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.buynow_selector_dialog, container, false);
         View view =binding.getRoot();
-
-        performDependencyInjection(getBuildComponent());
 
         binding.setViewModel(buyNowViewModel);
         buyNowViewModel.setNavigator(this);
@@ -48,31 +45,7 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
 
         wlp.gravity = Gravity.BOTTOM;
 
-        binding.btnBuyNowPlusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else{
-                    amount++;
-                    binding.tvBuyNowAmount.setText(amount+"");
-                }
-            }
-        });
-
-        binding.btnBuyNowMinusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else {
-                    amount--;
-                    binding.tvBuyNowAmount.setText(amount + "");
-                }
-            }
-        });
+        buyNowViewModel.setData(book);
 
         return view;
     }
@@ -81,19 +54,26 @@ public class BuyNowDialog extends BaseDialog implements BuyNowCallBack{
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 
     @Override
     public void dismissDialog() {
-        dismissDialog(TAG);
+        dismissOnlyDialog();
+    }
+
+    @Override
+    public void openCartPage() {
+
+        getParentFragmentManager().beginTransaction()
+                                  .replace(R.id.fragmentContainerView, OncartViewPage.class, null)
+                                  .addToBackStack(null)
+                                  .setCustomAnimations(
+                                          R.anim.slide_in,  // enter
+                                          R.anim.fade_out,  // exit
+                                          R.anim.fade_in,   // popEnter
+                                          R.anim.slide_out  // popExit
+                                  ).commit();
     }
 }

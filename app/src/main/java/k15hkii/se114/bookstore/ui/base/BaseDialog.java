@@ -31,6 +31,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import k15hkii.se114.bookstore.BookstoreApp;
+import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
+import k15hkii.se114.bookstore.di.component.DialogComponent;
+import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.di.module.DialogModule;
 
 /**
  * Created by amitshekhar on 10/07/17.
@@ -53,6 +58,7 @@ public abstract class BaseDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        performDependencyInjection(getBuildComponent());
         // the content
         final RelativeLayout root = new RelativeLayout(getActivity());
         root.setLayoutParams(new ViewGroup.LayoutParams(
@@ -90,9 +96,22 @@ public abstract class BaseDialog extends DialogFragment {
         show(transaction, tag);
     }
 
+    private DialogComponent getBuildComponent(){
+        return DaggerDialogComponent.builder()
+                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
+                .dialogModule(new DialogModule(this))
+                .build();
+    }
+
+    public abstract void performDependencyInjection(DialogComponent buildComponent);
+
     public void dismissDialog(String tag) {
         dismiss();
         getBaseActivity().onFragmentDetached(tag);
+    }
+
+    public void dismissOnlyDialog() {
+        dismiss();
     }
 
     public BaseActivity getBaseActivity() {
@@ -102,12 +121,6 @@ public abstract class BaseDialog extends DialogFragment {
     public void hideKeyboard() {
         if (mActivity != null) {
             mActivity.hideKeyboard();
-        }
-    }
-
-    public void hideLoading() {
-        if (mActivity != null) {
-            mActivity.hideLoading();
         }
     }
 
@@ -121,9 +134,4 @@ public abstract class BaseDialog extends DialogFragment {
         }
     }
 
-    public void showLoading() {
-        if (mActivity != null) {
-            mActivity.showLoading();
-        }
-    }
 }

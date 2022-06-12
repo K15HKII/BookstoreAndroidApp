@@ -36,8 +36,6 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
         ChangeBirthDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_birth_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(changeBirthViewModel);
         changeBirthViewModel.setNavigator(this);
 
@@ -50,14 +48,7 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

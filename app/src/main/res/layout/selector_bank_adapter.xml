@@ -16,6 +16,9 @@
             android:clickable="true"
             android:background="@drawable/edit_text_background"
             android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -39,10 +42,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Họ và tên: "
+                            android:text="Chủ tài khoản: "
                             android:fontFamily="@font/lato_regular"
                             android:textSize="15dp"
-                            android:textColor="#001C44"/>
+                            android:textColor="@color/btn_blue"/>
                     <TextView
                             android:id="@+id/tvBankChoiceAdapterOwnerName"
                             android:layout_marginTop="5dp"
@@ -50,7 +53,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_regular"
                             android:textSize="15dp"
-                            android:text="@{viewModel.name}"
+                            android:text="@{viewModel.userName}"
                             android:textColor="#001C44"/>
                 </LinearLayout>
                 <TextView
@@ -60,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_regular"
                         android:textSize="15dp"
-                        android:text="@{viewModel.bankAccountNumber}"
+                        android:text="@{viewModel.iban}"
                         android:textColor="#001C44"/>
             </LinearLayout>
             <ImageView

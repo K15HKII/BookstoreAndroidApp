@@ -1,58 +1,128 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
-import androidx.databinding.Bindable;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import android.util.Log;
+import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.List;
-import java.util.UUID;
 
-public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> {
+public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> implements Observable {
 
-    @Bindable
-    @Getter @Setter
-    private String Name;
-    private CartItem cartItem;
+    public ObservableField<String> name = new ObservableField<>();
+    public ObservableField<Integer> price = new ObservableField<>();
+    public ObservableField<Integer> quantity = new ObservableField<>();
+    public final ObservableField<Image> image = new ObservableField<>();
+    public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
 
-    public OncartItemViewModel(String name) {
-        super(null);
-        Name = name;
-    }
-    public OncartItemViewModel(){
-        super(null);
-    }
-    public void setCartItem(CartItem cartItem) {
-        this.cartItem = cartItem;
-    }
+    private int postition;
+    private static int counter = 0;
+
     @Inject
     protected ModelRemote remote;
 
-    private String userId;
-    private String bookProfileId;
-    private Book bookProfile;
-    private List<Image> images;
+    private CartItem cartItem;
 
-    public void getCardItem(UUID userId, UUID bookProfileId) {
-//        this.bookProfileId = bookProfileId;
-//        this.userId = userId;
-        /*remote.getCarts(userId,bookProfileId).doOnSuccess(cartItem -> {
-            this.cartItem = cartItem;
-        }).subscribe();*/ //TODO
-        remote.getBook(bookProfileId).doOnSuccess(bookProfile -> {
-            this.bookProfile = bookProfile;
-        }).subscribe();
-        /*remote.getBookImages().doOnSuccess(bookProfileImage -> {
-            this.images = bookProfileImage;
-        }).subscribe();*/ //TODO:
+    @Getter
+    @Setter
+    Book book;
+
+    public OncartItemViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
+        this.remote = remote;
     }
 
-    public void openItemDetail(String bookProfileId){
-        getNavigator().openBookDetailNavigator(bookProfileId);
+    void getData() {
+        dispose(remote.getBook(cartItem.getBookId()),
+                book -> {
+                    this.book = book;
+                    this.name.set(book.getTitle());
+                    this.quantity.set(cartItem.getQuantity());
+                    this.price.set(book.getPrice() * quantity.get());
+                    if (book.getImages() != null && book.getImages().size() > 0) {
+                        image.set(book.getImages().get(0));
+                    }
+                    this.isSelectedItem.set(cartItem.isSelected());
+                },
+                throwable -> Log.d("OncartViewViewModel",
+                                   "getData: " + throwable.getMessage(), throwable));
     }
+
+    public void setCartItem(CartItem cartItem) throws InterruptedException {
+        this.cartItem = cartItem;
+        quantity.set(cartItem.getQuantity());
+        getData();
+        this.postition = counter++;
+    }
+
+    public void deleteItem() {
+        resetCounter();
+        dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
+        getNavigator().deleteItem(postition);
+        // TODO: Fix bug delete no reset view, delete van duoc nhung ma view khong cap nhat, phai out ra cart roi vo ai moi duoc
+    }
+
+    public void plusQuantity() {
+        if (quantity.get() >= book.getStock()) {
+            return;
+        } else {
+            quantity.set((quantity.get() + 1));
+            this.price.set(book.getPrice() * quantity.get());
+            //cart item is selected
+            if (isSelectedItem.get()) {
+                // TODO: cập nhật lại tổng tiền của OnCartPage
+            }
+            postCart(isSelectedItem.get());
+        }
+    }
+
+    public void minusQuantity() {
+        if (quantity.get() == 1) {
+            return;
+        } else {
+            quantity.set((quantity.get() - 1));
+            this.price.set(book.getPrice() * quantity.get());
+            //cart item is selected
+            if (isSelectedItem.get()) {
+                // TODO: cập nhật lại tổng tiền của OnCartPage
+            }
+            postCart(isSelectedItem.get());
+        }
+    }
+
+    //todo: selected post len co isSelected = false nhung tra ve` la true
+    public void CheckHandle() {
+        if (cartItem.isSelected() == false && isSelectedItem.get()) {
+            isSelectedItem.set(true);
+            postCart(true);
+            // TODO: cập nhật lại tổng tiền của OnCartPage
+//            this.getNavigator().checkItemHandle();
+        }
+        else if (cartItem.isSelected() == true && !isSelectedItem.get()){
+            isSelectedItem.set(false);
+            postCart(false);
+            // TODO: cập nhật lại tổng tiền của OnCartPage
+//            this.getNavigator().checkItemHandle();
+        }
+    }
+
+    void postCart(boolean status) {
+        CartItemCRUDRequest request = new CartItemCRUDRequest();
+        request.setBookId(book.getId());
+        request.setQuantity(quantity.get());
+        request.setSelected(status);
+        dispose(remote.createCart(cartItem.getUserId(), request),
+                cartItem -> {},
+                throwable -> {});
+    }
+
+    public static void resetCounter(){ counter = 0;}
 }

@@ -2,17 +2,20 @@ package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import k15hkii.se114.bookstore.data.model.api.Gender;
 import lombok.*;
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+
+    public String getName() {
+        return getFirstName() + " " + getLastName();
+    }
+
     @Getter
     @Expose
     @SerializedName("id")
@@ -51,7 +54,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("username")
-    private String userName;
+    private String username;
 
     @Getter
     @Expose

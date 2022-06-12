@@ -1,14 +1,51 @@
 package k15hkii.se114.bookstore.ui.dialog.changephone;
 
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
+import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
+import javax.inject.Inject;
+import java.util.Objects;
+
 public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBack> {
-    public ChangePhoneNumViewModel(SchedulerProvider schedulerProvider) {
+
+    @Inject
+    protected ModelRemote remote;
+
+    PreferencesHelper helper;
+
+    public final ObservableField<String> userPhone = new ObservableField<>();
+
+    User user;
+
+    public void getData() {
+        dispose(remote.getSelfUser(),
+                user -> {
+                    this.user = user;
+                    userPhone.set(user.getPhone());
+                },
+                throwable -> { });
+    }
+
+    public ChangePhoneNumViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);
+        this.helper = helper;
+        this.remote = remote;
     }
 
     public void onSubmitPhoneTextClick(){
+        if (!Objects.equals(userPhone.get(), user.getPhone())) {
+            ProfileUpdateRequest request = new ProfileUpdateRequest();
+            request.setPhone(userPhone.get());
+
+            dispose(remote.updateSelfUser(request),
+                    user -> { },
+                    throwable -> { });
+        }
         getNavigator().onSubmitPhone();
     }
 }

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel"/>
     </data>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
@@ -21,6 +19,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Loại"
                 android:fontFamily="@font/lato_regular"
                 android:textColor="@color/black"
@@ -59,7 +58,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:fontFamily="@font/lato_regular"
                 android:text="Số lượng"
                 android:textColor="@color/black"
@@ -78,14 +77,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="#98BDC7"
+                        android:background="#B6BCBD"
+                        android:onClick="@{()->viewModel.minusQuantity()}"
                         android:src="@drawable/ic_minus"/>
                 <TextView
                         android:id="@+id/tvBuyNowAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="0"
+                        android:text="@{viewModel.quantity.toString()}"
                         android:textColor="@color/black"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
@@ -96,22 +96,23 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_alignParentRight="true"
-                        android:background="#98BDC7"
+                        android:background="#B6BCBD"
+                        android:onClick="@{()->viewModel.plusQuantity()}"
                         android:src="@drawable/ic_plus"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
+            android:onClick="@{()-> viewModel.dismissDialog()}"
             android:id="@+id/btnBuyNowDialogBuyNow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:background="@drawable/round_long_btn">
+            android:background="@drawable/new_btn_sky_large">
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="wrap_content">
             <android.widget.Button
-                    android:onClick="@{()-> viewModel.dismissDialog()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

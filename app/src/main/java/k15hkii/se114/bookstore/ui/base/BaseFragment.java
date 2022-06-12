@@ -19,7 +19,6 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.di.module.FragmentModule;
 
 import javax.inject.Inject;
-import java.util.function.Consumer;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
@@ -67,6 +66,8 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         mRootView = viewDataBinding.getRoot();
+        if (getArguments() != null)
+            viewModel.initializeFromBundle(getArguments());
         return mRootView;
     }
 
@@ -80,8 +81,15 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewDataBinding.setVariable(getBindingVariable(), viewModel);
-        viewDataBinding.setLifecycleOwner(this);
+        //viewDataBinding.setLifecycleOwner(this);
         viewDataBinding.executePendingBindings();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewDataBinding.unbind();
+        viewDataBinding = null;
     }
 
     public BaseActivity getBaseActivity() {
@@ -120,7 +128,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
 
     public FragmentTransaction createTransaction(@IdRes int containerId, Class<? extends Fragment> clazz, @Nullable Bundle bundle) {
         return this.getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(containerId, clazz, bundle)
+                .add(containerId, clazz, bundle)
                 .addToBackStack(null);
     }
 

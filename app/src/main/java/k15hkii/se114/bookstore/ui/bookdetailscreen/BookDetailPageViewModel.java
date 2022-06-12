@@ -1,63 +1,75 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
-import androidx.databinding.Bindable;
+import android.os.Bundle;
+import androidx.annotation.NonNull;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Book;
-import k15hkii.se114.bookstore.data.model.api.Image;
+import androidx.databinding.ObservableLong;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
-
-    private final ObservableField<List<Comment>> commentItemsLiveData = new ObservableField<>(
-            Arrays.asList(new Comment("tritran@gm.com"),
-                          new Comment("tritran12@gm.com"))
-    );
-    public List<Comment> getCommentItems() {
+    //TODO: thêm vào yêu thích, đổ màu trái tim, khi không select vào trái tim thì delete khỏi yêu thích
+    private final ObservableField<List<FeedbackViewModel>> commentItemsLiveData = new ObservableField<>();
+    public List<FeedbackViewModel> getCommentItems() {
         return commentItemsLiveData.get();
     }
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableLong price = new ObservableLong();
+    public final ObservableField<String> description = new ObservableField<>();
+    public final ObservableField<Image> image = new ObservableField<>();
+    public final ObservableField<String> remainQuantity = new ObservableField<>();
+    public final ObservableBoolean isFavorite = new ObservableBoolean();
 
-    @Inject protected ModelRemote remote;
+    protected final ModelRemote remote;
+    private final UUID userId;
 
-    Book book;
-    private String name;
-    private String price;
-    private String description;
-    private String remainQuantity;
-
-    public void getData(UUID id) {
-
-    }
-    @Bindable
-    public String getName() {
-        return name == null ? "profile is null" : book.getTitle();
-    }
-    @Bindable
-    public String getPrice() {
-        return price == null ? "profile is null" : String.valueOf(book.getPrice());
-    }
-    @Bindable
-    public String getDescription() {
-        return description == null ? "profile is null" : book.getDescription();
-    }
-    @Bindable
-    public String getRemainQuantity() {
-        return remainQuantity == null ? "profile is null" : String.valueOf(book.getQuantity());
-    }
+    private Book book;
 
     public void setBook(Book book) {
         this.book = book;
+        name.set(book.getTitle());
+        price.set(book.getPrice());
+        description.set(book.getDescription());
+        remainQuantity.set(String.valueOf(book.getStock()));
+        image.set(book.getImages().get(0));
     }
 
-    public BookDetailPageViewModel(SchedulerProvider schedulerProvider) {
+    @Override
+    public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
+        super.initializeFromBundle(bundle);
+        Book book = (Book) bundle.getSerializable("book");
+        if(book != null) setBook(book);
+    }
+
+    public BookDetailPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, UUID userId) {
         super(schedulerProvider);
+        this.remote = remote;
+        this.userId = userId;
+    }
+
+    //TODO: Binding
+    public void toggleFavourite() {
+        isFavorite.set(!isFavorite.get());
+        FavouriteBookCRUDRequest request = new FavouriteBookCRUDRequest();
+        request.setBookId(book.getId());
+        request.setSelected(isFavorite.get());
+
+        dispose(remote.createFavoriteBook(userId, request),
+                response -> {
+
+                }, throwable -> {
+
+                });
     }
 
     public void onBackWardClick(){
@@ -65,21 +77,15 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
     }
 
     public void openBuyNowDialog(){
-        getNavigator().openBuyNowDialog();
+        getNavigator().openBuyNowDialog(book);
     }
 
     public void openOnCartDialog(){
-        getNavigator().openOnCartDialog();
+        getNavigator().openOnCartDialog(book);
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void openRatingBook() {
+        getNavigator().openRatingBook();
     }
 
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

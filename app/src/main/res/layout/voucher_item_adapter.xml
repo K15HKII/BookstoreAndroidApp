@@ -10,10 +10,6 @@
                   android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
-        <RadioButton
-                android:id="@+id/radbtn"
-                android:layout_width="31dp"
-                android:layout_height="match_parent"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:background="@drawable/voucher_shape"
@@ -21,6 +17,8 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="15dp"
                 android:paddingBottom="10dp"
+                android:layout_marginLeft="15.5dp"
+                android:layout_marginRight="15.5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
@@ -57,7 +55,7 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="20/04/2022"/>
+                                android:text="@{viewModel.expiredDate}"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -66,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
-                    android:text="Tối đa 100.000đ"
+                    android:text="@{viewModel.discountType}"
                     android:textSize="15dp"
                     android:textColor="@color/btn_blue"/>
             <TextView
@@ -76,7 +74,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/lato_regular"
                     android:textSize="20dp"
-                    android:text="Cho đơn hàng trên 300.000đ"
+                    android:text="@{viewModel.minValue}"
                     android:textColor="@color/btn_blue"/>
             <TextView
                     android:id="@+id/tvVoucherItemApplyForBook"
@@ -84,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     android:textSize="12.5dp"
-                    android:text="Áp dụng cho Sách thể loại Văn học, Khoa học"
+                    android:text="@{viewModel.bookType}"
             />
         </LinearLayout>
     </LinearLayout>

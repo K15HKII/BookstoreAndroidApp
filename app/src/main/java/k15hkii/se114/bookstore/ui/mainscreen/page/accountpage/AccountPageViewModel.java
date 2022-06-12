@@ -1,8 +1,10 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.accountpage;
 
-import androidx.databinding.Bindable;
+import android.util.Log;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -13,49 +15,61 @@ import java.util.UUID;
 
 public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> implements Observable {
 
-    private User user;
-    private String email;
-    private String name;
-    private UUID userId;
-    private String address;
-
-    PreferencesHelper preferencesHelper;
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> gender = new ObservableField<>();
+    public final ObservableField<String> birthday = new ObservableField<>();
+    public final ObservableField<String> phone = new ObservableField<>();
+    public final ObservableField<String> email = new ObservableField<>();
+    public final ObservableField<UserAddress> address = new ObservableField<>();
+    public final ObservableField<String> userName = new ObservableField<>();
 
     @Inject
     protected ModelRemote remote;
+    private User user;
+    private UUID userId;
 
-    void getData() {
-//        getCompositeDisposable().add(remote.getUser(userId)
-//                                           .subscribeOn(getSchedulerProvider().io())
-//                                           .observeOn(getSchedulerProvider().ui())
-//                                           .subscribe(user -> {
-//                                               this.user = user;
-//                                               this.notifyChange();
-//                                           }, throwable -> {
-//                                               Log.d("AccountPageViewModel", "getUser: " + throwable.getMessage(), throwable);
-//                                           }));
-
-        this.name = preferencesHelper.getCurrentUserName();
-        this.email = preferencesHelper.getCurrentUserEmail();
+    //TODO: getUser, UserBank, Sửa thông tin
+    private String toUserName(User user){
+        return user.getFirstName() + " " + user.getLastName();
     }
 
-    @Bindable
-    public String getName() {
-        if (name == null) return "";
-        return name;
+    private void getData(UUID userId) {
+        getCompositeDisposable().add(remote.getSelfUser()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(user -> {
+                    this.user = user;
+                    this.userId = user.getId();
+                    this.name.set(toUserName(user));
+                    this.email.set(user.getEmail());
+                    this.gender.set(String.valueOf(user.getGender()));
+                    this.phone.set(user.getPhone());
+                    this.birthday.set(String.valueOf(user.getBirthday()));
+                    this.userName.set(String.valueOf(user.getUsername()));
+                    this.notifyChange();
+                }, throwable -> {
+                    Log.d("AccInfoViewViewModel", "getSelfUser: " + throwable.getMessage(), throwable);
+                }));
+
+        // set address
+        getCompositeDisposable().add(remote.getAddresses(userId)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(addresses -> {
+                    for (UserAddress address : addresses)
+                    {
+                        if (address.isPrimary()){
+                            this.address.set(address);
+                        }
+                    }
+                }));
     }
 
-    @Bindable
-    public String getEmail() {
-        if (email == null) return "";
-        return email;
-    }
-
-    public AccountPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
+    public AccountPageViewModel(SchedulerProvider schedulerProvider,ModelRemote remote, PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
-        this.preferencesHelper = preferencesHelper;
-//        this.userId = preferencesHelper.getCurrentUserId();
-        getData();
+        this.remote = remote;
+        this.userId = preferencesHelper.getCurrentUserId();
+        getData(userId);
     }
 
     public void onAccountInfoClick(){
@@ -78,15 +92,43 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
         getNavigator().logOut();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void openChangeNameDialog() {
+        getNavigator().openChangeNameDialog();
     }
 
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
+    public void openChangePasswordDialog() {
+        getNavigator().openChangePasswordDialog();
     }
 
-    // TODO: Implement the ViewModel
+    public void openChangePhoneNumberDialog() {
+        getNavigator().openChangePhoneNumDialog();
+    }
+
+    public void openChangeGenderDialog() {
+        getNavigator().openChangeGenderDialog();
+    }
+
+    public void openChangeBirthDialog() {
+        getNavigator().openChangeBirthDialog();
+    }
+
+    public void openSelectorAddressClick() {
+        getNavigator().openSelectAddress();
+    }
+
+    public void openSelectorBankClick() {
+        getNavigator().openSelectBank();
+    }
+
+    public void openOrderClick(){
+        getNavigator().openOrder();
+    }
+
+    public void openRentClick(){
+        getNavigator().openRent();
+    }
+
+    public void openFavoritePage(){
+        getNavigator().openFavoritePage();
+    }
 }

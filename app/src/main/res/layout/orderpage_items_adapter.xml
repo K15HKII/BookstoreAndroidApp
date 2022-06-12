@@ -1,61 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel" />
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_marginTop="10dp"
-              android:layout_marginBottom="10dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <LinearLayout
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <ImageView
+
+            <ImageView
                 android:id="@+id/imageListBooksBookView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/dac_nhan_tam_book"/>
-        <LinearLayout
+                image="@{viewModel.image}" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="12dp"
                 android:orientation="vertical">
-            <TextView
+
+                <TextView
                     android:id="@+id/tvBooksNameOfBook"
                     android:fontFamily="@font/lato_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.name}"
+                    android:text="@{viewModel.title}"
                     android:textSize="21dp"
                     android:textAlignment="textStart"
-                    android:textColor="@color/black"/>
-            <LinearLayout
+                    android:textColor="@color/black" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <TextView
+
+                    <TextView
                         android:id="@+id/tvListBooksTypeOfBook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_regular"
                         android:textAlignment="textStart"
                         android:textSize="15dp"
-                        android:text="Bìa cứng"/>
-                <TextView
+                        android:text="Bìa cứng" />
+
+                    <TextView
                         android:id="@+id/tvListBooksNumberOfBooks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_regular"
-                        android:text=""
+                        price="@{viewModel.price}"
                         android:textSize="21dp"
                         android:textColor="@color/black"
-                        android:textAlignment="textEnd"/>
-            </LinearLayout>
-            <TextView
+                        android:textAlignment="textEnd" />
+                </LinearLayout>
+
+                <TextView
                     android:id="@+id/tvListBooksPriceOfBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,8 +75,8 @@
                     android:text=""
                     android:textAlignment="textEnd"
                     android:textColor="@color/btn_blue"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>

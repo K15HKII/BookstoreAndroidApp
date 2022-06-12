@@ -49,6 +49,7 @@
                 android:layout_marginTop="90dp"
                 android:orientation="vertical"
                 android:padding="15dp">
+            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content">
             <LinearLayout
                     android:id="@+id/btnPaymentMethodATMSelector"
                     android:layout_width="match_parent"
@@ -93,6 +94,7 @@
                         android:textColor="@color/btn_blue"
                         android:textStyle="bold"/>
             </LinearLayout>
+            </RadioGroup>
             <android.widget.Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,7 +104,7 @@
                     android:textAllCaps="false"
                     android:textSize="16dp"
                     android:textColor="@color/white"
-                    android:background="@drawable/round_long_btn"
+                    android:background="@drawable/new_btn_sky_large"
                     />
         </LinearLayout>
 

@@ -13,10 +13,6 @@ public class HomePageViewModel extends BaseViewModel<HomePageNavigator> implemen
         getNavigator().openSearchView();
     }
 
-    public void onNotificationClick(){
-        getNavigator().openNotificationView();
-    }
-
     public void onOnCartClick(){
         getNavigator().openOnCartView();
     }
@@ -25,30 +21,4 @@ public class HomePageViewModel extends BaseViewModel<HomePageNavigator> implemen
         getNavigator().openFilterDialog();
     }
 
-    public void onAllBooksChip(){
-        getNavigator().openAllBooksView();
-    }
-
-    public void onFamiliarBooksChip(){
-        getNavigator().openFamiliarBooksView();
-    }
-
-    public void onPoppularBooksChip(){
-        getNavigator().openPoppularBooksView();
-    }
-
-    public void onForYouBooksChip(){
-        getNavigator().openForYouBooksView();
-    }
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

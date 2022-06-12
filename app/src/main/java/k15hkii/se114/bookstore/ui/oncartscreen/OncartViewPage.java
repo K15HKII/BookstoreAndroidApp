@@ -1,6 +1,8 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.accessibility.AccessibilityEvent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,17 +15,21 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
-public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator {
+public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
 
-    public static OncartViewPage newInstance() {
-        return new OncartViewPage();
-    }
+    OncartViewFragmentBinding oncartViewFragmentBinding;
+
+    @Inject protected OncartViewViewModel viewModel;
 
     @Override
     public int getBindingVariable() {
@@ -44,12 +50,17 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        OncartViewFragmentBinding oncartViewFragmentBinding = getViewDataBinding();
+        oncartViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
         oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
+
+        oncartItemAdapter.setOncartItemNavigator(this);
+
+//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+
         return view;
     }
 
@@ -61,5 +72,55 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openBookDetailNavigator(OncartItemViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void OrderPageNavigator(OncartViewViewModel viewModel) {
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("orderList", (Serializable) viewModel.selectedItemList);
+        bundle.putSerializable("userId", viewModel.userId);
+
+        createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+
+    @Override
+    public void checkItemHandle() {
+//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+    }
+
+    //    @Override
+//    public void resetView() {
+//        oncartItemAdapter.notifyDataSetChanged();
+//    }
+
+    @Override
+    public void deleteItem(int index) {
+        viewModel.list.remove(index);
+        viewModel.items.set(viewModel.list);
+        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+        oncartItemAdapter.notifyItemRemoved(index);
+        oncartItemAdapter.notifyItemRangeChanged(index, viewModel.list.size());
+        viewModel.getData();
     }
 }

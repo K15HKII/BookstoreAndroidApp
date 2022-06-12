@@ -1,47 +1,65 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.data.model.api.Bill;
-import k15hkii.se114.bookstore.data.model.api.BillDetail;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.inject.Inject;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class OrderViewViewModel extends BaseViewModel<IOrderNavigator> implements Observable {
 
-    public final ObservableField<List<OrderItemViewModel>> orderItems = new ObservableField<>(Arrays.asList());
+    public final ObservableField<List<OrderItemViewModel>> items = new ObservableField<>();
+    public final ObservableField<String> note = new ObservableField<>();
+    public final ObservableField<Integer> price = new ObservableField<>();
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
+    @Getter
     private Bill bill;
-    private int billId;
-    private List<BillDetail> billDetails;
-    public void setListOrder(int billId) {
-        this.billId = billId;
 
-        remote.getBill(billId).doOnSuccess(bill -> {
-            this.bill = bill;
-        }).subscribe();
+    private int billId;
+
+    public OrderViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
+        this.remote = remote;
     }
 
-    @Bindable
-    @Setter @Getter private String price;
-    @Setter @Getter private String note;
-    @Setter @Getter private List<OrderItemViewModel> lsOrderItem;
+    int totalPrice;
 
-    public OrderViewViewModel(String price, String note, List<OrderItemViewModel> lsOrderItem) {
-        super(null);
-        this.price = price;
-        this.note = note;
-        orderItems.set(lsOrderItem);
+    public void getData() {
+
+        totalPrice = 0;
+
+        List<OrderItemViewModel> list = new ArrayList<>();
+        for (BillDetail billDetail : bill.getBillDetails()) {
+            OrderItemViewModel item = new OrderItemViewModel(this.getSchedulerProvider(), this.remote);
+            item.setBillDetail(billDetail);
+
+            dispose(remote.getBook(billDetail.getBookId()), book -> {
+                totalPrice += book.getPrice();
+            }, throwable -> {
+                Log.d("", "GetBook: " + throwable.getMessage(), throwable);
+            });
+
+            list.add(item);
+        }
+        items.set(list);
+        price.set(totalPrice);
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+        getData();
     }
 
 }

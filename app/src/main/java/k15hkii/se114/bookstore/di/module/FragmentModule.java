@@ -5,15 +5,26 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
+import k15hkii.se114.bookstore.ui.news.NewsViewModel;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNewsViewModel;
+import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
+import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderratingdetail.OrderRatingDetailViewModel;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBookViewModel;
 import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
@@ -29,8 +40,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPageViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewAdapter;
 import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPageViewModel;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel;
@@ -61,10 +70,8 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageV
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.ratingbookview.RatingBookViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel;
@@ -77,12 +84,13 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageView
 import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingReportAdapter;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
 import k15hkii.se114.bookstore.ui.success.lend.*;
+
+import java.util.UUID;
 
 import static k15hkii.se114.bookstore.utils.ViewModelUtils.createViewModel;
 
@@ -102,16 +110,14 @@ public class FragmentModule {
     }
 
     @Provides
-    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ForgotPasswordViewModel.class, () -> new ForgotPasswordViewModel(schedulerProvider));
+    public ForgotPasswordViewModel provideForgotPasswordViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, ForgotPasswordViewModel.class, () -> new ForgotPasswordViewModel(schedulerProvider, remote));
     }
 
     @Provides
     public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider));
     }
-
-    //TODO: MainScreen
     @Provides
     public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HomePageViewModel.class, () -> new HomePageViewModel(schedulerProvider));
@@ -128,18 +134,18 @@ public class FragmentModule {
     }
 
     @Provides
-    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, remote, preferencesHelper));
+    public FavoritePageViewModel provideFavoritePageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, FavoritePageViewModel.class, () -> new FavoritePageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider, preferencesHelper));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, preferencesHelper));
     }
 
     @Provides
-    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, preferencesHelper));
+    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -153,8 +159,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider, remote, preferencesHelper));
+    public VoucherPageViewModel provideVoucherPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, VoucherPageViewModel.class, () -> new VoucherPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
@@ -198,13 +204,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider));
+    public AddAddressPageViewModel provideAddAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, LocationRepository locationRepository, @UserId UUID userId) {
+        return createViewModel(fragment, AddAddressPageViewModel.class, () -> new AddAddressPageViewModel(schedulerProvider, remote, locationRepository, userId));
     }
 
     @Provides
-    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider));
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository repository, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider, repository, remote, userId));
     }
 
     @Provides
@@ -213,13 +219,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider));
+    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
-    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider));
+    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -233,18 +239,18 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote));
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote, mapper));
     }
 
     @Provides
-    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, remote));
+    public RentInfoViewViewModel provideRentInfoViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+        return createViewModel(fragment, RentInfoViewViewModel.class, () -> new RentInfoViewViewModel(schedulerProvider, mapper));
     }
 
     @Provides
-    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider));
+    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -258,8 +264,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RateDetailViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
-        return createViewModel(fragment, RateDetailViewModel.class, () -> new RateDetailViewModel(schedulerProvider, mapper, helper));
+    public RateDetailViewModel provideRatingBooksDetailPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper, ModelRemote remote) {
+        return createViewModel(fragment, RateDetailViewModel.class, () -> new RateDetailViewModel(schedulerProvider, mapper, remote, helper));
     }
 
     @Provides
@@ -293,23 +299,18 @@ public class FragmentModule {
     }
 
     @Provides
-    public RatingBookViewPageViewModel provideRatingBookViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RatingBookViewPageViewModel.class, () -> new RatingBookViewPageViewModel(schedulerProvider));
+    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public ShipmentArrivedViewPageViewModel provideShipmentArrivedViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ShipmentArrivedViewPageViewModel.class, () -> new ShipmentArrivedViewPageViewModel(schedulerProvider));
+    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
-    public ShippingViewPageViewModel provideShippingViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, ShippingViewPageViewModel.class, () -> new ShippingViewPageViewModel(schedulerProvider));
-    }
-
-    @Provides
-    public WaitingOrderViewPageViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, WaitingOrderViewPageViewModel.class, () -> new WaitingOrderViewPageViewModel(schedulerProvider));
+    public WaitingOrderListViewModel provideWaitingOrderViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
+        return createViewModel(fragment, WaitingOrderListViewModel.class, () -> new WaitingOrderListViewModel(schedulerProvider, mapper, preferencesHelper));
     }
 
     @Provides
@@ -353,8 +354,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider, mapper));
+    public FamiliarBooksViewModel provideFamiliarBooksViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, FamiliarBooksViewModel.class, () -> new FamiliarBooksViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
@@ -368,8 +369,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, mapper));
+    public OrderDetailViewModel provideOrderDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderDetailViewModel.class, () -> new OrderDetailViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides
@@ -383,28 +384,73 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, mapper));
+    public OrderCheckerViewModel provideOrderCheckerViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderCheckerViewModel.class, () -> new OrderCheckerViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides
-    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, mapper));
+    public OrderRatingViewModel provideOrderRatingViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderRatingViewModel.class, () -> new OrderRatingViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides
-    public OrderRatingDetailViewModel provideOrderRatingDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderRatingDetailViewModel.class, () -> new OrderRatingDetailViewModel(schedulerProvider, mapper));
+    public RentDetailBillViewModel provideRentDetailBillViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public RentDetailBillViewModel RentDetailBillViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RentDetailBillViewModel.class, () -> new RentDetailBillViewModel(schedulerProvider));
+    public CancelOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, CancelOrderViewModel.class, () -> new CancelOrderViewModel(schedulerProvider, mapper, helper));
     }
+
+    @Provides
+    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public ExplorerViewModel provideExplorerViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, ExplorerViewModel.class, () -> new ExplorerViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RateListBookViewModel provideRateListBookViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, RateListBookViewModel.class, () -> new RateListBookViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public PopularNewsViewModel providePopularNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, PopularNewsViewModel.class, () -> new PopularNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public FollowViewModel provideFollowViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, FollowViewModel.class, () -> new FollowViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
+        return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
+    }
+
+//    @Provides
+//    public OrderViewViewModel provideOrderViewViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper) {
+//        return createViewModel(fragment, OrderViewViewModel.class, () -> new OrderViewViewModel(schedulerProvider, mapper));
+//    }
 
     //endregion
 
     //region Adapters
+    @Provides
+    public VoucherItemAdapter provideVoucherItemAdapter(Context context) {
+        return new VoucherItemAdapter(context);
+    }
+
     @Provides
     public BookViewAdapter provideBookViewAdapter(Context context) {
         return new BookViewAdapter(context);
@@ -453,11 +499,6 @@ public class FragmentModule {
     @Provides
     public OncartItemAdapter oncartItemAdapter(Context context) {
         return new OncartItemAdapter(context);
-    }
-
-    @Provides
-    public RatingReportAdapter ratingReportAdapter(Context context) {
-        return new RatingReportAdapter(context);
     }
 
     @Provides

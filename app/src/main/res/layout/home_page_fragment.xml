@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="HomePageViewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel"/>
+
+        <variable
+            name="HomePageViewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel" />
     </data>
-<LinearLayout
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/home_background"
-        tools:context=".ui.mainscreen.page.homepage.HomePage" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/new_background_color"
+        tools:context=".ui.mainscreen.page.homepage.HomePage">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_background"
+            android:background="@color/new_background_color"
             android:orientation="vertical">
-        <LinearLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
+                android:background="@color/new_search_bg_color"
                 android:orientation="horizontal">
-            <RelativeLayout
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                <LinearLayout
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/searchbox_shape"
                         android:orientation="horizontal">
-                    <TextView
+
+                        <TextView
                             android:id="@+id/tvHomeSearchBox"
                             android:onClick="@{()-> HomePageViewModel.onSearchBarClick()}"
                             android:fontFamily="@font/lato_regular"
@@ -44,8 +53,9 @@
                             android:paddingLeft="10dp"
                             android:text="   Tìm kiếm"
                             android:layout_width="220dp"
-                            android:layout_height="wrap_content"/>
-                    <android.widget.Button
+                            android:layout_height="wrap_content" />
+
+                        <android.widget.Button
                             android:id="@+id/etHomeFilterbox"
                             android:onClick="@{()-> HomePageViewModel.onFilterDialog()}"
                             android:layout_marginRight="10dp"
@@ -53,131 +63,42 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.5"
                             android:scaleY="0.5"
-                            android:background="@drawable/ic_filter"/>
-                </LinearLayout>
+                            android:background="@drawable/ic_filter" />
+                    </LinearLayout>
 
-                <LinearLayout
+                    <LinearLayout
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                    <android.widget.Button
-                            android:id="@+id/btnHomeNotification"
-                            android:onClick="@{()-> HomePageViewModel.onNotificationClick()}"
-                            android:scaleX="0.63"
-                            android:scaleY="0.65"
-                            android:backgroundTint="@color/btn_blue"
-                            android:background="@drawable/notification_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                    <android.widget.Button
+
+                        <android.widget.Button
                             android:id="@+id/btnHomeShoppingCart"
                             android:onClick="@{()-> HomePageViewModel.onOnCartClick()}"
                             android:scaleX="0.58"
                             android:scaleY="0.58"
-                            android:backgroundTint="@color/btn_blue"
                             android:background="@drawable/ic_shopping"
+                            android:layout_marginRight="22dp"
                             android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/lato_bold"
-            android:textStyle="bold"
-            android:textSize="33sp"
-            android:text="Kho Sách"
-            android:textColor="@color/black"/>
-    <!--Danh mục cái navigation item-->
-    <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:scrollbars="none"
-            android:layout_height="50dp">
-
-            <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipgrpHomeChipNavigation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:singleLine="true"
-                    app:singleSelection="true">
-            <com.google.android.material.chip.Chip
-                    android:id="@+id/chipHomeAllBooks"
-                    android:onClick="@{()-> HomePageViewModel.onAllBooksChip()}"
-                    android:fontFamily="@font/lato_regular"
-                    android:checkable="true"
-                    android:checked="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:padding="10dp"
-                    android:textSize="15dp"
-                    android:clickable="true"
-                    android:text="Tất cả"
-                    app:checkedIconVisible="false"
-                    android:textColor="@color/text_selector"
-                    app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomePopularBooks"
-                        android:onClick="@{()-> HomePageViewModel.onPoppularBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Phổ biến"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomeFamiliarBooks"
-                        android:onClick="@{()-> HomePageViewModel.onFamiliarBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Gần đây"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-                <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHomeForYouBooks"
-                        android:onClick="@{()-> HomePageViewModel.onForYouBooksChip()}"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="15dp"
-                        android:clickable="true"
-                        android:text="Dành cho bạn"
-                        android:checkable="true"
-                        app:iconStartPadding="15dp"
-                        app:checkedIconVisible="false"
-                        android:textColor="@color/text_selector"
-                        app:chipBackgroundColor="@color/chip_selector"/>
-
-            </com.google.android.material.chip.ChipGroup>
-
-    </HorizontalScrollView>
-        <androidx.fragment.app.FragmentContainerView
+                            android:layout_height="50dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabMenuHomeNav"
                 android:layout_width="match_parent"
-                android:layout_height="410dp"
-                android:name="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooksPage"
-                android:id="@+id/fragmentContainerHomeView"/>
+                android:layout_height="40dp"
+                android:background="@color/new_background_color"
+                android:minHeight="?attr/actionBarSize"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabSelectedTextColor="@color/black"
+                app:tabIndicatorColor="@color/new_background_color" />
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpHomeBookView"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"/>
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
 </layout>

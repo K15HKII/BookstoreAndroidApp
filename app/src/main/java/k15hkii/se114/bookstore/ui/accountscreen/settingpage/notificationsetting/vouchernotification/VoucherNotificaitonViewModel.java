@@ -9,18 +9,16 @@ public class VoucherNotificaitonViewModel extends BaseViewModel<VoucherNotificai
         super(schedulerProvider);
     }
 
+    public void SoundPermission(){}
+
+    public void ShakePermisstion(){}
+
+    public void LightPermisstion(){}
+
+    public void EmailPermission(){}
+
     public void onBackWardClick(){
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

@@ -23,10 +23,6 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
     private DatePickerDialog.OnDateSetListener datePickerDOB;
     private Calendar DOB;
 
-    public static Register newInstance() {
-        return new Register();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

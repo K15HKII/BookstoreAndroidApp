@@ -50,7 +50,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_regular"
-                            android:text="@{viewModel.quantity}"
+                            android:text="@{viewModel.quantity.toString()}"
                             android:textSize="21dp"
                             android:textColor="@color/black"
                             android:textAlignment="textEnd"/>
@@ -60,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_regular"
-                        android:text="@{viewModel.price}"
+                        android:text="@{viewModel.price.toString()}"
                         android:textAlignment="textEnd"
                         android:textColor="@color/btn_blue"
                         android:textSize="15dp"/>

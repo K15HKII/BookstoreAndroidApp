@@ -7,12 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
+import java.util.Date;
 import java.util.UUID;
 
 @With
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserBank {
+
+    @Getter
+    @Expose
+    @SerializedName("sub_id")
+    private long subId;
+
     @Getter
     @Expose
     @SerializedName("userid")
@@ -32,5 +39,10 @@ public class UserBank {
     @Expose
     @SerializedName("bic")
     private String bic;
+
+    @Getter
+    @Expose
+    @SerializedName("is_primary")
+    private boolean isPrimary;
 }
 

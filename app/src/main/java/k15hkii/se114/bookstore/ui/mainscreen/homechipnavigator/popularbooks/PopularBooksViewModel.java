@@ -26,14 +26,4 @@ public class PopularBooksViewModel extends BaseViewModel<PopularBooksPageNavigat
         getData();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

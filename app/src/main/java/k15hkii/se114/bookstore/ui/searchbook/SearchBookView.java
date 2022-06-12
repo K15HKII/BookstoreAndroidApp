@@ -33,10 +33,6 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
     @Inject
     protected RecentSearchAdapter recentSearchAdapter;
 
-    public static SearchBookView newInstance() {
-        return new SearchBookView();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

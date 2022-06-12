@@ -20,7 +20,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
 public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBinding, AddRentBookDetailViewModel> implements AddRentBookDetailNavigator {
 
     private AddRentBookDetailFragmentBinding addRentBookDetailFragmentBinding;
-    private AddRentBookDetailViewModel mViewModel;
 
     @Override
     public int getBindingVariable() {
@@ -44,13 +43,6 @@ public class AddRentBookDetail extends BaseFragment<AddRentBookDetailFragmentBin
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddRentBookDetailViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

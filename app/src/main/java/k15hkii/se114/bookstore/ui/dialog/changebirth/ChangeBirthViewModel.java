@@ -1,33 +1,51 @@
 package k15hkii.se114.bookstore.ui.dialog.changebirth;
 
+import android.util.Log;
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
+import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.Date;
+import java.util.UUID;
 
 public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
 
     @Inject
     protected ModelRemote remote;
 
-    private String userBirth;
+    public final ObservableField<Date> userBirth = new ObservableField<>();
+    User user;
 
-    private User user;
-
-    public void setUserBirth(String id) {
-
-//        remote.getUser(id).doOnSuccess(user -> {
-//
-//        })
+    public void getData() {
+        dispose(remote.getSelfUser(),
+                user -> {
+                    this.user = user;
+                    userBirth.set(user.getBirthday());
+                },
+                throwable -> { });
     }
 
-    public ChangeBirthViewModel(SchedulerProvider schedulerProvider) {
+    public ChangeBirthViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);
+        this.remote = remote;
+        getData();
     }
 
-    public void onSubmitBirthText(){
+    public void onSubmitBirthText() {
+        if (userBirth.get() != user.getBirthday()) {
+            ProfileUpdateRequest request = new ProfileUpdateRequest();
+            request.setBirthday(userBirth.get());
+
+            dispose(remote.updateSelfUser(request),
+                    user -> { },
+                    throwable -> { });
+        }
         getNavigator().dismissDialog();
     }
 }
+

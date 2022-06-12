@@ -14,15 +14,4 @@ public class LanguageSettingViewModel extends BaseViewModel<LanguageSettingNavig
     }
 
     //TODO: Add function language for VIETNAMESE AND ENGLISH
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

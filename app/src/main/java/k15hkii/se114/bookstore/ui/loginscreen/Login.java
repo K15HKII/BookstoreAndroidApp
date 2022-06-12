@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.loginscreen;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,15 +27,6 @@ import k15hkii.se114.bookstore.ui.registerscreen.Register;
 public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> implements LoginNavigator {
 
     private LoginFragmentBinding loginFragmentBinding;
-    private LoginViewModel loginViewModel;
-    private EditText etUsername,etPassword;
-    private Button btnLogin, btnLoginWithGoogle, btnLoginWithFacebook;
-    private TextView tvPassforget,tvRegister;
-    private boolean passwordVisible;
-
-    public static Login newInstance() {
-        return new Login();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -90,7 +82,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).commit();
+                ).addToBackStack(null).commit();
     }
 
     @Override
@@ -101,6 +93,6 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
                         R.anim.fade_out,  // exit
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
-                ).commit();
+                ).addToBackStack(null).commit();
     }
 }

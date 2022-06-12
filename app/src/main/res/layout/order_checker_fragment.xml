@@ -14,7 +14,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/home_background"
+                android:background="@color/new_background_color"
                 android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
@@ -76,6 +76,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="5dp"
+
                                             android:src="@drawable/ic_location"/>
                                     <TextView
                                             android:fontFamily="@font/lato_bold"
@@ -124,8 +125,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="0dp"
-                                    android:backgroundTint="@color/black"
-                                    android:src="@drawable/ic_shopping"/>
+                                    android:backgroundTint="@color/color_of_button"
+                                    android:src="@drawable/ic_shopping_blue"/>
                             <TextView
                                     android:text="Đơn hàng"
                                     android:fontFamily="@font/lato_bold"
@@ -367,7 +368,7 @@
                             android:paddingRight="35dp"
                             android:paddingTop="12dp"
                             android:paddingBottom="12dp"
-                            android:background="@drawable/round_long_btn"
+                            android:background="@drawable/new_btn_sky_large"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp"

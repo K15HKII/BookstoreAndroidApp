@@ -21,10 +21,6 @@ public class VoucherPage extends BaseFragment<VoucherViewFragmentBinding, Vouche
 
     @Inject protected VoucherViewAdapter voucherViewAdapter;
 
-    public static VoucherPage newInstance() {
-        return new VoucherPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;

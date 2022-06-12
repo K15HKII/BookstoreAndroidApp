@@ -35,7 +35,6 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
     public OrderViewAdapter(List<OrderViewViewModel> orderViewList) {
         super(orderViewList);
     }
-
     public OrderViewAdapter(Context context) {
         super(new ArrayList<>());
         this.context = context;
@@ -52,16 +51,6 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
 
     @Override
     protected void onBindViewHolder(OrderViewHolder holder, @SuppressLint("RecyclerView") OrderViewViewModel data) {
-        // Create layout manager with initial prefetch item count
-        //TODO: chèn chuyển view vào cả layout của recyclerview
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(
-//                holder.binding.rcvWaitingOrderItemsItems.getContext(),
-//                RecyclerView.VERTICAL,
-//                false
-//        );
-//
-//        // Create sub item view adapter
-//        holder.binding.rcvWaitingOrderItemsItems.setLayoutManager(layoutManager);
         holder.itemView.setOnClickListener(d -> {
             getOrderNavigator().Navigate(data);
         });

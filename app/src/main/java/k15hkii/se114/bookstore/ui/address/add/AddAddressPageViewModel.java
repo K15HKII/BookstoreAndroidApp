@@ -1,42 +1,45 @@
 package k15hkii.se114.bookstore.ui.address.add;
 
+import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
+import androidx.databinding.ObservableInt;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
+import k15hkii.se114.bookstore.data.model.location.*;
+import k15hkii.se114.bookstore.data.remote.LocationRepository;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
+import k15hkii.se114.bookstore.ui.address.AddressHelper;
+import k15hkii.se114.bookstore.ui.address.BaseAddressUpdateViewModel;
+import k15hkii.se114.bookstore.utils.SpinnerWrapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
-public class AddAddressPageViewModel extends BaseViewModel<AddAddressPageNavigator> implements Observable {
+public class AddAddressPageViewModel extends BaseAddressUpdateViewModel<AddAddressPageNavigator> implements Observable {
 
-    @Getter
-    public final ObservableField<List<String>> lsCity = new ObservableField<>();
+    public void Accept() {
+        dispose(remote.createAddress(userId, toRequest()),
+                result -> {
 
-    @Getter
-    public final ObservableField<List<String>> lsDistrict = new ObservableField<>(Arrays.asList("Quận 7", "Quận 2", "Quận 1"));
-
-    @Getter
-    public final ObservableField<List<String>> lsVillage = new ObservableField<>(Arrays.asList("Tân Kiểng", "Tân Phong", "Phường 7"));
-
-    public AddAddressPageViewModel(SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
+                }, throwable -> {
+                    Log.d("AddAddressPageViewModel", "Error: " + throwable.getMessage());
+                });
     }
 
-    public void onBackWardClick(){
+    private final ModelRemote remote;
+    private final UUID userId;
+
+    public AddAddressPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, LocationRepository locationRepository, @UserId UUID userId) {
+        super(schedulerProvider, locationRepository);
+        this.remote = remote;
+        this.userId = userId;
+    }
+
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-    // TODO: Implement the ViewModel
 }

@@ -28,10 +28,6 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
     @Inject
     protected OrderViewAdapter orderViewAdapter;
 
-    public static ShipmentArrivedViewPage newInstance() {
-        return new ShipmentArrivedViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -69,7 +65,12 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, OrderRating.class, null)
+
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("bill", vm.getBill());
+
+        createTransaction(R.id.fragmentContainerView, OrderRating.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

@@ -15,18 +15,12 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ForgotPasswordFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
+import k15hkii.se114.bookstore.ui.registerscreen.Register;
 
 public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBinding, ForgotPasswordViewModel>implements ForgotPassNavigator {
 
     private ForgotPasswordFragmentBinding forgotPasswordFragmentBinding;
-    private ForgotPasswordViewModel mViewModel;
-    private Button btnNext, btnBackward;
-    private TextView tvRegister;
-    private EditText etRegister;
-
-    public static ForgotPasswordPage newInstance() {
-        return new ForgotPasswordPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -44,6 +38,8 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
         View view = super.onCreateView(inflater, container, savedInstanceState);
         forgotPasswordFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(ForgotPasswordPage.this);
+
+
         return view;
     }
 
@@ -53,14 +49,20 @@ public class ForgotPasswordPage extends BaseFragment<ForgotPasswordFragmentBindi
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ForgotPasswordViewModel.class);
-        // TODO: Use the ViewModel
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 
     @Override
-    public void BackWard() {
-        getFragmentManager().popBackStack();
+    public void OpenRegister() {
+        getParentFragmentManager().beginTransaction()
+                                  .replace(R.id.fragmentContainerView, Register.class, null)
+                                  .addToBackStack(null)
+                                  .setCustomAnimations(
+                                          R.anim.slide_in,  // enter
+                                          R.anim.fade_out,  // exit
+                                          R.anim.fade_in,   // popEnter
+                                          R.anim.slide_out  // popExit
+                                  ).commit();
     }
 }

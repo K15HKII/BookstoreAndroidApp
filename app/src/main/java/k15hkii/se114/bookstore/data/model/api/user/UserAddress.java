@@ -2,10 +2,7 @@ package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -13,6 +10,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAddress {
+
+    @Getter
+    @Expose
+    @SerializedName("sub_id")
+    private long subId;
+
     @Getter
     @Expose
     @SerializedName("userid")
@@ -23,34 +26,44 @@ public class UserAddress {
     @SerializedName("number")
     private String number;
 
-
+    @Expose
+    @SerializedName("address")
     @Getter
+    private String address;
+
     @Expose
     @SerializedName("street")
+    @Getter
     private String street;
 
-    @Getter
     @Expose
     @SerializedName("city")
+    @Getter
     private String city;
 
-    @Getter
     @Expose
-    @SerializedName("country")
-    private String country;
+    @SerializedName("ward")
+    @Getter
+    private String ward;
 
-    @Getter
     @Expose
-    @SerializedName("zip")
-    private String zip;
+    @SerializedName("project")
+    @Getter
+    private String project;
+
+    @Expose
+    @SerializedName("district")
+    @Getter
+    private String district;
 
     @Getter
     @Expose
     @SerializedName("updated_at")
-    private String update_at;
+    private String updateAt;
 
     @Getter
     @Expose
     @SerializedName("is_primary")
-    private boolean is_primary;
+    private boolean isPrimary;
+
 }

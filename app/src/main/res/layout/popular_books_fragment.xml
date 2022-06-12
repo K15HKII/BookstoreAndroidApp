@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksViewModel" />
     </data>
 
-    <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.mainscreen.homechipnavigator.popularbooks.PopularBooksPage">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.mainscreen.homechipnavigator.popularbooks.PopularBooksPage">
+            android:orientation="vertical">
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:background="@drawable/home_background"/>
-        <androidx.recyclerview.widget.RecyclerView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpPopularBooks"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="150dp"/>
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/ciPopularBooks"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="30dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvHomePopularBook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                source="@{viewModel.items}"/>
-
+                source="@{viewModel.items}" />
+        </LinearLayout>
     </FrameLayout>
 
 </layout>

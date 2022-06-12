@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.OncartSelectorDialogBinding;
 import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
@@ -18,15 +19,17 @@ import javax.inject.Inject;
 
 public class OnCartDialog extends BaseDialog implements OnCartCallBack {
     private static final String TAG = "OnCartDialog";
-    private int amount = 0;
 
     @Inject
     OnCartViewModel onCartViewModel;
 
-    public static OnCartDialog newInstance() {
+    private Book book;
+
+    public static OnCartDialog newInstance(Book book) {
         OnCartDialog fragment = new OnCartDialog();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
+//        Bundle bundle = new Bundle();
+//        fragment.setArguments(bundle);
+        fragment.book = book;
         return fragment;
     }
 
@@ -34,8 +37,6 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         OncartSelectorDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.oncart_selector_dialog, container, false);
         View view =binding.getRoot();
-
-        performDependencyInjection(getBuildComponent());
 
         binding.setViewModel(onCartViewModel);
         onCartViewModel.setNavigator(this);
@@ -48,31 +49,7 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
 
         wlp.gravity = Gravity.BOTTOM;
 
-        binding.btnPutToCartDialogPlusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else{
-                    amount++;
-                    binding.tvPutToCartDialogAmount.setText(amount+"");
-                }
-            }
-        });
-
-        binding.btnPutToCartDialogMinusAmount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(amount == 0){
-                    return;
-                }
-                else {
-                    amount--;
-                    binding.tvPutToCartDialogAmount.setText(amount + "");
-                }
-            }
-        });
+        onCartViewModel.setData(book);
 
         return view;
     }
@@ -81,14 +58,7 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

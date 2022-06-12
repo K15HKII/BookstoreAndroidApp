@@ -12,18 +12,17 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ForYouBooksFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
-public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, ForYouBooksViewModel> implements ForYouBooksNavigator {
+public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, ForYouBooksViewModel> implements ForYouBooksNavigator, BookViewNavigator {
     @Inject
     protected BookViewAdapter bookViewAdapter;
-
-    public static ForYouBooksPage newInstance() {
-        return new ForYouBooksPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -46,6 +45,7 @@ public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, Fo
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ForYouBooksFragmentBinding forYouBooksFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        bookViewAdapter.setBookViewNavigator(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         forYouBooksFragmentBinding.lvHomeForYouBooks.setLayoutManager(gridLayoutManager);
@@ -59,4 +59,16 @@ public class ForYouBooksPage extends BaseFragment<ForYouBooksFragmentBinding, Fo
         buildComponent.inject(this);
     }
 
+    @Override
+    public void Navigate(BookViewModel vm) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book",vm.getBook());
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
 }

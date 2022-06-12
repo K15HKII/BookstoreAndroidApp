@@ -23,11 +23,6 @@ import k15hkii.se114.bookstore.ui.accountscreen.helppage.policy.Policy;
 public class HelpPage extends BaseFragment<HelpPageFragmentBinding, HelpPageViewModel> implements HelpPageNavigator {
 
     private HelpPageFragmentBinding helpPageFragmentBinding;
-    private HelpPageViewModel mViewModel;
-
-    public static HelpPage newInstance() {
-        return new HelpPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -51,13 +46,6 @@ public class HelpPage extends BaseFragment<HelpPageFragmentBinding, HelpPageView
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HelpPageViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @Override

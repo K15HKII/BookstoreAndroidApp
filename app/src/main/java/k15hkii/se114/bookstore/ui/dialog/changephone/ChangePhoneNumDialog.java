@@ -35,8 +35,6 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
         ChangePhoneNumberDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_phone_number_dialog, container, false);
         View view =binding.getRoot();
 
-        performDependencyInjection(getBuildComponent());
-
         binding.setViewModel(changePhoneNumViewModel);
         changePhoneNumViewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
@@ -48,14 +46,7 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
         super.show(fragmentManager, TAG);
     }
 
-    private DialogComponent getBuildComponent(){
-        return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
-                .dialogModule(new DialogModule(this))
-                .build();
-    }
-
-    private void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent){
         buildComponent.inject(this);
     }
 

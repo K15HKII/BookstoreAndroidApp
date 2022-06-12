@@ -26,9 +26,6 @@ import javax.inject.Inject;
 
 public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, RentedViewPageViewModel> implements RentedViewPageNavigator, RentViewNavigator {
 
-    public static RentedViewPage newInstance() {
-        return new RentedViewPage();
-    }
     @Inject
     protected RentViewAdapter rentViewAdapter;
 
@@ -53,6 +50,7 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RentedViewPageFragmentBinding rentedViewPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        rentViewAdapter.setRentViewNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentedViewPage.this.getContext());
         rentedViewPageFragmentBinding.rcvRentedBookView.setLayoutManager(linearLayoutManager);
@@ -69,8 +67,9 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
 
     @Override
     public void Navigate(RentViewViewModel vm) {
-        //TODO: Navigate to Waiting
-        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, null)
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("lended", vm.getLend());
+        createTransaction(R.id.fragmentContainerView, RentDetailBill.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

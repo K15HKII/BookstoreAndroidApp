@@ -1,74 +1,51 @@
 package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator;
 
+import android.util.Log;
 import androidx.databinding.Bindable;
-import androidx.databinding.Observable;
-import k15hkii.se114.bookstore.data.model.api.Book;
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import lombok.Getter;
 
 import javax.inject.Inject;
-import java.util.UUID;
 
-public class BookViewModel extends BaseViewModel<BookViewNavigator> implements Observable {
+public class BookViewModel extends BaseViewModel<BookViewNavigator> {
 
-    @Inject
-    protected ModelRemote remote;
+    //TODO: thêm vào yêu thích, đổ màu trái tim, khi không select vào trái tim thì delete khỏi yêu thích
+    public final ObservableField<Image> image = new ObservableField<>();
+    public final ObservableField<String> title = new ObservableField<>();
+    public final ObservableField<Long> price = new ObservableField<>();
+    public final ObservableField<Double> rating = new ObservableField<>(3.5);
 
-    private String id;
+    private final ModelRemote remote;
+
+    public BookViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        super(schedulerProvider);
+        this.remote = remote;
+    }
+
+    @Getter
     private Book book;
 
-    public void getData(UUID id) {
-        getCompositeDisposable().add(remote.getBook(id)
-               .subscribeOn(getSchedulerProvider().io())
-               .observeOn(getSchedulerProvider().ui())
-               .doOnSuccess(book -> {
-                   this.book = book;
-               }).subscribe());
-    }
-
     public void setBook(Book book) {
+        if (book == null)
+            return;
         this.book = book;
+        if (book.getImages() != null && book.getImages().size() > 0) {
+            image.set(book.getImages().get(0));
+        }
+        title.set(book.getTitle());
+        price.set((long) book.getPrice());
+        dispose(remote.getBookRate(book.getId()), rate -> {
+            if (rate != null) {
+                rating.set(rate.getResult());
+            }
+        }, throwable -> {
+            Log.d("BookViewModel", "getBookRate: " + throwable.getMessage());
+        });
     }
 
-    public BookViewModel(SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
-    }
-
-    @Bindable
-    public String getName() {
-        return book == null ? "profile is null" : book.getTitle();
-    }
-
-    @Bindable
-    public String getPrice() {
-        return book == null ? "null" : "đ" + String.valueOf(book.getPrice());
-    }
-
-//    @Bindable
-//    public Image getImage() {
-//        return book == null ?  : book.getImages()[0];
-//    }
-
-    public BookViewModel(String name) {
-        super(null);
-    }
-
-    public BookViewModel() {
-        super(null);
-    }
-
-    public void openDetail() {
-        getNavigator().bookDetailNavigate(id);
-    }
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
 }
