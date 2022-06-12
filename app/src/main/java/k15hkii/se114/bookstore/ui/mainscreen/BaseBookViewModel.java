@@ -1,9 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen;
 
 import android.util.Log;
-import androidx.databinding.Observable;
-import androidx.databinding.ObservableBoolean;
-import androidx.databinding.ObservableField;
+import androidx.databinding.*;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
@@ -22,10 +20,9 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
 
     public final ObservableField<Image> image = new ObservableField<>();
     public final ObservableField<String> title = new ObservableField<>();
-    public final ObservableField<Long> price = new ObservableField<>();
-    public final ObservableField<Double> rating = new ObservableField<>(3.5);
+    public final ObservableLong price = new ObservableLong();
+    public final ObservableFloat rating = new ObservableFloat(3.5f);
     public final ObservableBoolean isFavorite = new ObservableBoolean(false);
-
     @Getter
     private Book book;
 
@@ -84,7 +81,7 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
 
         dispose(remote.getBookRate(book.getId()), rate -> {
             if (rate != null) {
-                rating.set(rate.getResult());
+                rating.set((float) rate.getResult());
             }
         }, throwable -> {
             Log.d("BookViewModel", "getBookRate: " + throwable.getMessage());
