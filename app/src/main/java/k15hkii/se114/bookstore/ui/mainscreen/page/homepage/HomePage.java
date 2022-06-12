@@ -7,12 +7,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.*;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -91,7 +88,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding, HomePageView
                     }*/
                     switch (position) {
                         case 0:
-                            resId = R.drawable.adapter_menutab_first;
+                            resId = R.drawable.adapter_menutab_head;
                             break;
                         case 1:
                         case 2:
