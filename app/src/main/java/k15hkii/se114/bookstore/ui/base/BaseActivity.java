@@ -81,7 +81,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     }
 
     public void openActivityOnTokenExpire() {
-        //TODO: Navigate to login screen
         finish();
     }
 
