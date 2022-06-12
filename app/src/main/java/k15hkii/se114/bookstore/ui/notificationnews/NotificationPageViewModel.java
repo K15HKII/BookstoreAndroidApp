@@ -20,4 +20,8 @@ public class NotificationPageViewModel extends BaseViewModel<NotificationPageNav
         getNavigator().BackWard();
     }
 
+    public void openVoucherPage(){
+        getNavigator().openVoucherPage();
+    }
+
 }

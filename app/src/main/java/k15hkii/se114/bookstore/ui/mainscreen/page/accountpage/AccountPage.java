@@ -16,7 +16,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoPage;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
@@ -52,28 +52,6 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     @Override
     public void performDependencyInjection(FragmentComponent buildComponent) {
         buildComponent.inject(this);
-    }
-
-    @Override
-    public void openAccountInfo() {
-        createTransaction(R.id.fragmentContainerView, AccountInfoPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openVoucher() {
-        createTransaction(R.id.fragmentContainerView, VoucherPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
     }
 
     @Override

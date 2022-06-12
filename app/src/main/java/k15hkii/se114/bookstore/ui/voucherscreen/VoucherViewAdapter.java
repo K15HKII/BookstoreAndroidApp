@@ -1,15 +1,13 @@
-package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
+package k15hkii.se114.bookstore.ui.voucherscreen;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.VoucherItemAdapterBinding;
-import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressViewModel;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 import org.jetbrains.annotations.NotNull;
 

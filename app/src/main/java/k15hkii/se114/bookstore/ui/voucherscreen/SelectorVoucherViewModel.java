@@ -1,12 +1,10 @@
-package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
+package k15hkii.se114.bookstore.ui.voucherscreen;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
-import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
