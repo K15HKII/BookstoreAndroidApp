@@ -102,25 +102,4 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                         R.anim.slide_out  // popExit
                 ).commit();
     }
-
-
-    @Override
-    public void checkItemHandle() {
-//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
-    }
-
-    //    @Override
-//    public void resetView() {
-//        oncartItemAdapter.notifyDataSetChanged();
-//    }
-
-    @Override
-    public void deleteItem(int index) {
-        viewModel.list.remove(index);
-        viewModel.items.set(viewModel.list);
-        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-        oncartItemAdapter.notifyItemRemoved(index);
-        oncartItemAdapter.notifyItemRangeChanged(index, viewModel.list.size());
-        viewModel.getData();
-    }
 }

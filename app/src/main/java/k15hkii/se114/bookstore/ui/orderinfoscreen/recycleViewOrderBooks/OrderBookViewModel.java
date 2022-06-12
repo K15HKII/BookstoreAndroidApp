@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -19,6 +20,7 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     public final ObservableField<Integer> price = new ObservableField<>();
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableField<Integer> quantity = new ObservableField<>();
+    public final ObservableField<Image> image = new ObservableField<>();
 
     @Getter
     private Book book;
@@ -28,9 +30,12 @@ public class OrderBookViewModel extends BaseViewModel<OrderBooksViewNavigator> {
     private void setData() {
         dispose(remote.getBook(billDetail.getBookId()), book -> {
             this.book = book;
-            this.price.set(book.getPrice());
+            this.price.set(book.getPrice() * billDetail.getQuantity());
             this.name.set(book.getTitle());
             this.quantity.set(billDetail.getQuantity());
+            if (book.getImages() != null && book.getImages().size() > 0) {
+                image.set(book.getImages().get(0));
+            }
         }, throwable -> {
             Log.d("", "GetBook: " + throwable.getMessage(), throwable);
         });
