@@ -2,10 +2,7 @@ package k15hkii.se114.bookstore.data.model.api.bill;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -24,6 +21,7 @@ public class BillDetail {
     private UUID bookId;
 
     @Getter
+    @Setter
     @Expose
     @SerializedName("unit_price")
     private double price;
