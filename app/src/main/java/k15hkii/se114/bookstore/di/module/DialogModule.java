@@ -4,8 +4,10 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataViewModel;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataViewModel;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -88,6 +90,16 @@ public class DialogModule {
     @Provides
     MissingInfoViewModel provideMissingInfoViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, MissingInfoViewModel.class, () -> new MissingInfoViewModel(schedulerProvider));
+    }
+
+    @Provides
+    ErrorDataViewModel provideErrorDataViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, ErrorDataViewModel.class, () -> new ErrorDataViewModel(schedulerProvider));
+    }
+
+    @Provides
+    MissingDataViewModel provideMissingDataViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, MissingDataViewModel.class, () -> new MissingDataViewModel(schedulerProvider));
     }
 }
 
