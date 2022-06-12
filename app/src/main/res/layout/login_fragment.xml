@@ -1,204 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-        tools:context=".ui.loginscreen.Login">
+    tools:context=".ui.loginscreen.Login">
+
     <data>
-        <variable name="LoginViewModel"
-                  type="k15hkii.se114.bookstore.ui.loginscreen.LoginViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.loginscreen.LoginViewModel" />
     </data>
 
-    <LinearLayout android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:orientation="vertical"
-                 android:background="@drawable/new_login_bg">
-    <RelativeLayout
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <ScrollView
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/new_login_bg">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none">
-            <LinearLayout
+                android:layout_height="match_parent">
+
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="15dp"
-                    android:orientation="vertical">
-                <ImageView
-                        android:id="@+id/imageLogin"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleY="1.25"
-                        android:scaleX="1.25"
-                        android:src="@drawable/login_shark_img"/>
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:textAppearance="@style/AppName"
-                          android:text="App Name"
-                          android:textSize="31dp"
-                          android:textColor="#001C44"
-                          android:textAlignment="center"
-                          android:fontFamily="@font/lato_bold"/>
+                    android:scrollbars="none">
 
-                <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/edit_text_background"
-                        app:boxStrokeWidth="0dp"
-                        app:boxStrokeWidthFocused="0dp"
-                        app:boxStrokeColor="#FFF"
-                        app:boxBackgroundColor="#FFF"
-                        app:hintTextColor="@color/btn_blue"
-                        android:nextFocusRight="@color/btn_blue"
-                        app:startIconDrawable="@drawable/ic_account_selected"
-                        app:startIconTint="@color/black"
-                        android:hint="Tên đăng nhập">
-                    <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etLoginUser"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:text="@={LoginViewModel.username}"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="16dp"
-                            android:ems="15"
-                            android:textColor="@color/btn_blue"
-                            android:textColorHint="@color/btn_blue"
-                            android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/edit_text_background"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:passwordToggleEnabled="true"
-                        android:background="@drawable/edit_text_background"
-                        app:boxStrokeWidth="0dp"
-                        app:boxStrokeWidthFocused="0dp"
-                        app:boxStrokeColor="#FFF"
-                        app:boxBackgroundColor="#FFF"
-                        app:hintTextColor="@color/btn_blue"
-                        android:nextFocusRight="@color/btn_blue"
-                        app:startIconDrawable="@drawable/ic_lock"
-                        app:startIconTint="@color/black"
-                        android:hint="Mật khẩu">
-                    <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etLoginPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:text="@={LoginViewModel.password}"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="16dp"
-                            android:ems="15"
-                            android:textColorHighlight="@color/white"
-                            android:textColor="@color/btn_blue"
-                            android:textColorHint="@color/btn_blue"
-                            android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/edit_text_background"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                        android:id="@+id/tvLoginPassforget"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/quen_mat_khau"
-                        android:textColor="#024C5E"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="Quên mật khẩu?"
-                        android:clickable="true"
-                        android:onClick="@{()-> LoginViewModel.onForgotPasswordClick()}"
-                        android:textAlignment="textEnd"/>
-
-                <android.widget.Button
-                        android:id="@+id/btnLoginLogin"
-                        android:onClick="@{()-> LoginViewModel.onServerLoginClick()}"
-                        android:background="@drawable/new_btn_sky_medium"
-                        android:radius="45dp"
-                        android:layout_width="155dp"
-                        android:layout_height="48dp"
-                        android:textAllCaps="false"
-                        android:textSize="16sp"
-                        android:text="Đăng nhập"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_gravity="center"/>
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        android:layout_marginTop="20dp"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/Dang_nhap_bang_tai_khoan"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:text="Đăng nhập bằng tài khoản"/>
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                    <LinearLayout android:layout_width="145dp"
-                                  android:layout_height="37dp"
-                                  android:layout_marginTop="30dp"
-                                  android:layout_marginBottom="30dp"
-                                  android:layout_centerHorizontal="true"
-                                  android:orientation="horizontal">
-                        <android.widget.Button
-                                android:id="@+id/btnLoginLoginWithGoogle"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/ic_google"
-                                android:textSize="24sp"/>
-                        <android.widget.Button
-                                android:id="@+id/btnLoginLoginWithFaceBook"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:scaleX="1.35"
-                                android:scaleY="1.35"
-                                android:layout_marginLeft="72dp"
-                                android:backgroundTint="@color/btn_blue"
-                                android:background="@drawable/facebook_icon"
-                                android:textSize="24sp"/>
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
                     <LinearLayout
-                            android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageLogin"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleY="1.25"
+                            android:scaleX="1.25"
+                            android:src="@drawable/login_shark_img" />
+
+                        <TextView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:orientation="horizontal">
+                            android:textAppearance="@style/AppName"
+                            android:text="App Name"
+                            android:textSize="31dp"
+                            android:textColor="#001C44"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/lato_bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/edit_text_background"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            app:startIconDrawable="@drawable/ic_account_selected"
+                            app:startIconTint="@color/black"
+                            android:hint="Tên đăng nhập">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etLoginUser"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:text="@={viewModel.username}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="16dp"
+                                android:ems="15"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/edit_text_background" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:passwordToggleEnabled="true"
+                            android:background="@drawable/edit_text_background"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            app:startIconDrawable="@drawable/ic_lock"
+                            app:startIconTint="@color/black"
+                            android:hint="Mật khẩu">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etLoginPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:text="@={viewModel.password}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="16dp"
+                                android:ems="15"
+                                android:textColorHighlight="@color/white"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/edit_text_background" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
                         <TextView
-                                android:layout_width="wrap_content"
-                                android:textAppearance="@style/Dang_ki"
-                                android:paddingTop="15sp"
-                                android:fontFamily="@font/lato_light"
-                                android:textSize="12sp"
-                                android:layout_height="match_parent"
-                                android:text="Bạn chưa có tài khoản?"
-                                android:textColor="@color/color_of_signup"
-                                android:textAlignment="center"/>
+                            android:id="@+id/tvLoginPassforget"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/quen_mat_khau"
+                            android:textColor="#024C5E"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Quên mật khẩu?"
+                            android:clickable="true"
+                            android:onClick="@{()-> viewModel.onForgotPasswordClick()}"
+                            android:textAlignment="textEnd" />
+
+                        <android.widget.Button
+                            android:id="@+id/btnLoginLogin"
+                            android:onClick="@{()-> viewModel.onServerLoginClick()}"
+                            android:background="@drawable/new_btn_sky_medium"
+                            android:radius="45dp"
+                            android:layout_width="155dp"
+                            android:layout_height="48dp"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:text="Đăng nhập"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_gravity="center" />
+
                         <TextView
-                                android:id="@+id/tvLoginRegister"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="5dp"
-                                android:text="Đăng kí"
-                                android:textAppearance="@style/Dang_ki"
-                                android:textSize="29sp"
-                                android:textColor="@color/color_of_signup"
-                                android:fontFamily="@font/lato_bold"
-                                android:layout_weight="700"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_marginTop="20dp"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Dang_nhap_bang_tai_khoan"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:text="Đăng nhập bằng tài khoản" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="145dp"
+                                android:layout_height="37dp"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="30dp"
+                                android:layout_centerHorizontal="true"
+                                android:orientation="horizontal">
+
+                                <android.widget.Button
+                                    android:id="@+id/btnLoginLoginWithGoogle"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/ic_google"
+                                    android:textSize="24sp" />
+
+                                <android.widget.Button
+                                    android:id="@+id/btnLoginLoginWithFaceBook"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:scaleX="1.35"
+                                    android:scaleY="1.35"
+                                    android:layout_marginLeft="72dp"
+                                    android:backgroundTint="@color/btn_blue"
+                                    android:background="@drawable/facebook_icon"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:onClick="@{()-> LoginViewModel.onRegisterClick()}"
-                                android:clickable="true"/>
+                                android:layout_centerHorizontal="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:textAppearance="@style/Dang_ki"
+                                    android:paddingTop="15sp"
+                                    android:fontFamily="@font/lato_light"
+                                    android:textSize="12sp"
+                                    android:layout_height="match_parent"
+                                    android:text="Bạn chưa có tài khoản?"
+                                    android:textColor="@color/color_of_signup"
+                                    android:textAlignment="center" />
+
+                                <TextView
+                                    android:id="@+id/tvLoginRegister"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Đăng kí"
+                                    android:textAppearance="@style/Dang_ki"
+                                    android:textSize="29sp"
+                                    android:textColor="@color/color_of_signup"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:layout_weight="700"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:onClick="@{()-> viewModel.onRegisterClick()}"
+                                    android:clickable="true" />
+                            </LinearLayout>
+                        </RelativeLayout>
                     </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
-        </ScrollView>
-    </RelativeLayout>
-    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
+<!--        TODO: Van bam qua view sau duoc-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_transparent"
+            android:clickable="false"
+            loading="@{viewModel.loading}"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:backgroundTint="@color/color_of_button"
+            loading="@{viewModel.loading}"/>
+    </FrameLayout>
+
+
 </layout>

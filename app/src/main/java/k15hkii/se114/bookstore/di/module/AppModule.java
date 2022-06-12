@@ -22,6 +22,8 @@ import k15hkii.se114.bookstore.utils.rx.AppSchedulerProvider;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

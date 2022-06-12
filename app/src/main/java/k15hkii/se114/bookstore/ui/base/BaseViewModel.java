@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.PropertyChangeRegistry;
@@ -11,19 +12,26 @@ import androidx.lifecycle.ViewModel;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 
 import javax.inject.Inject;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class BaseViewModel<N extends INavigator> extends ViewModel implements Observable {
-
-    private final ObservableBoolean isLoading = new ObservableBoolean();
 
     @Inject
     @Getter
     SchedulerProvider schedulerProvider;
+
+    private final AtomicInteger mPendingTask = new AtomicInteger(0);
+
+    @Bindable
+    public boolean isLoading() {
+        return mPendingTask.get() > 0;
+    }
 
     public BaseViewModel(SchedulerProvider schedulerProvider) {
         this.schedulerProvider = schedulerProvider;
@@ -52,14 +60,6 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
         super.onCleared();
     }
 
-    public ObservableBoolean getIsLoading() {
-        return isLoading;
-    }
-
-    public void setIsLoading(boolean isLoading) {
-        this.isLoading.set(isLoading);
-    }
-
     private PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
 
     protected <T> void dispose(Single<T> single, Consumer<? super T> onSuccess, Consumer<? super Throwable> onError) {
@@ -67,11 +67,28 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
                 .doOnError(throwable -> {
                     Log.d(getClass().getSimpleName(), "dispose: " + throwable.getMessage(), throwable);
                 })
-                .doOnSubscribe(disposable -> isLoading.set(true))
+                .doOnSubscribe(disposable -> {
+                    synchronized (mPendingTask) {
+                        if (mPendingTask.incrementAndGet() == 1) {
+                            notifyPropertyChanged(BR.loading);
+                        }
+                    }
+                })
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
-                .doFinally(() -> isLoading.set(false))
+                .doFinally(() -> {
+                    synchronized (mPendingTask) {
+                        if (mPendingTask.decrementAndGet() < 1) {
+                            notifyPropertyChanged(BR.loading);
+                        };
+                    }
+                })
                 .subscribe(onSuccess, onError));
+    }
+
+    protected <T> void dispose(Single<T> single) {
+        dispose(single, res -> {
+            }, throwable -> { });
     }
 
     @Override

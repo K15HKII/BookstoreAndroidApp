@@ -30,7 +30,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
 
     @Override
     public int getBindingVariable() {
-        return BR.LoginViewModel;
+        return BR.viewModel;
     }
 
     @Override

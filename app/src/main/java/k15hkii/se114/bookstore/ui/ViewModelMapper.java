@@ -179,7 +179,7 @@ public class ViewModelMapper {
     public List<OrderBookViewModel> toOrderBookViewModels(List<BillDetail> details) {
         List<OrderBookViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : details) {
-            OrderBookViewModel viewModel = new OrderBookViewModel(remote);
+            OrderBookViewModel viewModel = new OrderBookViewModel(this.schedulerProvider, remote);
             viewModel.setOrderDetail(billDetail);
             list.add(viewModel);
         }

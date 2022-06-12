@@ -27,18 +27,24 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     protected ModelRemote remote;
     public UUID userId;
 
-    List<OncartItemViewModel> selectedItemList = new ArrayList<>();
+    public List<OncartItemViewModel> selectedItemList = new ArrayList<>();
     public List<OncartItemViewModel> list = new ArrayList<>();
 
     public void getData() {
         dispose(remote.getCarts(userId),
                 cartItems -> {
                     totalPrice.set(0d);
-                    OncartItemViewModel.resetCounter();
                     list.clear();
                     for (CartItem cartItem : cartItems) {
                         OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
                         vm.setCartItem(cartItem);
+                        vm.getDeleteCallbacks().add(this::getData);
+                        vm.getUpdateCallbacks().add(() -> {
+                            totalPrice.set(0);
+                            for (OncartItemViewModel temp : list) {
+                                totalPrice.set(totalPrice.get() + temp.price.get());
+                            }
+                        });
                         list.add(vm);
 
                         if (cartItem.isSelected()) {
@@ -53,7 +59,8 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                     }
                     items.set(list);
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote,

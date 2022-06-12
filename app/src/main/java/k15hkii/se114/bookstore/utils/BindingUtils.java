@@ -1,13 +1,12 @@
 package k15hkii.se114.bookstore.utils;
 
 import android.annotation.SuppressLint;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.*;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
@@ -30,6 +29,24 @@ public final class BindingUtils {
         if (gender != null) {
             view.setText(gender.name());
         }
+    }
+
+    @BindingAdapter({"loading"})
+    public static void bindLoading(ProgressBar progressBar, boolean isLoading) {
+        if (isLoading) progressBar.setVisibility(View.VISIBLE);
+        else progressBar.setVisibility(View.GONE);
+    }
+
+    @BindingAdapter({"loading"})
+    public static void bindLoading(FrameLayout layout, boolean isLoading) {
+        if (isLoading) layout.setVisibility(View.VISIBLE);
+        else layout.setVisibility(View.GONE);
+    }
+
+    @BindingAdapter({"loading"})
+    public static void bindLoading(CircularProgressIndicator progressBar, boolean isLoading) {
+        if (isLoading) progressBar.setVisibility(View.VISIBLE);
+        else progressBar.setVisibility(View.GONE);
     }
 
     @BindingAdapter({"address"})

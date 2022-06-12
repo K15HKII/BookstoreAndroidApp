@@ -21,20 +21,17 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void login(Object obj) {
-        getCompositeDisposable().add(authentication.login(new LoginRequest(username.get(), password.get()))
-                .subscribeOn(io.reactivex.schedulers.Schedulers.io())
-                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
-                .subscribe(response -> {
+        dispose(authentication.login(new LoginRequest(username.get(), password.get())),
+                response -> {
                     if (response.isAuthenticated())
                         getNavigator().openHomeView(obj);
                 }, throwable -> {
                     getNavigator().handleError(throwable);
-                }));
+                });
     }
 
     public void onServerLoginClick() {
         login(null);
-        getNavigator().openHomeView();
     }
 
     public void onForgotPasswordClick() {
@@ -43,16 +40,6 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
 
     public void onRegisterClick() {
         getNavigator().openRegister();
-    }
-
-    @Override
-    public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
-    }
-
-    @Override
-    public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-
     }
 
 }

@@ -1,6 +1,5 @@
 package k15hkii.se114.bookstore.data.remote;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -69,10 +68,10 @@ public interface ModelRemote {
      * @return
      */
     @POST("/api/user/favourite/{user_id}")
-    Single<Book> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+    Single<CRUDStatusResponse> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
 
     @DELETE("/api/user/favourite/{user_id}")
-    void deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+    Single<CRUDStatusResponse> deleteFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
     //endregion
 
     //region CartItem
@@ -87,10 +86,10 @@ public interface ModelRemote {
      * @return
      */
     @POST("/api/user/cart/{user_id}")
-    Single<CartItem> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
+    Single<CRUDStatusResponse> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
 
     @DELETE("/api/user/cart/{book_id}")
-    Single<Integer> deleteCart(@Path("book_id") UUID book_id);
+    Single<CRUDStatusResponse> deleteCart(@Path("book_id") UUID book_id);
     //endregion
 
     //region Address
@@ -101,29 +100,29 @@ public interface ModelRemote {
     Single<UserAddress> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @DELETE("/api/user/address/{address_id}/{user_id}")
-    void deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
+    Single<CRUDStatusResponse> deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @POST("/api/user/address/{user_id}")
-    Single<UserAddress> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
+    Single<CRUDItemResponse<UserAddress>> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
 
     @POST("/api/user/address/{address_id}/{user_id}")
-    Single<UserAddress> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
+    Single<CRUDItemResponse<UserAddress>> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
 
     //region Bank
     @GET("/api/user/banks/{user_id}")
     Single<List<UserBank>> getBanks(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bank/{user_id}")
-    Single<UserBank> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
+    Single<CRUDItemResponse<UserBank>> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
 
     @POST("/api/user/bank/{bank_id}/{user_id}")
-    Single<UserBank> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
+    Single<CRUDItemResponse<UserBank>> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
 
     @GET("/api/user/bank/{bank_id}/{user_id}")
     Single<UserBank> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
-    void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
+    Single<CRUDStatusResponse> deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
     //endregion
     //endregion
     //endregion

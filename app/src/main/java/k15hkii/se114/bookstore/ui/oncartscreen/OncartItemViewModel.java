@@ -2,7 +2,9 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import android.util.Log;
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
@@ -13,20 +15,34 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.inject.Inject;
+import java.util.LinkedList;
+import java.util.List;
 
 public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> implements Observable {
 
-    public ObservableField<String> name = new ObservableField<>();
-    public ObservableField<Integer> price = new ObservableField<>();
-    public ObservableField<Integer> quantity = new ObservableField<>();
+    public interface UpdateCallback {
+
+        void onUpdate();
+
+    }
+
+    public interface DeleteCallback {
+
+        void onDelete();
+
+    }
+
+    @Getter
+    private final List<UpdateCallback> updateCallbacks = new LinkedList<>();
+    @Getter
+    private final List<DeleteCallback> deleteCallbacks = new LinkedList<>();
+
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableInt price = new ObservableInt();
+    public final ObservableInt quantity = new ObservableInt();
     public final ObservableField<Image> image = new ObservableField<>();
-    public ObservableField<Boolean> isSelectedItem = new ObservableField<>();
+    public final ObservableBoolean isSelectedItem = new ObservableBoolean();
 
-    private int postition;
-    private static int counter = 0;
-
-    @Inject
     protected ModelRemote remote;
 
     private CartItem cartItem;
@@ -53,65 +69,48 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                     this.isSelectedItem.set(cartItem.isSelected());
                 },
                 throwable -> Log.d("OncartViewViewModel",
-                                   "getData: " + throwable.getMessage(), throwable));
+                        "getData: " + throwable.getMessage(), throwable));
     }
 
-    public void setCartItem(CartItem cartItem) throws InterruptedException {
+    public void setCartItem(CartItem cartItem) {
         this.cartItem = cartItem;
         quantity.set(cartItem.getQuantity());
         getData();
-        this.postition = counter++;
     }
 
     public void deleteItem() {
-        resetCounter();
-        dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
-        getNavigator().deleteItem(postition);
-        // TODO: Fix bug delete no reset view, delete van duoc nhung ma view khong cap nhat, phai out ra cart roi vo ai moi duoc
+        dispose(remote.deleteCart(book.getId()), a -> {
+            for (DeleteCallback callback : deleteCallbacks) {
+                callback.onDelete();
+            }
+        }, throwable -> Log.d("OncartViewViewModel",
+                "deleteItem: " + throwable.getMessage(), throwable));
     }
 
     public void plusQuantity() {
-        if (quantity.get() >= book.getStock()) {
-            return;
-        } else {
-            quantity.set((quantity.get() + 1));
-            this.price.set(book.getPrice() * quantity.get());
-            //cart item is selected
-            if (isSelectedItem.get()) {
-                // TODO: cập nhật lại tổng tiền của OnCartPage
-            }
-            postCart(isSelectedItem.get());
+        quantity.set((quantity.get() + 1));
+        this.price.set(book.getPrice() * quantity.get());
+        for (UpdateCallback cb : updateCallbacks) {
+            cb.onUpdate();
         }
+        postCart(isSelectedItem.get());
     }
 
     public void minusQuantity() {
-        if (quantity.get() == 1) {
+        if (quantity.get() < 2) {
             return;
-        } else {
-            quantity.set((quantity.get() - 1));
-            this.price.set(book.getPrice() * quantity.get());
-            //cart item is selected
-            if (isSelectedItem.get()) {
-                // TODO: cập nhật lại tổng tiền của OnCartPage
-            }
-            postCart(isSelectedItem.get());
         }
+        quantity.set((quantity.get() - 1));
+        this.price.set(book.getPrice() * quantity.get());
+        for (UpdateCallback cb : updateCallbacks) {
+            cb.onUpdate();
+        }
+        postCart(isSelectedItem.get());
     }
 
-    //todo: selected post len co isSelected = false nhung tra ve` la true
-    public void CheckHandle() {
-        if (cartItem.isSelected() == false && isSelectedItem.get()) {
-            isSelectedItem.set(true);
-            postCart(true);
-            // TODO: cập nhật lại tổng tiền của OnCartPage
-//            this.getNavigator().checkItemHandle();
-        }
-        else if (cartItem.isSelected() == true && !isSelectedItem.get()){
-            isSelectedItem.set(false);
-            postCart(false);
-            // TODO: cập nhật lại tổng tiền của OnCartPage
-//            this.getNavigator().checkItemHandle();
-        }
+    public void toggleHandle() {
+        isSelectedItem.set(!isSelectedItem.get());
+        postCart(isSelectedItem.get());
     }
 
     void postCart(boolean status) {
@@ -120,9 +119,10 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
         request.setQuantity(quantity.get());
         request.setSelected(status);
         dispose(remote.createCart(cartItem.getUserId(), request),
-                cartItem -> {},
-                throwable -> {});
+                cartItem -> {
+                },
+                throwable -> {
+                });
     }
 
-    public static void resetCounter(){ counter = 0;}
 }
