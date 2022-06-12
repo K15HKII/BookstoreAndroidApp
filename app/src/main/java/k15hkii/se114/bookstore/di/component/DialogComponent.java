@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
 import k15hkii.se114.bookstore.ui.dialog.changephone.ChangePhoneNumDialog;
 import k15hkii.se114.bookstore.ui.dialog.emptycart.EmptyCartDialog;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkDialog;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
@@ -52,4 +53,6 @@ public interface DialogComponent {
     void inject(MissingDataDialog missingDataDialog);
 
     void inject(EmptyCartDialog emptyCartDialog);
+
+    void inject(ErrorNetworkDialog errorNetworkDialog);
 }

@@ -5,7 +5,10 @@ import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.dialog.emptycart.EmptyCartViewModel;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataViewModel;
+import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkDialog;
+import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkViewModel;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataViewModel;
@@ -106,6 +109,11 @@ public class DialogModule {
     @Provides
     EmptyCartViewModel provideEmptyCartViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, EmptyCartViewModel.class, () -> new EmptyCartViewModel(schedulerProvider));
+    }
+
+    @Provides
+    ErrorNetworkViewModel provideErrorNetworkViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, ErrorNetworkViewModel.class, () -> new ErrorNetworkViewModel(schedulerProvider));
     }
 }
 
