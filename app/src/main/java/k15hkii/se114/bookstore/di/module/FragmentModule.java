@@ -86,7 +86,6 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
-import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
 import k15hkii.se114.bookstore.ui.success.lend.*;
@@ -505,11 +504,6 @@ public class FragmentModule {
     @Provides
     public OncartItemAdapter oncartItemAdapter(Context context) {
         return new OncartItemAdapter(context);
-    }
-
-    @Provides
-    public RecentSearchAdapter recentSearchAdapter(Context context) {
-        return new RecentSearchAdapter(context);
     }
 
     @Provides

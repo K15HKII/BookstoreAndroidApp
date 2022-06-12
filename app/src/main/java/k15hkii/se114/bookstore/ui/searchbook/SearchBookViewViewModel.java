@@ -3,6 +3,7 @@ package k15hkii.se114.bookstore.ui.searchbook;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -11,11 +12,11 @@ import java.util.List;
 
 public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigator> implements Observable {
 
-    private final ObservableField<List<RecentSearchViewModel>> searchBookViewItemsLiveData = new ObservableField<>();
+    private final ObservableField<List<BookViewModel>> searchBookViewItemsLiveData = new ObservableField<>();
 
     public ObservableField<String> etSearchBookText = new ObservableField<>();
 
-    public List<RecentSearchViewModel> getSearchBookViewItems() {
+    public List<BookViewModel> getSearchBookViewItems() {
         return searchBookViewItemsLiveData.get();
     }
 

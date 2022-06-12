@@ -21,6 +21,8 @@ import k15hkii.se114.bookstore.databinding.SearchBookViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -29,9 +31,9 @@ import java.util.List;
 
 public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, SearchBookViewViewModel> implements SearchBookViewNavigator {
     private EditText sbSearchInput;
-    List<RecentSearchViewModel> arrayName;
+    List<BookViewModel> arrayName;
     @Inject
-    protected RecentSearchAdapter recentSearchAdapter;
+    protected BookViewAdapter recentSearchAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -93,14 +95,15 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
     }
 
     private void filter(String inputTxt){
-        ArrayList<RecentSearchViewModel> filteredLs = new ArrayList<>();
+        //TODO: lọc danh sách cuốn sách cần tìmá
+        /*ArrayList<BookViewModel> filteredLs = new ArrayList<>();
 
-        for(RecentSearchViewModel item : arrayName){
+        for(BookViewModel item : arrayName){
             if(item.getTitle().toLowerCase().contains(inputTxt.toLowerCase())) {
                 filteredLs.add(item);
             }
         }
-        recentSearchAdapter.filterlist(filteredLs);
+        recentSearchAdapter.filterlist(filteredLs);*/
     }
 
     @Override
