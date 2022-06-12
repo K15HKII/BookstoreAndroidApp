@@ -82,4 +82,19 @@ public class OrderInfoPageViewModel extends BaseOrderInfoViewModel<OrderInfoPage
         getNavigator().SucceedOrder();
     }
 
+    public void openSelectAddress() {
+        //TODO: select Address page
+        getNavigator().openSelectAddress();
+    }
+
+    public void openSelectVoucher() {
+        //TODO: select Voucher page
+        getNavigator().openSelectVoucher();
+    }
+
+    public void openSelectPaymentMethod() {
+        //TODO: select PaymentMethod page
+        getNavigator().openSelectPayment();
+    }
+
 }

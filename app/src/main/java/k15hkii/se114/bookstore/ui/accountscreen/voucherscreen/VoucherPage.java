@@ -43,8 +43,6 @@ public class VoucherPage extends BaseFragment<VoucherViewFragmentBinding, Vouche
         VoucherViewFragmentBinding voucherViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-//        String[] names = {"20% Giảm giá","30% Giảm giá","10% Giảm giá"};
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         voucherViewFragmentBinding.rcvVoucherViewVoucherList.setLayoutManager(layoutManager);
         voucherViewFragmentBinding.rcvVoucherViewVoucherList.setAdapter(voucherViewAdapter);
