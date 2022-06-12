@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.accessibility.AccessibilityEvent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -58,7 +59,7 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
         oncartItemAdapter.setOncartItemNavigator(this);
 
-        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
+//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
 
         return view;
     }
@@ -115,8 +116,11 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
 
     @Override
     public void deleteItem(int index) {
-//        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-//        oncartItemAdapter.notifyItemRemoved(index);
+        viewModel.list.remove(index);
+        viewModel.items.set(viewModel.list);
+        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
+        oncartItemAdapter.notifyItemRemoved(index);
+        oncartItemAdapter.notifyItemRangeChanged(index, viewModel.list.size());
         viewModel.getData();
     }
 }

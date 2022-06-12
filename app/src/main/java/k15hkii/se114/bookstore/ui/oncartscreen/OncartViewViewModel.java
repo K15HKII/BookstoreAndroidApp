@@ -26,27 +26,23 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     @Inject
     protected ModelRemote remote;
     public UUID userId;
-    private Book book;
-    private double total;
 
     List<OncartItemViewModel> selectedItemList = new ArrayList<>();
+    public List<OncartItemViewModel> list = new ArrayList<>();
 
     public void getData() {
-        getCompositeDisposable().add(remote.getCarts(userId)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(cartItems -> {
-                    List<OncartItemViewModel> list = new ArrayList<>();
+        dispose(remote.getCarts(userId),
+                cartItems -> {
+                    totalPrice.set(0d);
+                    OncartItemViewModel.resetCounter();
+                    list.clear();
                     for (CartItem cartItem : cartItems) {
-                        OncartItemViewModel model = new OncartItemViewModel(getSchedulerProvider(), remote);
-                        model.setCartItem(cartItem);
-                        list.add(model);
+                        OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
+                        vm.setCartItem(cartItem);
+                        list.add(vm);
 
                         if (cartItem.isSelected()) {
-                            OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
-                            vm.setCartItem(cartItem);
                             selectedItemList.add(vm);
-
                             dispose(remote.getBook(cartItem.getBookId()),
                                     book -> {
                                         totalPrice.set((book.getPrice() * cartItem.getQuantity()) + totalPrice.get());
@@ -56,12 +52,12 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                         }
                     }
                     items.set(list);
-                }, throwable -> {
-                    Log.d("OncartViewViewModel", "getData: " + throwable.getMessage(), throwable);
-                }));
+                },
+                throwable -> { });
     }
 
-    public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
+    public OncartViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote,
+                               PreferencesHelper preferencesHelper) {
         super(schedulerProvider);
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();

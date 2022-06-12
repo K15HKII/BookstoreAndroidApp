@@ -64,9 +64,9 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
     }
 
     public void deleteItem() {
+        resetCounter();
         dispose(remote.deleteCart(book.getId()), a -> { }, throwable -> { });
         getNavigator().deleteItem(postition);
-        updateCounter();
         // TODO: Fix bug delete no reset view, delete van duoc nhung ma view khong cap nhat, phai out ra cart roi vo ai moi duoc
     }
 
@@ -106,7 +106,7 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
             // TODO: cập nhật lại tổng tiền của OnCartPage
 //            this.getNavigator().checkItemHandle();
         }
-        else if (cartItem.isSelected() == true){
+        else if (cartItem.isSelected() == true && !isSelectedItem.get()){
             isSelectedItem.set(false);
             postCart(false);
             // TODO: cập nhật lại tổng tiền của OnCartPage
@@ -124,5 +124,5 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
                 throwable -> {});
     }
 
-    public void updateCounter(){counter = 0;}
+    public static void resetCounter(){ counter = 0;}
 }

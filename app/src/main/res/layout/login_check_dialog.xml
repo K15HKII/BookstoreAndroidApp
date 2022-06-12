@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel"
+                  type="k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/dialog_shape"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_correct" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:id="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Đăng nhập thành công!!!"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/lato_regular"
+            android:textAlignment="center" app:layout_constraintTop_toBottomOf="@+id/imageView13"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

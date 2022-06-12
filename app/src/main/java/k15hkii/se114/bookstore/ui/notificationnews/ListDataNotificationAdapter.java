@@ -44,7 +44,7 @@ public class ListDataNotificationAdapter extends ListAdapter<ListDataNotificatio
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ListDataNotificationViewHolder holder, ListDataNotificationViewModel data) {
-        if(data == null){
+        /*if(data == null){
             return;
         }
         if(TYPE_INFO == holder.getItemViewType()){
@@ -62,7 +62,7 @@ public class ListDataNotificationAdapter extends ListAdapter<ListDataNotificatio
 
             NotificationOrderViewAdapter notificationOrderViewAdapter = new NotificationOrderViewAdapter(data.getOrderItems());
             holder.rcvListNotification.setAdapter(notificationOrderViewAdapter);
-        }
+        }*/
     }
 
     class ListDataNotificationViewHolder extends RecyclerView.ViewHolder{
