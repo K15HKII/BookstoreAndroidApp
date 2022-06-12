@@ -11,12 +11,10 @@
         tools:context=".ui.accountscreen.settingpage.languagesetting.LanguageSetting">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/home_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:background="@drawable/home_background"
                   android:orientation="vertical" app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent">
