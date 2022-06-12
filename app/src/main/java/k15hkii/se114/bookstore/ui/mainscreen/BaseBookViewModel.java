@@ -69,6 +69,12 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
         getCompositeDisposable().add(favouriteDisposable);
     }
 
+    public void setBook(UUID uuid) {
+        dispose(remote.getBook(uuid), this::setBook, throwable -> {
+            Log.d("BaseBookViewModel", "error: ", throwable);
+        });
+    }
+
     public void setBook(Book book) {
         if (book == null)
             return;

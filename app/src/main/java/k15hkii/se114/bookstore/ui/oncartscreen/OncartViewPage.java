@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
@@ -88,10 +89,11 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
-    public void OrderPageNavigator(OncartViewViewModel viewModel) {
+    public void OrderPageNavigator(OncartViewViewModel viewModel, List<OncartItemViewModel> selecteds) {
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("orderList", (Serializable) viewModel.selectedItemList);
+        ArrayList<OncartItemViewModel> temp = new ArrayList<>(selecteds);
+        bundle.putSerializable("orderList", temp);
         bundle.putSerializable("userId", viewModel.userId);
 
         createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, bundle)

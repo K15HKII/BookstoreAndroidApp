@@ -6,6 +6,7 @@ import java.util.UUID;
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.bill.BillCreateRequest;
 import k15hkii.se114.bookstore.data.model.api.bill.Transporter;
 import k15hkii.se114.bookstore.data.model.api.book.Author;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
@@ -187,8 +188,8 @@ public interface ModelRemote {
 //    @GET("/api/bill/from/{user_id}")
 //    Single<List<Bill>> getBills(@Path("user_id") UUID user_id);
 
-    @POST("/api/bill/{bill_id}")
-    Single<Bill> createBill(@Path("bill_id") int bill_id);
+    @POST("/api/user/bill/")
+    Single<Bill> createBill(@Body BillCreateRequest request);
 
     /**
      * Cancel order

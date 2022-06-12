@@ -110,6 +110,9 @@ public class OncartItemViewModel extends BaseViewModel<OncartItemNavigator> impl
 
     public void toggleHandle() {
         isSelectedItem.set(!isSelectedItem.get());
+        for (UpdateCallback cb : updateCallbacks) {
+            cb.onUpdate();
+        }
         postCart(isSelectedItem.get());
     }
 

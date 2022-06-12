@@ -1,11 +1,10 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm;
 
 import android.util.Log;
-import io.reactivex.Observable;
 import k15hkii.se114.bookstore.data.model.api.Payment;
-import k15hkii.se114.bookstore.data.model.api.bill.Bill;
-import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
+import k15hkii.se114.bookstore.data.model.api.bill.BillCreateRequest;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
+import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
@@ -20,51 +19,45 @@ import java.util.UUID;
 
 public class OrderInfoPageViewModel extends BaseOrderInfoViewModel<OrderInfoPageNavigator> {
 
-    // TODO: T nghĩ cần BillRequest để gắn phương thức thanh toán, địa chỉ, đơn hàng, voucher này kia
-    // ở đây set data cho view thì bill chưa được tạo, bấm nút đặt hàng rồi thì mới post bill
-
-    List<OrderBookViewModel> list = new ArrayList<>();
-    List<BillDetail> billDetails = new ArrayList<>();
-
     public void getCartItems(UUID userId) {
         dispose(remote.getCarts(userId),
                 cartItems -> {
+                    List<OrderBookViewModel> list = new ArrayList<>();
+                    price.set(0);
                     for (CartItem cartItem : cartItems) {
-                        OrderBookViewModel viewModel = new OrderBookViewModel(getSchedulerProvider(), remote);
-                        BillDetail billDetail = new BillDetail(-1, cartItem.getBookId(), 0, cartItem.getQuantity());
-                        viewModel.setOrderDetail(billDetail);
-                        if (viewModel.price.get() != null) {
-                            billDetail.setPrice(viewModel.price.get());
-                        }
-                        list.add(viewModel);
-                        billDetails.add(billDetail);
+                        if (!cartItem.isSelected())
+                            continue;
+                        OrderBookViewModel vm = new OrderBookViewModel(getSchedulerProvider(), remote);
+                        dispose(remote.getBook(cartItem.getBookId()),
+                                book -> {
+                                    vm.setBook(book, cartItem.getQuantity());
+                                    price.set(price.get() + vm.price.get());
+                                }, error -> {
+                                    Log.d("getCartItems", error.getMessage(), error);
+                                });
+                        list.add(vm);
                     }
                     this.items.set(list);
                 },
-                throwable -> { });
+                throwable -> {
+                    Log.d("getCartItems", throwable.getMessage(), throwable);
+                });
 
         this.voucher.set("Chọn");
         this.paymentMethod.set(Payment.CASH);
 
         dispose(remote.getAddresses(userId),
-                addresses ->{
-            for (UserAddress address : addresses) {
-                if (address.isPrimary()) {
-                    this.address.set(address);
-                    return;
-                }
-            }
+                addresses -> {
+                    for (UserAddress address : addresses) {
+                        if (address.isPrimary()) {
+                            this.address.set(address);
+                            return;
+                        }
+                    }
                 },
                 throwable -> {
                     Log.d("OrderInfoPageViewModel", "getAddress: " + throwable.getMessage());
                 });
-
-        //region Get total
-        dispose(Observable.fromIterable(billDetails)
-                          .map(detail -> detail.getPrice() * detail.getQuantity())
-                          .reduceWith(() -> 0d, (a, b) -> a + b).map(Double::longValue), this.total::set, throwable -> {
-            Log.d("OrderRatingViewModel", "getData: ", throwable);
-        });
     }
 
     public OrderInfoPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper, ModelRemote remote,
@@ -77,9 +70,37 @@ public class OrderInfoPageViewModel extends BaseOrderInfoViewModel<OrderInfoPage
         getNavigator().BackWard();
     }
 
+    public BillCreateRequest toRequest() {
+        BillCreateRequest request = new BillCreateRequest();
+
+        if (address.get() != null) {
+            request.setAddressId(address.get().getSubId());
+        }
+        if (bank.get() != null) {
+            request.setBankId(bank.get().getSubId());
+        }
+        request.setPayment(paymentMethod.get());
+
+        List<CartItemCRUDRequest> items = new ArrayList<>();
+        for (OrderBookViewModel vm : this.items.get()) {
+            CartItemCRUDRequest item = new CartItemCRUDRequest();
+            item.setQuantity(vm.quantity.get());
+            item.setBookId(vm.getBook().getId());
+            items.add(item);
+        }
+        request.setItems(items);
+
+        //TODO: vouchers
+
+        return request;
+    }
+
     public void openSuccessOrder() {
-        //TODO: Post Bill
-        getNavigator().SucceedOrder();
+        dispose(remote.createBill(toRequest()), bill -> {
+            getNavigator().SucceedOrder();
+        }, throwable -> {
+            Log.d("OrderInfoPageViewModel", "openSuccessOrder: " + throwable.getMessage());
+        });
     }
 
     public void openSelectAddress() {

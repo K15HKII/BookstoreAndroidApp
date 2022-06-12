@@ -1,9 +1,11 @@
 package k15hkii.se114.bookstore.ui.oncartscreen;
 
 import android.util.Log;
+import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
@@ -27,28 +29,54 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     protected ModelRemote remote;
     public UUID userId;
 
-    public List<OncartItemViewModel> selectedItemList = new ArrayList<>();
-    public List<OncartItemViewModel> list = new ArrayList<>();
+    private boolean selectAll = false;
+
+    @Bindable
+    public boolean isSelectAll() {
+        return selectAll;
+    }
+
+    public void setSelectAll(boolean selectAll) {
+        if (selectAll == this.selectAll) {
+            return;
+        }
+        this.selectAll = selectAll;
+        for (OncartItemViewModel vm : items.get()) {
+            vm.isSelectedItem.set(selectAll);
+        }
+    }
 
     public void getData() {
         dispose(remote.getCarts(userId),
                 cartItems -> {
                     totalPrice.set(0d);
-                    list.clear();
+                    List<OncartItemViewModel> list = new ArrayList<>();
+                    int selectCount = 0;
                     for (CartItem cartItem : cartItems) {
                         OncartItemViewModel vm = new OncartItemViewModel(getSchedulerProvider(), remote);
                         vm.setCartItem(cartItem);
                         vm.getDeleteCallbacks().add(this::getData);
                         vm.getUpdateCallbacks().add(() -> {
                             totalPrice.set(0);
-                            for (OncartItemViewModel temp : list) {
-                                totalPrice.set(totalPrice.get() + temp.price.get());
+                            int selectCount2 = 0;
+                            for (OncartItemViewModel temp : items.get()) {
+                                if (temp.isSelectedItem.get()) {
+                                    totalPrice.set(totalPrice.get() + temp.price.get());
+                                    selectCount2++;
+                                }
                             }
+                            if (selectCount2 == this.items.get().size()) {
+                                selectAll = true;
+                            } else {
+                                selectAll = false;
+                            }
+                            notifyPropertyChanged(BR.selectAll);
                         });
                         list.add(vm);
 
+
                         if (cartItem.isSelected()) {
-                            selectedItemList.add(vm);
+                            selectCount++;
                             dispose(remote.getBook(cartItem.getBookId()),
                                     book -> {
                                         totalPrice.set((book.getPrice() * cartItem.getQuantity()) + totalPrice.get());
@@ -57,6 +85,12 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
                                     });
                         }
                     }
+                    if (selectCount == list.size()) {
+                        selectAll = true;
+                    } else {
+                        selectAll = false;
+                    }
+                    notifyPropertyChanged(BR.selectAll);
                     items.set(list);
                 },
                 throwable -> {
@@ -77,7 +111,13 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     }
 
     public void openOrderPage() {
-        getNavigator().OrderPageNavigator(this);
+        List<OncartItemViewModel> selected = new ArrayList<>();
+        for (OncartItemViewModel vm : items.get()) {
+            if (vm.isSelectedItem.get()) {
+                selected.add(vm);
+            }
+        }
+        getNavigator().OrderPageNavigator(this, selected);
     }
 
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import k15hkii.se114.bookstore.BuildConfig;
+import k15hkii.se114.bookstore.data.model.ISubEnum;
 import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.model.api.user.Gender;
@@ -27,7 +28,14 @@ public final class BindingUtils {
     @BindingAdapter({"gender"})
     public static void bindGender(TextView view, Gender gender) {
         if (gender != null) {
-            view.setText(gender.name());
+            view.setText(gender.toDefaultLocale());
+        }
+    }
+
+    @BindingAdapter({"sub"})
+    public static void bindSub(TextView view, ISubEnum sub) {
+        if (sub != null) {
+            view.setText(sub.toDefaultLocale());
         }
     }
 
@@ -64,7 +72,9 @@ public final class BindingUtils {
 
     @BindingAdapter({"date"})
     public static void bindDate(TextView view, Date date) {
-        DateFormat.getDateInstance().format(date);
+        if (date == null)
+            return;
+        view.setText(DateFormat.getDateInstance().format(date));
     }
 
     @BindingAdapter({"payment"})

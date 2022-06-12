@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.databinding.ImageAdapterBinding;
@@ -29,7 +30,7 @@ public class ImageViewAdapter extends ListAdapter<Image, ImageViewAdapter.ImageV
     @NotNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_adapter, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_adapter , parent, false);
 
         ImageViewHolder holder = new ImageViewHolder(view);
         return holder;
@@ -47,6 +48,7 @@ public class ImageViewAdapter extends ListAdapter<Image, ImageViewAdapter.ImageV
 
         public void setImage(Image image) {
             binding.setImage(image);
+            binding.notifyPropertyChanged(BR.image);
         }
 
     }

@@ -59,7 +59,7 @@
                 <ScrollView
                     android:background="#F3F5F9"
                     android:scrollbars="none"
-                    android:layout_marginBottom="60dp"
+                    android:layout_marginBottom="55dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -238,8 +238,10 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rcvBookDetailComments"
                                 android:padding="10dp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 source="@{viewModel.feedbacks}" />
                         </LinearLayout>
                     </LinearLayout>
@@ -339,22 +341,22 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/gray_transparent"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"
-            loading="@{viewModel.loading}" />
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/gray_transparent"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:clickable="true"-->
+<!--            loading="@{viewModel.loading}" />-->
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:indeterminate="true"
-            android:layout_gravity="center"
-            android:clickable="false"
-            android:backgroundTint="@color/color_of_button"
-            loading="@{viewModel.loading}" />
+<!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:indeterminate="true"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:clickable="false"-->
+<!--            android:backgroundTint="@color/color_of_button"-->
+<!--            loading="@{viewModel.loading}" />-->
     </FrameLayout>
 </layout>
