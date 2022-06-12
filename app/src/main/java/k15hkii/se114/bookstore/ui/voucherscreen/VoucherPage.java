@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.accountscreen.voucherscreen;
+package k15hkii.se114.bookstore.ui.voucherscreen;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -42,8 +42,6 @@ public class VoucherPage extends BaseFragment<VoucherViewFragmentBinding, Vouche
         View view = super.onCreateView(inflater, container, savedInstanceState);
         VoucherViewFragmentBinding voucherViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
-
-//        String[] names = {"20% Giảm giá","30% Giảm giá","10% Giảm giá"};
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         voucherViewFragmentBinding.rcvVoucherViewVoucherList.setLayoutManager(layoutManager);

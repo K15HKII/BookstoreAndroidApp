@@ -12,4 +12,8 @@ public interface LoginNavigator extends INavigator {
     void openPasswordForget(Object... obj);
 
     void openRegister(Object... obj);
+
+    void openWrongDialog();
+
+    void openCorrectDialog();
 }

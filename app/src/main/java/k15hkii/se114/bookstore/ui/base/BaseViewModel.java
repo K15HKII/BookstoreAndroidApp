@@ -28,6 +28,18 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
 
     private final AtomicInteger mPendingTask = new AtomicInteger(0);
 
+    public synchronized void increasePendingTask() {
+        if (mPendingTask.incrementAndGet() == 1) {
+            notifyPropertyChanged(BR.loading);
+        }
+    }
+
+    public synchronized void decreasePendingTask() {
+        if (mPendingTask.decrementAndGet() < 1) {
+            notifyPropertyChanged(BR.loading);
+        };
+    }
+
     @Bindable
     public boolean isLoading() {
         return mPendingTask.get() > 0;
@@ -68,21 +80,11 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
                     Log.d(getClass().getSimpleName(), "dispose: " + throwable.getMessage(), throwable);
                 })
                 .doOnSubscribe(disposable -> {
-                    synchronized (mPendingTask) {
-                        if (mPendingTask.incrementAndGet() == 1) {
-                            notifyPropertyChanged(BR.loading);
-                        }
-                    }
+                    increasePendingTask();
                 })
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
-                .doFinally(() -> {
-                    synchronized (mPendingTask) {
-                        if (mPendingTask.decrementAndGet() < 1) {
-                            notifyPropertyChanged(BR.loading);
-                        };
-                    }
-                })
+                .doFinally(this::decreasePendingTask)
                 .subscribe(onSuccess, onError));
     }
 

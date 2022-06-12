@@ -70,7 +70,6 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
 
         bundle.putSerializable("bill", vm.getBill());
 
-        //TODO: Navigate to Shipping
         createTransaction(R.id.fragmentContainerView, OrderChecker.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter

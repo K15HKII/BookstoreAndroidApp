@@ -112,6 +112,24 @@ public final class BindingUtils {
         view.setText(String.format("%,.1f", rating));
     }
 
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("rating")
+    public static void bindText(TextView view, float rating) {
+        view.setText(String.format("%,.1f", rating));
+    }
+
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("rating_full")
+    public static void ratingFull(TextView view, double rating) {
+        view.setText(String.format("%,.1f/5", rating));
+    }
+
+    @SuppressLint("DefaultLocale")
+    @BindingAdapter("rating_full")
+    public static void ratingFull(TextView view, float rating) {
+        view.setText(String.format("%,.1f/5", rating));
+    }
+
     //region Adapter
     @SuppressLint("NotifyDataSetChanged")
     @BindingAdapter({"source"})

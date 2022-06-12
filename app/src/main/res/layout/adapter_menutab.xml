@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/adapter_menutab_first"
+        android:background="@drawable/adapter_menutab_head"
         android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -10,7 +10,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            android:text="hello"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:fontFamily="@font/lato_bold"/>

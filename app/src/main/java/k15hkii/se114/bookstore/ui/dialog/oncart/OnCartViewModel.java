@@ -44,6 +44,7 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
 
         dispose(remote.createCart(userId, request),
                 cartItem -> {
+                    getNavigator().dismissDialog();
                 },
                 throwable -> {
                     Log.d("OnCartViewModel", throwable.getMessage());
@@ -68,7 +69,6 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
 
     public void accept() {
         postCart();
-        getNavigator().dismissDialog();
     }
 
 }

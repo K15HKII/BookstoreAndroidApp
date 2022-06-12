@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 public class FailedCheckDialog extends BaseDialog implements FailedCheckCallBack {
 
-    private static final String TAG = "ChangeNameDialog";
+    private static final String TAG = "FailedCheckDialog";
 
     @Inject
     protected FailedCheckViewModel viewModel;

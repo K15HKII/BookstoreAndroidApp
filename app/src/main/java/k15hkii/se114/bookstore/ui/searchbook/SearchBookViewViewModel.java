@@ -1,27 +1,62 @@
 package k15hkii.se114.bookstore.ui.searchbook;
 
+import android.util.Log;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.subjects.PublishSubject;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigator> implements Observable {
+public class SearchBookViewViewModel extends BaseViewModel<SearchBookViewNavigator> {
 
-    private final ObservableField<List<BookViewModel>> searchBookViewItemsLiveData = new ObservableField<>();
+    public final ObservableField<List<BookViewModel>> searchResult = new ObservableField<>();
 
-    public ObservableField<String> etSearchBookText = new ObservableField<>();
+    public final ObservableField<String> searchString = new ObservableField<>();
 
-    public List<BookViewModel> getSearchBookViewItems() {
-        return searchBookViewItemsLiveData.get();
+    private final ModelRemote remote;
+    private final ViewModelMapper mapper;
+    private final Disposable searchObservable;
+
+    public SearchBookViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        super(schedulerProvider);
+        this.remote = remote;
+        this.mapper = mapper;
+
+        PublishSubject<String> search = PublishSubject.create();
+        searchString.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                String searchString = SearchBookViewViewModel.this.searchString.get();
+                search.onNext(searchString == null ? "" : searchString);
+            }
+        });
+
+        searchObservable = search.debounce(1, TimeUnit.SECONDS)
+                .filter(s -> s != null && s.length() > 0)
+                .distinctUntilChanged()
+                .switchMapSingle(remote::getBooks)
+                .doOnSubscribe(disposable -> increasePendingTask())
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
+                .doFinally(this::decreasePendingTask)
+                .subscribe(books -> {
+                    searchResult.set(mapper.toBookViewModel(books));
+                }, throwable -> {
+                    Log.e("SearchBookViewViewModel", "error: ", throwable);
+                });
     }
 
-    public SearchBookViewViewModel(SchedulerProvider schedulerProvider) {
-        super(schedulerProvider);
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        getCompositeDisposable().add(searchObservable);
     }
 
     public void onBackWardClick() {

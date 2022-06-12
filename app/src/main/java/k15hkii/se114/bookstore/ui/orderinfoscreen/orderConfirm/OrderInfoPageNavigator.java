@@ -6,4 +6,10 @@ public interface OrderInfoPageNavigator extends INavigator {
     void BackWard();
 
     void SucceedOrder();
+
+    void openSelectAddress();
+
+    void openSelectVoucher();
+
+    void openSelectPayment();
 }

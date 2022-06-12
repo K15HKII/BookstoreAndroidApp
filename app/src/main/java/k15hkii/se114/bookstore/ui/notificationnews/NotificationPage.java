@@ -14,6 +14,7 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -58,26 +59,19 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
         buildComponent.inject(this);
     }
 
-    private List<ListDataNotificationViewModel> GetListDataNotification() {
-        List<ListDataNotificationViewModel> lsDATA = new ArrayList<>();
-        List<OrderItemViewModel> lsBook1 = new ArrayList<>();
-//        lsBook1.add(new OrderItemViewModel());
-//        lsBook1.add(new OrderItemViewModel());
-
-        List<NotificationOrderViewModel> lsOrder = new ArrayList<>();
-        lsOrder.add(new NotificationOrderViewModel("Đơn hàng 1", "200.000đ", "Đã được xác nhận", lsBook1));
-
-        List<NotificationInfoViewModel> lsInfo = new ArrayList<>();
-        lsInfo.add(new NotificationInfoViewModel("Chào mừng bạn đến với bookstore", "Hello"));
-
-        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_ORDERVIEW, null, lsOrder));
-        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_INFO, lsInfo, lsOrder));
-        return lsDATA;
-
-    }
-
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openVoucherPage() {
+        createTransaction(R.id.fragmentContainerView, VoucherPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }

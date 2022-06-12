@@ -67,7 +67,7 @@
                         android:fontFamily="@font/lato_bold"
                         android:textSize="20dp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/ic_shopping"/>
+                        android:drawableStart="@drawable/ic_shopping_blue"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
@@ -304,7 +304,7 @@
                     android:layout_marginTop="40dp"
                     android:text="Quay lại"
                     android:fontFamily="@font/lato_bold"
-                    android:textColor="@color/btn_blue"
+                    android:textColor="@color/color_of_button"
                     android:textAllCaps="false"
                     android:background="@drawable/new_btn_white_medium"
             />
