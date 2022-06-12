@@ -6,9 +6,9 @@ import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.bill.BillStatus;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.lend.Lend;
-import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
@@ -31,23 +31,27 @@ public class ViewModelMapper {
 
     private final ModelRemote remote;
     private final SchedulerProvider schedulerProvider;
+    private final UUID userId;
 
     @Inject
-    public ViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public ViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
         this.schedulerProvider = schedulerProvider;
         this.remote = remote;
+        this.userId = userId;
+    }
+
+    public List<BookViewModel> toBookViewModel(List<Book> books) {
+        List<BookViewModel> list = new ArrayList<>();
+        for (Book book : books) {
+            BookViewModel vm = new BookViewModel(schedulerProvider, remote, userId);
+            vm.setBook(book);
+            list.add(vm);
+        }
+        return list;
     }
 
     public Single<List<BookViewModel>> toBookViewModel(Single<List<Book>> single) {
-        return single.map(books -> {
-            List<BookViewModel> list = new ArrayList<>();
-            for (Book book : books) {
-                BookViewModel vm = new BookViewModel(schedulerProvider, remote);
-                vm.setBook(book);
-                list.add(vm);
-            }
-            return list;
-        });
+        return single.map(this::toBookViewModel);
     }
 
     public Single<List<RentViewViewModel>> toLendViewModel(Single<List<Lend>> single) {

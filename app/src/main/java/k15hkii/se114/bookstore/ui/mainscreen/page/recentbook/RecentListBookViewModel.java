@@ -22,7 +22,7 @@ public class RecentListBookViewModel extends BaseViewModel<RecentListBookNavigat
     private UUID userId;
 
     public void getData() {
-        dispose(mapper.getFavouriteBooks(userId),
+        dispose(mapper.getRecentBooks(userId),
                 items::set,
                 throwable -> Log.d("FavoritePageViewModel", "getData: " + throwable.getMessage(), throwable));
     }
@@ -38,5 +38,4 @@ public class RecentListBookViewModel extends BaseViewModel<RecentListBookNavigat
         getNavigator().BackWard();
     }
 
-    // TODO: Implement the ViewModel
 }

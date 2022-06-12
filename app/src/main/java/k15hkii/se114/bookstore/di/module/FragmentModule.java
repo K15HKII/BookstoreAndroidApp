@@ -139,8 +139,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, preferencesHelper));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, userId));
     }
 
     @Provides
@@ -289,8 +289,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider));
+    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider, remote, mapper));
     }
 
     @Provides
