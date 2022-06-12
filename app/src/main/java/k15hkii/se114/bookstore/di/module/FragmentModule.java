@@ -274,8 +274,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider));
+    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider, mapper, remote));
     }
 
     @Provides

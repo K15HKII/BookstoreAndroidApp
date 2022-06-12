@@ -65,7 +65,6 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
 //        lsBook1.add(new OrderItemViewModel());
 
         List<NotificationOrderViewModel> lsOrder = new ArrayList<>();
-        lsOrder.add(new NotificationOrderViewModel("Đơn hàng 1", "200.000đ", "Đã được xác nhận", lsBook1));
 
         List<NotificationInfoViewModel> lsInfo = new ArrayList<>();
         lsInfo.add(new NotificationInfoViewModel("Chào mừng bạn đến với bookstore", "Hello"));

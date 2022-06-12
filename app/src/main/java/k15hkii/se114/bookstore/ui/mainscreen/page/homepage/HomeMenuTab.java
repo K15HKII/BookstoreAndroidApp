@@ -9,10 +9,6 @@ import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooks
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksPage;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
 import org.jetbrains.annotations.NotNull;
 
 public class HomeMenuTab extends FragmentStateAdapter {

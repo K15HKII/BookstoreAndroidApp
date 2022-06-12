@@ -1,6 +1,6 @@
 package k15hkii.se114.bookstore.ui.dialog.buynow;
 
-import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
 
-    public final ObservableField<Integer> quantity = new ObservableField<>();
+    public final ObservableInt quantity = new ObservableInt();
     PreferencesHelper helper;
 
     @Inject
@@ -30,8 +30,6 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
 
     public void dismissDialog(){
         postCart();
-        getNavigator().dismissDialog();
-        getNavigator().openCartPage();
     }
 
     void postCart() {
@@ -39,7 +37,10 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
         request.setBookId(book.getId());
         request.setQuantity(quantity.get());
         dispose(remote.createCart(userId, request),
-                cartItem -> {},
+                cartItem -> {
+                    getNavigator().dismissDialog();
+                    getNavigator().openCartPage();
+                },
                 throwable -> {});
     }
 
@@ -52,17 +53,13 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
         if (quantity.get() >= book.getStock()) {
             return;
         }
-        else {
-            quantity.set((quantity.get() + 1));
-        }
+        quantity.set((quantity.get() + 1));
     }
 
     public void minusQuantity() {
         if (quantity.get() == 0) {
             return;
         }
-        else {
-            quantity.set((quantity.get() - 1));
-        }
+        quantity.set((quantity.get() - 1));
     }
 }

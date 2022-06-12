@@ -83,7 +83,7 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
             image.set(book.getImages().get(0));
         }
         title.set(book.getTitle());
-        price.set((long) book.getPrice());
+        price.set(book.getPrice());
 
         dispose(remote.getBookRate(book.getId()), rate -> {
             if (rate != null) {

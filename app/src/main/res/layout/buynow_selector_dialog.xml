@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel" />
     </data>
-<LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
@@ -12,85 +17,95 @@
         android:paddingRight="24dp"
         android:orientation="vertical"
         android:background="@drawable/account_button_1">
-    <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <TextView
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Loại"
                 android:fontFamily="@font/lato_regular"
                 android:textColor="@color/black"
-                android:textSize="14dp"/>
-        <com.google.android.material.chip.ChipGroup
+                android:textSize="14dp" />
+
+            <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipgrpHomeChipNavigation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:singleLine="true"
                 app:singleSelection="true">
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chipBuyNowSoftBook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:fontFamily="@font/lato_regular"
-                android:text="Bìa mềm"
-                android:textStyle="bold"
-                android:textSize="15dp"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chipBuyNowHardBook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/lato_regular"
-                android:text="Bìa cứng"
-                android:textStyle="bold"
-                android:textSize="15dp"/>
-        </com.google.android.material.chip.ChipGroup>
-    </LinearLayout>
-    <!--    TODO: Cần add thêm cộng trừ-->
-    <LinearLayout
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBuyNowSoftBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Bìa mềm"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBuyNowHardBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Bìa cứng"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+        <!--    TODO: Cần add thêm cộng trừ-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <TextView
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/lato_regular"
                 android:text="Số lượng"
                 android:textColor="@color/black"
-                android:textSize="14dp"/>
-        <RelativeLayout
+                android:textSize="14dp" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom">
-            <LinearLayout
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:orientation="horizontal">
-                <ImageButton
+
+                    <ImageButton
                         android:id="@+id/btnBuyNowMinusAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="#B6BCBD"
                         android:onClick="@{()->viewModel.minusQuantity()}"
-                        android:src="@drawable/ic_minus"/>
-                <TextView
+                        android:src="@drawable/ic_minus" />
+
+                    <TextView
                         android:id="@+id/tvBuyNowAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.quantity.toString()}"
+                        android:text="@{String.valueOf(viewModel.quantity)}"
                         android:textColor="@color/black"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                />
-                <ImageButton
+                        android:paddingRight="10dp" />
+
+                    <ImageButton
                         android:id="@+id/btnBuyNowPlusAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,11 +113,12 @@
                         android:layout_alignParentRight="true"
                         android:background="#B6BCBD"
                         android:onClick="@{()->viewModel.plusQuantity()}"
-                        android:src="@drawable/ic_plus"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout
+                        android:src="@drawable/ic_plus" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:onClick="@{()-> viewModel.dismissDialog()}"
             android:id="@+id/btnBuyNowDialogBuyNow"
             android:layout_width="match_parent"
@@ -110,13 +126,17 @@
             android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:background="@drawable/new_btn_sky_large">
-        <RelativeLayout android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-            <android.widget.Button
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.widget.Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/lato_bold"
+                    android:onClick="@{()-> viewModel.dismissDialog()}"
                     android:text="Mua ngay"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -124,9 +144,10 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:drawableLeft="@drawable/ic_shopping_cart_checkout"
-                    android:background="@null" android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                    android:background="@null"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>
 

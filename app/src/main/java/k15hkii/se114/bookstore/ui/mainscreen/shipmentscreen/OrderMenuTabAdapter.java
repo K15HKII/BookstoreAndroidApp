@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrder;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
@@ -32,7 +32,7 @@ public class OrderMenuTabAdapter extends FragmentStateAdapter {
             case 2:
                 return new ShipmentArrivedViewPage();
             case 3:
-                return new CancleOrder();
+                return new CancelOrder();
             default:
                 return new WaitingOrderViewPage();
         }
