@@ -120,7 +120,7 @@ public interface ModelRemote {
     Single<UserBank> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
 
     @GET("/api/user/bank/{bank_id}/{user_id}")
-    Single<List<UserBank>> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
+    Single<UserBank> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
     void deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
