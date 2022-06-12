@@ -5,28 +5,24 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.databinding.*;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
-import k15hkii.se114.bookstore.data.model.api.file.Image;
-import k15hkii.se114.bookstore.data.model.api.user.FavouriteBookCRUDRequest;
+import k15hkii.se114.bookstore.data.model.api.message.Feedback;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.BaseBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseBookViewModel<BookDetailPageNavigator> {
 
-    private final ObservableField<List<FeedbackViewModel>> commentItemsLiveData = new ObservableField<>();
+    public final ObservableField<List<FeedbackViewModel>> feedbacks = new ObservableField<>();
 
     public BookDetailPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, UUID userId) {
         super(schedulerProvider, remote, userId);
     }
 
-    public List<FeedbackViewModel> getCommentItems() {
-        return commentItemsLiveData.get();
-    }
     public final ObservableField<String> description = new ObservableField<>();
     public final ObservableInt remainQuantity = new ObservableInt();
 
@@ -35,6 +31,20 @@ public class BookDetailPageViewModel extends BaseBookViewModel<BookDetailPageNav
 
         description.set(book.getDescription());
         remainQuantity.set(book.getStock());
+        dispose(getRemote().getFeedbacks(book.getId())
+                        .map(feedbacks -> {
+                            List<FeedbackViewModel> list = new ArrayList<>();
+                            for (Feedback feedback : feedbacks) {
+                                FeedbackViewModel vm = new FeedbackViewModel(getSchedulerProvider(), getRemote());
+                                vm.setFeedback(feedback);
+                                list.add(vm);
+                            }
+                            return list;
+                        }),
+                this.feedbacks::set,
+                error -> {
+                    Log.d("", "Error: " + error.getMessage());
+                });
     }
 
     @Override
@@ -44,15 +54,15 @@ public class BookDetailPageViewModel extends BaseBookViewModel<BookDetailPageNav
         if (book != null) setBook(book);
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void openBuyNowDialog(){
+    public void openBuyNowDialog() {
         getNavigator().openBuyNowDialog(getBook());
     }
 
-    public void openOnCartDialog(){
+    public void openOnCartDialog() {
         getNavigator().openOnCartDialog(getBook());
     }
 
