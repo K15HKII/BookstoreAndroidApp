@@ -20,6 +20,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerAdap
 
     private final List<String> uris = Arrays.asList(
             "http://goo.gl/gEgYUd",
+            "https://miro.medium.com/max/1400/1*3JC1cc52WnKVnqw6pbdeeA.png",
             "http://goo.gl/gEgYUd"
     );
 

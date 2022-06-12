@@ -239,8 +239,8 @@
                                 android:id="@+id/rcvBookDetailComments"
                                 android:padding="10dp"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                source="@{viewModel.getCommentItems}" />
+                                android:layout_height="match_parent"
+                                source="@{viewModel.feedbacks}" />
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>

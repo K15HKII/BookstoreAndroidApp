@@ -51,7 +51,7 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     }
 
     public void postFeedback() {
-        dispose(Observable.fromArray(imageUris.get().toArray(new Uri[0]))
+        dispose(Observable.fromIterable(imageUris.get())
                         .flatMapSingle(uri -> remote.uploadImage(RemoteUtils.from(uri)))
                         .map(File::getId)
                         .toList(),

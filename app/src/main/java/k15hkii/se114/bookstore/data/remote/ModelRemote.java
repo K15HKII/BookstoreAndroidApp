@@ -242,6 +242,9 @@ public interface ModelRemote {
     //endregion
 
     //region Feedback
+    @GET("/api/message/feedback/{book_id}")
+    Single<List<Feedback>> getFeedbacks(@Path("book_id") UUID book_id);
+
     @POST("/api/message/feedback")
     public Single<Feedback> sendFeedback(@Body FeedbackCRUDRequest feedback);
 

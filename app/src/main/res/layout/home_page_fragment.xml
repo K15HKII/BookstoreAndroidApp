@@ -85,6 +85,7 @@
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabMenuHomeNav"
                 android:layout_width="wrap_content"
