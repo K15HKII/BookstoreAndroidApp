@@ -28,9 +28,15 @@ public interface AccountPageNavigator extends INavigator {
 
     void openFavoritePage();
 
-    void openOrder();
+    void openWaitingOrder();
 
-    void openRent();
+    void openShippingOrder();
+
+    void openArrivedOrder();
+
+    void openRenting();
+
+    void openRented();
 
     void openRencentBook();
 

@@ -120,12 +120,16 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
         getNavigator().openSelectBank();
     }
 
-    public void openOrderClick(){
-        getNavigator().openOrder();
+    public void openWaitingOrderClick(){
+        getNavigator().openWaitingOrder();
     }
 
-    public void openRentClick(){
-        getNavigator().openRent();
+    public void openRentingClick(){
+        getNavigator().openRenting();
+    }
+
+    public void openRentedClick(){
+        getNavigator().openRented();
     }
 
     public void openFavoritePage(){
@@ -134,5 +138,13 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
 
     public void openRecentBook(){
         getNavigator().openRencentBook();
+    }
+
+    public void openShippingOrderClick(){
+        getNavigator().openShippingOrder();
+    }
+
+    public void openArrivedOrderClick(){
+        getNavigator().openArrivedOrder();
     }
 }

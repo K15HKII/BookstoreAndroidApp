@@ -110,8 +110,10 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     }
 
     @Override
-    public void openOrder() {
-        createTransaction(R.id.fragmentContainerView, ShippingPage.class, null)
+    public void openWaitingOrder() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",0);
+        createTransaction(R.id.fragmentContainerView, ShippingPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -121,8 +123,49 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     }
 
     @Override
-    public void openRent() {
-        createTransaction(R.id.fragmentContainerView, RentPage.class, null)
+    public void openArrivedOrder() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",2);
+        createTransaction(R.id.fragmentContainerView, ShippingPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openShippingOrder() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",1);
+        createTransaction(R.id.fragmentContainerView, ShippingPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openRenting() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",0);
+        createTransaction(R.id.fragmentContainerView, RentPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openRented() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",1);
+        createTransaction(R.id.fragmentContainerView, RentPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

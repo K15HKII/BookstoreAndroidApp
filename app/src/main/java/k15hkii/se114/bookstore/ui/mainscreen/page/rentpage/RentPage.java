@@ -77,7 +77,10 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                     tab.setText(title);
                 }
         ).attach();
-
+        if (getArguments() != null) {
+            int position = getArguments().getInt("position", 0);
+            RentView.setCurrentItem(position);
+        }
         return view;
     }
 
