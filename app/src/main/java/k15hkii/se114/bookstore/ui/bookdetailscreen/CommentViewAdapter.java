@@ -16,11 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.CommentViewHolder> {
+public class CommentViewAdapter extends ListAdapter<FeedbackViewModel, CommentViewAdapter.CommentViewHolder> {
 
     Context context;
 
-    public CommentViewAdapter(List<Comment> lsComments, Context context) {
+    public CommentViewAdapter(List<FeedbackViewModel> lsComments, Context context) {
         super(lsComments);
         this.context = context;
     }
@@ -39,11 +39,11 @@ public class CommentViewAdapter extends ListAdapter<Comment, CommentViewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull CommentViewHolder holder, Comment data) {
+    public void onBindViewHolder(@NonNull @NotNull CommentViewHolder holder, FeedbackViewModel data) {
         if(data == null){
             return;
         }
-        holder.tvUserEmail.setText(data.getUserEmail());
+        //holder.tvUserEmail.setText(data.getUserEmail());
     }
 
     class CommentViewHolder extends RecyclerView.ViewHolder{

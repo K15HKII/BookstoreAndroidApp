@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
-public class Feedback extends Message{
+import java.util.List;
+
+public class Feedback extends Message {
 
     @Getter
     @Expose
@@ -14,7 +16,7 @@ public class Feedback extends Message{
     @Getter
     @Expose
     @SerializedName("replies")
-    private ReplyFeedback[] replies;
+    private List<ReplyFeedback> replies;
 
     @Getter
     @Expose

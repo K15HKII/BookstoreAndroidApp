@@ -33,29 +33,22 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implem
     private User user;
     private String maxCondition;
 
-    //TODO: k thấy dữ liệu
     public void getData() {
-        getCompositeDisposable().add(remote.getVoucherProfile(voucher.getProfileId())
-                                           .subscribeOn(getSchedulerProvider().io())
-                                           .observeOn(getSchedulerProvider().ui())
-                                           .subscribe(voucherProfile -> {
-                                               this.voucherProfile = voucherProfile;
-                                               this.discount.set(String.valueOf(voucherProfile.getDiscount()));
-                                               this.discountType.set("Giảm giá theo %");
-                                               this.minValue.set("Đơn hàng tối thiểu "+String.valueOf(voucherProfile.getMinValue())+" đ");
-                                               this.requireBook.set("Cần tối thiểu "+String.valueOf(voucherProfile.getRequire_book())+ " quyển sách");
-                                               this.bookType.set("chim nhỏ, mông bự");
-                                           }, throwable -> {
-                                               Log.d("VoucherViewModel", "getData: " + throwable.getMessage(), throwable);
-                                           }));
+        dispose(remote.getVoucherProfile(voucher.getProfileId()), voucherProfile -> {
+                    this.voucherProfile = voucherProfile;
+                    this.discount.set(String.valueOf(voucherProfile.getDiscount()));
+                    this.discountType.set("Giảm giá theo %");
+                    this.minValue.set("Đơn hàng tối thiểu " + String.valueOf(voucherProfile.getMinValue()) + " đ");
+                    this.requireBook.set("Cần tối thiểu " + String.valueOf(voucherProfile.getRequire_book()) + " quyển sách");
+                    this.bookType.set("chim nhỏ, mông bự");
+                }, throwable -> {
+                    Log.d("VoucherViewModel", "getData: " + throwable.getMessage(), throwable);
+                });
     }
 
     public VoucherViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
-    }
-    public VoucherViewModel(){
-        super(null);
     }
 
     public void setVoucher(Voucher voucher) {
@@ -63,7 +56,9 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implem
         this.expiredDate.set(String.valueOf(voucher.getExpired_at()));
         getData();
     }
-    public void setVoucherProfile(VoucherProfile voucherProfile){
+
+    public void setVoucherProfile(VoucherProfile voucherProfile) {
         this.voucherProfile = voucherProfile;
     }
+
 }

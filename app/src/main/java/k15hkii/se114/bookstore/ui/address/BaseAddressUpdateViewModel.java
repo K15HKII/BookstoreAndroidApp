@@ -1,8 +1,10 @@
 package k15hkii.se114.bookstore.ui.address;
 
 import androidx.databinding.Observable;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
+import k15hkii.se114.bookstore.data.model.api.user.UserAddressCRUDRequest;
 import k15hkii.se114.bookstore.data.model.location.*;
 import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -25,6 +27,23 @@ public class BaseAddressUpdateViewModel<N extends INavigator> extends BaseViewMo
     public final ObservableInt wardIndex = new ObservableInt(0);
     public final ObservableInt projectIndex = new ObservableInt(0);
     public final ObservableInt streetIndex = new ObservableInt(0);
+
+    public final ObservableField<String> address = new ObservableField<>();
+    public final ObservableBoolean isPrimary = new ObservableBoolean(false);
+
+    public UserAddressCRUDRequest toRequest() {
+        UserAddressCRUDRequest requset = new UserAddressCRUDRequest();
+
+        requset.setAddress(address.get());
+        requset.setCity(cities.get().get(cityIndex.get()).getDisplay());
+        requset.setDistrict(districts.get().get(districtIndex.get()).getDisplay());
+        requset.setWard(wards.get().get(wardIndex.get()).getDisplay());
+        requset.setProject(projects.get().get(projectIndex.get()).getDisplay());
+        requset.setStreet(streets.get().get(streetIndex.get()).getDisplay());
+        requset.setPrimary(isPrimary.get());
+
+        return requset;
+    }
 
     public BaseAddressUpdateViewModel(SchedulerProvider schedulerProvider, LocationRepository locationRepository) {
         super(schedulerProvider);

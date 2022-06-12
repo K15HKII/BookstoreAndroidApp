@@ -54,7 +54,7 @@ public class User {
     @Getter
     @Expose
     @SerializedName("username")
-    private String userName;
+    private String username;
 
     @Getter
     @Expose

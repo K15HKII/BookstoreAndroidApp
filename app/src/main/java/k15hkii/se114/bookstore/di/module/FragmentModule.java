@@ -144,8 +144,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, preferencesHelper));
+    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -209,8 +209,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository repository) {
-        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider, repository));
+    public EditAddressPageViewModel provideEditAddressPageViewModel(SchedulerProvider schedulerProvider, LocationRepository repository, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, EditAddressPageViewModel.class, () -> new EditAddressPageViewModel(schedulerProvider, repository, remote, userId));
     }
 
     @Provides
@@ -219,13 +219,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider));
+    public AddBankPageViewModel provideAddBankPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AddBankPageViewModel.class, () -> new AddBankPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
-    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider));
+    public EditBankPageViewModel provideEditBankPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, EditBankPageViewModel.class, () -> new EditBankPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -249,8 +249,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider));
+    public BookDetailPageViewModel provideBookDetailPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, BookDetailPageViewModel.class, () -> new BookDetailPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides

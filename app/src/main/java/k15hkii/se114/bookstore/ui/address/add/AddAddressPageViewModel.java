@@ -20,14 +20,11 @@ import java.util.UUID;
 
 public class AddAddressPageViewModel extends BaseAddressUpdateViewModel<AddAddressPageNavigator> implements Observable {
 
-    public final ObservableField<String> addressNumber = new ObservableField<>();
-    public final ObservableField<Boolean> defaultAddress = new ObservableField<>();
-
+    //TODO: Binding
     public void Accept() {
-        UserAddressCRUDRequest request = new UserAddressCRUDRequest(); //TODO: create
-        dispose(remote.createAddress(userId, request),
+        dispose(remote.createAddress(userId, toRequest()),
                 result -> {
-                    //TODO:
+
                 }, throwable -> {
                     Log.d("AddAddressPageViewModel", "Error: " + throwable.getMessage());
                 });

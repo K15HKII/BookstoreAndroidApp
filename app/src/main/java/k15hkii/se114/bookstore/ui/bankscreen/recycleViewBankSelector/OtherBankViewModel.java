@@ -29,7 +29,7 @@ public class OtherBankViewModel extends BaseViewModel<IOtherBankNavigator> imple
 
     @Bindable
     public String getName() {
-        return user == null ? "profile is null" : user.getUserName();
+        return user == null ? "profile is null" : user.getUsername();
     }
 
     @Bindable

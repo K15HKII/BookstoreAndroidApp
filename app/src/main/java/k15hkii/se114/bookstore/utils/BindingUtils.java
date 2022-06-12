@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
+import k15hkii.se114.bookstore.data.model.api.user.Gender;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
 
@@ -24,10 +25,17 @@ public final class BindingUtils {
     private BindingUtils() {
     }
 
+    @BindingAdapter({"gender"})
+    public static void bindGender(TextView view, Gender gender) {
+        if (gender != null) {
+            view.setText(gender.name());
+        }
+    }
+
     @BindingAdapter({"address"})
     public static void bindAddress(TextView view, UserAddress address) {
         if (address != null) {
-            view.setText(String.format("{0}, {1}, {2}, {3}, {4}, (5), (6)",
+            view.setText(String.format("%s, %s, %s, %s, %s, %s",
                     address.getAddress(),
                     address.getStreet(),
                     address.getProject(),
@@ -108,6 +116,19 @@ public final class BindingUtils {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         for (SpinnerWrapper<T> s : source) {
             adapter.add(s.getDisplay());
+        }
+        adapter.notifyDataSetChanged();
+        spinner.setAdapter(adapter);
+    }
+
+    @BindingAdapter("source")
+    public static void spinnerSourceString(Spinner spinner, List<String> source) {
+        if (source == null)
+            return;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        for (String s : source) {
+            adapter.add(s);
         }
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
