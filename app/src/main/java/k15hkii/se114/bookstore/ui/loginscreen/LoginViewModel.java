@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.loginscreen;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.Constant;
 import k15hkii.se114.bookstore.data.model.auth.LoginRequest;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -31,7 +32,16 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void onServerLoginClick() {
-        login(null);
+        int statusCode = 1;
+        if (statusCode == Constant.CORRECT_PASSWORD) {
+            getNavigator().openCorrectDialog();
+            login(null);
+
+        }
+        else{
+            getNavigator().openWrongDialog();
+        }
+
     }
 
     public void onForgotPasswordClick() {
