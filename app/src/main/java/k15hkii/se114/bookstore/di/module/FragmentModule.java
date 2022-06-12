@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherViewAdapter;
@@ -444,6 +445,11 @@ public class FragmentModule {
     @Provides
     public RecentListBookViewModel provideRecentListBookViewModel (SchedulerProvider schedulerProvider,ViewModelMapper mapper, PreferencesHelper helper) {
         return createViewModel(fragment, RecentListBookViewModel.class, () -> new RecentListBookViewModel(schedulerProvider,mapper, helper));
+    }
+
+    @Provides
+    public OrderCancleViewModel provideOrderCancleViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderCancleViewModel.class, () -> new OrderCancleViewModel(schedulerProvider, mapper, remote));
     }
 
 //    @Provides

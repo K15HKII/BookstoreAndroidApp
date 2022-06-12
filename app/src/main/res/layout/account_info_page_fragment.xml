@@ -18,14 +18,12 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:background="@drawable/home_background">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/home_background">
+                android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"

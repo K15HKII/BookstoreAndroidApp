@@ -29,10 +29,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
     @Inject
     protected RentViewAdapter rentViewAdapter;
 
-    public static RentingViewPage newInstance() {
-        return new RentingViewPage();
-    }
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -59,12 +55,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
         rentingViewPageFragmentBinding.rcvRentingBookView.setLayoutManager(linearLayoutManager);
         rentingViewPageFragmentBinding.rcvRentingBookView.setAdapter(rentViewAdapter);
-
-//        rentViewAdapter = new OrderViewAdapter(getListBook1(), RentingViewPage.this.getContext());
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
-//        rcvRentView.setLayoutManager(linearLayoutManager);
-//        rcvRentView.setAdapter(rentViewAdapter);
 
         return view;
     }

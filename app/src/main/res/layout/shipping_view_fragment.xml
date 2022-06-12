@@ -28,5 +28,6 @@
                         source="@{viewModel.items}"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 </layout>

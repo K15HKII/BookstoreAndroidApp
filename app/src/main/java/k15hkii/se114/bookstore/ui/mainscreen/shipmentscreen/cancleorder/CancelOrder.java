@@ -15,6 +15,7 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancle;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 
 import javax.inject.Inject;
@@ -53,7 +54,7 @@ public class CancelOrder extends BaseFragment<CancleOrderFragmentBinding, Cancel
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, OrderDetail.class, null)
+        createTransaction(R.id.fragmentContainerView, OrderCancle.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

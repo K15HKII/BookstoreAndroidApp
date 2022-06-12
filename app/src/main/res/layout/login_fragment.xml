@@ -160,30 +160,20 @@
                             android:layout_height="wrap_content">
 
                             <LinearLayout
-                                android:layout_width="145dp"
-                                android:layout_height="37dp"
-                                android:layout_marginTop="30dp"
-                                android:layout_marginBottom="30dp"
-                                android:layout_centerHorizontal="true"
-                                android:orientation="horizontal">
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="30dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:orientation="horizontal">
 
                                 <android.widget.Button
-                                    android:id="@+id/btnLoginLoginWithGoogle"
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:background="@drawable/ic_google"
-                                    android:textSize="24sp" />
+                                        android:id="@+id/btnLoginLoginWithGoogle"
+                                        android:layout_width="36dp"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/ic_google"
+                                        android:textSize="24sp"/>
 
-                                <android.widget.Button
-                                    android:id="@+id/btnLoginLoginWithFaceBook"
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:scaleX="1.35"
-                                    android:scaleY="1.35"
-                                    android:layout_marginLeft="72dp"
-                                    android:backgroundTint="@color/btn_blue"
-                                    android:background="@drawable/facebook_icon"
-                                    android:textSize="24sp" />
                             </LinearLayout>
                         </RelativeLayout>
 
@@ -228,7 +218,7 @@
                 </ScrollView>
             </RelativeLayout>
         </LinearLayout>
-        <FrameLayout
+        <!--<FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/gray_transparent"
@@ -243,7 +233,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:backgroundTint="@color/color_of_button"
-            loading="@{viewModel.loading}"/>
+            loading="@{viewModel.loading}"/>-->
     </FrameLayout>
 
 
