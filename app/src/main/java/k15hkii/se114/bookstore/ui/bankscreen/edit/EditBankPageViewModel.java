@@ -18,8 +18,6 @@ import java.util.UUID;
 
 public class EditBankPageViewModel extends BaseBankUpdateViewModel<EditBankPageNavigator> implements Observable {
 
-
-    //TODO: Binding
     public void Accept() {
         dispose(remote.updateBank(userId, subId, toRequest()),
                 bank -> {

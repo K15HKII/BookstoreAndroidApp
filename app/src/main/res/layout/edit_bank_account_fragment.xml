@@ -224,6 +224,7 @@
                 </LinearLayout>
                 <android.widget.Button
                         android:id="@+id/btnEditBankDone"
+                        android:onClick="@{()-> viewModel.Accept()}"
                         android:textAllCaps="false"
                         android:background="@drawable/new_btn_sky_medium"
                         android:fontFamily="@font/lato_bold"

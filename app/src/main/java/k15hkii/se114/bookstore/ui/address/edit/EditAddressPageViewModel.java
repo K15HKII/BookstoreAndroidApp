@@ -13,7 +13,6 @@ import java.util.UUID;
 
 public class EditAddressPageViewModel extends BaseAddressUpdateViewModel<EditAddressPageNavigator> implements Observable {
 
-    //TODO: Binding
     public void Accept(){
         dispose(remote.updateAddress(userId, subId, toRequest()), result -> {
 

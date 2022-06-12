@@ -15,8 +15,6 @@ import k15hkii.se114.bookstore.R;
 
 public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, EditBankPageViewModel> implements AdapterView.OnItemSelectedListener,EditBankPageNavigator {
 
-    private EditBankAccountFragmentBinding editBankAccountFragmentBinding;
-
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -31,7 +29,7 @@ public class EditBankPage extends BaseFragment<EditBankAccountFragmentBinding, E
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        editBankAccountFragmentBinding = getViewDataBinding();
+        EditBankAccountFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         return view;

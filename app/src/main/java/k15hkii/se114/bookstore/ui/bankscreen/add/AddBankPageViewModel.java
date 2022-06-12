@@ -11,7 +11,6 @@ import java.util.UUID;
 
 public class AddBankPageViewModel extends BaseBankUpdateViewModel<AddBankPageNavigator> implements Observable {
 
-    //TODO: Binding
     public void Accept() {
         dispose(remote.createBank(userId, toRequest()),
                 bank -> {

@@ -20,7 +20,6 @@ import java.util.UUID;
 
 public class AddAddressPageViewModel extends BaseAddressUpdateViewModel<AddAddressPageNavigator> implements Observable {
 
-    //TODO: Binding
     public void Accept() {
         dispose(remote.createAddress(userId, toRequest()),
                 result -> {
