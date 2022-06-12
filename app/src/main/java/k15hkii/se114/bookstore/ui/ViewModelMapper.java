@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
+import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
 import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
@@ -67,6 +68,18 @@ public class ViewModelMapper {
             List<VoucherViewModel> list = new ArrayList<>();
             for (Voucher voucher : vouchers) {
                 VoucherViewModel vm = new VoucherViewModel(schedulerProvider, remote);
+                vm.setVoucher(voucher);
+                list.add(vm);
+            }
+            return list;
+        });
+    }
+
+    public Single<List<VoucherItemAdapterViewModel>> toSelectVoucherViewModel(Single<List<Voucher>> single) {
+        return single.map(vouchers -> {
+            List<VoucherItemAdapterViewModel> list = new ArrayList<>();
+            for (Voucher voucher : vouchers) {
+                VoucherItemAdapterViewModel vm = new VoucherItemAdapterViewModel(schedulerProvider, remote);
                 vm.setVoucher(voucher);
                 list.add(vm);
             }
@@ -154,6 +167,10 @@ public class ViewModelMapper {
 
     public Single<List<VoucherViewModel>> getVouchers(UUID userId) {
         return toVoucherViewModel(remote.getVouchers(userId));
+    }
+
+    public Single<List<VoucherItemAdapterViewModel>> getSelectVouchers(UUID userId) {
+        return toSelectVoucherViewModel(remote.getVouchers(userId));
     }
 
 

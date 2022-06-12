@@ -57,8 +57,4 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implem
         getData();
     }
 
-    public void setVoucherProfile(VoucherProfile voucherProfile) {
-        this.voucherProfile = voucherProfile;
-    }
-
 }

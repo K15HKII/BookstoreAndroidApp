@@ -404,8 +404,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides

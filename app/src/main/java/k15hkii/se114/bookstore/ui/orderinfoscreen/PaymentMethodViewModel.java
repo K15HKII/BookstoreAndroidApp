@@ -17,4 +17,8 @@ public class PaymentMethodViewModel extends BaseViewModel<PaymentMethodPageNavig
         //TODO: chọn phương thức thanh toán
     }
 
+    public void openSelectBank() {
+        //TODO: open Select Bank
+        getNavigator().OpenSelectBank();
+    }
 }
