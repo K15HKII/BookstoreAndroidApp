@@ -120,4 +120,15 @@ public class AccountPageViewModel extends BaseViewModel<AccountPageNavigator> im
         getNavigator().openSelectBank();
     }
 
+    public void openOrderClick(){
+        getNavigator().openOrder();
+    }
+
+    public void openRentClick(){
+        getNavigator().openRent();
+    }
+
+    public void openFavoritePage(){
+        getNavigator().openFavoritePage();
+    }
 }

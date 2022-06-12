@@ -26,5 +26,12 @@ public interface AccountPageNavigator extends INavigator {
 
     void openHelpPage();
 
+    void openFavoritePage();
+
+    void openOrder();
+
+    void openRent();
+
+
     void logOut();
 }

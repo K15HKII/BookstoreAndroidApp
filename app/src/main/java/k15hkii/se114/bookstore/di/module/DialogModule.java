@@ -4,6 +4,8 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
@@ -69,6 +71,16 @@ public class DialogModule {
     @Provides
     LogOutViewModel provideLogOutViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, LogOutViewModel.class, () -> new LogOutViewModel(schedulerProvider));
+    }
+
+    @Provides
+    LoginCheckViewModel provideLoginCheckViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, LoginCheckViewModel.class, () -> new LoginCheckViewModel(schedulerProvider));
+    }
+
+    @Provides
+    FailedCheckViewModel provideFailedCheckViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, FailedCheckViewModel.class, () -> new FailedCheckViewModel(schedulerProvider));
     }
 }
 

@@ -9,20 +9,8 @@ public class ShippingPageViewModel extends BaseViewModel<ShippingPageNavigator> 
         super(schedulerProvider);
     }
 
-    public void onSearchBarClick(){
-        getNavigator().openSearchView();
-    }
-
-    public void onNotificationClick(){
-        getNavigator().openNotificationView();
-    }
-
-    public void onOnCartClick(){
-        getNavigator().openOnCartView();
-    }
-
-    public void onFilterDialog(){
-        getNavigator().openFilterDialog();
+    public void onBackWardClick(){
+        getNavigator().BackWard();
     }
 
 }

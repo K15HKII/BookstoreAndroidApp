@@ -65,6 +65,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="@{()->viewModel.openOrderClick()}"
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/edit_text_background"
                             android:padding="10dp">
@@ -112,7 +114,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="2.5dp"
                                 android:layout_marginTop="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -165,7 +167,8 @@
                         <android.widget.Button
                                 android:layout_width="94dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:onClick="@{()->viewModel.openRentClick()}"
+                                android:layout_marginLeft="2.5dp"
                                 android:layout_marginBottom="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -192,6 +195,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()->viewModel.openFavoritePage()}"
                                 android:layout_marginBottom="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -199,7 +203,7 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:textColor="@color/color_account_text"
                                 android:textAllCaps="false"
-                                android:drawableTop="@drawable/ic_renting"
+                                android:drawableTop="@drawable/ic_favorite_mark"
                                 style="?android:attr/borderlessButtonStyle"
                         />
                         <android.widget.Button
@@ -212,7 +216,7 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:textColor="@color/color_account_text"
                                 android:textAllCaps="false"
-                                android:drawableTop="@drawable/ic_rented"
+                                android:drawableTop="@drawable/ic_recent_book"
                                 style="?android:attr/borderlessButtonStyle"
                         />
                     </GridLayout>
