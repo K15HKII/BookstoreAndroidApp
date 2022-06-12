@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
+import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
 import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartDialog;
 
 @DialogScope
@@ -40,4 +41,6 @@ public interface DialogComponent {
     void inject(LoginCheckDialog loginCheckDialog);
 
     void inject(FailedCheckDialog failedCheckDialog);
+
+    void inject(MissingInfoDialog missingInfoDialog);
 }

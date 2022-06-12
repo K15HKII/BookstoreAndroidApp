@@ -6,6 +6,8 @@ import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
+import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
@@ -81,6 +83,11 @@ public class DialogModule {
     @Provides
     FailedCheckViewModel provideFailedCheckViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, FailedCheckViewModel.class, () -> new FailedCheckViewModel(schedulerProvider));
+    }
+
+    @Provides
+    MissingInfoViewModel provideMissingInfoViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, MissingInfoViewModel.class, () -> new MissingInfoViewModel(schedulerProvider));
     }
 }
 
