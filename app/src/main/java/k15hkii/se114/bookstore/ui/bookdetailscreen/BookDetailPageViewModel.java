@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigator> implements Observable {
-    //TODO: thêm vào yêu thích, đổ màu trái tim, khi không select vào trái tim thì delete khỏi yêu thích
+
     private final ObservableField<List<FeedbackViewModel>> commentItemsLiveData = new ObservableField<>();
     public List<FeedbackViewModel> getCommentItems() {
         return commentItemsLiveData.get();
@@ -57,7 +57,6 @@ public class BookDetailPageViewModel extends BaseViewModel<BookDetailPageNavigat
         this.userId = userId;
     }
 
-    //TODO: Binding
     public void toggleFavourite() {
         isFavorite.set(!isFavorite.get());
         FavouriteBookCRUDRequest request = new FavouriteBookCRUDRequest();
