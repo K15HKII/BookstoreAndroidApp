@@ -62,13 +62,26 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding,HomePageViewM
                             tab.setCustomView(v);
                             break;
                         case 1:
+                            //TODO: fix lỗi hiện tất cả adapter
                             title = "Phổ biến";
+//                            View v1 = LayoutInflater.from(getContext()).inflate(R.layout.adapter_menutab2, tabmenuNav, false);
+//                            TextView tv1 = v1.findViewById(R.id.tvAdapterMenuTab);
+//                            tv1.setText(title);
+//                            tab.setCustomView(v1);
                             break;
                         case 2:
                             title = "Gần đây";
+//                            View v2 = LayoutInflater.from(getContext()).inflate(R.layout.adapter_menutab2, tabmenuNav, false);
+//                            TextView tv2 = v2.findViewById(R.id.tvAdapterMenuTab);
+//                            tv2.setText(title);
+//                            tab.setCustomView(v2);
                             break;
                         case 3:
                             title = "Dành cho bạn";
+//                            View v3 = LayoutInflater.from(getContext()).inflate(R.layout.adapter_menutab2, tabmenuNav, false);
+//                            TextView tv3 = v3.findViewById(R.id.tvAdapterMenuTab);
+//                            tv3.setText(title);
+//                            tab.setCustomView(v3);
                             break;
                     }
                     tab.setText(title);
