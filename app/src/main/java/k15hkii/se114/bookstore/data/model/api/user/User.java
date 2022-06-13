@@ -15,7 +15,15 @@ import java.util.UUID;
 public class User {
 
     public String getName() {
-        return getFirstName() + " " + getLastName();
+        StringBuilder sb = new StringBuilder();
+        if (getFirstName() != null) {
+            sb.append(getFirstName());
+        }
+        if (getLastName() != null) {
+            sb.append(" ");
+            sb.append(getLastName());
+        }
+        return sb.toString();
     }
 
     @Getter

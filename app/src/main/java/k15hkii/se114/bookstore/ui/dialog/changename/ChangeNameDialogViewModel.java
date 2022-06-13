@@ -20,7 +20,6 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
 
     PreferencesHelper preferencesHelper;
 
-    public final ObservableField<String> newName = new ObservableField<>();
     public final ObservableField<String> firstName = new ObservableField<>();
     public final ObservableField<String> lastName = new ObservableField<>();
 
@@ -29,7 +28,8 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
     public void getData(UUID userId) {
         dispose(remote.getUser(userId), user -> {
             this.user = user;
-            newName.set(user.getFirstName() + " " + user.getLastName());
+            firstName.set(user.getFirstName());
+            lastName.set(user.getLastName());
         }, throwable -> {
             Log.d("ChangeNameDialog", "getData: " + throwable.getMessage());
         });
@@ -43,13 +43,14 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
     }
 
     public void onSubmitClick() {
-        if(firstName.get().isEmpty() || lastName.get().isEmpty()){
+        if (firstName.get() == null || firstName.get().isEmpty() || lastName.get() == null || lastName.get().isEmpty()) {
             getNavigator().openMissingNameDialog("Cần nhập tên mới");
             return;
         }
-        if (!Objects.equals(newName.get(), (user.getFirstName() + " " + user.getLastName()))) {
+        if (!Objects.equals(firstName.get(), user.getFirstName()) || !Objects.equals(lastName.get(), user.getLastName())) {
             ProfileUpdateRequest request = new ProfileUpdateRequest();
-            request.setFirstname(newName.get());
+            request.setFirstname(firstName.get());
+            request.setLastname(lastName.get());
             dispose(remote.updateSelfUser(request),
                     user -> {
                         getNavigator().dismissDialog();
