@@ -58,7 +58,7 @@ public class NotificationOrderViewModel extends NotificationViewModel {
         String content = null;
 
         Bill bill = _base.getBill();
-        if (bill != null) {
+        if (bill != null && bill.getStatus() != null) {
             switch (bill.getStatus()) {
                 case WAITING:
                     title = "Đơn hàng của bạn đang chờ xử lý";

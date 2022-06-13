@@ -60,11 +60,6 @@ public class User {
 
     @Getter
     @Expose
-    @SerializedName("salt")
-    private String salt;
-
-    @Getter
-    @Expose
     @SerializedName("password")
     private String password;
 
@@ -72,16 +67,6 @@ public class User {
     @Expose
     @SerializedName("email")
     private String email;
-
-    @Getter
-    @Expose
-    @SerializedName("role")
-    private String role;
-
-    @Getter
-    @Expose
-    @SerializedName("refresh_token")
-    private String refreshToken;
 
     @Getter
     @Expose
@@ -107,26 +92,6 @@ public class User {
     @Expose
     @SerializedName("updated_at")
     private int updated_at;
-
-    @Getter
-    @Expose
-    @SerializedName("is_active")
-    private int is_active;
-
-    @Getter
-    @Expose
-    @SerializedName("is_verified")
-    private int is_verified;
-
-    @Getter
-    @Expose
-    @SerializedName("is_locked")
-    private int is_locked;
-
-    @Getter
-    @Expose
-    @SerializedName("is_blocked")
-    private int is_blocked;
 
 }
 

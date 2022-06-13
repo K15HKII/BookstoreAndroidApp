@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.NewsAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
+import k15hkii.se114.bookstore.ui.news.ImageViewAdapter;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -32,7 +34,10 @@ public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.N
     @Override
     public NewsAdapter.NewsAdapterViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_adapter,parent,false);
-        return new NewsAdapter.NewsAdapterViewHolder(view);
+        NewsAdapterViewHolder holder = new NewsAdapter.NewsAdapterViewHolder(view);
+        ImageViewAdapter imageViewAdapter = new ImageViewAdapter();
+        holder.getBinding().recyclerView.setAdapter(imageViewAdapter);
+        return holder;
     }
 
     @Override
@@ -42,7 +47,7 @@ public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.N
 
     public class NewsAdapterViewHolder extends RecyclerView.ViewHolder{
 
-        NewsAdapterBinding binding;
+        @Getter private final NewsAdapterBinding binding;
 
         public NewsAdapterViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

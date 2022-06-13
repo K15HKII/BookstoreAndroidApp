@@ -60,23 +60,6 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
         buildComponent.inject(this);
     }
 
-    private List<ListDataNotificationViewModel> GetListDataNotification() {
-        List<ListDataNotificationViewModel> lsDATA = new ArrayList<>();
-        List<OrderItemViewModel> lsBook1 = new ArrayList<>();
-//        lsBook1.add(new OrderItemViewModel());
-//        lsBook1.add(new OrderItemViewModel());
-
-        List<NotificationViewModel> lsOrder = new ArrayList<>();
-
-        List<NotificationInfoViewModel> lsInfo = new ArrayList<>();
-        lsInfo.add(new NotificationInfoViewModel("Chào mừng bạn đến với bookstore", "Hello"));
-
-        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_ORDERVIEW, null, lsOrder));
-        lsDATA.add(new ListDataNotificationViewModel(ListDataNotificationAdapter.TYPE_INFO, lsInfo, lsOrder));
-        return lsDATA;
-
-    }
-
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
