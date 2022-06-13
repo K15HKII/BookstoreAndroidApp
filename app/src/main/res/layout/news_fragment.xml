@@ -77,7 +77,6 @@
                     android:orientation="vertical"
                     source="@{viewModel.news}"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="75dp"
                     android:layout_height="match_parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -27,7 +27,8 @@ public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
                     this.user = user;
                     userBirth.set(user.getBirthday());
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public ChangeBirthViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
@@ -42,10 +43,13 @@ public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
             request.setBirthday(userBirth.get());
 
             dispose(remote.updateSelfUser(request),
-                    user -> { },
-                    throwable -> { });
+                    user -> {
+                        getNavigator().dismissDialog();
+                    },
+                    throwable -> {
+                    });
         }
-        getNavigator().dismissDialog();
     }
+
 }
 

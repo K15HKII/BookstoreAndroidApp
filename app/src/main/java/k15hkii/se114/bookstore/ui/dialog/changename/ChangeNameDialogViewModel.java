@@ -45,14 +45,14 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
         if (!Objects.equals(newName.get(), (user.getFirstName() + " " + user.getLastName()))) {
             ProfileUpdateRequest request = new ProfileUpdateRequest();
             request.setFirstname(newName.get());
-
             dispose(remote.updateSelfUser(request),
                     user -> {
+                        getNavigator().dismissDialog();
                     },
                     throwable -> {
                     });
         }
-        getNavigator().dismissDialog();
+
     }
 
 }

@@ -26,6 +26,7 @@ import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
 import k15hkii.se114.bookstore.data.model.api.user.*;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
+import k15hkii.se114.bookstore.data.model.auth.PasswordChangeRequest;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.*;
@@ -33,6 +34,9 @@ import retrofit2.http.*;
 public interface ModelRemote {
 
     //region User
+    @POST("/changepassword")
+    Single<StatusResponse> changePassword(@Body PasswordChangeRequest request);
+
     @GET("/api/user")
     Single<List<User>> getUsers();
 

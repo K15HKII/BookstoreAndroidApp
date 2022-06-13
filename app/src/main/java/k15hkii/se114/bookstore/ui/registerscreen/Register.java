@@ -47,9 +47,14 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, month);
             myCalendar.set(Calendar.DAY_OF_MONTH, day);
+            viewModel.birthday.set(myCalendar.getTime());
             updateLabel();
         };
-        edtDOB.setOnClickListener(view1 -> new DatePickerDialog(getContext(),datePickerDOB,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+        edtDOB.setOnClickListener(view1 -> new DatePickerDialog(getContext()
+                , datePickerDOB, myCalendar.get(Calendar.YEAR)
+                , myCalendar.get(Calendar.MONTH)
+                , myCalendar.get(Calendar.DAY_OF_MONTH))
+                .show());
         viewModel.setNavigator(Register.this);
         return view;
     }

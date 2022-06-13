@@ -2,6 +2,7 @@ package k15hkii.se114.bookstore.ui.dialog.changegender;
 
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 import androidx.databinding.ObservableList;
 import k15hkii.se114.bookstore.data.model.api.user.Gender;
 import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
@@ -23,14 +24,13 @@ public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallB
 
     User user;
 
-    public final ObservableField<Gender> userGender = new ObservableField<>();
+    public final ObservableInt genderIndex = new ObservableInt(0);
     public final ObservableList<SpinnerWrapper<Gender>> gender = new ObservableArrayList<>();
 
     public void getData() {
         dispose(remote.getSelfUser(),
                 user -> {
                     this.user = user;
-                    userGender.set(user.getGender());
                 },
                 throwable -> { });
     }
@@ -42,15 +42,14 @@ public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallB
     }
 
     public void onSubmitGenderText(){
-        if (userGender.get() != user.getGender()) {
-            ProfileUpdateRequest request = new ProfileUpdateRequest();
-            request.setGender(userGender.get());
+        ProfileUpdateRequest request = new ProfileUpdateRequest();
+        request.setGender(gender.get(genderIndex.get()).getItem());
+        dispose(remote.updateSelfUser(request),
+                user -> {
+                    getNavigator().onSubmitGender();
+                },
+                throwable -> { });
 
-            dispose(remote.updateSelfUser(request),
-                    user -> { },
-                    throwable -> { });
-        }
-        getNavigator().onSubmitGender();
     }
 
 }

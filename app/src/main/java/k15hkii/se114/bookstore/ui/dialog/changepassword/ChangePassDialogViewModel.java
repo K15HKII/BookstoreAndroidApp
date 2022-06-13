@@ -20,6 +20,9 @@ public class ChangePassDialogViewModel extends BaseViewModel<ChangePassCallBack>
 
     public final ObservableField<String> username = new ObservableField<>();
 
+    public final ObservableField<String> oldPassword = new ObservableField<>();
+    public final ObservableField<String> newPassword = new ObservableField<>();
+
     public ChangePassDialogViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper) {
         super(schedulerProvider);
         this.preferencesHelper = helper;

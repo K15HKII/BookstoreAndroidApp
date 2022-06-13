@@ -21,13 +21,13 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
     public final ObservableList<SpinnerWrapper<Gender>> gender = new ObservableArrayList<>();
     public final ObservableInt genderIndex = new ObservableInt();
     public final ObservableField<String> username = new ObservableField<>();
-    public final ObservableField<String> birthday = new ObservableField<>();
+    public final ObservableField<Date> birthday = new ObservableField<>();
     public final ObservableField<String> phone = new ObservableField<>();
 
     public final ObservableField<String> email = new ObservableField<>();
     public final ObservableField<String> password = new ObservableField<>();
     public final ObservableField<String> passwordConfirm = new ObservableField<>();
-    private final ObservableBoolean acceptTerms = new ObservableBoolean(false);
+    public final ObservableBoolean acceptTerms = new ObservableBoolean(false);
 
     private final Authentication mAuthentication;
 
@@ -73,7 +73,7 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
         }
 
         RegisterRequest request = new RegisterRequest();
-        /*request.setBirthday(birthday.get());*/ //TODO: use date picker
+        request.setBirthday(birthday.get());
         request.setEmail(email.get());
         request.setPassword(password.get());
         request.setPhone(phone.get());

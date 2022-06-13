@@ -43,9 +43,11 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
             request.setPhone(userPhone.get());
 
             dispose(remote.updateSelfUser(request),
-                    user -> { },
+                    user -> {
+                        getNavigator().onSubmitPhone();
+                    },
                     throwable -> { });
         }
-        getNavigator().onSubmitPhone();
+
     }
 }

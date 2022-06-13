@@ -23,6 +23,7 @@ import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
 import k15hkii.se114.bookstore.data.model.api.user.*;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
+import k15hkii.se114.bookstore.data.model.auth.PasswordChangeRequest;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -33,6 +34,12 @@ import java.util.*;
 public class CacheRemote implements ModelRemote {
 
     private final ModelRemote remote;
+
+    @Override
+    @POST("/changepassword")
+    public Single<StatusResponse> changePassword(PasswordChangeRequest request) {
+        return remote.changePassword(request);
+    }
 
     private final Map<UUID, Book> bookCache = new HashMap<>();
     private final List<Book> allBook = new ArrayList<>();
