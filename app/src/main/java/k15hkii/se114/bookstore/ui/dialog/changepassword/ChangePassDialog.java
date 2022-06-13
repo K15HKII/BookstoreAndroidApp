@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ChangePasswordDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
@@ -25,8 +23,14 @@ public class ChangePassDialog extends BaseDialog implements ChangePassCallBack {
 
     @Inject ChangePassDialogViewModel changePassDialogViewModel;
 
-    public static ChangePassDialog newInstance() {
-        ChangePassDialog fragment = new ChangePassDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangePassDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangePassDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangePassDialog fragment = new ChangePassDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

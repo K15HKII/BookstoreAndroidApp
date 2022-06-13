@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ChangeBirthDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 
 import javax.inject.Inject;
 
@@ -24,8 +22,14 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
     @Inject
     ChangeBirthViewModel changeBirthViewModel;
 
-    public static ChangeBirthDialog newInstance() {
-        ChangeBirthDialog fragment = new ChangeBirthDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangeBirthDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangeBirthDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangeBirthDialog fragment = new ChangeBirthDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

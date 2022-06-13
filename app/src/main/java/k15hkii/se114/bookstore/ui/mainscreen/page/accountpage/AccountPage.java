@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoPage;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
@@ -182,29 +183,36 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
         LogOutDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 
+    private final CloseReturnCallback closeCallback = new CloseReturnCallback() {
+        @Override
+        public void onClose(Object data) {
+            viewModel.from(null);
+        }
+    };
+
     @Override
     public void openChangeNameDialog() {
-        ChangeNameDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeNameDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangePasswordDialog() {
-        ChangePassDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangePassDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangePhoneNumDialog() {
-        ChangePhoneNumDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangePhoneNumDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangeGenderDialog() {
-        ChangeGenderDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeGenderDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangeBirthDialog() {
-        ChangeBirthDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeBirthDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override

@@ -8,13 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.ChangeBirthDialogBinding;
 import k15hkii.se114.bookstore.databinding.ChangeEmailDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthCallBack;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
-import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthViewModel;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
@@ -26,8 +24,14 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
     @Inject
     ChangeEmailViewModel viewModel;
 
-    public static ChangeBirthDialog newInstance() {
-        ChangeBirthDialog fragment = new ChangeBirthDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangeEmailDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangeBirthDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangeBirthDialog fragment = new ChangeBirthDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

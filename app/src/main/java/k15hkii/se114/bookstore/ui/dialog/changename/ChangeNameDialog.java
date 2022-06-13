@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ChangeNameDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
@@ -22,8 +23,14 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     @Inject protected ChangeNameDialogViewModel changeNameDialogViewModel;
 
-    public static ChangeNameDialog newInstance() {
-        ChangeNameDialog fragment = new ChangeNameDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangeNameDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangeNameDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangeNameDialog fragment = new ChangeNameDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

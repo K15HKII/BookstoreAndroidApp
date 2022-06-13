@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPage;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
@@ -47,29 +48,36 @@ public class AccountInfoPage extends BaseFragment<AccountInfoPageFragmentBinding
         getFragmentManager().popBackStack();
     }
 
+    private final CloseReturnCallback closeCallback = new CloseReturnCallback() {
+        @Override
+        public void onClose(Object data) {
+            viewModel.from(null);
+        }
+    };
+
     @Override
     public void openChangeNameDialog() {
-        ChangeNameDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeNameDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangePasswordDialog() {
-        ChangePassDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangePassDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangePhoneNumDialog() {
-        ChangePhoneNumDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangePhoneNumDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangeGenderDialog() {
-        ChangeGenderDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeGenderDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openChangeBirthDialog() {
-        ChangeBirthDialog.newInstance().show(getActivity().getSupportFragmentManager());
+        ChangeBirthDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override

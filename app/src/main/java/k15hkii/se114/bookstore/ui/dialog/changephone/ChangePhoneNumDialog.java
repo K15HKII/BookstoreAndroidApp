@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ChangePhoneNumberDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
@@ -25,8 +23,14 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
 
     @Inject ChangePhoneNumViewModel changePhoneNumViewModel;
 
-    public static ChangePhoneNumDialog newInstance() {
-        ChangePhoneNumDialog fragment = new ChangePhoneNumDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangePhoneNumDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangePhoneNumDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangePhoneNumDialog fragment = new ChangePhoneNumDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
