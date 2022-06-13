@@ -41,8 +41,8 @@ public class DialogModule {
     }
 
     @Provides
-    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper){
-        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider, helper));
+    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider,ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
