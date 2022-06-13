@@ -59,6 +59,7 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
     @Override
     public void dismissDialog() {
         dismissDialog(TAG);
+        closeCallback.onClose(null);
     }
 
     @Override

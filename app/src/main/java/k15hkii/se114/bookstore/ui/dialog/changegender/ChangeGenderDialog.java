@@ -58,5 +58,6 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
     @Override
     public void onSubmitGender() {
         dismissDialog(TAG);
+        closeCallback.onClose(null);
     }
 }

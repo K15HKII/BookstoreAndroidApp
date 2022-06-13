@@ -60,6 +60,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
     @Override
     public void dismissDialog() {
         dismissDialog(TAG);
+        closeCallback.onClose(null);
     }
 
     @Override
