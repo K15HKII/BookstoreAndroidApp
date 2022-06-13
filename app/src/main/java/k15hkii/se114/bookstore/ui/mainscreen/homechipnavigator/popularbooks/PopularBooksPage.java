@@ -50,12 +50,6 @@ public class PopularBooksPage extends BaseFragment<PopularBooksFragmentBinding, 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         popularBooksFragmentBinding.lvHomePopularBook.setLayoutManager(gridLayoutManager);
         popularBooksFragmentBinding.lvHomePopularBook.setAdapter(bookViewAdapter);
-
-        BannerAdapter bannerAdapter = new BannerAdapter(this.getContext());
-
-        getViewDataBinding().vpPopularBooks.setAdapter(bannerAdapter);
-        getViewDataBinding().ciPopularBooks.setViewPager(getViewDataBinding().vpPopularBooks);
-        bannerAdapter.registerAdapterDataObserver(getViewDataBinding().ciPopularBooks.getAdapterDataObserver());
         return view;
     }
 

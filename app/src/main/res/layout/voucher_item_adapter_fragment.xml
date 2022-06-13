@@ -2,17 +2,21 @@
 <layout>
     <data>
         <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel"/>
+                  type="k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
-        <RadioButton
-                android:id="@+id/radbtn"
+        <ToggleButton
                 android:layout_width="31dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:textOn=""
+                android:textOff=""
+                android:scaleX="0.8"
+                android:scaleY="0.19"
+                android:background="@drawable/radio_selector"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:background="@drawable/voucher_shape"
@@ -38,7 +42,7 @@
                             android:fontFamily="@font/lato_bold"
                             android:textColor="@color/btn_blue"
                             android:textSize="28dp"
-                            android:text="discount"
+                            android:text="@{viewModel.discount}"
                             android:textStyle="bold"/>
                     <LinearLayout
                             android:layout_width="wrap_content"
@@ -56,7 +60,7 @@
                                 android:fontFamily="@font/lato_regular"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="date"/>
+                                android:text="@{viewModel.expiredDate}"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -65,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
-                    android:text="Tối đa 100.000đ"
+                    android:text="@{viewModel.discountType}"
                     android:textSize="15dp"
                     android:textColor="@color/btn_blue"/>
             <TextView
@@ -75,7 +79,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/lato_regular"
                     android:textSize="20dp"
-                    android:text="minValue"
+                    android:text="@{viewModel.minValue}"
                     android:textColor="@color/btn_blue"/>
             <TextView
                     android:id="@+id/tvVoucherItemApplyForBook"
@@ -83,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     android:textSize="12.5dp"
-                    android:text="discountType"
+                    android:text="@{viewModel.bookType}"
             />
         </LinearLayout>
     </LinearLayout>

@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.OrderRatingFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.BaseOrderInfoViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewNavigator;
@@ -21,7 +23,7 @@ import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
 import javax.inject.Inject;
 
 public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderRatingViewModel> implements OrderRatingNavigator,
-                                                                                                           OrderBooksViewNavigator {
+        OrderBooksViewNavigator {
 
     private OrderRatingFragmentBinding orderRatingFragmentBinding;
 
@@ -64,8 +66,10 @@ public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderR
     }
 
     @Override
-    public void openRating() {
-        createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class, null)
+    public void openRating(Book book) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("book", book);
+        createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -77,7 +81,7 @@ public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderR
     @Override
     public void Navigate(OrderBookViewModel vm) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("book",vm.getBook());
+        bundle.putSerializable("book", vm.getBook());
         createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter

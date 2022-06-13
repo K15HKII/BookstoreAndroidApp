@@ -4,8 +4,6 @@ import k15hkii.se114.bookstore.ui.base.INavigator;
 
 public interface AccountPageNavigator extends INavigator {
 
-    void openAccountInfo();
-
     void openChangeNameDialog();
 
     void openChangePasswordDialog();
@@ -20,18 +18,23 @@ public interface AccountPageNavigator extends INavigator {
 
     void openSelectBank();
 
-    void openVoucher();
-
     void openSetting();
 
     void openHelpPage();
 
     void openFavoritePage();
 
-    void openOrder();
+    void openWaitingOrder();
 
-    void openRent();
+    void openShippingOrder();
 
+    void openArrivedOrder();
+
+    void openRenting();
+
+    void openRented();
+
+    void openRencentBook();
 
     void logOut();
 }

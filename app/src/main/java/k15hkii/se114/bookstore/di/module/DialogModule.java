@@ -4,8 +4,16 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.dialog.emptycart.EmptyCartViewModel;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataViewModel;
+import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkDialog;
+import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkViewModel;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataViewModel;
+import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
+import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
@@ -81,6 +89,31 @@ public class DialogModule {
     @Provides
     FailedCheckViewModel provideFailedCheckViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, FailedCheckViewModel.class, () -> new FailedCheckViewModel(schedulerProvider));
+    }
+
+    @Provides
+    MissingInfoViewModel provideMissingInfoViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, MissingInfoViewModel.class, () -> new MissingInfoViewModel(schedulerProvider));
+    }
+
+    @Provides
+    ErrorDataViewModel provideErrorDataViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, ErrorDataViewModel.class, () -> new ErrorDataViewModel(schedulerProvider));
+    }
+
+    @Provides
+    MissingDataViewModel provideMissingDataViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, MissingDataViewModel.class, () -> new MissingDataViewModel(schedulerProvider));
+    }
+
+    @Provides
+    EmptyCartViewModel provideEmptyCartViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, EmptyCartViewModel.class, () -> new EmptyCartViewModel(schedulerProvider));
+    }
+
+    @Provides
+    ErrorNetworkViewModel provideErrorNetworkViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, ErrorNetworkViewModel.class, () -> new ErrorNetworkViewModel(schedulerProvider));
     }
 }
 

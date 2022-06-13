@@ -16,8 +16,10 @@ import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotification;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaiton;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySetting;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.SelectorVoucher;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancle;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucher;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.address.add.AddAddressPage;
 import k15hkii.se114.bookstore.ui.address.edit.EditAddressPage;
@@ -35,13 +37,14 @@ import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooks
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksPage;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBook;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancleOrder;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrder;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPage;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderViewPage;
@@ -205,7 +208,7 @@ public interface FragmentComponent {
     void inject(RentDetailBill rentDetailBill);
 
 
-    void inject(CancleOrder cancleOrder);
+    void inject(CancelOrder cancleOrder);
 
 
     void inject(SelectorVoucher selectorVoucher);
@@ -221,4 +224,8 @@ public interface FragmentComponent {
     void inject(RateListBook rateListBook);
 
     void inject(CreateNews createNews);
+
+    void inject(RecentListBook recentListBook);
+
+    void inject(OrderCancle orderCancle);
 }

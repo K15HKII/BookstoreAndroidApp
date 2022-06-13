@@ -49,24 +49,44 @@
                     android:textSize="24dp" />
             </androidx.appcompat.widget.Toolbar>
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="20dp"
-                android:orientation="vertical">
-
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <android.widget.Spinner
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.widget.Spinner
                                 android:id="@+id/spAddAddressCity"
+                                source="@{viewModel.cities}"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/new_edit_text_shape_large"
+                                android:fontFamily="@font/lato_regular"
+                                android:inputType="text"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="18dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="18dp"
+                                android:popupBackground="@drawable/spinner_shape"
+                                android:selectedItemPosition="@={viewModel.cityIndex}"
+                                android:textSize="16dp" />
+
+                            <android.widget.Spinner
+                                android:id="@+id/spAddAddressDistrict"
                                 android:paddingLeft="20dp"
                                 android:paddingRight="20dp"
                                 android:paddingBottom="18dp"
@@ -74,103 +94,122 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_width="160dp"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
                                 android:textSize="16dp"
                                 android:fontFamily="@font/lato_regular"
                                 android:inputType="text"
                                 android:popupBackground="@drawable/spinner_shape"
                                 android:background="@drawable/new_edit_text_shape_large"
-                                android:selectedItemPosition="@={viewModel.cityIndex}"
-                                source="@{viewModel.cities}"/>
+                                android:selectedItemPosition="@={viewModel.districtIndex}"
+                                source="@{viewModel.districts}" />
+                        </RelativeLayout>
+                    </LinearLayout>
 
-                        <android.widget.Spinner
-                            android:id="@+id/spAddAddressDistrict"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
-                            android:paddingBottom="18dp"
-                            android:paddingTop="18dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="160dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:textSize="16dp"
-                            android:fontFamily="@font/lato_regular"
-                            android:inputType="text"
-                            android:popupBackground="@drawable/spinner_shape"
-                            android:background="@drawable/new_edit_text_shape_large"
-                            android:selectedItemPosition="@={viewModel.districtIndex}"
-                            source="@{viewModel.districts}" />
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <android.widget.Spinner
-                    android:id="@+id/spAddAddressVillage"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="18dp"
-                    android:paddingTop="18dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
-                    android:popupBackground="@drawable/spinner_shape"
-                    android:background="@drawable/new_edit_text_shape_large"
-                    android:selectedItemPosition="@={viewModel.wardIndex}"
-                    source="@{viewModel.wards}" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/new_edit_text_shape_large"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp"
-                    app:boxStrokeColor="#FFF"
-                    app:boxBackgroundColor="#FFF"
-                    app:hintTextColor="@color/btn_blue"
-                    android:nextFocusRight="@color/btn_blue"
-                    android:hint="Số nhà">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etAddAddressAddress"
+                    <android.widget.Spinner
+                        android:id="@+id/spAddAddressVillage"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:text=""
-                        android:fontFamily="@font/lato_regular"
+                        android:layout_alignParentEnd="true"
                         android:textSize="16dp"
-                        android:ems="15"
-                        android:textColor="@color/btn_blue"
-                        android:textColorHint="@color/btn_blue"
-                        android:textCursorDrawable="@drawable/cursor_color"
-                        android:background="@drawable/new_edit_text_shape_large" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:fontFamily="@font/lato_regular"
+                        android:inputType="text"
+                        android:popupBackground="@drawable/spinner_shape"
+                        android:background="@drawable/new_edit_text_shape_large"
+                        android:selectedItemPosition="@={viewModel.wardIndex}"
+                        source="@{viewModel.wards}" />
 
-                <CheckBox
-                    android:id="@+id/cbAddAddressCheckDefaultAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_regular"
-                    android:backgroundTint="@color/black"
-                    android:text="Đặt làm địa chỉ mặc định" />
+                    <android.widget.Spinner
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/lato_regular"
+                        android:inputType="text"
+                        android:popupBackground="@drawable/spinner_shape"
+                        android:background="@drawable/new_edit_text_shape_large"
+                        android:selectedItemPosition="@={viewModel.streetIndex}"
+                        source="@{viewModel.streets}" />
 
-                <android.widget.Button
-                    android:id="@+id/btnAddAddressConfirmInfo"
-                    android:onClick="@{()-> viewModel.Accept()}"
-                    android:fontFamily="@font/lato_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:background="@drawable/new_btn_sky_medium"
-                    android:text="Xong"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false" />
+                    <android.widget.Spinner
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/lato_regular"
+                        android:inputType="text"
+                        android:popupBackground="@drawable/spinner_shape"
+                        android:background="@drawable/new_edit_text_shape_large"
+                        android:selectedItemPosition="@={viewModel.projectIndex}"
+                        source="@{viewModel.projects}" />
 
-            </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/new_edit_text_shape_large"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:boxStrokeColor="#FFF"
+                        app:boxBackgroundColor="#FFF"
+                        app:hintTextColor="@color/btn_blue"
+                        android:nextFocusRight="@color/btn_blue"
+                        android:hint="Số nhà">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAddAddressAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@={viewModel.address}"
+                            android:fontFamily="@font/lato_regular"
+                            android:textSize="16dp"
+                            android:ems="15"
+                            android:textColor="@color/btn_blue"
+                            android:textColorHint="@color/btn_blue"
+                            android:textCursorDrawable="@drawable/cursor_color"
+                            android:background="@drawable/new_edit_text_shape_large" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <CheckBox
+                        android:id="@+id/cbAddAddressCheckDefaultAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_regular"
+                        android:backgroundTint="@color/black"
+                        android:checked="@={viewModel.isPrimary}"
+                        android:text="Đặt làm địa chỉ mặc định" />
+
+                    <android.widget.Button
+                        android:id="@+id/btnAddAddressConfirmInfo"
+                        android:onClick="@{()-> viewModel.Accept()}"
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:background="@drawable/new_btn_sky_medium"
+                        android:text="Xong"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
 
     </FrameLayout>

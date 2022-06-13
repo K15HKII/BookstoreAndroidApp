@@ -12,57 +12,88 @@
         android:background="@color/new_background_color"
         tools:context=".ui.news.createfeed.CreateNews">
 
-    <androidx.appcompat.widget.Toolbar
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:theme="?attr/actionBarTheme"
-            android:minHeight="?attr/actionBarSize"
-            android:id="@+id/toolbarSettingPage">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-<!--            TODO: thêm backward function-->
-            <android.widget.Button
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:scaleX="0.55"
-                    android:scaleY="0.55"
-                    android:background="@drawable/ic_backward" app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                    android:id="@+id/button"/>
-            <TextView
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                <!--            TODO: thêm backward function-->
+                <android.widget.Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward" app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/button"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Bài viết mới"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="24dp"
+                        android:textColor="@color/black" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" android:id="@+id/textView9"/>
+                <android.widget.Button
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Đăng"
+                        android:textSize="16dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_of_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--TODO: thêm các tiểu tiết để tạo bài-->
+        </androidx.appcompat.widget.Toolbar>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                android:background="@drawable/edit_text_background"
+                app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRatingReportDescription"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Bài viết mới"
-                    android:fontFamily="@font/lato_bold"
-                    android:textSize="24dp"
-                    android:textColor="@color/black" app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" android:id="@+id/textView9"/>
-            <android.widget.Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:text="Đăng"
+                    android:fontFamily="@font/lato_regular"
                     android:textSize="16dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/color_of_button"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--TODO: thêm các tiểu tiết để tạo bài-->
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:lines="7"
+                    android:hint="Mô tả sản phẩm, thêm hashtag để tăng hiệu quả bài viết"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:scrollHorizontally="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
 
 </FrameLayout>
 </layout>

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="viewModel"
             type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="8dp"
@@ -20,68 +23,99 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             android:orientation="vertical">
-            <LinearLayout android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
-                          app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                          app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.493"
-                          app:layout_constraintVertical_bias="0.533">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintVertical_bias="0.533">
+
                 <ImageView
-                        android:id="@+id/imgBookViewBookImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        image="@{viewModel.image}"
-                        android:scaleType="fitCenter"/>
+                    android:id="@+id/imgBookViewBookImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    image="@{viewModel.image}"
+                    android:scaleType="fitCenter" />
+
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <TextView
-                            android:id="@+id/tvBookViewBookName"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/lato_bold"
-                            android:text="@{viewModel.title}"
-                            android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold"/>
+                        android:id="@+id/tvBookViewBookName"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="@{viewModel.title}"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
                     <ToggleButton
-                            android:id="@+id/btnBookViewHeart"
-                            android:layout_width="51dp"
-                            android:layout_height="30dp"
-                            android:scaleX="0.5"
-                            android:scaleY="0.9"
-                            android:textOn=""
-                            android:textOff=""
-                            android:background="@drawable/favorite_btn_selector"/>
+                        android:id="@+id/btnBookViewHeart"
+                        android:layout_width="51dp"
+                        android:layout_height="30dp"
+                        android:scaleX="0.5"
+                        android:scaleY="0.9"
+                        android:checked="@={viewModel.isFavorite}"
+                        android:textOn=""
+                        android:textOff=""
+                        android:background="@drawable/favorite_btn_selector" />
                 </LinearLayout>
+
                 <TextView
-                        android:id="@+id/tvBookViewPrice"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        price="@{viewModel.price}"
-                        android:textColor="#F51F01"
-                        android:textSize="17dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-            </LinearLayout>
-            <android.widget.Button
-                    android:id="@+id/viewBookViewRatingview"
-                    android:layout_width="52dp"
-                    android:layout_height="23dp"
-                    android:clickable="false"
+                    android:id="@+id/tvBookViewPrice"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
-                    android:background="@drawable/book_view_rating"
-                    android:drawableStart="@drawable/ic_star"
-                    android:scaleX="1"
-                    android:scaleY="1"
-                    rating="@{viewModel.rating}"
-                    android:textSize="14.5dp"
-                    android:textColor="#001C44" app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    price="@{viewModel.price}"
+                    android:textColor="#F51F01"
+                    android:textSize="17dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/viewBookViewRatingview"
+                android:layout_width="52dp"
+                android:layout_height="23dp"
+                android:clickable="false"
+                android:fontFamily="@font/lato_regular"
+                android:background="@drawable/book_view_rating"
+                android:drawableStart="@drawable/ic_star"
+                android:scaleX="1"
+                android:scaleY="1"
+                rating="@{viewModel.rating}"
+                android:textSize="14.5dp"
+                android:textColor="#001C44"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            loading="@{viewModel.loading}" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:backgroundTint="@color/color_of_button"
+            loading="@{viewModel.loading}" />
     </androidx.cardview.widget.CardView>
 </layout>

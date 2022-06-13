@@ -1,37 +1,30 @@
 package k15hkii.se114.bookstore.ui.searchbook;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.SearchBookViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, SearchBookViewViewModel> implements SearchBookViewNavigator {
-    private EditText sbSearchInput;
-    List<RecentSearchViewModel> arrayName;
+
     @Inject
-    protected RecentSearchAdapter recentSearchAdapter;
+    protected BookViewAdapter recentSearchAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -55,34 +48,14 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
         SearchBookViewFragmentBinding searchBookViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        sbSearchInput = view.findViewById(R.id.sbSearchViewInput);
-        sbSearchInput.requestFocus();
+        getViewDataBinding().sbSearchViewInput.requestFocus();
 
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
-//        String[] names = {"Sách Đắc Nhân Tâm","Sách Công Nghệ","Danh Nghiệp","Giải tích AKA Giải thích"};
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 2);
         searchBookViewFragmentBinding.rcvSearchViewTitle.setLayoutManager(linearLayoutManager);
         searchBookViewFragmentBinding.rcvSearchViewTitle.setAdapter(recentSearchAdapter);
-
-        sbSearchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
-            }
-        });
 
         return view;
     }
@@ -92,21 +65,10 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
         buildComponent.inject(this);
     }
 
-    private void filter(String inputTxt){
-        ArrayList<RecentSearchViewModel> filteredLs = new ArrayList<>();
-
-        for(RecentSearchViewModel item : arrayName){
-            if(item.getTitle().toLowerCase().contains(inputTxt.toLowerCase())) {
-                filteredLs.add(item);
-            }
-        }
-        recentSearchAdapter.filterlist(filteredLs);
-    }
-
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
-        closekeyboard();
+        closeKeyboard();
     }
 
     @Override
@@ -118,14 +80,15 @@ public class SearchBookView extends BaseFragment<SearchBookViewFragmentBinding, 
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
-        closekeyboard();
+        closeKeyboard();
     }
 
-    private void closekeyboard() {
+    private void closeKeyboard() {
         View view = getActivity().getCurrentFocus();
         if(view != null){
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(),0);
         }
     }
+
 }

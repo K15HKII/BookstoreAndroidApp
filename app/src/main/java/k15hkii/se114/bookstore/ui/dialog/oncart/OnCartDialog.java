@@ -27,8 +27,6 @@ public class OnCartDialog extends BaseDialog implements OnCartCallBack {
 
     public static OnCartDialog newInstance(Book book) {
         OnCartDialog fragment = new OnCartDialog();
-//        Bundle bundle = new Bundle();
-//        fragment.setArguments(bundle);
         fragment.book = book;
         return fragment;
     }

@@ -5,13 +5,14 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Feedback extends Message {
 
     @Getter
     @Expose
-    @SerializedName("bill_id")
-    private int billId;
+    @SerializedName("book_id")
+    private UUID bookId;
 
     @Getter
     @Expose

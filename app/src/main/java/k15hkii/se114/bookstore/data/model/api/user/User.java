@@ -2,9 +2,11 @@ package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -79,12 +81,27 @@ public class User {
     @Getter
     @Expose
     @SerializedName("refresh_token")
-    private String refresh_token;
+    private String refreshToken;
 
     @Getter
     @Expose
     @SerializedName("created_at")
-    private String created_at;
+    private String createdAt;
+
+    @Getter
+    @Expose
+    @SerializedName("addresses")
+    private List<UserAddress> addresses;
+
+    @Getter
+    @Expose
+    @SerializedName("banks")
+    private List<UserBank> banks;
+
+    @Getter
+    @Expose
+    @SerializedName("avatar")
+    private Image avatar;
 
     @Getter
     @Expose

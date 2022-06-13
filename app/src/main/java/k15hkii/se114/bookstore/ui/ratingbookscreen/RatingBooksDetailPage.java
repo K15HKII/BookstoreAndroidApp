@@ -62,4 +62,9 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
+
+    @Override
+    public void selectImages() {
+        GetContent.launch("image/* video/*");
+    }
 }

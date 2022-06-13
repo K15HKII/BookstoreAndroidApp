@@ -1,33 +1,23 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage;
 
 import android.view.*;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
 import k15hkii.se114.bookstore.R;
 import com.google.android.material.tabs.TabLayout;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationPage;
-import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
 
 public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, ShippingPageViewModel> implements ShippingPageNavigator {
 
-    private TabLayout tabmenuNav;
-    private ViewPager2 orderView;
+    private TabLayout tmOrder;
+    private ViewPager2 vpOrder;
 
     @Override
     public int getBindingVariable() {
@@ -46,15 +36,13 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         ShippingPageFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        tabmenuNav = binding.tabMenuReceiptNav;
-        orderView = binding.vpReceiptOrderView;
-
-        //TODO: set position cho menutab
+        tmOrder = binding.tabMenuReceiptNav;
+        vpOrder = binding.vpReceiptOrderView;
 
         OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
                 this.getLifecycle());
-        orderView.setAdapter(orderMenuTabAdapter);
-        new TabLayoutMediator(tabmenuNav, orderView,
+        vpOrder.setAdapter(orderMenuTabAdapter);
+        new TabLayoutMediator(tmOrder, vpOrder,
                 (tab, position) -> {
                     String title = "";
                     switch (position) {
@@ -74,6 +62,10 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
                     tab.setText(title);
                 }
         ).attach();
+        if (getArguments() != null) {
+            int position = getArguments().getInt("position", 0);
+            vpOrder.setCurrentItem(position);
+        }
         return view;
     }
 

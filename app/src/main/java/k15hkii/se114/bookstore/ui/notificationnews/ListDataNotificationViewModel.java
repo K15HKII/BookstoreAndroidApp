@@ -13,9 +13,9 @@ public class ListDataNotificationViewModel extends BaseViewModel<ListDataNotific
 
     private int type;
     private List<NotificationInfoViewModel> notificationInfos;
-    private List<NotificationOrderViewModel> orderItems;
+    private List<NotificationViewModel> orderItems;
 
-    public ListDataNotificationViewModel(int type, List<NotificationInfoViewModel> notificationInfos, List<NotificationOrderViewModel> orderItems) {
+    public ListDataNotificationViewModel(int type, List<NotificationInfoViewModel> notificationInfos, List<NotificationViewModel> orderItems) {
         super(null);
         this.type = type;
         this.notificationInfos = notificationInfos;
@@ -38,11 +38,11 @@ public class ListDataNotificationViewModel extends BaseViewModel<ListDataNotific
         this.notificationInfos = notificationInfos;
     }
 
-    public List<NotificationOrderViewModel> getOrderItems() {
+    public List<NotificationViewModel> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List<NotificationOrderViewModel> orderItems) {
+    public void setOrderItems(List<NotificationViewModel> orderItems) {
         this.orderItems = orderItems;
     }
 }

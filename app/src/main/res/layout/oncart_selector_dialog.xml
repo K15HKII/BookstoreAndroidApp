@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/lato_regular"
-                android:text="@{viewModel.quantity.toString()}"
+                android:text="@{String.valueOf(viewModel.quantity)}"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:paddingLeft="10dp"
@@ -108,7 +108,7 @@
     </LinearLayout>
     <android.widget.Button
             android:id="@+id/btnPutToCartDialogBuyNow"
-            android:onClick="@{()-> viewModel.dismissDialog()}"
+            android:onClick="@{()-> viewModel.accept()}"
             android:fontFamily="@font/lato_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,5 +7,5 @@ import java.util.List;
 public interface OncartViewPageNavigator extends INavigator {
     void BackWard();
 
-    void OrderPageNavigator(OncartViewViewModel viewModel);
+    void OrderPageNavigator(OncartViewViewModel viewModel, List<OncartItemViewModel> selecteds);
 }

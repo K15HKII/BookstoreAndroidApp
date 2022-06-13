@@ -24,7 +24,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
     private final UUID userId;
     public final ObservableField<UserAddress> primaryAddress = new ObservableField<>();
 
-    public void getData(UUID userId) {
+    public void loadData() {
         dispose(remote.getAddresses(userId), addresses -> {
             List<OtherAddressViewModel> list = new ArrayList<>();
             for (UserAddress address : addresses) {
@@ -46,7 +46,7 @@ public class SelectorAddressPageViewModel extends BaseViewModel<SelectorAddressP
         super(schedulerProvider);
         this.remote = remote;
         this.userId = preferencesHelper.getCurrentUserId();
-        getData(userId);
+        loadData();
     }
 
     public void onBackWardClick() {

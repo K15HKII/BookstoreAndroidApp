@@ -24,7 +24,6 @@ import javax.inject.Inject;
 
 public class FavoritePage extends BaseFragment<FavoritePageFragmentBinding, FavoritePageViewModel> implements FavoritePageNavigator {
 
-    @Inject protected BookViewAdapter bookViewRecentlyAdapter;
     @Inject protected BookViewAdapter bookViewAllAdapter;
 
     @Override
@@ -48,10 +47,6 @@ public class FavoritePage extends BaseFragment<FavoritePageFragmentBinding, Favo
         View view = super.onCreateView(inflater, container, savedInstanceState);
         FavoritePageFragmentBinding favoritePageFragmentBinding = getViewDataBinding();
 
-        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getActivity(),2);
-        favoritePageFragmentBinding.lvLoveRecentlyBook.setLayoutManager(gridLayoutManager1);
-        favoritePageFragmentBinding.lvLoveRecentlyBook.setAdapter(bookViewRecentlyAdapter);
-
         GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getActivity(),2);
         favoritePageFragmentBinding.lvLoveAllBook.setLayoutManager(gridLayoutManager2);
         favoritePageFragmentBinding.lvLoveAllBook.setAdapter(bookViewAllAdapter);
@@ -64,41 +59,9 @@ public class FavoritePage extends BaseFragment<FavoritePageFragmentBinding, Favo
         buildComponent.inject(this);
     }
 
-    @Override
-    public void openSearchView() {
-        createTransaction(R.id.fragmentContainerView, SearchBookView.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
 
     @Override
-    public void openNotificationView() {
-        createTransaction(R.id.fragmentContainerView, NotificationPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openOnCartView() {
-        createTransaction(R.id.fragmentContainerView, OncartViewPage.class, null)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).commit();
-    }
-
-    @Override
-    public void openFilterDialog() {
-        FilterSearchDialog.newInstance().show(getActivity().getSupportFragmentManager());
+    public void BackWard() {
+        getFragmentManager().popBackStack();
     }
 }

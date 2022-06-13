@@ -6,7 +6,4 @@ public interface OncartItemNavigator extends INavigator {
 
     void openBookDetailNavigator(OncartItemViewModel vm);
 
-    void checkItemHandle();
-
-    void deleteItem(int index);
 }

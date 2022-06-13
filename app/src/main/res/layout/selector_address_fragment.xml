@@ -87,33 +87,34 @@
                         android:textSize="22dp"
                         android:textStyle="bold"/>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="18dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/address_button_shape">
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <RadioButton
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="15dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/address_button_shape">
+                        <TextView
                                 android:id="@+id/btnAddressChoiceDefault"
-                                android:layout_width="319dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
                                 android:fontFamily="@font/lato_regular"
                                 address="@{viewModel.primaryAddress}"
-                                android:textSize="17dp"
-                                android:textColor="@color/black"/>
-
+                                android:textSize="16dp"
+                                android:textColor="@color/black" app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/imageView16"
+                                app:layout_constraintHorizontal_bias="0.00"/>
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="15dp"
                                 android:layout_alignParentEnd="true"
-                                android:src="@drawable/ic_arrow_account"/>
-                    </RelativeLayout>
-                </LinearLayout>
+                                android:src="@drawable/ic_arrow_account" app:layout_constraintEnd_toEndOf="parent"
+                                android:id="@+id/imageView16" app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                         android:layout_width="match_parent"
@@ -137,9 +138,9 @@
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                           android:layout_height="match_parent"
-        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <android.widget.Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

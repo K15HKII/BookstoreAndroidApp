@@ -5,6 +5,10 @@
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel"/>
     </data>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -40,7 +44,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_bold"
-                                android:text="@{viewModel.userName}"
+                                android:text="@{viewModel.name}"
                                 android:textStyle="bold"
                                 android:textSize="30dp"
                                 android:layout_marginTop="10dp"
@@ -66,7 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:onClick="@{()->viewModel.openOrderClick()}"
+                            android:onClick="@{()->viewModel.openWaitingOrderClick()}"
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/edit_text_background"
                             android:padding="10dp">
@@ -114,6 +118,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()->viewModel.openWaitingOrderClick()}"
                                 android:layout_marginLeft="2.5dp"
                                 android:layout_marginTop="9.5dp"
                                 android:padding="5dp"
@@ -128,6 +133,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()-> viewModel.openShippingOrderClick()}"
                                 android:layout_marginTop="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -141,6 +147,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()-> viewModel.openArrivedOrderClick()}"
                                 android:layout_marginTop="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -167,7 +174,7 @@
                         <android.widget.Button
                                 android:layout_width="94dp"
                                 android:layout_height="wrap_content"
-                                android:onClick="@{()->viewModel.openRentClick()}"
+                                android:onClick="@{()->viewModel.openRentingClick()}"
                                 android:layout_marginLeft="2.5dp"
                                 android:layout_marginBottom="9.5dp"
                                 android:padding="5dp"
@@ -182,6 +189,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()-> viewModel.openRentedClick()}"
                                 android:padding="5dp"
                                 android:layout_marginBottom="9.5dp"
                                 android:background="@color/white"
@@ -209,6 +217,7 @@
                         <android.widget.Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:onClick="@{()-> viewModel.openRecentBook()}"
                                 android:layout_marginBottom="9.5dp"
                                 android:padding="5dp"
                                 android:background="@color/white"
@@ -363,7 +372,7 @@
                                 <TextView
                                         android:id="@+id/tvAccountInfoDOB"
                                         android:fontFamily="@font/lato_regular"
-                                        android:text="@{viewModel.birthday}"
+                                        date="@{viewModel.birthday}"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
@@ -417,7 +426,7 @@
                                 <TextView
                                         android:id="@+id/tvAccountInfoGender"
                                         android:fontFamily="@font/lato_regular"
-                                        android:text="@{viewModel.gender}"
+                                        gender="@{viewModel.gender}"
                                         android:textSize="19dp"
                                         android:textColor="@color/black"
                                         android:layout_height="wrap_content"
@@ -551,38 +560,81 @@
                         </RelativeLayout>
                     </LinearLayout>
 
-                    <android.widget.Button
-                            android:id="@+id/btnAccountSetting"
+                    <LinearLayout
                             android:onClick="@{()-> viewModel.onSettingClick()}"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/lato_regular"
-                            android:padding="10dp"
-                            android:textSize="18dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
                             android:background="@drawable/account_button_1"
-                            android:text="Cài đặt"
-                            android:textAlignment="textStart"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:drawableEnd="@drawable/ic_arrow_account"/>
-                    <android.widget.Button
-                            android:id="@+id/btnAccountVoucher"
-                            android:onClick="@{()-> viewModel.onVoucherClick()}"
-                            android:layout_width="match_parent"
+                            style="@android:style/Widget.Button"
+                            android:layout_marginTop="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="Cài đặt"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textAlignment="textStart"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginLeft="10dp"/>
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="end"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:textFontWeight="500"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="18dp"
-                            android:textAllCaps="false"
-                            android:background="@drawable/account_button_3"
-                            android:text="Voucher"
-                            android:textColor="@color/black"
-                            android:textAlignment="textStart"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="2dp"
-                            android:layout_marginBottom="2dp"
-                            android:drawableEnd="@drawable/ic_arrow_account"/>
+                            android:orientation="horizontal"
+                            android:background="@drawable/account_button_3"
+                            style="@android:style/Widget.Button"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="Cập nhật app"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textAlignment="textStart"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginLeft="10dp"/>
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="end"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent"
@@ -594,20 +646,43 @@
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
 
-                    <android.widget.Button
-                            android:id="@+id/btnAccountHelpCenter"
+                    <LinearLayout
                             android:onClick="@{()-> viewModel.onHelpCenterClick()}"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato_regular"
-                            android:padding="10dp"
-                            android:textSize="18dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal"
                             android:background="@drawable/account_button_2"
-                            android:text="Hỗ trợ"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textAlignment="textStart"
-                            android:drawableEnd="@drawable/ic_arrow_account"/>
+                            style="@android:style/Widget.Button"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="Hỗ trợ"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textAlignment="textStart"
+                                    android:textSize="19dp"
+                                    android:textColor="@color/black"
+                                    android:layout_marginLeft="10dp"/>
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="end"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="2.25dp"
+                                    android:src="@drawable/ic_arrow_account"/>
+                        </RelativeLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                             android:id="@+id/btnAccountInfoPasswordChange"
@@ -790,4 +865,21 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
+                loading="@{viewModel.loading}"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:backgroundTint="@color/color_of_button"
+                loading="@{viewModel.loading}"/>
+    </FrameLayout>
 </layout>

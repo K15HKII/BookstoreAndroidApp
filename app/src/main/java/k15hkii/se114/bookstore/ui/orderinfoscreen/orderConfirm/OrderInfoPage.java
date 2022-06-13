@@ -12,8 +12,11 @@ import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OrderInfoPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
+import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucher;
+import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodPage;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewNavigator;
@@ -82,6 +85,39 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
         Bundle bundle = new Bundle();
         bundle.putSerializable("book",vm.getBook());
         createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openSelectAddress() {
+        createTransaction(R.id.fragmentContainerView, SelectorAddressPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openSelectVoucher() {
+        createTransaction(R.id.fragmentContainerView, SelectorVoucher.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void openSelectPayment() {
+        createTransaction(R.id.fragmentContainerView, PaymentMethodPage.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

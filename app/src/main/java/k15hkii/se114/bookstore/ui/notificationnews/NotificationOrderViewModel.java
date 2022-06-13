@@ -1,65 +1,52 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
+import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
+import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
+import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.BaseOrderInfoViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
-import javax.inject.Inject;
-import java.util.List;
+public class NotificationOrderViewModel extends NotificationViewModel {
 
-public class NotificationOrderViewModel extends BaseViewModel<NotificationOrderViewNavigator> {
+    public final ObservableField<String> notificationTitle = new ObservableField<>();
+    public final ObservableField<String> notificationContent = new ObservableField<>();
+    public final ObservableField<Image> notificationImage = new ObservableField<>();
+    private final BaseOrderInfoViewModel<NotificationViewNavigator> _base;
 
-    @Inject protected ModelRemote remote;
-    // todo: get data
+    public NotificationOrderViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        super(schedulerProvider);
+        _base = new BaseOrderInfoViewModel<>(schedulerProvider, mapper, remote);
+        _base.items.addOnPropertyChangedCallback(new OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                notificationImage.set(_base.items.get() != null && _base.items.get().size() > 0 ? _base.items.get().get(0).image.get() : null);
+            }
+        });
 
-    private String title;
-    private String price;
-    private String description;
-    private List<OrderItemViewModel> lsorderItems;
-
-    public NotificationOrderViewModel(String title, String price, String description, List<OrderItemViewModel> lsorderItems) {
-        super(null);
-        this.title = title;
-        this.price = price;
-        this.description = description;
-        this.lsorderItems = lsorderItems;
+        OnPropertyChangedCallback callback = new OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                updateContent();
+            }
+        };
+        _base.price.addOnPropertyChangedCallback(callback);
+        _base.discount.addOnPropertyChangedCallback(callback);
+        _base.address.addOnPropertyChangedCallback(callback);
+        _base.voucher.addOnPropertyChangedCallback(callback);
+        _base.paymentMethod.addOnPropertyChangedCallback(callback);
+        updateContent();
     }
 
-    public NotificationOrderViewModel(SchedulerProvider schedulerProvider) {
-        super(null);
-
+    public void setBill(Bill bill) {
+        _base.setBill(bill);
     }
 
-    public String getTitle() {
-        return title;
+    private void updateContent() {
+        notificationTitle.set("test"); //TODO
+        notificationContent.set("super testtttttttttttttttttttttttttttttttttttt"); //TODO
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<OrderItemViewModel> getLsorderItems() {
-        return lsorderItems;
-    }
-
-    public void setLsorderItems(List<OrderItemViewModel> lsorderItems) {
-        this.lsorderItems = lsorderItems;
-    }
 }

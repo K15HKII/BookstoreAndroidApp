@@ -56,8 +56,6 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
         tabMenuNav = binding.tabMenuRentNav;
         RentView = binding.vpRentBookView;
 
-        //TODO: set position cho menutab
-
         btnAdd.setImageTintList(ColorStateList.valueOf(Color.rgb(255,255,255)));
 
         RentBookMenuTabAdapter rentBookView = new RentBookMenuTabAdapter(getActivity().getSupportFragmentManager(),
@@ -77,7 +75,10 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                     tab.setText(title);
                 }
         ).attach();
-
+        if (getArguments() != null) {
+            int position = getArguments().getInt("position", 0);
+            RentView.setCurrentItem(position);
+        }
         return view;
     }
 

@@ -21,13 +21,12 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, OncartViewViewModel> implements OncartViewPageNavigator, OncartItemNavigator {
     @Inject
     protected OncartItemAdapter oncartItemAdapter;
-
-    OncartViewFragmentBinding oncartViewFragmentBinding;
 
     @Inject protected OncartViewViewModel viewModel;
 
@@ -50,12 +49,12 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        oncartViewFragmentBinding = getViewDataBinding();
+        OncartViewFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        oncartViewFragmentBinding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
-        oncartViewFragmentBinding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
+        binding.lvOnCartViewListItems.setLayoutManager(linearLayoutManager);
+        binding.lvOnCartViewListItems.setAdapter(oncartItemAdapter);
 
         oncartItemAdapter.setOncartItemNavigator(this);
 
@@ -88,10 +87,11 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
     }
 
     @Override
-    public void OrderPageNavigator(OncartViewViewModel viewModel) {
+    public void OrderPageNavigator(OncartViewViewModel viewModel, List<OncartItemViewModel> selecteds) {
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("orderList", (Serializable) viewModel.selectedItemList);
+        ArrayList<OncartItemViewModel> temp = new ArrayList<>(selecteds);
+        bundle.putSerializable("orderList", temp);
         bundle.putSerializable("userId", viewModel.userId);
 
         createTransaction(R.id.fragmentContainerView, OrderInfoPage.class, bundle)
@@ -101,26 +101,5 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
-    }
-
-
-    @Override
-    public void checkItemHandle() {
-//        oncartViewFragmentBinding.lvOnCartViewListItems.post(() -> oncartItemAdapter.notifyDataSetChanged());
-    }
-
-    //    @Override
-//    public void resetView() {
-//        oncartItemAdapter.notifyDataSetChanged();
-//    }
-
-    @Override
-    public void deleteItem(int index) {
-        viewModel.list.remove(index);
-        viewModel.items.set(viewModel.list);
-        oncartViewFragmentBinding.lvOnCartViewListItems.removeViewAt(index);
-        oncartItemAdapter.notifyItemRemoved(index);
-        oncartItemAdapter.notifyItemRangeChanged(index, viewModel.list.size());
-        viewModel.getData();
     }
 }

@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
+import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.BannerAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,6 +48,12 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
         AllBooksViewFragmentBinding allBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         bookViewAdapter.setBookViewNavigator(this);
+
+        BannerAdapter bannerAdapter = new BannerAdapter(this.getContext());
+
+        getViewDataBinding().vpPopularBooks.setAdapter(bannerAdapter);
+        getViewDataBinding().ciPopularBooks.setViewPager(getViewDataBinding().vpPopularBooks);
+        bannerAdapter.registerAdapterDataObserver(getViewDataBinding().ciPopularBooks.getAdapterDataObserver());
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         allBooksViewFragmentBinding.lvHomeAllBook.setLayoutManager(gridLayoutManager);

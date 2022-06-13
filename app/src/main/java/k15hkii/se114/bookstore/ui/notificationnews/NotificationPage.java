@@ -7,13 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.NotificationPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -22,8 +24,7 @@ import java.util.List;
 
 public class NotificationPage extends BaseFragment<NotificationPageFragmentBinding, NotificationPageViewModel> implements NotificationPageNavigator {
 
-    @Inject protected
-    ListDataNotificationAdapter listDataNotificationAdapter;
+    @Inject protected NotificationViewAdapter notificationAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -49,7 +50,7 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NotificationPage.this.getContext());
         notificationPageFragmentBinding.rcvNotificationView.setLayoutManager(linearLayoutManager);
-        notificationPageFragmentBinding.rcvNotificationView.setAdapter(listDataNotificationAdapter);
+        notificationPageFragmentBinding.rcvNotificationView.setAdapter(notificationAdapter);
         return view;
     }
 
@@ -64,8 +65,7 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
 //        lsBook1.add(new OrderItemViewModel());
 //        lsBook1.add(new OrderItemViewModel());
 
-        List<NotificationOrderViewModel> lsOrder = new ArrayList<>();
-        lsOrder.add(new NotificationOrderViewModel("Đơn hàng 1", "200.000đ", "Đã được xác nhận", lsBook1));
+        List<NotificationViewModel> lsOrder = new ArrayList<>();
 
         List<NotificationInfoViewModel> lsInfo = new ArrayList<>();
         lsInfo.add(new NotificationInfoViewModel("Chào mừng bạn đến với bookstore", "Hello"));
@@ -79,5 +79,31 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openVoucherPage() {
+        createTransaction(R.id.fragmentContainerView, VoucherPage.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
+    public void childNavigate(Object object) {
+        if (object instanceof Book) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("book", (Book) object);
+            createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class, bundle)
+                    .setCustomAnimations(
+                            R.anim.slide_in,  // enter
+                            R.anim.fade_out,  // exit
+                            R.anim.fade_in,   // popEnter
+                            R.anim.slide_out  // popExit
+                    ).commit();
+        }
     }
 }

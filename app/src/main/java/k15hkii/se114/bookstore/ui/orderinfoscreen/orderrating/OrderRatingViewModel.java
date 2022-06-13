@@ -1,5 +1,6 @@
 package k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating;
 
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.BaseOrderInfoViewModel;
@@ -15,8 +16,8 @@ public class OrderRatingViewModel extends BaseOrderInfoViewModel<OrderRatingNavi
         getNavigator().BackWard();
     }
 
-    public void openRating() {
-        getNavigator().openRating();
+    public void openRating(Book book) {
+        getNavigator().openRating(book);
     }
 
 }

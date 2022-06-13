@@ -20,18 +20,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vpPopularBooks"
-                android:layout_width="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="150dp"/>
-
-            <me.relex.circleindicator.CircleIndicator3
-                android:id="@+id/ciPopularBooks"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="30dp"/>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvHomePopularBook"
                 android:layout_width="match_parent"

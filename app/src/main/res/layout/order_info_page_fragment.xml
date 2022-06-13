@@ -59,7 +59,8 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="15dp"
                             android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:paddingRight="10dp"
+                            android:onClick="@{()-> viewModel.openSelectAddress()}">
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -161,7 +162,8 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="15dp"
                             android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:paddingRight="10dp"
+                            android:onClick="@{()-> viewModel.openSelectVoucher()}">
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -220,7 +222,8 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="15dp"
                             android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:paddingRight="10dp"
+                            android:onClick="@{()-> viewModel.openSelectPaymentMethod()}">
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

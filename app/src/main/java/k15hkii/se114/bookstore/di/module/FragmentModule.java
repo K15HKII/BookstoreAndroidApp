@@ -9,8 +9,15 @@ import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
+import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
+import k15hkii.se114.bookstore.ui.voucherscreen.VoucherViewAdapter;
+import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
@@ -20,7 +27,6 @@ import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
 import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
 import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
@@ -85,7 +91,6 @@ import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
 import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
-import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
 import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
 import k15hkii.se114.bookstore.ui.success.lend.*;
@@ -139,8 +144,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, preferencesHelper));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, userId));
     }
 
     @Provides
@@ -214,8 +219,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper));
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper, ModelRemote remote) {
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper, remote));
     }
 
     @Provides
@@ -239,8 +244,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote, mapper));
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, helper, remote, mapper));
     }
 
     @Provides
@@ -269,13 +274,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider));
-    }
-
-    @Provides
-    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider));
+    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper, @UserId UUID userId) {
+        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider, remote, mapper, userId));
     }
 
     @Provides
@@ -289,8 +289,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider));
+    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider, remote, mapper));
     }
 
     @Provides
@@ -404,13 +404,13 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
-    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider, remote));
     }
 
     @Provides
@@ -436,6 +436,16 @@ public class FragmentModule {
     @Provides
     public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RecentListBookViewModel provideRecentListBookViewModel (SchedulerProvider schedulerProvider,ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, RecentListBookViewModel.class, () -> new RecentListBookViewModel(schedulerProvider,mapper, helper));
+    }
+
+    @Provides
+    public OrderCancleViewModel provideOrderCancleViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderCancleViewModel.class, () -> new OrderCancleViewModel(schedulerProvider, mapper, remote));
     }
 
 //    @Provides
@@ -502,15 +512,19 @@ public class FragmentModule {
     }
 
     @Provides
-    public RecentSearchAdapter recentSearchAdapter(Context context) {
-        return new RecentSearchAdapter(context);
-    }
-
-    @Provides
     public ListDataNotificationAdapter listDataNotificationAdapter(Context context) {
         return new ListDataNotificationAdapter(context);
     }
-    //endregion
+
+    @Provides
+    public NewsAdapter NewsAdapter(Context context) {
+        return new NewsAdapter(context);
+    }
+
+    @Provides
+    public NotificationViewAdapter notificationOrderViewAdapter(Context context) {
+        return new NotificationViewAdapter(context);
+    }
     //endregion
 
 }

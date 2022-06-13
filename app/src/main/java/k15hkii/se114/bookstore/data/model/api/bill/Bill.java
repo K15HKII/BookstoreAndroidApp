@@ -65,6 +65,11 @@ public class Bill implements Serializable {
     @Getter
     @SerializedName("ship_cost")
     private long shipCost;
+
+    @Expose
+    @Getter
+    @SerializedName("total_discount")
+    private long totalDiscount;
     //endregion
 
 }
