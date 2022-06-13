@@ -4,6 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.dialog.changeemail.ChangeEmailViewModel;
 import k15hkii.se114.bookstore.ui.dialog.emptycart.EmptyCartViewModel;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataViewModel;
 import k15hkii.se114.bookstore.ui.dialog.errornetwork.ErrorNetworkViewModel;
@@ -40,8 +41,8 @@ public class DialogModule {
     }
 
     @Provides
-    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper){
-        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider, helper));
+    ChangePassDialogViewModel provideChangePassDialogViewModel(SchedulerProvider schedulerProvider,ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangePassDialogViewModel.class, () -> new ChangePassDialogViewModel(schedulerProvider, remote, helper));
     }
 
     @Provides
@@ -117,6 +118,11 @@ public class DialogModule {
     @Provides
     SoldOutViewModel provideSoldOutViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, SoldOutViewModel.class, () -> new SoldOutViewModel(schedulerProvider));
+    }
+
+    @Provides
+    ChangeEmailViewModel provideChangeEmailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper){
+        return createViewModel(dialog, ChangeEmailViewModel.class, () -> new ChangeEmailViewModel(schedulerProvider, remote, helper));
     }
 }
 

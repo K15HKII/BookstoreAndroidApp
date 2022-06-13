@@ -14,6 +14,8 @@ import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
 import javax.inject.Inject;
 
@@ -51,7 +53,23 @@ public class ChangePassDialog extends BaseDialog implements ChangePassCallBack {
     }
 
     @Override
-    public void onSubmitPass() {
+    public void dismissDialog() {
         dismissDialog(TAG);
+    }
+
+    @Override
+    public void openMissingDataDialog(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+                show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openInvalidPasswordDialog(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+                show(getActivity().getSupportFragmentManager());
     }
 }

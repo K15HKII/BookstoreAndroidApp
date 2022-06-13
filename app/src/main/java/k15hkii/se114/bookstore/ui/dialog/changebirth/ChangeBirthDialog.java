@@ -54,6 +54,6 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
 
     @Override
     public void dismissDialog() {
-
+        dismissDialog(TAG);
     }
 }

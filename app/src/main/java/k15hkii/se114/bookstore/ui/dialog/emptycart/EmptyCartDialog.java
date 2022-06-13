@@ -29,6 +29,12 @@ public class EmptyCartDialog extends BaseDialog implements EmptyCartNavigator {
         return fragment;
     }
 
+    public static EmptyCartDialog newInstance(FragmentManager supportFragmentManager, Bundle bundle) {
+        EmptyCartDialog fragment = new EmptyCartDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         EmptyCartDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.empty_cart_dialog, container, false);

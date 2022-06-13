@@ -5,6 +5,7 @@ import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.di.scope.DialogScope;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowDialog;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
+import k15hkii.se114.bookstore.ui.dialog.changeemail.ChangeEmailDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
@@ -58,4 +59,6 @@ public interface DialogComponent {
     void inject(ErrorNetworkDialog errorNetworkDialog);
 
     void inject(SoldOutDialog soldOutDialog);
+
+    void inject(ChangeEmailDialog changeEmailDialog);
 }

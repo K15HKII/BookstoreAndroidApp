@@ -5,6 +5,7 @@ import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.utils.StringUtils;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -38,6 +39,16 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
     }
 
     public void onSubmitPhoneTextClick(){
+        if(userPhone.get().isEmpty()){
+            getNavigator().openMissingPhoneDialog("Cần nhập số điện thoại mới");
+            return;
+        }
+        else if(!StringUtils.isPhone(userPhone.get()))
+        {
+            getNavigator().openInvalidPhoneDialog("Số điện thoại không hợp lệ");
+            return;
+        }
+
         if (!Objects.equals(userPhone.get(), user.getPhone())) {
             ProfileUpdateRequest request = new ProfileUpdateRequest();
             request.setPhone(userPhone.get());
