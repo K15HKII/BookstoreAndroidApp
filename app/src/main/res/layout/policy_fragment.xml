@@ -48,7 +48,12 @@
                       android:background="@drawable/edit_text_background"
                       android:padding="15dp"
                       android:fontFamily="@font/lato_regular"
-                      android:text="Điều khoản"
+                      android:text="Khi vào web của chúng tôi, khách hàng phải đảm bảo đủ 18 tuổi, hoặc truy cập dưới sự giám sát của cha mẹ hay người giám hộ hợp pháp. Khách hàng đảm bảo có đầy đủ hành vi dân sự để thực hiện các giao dịch mua bán hàng hóa theo quy định hiện hành của pháp luật Việt Nam.
+\n\nChúng tôi có quyền từ chối hoặc hủy đơn hàng của quý khách vì bất kỳ lý do gì liên quan đến lỗi kỹ thuật, hệ thống một cách khách quan vào bất kỳ lúc nào.
+\n\nNgoài ra, để đảm bảo tính công bằng cho khách hàng là người tiêu dùng cuối cùng, chúng tôi cũng sẽ từ chối các đơn hàng không nhằm mục đích sử dụng cho cá nhân, mua hàng số lượng nhiều hoặc với mục đích mua đi bán lại.
+\n\n Trong mọi trường hợp, khách hàng đều có quyền chấm dứt giao dịch nếu đã thực hiện các biện pháp sau đây:
+\n\tThông báo cho chúng tôi về việc hủy giao dịch qua đường dây nóng 123321.
+\n\tTrả lại hàng hoá đã nhận nhưng chưa sử dụng hoặc hưởng bất kỳ lợi ích nào từ hàng hóa đó."
                       android:textSize="15dp"
                       android:textColor="@color/black"/>
         </LinearLayout>

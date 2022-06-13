@@ -12,12 +12,13 @@ public class DeleteAccountViewModel extends BaseViewModel<DeleteAccountNavigator
 
     public final ObservableField<String> reason = new ObservableField<>();
 
-    public void Send(){
-
-    }
-
     public void onBackWardClick(){
         getNavigator().BackWard();
+    }
+
+    public void SubmitDeleteAccount(){
+        //TODO: Delete Account
+        getNavigator().OpenLoginNavigator();
     }
 
 }
