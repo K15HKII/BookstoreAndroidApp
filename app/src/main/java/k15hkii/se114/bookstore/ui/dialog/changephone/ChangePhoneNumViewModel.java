@@ -55,7 +55,7 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
 
             dispose(remote.updateSelfUser(request),
                     user -> {
-                        getNavigator().onSubmitPhone();
+                        getNavigator().dismissDialog();
                     },
                     throwable -> { });
         }
