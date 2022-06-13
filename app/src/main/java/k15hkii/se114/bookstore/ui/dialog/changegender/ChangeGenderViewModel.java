@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
+import java.util.Arrays;
 
 public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallBack> {
 
@@ -39,6 +40,7 @@ public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallB
         super(schedulerProvider);
         this.helper = helper;
         this.remote = remote;
+        gender.addAll(Arrays.asList(SpinnerWrapper.toSpinner(Gender.values())));
     }
 
     public void onSubmitGenderText(){

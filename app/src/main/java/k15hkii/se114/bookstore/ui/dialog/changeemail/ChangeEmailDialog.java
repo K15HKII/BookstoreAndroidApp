@@ -1,4 +1,4 @@
-package k15hkii.se114.bookstore.ui.dialog.changename;
+package k15hkii.se114.bookstore.ui.dialog.changeemail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,22 +8,26 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.ChangeNameDialogBinding;
+import k15hkii.se114.bookstore.databinding.ChangeBirthDialogBinding;
+import k15hkii.se114.bookstore.databinding.ChangeEmailDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthCallBack;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
+import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthViewModel;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
 import javax.inject.Inject;
 
-public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
+public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack {
+    private static final String TAG = "ChangeEmailDialog";
 
-    private static final String TAG = "ChangeNameDialog";
+    @Inject
+    ChangeEmailViewModel viewModel;
 
-    @Inject protected ChangeNameDialogViewModel changeNameDialogViewModel;
-
-    public static ChangeNameDialog newInstance() {
-        ChangeNameDialog fragment = new ChangeNameDialog();
+    public static ChangeBirthDialog newInstance() {
+        ChangeBirthDialog fragment = new ChangeBirthDialog();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -31,11 +35,11 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeNameDialogBinding binding = DataBindingUtil.inflate( inflater,R.layout.change_name_dialog, container, false);
+        ChangeEmailDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_email_dialog, container, false);
         View view =binding.getRoot();
 
-        binding.setViewModel(changeNameDialogViewModel);
-        changeNameDialogViewModel.setNavigator(this);
+        binding.setViewModel(viewModel);
+        viewModel.setNavigator(this);
 
         this.getDialog().setCanceledOnTouchOutside(true);
 
@@ -56,7 +60,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
     }
 
     @Override
-    public void openMissingNameDialog(String error) {
+    public void openMissingEmailDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
         MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
@@ -64,7 +68,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
     }
 
     @Override
-    public void openInvalidNameDialog(String error) {
+    public void openInvalidEmailDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
         ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).

@@ -21,8 +21,9 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
     PreferencesHelper preferencesHelper;
 
     public final ObservableField<String> newName = new ObservableField<>();
+    public final ObservableField<String> firstName = new ObservableField<>();
+    public final ObservableField<String> lastName = new ObservableField<>();
 
-    String oldName;
     private User user;
 
     public void getData(UUID userId) {
@@ -42,6 +43,10 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
     }
 
     public void onSubmitClick() {
+        if(newName.get().isEmpty()){
+            getNavigator().openMissingNameDialog("Cần nhập tên mới");
+            return;
+        }
         if (!Objects.equals(newName.get(), (user.getFirstName() + " " + user.getLastName()))) {
             ProfileUpdateRequest request = new ProfileUpdateRequest();
             request.setFirstname(newName.get());
@@ -50,6 +55,7 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
                     user -> {
                     },
                     throwable -> {
+                        getNavigator().openInvalidNameDialog("Tên đã tồn tại");
                     });
         }
         getNavigator().dismissDialog();

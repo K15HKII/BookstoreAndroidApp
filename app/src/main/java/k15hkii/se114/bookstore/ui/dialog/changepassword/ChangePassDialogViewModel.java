@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class ChangePassDialogViewModel extends BaseViewModel<ChangePassCallBack> {
 
-    //TODO: Change Password
+    //TODO: Change Password viewModel
 
     @Inject
     protected ModelRemote remote;

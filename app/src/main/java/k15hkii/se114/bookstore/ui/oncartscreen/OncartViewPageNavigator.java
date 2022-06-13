@@ -9,5 +9,5 @@ public interface OncartViewPageNavigator extends INavigator {
 
     void OrderPageNavigator(OncartViewViewModel viewModel, List<OncartItemViewModel> selecteds);
 
-    void openMissingDialog(String error);
+    void openEmptyCart(String error);
 }
