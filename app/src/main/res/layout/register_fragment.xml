@@ -127,11 +127,10 @@
                                 android:nextFocusRight="@color/btn_blue"
                                 android:hint="Ngày sinh">
                             <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterDOB"
+                                    android:id="@+id/etRegisterBirth"
                                     android:layout_width="188dp"
                                     android:layout_height="wrap_content"
                                     android:inputType="date"
-                                    android:text="@={viewModel.birthday}"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="18dp"
                                     android:ems="15"
@@ -281,6 +280,7 @@
                     <!--            Đăng kí button-->
                     <android.widget.Button
                             android:id="@+id/btnRegisterRegister"
+                            android:onClick="@{()->viewModel.register()}"
                             android:fontFamily="@font/lato_bold"
                             android:textAllCaps="false"
                             android:background="@drawable/new_btn_sky_medium"

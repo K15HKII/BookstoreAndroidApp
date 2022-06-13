@@ -8,4 +8,6 @@ public interface OncartViewPageNavigator extends INavigator {
     void BackWard();
 
     void OrderPageNavigator(OncartViewViewModel viewModel, List<OncartItemViewModel> selecteds);
+
+    void openMissingDialog(String error);
 }

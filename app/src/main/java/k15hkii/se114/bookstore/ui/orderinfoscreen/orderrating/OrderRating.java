@@ -66,19 +66,6 @@ public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderR
     }
 
     @Override
-    public void openRating(Book book) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("book", book);
-        createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class, bundle)
-                .setCustomAnimations(
-                        R.anim.slide_in,  // enter
-                        R.anim.fade_out,  // exit
-                        R.anim.fade_in,   // popEnter
-                        R.anim.slide_out  // popExit
-                ).addToBackStack(null).commit();
-    }
-
-    @Override
     public void Navigate(OrderBookViewModel vm) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("book", vm.getBook());

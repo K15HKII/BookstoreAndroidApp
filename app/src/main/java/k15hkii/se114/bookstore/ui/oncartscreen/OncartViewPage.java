@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.databinding.OncartViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPage;
 import org.jetbrains.annotations.NotNull;
 
@@ -101,5 +102,13 @@ public class OncartViewPage extends BaseFragment<OncartViewFragmentBinding, Onca
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
+    }
+
+    @Override
+    public void openMissingDialog(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
+                show(getActivity().getSupportFragmentManager());
     }
 }

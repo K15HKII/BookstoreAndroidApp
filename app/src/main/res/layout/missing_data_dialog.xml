@@ -29,7 +29,7 @@
                 android:fontFamily="@font/lato_regular"
                 android:textAlignment="center" app:layout_constraintTop_toBottomOf="@+id/imageView13"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/textView18"/>
+                android:id="@+id/tvErrorMess"/>
         <android.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 android:textSize="18dp"
                 android:textColor="@color/red_orange"
                 android:background="@drawable/new_btn_white_small"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/tvErrorMess"
                 android:layout_marginTop="30dp" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
