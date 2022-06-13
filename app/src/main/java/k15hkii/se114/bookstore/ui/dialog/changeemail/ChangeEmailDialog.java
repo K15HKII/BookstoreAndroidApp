@@ -61,6 +61,7 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
     @Override
     public void dismissDialog() {
         dismissDialog(TAG);
+        closeCallback.onClose(null);
     }
 
     @Override
