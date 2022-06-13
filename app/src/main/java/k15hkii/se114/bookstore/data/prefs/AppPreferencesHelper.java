@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
-import k15hkii.se114.bookstore.utils.AppConstants;
 
 import javax.inject.Inject;
 import java.util.UUID;
@@ -107,4 +106,5 @@ public class AppPreferencesHelper implements PreferencesHelper {
     public void setCurrentUserProfilePicUrl(String profilePicUrl) {
         sharedPreferences.edit().putString(PREF_KEY_CURRENT_USER_PROFILE_PIC_URL, profilePicUrl).apply();
     }
+
 }

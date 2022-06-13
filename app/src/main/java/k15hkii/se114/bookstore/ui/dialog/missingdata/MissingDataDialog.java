@@ -8,16 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.FailedCheckDialogBinding;
 import k15hkii.se114.bookstore.databinding.MissingDataDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 
 import javax.inject.Inject;
 
-public class MissingDataDialog extends BaseDialog implements MissingDataNavigator{
+public class MissingDataDialog extends BaseDialog implements MissingDataNavigator {
 
     private static final String TAG = "MissingDataDialog";
 
@@ -40,11 +37,11 @@ public class MissingDataDialog extends BaseDialog implements MissingDataNavigato
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MissingDataDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.missing_data_dialog, container, false);
-        View view =binding.getRoot();
+        View view = binding.getRoot();
         binding.setViewModel(viewModel);
         viewModel.setNavigator(this);
         Bundle bundle = getArguments();
-        if(bundle != null){
+        if (bundle != null) {
             binding.tvErrorMess.setText(bundle.getString("error"));
         }
         this.getDialog().setCanceledOnTouchOutside(true);
@@ -64,4 +61,5 @@ public class MissingDataDialog extends BaseDialog implements MissingDataNavigato
     public void dismissDialog() {
         dismissDialog(TAG);
     }
+
 }

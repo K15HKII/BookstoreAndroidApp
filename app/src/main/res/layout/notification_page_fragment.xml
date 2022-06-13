@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.notificationnews.NotificationPageViewModel" />
+            type="k15hkii.se114.bookstore.ui.notification.NotificationPageViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.notificationnews.NotificationPage">
+        tools:context=".ui.notification.NotificationPage">
 
         <LinearLayout
             android:layout_width="match_parent"

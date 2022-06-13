@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetailViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetailViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/new_background_color"
         tools:context=".ui.mainscreen.rentscreen.add.AddRentBookDetail">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <androidx.appcompat.widget.Toolbar
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
-                android:id="@+id/toolbarSettingPage" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent">
-            <RelativeLayout
+                android:id="@+id/toolbarSettingPage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <android.widget.Button
+
+                    <android.widget.Button
                         android:id="@+id/btnAddRentBookDetailBackward"
                         android:onClick="@{()-> viewModel.onBackWardClick()}"
                         android:layout_width="40dp"
@@ -34,9 +43,9 @@
                         android:scaleX="0.55"
                         android:scaleY="0.55"
                         android:layout_alignParentLeft="true"
-                        android:background="@drawable/ic_backward"/>
+                        android:background="@drawable/ic_backward" />
 
-                <TextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
@@ -44,17 +53,20 @@
                         android:textStyle="bold"
                         android:text="Thêm sách mượn"
                         android:textColor="@color/black"
-                        android:textSize="24dp" android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:textSize="24dp"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:padding="15dp"
-                  android:layout_marginTop="55dp"
-                  android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -66,7 +78,8 @@
                 app:hintTextColor="@color/btn_blue"
                 android:nextFocusRight="@color/btn_blue"
                 android:hint="Tên sách/Mã sách">
-            <com.google.android.material.textfield.TextInputEditText
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddRentBookDetailBookNameOrID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,28 +91,33 @@
                     android:textColor="@color/btn_blue"
                     android:textColorHint="@color/btn_blue"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    android:background="@drawable/edit_text_background"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:background="@drawable/edit_text_background" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="12dp"
-                >
-            <androidx.constraintlayout.widget.ConstraintLayout
+                app:cardCornerRadius="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="10dp">
-                <ImageView
+
+                    <ImageView
                         android:layout_width="156dp"
                         android:layout_height="150dp"
                         android:src="@drawable/dac_nhan_tam_book"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.068"
-                        app:layout_constraintVertical_bias="0.037" android:id="@+id/imageView3"/>
-                <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.068"
+                        app:layout_constraintVertical_bias="0.037"
+                        android:id="@+id/imageView3" />
+
+                    <TextView
                         android:id="@+id/tvAddRentBookDetailBookName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -107,10 +125,13 @@
                         android:textColor="@color/black"
                         android:textSize="18dp"
                         android:fontFamily="@font/lato_bold"
-                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintHorizontal_bias="0.849" app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.849"
+                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="16dp" />
-                <TextView
+
+                    <TextView
                         android:id="@+id/tvAddRentBookDetailRentPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,19 +139,25 @@
                         android:textColor="@color/red_orange"
                         android:textSize="18dp"
                         android:fontFamily="@font/lato_bold"
-                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintHorizontal_bias="0.612"
-                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tvAddRentBookDetailBookName"/>
-                <TextView
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddRentBookDetailBookName" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mô tả:"
                         android:textSize="16dp"
                         android:fontFamily="@font/lato_bold"
-                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintHorizontal_bias="0.570" app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="72dp"/>
-                <TextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.570"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="72dp" />
+
+                    <TextView
                         android:id="@+id/tvAddRentBookDetailDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,13 +165,15 @@
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:fontFamily="@font/lato_regular"
-                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintHorizontal_bias="0.604" app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="100dp"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.604"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="100dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -154,7 +183,8 @@
                 android:background="@drawable/edit_text_background"
                 app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddRentBookDetailNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,10 +194,10 @@
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
-                    android:scrollHorizontally="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:scrollHorizontally="false" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.widget.Button
+            <android.widget.Button
                 android:id="@+id/btnAddRentBookDetailConfirmBook"
                 android:onClick="@{()-> viewModel.openAddRentInfo()}"
                 android:layout_width="wrap_content"
@@ -179,9 +209,9 @@
                 android:textSize="15dp"
                 android:textAllCaps="false"
                 android:fontFamily="@font/lato_bold"
-                android:background="@drawable/new_btn_sky_medium"/>
+                android:background="@drawable/new_btn_sky_medium" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

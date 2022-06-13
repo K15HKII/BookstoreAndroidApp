@@ -1,12 +1,9 @@
 package k15hkii.se114.bookstore.data.remote;
 
-import java.util.List;
-import java.util.UUID;
-
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.ItemResponse;
 import k15hkii.se114.bookstore.data.model.StatusResponse;
-import k15hkii.se114.bookstore.data.model.api.*;
+import k15hkii.se114.bookstore.data.model.api.StatisticResult;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.bill.BillCreateRequest;
 import k15hkii.se114.bookstore.data.model.api.bill.Transporter;
@@ -30,6 +27,9 @@ import k15hkii.se114.bookstore.data.model.auth.PasswordChangeRequest;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.*;
+
+import java.util.List;
+import java.util.UUID;
 
 public interface ModelRemote {
 
@@ -259,10 +259,10 @@ public interface ModelRemote {
     Single<List<Feedback>> getFeedbacks();
 
     @POST("/api/message/feedback/{book_id}")
-    public Single<Feedback> sendFeedback(@Path("book_id") UUID bookId, @Body FeedbackCRUDRequest feedback);
+    Single<Feedback> sendFeedback(@Path("book_id") UUID bookId, @Body FeedbackCRUDRequest feedback);
 
     @POST("/api/message/{feedback_id}")
-    public Single<ReplyFeedback> sendReply(@Body ReplyCRUDRequest request);
+    Single<ReplyFeedback> sendReply(@Body ReplyCRUDRequest request);
     //endregion
 
 }

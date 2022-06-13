@@ -61,4 +61,5 @@ public interface DialogComponent {
     void inject(SoldOutDialog soldOutDialog);
 
     void inject(ChangeEmailDialog changeEmailDialog);
+
 }

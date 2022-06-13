@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPageViewModel" />
+            type="k15hkii.se114.bookstore.ui.book.detail.BookDetailPageViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.bookdetailscreen.BookDetailPage">
+        tools:context=".ui.book.detail.BookDetailPage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     android:layout_marginEnd="52dp"
-                                    app:layout_constraintVertical_bias="0.428"/>
+                                    app:layout_constraintVertical_bias="0.428" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
@@ -207,50 +207,52 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     android:layout_marginEnd="64dp" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/listview_shape"
-        android:backgroundTint="@color/white"
-        android:orientation="vertical">
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Miêu tả"
-            android:textSize="18dp"
-            android:textColor="#636363"
-            android:fontFamily="@font/lato_regular" />
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@{viewModel.description}"
-            android:textSize="14dp"
-            android:textColor="#636363"
-            android:fontFamily="@font/lato_regular"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/listview_shape"
+                                android:backgroundTint="@color/white"
+                                android:orientation="vertical">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:text="Nhận xét"
-            android:textSize="24dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/lato_bold" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Miêu tả"
+                                    android:textSize="18dp"
+                                    android:textColor="#636363"
+                                    android:fontFamily="@font/lato_regular" />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvBookDetailComments"
-            android:padding="10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            source="@{viewModel.feedbacks}" />
-</LinearLayout>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp"
+                                    android:text="@{viewModel.description}"
+                                    android:textSize="14dp"
+                                    android:textColor="#636363"
+                                    android:fontFamily="@font/lato_regular" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:padding="10dp"
+                                    android:text="Nhận xét"
+                                    android:textSize="24dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/lato_bold" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rcvBookDetailComments"
+                                    android:padding="10dp"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    source="@{viewModel.feedbacks}" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
@@ -349,22 +351,22 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <FrameLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/gray_transparent"-->
-<!--            android:focusable="true"-->
-<!--            android:focusableInTouchMode="true"-->
-<!--            android:clickable="true"-->
-<!--            loading="@{viewModel.loading}" />-->
+        <!--        <FrameLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:background="@color/gray_transparent"-->
+        <!--            android:focusable="true"-->
+        <!--            android:focusableInTouchMode="true"-->
+        <!--            android:clickable="true"-->
+        <!--            loading="@{viewModel.loading}" />-->
 
-<!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:indeterminate="true"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:clickable="false"-->
-<!--            android:backgroundTint="@color/color_of_button"-->
-<!--            loading="@{viewModel.loading}" />-->
+        <!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:indeterminate="true"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:clickable="false"-->
+        <!--            android:backgroundTint="@color/color_of_button"-->
+        <!--            loading="@{viewModel.loading}" />-->
     </FrameLayout>
 </layout>

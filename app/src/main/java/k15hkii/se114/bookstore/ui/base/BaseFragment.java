@@ -104,7 +104,8 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         }
     }
 
-    @Setter private Object closeCallbackData;
+    @Setter
+    private Object closeCallbackData;
 
     private List<CloseReturnCallback> closeReturnCallbacks;
 
@@ -167,5 +168,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         void onFragmentAttached();
 
         void onFragmentDetached(String tag);
+
     }
+
 }

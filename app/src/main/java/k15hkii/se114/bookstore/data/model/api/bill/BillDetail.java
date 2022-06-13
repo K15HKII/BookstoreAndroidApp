@@ -10,6 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BillDetail {
+
     @Getter
     @Expose
     @SerializedName("bill_id")

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.bookdetailscreen.FeedbackViewModel" />
+            type="k15hkii.se114.bookstore.ui.book.detail.FeedbackViewModel" />
     </data>
 
     <LinearLayout
@@ -73,7 +72,7 @@
             android:id="@+id/rcvCommentImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            source="@{viewModel.images}"/>
+            source="@{viewModel.images}" />
 
     </LinearLayout>
 </layout>

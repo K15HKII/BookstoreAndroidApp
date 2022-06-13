@@ -1,59 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.order.PaymentMethodViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/new_background_color"
-        tools:context=".ui.orderinfoscreen.PaymentMethodPage">
-    <LinearLayout
+        tools:context=".ui.order.PaymentMethodPage">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:theme="?attr/actionBarTheme"
-            android:minHeight="?attr/actionBarSize"
-            android:id="@+id/toolbarSettingPage">
-        <android.widget.Button
-                android:id="@+id/btnPaymentMethodBackward"
-                android:onClick="@{()-> viewModel.onBackWardClick()}"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:scaleX="0.55"
-                android:scaleY="0.55"
-                android:background="@drawable/ic_backward"/>
-
-        <TextView
-                android:fontFamily="@font/lato_bold"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:textStyle="bold"
-                android:text="Hình thức thanh toán"
-                android:textColor="@color/black"
-                android:textSize="24dp"/>
-    </androidx.appcompat.widget.Toolbar>
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
 
-        <LinearLayout
+                <android.widget.Button
+                    android:id="@+id/btnPaymentMethodBackward"
+                    android:onClick="@{()-> viewModel.onBackWardClick()}"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleX="0.55"
+                    android:scaleY="0.55"
+                    android:background="@drawable/ic_backward" />
+
+                <TextView
+                    android:fontFamily="@font/lato_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:text="Hình thức thanh toán"
+                    android:textColor="@color/black"
+                    android:textSize="24dp" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="90dp"
                 android:orientation="vertical"
                 android:padding="15dp">
-           <androidx.recyclerview.widget.RecyclerView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                     android:id="@+id/rcvPaymentMethod"/>
-            <android.widget.Button
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rcvPaymentMethod" />
+
+                <android.widget.Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
@@ -63,10 +70,10 @@
                     android:textSize="16dp"
                     android:textColor="@color/white"
                     android:background="@drawable/new_btn_sky_large"
-                    android:onClick="@{()-> viewModel.AcceptPayment()}"/>
+                    android:onClick="@{()-> viewModel.AcceptPayment()}" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-</FrameLayout>
+    </FrameLayout>
 </layout>

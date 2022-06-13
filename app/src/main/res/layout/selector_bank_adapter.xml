@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.account.bank.recycleViewBankSelector.OtherBankViewModel" />
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_marginTop="10dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <LinearLayout
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:id="@+id/btnBankChoiceAdapterOtherBankAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -16,22 +21,26 @@
             android:clickable="true"
             android:background="@drawable/edit_text_background"
             android:orientation="horizontal">
-        <ToggleButton
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:textOn=""
-            android:textOff=""
-            android:scaleX="1"
-            android:scaleY="0.45"
-            android:background="@drawable/radio_selector"/>
-        <RelativeLayout
+
+            <ToggleButton
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:textOn=""
+                android:textOff=""
+                android:scaleX="1"
+                android:scaleY="0.45"
+                android:background="@drawable/radio_selector" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <TextView
+
+                    <TextView
                         android:id="@+id/tvBankChoiceAdapterBankName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -39,19 +48,23 @@
                         android:textSize="21dp"
                         android:text="@{viewModel.bankName}"
                         android:textStyle="bold"
-                        android:textColor="#001C44"/>
-                <LinearLayout android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:orientation="horizontal">
-                    <TextView
+                        android:textColor="#001C44" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:text="Chủ tài khoản: "
                             android:fontFamily="@font/lato_regular"
                             android:textSize="15dp"
-                            android:textColor="@color/btn_blue"/>
-                    <TextView
+                            android:textColor="@color/btn_blue" />
+
+                        <TextView
                             android:id="@+id/tvBankChoiceAdapterOwnerName"
                             android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
@@ -59,9 +72,10 @@
                             android:fontFamily="@font/lato_regular"
                             android:textSize="15dp"
                             android:text="@{viewModel.userName}"
-                            android:textColor="#001C44"/>
-                </LinearLayout>
-                <TextView
+                            android:textColor="#001C44" />
+                    </LinearLayout>
+
+                    <TextView
                         android:id="@+id/tvBankChoiceAdapterBankNumber"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
@@ -69,17 +83,18 @@
                         android:fontFamily="@font/lato_regular"
                         android:textSize="15dp"
                         android:text="@{viewModel.iban}"
-                        android:textColor="#001C44"/>
-            </LinearLayout>
-            <ImageView
+                        android:textColor="#001C44" />
+                </LinearLayout>
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_arrow_account"/>
-        </RelativeLayout>
+                    android:src="@drawable/ic_arrow_account" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>

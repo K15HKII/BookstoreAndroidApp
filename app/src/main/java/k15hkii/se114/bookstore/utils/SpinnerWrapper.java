@@ -5,7 +5,8 @@ import lombok.Getter;
 
 public abstract class SpinnerWrapper<T> {
 
-    @Getter private final T item;
+    @Getter
+    private final T item;
 
     public SpinnerWrapper(T item) {
         this.item = item;

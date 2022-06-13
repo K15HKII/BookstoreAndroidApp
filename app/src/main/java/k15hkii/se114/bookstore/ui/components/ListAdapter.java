@@ -9,7 +9,8 @@ import java.util.List;
 
 public abstract class ListAdapter<VM, T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 
-    @Getter protected List<VM> source;
+    @Getter
+    protected List<VM> source;
 
     public ListAdapter(List<VM> data) {
         this.source = data;

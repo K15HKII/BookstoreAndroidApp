@@ -3,7 +3,10 @@ package k15hkii.se114.bookstore.data.model.api.user;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
 import java.util.Date;
 import java.util.List;

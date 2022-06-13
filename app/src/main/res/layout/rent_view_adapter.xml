@@ -1,106 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel" />
     </data>
 
     <LinearLayout
-            android:orientation="vertical"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="15dp"
-                 android:layout_marginLeft="10dp"
-                 android:layout_marginRight="10dp"
-                 android:layout_marginBottom="10dp"
-                 android:background="@drawable/listview_shape">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/listview_shape">
+
         <LinearLayout
-                android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <ImageView
-                        android:id="@+id/imageRentBookAdapterBookView"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        image="@{viewModel.image}"
-                        android:src="@drawable/dac_nhan_tam_book"/>
+                    android:id="@+id/imageRentBookAdapterBookView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    image="@{viewModel.image}"
+                    android:src="@drawable/dac_nhan_tam_book" />
+
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="12dp"
-                        android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:orientation="vertical">
+
                     <TextView
-                            android:id="@+id/tvRentBookAdapterNameOfBook"
-                            android:fontFamily="@font/lato_regular"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@{viewModel.name}"
-                            android:textSize="21dp"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/black"/>
+                        android:id="@+id/tvRentBookAdapterNameOfBook"
+                        android:fontFamily="@font/lato_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.name}"
+                        android:textSize="21dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black" />
+
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvRentBookAdapterAuthor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:orientation="horizontal">
-                        <TextView
-                                android:id="@+id/tvRentBookAdapterAuthor"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.booktag}"
-                                android:textSize="15dp"
-                                android:textColor="@color/btn_blue"
-                                android:textAlignment="textEnd"/>
+                            android:fontFamily="@font/lato_regular"
+                            android:text="@{viewModel.booktag}"
+                            android:textSize="15dp"
+                            android:textColor="@color/btn_blue"
+                            android:textAlignment="textEnd" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="15dp">
+                    android:padding="15dp">
+
                     <TextView
-                            android:id="@+id/tvRentItemsNote"
-                            android:fontFamily="@font/lato_regular"
-                            android:textSize="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            date = "@{viewModel.endDate}"/>
+                        android:id="@+id/tvRentItemsNote"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        date="@{viewModel.endDate}" />
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:text="Thành tiền: "
+                            android:fontFamily="@font/lato_regular"
+                            android:textColor="@color/color_of_button"
+                            android:textSize="21dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content" />
+
                         <TextView
-                                android:text="Thành tiền: "
-                                android:fontFamily="@font/lato_regular"
-                                android:textColor="@color/color_of_button"
-                                android:textSize="21dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        <TextView
-                                android:id="@+id/tvRentItemsPrice"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.price}"
-                                android:textColor="@color/color_of_button"
-                                android:textSize="21dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                            android:id="@+id/tvRentItemsPrice"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="@{viewModel.price}"
+                            android:textColor="@color/color_of_button"
+                            android:textSize="21dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

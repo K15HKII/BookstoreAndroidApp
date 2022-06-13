@@ -12,4 +12,5 @@ public class ErrorNetworkViewModel extends BaseViewModel<ErrorNetworkNavigator> 
     public void dismissDialog() {
         getNavigator().dismissDialog();
     }
+
 }

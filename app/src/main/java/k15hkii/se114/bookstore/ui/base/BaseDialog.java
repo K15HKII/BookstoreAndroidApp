@@ -24,9 +24,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -34,7 +32,6 @@ import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.di.module.DialogModule;
 
 /**
@@ -96,9 +93,9 @@ public abstract class BaseDialog extends DialogFragment {
         show(transaction, tag);
     }
 
-    private DialogComponent getBuildComponent(){
+    private DialogComponent getBuildComponent() {
         return DaggerDialogComponent.builder()
-                .appComponent(((BookstoreApp)(getContext().getApplicationContext())).getAppComponent())
+                .appComponent(((BookstoreApp) (getContext().getApplicationContext())).getAppComponent())
                 .dialogModule(new DialogModule(this))
                 .build();
     }

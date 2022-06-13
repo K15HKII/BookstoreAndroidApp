@@ -12,6 +12,7 @@ import k15hkii.se114.bookstore.R;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -44,7 +45,7 @@ public final class CommonUtils {
         is.read(buffer);
         is.close();
 
-        return new String(buffer, "UTF-8");
+        return new String(buffer, StandardCharsets.UTF_8);
     }
 
     public static ProgressDialog showLoadingDialog(Context context) {
@@ -59,4 +60,5 @@ public final class CommonUtils {
         progressDialog.setCanceledOnTouchOutside(false);
         return progressDialog;
     }
+
 }

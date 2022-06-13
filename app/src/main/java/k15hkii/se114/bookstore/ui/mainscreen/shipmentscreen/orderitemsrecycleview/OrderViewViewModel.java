@@ -1,7 +1,5 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
-import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableLong;

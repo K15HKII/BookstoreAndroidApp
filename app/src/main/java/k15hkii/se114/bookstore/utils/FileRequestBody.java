@@ -8,21 +8,18 @@ import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
 import okio.Source;
-import org.jetbrains.annotations.Nullable;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class FileRequestBody extends RequestBody {
 
-    private InputStream inputStream;
+    private final InputStream inputStream;
 
-    private MediaType type;
+    private final MediaType type;
 
     public FileRequestBody(InputStream inputStream, MediaType type) {
         this.inputStream = inputStream;

@@ -6,15 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentSuccessBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class LendSuccess extends BaseFragment<RentSuccessBinding, LendSuccessViewModel> implements LendSuccessNavigator {
 
@@ -54,4 +51,5 @@ public class LendSuccess extends BaseFragment<RentSuccessBinding, LendSuccessVie
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

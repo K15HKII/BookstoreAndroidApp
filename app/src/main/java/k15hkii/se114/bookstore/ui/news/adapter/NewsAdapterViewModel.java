@@ -7,10 +7,7 @@ import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.model.api.message.Feedback;
 import k15hkii.se114.bookstore.data.model.api.message.Message;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.base.INavigator;
-import k15hkii.se114.bookstore.ui.bookdetailscreen.BaseCommentViewModel;
-import k15hkii.se114.bookstore.ui.bookdetailscreen.FeedbackViewModel;
+import k15hkii.se114.bookstore.ui.book.detail.BaseCommentViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class NewsAdapterViewModel extends BaseCommentViewModel<INewsAdapterNavigator> {

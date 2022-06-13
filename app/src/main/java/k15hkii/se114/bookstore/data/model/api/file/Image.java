@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 public class Image extends File implements Serializable {
+
     @Getter
     @Expose
     @SerializedName("width")

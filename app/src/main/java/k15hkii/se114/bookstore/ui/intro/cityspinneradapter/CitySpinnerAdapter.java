@@ -17,8 +17,8 @@ public class CitySpinnerAdapter extends BaseAdapter {
         this.lsCity = lsCity;
     }
 
-    private Context context;
-    private List<String> lsCity;
+    private final Context context;
+    private final List<String> lsCity;
 
     @Override
     public int getCount() {
@@ -37,10 +37,11 @@ public class CitySpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View rootView = LayoutInflater.from(context).inflate(R.layout.city_spinner_adapter,viewGroup,false);
+        View rootView = LayoutInflater.from(context).inflate(R.layout.city_spinner_adapter, viewGroup, false);
 
         TextView tvCity = rootView.findViewById(R.id.tvCitySpinnerCityName);
         tvCity.setText(lsCity.get(i));
         return rootView;
     }
+
 }

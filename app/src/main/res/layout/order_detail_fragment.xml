@@ -1,382 +1,431 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.order.detail.OrderDetailViewModel" />
     </data>
-    <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.orderinfoscreen.orderdetail.OrderDetail">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.order.detail.OrderDetail">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/new_background_color"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/new_background_color"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:theme="?attr/actionBarTheme"
-                    android:minHeight="?attr/actionBarSize"
-                    android:id="@+id/toolbarSettingPage">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
+
                 <android.widget.Button
-                        android:id="@+id/btnOrderPageBackward"
-                        android:onClick="@{()-> viewModel.onBackWardClick()}"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:scaleX="0.55"
-                        android:scaleY="0.55"
-                        android:background="@drawable/ic_backward"/>
+                    android:id="@+id/btnOrderPageBackward"
+                    android:onClick="@{()-> viewModel.onBackWardClick()}"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleX="0.55"
+                    android:scaleY="0.55"
+                    android:background="@drawable/ic_backward" />
 
                 <TextView
+                    android:fontFamily="@font/lato_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:text="Chi tiết đơn hàng"
+                    android:textColor="@color/black"
+                    android:textSize="24dp" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/btnOrderPageLocation"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/account_button_1"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="30dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="5dp"
+                                        android:src="@drawable/ic_location" />
+
+                                    <TextView
+                                        android:fontFamily="@font/lato_bold"
+                                        android:text="Địa chỉ"
+                                        android:textStyle="bold"
+                                        android:textSize="19dp"
+                                        android:textColor="@color/black"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:layout_width="231dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="84.5dp" />
+                                </LinearLayout>
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvOrderDetailAddressDetail"
+                            android:fontFamily="@font/lato_regular"
+                            address="@{viewModel.address}"
+                            android:textSize="19dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="textStart"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/account_button_3"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="0dp"
+                                android:backgroundTint="@color/black"
+                                android:src="@drawable/ic_shopping_blue" />
+
+                            <TextView
+                                android:text="Đơn hàng"
+                                android:fontFamily="@font/lato_bold"
+                                android:textStyle="bold"
+                                android:textSize="19dp"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="textStart"
+                                android:layout_width="231dp"
+                                android:layout_marginLeft="3dp" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lvOrderDetailListBooks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none"
+                            android:padding="10dp"
+                            source="@{viewModel.items}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btnOrderPageVoucher"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/account_button_3"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_voucher" />
+
+                                    <TextView
+                                        android:text="Voucher"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textStyle="bold"
+                                        android:textSize="19dp"
+                                        android:textColor="@color/black"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:layout_width="220dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="84.5dp" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvOrderDetailVoucher"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="@{viewModel.voucherDescription}"
+                            android:textSize="19dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="textStart"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btnOrderPagePaymentMethod"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/account_button_3"
+                        style="@android:style/Widget.Button"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/ic_credit" />
+
+                                    <TextView
+                                        android:text="Hình thức thanh toán"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textStyle="bold"
+                                        android:textSize="19dp"
+                                        android:textColor="@color/black"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:layout_width="220dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="84.5dp" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvOrderDetailPaymentMethod"
+                            android:fontFamily="@font/lato_regular"
+                            payment="@{viewModel.paymentMethod}"
+                            android:textSize="19dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="textStart"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/account_button_2"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="185dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:textColor="@color/black"
+                                android:text="Tổng tiền hàng"
+                                android:textAlignment="textStart" />
+
+                            <TextView
+                                android:id="@+id/tvOrderDetailTotal"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                price="@{viewModel.price}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="185dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:textColor="@color/black"
+                                android:text="Phí vận chuyển"
+                                android:textAlignment="textStart" />
+
+                            <TextView
+                                android:id="@+id/tvOrderDetailShipmentPay"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                price="@{viewModel.shipPay}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="185dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:textColor="@color/black"
+                                android:text="Giảm giá"
+                                android:textAlignment="textStart" />
+
+                            <TextView
+                                android:id="@+id/tvOrderDetailDiscount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="15dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                price="@{viewModel.voucherDiscount}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="185dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:textColor="@color/black"
+                                android:text="Tổng tiền"
+                                android:textSize="24dp"
+                                android:textStyle="bold"
+                                android:textAlignment="textStart" />
+
+                            <TextView
+                                android:id="@+id/tvOrderDetailTotalMoneyPay"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="24dp"
+                                android:textStyle="bold"
+                                price="@{viewModel.total}" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <android.widget.Button
+                        android:id="@+id/btnOrderDetailCancleOrder"
                         android:fontFamily="@font/lato_bold"
+                        android:paddingLeft="35dp"
+                        android:paddingRight="35dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:background="@drawable/new_btn_sky_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:textStyle="bold"
-                        android:text="Chi tiết đơn hàng"
-                        android:textColor="@color/black"
-                        android:textSize="24dp"/>
-            </androidx.appcompat.widget.Toolbar>
-            <ScrollView android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="none">
-                <LinearLayout android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:layout_marginTop="0dp"
-                              android:orientation="vertical">
-                    <LinearLayout
-                            android:id="@+id/btnOrderPageLocation"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:background="@drawable/account_button_1"
-                            style="@android:style/Widget.Button"
-                            android:layout_marginTop="30dp"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                            <RelativeLayout android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
-                                <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-                                    <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginLeft="5dp"
-                                            android:src="@drawable/ic_location"/>
-                                    <TextView
-                                            android:fontFamily="@font/lato_bold"
-                                            android:text="Địa chỉ"
-                                            android:textStyle="bold"
-                                            android:textSize="19dp"
-                                            android:textColor="@color/black"
-                                            android:layout_height="wrap_content"
-                                            android:textAlignment="textStart"
-                                            android:layout_width="231dp"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginRight="84.5dp"/>
-                                </LinearLayout>
-
-                            </RelativeLayout>
-                        </LinearLayout>
-                        <TextView
-                                android:id="@+id/tvOrderDetailAddressDetail"
-                                android:fontFamily="@font/lato_regular"
-                                address="@{viewModel.address}"
-                                android:textSize="19dp"
-                                android:textColor="@color/black"
-                                android:textAlignment="textStart"
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginLeft="8dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:background="@drawable/account_button_3"
-                            style="@android:style/Widget.Button"
-                            android:layout_marginTop="5dp"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                            <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginLeft="0dp"
-                                    android:backgroundTint="@color/black"
-                                    android:src="@drawable/ic_shopping_blue"/>
-                            <TextView
-                                    android:text="Đơn hàng"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textStyle="bold"
-                                    android:textSize="19dp"
-                                    android:textColor="@color/black"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:layout_width="231dp"
-                                    android:layout_marginLeft="3dp"/>
-                        </LinearLayout>
-                        <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/lvOrderDetailListBooks"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:scrollbars="none"
-                                android:padding="10dp"
-                                source="@{viewModel.items}"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:id="@+id/btnOrderPageVoucher"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:background="@drawable/account_button_3"
-                            style="@android:style/Widget.Button"
-                            android:layout_marginTop="5dp"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                            <RelativeLayout android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
-                                <LinearLayout android:layout_width="wrap_content"
-                                              android:layout_height="wrap_content"
-                                              android:orientation="horizontal">
-                                    <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="match_parent"
-                                            android:src="@drawable/ic_voucher"/>
-                                    <TextView
-                                            android:text="Voucher"
-                                            android:fontFamily="@font/lato_bold"
-                                            android:textStyle="bold"
-                                            android:textSize="19dp"
-                                            android:textColor="@color/black"
-                                            android:layout_height="wrap_content"
-                                            android:textAlignment="textStart"
-                                            android:layout_width="220dp"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginRight="84.5dp"/>
-                                </LinearLayout>
-                            </RelativeLayout>
-                        </LinearLayout>
-                        <TextView
-                                android:id="@+id/tvOrderDetailVoucher"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.voucherDescription}"
-                                android:textSize="19dp"
-                                android:textColor="@color/black"
-                                android:textAlignment="textStart"
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginLeft="8dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:id="@+id/btnOrderPagePaymentMethod"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:background="@drawable/account_button_3"
-                            style="@android:style/Widget.Button"
-                            android:layout_marginTop="5dp"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                            <RelativeLayout android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
-                                <LinearLayout android:layout_width="wrap_content"
-                                              android:layout_height="wrap_content"
-                                              android:orientation="horizontal">
-                                    <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="match_parent"
-                                            android:src="@drawable/ic_credit"/>
-                                    <TextView
-                                            android:text="Hình thức thanh toán"
-                                            android:fontFamily="@font/lato_bold"
-                                            android:textStyle="bold"
-                                            android:textSize="19dp"
-                                            android:textColor="@color/black"
-                                            android:layout_height="wrap_content"
-                                            android:textAlignment="textStart"
-                                            android:layout_width="220dp"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginRight="84.5dp"/>
-                                </LinearLayout>
-                            </RelativeLayout>
-                        </LinearLayout>
-                        <TextView
-                                android:id="@+id/tvOrderDetailPaymentMethod"
-                                android:fontFamily="@font/lato_regular"
-                                payment="@{viewModel.paymentMethod}"
-                                android:textSize="19dp"
-                                android:textColor="@color/black"
-                                android:textAlignment="textStart"
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginLeft="8dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:background="@drawable/account_button_2"
-                            android:layout_marginTop="5dp"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:orientation="horizontal">
-                            <TextView
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/black"
-                                    android:text="Tổng tiền hàng"
-                                    android:textAlignment="textStart"/>
-                            <TextView
-                                    android:id="@+id/tvOrderDetailTotal"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/black"
-                                    price="@{viewModel.price}"/>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:orientation="horizontal">
-                            <TextView
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/black"
-                                    android:text="Phí vận chuyển"
-                                    android:textAlignment="textStart"/>
-                            <TextView
-                                    android:id="@+id/tvOrderDetailShipmentPay"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/black"
-                                    price="@{viewModel.shipPay}"/>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:orientation="horizontal">
-                            <TextView
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/black"
-                                    android:text="Giảm giá"
-                                    android:textAlignment="textStart"/>
-                            <TextView
-                                    android:id="@+id/tvOrderDetailDiscount"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="15dp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/black"
-                                    price="@{viewModel.voucherDiscount}"/>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:orientation="horizontal">
-                            <TextView
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textColor="@color/black"
-                                    android:text="Tổng tiền"
-                                    android:textSize="24dp"
-                                    android:textStyle="bold"
-                                    android:textAlignment="textStart"/>
-                            <TextView
-                                    android:id="@+id/tvOrderDetailTotalMoneyPay"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/black"
-                                    android:textSize="24dp"
-                                    android:textStyle="bold"
-                                    price="@{viewModel.total}"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <android.widget.Button
-                            android:id="@+id/btnOrderDetailCancleOrder"
-                            android:fontFamily="@font/lato_bold"
-                            android:paddingLeft="35dp"
-                            android:paddingRight="35dp"
-                            android:paddingTop="12dp"
-                            android:paddingBottom="12dp"
-                            android:background="@drawable/new_btn_sky_medium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="25dp"
-                            android:textAllCaps="false"
-                            android:textSize="14sp"
-                            android:text="Huỷ đơn hàng"
-                            android:onClick="@{()->viewModel.DeleteOrderClick()}"
-                            android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                        android:layout_marginTop="25dp"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:text="Huỷ đơn hàng"
+                        android:onClick="@{()->viewModel.DeleteOrderClick()}"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center" />
 
                 </LinearLayout>
             </ScrollView>

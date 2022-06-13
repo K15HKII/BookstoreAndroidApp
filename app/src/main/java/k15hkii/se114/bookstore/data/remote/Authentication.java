@@ -5,8 +5,8 @@ import k15hkii.se114.bookstore.data.model.auth.LoginRequest;
 import k15hkii.se114.bookstore.data.model.auth.LoginResponse;
 import k15hkii.se114.bookstore.data.model.auth.RegisterRequest;
 import k15hkii.se114.bookstore.data.model.auth.RegisterResponse;
-import k15hkii.se114.bookstore.ui.registerscreen.Register;
-import retrofit2.http.*;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 public interface Authentication {
 

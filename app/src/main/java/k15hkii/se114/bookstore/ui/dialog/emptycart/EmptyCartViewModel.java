@@ -12,4 +12,5 @@ public class EmptyCartViewModel extends BaseViewModel<EmptyCartNavigator> {
     public void dismissDialog() {
         getNavigator().dismissDialog();
     }
+
 }

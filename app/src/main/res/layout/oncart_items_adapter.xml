@@ -1,122 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.oncartscreen.OncartItemViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.cart.OncartItemViewModel" />
     </data>
+
     <LinearLayout
-            android:orientation="horizontal"
-                  android:layout_marginTop="10dp"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:background="@color/new_background_color">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/new_background_color">
+
         <CheckBox
-                android:id="@+id/cbOnCartItemCheck"
-                android:layout_marginLeft="10dp"
-                android:checked="@{viewModel.isSelectedItem}"
-                android:onClick="@{()->viewModel.toggleHandle()}"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"/>
+            android:id="@+id/cbOnCartItemCheck"
+            android:layout_marginLeft="10dp"
+            android:checked="@{viewModel.isSelectedItem}"
+            android:onClick="@{()->viewModel.toggleHandle()}"
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/listview_shape">
+
+            <ImageView
+                android:id="@+id/imageViewOnCartBookImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:padding="5dp"
+                image="@{viewModel.image}" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:backgroundTint="@color/white"
                 android:background="@drawable/listview_shape">
-            <ImageView
-                    android:id="@+id/imageViewOnCartBookImage"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:padding="5dp"
-                    image="@{viewModel.image}"
-            />
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+                <TextView
+                    android:id="@+id/tvOnCartItemName"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@{viewModel.name}"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/white"
-                    android:background="@drawable/listview_shape">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="76dp"
+                    android:layout_marginLeft="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
                 <TextView
-                        android:id="@+id/tvOnCartItemName"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="@{viewModel.name}"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginBottom="76dp"
-                        android:layout_marginLeft="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                    android:id="@+id/tvOnCartItemType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Bìa cứng"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOnCartItemName"
+                    app:layout_constraintHorizontal_bias="0.038"
+                    app:layout_constraintVertical_bias="0.0" />
+
                 <TextView
-                        android:id="@+id/tvOnCartItemType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        android:text="Bìa cứng"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvOnCartItemName"
-                        app:layout_constraintHorizontal_bias="0.038" app:layout_constraintVertical_bias="0.0"/>
-                <TextView
-                        android:id="@+id/tvOnCartItemPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        price="@{viewModel.price}"
-                        android:textSize="22dp"
-                        android:textColor="@color/color_of_button"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvOnCartItemType"
-                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.045" app:layout_constraintVertical_bias="0.466"/>
+                    android:id="@+id/tvOnCartItemPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    price="@{viewModel.price}"
+                    android:textSize="22dp"
+                    android:textColor="@color/color_of_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOnCartItemType"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.045"
+                    app:layout_constraintVertical_bias="0.466" />
+
                 <android.widget.Button
-                        android:id="@+id/btnOnCartDeleteProduct"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:onClick="@{()-> viewModel.deleteItem()}"
-                        android:background="@drawable/ic_delete_black" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.959"
-                        app:layout_constraintVertical_bias="0.266"/>
+                    android:id="@+id/btnOnCartDeleteProduct"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:onClick="@{()-> viewModel.deleteItem()}"
+                    android:background="@drawable/ic_delete_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.959"
+                    app:layout_constraintVertical_bias="0.266" />
+
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/btnOnCartMinusAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="10dp"
-                        android:orientation="horizontal" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent">
-                    <ImageButton
-                            android:id="@+id/btnOnCartMinusAmount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="#B6BCBD"
-                            android:onClick="@{()->viewModel.minusQuantity()}"
-                            android:src="@drawable/ic_minus"/>
+                        android:layout_gravity="center"
+                        android:background="#B6BCBD"
+                        android:onClick="@{()->viewModel.minusQuantity()}"
+                        android:src="@drawable/ic_minus" />
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/lato_regular"
-                            android:text="@{String.valueOf(viewModel.quantity)}"
-                            android:textColor="@color/black"
-                            android:textSize="15dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                    />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="@{String.valueOf(viewModel.quantity)}"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
                     <ImageButton
-                            android:id="@+id/btnOnCartPlusAmount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_alignParentRight="true"
-                            android:background="#B6BCBD"
-                            android:onClick="@{()->viewModel.plusQuantity()}"
-                            android:src="@drawable/ic_plus"/>
+                        android:id="@+id/btnOnCartPlusAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_alignParentRight="true"
+                        android:background="#B6BCBD"
+                        android:onClick="@{()->viewModel.plusQuantity()}"
+                        android:src="@drawable/ic_plus" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

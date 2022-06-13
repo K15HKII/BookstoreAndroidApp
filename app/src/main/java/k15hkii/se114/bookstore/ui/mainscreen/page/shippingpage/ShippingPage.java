@@ -3,22 +3,22 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.view.*;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
-import k15hkii.se114.bookstore.databinding.HomePageFragmentBinding;
+import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomeMenuTab;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
-import k15hkii.se114.bookstore.R;
-import com.google.android.material.tabs.TabLayout;
 import k15hkii.se114.bookstore.utils.ScreenUtils;
 
 public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, ShippingPageViewModel> implements ShippingPageNavigator {
@@ -70,7 +70,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         }
 
         ViewPager2 vpContent = binding.vpReceiptOrderView;
-        OrderMenuTabAdapter adapter = new OrderMenuTabAdapter (getChildFragmentManager(), this.getLifecycle());
+        OrderMenuTabAdapter adapter = new OrderMenuTabAdapter(getChildFragmentManager(), this.getLifecycle());
         vpContent.setAdapter(adapter);
         tlContent.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -150,4 +150,5 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
+
 }

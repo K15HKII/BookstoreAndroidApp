@@ -14,11 +14,10 @@ import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemAdapter.OrderItemHolder> {
 
-    private Context context;
+    private final Context context;
     @Getter
     @Setter
     private IOrderNavigator orderNavigator;
@@ -32,7 +31,7 @@ public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemA
     @NotNull
     @Override
     public OrderItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderpage_items_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderpage_items_adapter, parent, false);
         return new OrderItemAdapter.OrderItemHolder(view);
     }
 
@@ -41,9 +40,9 @@ public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemA
         holder.setViewModel(data);
     }
 
-    class OrderItemHolder extends RecyclerView.ViewHolder{
+    class OrderItemHolder extends RecyclerView.ViewHolder {
 
-        private OrderpageItemsAdapterBinding binding;
+        private final OrderpageItemsAdapterBinding binding;
 
         public OrderItemHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -53,5 +52,7 @@ public class OrderItemAdapter extends ListAdapter<OrderItemViewModel, OrderItemA
         public void setViewModel(OrderItemViewModel data) {
             binding.setViewModel(data);
         }
+
     }
+
 }

@@ -7,17 +7,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.library.baseAdapters.BR;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.OrderSuccessBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
-public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccessViewModel> implements OrderSuccessNavigator{
+public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccessViewModel> implements OrderSuccessNavigator {
 
     OrderSuccessBinding orderSuccessBinding;
 
@@ -55,4 +51,5 @@ public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccess
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

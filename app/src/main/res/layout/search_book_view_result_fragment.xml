@@ -1,56 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.book.search.SearchBookViewResultViewModel" />
     </data>
+
     <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.searchbook.SearchBookViewResult">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.book.search.SearchBookViewResult">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@color/new_background_color">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/new_background_color">
+
             <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <android.widget.Button
-                            android:id="@+id/btnSearchResultBackward"
-                            android:onClick="@{()-> viewModel.onBackWardClick()}"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:scaleX="0.55"
-                            android:scaleY="0.55"
-                            android:background="@drawable/ic_backward"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:id="@+id/btnSearchResultBackward"
+                        android:onClick="@{()-> viewModel.onBackWardClick()}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
                     <EditText
-                            android:id="@+id/sbSearchResultInput"
-                            android:background="@drawable/edit_text_background"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:focusedByDefault="true"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btnSearchResultBackward"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                        android:id="@+id/sbSearchResultInput"
+                        android:background="@drawable/edit_text_background"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:focusedByDefault="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnSearchResultBackward"
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvSearchResultBookView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    source="@{viewModel.listSearch}"/>
+                android:id="@+id/rcvSearchResultBookView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                source="@{viewModel.listSearch}" />
         </LinearLayout>
     </FrameLayout>
 </layout>

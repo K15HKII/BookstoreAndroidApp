@@ -1,7 +1,6 @@
 package k15hkii.se114.bookstore.ui.dialog.changegender;
 
 import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 import androidx.databinding.ObservableList;
 import k15hkii.se114.bookstore.data.model.api.user.Gender;
@@ -9,9 +8,9 @@ import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.SpinnerWrapper;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -33,7 +32,8 @@ public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallB
                 user -> {
                     this.user = user;
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public ChangeGenderViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
@@ -43,14 +43,15 @@ public class ChangeGenderViewModel extends BaseViewModel<ChangeGenderDialogCallB
         gender.addAll(Arrays.asList(SpinnerWrapper.toSpinner(Gender.values())));
     }
 
-    public void onSubmitGenderText(){
+    public void onSubmitGenderText() {
         ProfileUpdateRequest request = new ProfileUpdateRequest();
         request.setGender(gender.get(genderIndex.get()).getItem());
         dispose(remote.updateSelfUser(request),
                 user -> {
                     getNavigator().onSubmitGender();
                 },
-                throwable -> { });
+                throwable -> {
+                });
 
     }
 

@@ -6,10 +6,7 @@ import java.util.Locale;
 
 public enum BillStatus implements ISubEnum {
 
-    WAITING("Chờ xác nhận")
-    ,TRANSPORTING("Đang vận chuyển")
-    ,COMPLETED("Đã vận chuyển")
-    ,CANCELED("Đã hủy");
+    WAITING("Chờ xác nhận"), TRANSPORTING("Đang vận chuyển"), COMPLETED("Đã vận chuyển"), CANCELED("Đã hủy");
 
     private final String sub;
 

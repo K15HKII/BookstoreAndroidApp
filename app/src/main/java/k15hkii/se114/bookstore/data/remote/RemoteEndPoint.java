@@ -17,4 +17,5 @@ public final class RemoteEndPoint {
     private RemoteEndPoint() {
         // This class is not publicly instantiable
     }
+
 }

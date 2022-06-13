@@ -9,13 +9,13 @@ import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
-import k15hkii.se114.bookstore.ui.voucherscreen.VoucherViewModel;
-import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.order.adapter.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.voucher.VoucherViewModel;
+import k15hkii.se114.bookstore.ui.voucher.adapter.VoucherItemAdapterViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import org.jetbrains.annotations.NotNull;
 

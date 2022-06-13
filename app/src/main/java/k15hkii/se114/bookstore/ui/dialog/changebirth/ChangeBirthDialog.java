@@ -37,8 +37,8 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeBirthDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_birth_dialog, container, false);
-        View view =binding.getRoot();
+        ChangeBirthDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_birth_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(changeBirthViewModel);
         changeBirthViewModel.setNavigator(this);
@@ -52,7 +52,7 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -61,4 +61,5 @@ public class ChangeBirthDialog extends BaseDialog implements ChangeBirthCallBack
         dismissDialog(TAG);
         closeCallback.onClose(null);
     }
+
 }

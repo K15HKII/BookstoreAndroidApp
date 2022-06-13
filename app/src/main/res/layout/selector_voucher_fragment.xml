@@ -1,82 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.voucher.selector.SelectorVoucherViewModel" />
     </data>
 
-    <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/new_background_color"
+        tools:context=".ui.voucher.selector.SelectorVoucher">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/new_background_color"
-            tools:context=".ui.voucherscreen.SelectorVoucher">
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:theme="?attr/actionBarTheme"
-                    android:minHeight="?attr/actionBarSize"
-                    android:id="@+id/toolbarSettingPage">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/toolbarSettingPage">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <android.widget.Button
-                            android:id="@+id/btnAddAddressBackward"
-                            android:onClick="@{()-> viewModel.onBackWardClick()}"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:scaleX="0.55"
-                            android:scaleY="0.55"
-                            android:background="@drawable/ic_backward" app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:id="@+id/btnAddAddressBackward"
+                        android:onClick="@{()-> viewModel.onBackWardClick()}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleX="0.55"
+                        android:scaleY="0.55"
+                        android:background="@drawable/ic_backward"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
                     <TextView
-                            android:fontFamily="@font/lato_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:textStyle="bold"
-                            android:text="Voucher"
-                            android:textColor="@color/black"
-                            android:textSize="26dp" app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textStyle="bold"
+                        android:text="Voucher"
+                        android:textColor="@color/black"
+                        android:textSize="26dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
-            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcvVoucherSelectViewVoucherList"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        source="@{viewModel.items}"/>
-            </RadioGroup>
-        </LinearLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                           android:layout_height="match_parent"
-        >
-            <android.widget.Button
+                    android:id="@+id/rcvVoucherSelectViewVoucherList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Chọn"
+                    source="@{viewModel.items}" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.widget.Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn"
                 android:onClick="@{()-> viewModel.acceptClick()}"
-                    android:fontFamily="@font/lato_bold"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:background="@drawable/new_btn_sky_large"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                android:fontFamily="@font/lato_bold"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@drawable/new_btn_sky_large"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

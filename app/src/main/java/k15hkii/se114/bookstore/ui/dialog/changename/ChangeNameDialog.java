@@ -21,7 +21,8 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     private static final String TAG = "ChangeNameDialog";
 
-    @Inject protected ChangeNameDialogViewModel changeNameDialogViewModel;
+    @Inject
+    protected ChangeNameDialogViewModel changeNameDialogViewModel;
 
     private final CloseReturnCallback closeCallback;
 
@@ -38,8 +39,8 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeNameDialogBinding binding = DataBindingUtil.inflate( inflater,R.layout.change_name_dialog, container, false);
-        View view =binding.getRoot();
+        ChangeNameDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_name_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(changeNameDialogViewModel);
         changeNameDialogViewModel.setNavigator(this);
@@ -53,7 +54,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -67,7 +68,7 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
     public void openMissingNameDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
-        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
                 show(getActivity().getSupportFragmentManager());
     }
 
@@ -75,7 +76,8 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
     public void openInvalidNameDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
-        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
                 show(getActivity().getSupportFragmentManager());
     }
+
 }

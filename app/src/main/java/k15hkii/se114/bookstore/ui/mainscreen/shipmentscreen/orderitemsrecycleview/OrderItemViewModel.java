@@ -1,7 +1,6 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview;
 
 import android.util.Log;
-import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
@@ -11,11 +10,11 @@ import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
-import java.util.List;
 
 public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
 
-    @Inject protected ModelRemote remote;
+    @Inject
+    protected ModelRemote remote;
 
     public final ObservableField<Image> image = new ObservableField<>();
     public final ObservableField<String> title = new ObservableField<>();
@@ -48,4 +47,5 @@ public class OrderItemViewModel extends BaseViewModel<OrderItemNavigator> {
         title.set(book.getTitle());
         price.set((long) book.getPrice());
     }
+
 }

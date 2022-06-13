@@ -11,7 +11,7 @@ import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.BuynowSelectorDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
+import k15hkii.se114.bookstore.ui.cart.OncartViewPage;
 
 import javax.inject.Inject;
 

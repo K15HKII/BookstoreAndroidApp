@@ -6,8 +6,8 @@ import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.UUID;
 
@@ -18,7 +18,7 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
 
     protected ModelRemote remote;
     private Book book;
-    private UUID userId;
+    private final UUID userId;
 
     public OnCartViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);

@@ -1,22 +1,16 @@
 package k15hkii.se114.bookstore.ui.news;
 
-import androidx.databinding.library.baseAdapters.BR;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.viewpager2.widget.ViewPager2;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.library.baseAdapters.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.NewsFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
 import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
 
 import javax.inject.Inject;
@@ -26,7 +20,8 @@ public class News extends BaseFragment<NewsFragmentBinding, NewsViewModel> imple
 /*    private TabLayout tabmenuNav;
     private ViewPager2 newsView;*/
 
-    @Inject protected NewsAdapter newsAdapter;
+    @Inject
+    protected NewsAdapter newsAdapter;
 
     @Override
     public int getBindingVariable() {

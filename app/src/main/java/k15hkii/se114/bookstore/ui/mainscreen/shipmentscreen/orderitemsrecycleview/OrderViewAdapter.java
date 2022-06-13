@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewAdapterBinding;
@@ -35,6 +34,7 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
     public OrderViewAdapter(List<OrderViewViewModel> orderViewList) {
         super(orderViewList);
     }
+
     public OrderViewAdapter(Context context) {
         super(new ArrayList<>());
         this.context = context;
@@ -64,7 +64,7 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
 
-        private WaitingOrderViewAdapterBinding binding;
+        private final WaitingOrderViewAdapterBinding binding;
 
         public OrderViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -75,5 +75,7 @@ public class OrderViewAdapter extends ListAdapter<OrderViewViewModel, OrderViewA
         public void setViewModel(OrderViewViewModel data) {
             binding.setViewModel(data);
         }
+
     }
+
 }

@@ -9,11 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ErrorNetworkDialogBinding;
-import k15hkii.se114.bookstore.databinding.FailedCheckDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 
 import javax.inject.Inject;
 
@@ -54,4 +51,5 @@ public class ErrorNetworkDialog extends BaseDialog implements ErrorNetworkNaviga
     public void dismissDialog() {
         dismissDialog(TAG);
     }
+
 }

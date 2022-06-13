@@ -1,12 +1,10 @@
 package k15hkii.se114.bookstore.ui.base;
 
 import android.os.Bundle;
-
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
-import androidx.databinding.ObservableBoolean;
 import androidx.databinding.PropertyChangeRegistry;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.Single;
@@ -37,7 +35,7 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
     public synchronized void decreasePendingTask() {
         if (mPendingTask.decrementAndGet() < 1) {
             notifyPropertyChanged(BR.loading);
-        };
+        }
     }
 
     @Bindable
@@ -50,7 +48,7 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
     }
 
     @Getter
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     private WeakReference<N> navigator = new WeakReference<>(null);
 
@@ -72,7 +70,7 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
         super.onCleared();
     }
 
-    private PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
+    private final PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
 
     protected <T> void dispose(Single<T> single, Consumer<? super T> onSuccess, Consumer<? super Throwable> onError) {
         compositeDisposable.add(single
@@ -90,7 +88,8 @@ public abstract class BaseViewModel<N extends INavigator> extends ViewModel impl
 
     protected <T> void dispose(Single<T> single) {
         dispose(single, res -> {
-            }, throwable -> { });
+        }, throwable -> {
+        });
     }
 
     @Override

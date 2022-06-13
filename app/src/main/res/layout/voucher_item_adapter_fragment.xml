@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel" />
+            type="k15hkii.se114.bookstore.ui.voucher.adapter.VoucherItemAdapterViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

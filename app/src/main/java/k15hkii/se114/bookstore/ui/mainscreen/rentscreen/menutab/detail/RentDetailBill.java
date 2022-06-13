@@ -1,12 +1,12 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail;
 
-import androidx.databinding.library.baseAdapters.BR;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.library.baseAdapters.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.data.model.api.lend.Lend;
 import k15hkii.se114.bookstore.databinding.RentDetailBillFragmentBinding;
@@ -37,8 +37,7 @@ public class RentDetailBill extends BaseFragment<RentDetailBillFragmentBinding, 
         if (bundle.containsKey("lending")) {
             Lend lending = (Lend) bundle.getSerializable("lending");
             viewModel.setLend(lending);
-        }
-        else if (bundle.containsKey("lended")) {
+        } else if (bundle.containsKey("lended")) {
             Lend lended = (Lend) bundle.getSerializable("lended");
             viewModel.setLend(lended);
         }
@@ -54,4 +53,5 @@ public class RentDetailBill extends BaseFragment<RentDetailBillFragmentBinding, 
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
+
 }

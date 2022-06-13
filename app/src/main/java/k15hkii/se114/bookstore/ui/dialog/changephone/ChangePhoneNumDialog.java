@@ -21,7 +21,8 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
 
     private final String TAG = "ChangePhoneNumberDialog";
 
-    @Inject ChangePhoneNumViewModel changePhoneNumViewModel;
+    @Inject
+    ChangePhoneNumViewModel changePhoneNumViewModel;
 
     private final CloseReturnCallback closeCallback;
 
@@ -38,8 +39,8 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangePhoneNumberDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_phone_number_dialog, container, false);
-        View view =binding.getRoot();
+        ChangePhoneNumberDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_phone_number_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(changePhoneNumViewModel);
         changePhoneNumViewModel.setNavigator(this);
@@ -52,7 +53,7 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -77,4 +78,5 @@ public class ChangePhoneNumDialog extends BaseDialog implements ChangePhoneNumCa
         ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
                 show(getActivity().getSupportFragmentManager());
     }
+
 }

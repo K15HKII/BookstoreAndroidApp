@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.NewsAdapterViewHolder> {
+
     Context context;
+
     @Deprecated
     public NewsAdapter(List<NewsAdapterViewModel> data, Context context) {
         super(data);
@@ -33,7 +35,7 @@ public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.N
     @NotNull
     @Override
     public NewsAdapter.NewsAdapterViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_adapter, parent, false);
         NewsAdapterViewHolder holder = new NewsAdapter.NewsAdapterViewHolder(view);
         ImageViewAdapter imageViewAdapter = new ImageViewAdapter();
         holder.getBinding().recyclerView.setAdapter(imageViewAdapter);
@@ -45,9 +47,10 @@ public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.N
         holder.setViewModel(data);
     }
 
-    public class NewsAdapterViewHolder extends RecyclerView.ViewHolder{
+    public class NewsAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        @Getter private final NewsAdapterBinding binding;
+        @Getter
+        private final NewsAdapterBinding binding;
 
         public NewsAdapterViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -57,5 +60,7 @@ public class NewsAdapter extends ListAdapter<NewsAdapterViewModel, NewsAdapter.N
         public void setViewModel(NewsAdapterViewModel data) {
             binding.setViewModel(data);
         }
+
     }
+
 }

@@ -37,8 +37,8 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeGenderDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_gender_dialog, container, false);
-        View view =binding.getRoot();
+        ChangeGenderDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_gender_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(changeGenderViewModel);
         changeGenderViewModel.setNavigator(this);
@@ -51,7 +51,7 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -60,4 +60,5 @@ public class ChangeGenderDialog extends BaseDialog implements ChangeGenderDialog
         dismissDialog(TAG);
         closeCallback.onClose(null);
     }
+
 }

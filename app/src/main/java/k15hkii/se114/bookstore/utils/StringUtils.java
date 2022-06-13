@@ -1,8 +1,5 @@
 package k15hkii.se114.bookstore.utils;
 
-import kotlin.text.Regex;
-
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class StringUtils {

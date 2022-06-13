@@ -5,15 +5,7 @@ import k15hkii.se114.bookstore.data.model.ISubEnum;
 import java.util.Locale;
 
 public enum Payment implements ISubEnum {
-    CASH("Tiền mặt")
-    ,BANK_TRANSFER("Chuyển khoản")
-    ,CREDIT_CARD("Thẻ tín dụng")
-    ,PAYPAL("Paypal")
-    ,BITCOIN("Bitcoin")
-    ,WECHAT("Wechat")
-    ,ALIPAY("Alipay")
-    ,OTHER("Khác")
-    ,DEBIT_CARD("Thẻ ghi nợ");
+    CASH("Tiền mặt"), BANK_TRANSFER("Chuyển khoản"), CREDIT_CARD("Thẻ tín dụng"), PAYPAL("Paypal"), BITCOIN("Bitcoin"), WECHAT("Wechat"), ALIPAY("Alipay"), OTHER("Khác"), DEBIT_CARD("Thẻ ghi nợ");
 
     private final String sub;
 

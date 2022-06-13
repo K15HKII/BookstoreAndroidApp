@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class UploadRequestBody extends RequestBody {
 
-   private final File file;
-   private final String contentType;
+    private final File file;
+    private final String contentType;
 
     public UploadRequestBody(File file, String contentType) {
         this.file = file;

@@ -5,7 +5,7 @@ import k15hkii.se114.bookstore.data.model.ISubEnum;
 import java.util.Locale;
 
 public enum DiscountType implements ISubEnum {
-    PERCENTAGE("Phần trăm"),AMOUNT("Giảm ngay");
+    PERCENTAGE("Phần trăm"), AMOUNT("Giảm ngay");
 
     private final String sub;
 

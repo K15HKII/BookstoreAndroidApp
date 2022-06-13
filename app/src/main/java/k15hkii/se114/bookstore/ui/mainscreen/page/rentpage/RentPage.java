@@ -1,39 +1,26 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.rentpage;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.view.*;
-import android.widget.LinearLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentPageFragmentBinding;
-import k15hkii.se114.bookstore.databinding.ShippingPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomeMenuTab;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookView;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookView;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentBookMenuTabAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationPage;
-import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewPage;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetail;
 import k15hkii.se114.bookstore.utils.ScreenUtils;
 
 public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageViewModel> implements RentPageNavigator {
@@ -175,4 +162,5 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

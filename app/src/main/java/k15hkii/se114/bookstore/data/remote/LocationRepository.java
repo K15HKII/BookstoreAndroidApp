@@ -21,7 +21,7 @@ public class LocationRepository {
     private final Context context;
     private final Gson gson;
 
-    private List<City> cities = new ArrayList<>();
+    private final List<City> cities = new ArrayList<>();
 
     @Getter(lazy = true)
     private final boolean initialize = initialize();

@@ -51,4 +51,5 @@ public class MissingInfoDialog extends BaseDialog implements MissingInfoNavigato
     public void dismissDialog() {
         dismissDialog(TAG);
     }
+
 }

@@ -6,28 +6,7 @@ import java.io.Serializable;
 import java.util.Locale;
 
 public enum BookTag implements ISubEnum, Serializable {
-    DRAMA("Drama")
-    ,COMEDY("Hài kịch")
-    ,HORROR("Kinh dị")
-    ,THRILLER("Giật gân")
-    ,ROMANCE("Lãng mạn")
-    ,MYSTERY("Thần bí")
-    ,FANTASY("Huyền ảo")
-    ,SCIENCEFICTION("Khoa học viễn tưởng")
-    ,BIOGRAPHY("Sinh học")
-    , SELFHELP("Tự lực")
-    ,HEALTH("Sức khỏe")
-    ,HUMOR("Hài hước")
-    ,HISTORY("Lịch sử")
-    ,POETRY("Thơ")
-    ,ESSAY("Luận văn")
-    ,MEMOIR("Hồi kí")
-    ,AUTOBIOGRAPHY("Tự truyện")
-    ,BUSINESS("Kinh doanh")
-    ,TRAVEL("Du lịch")
-    ,JOURNALIST("Nhà báo")
-    ,ART("Hội họa")
-    ,LITERATURE("Văn học");
+    DRAMA("Drama"), COMEDY("Hài kịch"), HORROR("Kinh dị"), THRILLER("Giật gân"), ROMANCE("Lãng mạn"), MYSTERY("Thần bí"), FANTASY("Huyền ảo"), SCIENCEFICTION("Khoa học viễn tưởng"), BIOGRAPHY("Sinh học"), SELFHELP("Tự lực"), HEALTH("Sức khỏe"), HUMOR("Hài hước"), HISTORY("Lịch sử"), POETRY("Thơ"), ESSAY("Luận văn"), MEMOIR("Hồi kí"), AUTOBIOGRAPHY("Tự truyện"), BUSINESS("Kinh doanh"), TRAVEL("Du lịch"), JOURNALIST("Nhà báo"), ART("Hội họa"), LITERATURE("Văn học");
 
     private final String sub;
 

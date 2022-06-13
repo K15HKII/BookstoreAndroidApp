@@ -9,9 +9,9 @@ import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
-import java.util.Date;
 
 public class ChangeEmailViewModel extends BaseViewModel<ChangeEmailCallBack> {
+
     @Inject
     protected ModelRemote remote;
 
@@ -24,7 +24,8 @@ public class ChangeEmailViewModel extends BaseViewModel<ChangeEmailCallBack> {
                     this.user = user;
                     userEmail.set(user.getEmail());
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public ChangeEmailViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
@@ -34,7 +35,7 @@ public class ChangeEmailViewModel extends BaseViewModel<ChangeEmailCallBack> {
     }
 
     public void onSubmitEmailText() {
-        if(userEmail.get().isEmpty()){
+        if (userEmail.get().isEmpty()) {
             getNavigator().openMissingEmailDialog("Cần nhập email mới");
             return;
         }
@@ -43,11 +44,13 @@ public class ChangeEmailViewModel extends BaseViewModel<ChangeEmailCallBack> {
             request.setEmail(userEmail.get());
 
             dispose(remote.updateSelfUser(request),
-                    user -> { },
+                    user -> {
+                    },
                     throwable -> {
                         getNavigator().openInvalidEmailDialog("Email đã tồn tại");
                     });
         }
         getNavigator().dismissDialog();
     }
+
 }

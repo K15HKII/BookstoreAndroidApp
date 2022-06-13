@@ -5,8 +5,8 @@ import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.Objects;
@@ -42,18 +42,17 @@ public class ChangePassDialogViewModel extends BaseViewModel<ChangePassCallBack>
         getData(preferencesHelper.getCurrentUserId());
     }
 
-    public void onSubmitPass(){
-        if(oldpassWord.get().isEmpty()|| newPassWord.get().isEmpty() || ConfirmPassWord.get().isEmpty()){
+    public void onSubmitPass() {
+        if (oldpassWord.get().isEmpty() || newPassWord.get().isEmpty() || ConfirmPassWord.get().isEmpty()) {
             getNavigator().openMissingDataDialog("Cần nhập mật khẩu cũ");
             return;
-        }
-        else if(!oldpassWord.get().equals(user.getPassword())) {
+        } else if (!oldpassWord.get().equals(user.getPassword())) {
             getNavigator().openInvalidPasswordDialog("Mật khẩu cũ không đúng");
             return;
-        }
-        else if(!Objects.equals(newPassWord.get(), ConfirmPassWord.get())){
+        } else if (!Objects.equals(newPassWord.get(), ConfirmPassWord.get())) {
             getNavigator().openInvalidPasswordDialog("Mật khẩu mới không trùng khớp");
             return;
         }
     }
+
 }

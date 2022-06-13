@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageViewModel" />
     </data>
-    <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            tools:context=".ui.mainscreen.rentscreen.menutab.RentingViewPage">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mainscreen.rentscreen.menutab.RentingViewPage">
 
         <LinearLayout
-                android:layout_width="match_parent" android:layout_height="match_parent"
-                android:orientation="vertical" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvRentingBookView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    source="@{viewModel.rentList}"/>
+                android:id="@+id/rcvRentingBookView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                source="@{viewModel.rentList}" />
         </LinearLayout>
+
         <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/gray_transparent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:clickable="true"
-                loading="@{viewModel.loading}"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            loading="@{viewModel.loading}" />
+
         <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:indeterminate="true"
-                android:layout_gravity="center"
-                android:clickable="false"
-                android:backgroundTint="@color/color_of_button"
-                loading="@{viewModel.loading}"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:backgroundTint="@color/color_of_button"
+            loading="@{viewModel.loading}" />
 
     </FrameLayout>
 </layout>

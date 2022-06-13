@@ -19,6 +19,7 @@ import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import javax.inject.Inject;
 
 public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack {
+
     private static final String TAG = "ChangeEmailDialog";
 
     @Inject
@@ -39,8 +40,8 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeEmailDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.change_email_dialog, container, false);
-        View view =binding.getRoot();
+        ChangeEmailDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_email_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(viewModel);
         viewModel.setNavigator(this);
@@ -54,7 +55,7 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -68,7 +69,7 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
     public void openMissingEmailDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
-        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
                 show(getActivity().getSupportFragmentManager());
     }
 
@@ -76,7 +77,8 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
     public void openInvalidEmailDialog(String error) {
         Bundle bundle = new Bundle();
         bundle.putString("error", error);
-        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(),bundle).
+        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
                 show(getActivity().getSupportFragmentManager());
     }
+
 }

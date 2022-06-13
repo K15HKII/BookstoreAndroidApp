@@ -9,13 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ErrorDataDialogBinding;
-import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
-import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
-import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoNavigator;
-import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
 
 import javax.inject.Inject;
 
@@ -66,4 +61,5 @@ public class ErrorDataDialog extends BaseDialog implements ErrorDataNavigator {
     public void dismissDialog() {
         dismissDialog(TAG);
     }
+
 }

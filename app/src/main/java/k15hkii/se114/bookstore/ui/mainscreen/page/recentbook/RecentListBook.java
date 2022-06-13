@@ -1,24 +1,23 @@
 package k15hkii.se114.bookstore.ui.mainscreen.page.recentbook;
 
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RecentListBookFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.BookViewAdapter;
 
 import javax.inject.Inject;
 
 public class RecentListBook extends BaseFragment<RecentListBookFragmentBinding, RecentListBookViewModel> implements RecentListBookNavigator {
+
     @Inject
     protected BookViewAdapter bookViewRecentlyAdapter;
 
@@ -39,7 +38,7 @@ public class RecentListBook extends BaseFragment<RecentListBookFragmentBinding, 
         RecentListBookFragmentBinding binding = getViewDataBinding();
         viewModel.setNavigator(this);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.lvLoveRecentlyBook.setLayoutManager(gridLayoutManager);
         binding.lvLoveRecentlyBook.setAdapter(bookViewRecentlyAdapter);
         return view;
@@ -54,4 +53,5 @@ public class RecentListBook extends BaseFragment<RecentListBookFragmentBinding, 
     public void BackWard() {
         getFragmentManager().popBackStack();
     }
+
 }

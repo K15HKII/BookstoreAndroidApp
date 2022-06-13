@@ -2,10 +2,11 @@ package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add;
 
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class AddRentBookViewViewModel extends BaseViewModel<AddRentBookViewNavigator> implements Observable {
+
     public AddRentBookViewViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
@@ -21,11 +22,11 @@ public class AddRentBookViewViewModel extends BaseViewModel<AddRentBookViewNavig
     public final ObservableField<String> discount = new ObservableField<>();
     public final ObservableField<String> totalPrice = new ObservableField<>();
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void openRentBookDetail(){
+    public void openRentBookDetail() {
         getNavigator().openRentBookDetail();
     }
 

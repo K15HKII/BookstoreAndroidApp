@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigator> implements Observable {
+
     public RentDetailBillViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
         this.remote = remote;
@@ -58,31 +59,35 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
                     this.book = book;
                     this.bookName.set(this.book.getTitle());
                     this.bookImage.set(this.book.getImages().get(0));
-                    this.bookRentPrice.set(String.valueOf(this.book.getPrice()) + " đ");
-                    this.totalPrice.set("10.000"+ " đ");
+                    this.bookRentPrice.set(this.book.getPrice() + " đ");
+                    this.totalPrice.set("10.000" + " đ");
                     this.bookType.set(Arrays.toString(book.getBooktags()));
                 }).subscribe());
     }
-    public void setLend(Lend lend){
-        this.lend=lend;
+
+    public void setLend(Lend lend) {
+        this.lend = lend;
         getData(this.lend.getBookId());
         this.expiredDate.set(this.lend.getEndDate());
         this.lendDate.set(this.lend.getStartDate());
         paymentMethod.set(lend.getPayment().name());
     }
+
     @Override
     public void initializeFromBundle(@NonNull @NotNull Bundle bundle) {
         super.initializeFromBundle(bundle);
         if (bundle.containsKey("lending")) {
             Lend lending = (Lend) bundle.getSerializable("lending");
-            if(lending != null) setLend(lending);
+            if (lending != null) setLend(lending);
         }
         if (bundle.containsKey("lended")) {
             Lend lended = (Lend) bundle.getSerializable("lended");
-            if(lended != null) setLend(lended);
+            if (lended != null) setLend(lended);
         }
     }
-    public void onBackWardClick(){
+
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
+
 }

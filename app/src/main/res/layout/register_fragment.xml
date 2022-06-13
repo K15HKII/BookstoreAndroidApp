@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel" />
+            type="k15hkii.se114.bookstore.ui.auth.register.RegisterViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/new_login_bg"
-        tools:context=".ui.registerscreen.Register">
+        tools:context=".ui.auth.register.Register">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -1,10 +1,8 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPage;
@@ -22,7 +20,7 @@ public class RentBookMenuTabAdapter extends FragmentStateAdapter {
     @NotNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new RentingViewPage();
             case 1:
@@ -36,4 +34,5 @@ public class RentBookMenuTabAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return 2;
     }
+
 }

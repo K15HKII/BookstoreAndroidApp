@@ -20,4 +20,5 @@ public class AppSchedulerProvider implements SchedulerProvider {
     public Scheduler ui() {
         return AndroidSchedulers.mainThread();
     }
+
 }

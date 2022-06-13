@@ -26,8 +26,10 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
     @Getter
     private Book book;
 
-    @Getter private final ModelRemote remote;
-    @Getter private final UUID userId;
+    @Getter
+    private final ModelRemote remote;
+    @Getter
+    private final UUID userId;
 
     private final Disposable favouriteDisposable;
 
@@ -98,4 +100,5 @@ public class BaseBookViewModel<N extends INavigator> extends BaseViewModel<N> {
             Log.d("BookViewModel", "isFavouriteBook: " + throwable.getMessage());
         });
     }
+
 }

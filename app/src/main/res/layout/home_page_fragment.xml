@@ -102,7 +102,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpHomeBookView"
                 android:layout_width="match_parent"
-                android:layout_height="480dp"/>
+                android:layout_height="480dp" />
         </LinearLayout>
     </LinearLayout>
 </layout>

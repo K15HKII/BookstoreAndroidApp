@@ -5,9 +5,9 @@ import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.StringUtils;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
 import javax.inject.Inject;
 import java.util.Objects;
@@ -29,7 +29,8 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
                     this.user = user;
                     userPhone.set(user.getPhone());
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public ChangePhoneNumViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
@@ -39,13 +40,11 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
         getData();
     }
 
-    public void onSubmitPhoneTextClick(){
-        if(userPhone.get() == null || userPhone.get().isEmpty()){
+    public void onSubmitPhoneTextClick() {
+        if (userPhone.get() == null || userPhone.get().isEmpty()) {
             getNavigator().openMissingPhoneDialog("Cần nhập số điện thoại mới");
             return;
-        }
-        else if(!StringUtils.isPhone(userPhone.get()))
-        {
+        } else if (!StringUtils.isPhone(userPhone.get())) {
             getNavigator().openInvalidPhoneDialog("Số điện thoại không hợp lệ");
             return;
         }
@@ -58,8 +57,10 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
                     user -> {
                         getNavigator().dismissDialog();
                     },
-                    throwable -> { });
+                    throwable -> {
+                    });
         }
 
     }
+
 }

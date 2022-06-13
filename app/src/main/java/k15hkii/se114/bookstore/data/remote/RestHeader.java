@@ -14,9 +14,9 @@ import java.util.UUID;
 @Singleton
 public class RestHeader {
 
-    private ProtectedRestHeader mProtectedApiHeader;
+    private final ProtectedRestHeader mProtectedApiHeader;
 
-    private PublicRestHeader mPublicApiHeader;
+    private final PublicRestHeader mPublicApiHeader;
 
     @Inject
     public RestHeader(PublicRestHeader publicApiHeader, ProtectedRestHeader protectedApiHeader) {
@@ -36,7 +36,8 @@ public class RestHeader {
 
         private final PreferencesHelper preferencesHelper;
 
-        @Inject public ProtectedRestHeader(PreferencesHelper preferencesHelper) {
+        @Inject
+        public ProtectedRestHeader(PreferencesHelper preferencesHelper) {
             this.preferencesHelper = preferencesHelper;
         }
 
@@ -53,7 +54,8 @@ public class RestHeader {
 
     public static final class ProtectedRestHeaderSerializer implements JsonSerializer<ProtectedRestHeader> {
 
-        @Getter(lazy = true) private static final ProtectedRestHeaderSerializer instance = new ProtectedRestHeaderSerializer();
+        @Getter(lazy = true)
+        private static final ProtectedRestHeaderSerializer instance = new ProtectedRestHeaderSerializer();
 
         private ProtectedRestHeaderSerializer() {
         }
@@ -69,7 +71,8 @@ public class RestHeader {
 
         private final PreferencesHelper preferencesHelper;
 
-        @Inject public PublicRestHeader(PreferencesHelper preferencesHelper) {
+        @Inject
+        public PublicRestHeader(PreferencesHelper preferencesHelper) {
             this.preferencesHelper = preferencesHelper;
         }
 
@@ -77,7 +80,8 @@ public class RestHeader {
 
     public static final class PublicRestHeaderSerializer implements JsonSerializer<PublicRestHeader> {
 
-        @Getter(lazy = true) private static final PublicRestHeaderSerializer instance = new PublicRestHeaderSerializer();
+        @Getter(lazy = true)
+        private static final PublicRestHeaderSerializer instance = new PublicRestHeaderSerializer();
 
         private PublicRestHeaderSerializer() {
         }

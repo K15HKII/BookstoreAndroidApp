@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class File implements Serializable {
+
     @Getter
     @Expose
     @SerializedName("id")

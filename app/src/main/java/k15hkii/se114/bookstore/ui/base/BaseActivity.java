@@ -1,7 +1,6 @@
 package k15hkii.se114.bookstore.ui.base;
 
 import android.annotation.TargetApi;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -17,7 +16,6 @@ import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.di.component.ActivityComponent;
 import k15hkii.se114.bookstore.di.component.DaggerActivityComponent;
 import k15hkii.se114.bookstore.di.module.ActivityModule;
-import k15hkii.se114.bookstore.utils.CommonUtils;
 import k15hkii.se114.bookstore.utils.NetworkUtils;
 import lombok.Getter;
 
@@ -26,10 +24,12 @@ import javax.inject.Inject;
 public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity
         implements BaseFragment.Callback {
 
-    @Getter private T viewDataBinding;
+    @Getter
+    private T viewDataBinding;
 
     @Inject
-    @Getter protected V viewModel;
+    @Getter
+    protected V viewModel;
 
     /**
      * Override for set binding variable
@@ -105,5 +105,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         viewDataBinding.setVariable(getBindingVariable(), viewModel);
         viewDataBinding.executePendingBindings();
     }
+
 }
 

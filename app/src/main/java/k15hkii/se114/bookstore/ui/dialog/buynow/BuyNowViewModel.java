@@ -19,7 +19,7 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
     @Inject
     protected ModelRemote remote;
     private Book book;
-    private UUID userId;
+    private final UUID userId;
 
     public BuyNowViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);
@@ -28,7 +28,7 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
         this.userId = helper.getCurrentUserId();
     }
 
-    public void dismissDialog(){
+    public void dismissDialog() {
         postCart();
     }
 
@@ -41,7 +41,8 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
                     getNavigator().dismissDialog();
                     getNavigator().openCartPage();
                 },
-                throwable -> {});
+                throwable -> {
+                });
     }
 
     public void setData(Book book) {
@@ -62,4 +63,5 @@ public class BuyNowViewModel extends BaseViewModel<BuyNowCallBack> {
         }
         quantity.set((quantity.get() - 1));
     }
+
 }

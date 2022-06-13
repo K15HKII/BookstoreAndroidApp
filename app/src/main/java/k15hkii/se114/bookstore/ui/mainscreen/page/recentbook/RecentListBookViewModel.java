@@ -2,11 +2,10 @@ package k15hkii.se114.bookstore.ui.mainscreen.page.recentbook;
 
 import android.util.Log;
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.ViewModel;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.BookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -19,7 +18,7 @@ public class RecentListBookViewModel extends BaseViewModel<RecentListBookNavigat
 
     @Inject
     protected ViewModelMapper mapper;
-    private UUID userId;
+    private final UUID userId;
 
     public void getData() {
         dispose(mapper.getRecentBooks(userId),
@@ -34,7 +33,7 @@ public class RecentListBookViewModel extends BaseViewModel<RecentListBookNavigat
         getData();
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 

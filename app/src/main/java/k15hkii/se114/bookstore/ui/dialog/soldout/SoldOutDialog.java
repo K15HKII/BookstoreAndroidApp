@@ -8,16 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
 import k15hkii.se114.bookstore.databinding.SoldOutDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
-import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
 
 import javax.inject.Inject;
 
 public class SoldOutDialog extends BaseDialog implements SoldOutNavigator {
+
     private static final String TAG = "SoldOutDialog";
 
     @Inject
@@ -53,4 +51,5 @@ public class SoldOutDialog extends BaseDialog implements SoldOutNavigator {
     public void dismissDialog() {
         dismissDialog(TAG);
     }
+
 }

@@ -1,12 +1,12 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder;
 
-import androidx.databinding.library.baseAdapters.BR;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.library.baseAdapters.BR;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.CancleOrderFragmentBinding;
@@ -15,8 +15,7 @@ import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancle;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
+import k15hkii.se114.bookstore.ui.order.cancel.OrderCancle;
 
 import javax.inject.Inject;
 
@@ -65,4 +64,5 @@ public class CancelOrder extends BaseFragment<CancleOrderFragmentBinding, Cancel
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

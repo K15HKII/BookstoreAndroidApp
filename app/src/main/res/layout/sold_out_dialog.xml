@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.dialog.soldout.SoldOutViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.dialog.soldout.SoldOutViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/dialog_shape"
+    <androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/dialog_shape"
         android:paddingVertical="20dp"
         android:paddingHorizontal="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_sold_out"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:id="@+id/imageView13"
-            app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -32,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/textView19"/>
+            android:id="@+id/textView19" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
