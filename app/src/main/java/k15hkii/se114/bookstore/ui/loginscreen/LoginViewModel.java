@@ -25,11 +25,11 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         dispose(authentication.login(new LoginRequest(username.get(), password.get())),
                 response -> {
                     int statusCode = -1;
-                    if (statusCode == Constant.CORRECT_PASSWORD) {
+                   /* if (statusCode == Constant.CORRECT_PASSWORD) {
                         getNavigator().openCorrectDialog();
                     } else {
                         getNavigator().openWrongDialog();
-                    }
+                    }*/
                     if (response.isAuthenticated())
                         getNavigator().openHomeView(obj);
                 }, throwable -> {
