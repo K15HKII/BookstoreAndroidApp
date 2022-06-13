@@ -4,6 +4,7 @@ import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.utils.StringUtils;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 
@@ -26,28 +27,19 @@ public class ForgotPasswordViewModel extends BaseViewModel<ForgotPassNavigator> 
         notification.set("Nhập số điện thoại hoặc email để nhận mã xác thực");
     }
 
-    public void onBackWardClick(){
+    public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
     public void onSubmit() {
-        if (!checkIsEmailValid()) {
+        if (!StringUtils.isMail(email.get())) {
             notification.set("Email không hợp lệ. Vui lòng nhập lại!");
             return;
         }
-        notification.set("waiting...");
-
-        // TODO: Check Email Exist ?
-
-    }
-
-    private boolean checkIsEmailValid() {
-        String e = Objects.requireNonNull(email.get()).trim();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        return e.matches(emailPattern);
     }
 
     public void OpenRegister() {
         getNavigator().OpenRegister();
     }
+
 }
