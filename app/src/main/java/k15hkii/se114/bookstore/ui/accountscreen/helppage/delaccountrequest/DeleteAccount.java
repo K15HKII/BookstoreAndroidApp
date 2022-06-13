@@ -12,6 +12,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.DeleteAccountFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.loginscreen.Login;
 
 public class DeleteAccount extends BaseFragment<DeleteAccountFragmentBinding, DeleteAccountViewModel> implements DeleteAccountNavigator {
 
@@ -44,5 +46,16 @@ public class DeleteAccount extends BaseFragment<DeleteAccountFragmentBinding, De
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void OpenLoginNavigator() {
+        createTransaction(R.id.fragmentContainerView, Login.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 }
