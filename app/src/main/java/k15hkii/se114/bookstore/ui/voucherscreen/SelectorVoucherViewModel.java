@@ -14,6 +14,7 @@ import java.util.UUID;
 
 public class SelectorVoucherViewModel extends BaseViewModel<SelectorVoucherNavigator> {
 
+    //TODO: Khong hien duoc selector voucher, Lam giong cai VoucherPage roi ma khong duoc
     public final ObservableField<List<VoucherItemAdapterViewModel>> items = new ObservableField<>();
 
     @Inject protected ViewModelMapper mapper;

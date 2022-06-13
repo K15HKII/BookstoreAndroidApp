@@ -14,6 +14,7 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.UUID;
 
 public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigator> implements Observable {
@@ -26,8 +27,8 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
     public final ObservableField<String> bookType = new ObservableField<>(); //description
     public final ObservableField<Image> bookImage = new ObservableField<>();
     public final ObservableField<String> bookRentPrice = new ObservableField<>();
-    public final ObservableField<String> lendDate = new ObservableField<>();
-    public final ObservableField<String> expiredDate = new ObservableField<>();
+    public final ObservableField<Date> lendDate = new ObservableField<>();
+    public final ObservableField<Date> expiredDate = new ObservableField<>();
     public final ObservableField<String> voucherInfo = new ObservableField<>();
     public final ObservableField<String> paymentMethod = new ObservableField<>();
     public final ObservableField<String> rentPrice = new ObservableField<>();
@@ -64,8 +65,8 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
     public void setLend(Lend lend){
         this.lend=lend;
         getData(this.lend.getBookId());
-        this.expiredDate.set(String.valueOf(this.lend.getEndDate()));
-        this.lendDate.set(String.valueOf(this.lend.getStartDate()));
+        this.expiredDate.set(this.lend.getEndDate());
+        this.lendDate.set(this.lend.getStartDate());
         paymentMethod.set(lend.getPayment().name());
     }
     @Override
