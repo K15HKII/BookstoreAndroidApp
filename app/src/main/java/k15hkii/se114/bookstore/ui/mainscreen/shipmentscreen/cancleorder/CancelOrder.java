@@ -54,7 +54,10 @@ public class CancelOrder extends BaseFragment<CancleOrderFragmentBinding, Cancel
 
     @Override
     public void Navigate(OrderViewViewModel vm) {
-        createTransaction(R.id.fragmentContainerView, OrderCancle.class, null)
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("bill", vm.getBill());
+        createTransaction(R.id.fragmentContainerView, OrderCancle.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

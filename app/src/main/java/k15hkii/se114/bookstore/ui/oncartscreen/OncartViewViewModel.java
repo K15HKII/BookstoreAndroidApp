@@ -111,6 +111,10 @@ public class OncartViewViewModel extends BaseViewModel<OncartViewPageNavigator> 
     }
 
     public void openOrderPage() {
+        if(totalPrice.get() == 0){
+            getNavigator().openMissingDialog("Vui lòng chọn sách trước khi đặt hàng");
+            return;
+        }
         List<OncartItemViewModel> selected = new ArrayList<>();
         for (OncartItemViewModel vm : items.get()) {
             if (vm.isSelectedItem.get()) {

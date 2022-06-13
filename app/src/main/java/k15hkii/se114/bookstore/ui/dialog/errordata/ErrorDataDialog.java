@@ -12,6 +12,7 @@ import k15hkii.se114.bookstore.databinding.ErrorDataDialogBinding;
 import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoNavigator;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
@@ -32,11 +33,21 @@ public class ErrorDataDialog extends BaseDialog implements ErrorDataNavigator {
         return fragment;
     }
 
+    public static ErrorDataDialog newInstance(FragmentManager supportFragmentManager, Bundle bundle) {
+        ErrorDataDialog fragment = new ErrorDataDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ErrorDataDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.error_data_dialog, container, false);
         View view = binding.getRoot();
         binding.setViewModel(errorDataViewModel);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            binding.tvErrorMess.setText(bundle.getString("error"));
+        }
         errorDataViewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
         return view;

@@ -409,24 +409,6 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <android.widget.Button
-                        android:id="@+id/btnOrderRatingCancleOrder"
-                        android:onClick="@{()-> viewModel.openRating()}"
-                        android:fontFamily="@font/lato_bold"
-                        android:paddingLeft="35dp"
-                        android:paddingRight="35dp"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
-                        android:background="@drawable/new_btn_sky_medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        android:text="Đánh giá"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center" />
-
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

@@ -43,37 +43,37 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
 
     public void register() {
         if (StringUtils.isEmpty(username.get())) {
-            //TODO: show dialog
+            getNavigator().openEmptyData("Bạn chưa nhập tài khoản");
             return;
         }
 
         if (birthday.get() == null) {
-            //TODO: show dialog
+            getNavigator().openErrorData("Ngày sinh chưa hợp lệ");
             return;
         }
 
         if (!StringUtils.isPhone(phone.get())) {
-            //TODO: show dialog
+            getNavigator().openErrorData("Số điện thoại chưa hợp lệ");
             return;
         }
 
         if (StringUtils.isEmpty(email.get())) {
-            //TODO: show dialog
+            getNavigator().openEmptyData("Bạn chưa nhập email");
             return;
         }
 
         if (!Objects.equals(passwordConfirm.get(), password.get())) {
-            //TODO: show dialog
+            getNavigator().openErrorData("Mật khẩu chưa trùng khớp");
             return;
         }
 
         if (!acceptTerms.get()) {
-            //TODO: show dialog
+            getNavigator().openErrorData("Vui lòng chấp nhận điều khoản!");
             return;
         }
 
         RegisterRequest request = new RegisterRequest();
-        //request.setBirthday(birthday.get()); //TODO: use date picker
+        /*request.setBirthday(birthday.get());*/ //TODO: use date picker
         request.setEmail(email.get());
         request.setPassword(password.get());
         request.setPhone(phone.get());

@@ -31,12 +31,22 @@ public class MissingDataDialog extends BaseDialog implements MissingDataNavigato
         return fragment;
     }
 
+    public static MissingDataDialog newInstance(FragmentManager supportFragmentManager, Bundle bundle) {
+        MissingDataDialog fragment = new MissingDataDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MissingDataDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.missing_data_dialog, container, false);
         View view =binding.getRoot();
         binding.setViewModel(viewModel);
         viewModel.setNavigator(this);
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            binding.tvErrorMess.setText(bundle.getString("error"));
+        }
         this.getDialog().setCanceledOnTouchOutside(true);
         return view;
     }

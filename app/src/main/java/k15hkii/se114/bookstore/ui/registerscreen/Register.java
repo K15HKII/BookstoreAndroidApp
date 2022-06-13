@@ -13,6 +13,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RegisterFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.loginscreen.LoadingDialog;
 
 import java.text.SimpleDateFormat;
@@ -40,14 +42,14 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RegisterFragmentBinding binding = getViewDataBinding();
-        edtDOB = binding.etRegisterDOB;
+        edtDOB = binding.etRegisterBirth;
         datePickerDOB = (view1, year, month, day) -> {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, month);
             myCalendar.set(Calendar.DAY_OF_MONTH, day);
             updateLabel();
         };
-        edtDOB.setOnClickListener(view12 -> new DatePickerDialog(getContext(),datePickerDOB,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+        edtDOB.setOnClickListener(view1 -> new DatePickerDialog(getContext(),datePickerDOB,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show());
         viewModel.setNavigator(Register.this);
         return view;
     }
@@ -77,6 +79,20 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
     @Override
     public void BackWard() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void openErrorData(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openEmptyData(String errorMessage) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", errorMessage);
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).show(getActivity().getSupportFragmentManager());
     }
 
 

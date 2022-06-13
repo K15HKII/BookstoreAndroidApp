@@ -16,8 +16,4 @@ public class OrderRatingViewModel extends BaseOrderInfoViewModel<OrderRatingNavi
         getNavigator().BackWard();
     }
 
-    public void openRating(Book book) {
-        getNavigator().openRating(book);
-    }
-
 }
