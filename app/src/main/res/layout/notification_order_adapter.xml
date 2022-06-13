@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel" />
+            type="k15hkii.se114.bookstore.ui.notificationnews.NotificationViewModel" />
     </data>
     <FrameLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="120dp"
-                image="@{viewModel.image}"
+                image="@{viewModel.notificationImage}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,6 +58,14 @@
                 app:layout_constraintHorizontal_bias="0.032" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:onClick="@{() -> viewModel.onClick()}"
+            android:clickable="true"/>
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

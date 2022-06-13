@@ -24,6 +24,12 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     public void login(Object obj) {
         dispose(authentication.login(new LoginRequest(username.get(), password.get())),
                 response -> {
+                    int statusCode = -1;
+                    if (statusCode == Constant.CORRECT_PASSWORD) {
+                        getNavigator().openCorrectDialog();
+                    } else {
+                        getNavigator().openWrongDialog();
+                    }
                     if (response.isAuthenticated())
                         getNavigator().openHomeView(obj);
                 }, throwable -> {
@@ -32,16 +38,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void onServerLoginClick() {
-        int statusCode = 1;
-        if (statusCode == Constant.CORRECT_PASSWORD) {
-            getNavigator().openCorrectDialog();
-            login(null);
-
-        }
-        else{
-            getNavigator().openWrongDialog();
-        }
-
+        login(null);
     }
 
     public void onForgotPasswordClick() {

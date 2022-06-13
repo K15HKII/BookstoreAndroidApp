@@ -3,26 +3,37 @@ package k15hkii.se114.bookstore.ui.notificationnews;
 import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
+import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
+import k15hkii.se114.bookstore.ui.mainscreen.BaseBookViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.BaseOrderInfoViewModel;
+import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
-public class NotificationOrderViewModel extends NotificationViewModel {
+import java.util.UUID;
+
+public class NotificationRatingViewModel extends NotificationViewModel {
 
     public final ObservableField<String> notificationTitle = new ObservableField<>();
     public final ObservableField<String> notificationContent = new ObservableField<>();
     public final ObservableField<Image> notificationImage = new ObservableField<>();
-    private final BaseOrderInfoViewModel<NotificationViewNavigator> _base;
+    private final OrderBookViewModel _base;
 
-    public NotificationOrderViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+    public Book getBook() {
+        return _base.getBook();
+    }
+
+    public NotificationRatingViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
-        _base = new BaseOrderInfoViewModel<>(schedulerProvider, mapper, remote);
-        _base.items.addOnPropertyChangedCallback(new OnPropertyChangedCallback() {
+        _base = new OrderBookViewModel(schedulerProvider, remote);
+
+        _base.image.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                notificationImage.set(_base.items.get() != null && _base.items.get().size() > 0 ? _base.items.get().get(0).image.get() : null);
+                notificationImage.set(_base.image.get());
             }
         });
 
@@ -33,20 +44,22 @@ public class NotificationOrderViewModel extends NotificationViewModel {
             }
         };
         _base.price.addOnPropertyChangedCallback(callback);
-        _base.discount.addOnPropertyChangedCallback(callback);
-        _base.address.addOnPropertyChangedCallback(callback);
-        _base.voucher.addOnPropertyChangedCallback(callback);
-        _base.paymentMethod.addOnPropertyChangedCallback(callback);
+        _base.quantity.addOnPropertyChangedCallback(callback);
+        _base.name.addOnPropertyChangedCallback(callback);
         updateContent();
     }
 
-    public void setBill(Bill bill) {
-        _base.setBill(bill);
+    public void setBillDetail(BillDetail detail) {
+        _base.setOrderDetail(detail);
     }
 
     private void updateContent() {
-        notificationTitle.set("test"); //TODO
+        notificationTitle.set("test detail"); //TODO
         notificationContent.set("super testtttttttttttttttttttttttttttttttttttt"); //TODO
     }
 
+    @Override
+    public void onClick() {
+        getNavigator().onClick(getBook());
+    }
 }

@@ -10,7 +10,8 @@ import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
@@ -26,7 +27,6 @@ import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
 import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
 import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
 import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
@@ -279,11 +279,6 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
-        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider, mapper, remote));
-    }
-
-    @Provides
     public RentedViewPageViewModel provideRentedViewPageViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper preferencesHelper) {
         return createViewModel(fragment, RentedViewPageViewModel.class, () -> new RentedViewPageViewModel(schedulerProvider, mapper, preferencesHelper));
     }
@@ -527,8 +522,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationOrderViewAdapter notificationOrderViewAdapter(Context context) {
-        return new NotificationOrderViewAdapter(context);
+    public NotificationViewAdapter notificationOrderViewAdapter(Context context) {
+        return new NotificationViewAdapter(context);
     }
     //endregion
 

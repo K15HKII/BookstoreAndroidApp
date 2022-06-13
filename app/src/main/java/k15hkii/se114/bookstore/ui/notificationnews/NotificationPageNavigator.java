@@ -6,4 +6,6 @@ public interface NotificationPageNavigator extends INavigator {
     void BackWard();
 
     void openVoucherPage();
+
+    void childNavigate(Object object);
 }

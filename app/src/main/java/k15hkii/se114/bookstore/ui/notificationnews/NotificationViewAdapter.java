@@ -4,25 +4,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.databinding.NotificationOrderAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderViewModel,NotificationOrderViewAdapter.NotificationOrderHolder> {
+public class NotificationViewAdapter extends ListAdapter<NotificationViewModel, NotificationViewAdapter.NotificationOrderHolder> implements NotificationViewNavigator {
 
     private Context context;
+    @Setter private NotificationPageNavigator pageNavigator;
 
-    public NotificationOrderViewAdapter(Context context) {
+    public NotificationViewAdapter(Context context) {
         super(new ArrayList<>());
         this.context = context;
     }
@@ -32,12 +31,18 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
     @Override
     public NotificationOrderHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_order_adapter,parent,false);
-        return new NotificationOrderViewAdapter.NotificationOrderHolder(view);
+        return new NotificationViewAdapter.NotificationOrderHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationOrderViewModel data) {
+    public void onBindViewHolder(@NonNull @NotNull NotificationOrderHolder holder, NotificationViewModel data) {
+        data.setNavigator(this);
         holder.setViewModel(data);
+    }
+
+    @Override
+    public void onClick(Object object) {
+        pageNavigator.childNavigate(object);
     }
 
     class NotificationOrderHolder extends RecyclerView.ViewHolder{
@@ -49,7 +54,7 @@ public class NotificationOrderViewAdapter extends ListAdapter<NotificationOrderV
             //TODO: viết adapter cho notification order
             binding = NotificationOrderAdapterBinding.bind(itemView);
         }
-        public void setViewModel(NotificationOrderViewModel data) {
+        public void setViewModel(NotificationViewModel data) {
             binding.setViewModel(data);
         }
     }

@@ -11,6 +11,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.model.ISubEnum;
 import k15hkii.se114.bookstore.data.model.api.Payment;
+import k15hkii.se114.bookstore.data.model.api.book.BookTag;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
 import k15hkii.se114.bookstore.data.model.api.user.Gender;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
@@ -24,6 +25,22 @@ import java.util.List;
 public final class BindingUtils {
 
     private BindingUtils() {
+    }
+
+    @BindingAdapter({"tags"})
+    public static void bindTags(TextView view, List<BookTag> tags) {
+        if (tags == null) {
+            return;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (BookTag tag : tags) {
+            builder.append(tag.toDefaultLocale());
+            builder.append(", ");
+        }
+        if (builder.length() > 0) {
+            builder.delete(builder.length() - 2, builder.length());
+        }
+        view.setText(builder.toString());
     }
 
     @BindingAdapter({"gender"})
