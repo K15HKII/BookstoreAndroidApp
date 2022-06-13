@@ -31,7 +31,7 @@
                     android:fontFamily="@font/lato_regular"
                     android:textSize="20dp"
                     android:ems="15"
-                    android:text="@{viewModel.userPhone}"
+                    android:text="@={viewModel.userPhone}"
                     android:textColor="@color/btn_blue"
                     android:textColorHint="@color/btn_blue"
                     android:textCursorDrawable="@drawable/cursor_color"

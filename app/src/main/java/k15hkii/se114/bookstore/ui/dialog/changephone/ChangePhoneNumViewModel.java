@@ -36,10 +36,11 @@ public class ChangePhoneNumViewModel extends BaseViewModel<ChangePhoneNumCallBac
         super(schedulerProvider);
         this.helper = helper;
         this.remote = remote;
+        getData();
     }
 
     public void onSubmitPhoneTextClick(){
-        if(userPhone.get().isEmpty()){
+        if(userPhone.get() == null || userPhone.get().isEmpty()){
             getNavigator().openMissingPhoneDialog("Cần nhập số điện thoại mới");
             return;
         }
