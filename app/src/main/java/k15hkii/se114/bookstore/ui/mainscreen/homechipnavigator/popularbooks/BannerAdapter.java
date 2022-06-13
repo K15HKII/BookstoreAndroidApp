@@ -19,9 +19,9 @@ import java.util.List;
 public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerAdapterHolder> {
 
     private final List<String> uris = Arrays.asList(
-            "http://goo.gl/gEgYUd",
-            "https://miro.medium.com/max/1400/1*3JC1cc52WnKVnqw6pbdeeA.png",
-            "http://goo.gl/gEgYUd"
+            "https://upbeat-resolver-316305.df.r.appspot.com/images/slide1.png",
+            "https://upbeat-resolver-316305.df.r.appspot.com/images/slide2.png",
+            "https://upbeat-resolver-316305.df.r.appspot.com/images/slide3.png"
     );
 
     private final Context context;

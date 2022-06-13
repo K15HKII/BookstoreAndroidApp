@@ -82,7 +82,7 @@ public class OrderRating extends BaseFragment<OrderRatingFragmentBinding, OrderR
     public void Navigate(OrderBookViewModel vm) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("book", vm.getBook());
-        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, null)
+        createTransaction(R.id.fragmentContainerView, BookDetailPage.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

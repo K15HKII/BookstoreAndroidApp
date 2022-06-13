@@ -74,6 +74,14 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         Book book = (Book) bundle.getSerializable("book");
         if (book != null) {
             setBook(book);
+        } else {
+            String raw = bundle.getString("book_id");
+            if (raw != null) {
+                UUID bookId = UUID.fromString(raw);
+                dispose(remote.getBook(bookId), this::setBook, throwable -> {
+                    Log.d("RateDetailViewModel", "Error get book", throwable);
+                });
+            }
         }
     }
 

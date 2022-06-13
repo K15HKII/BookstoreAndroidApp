@@ -48,8 +48,10 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
         binding.rcvBookDetailComments.setAdapter(commentViewAdapter);
 
         Bundle bundle = this.getArguments();
-        Book book = (Book) bundle.getSerializable("book");
-        viewModel.setBook(book);
+        if (bundle != null) {
+            Book book = (Book) bundle.getSerializable("book");
+            viewModel.setBook(book);
+        }
 
         return view;
     }

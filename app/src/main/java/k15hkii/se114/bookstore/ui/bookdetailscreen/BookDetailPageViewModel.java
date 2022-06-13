@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.*;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.message.Feedback;
+import k15hkii.se114.bookstore.data.model.api.user.RecentBookCRUDRequest;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.mainscreen.BaseBookViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
@@ -29,6 +30,13 @@ public class BookDetailPageViewModel extends BaseBookViewModel<BookDetailPageNav
     public void setBook(Book book) {
         super.setBook(book);
 
+        RecentBookCRUDRequest request = new RecentBookCRUDRequest();
+        request.setBookId(book.getId());
+        dispose(getRemote().createRecentBook(getUserId(), request), b -> {
+
+        }, throwable -> {
+            Log.e("BookDetailPageViewModel", "createRecentBook error", throwable);
+        });
         description.set(book.getDescription());
         remainQuantity.set(book.getStock());
         dispose(getRemote().getFeedbacks(book.getId())

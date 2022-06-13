@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public enum Gender implements ISubEnum {
 
-    MALE("Nam"), FEMALE("Nữ"), OTHER("Khác");
+    male("Nam"), female("Nữ"), other("Khác");
 
     private final String sub;
 
