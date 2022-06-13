@@ -22,9 +22,35 @@
             app:boxBackgroundColor="#FFF"
             app:hintTextColor="@color/btn_blue"
             android:nextFocusRight="@color/btn_blue"
-            android:hint="Nhập tên mới">
+            android:hint="Nhập họ">
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etChangeNameName"
+                android:id="@+id/etChangeNameFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="20dp"
+                android:ems="15"
+                android:textColor="@color/btn_blue"
+                android:textColorHint="@color/btn_blue"
+                android:text="@={viewModel.newName}"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/new_edit_text_shape_large"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/new_edit_text_shape_large"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxStrokeColor="#FFF"
+            app:boxBackgroundColor="#FFF"
+            app:hintTextColor="@color/btn_blue"
+            android:nextFocusRight="@color/btn_blue"
+            android:hint="Nhập tên">
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChangeNameLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
