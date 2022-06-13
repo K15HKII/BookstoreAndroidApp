@@ -1,39 +1,89 @@
 package k15hkii.se114.bookstore.ui.registerscreen;
 
-import androidx.databinding.Bindable;
-import androidx.databinding.Observable;
-import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import k15hkii.se114.bookstore.BR;
-import k15hkii.se114.bookstore.data.model.api.user.User;
+import android.widget.Spinner;
+import androidx.databinding.*;
+import k15hkii.se114.bookstore.data.model.api.user.Gender;
+import k15hkii.se114.bookstore.data.model.auth.RegisterRequest;
+import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.utils.SpinnerWrapper;
+import k15hkii.se114.bookstore.utils.StringUtils;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
-import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Date;
+import java.util.Objects;
 
 @Setter
 public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
 
-    public final ObservableField<List<String>> gender = new ObservableField<>(Arrays.asList("Nam", "Nữ", "Khác"));
-    public final ObservableField<String> userName = new ObservableField<>();
-    public final ObservableField<String> dob = new ObservableField<>();
-    public final ObservableField<String> phoneNumber = new ObservableField<>();
+    public final ObservableList<SpinnerWrapper<Gender>> gender = new ObservableArrayList<>();
+    public final ObservableInt genderIndex = new ObservableInt();
+    public final ObservableField<String> username = new ObservableField<>();
+    public final ObservableField<String> birthday = new ObservableField<>();
+    public final ObservableField<String> phone = new ObservableField<>();
 
     public final ObservableField<String> email = new ObservableField<>();
     public final ObservableField<String> password = new ObservableField<>();
-    public final ObservableField<String> passConfirm = new ObservableField<>();
+    public final ObservableField<String> passwordConfirm = new ObservableField<>();
+    private final ObservableBoolean acceptTerms = new ObservableBoolean(false);
 
-    //TODO: làm function tạo tài khoản
+    private final Authentication mAuthentication;
 
-    public RegisterViewModel(SchedulerProvider schedulerProvider) {
+    public RegisterViewModel(SchedulerProvider schedulerProvider, Authentication mAuthentication) {
         super(schedulerProvider);
+        this.mAuthentication = mAuthentication;
+        gender.addAll(Arrays.asList(SpinnerWrapper.toSpinner(Gender.values())));
     }
 
     public void onBackWardClick() {
         getNavigator().BackWard();
+    }
+
+    public void register() {
+        if (StringUtils.isEmpty(username.get())) {
+            //TODO: show dialog
+            return;
+        }
+
+        if (birthday.get() == null) {
+            //TODO: show dialog
+            return;
+        }
+
+        if (!StringUtils.isPhone(phone.get())) {
+            //TODO: show dialog
+            return;
+        }
+
+        if (StringUtils.isEmpty(email.get())) {
+            //TODO: show dialog
+            return;
+        }
+
+        if (!Objects.equals(passwordConfirm.get(), password.get())) {
+            //TODO: show dialog
+            return;
+        }
+
+        if (!acceptTerms.get()) {
+            //TODO: show dialog
+            return;
+        }
+
+        RegisterRequest request = new RegisterRequest();
+        //request.setBirthday(birthday.get()); //TODO: use date picker
+        request.setEmail(email.get());
+        request.setPassword(password.get());
+        request.setPhone(phone.get());
+        request.setUsername(username.get());
+        request.setGender(gender.get(genderIndex.get()).getItem());
+        dispose(mAuthentication.register(request), response -> {
+
+        }, throwable -> {
+
+        });
     }
 
 }

@@ -11,7 +11,6 @@ import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewAdapter;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.MediaViewAdapter;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
@@ -121,8 +120,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider));
+    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
+        return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider, authentication));
     }
     @Provides
     public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider) {
