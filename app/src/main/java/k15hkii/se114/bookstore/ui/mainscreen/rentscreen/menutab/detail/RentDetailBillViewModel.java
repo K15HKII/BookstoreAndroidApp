@@ -14,6 +14,7 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -58,8 +59,8 @@ public class RentDetailBillViewModel extends BaseViewModel<RentDetailBillNavigat
                     this.bookName.set(this.book.getTitle());
                     this.bookImage.set(this.book.getImages().get(0));
                     this.bookRentPrice.set(String.valueOf(this.book.getPrice()) + " đ");
-                    this.totalPrice.set(String.valueOf(this.book.getPrice())+ " đ");
-                    this.bookType.set("Khôi 5cm, Trí 3cm");
+                    this.totalPrice.set("10.000"+ " đ");
+                    this.bookType.set(Arrays.toString(book.getBooktags()));
                 }).subscribe());
     }
     public void setLend(Lend lend){
