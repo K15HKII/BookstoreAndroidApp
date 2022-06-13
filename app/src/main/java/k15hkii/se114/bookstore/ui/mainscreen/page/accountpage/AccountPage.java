@@ -16,6 +16,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoPage;
 import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPage;
 import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPage;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPage;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;

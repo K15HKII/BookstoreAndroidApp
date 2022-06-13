@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataViewModel;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoViewModel;
+import k15hkii.se114.bookstore.ui.dialog.soldout.SoldOutViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowViewModel;
@@ -111,6 +112,11 @@ public class DialogModule {
     @Provides
     ErrorNetworkViewModel provideErrorNetworkViewModel(SchedulerProvider schedulerProvider){
         return createViewModel(dialog, ErrorNetworkViewModel.class, () -> new ErrorNetworkViewModel(schedulerProvider));
+    }
+
+    @Provides
+    SoldOutViewModel provideSoldOutViewModel(SchedulerProvider schedulerProvider){
+        return createViewModel(dialog, SoldOutViewModel.class, () -> new SoldOutViewModel(schedulerProvider));
     }
 }
 

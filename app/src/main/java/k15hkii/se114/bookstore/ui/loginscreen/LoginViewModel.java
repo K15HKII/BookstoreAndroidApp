@@ -21,7 +21,9 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         this.authentication = authentication;
     }
 
+    //TODO:THIẾU ĐĂNG NHẬP BẰNG GOOGLE
     public void login(Object obj) {
+        int statuscode = -1;
         //KIỂM TRA CÓ NHẬP THÔNG TIN HAY CHƯA
         if(username.get().isEmpty() || password.get().isEmpty()) {
             getNavigator().openMissingDataDialog();

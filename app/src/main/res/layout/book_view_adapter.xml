@@ -19,7 +19,7 @@
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:orientation="vertical">
@@ -38,7 +38,7 @@
                 <ImageView
                     android:id="@+id/imgBookViewBookImage"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="160dp"
                     image="@{viewModel.image}"
                     android:scaleType="fitCenter" />
 
@@ -49,8 +49,8 @@
 
                     <TextView
                         android:id="@+id/tvBookViewBookName"
-                        android:layout_width="120dp"
-                        android:layout_height="40dp"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/lato_bold"
                         android:text="@{viewModel.title}"
@@ -60,9 +60,9 @@
 
                     <ToggleButton
                         android:id="@+id/btnBookViewHeart"
-                        android:layout_width="51dp"
+                        android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:scaleX="0.5"
+                        android:scaleX="0.9"
                         android:scaleY="0.9"
                         android:checked="@={viewModel.isFavorite}"
                         android:textOn=""
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
                     price="@{viewModel.price}"
-                    android:textColor="#F51F01"
+                    android:textColor="@color/color_of_button"
                     android:textSize="17dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

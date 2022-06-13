@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks;
 
 import android.os.Bundle;
+import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import k15hkii.se114.bookstore.databinding.AllBooksViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPage;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewNavigator;
@@ -78,5 +80,11 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
+    }
+
+    @Override
+    public void openErrorDataDialog() {
+        ErrorDataDialog dialog = new ErrorDataDialog();
+        dialog.show(getActivity().getSupportFragmentManager());
     }
 }

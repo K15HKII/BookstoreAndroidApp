@@ -19,6 +19,7 @@ import k15hkii.se114.bookstore.ui.dialog.logout.LogOutDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.dialog.missinginfo.MissingInfoDialog;
 import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartDialog;
+import k15hkii.se114.bookstore.ui.dialog.soldout.SoldOutDialog;
 
 @DialogScope
 @Component(modules = DialogModule.class, dependencies = AppComponent.class)
@@ -55,4 +56,6 @@ public interface DialogComponent {
     void inject(EmptyCartDialog emptyCartDialog);
 
     void inject(ErrorNetworkDialog errorNetworkDialog);
+
+    void inject(SoldOutDialog soldOutDialog);
 }

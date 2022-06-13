@@ -59,22 +59,17 @@
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent">
             </androidx.viewpager2.widget.ViewPager2>-->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNewsView"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="vertical"
-                source="@{viewModel.news}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnRentBookAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_create_news"
-                    android:layout_marginTop="370dp"
-                    app:backgroundTint="@color/color_of_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    android:id="@+id/rvNewsView"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="vertical"
+                    source="@{viewModel.news}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

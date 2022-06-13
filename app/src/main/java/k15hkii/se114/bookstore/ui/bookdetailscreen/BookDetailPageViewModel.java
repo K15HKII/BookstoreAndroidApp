@@ -59,15 +59,24 @@ public class BookDetailPageViewModel extends BaseBookViewModel<BookDetailPageNav
     }
 
     public void openBuyNowDialog() {
-        getNavigator().openBuyNowDialog(getBook());
+        if(remainQuantity.get() > 0)
+        {
+            getNavigator().openBuyNowDialog(getBook());
+        }
+        else{
+            getNavigator().openSoldOutDialog();
+            return;
+        }
     }
 
     public void openOnCartDialog() {
-        getNavigator().openOnCartDialog(getBook());
-    }
-
-    public void openRatingBook() {
-        getNavigator().openRatingBook();
+        if(remainQuantity.get() > 0) {
+            getNavigator().openOnCartDialog(getBook());
+        }
+        else{
+            getNavigator().openSoldOutDialog();
+            return;
+        }
     }
 
 }
