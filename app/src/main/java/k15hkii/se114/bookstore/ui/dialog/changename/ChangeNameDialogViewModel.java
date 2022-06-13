@@ -43,7 +43,7 @@ public class ChangeNameDialogViewModel extends BaseViewModel<ChangeNameCallBack>
     }
 
     public void onSubmitClick() {
-        if(newName.get().isEmpty()){
+        if(firstName.get().isEmpty() || lastName.get().isEmpty()){
             getNavigator().openMissingNameDialog("Cần nhập tên mới");
             return;
         }
