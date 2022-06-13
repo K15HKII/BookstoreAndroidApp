@@ -87,7 +87,6 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
     }
 
     public void setVoucher(Voucher voucher) {
-        //TODO:
         if (voucher == null)
             return;
         this.voucher = voucher;
