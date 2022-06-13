@@ -411,6 +411,7 @@
 
                     <android.widget.Button
                         android:id="@+id/btnOrderRatingCancleOrder"
+                        android:onClick="@{()-> viewModel.openRating()}"
                         android:fontFamily="@font/lato_bold"
                         android:paddingLeft="35dp"
                         android:paddingRight="35dp"

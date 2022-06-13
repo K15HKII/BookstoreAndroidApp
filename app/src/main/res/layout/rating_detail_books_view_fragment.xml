@@ -63,7 +63,10 @@
                         android:background="@drawable/ic_done" />
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
-
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -174,6 +177,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/lato_bold"
                             android:text="Đánh giá chi tiết"
                             android:textSize="20dp"
@@ -211,6 +215,7 @@
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
         </LinearLayout>
     </FrameLayout>
 </layout>
