@@ -14,6 +14,7 @@ import k15hkii.se114.bookstore.databinding.OrderSuccessBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccessViewModel> implements OrderSuccessNavigator{
@@ -46,7 +47,7 @@ public class OrderSuccess extends BaseFragment<OrderSuccessBinding, OrderSuccess
 
     @Override
     public void BackHome() {
-        createTransaction(R.id.fragmentContainerView, HomePage.class, null)
+        createTransaction(R.id.fragmentContainerView, HomeLayout.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

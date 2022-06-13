@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentSuccessBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePage;
 
 public class LendSuccess extends BaseFragment<RentSuccessBinding, LendSuccessViewModel> implements LendSuccessNavigator {
@@ -45,7 +46,7 @@ public class LendSuccess extends BaseFragment<RentSuccessBinding, LendSuccessVie
 
     @Override
     public void BackHome() {
-        createTransaction(R.id.fragmentContainerView, HomePage.class, null)
+        createTransaction(R.id.fragmentContainerView, HomeLayout.class, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
