@@ -25,12 +25,22 @@ public class LoginCheckDialog extends BaseDialog implements LoginCheckCallBack {
         return fragment;
     }
 
+    public static LoginCheckDialog newInstance(FragmentManager supportFragmentManager, Bundle bundle) {
+        LoginCheckDialog fragment = new LoginCheckDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         LoginCheckDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.login_check_dialog, container, false);
         View view =binding.getRoot();
         binding.setViewModel(loginCheckViewModel);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            binding.tvSuccessLogin.setText(bundle.getString("check"));
+        }
         loginCheckViewModel.setNavigator(this);
         this.getDialog().setCanceledOnTouchOutside(true);
         return view;

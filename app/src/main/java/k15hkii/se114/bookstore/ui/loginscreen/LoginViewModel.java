@@ -22,7 +22,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     //TODO:THIẾU ĐĂNG NHẬP BẰNG GOOGLE
-    public void login(Object obj) {
+    public void login(Object obj,String check) {
         int statuscode = -1;
         //KIỂM TRA CÓ NHẬP THÔNG TIN HAY CHƯA
         if(username.get().isEmpty() || password.get().isEmpty()) {
@@ -32,7 +32,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
         else{
             dispose(authentication.login(new LoginRequest(username.get(), password.get())),
                     response -> {
-                        int statusCode = -1;
+                    //    int statusCode = -1;
                    /* if (statusCode == Constant.CORRECT_PASSWORD) {
                         getNavigator().openCorrectDialog();
                     } else {
@@ -40,7 +40,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
                     }*/
                         //CHECK LOGIN CÓ ĐÚNG HAY KHÔNG
                         if (response.isAuthenticated())
-                            getNavigator().openCorrectDialog(obj);
+                            getNavigator().openCorrectDialog(null,check);
                         else{
                             getNavigator().openWrongDialog();
                         }
@@ -51,7 +51,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void onServerLoginClick() {
-        login(null);
+        login(null, "Đăng nhập thành công!!!");
     }
 
     public void onForgotPasswordClick() {

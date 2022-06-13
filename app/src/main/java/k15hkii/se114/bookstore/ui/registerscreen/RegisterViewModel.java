@@ -80,7 +80,15 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
         request.setUsername(username.get());
         request.setGender(gender.get(genderIndex.get()).getItem());
         dispose(mAuthentication.register(request), response -> {
-
+        int statuscode = response.getStatus();
+        if(statuscode == 201){
+            getNavigator().openCreateSuccess("Đăng ký thành công!");
+            getNavigator().openLogin();
+        }
+        else if(statuscode == 409){
+            getNavigator().openErrorData("Tài khoản đã tồn tại!");
+            return;
+        }
         }, throwable -> {
 
         });

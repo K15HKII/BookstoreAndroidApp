@@ -97,8 +97,10 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     }
 
     @Override
-    public void openCorrectDialog(Object... obj) {
-        LoginCheckDialog dialog = new LoginCheckDialog();
+    public void openCorrectDialog(Object obj, String check) {
+        Bundle bundle = new Bundle();
+        bundle.putString("check", check);
+        LoginCheckDialog dialog = new LoginCheckDialog().newInstance(getActivity().getSupportFragmentManager(), bundle);
         dialog.show(getActivity().getSupportFragmentManager());
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

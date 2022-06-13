@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.registerscreen;
 
 import android.app.DatePickerDialog;
+import android.os.Handler;
 import android.widget.*;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -14,8 +15,10 @@ import k15hkii.se114.bookstore.databinding.RegisterFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
 import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.loginscreen.LoadingDialog;
+import k15hkii.se114.bookstore.ui.loginscreen.Login;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -98,6 +101,33 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
         Bundle bundle = new Bundle();
         bundle.putString("error", errorMessage);
         MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openCreateSuccess(String check) {
+        Bundle bundle = new Bundle();
+        bundle.putString("check", check);
+        LoginCheckDialog dialog = new LoginCheckDialog().newInstance(getActivity().getSupportFragmentManager(), bundle);
+        dialog.show(getActivity().getSupportFragmentManager());
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                dialog.dismissDialog();
+            }
+        }, 500);
+    }
+
+    @Override
+    public void openLogin() {
+        createTransaction(R.id.fragmentContainerView, Login.class, null)
+                .setCustomAnimations(
+                R.anim.slide_in,  // enter
+                R.anim.fade_out,  // exit
+                R.anim.fade_in,   // popEnter
+                R.anim.slide_out  // popExit
+        ).commit();
     }
 
 

@@ -15,7 +15,7 @@ public interface LoginNavigator extends INavigator {
 
     void openWrongDialog();
 
-    void openCorrectDialog(Object... obj);
+    void openCorrectDialog(Object obj,String check);
 
     void openMissingDataDialog();
 }

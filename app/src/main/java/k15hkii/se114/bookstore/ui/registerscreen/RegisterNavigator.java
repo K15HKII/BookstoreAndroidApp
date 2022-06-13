@@ -9,4 +9,8 @@ public interface RegisterNavigator extends INavigator {
     void openErrorData(String errorMessage);
 
     void openEmptyData(String errorMessage);
+
+    void openCreateSuccess(String check);
+
+    void openLogin();
 }
