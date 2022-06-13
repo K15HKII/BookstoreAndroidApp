@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.bookdetailscreen;
 
 import android.os.Bundle;
+import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.buynow.BuyNowDialog;
 import k15hkii.se114.bookstore.ui.dialog.oncart.OnCartDialog;
+import k15hkii.se114.bookstore.ui.dialog.soldout.SoldOutDialog;
 import k15hkii.se114.bookstore.ui.ratingbookscreen.RatingBooksDetailPage;
 import org.jetbrains.annotations.NotNull;
 
@@ -68,24 +70,27 @@ public class BookDetailPage extends BaseFragment<BookDetailViewFragmentBinding, 
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable("book", book);
 
-        BuyNowDialog buyNowDialog = BuyNowDialog.newInstance(book);
-        buyNowDialog.show(getActivity().getSupportFragmentManager());
+        BuyNowDialog dialog = BuyNowDialog.newInstance(book);
+        dialog.show(getActivity().getSupportFragmentManager());
     }
 
     @Override
     public void openOnCartDialog(Book book) {
-        OnCartDialog onCartDialog = OnCartDialog.newInstance(book);
-        onCartDialog.show(getActivity().getSupportFragmentManager());
+        OnCartDialog dialog = OnCartDialog.newInstance(book);
+        dialog.show(getActivity().getSupportFragmentManager());
     }
 
     @Override
-    public void openRatingBook() {
-        createTransaction(R.id.fragmentContainerView, RatingBooksDetailPage.class,null).
-                setCustomAnimations(
-                R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out  // popExit
-        ).commit();
+    public void openSoldOutDialog() {
+        SoldOutDialog dialog = SoldOutDialog.newInstance();
+        dialog.show(getActivity().getSupportFragmentManager());
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                dialog.dismissDialog();
+            }
+        }, 500);
     }
 }

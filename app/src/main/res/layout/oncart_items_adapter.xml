@@ -12,14 +12,16 @@
                   android:background="@color/new_background_color">
         <CheckBox
                 android:id="@+id/cbOnCartItemCheck"
+                android:layout_marginLeft="10dp"
                 android:checked="@{viewModel.isSelectedItem}"
                 android:onClick="@{()->viewModel.toggleHandle()}"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:backgroundTint="@color/white"
                 android:background="@drawable/listview_shape">
             <ImageView
                     android:id="@+id/imageViewOnCartBookImage"
@@ -31,6 +33,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
                     android:background="@drawable/listview_shape">
                 <TextView
                         android:id="@+id/tvOnCartItemName"

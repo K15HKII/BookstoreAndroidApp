@@ -84,6 +84,8 @@
                             android:textColor="@color/black"/>
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/lvLoveAllBook"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             source="@{viewModel.items}"/>

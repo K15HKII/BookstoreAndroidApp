@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Lỗi sever"
+                android:text="Lỗi dữ liệu"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/lato_regular"

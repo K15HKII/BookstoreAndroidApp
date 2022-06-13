@@ -25,7 +25,10 @@ public class AllBooksViewViewModel extends BaseViewModel<AllBooksPageNavigator> 
     public void getData() {
         dispose(mapper.getBooks(),
                 items::set,
-                throwable -> Log.d("AllBooksViewViewModel", "getData: " + throwable.getMessage(), throwable));
+                throwable -> {
+                    getNavigator().openErrorDataDialog();
+                    Log.d("AllBooksViewViewModel", "getData: " + throwable.getMessage(), throwable);
+        });
     }
 
 }

@@ -62,9 +62,9 @@
                 android:layout_marginTop="15dp"
                 android:background="@color/new_background_color"
                 android:minHeight="?attr/actionBarSize"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                app:tabSelectedTextColor="@color/black"
-                app:tabIndicatorColor="@color/black"/>
+                app:tabTextAppearance="@style/tab_title"
+                app:tabSelectedTextColor="@color/new_background_color"
+                app:tabIndicatorColor="@color/new_background_color"/>
         <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpReceiptOrderView"
                 android:layout_width="match_parent"
