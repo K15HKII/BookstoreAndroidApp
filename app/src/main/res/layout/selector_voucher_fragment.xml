@@ -67,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Chọn"
+                android:onClick="@{()-> viewModel.acceptClick()}"
                     android:fontFamily="@font/lato_bold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

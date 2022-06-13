@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.databinding.SelectorVoucherFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapter;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.voucherscreen.adapterSelect.VoucherItemAdapterViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -59,6 +61,14 @@ public class SelectorVoucher extends BaseFragment<SelectorVoucherFragmentBinding
 
     @Override
     public void BackWard() {
-        getFragmentManager().popBackStack();
+        getParentFragmentManager().popBackStack();
     }
+
+    @Override
+    public void accept() {
+        VoucherItemAdapterViewModel vm = viewModel.getSelectedVoucher();
+        setCloseCallbackData(vm == null ? null : vm.getVoucher());
+        getParentFragmentManager().popBackStack();
+    }
+
 }

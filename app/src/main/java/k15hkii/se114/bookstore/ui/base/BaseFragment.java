@@ -17,8 +17,12 @@ import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.di.component.DaggerFragmentComponent;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.di.module.FragmentModule;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
+import lombok.Setter;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
@@ -90,6 +94,25 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         super.onDestroyView();
         viewDataBinding.unbind();
         viewDataBinding = null;
+
+        if (closeReturnCallbacks != null) {
+            Object data = closeCallbackData;
+            for (CloseReturnCallback callback : closeReturnCallbacks) {
+                callback.onClose(data);
+            }
+            closeReturnCallbacks = null;
+        }
+    }
+
+    @Setter private Object closeCallbackData;
+
+    private List<CloseReturnCallback> closeReturnCallbacks;
+
+    public void addCloseCallback(CloseReturnCallback callback) {
+        if (closeReturnCallbacks == null) {
+            closeReturnCallbacks = new ArrayList<>();
+        }
+        closeReturnCallbacks.add(callback);
     }
 
     public BaseActivity getBaseActivity() {
@@ -129,6 +152,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public FragmentTransaction createTransaction(@IdRes int containerId, Class<? extends Fragment> clazz, @Nullable Bundle bundle) {
         return this.getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(containerId, clazz, bundle)
+                .addToBackStack(null);
+    }
+
+    public FragmentTransaction createTransaction(@IdRes int containerId, Fragment fragment, @Nullable Bundle bundle) {
+        fragment.setArguments(bundle);
+        return this.getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(containerId, fragment)
                 .addToBackStack(null);
     }
 

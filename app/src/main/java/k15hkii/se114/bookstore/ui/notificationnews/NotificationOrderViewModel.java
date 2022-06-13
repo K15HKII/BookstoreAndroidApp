@@ -30,9 +30,8 @@ public class NotificationOrderViewModel extends NotificationViewModel {
             }
         };
         _base.price.addOnPropertyChangedCallback(callback);
-        _base.discount.addOnPropertyChangedCallback(callback);
         _base.address.addOnPropertyChangedCallback(callback);
-        _base.voucher.addOnPropertyChangedCallback(callback);
+        //_base.voucher.addOnPropertyChangedCallback(callback);
         _base.paymentMethod.addOnPropertyChangedCallback(callback);
         updateContent();
     }

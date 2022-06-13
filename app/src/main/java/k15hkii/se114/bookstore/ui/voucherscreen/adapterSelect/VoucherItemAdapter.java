@@ -17,11 +17,6 @@ import java.util.List;
 public class VoucherItemAdapter extends ListAdapter<VoucherItemAdapterViewModel, VoucherItemAdapter.VoucherItemHolder> {
 
     private Context context;
-    @Deprecated
-    public VoucherItemAdapter(List<VoucherItemAdapterViewModel> lsVouchers, Context context) {
-        super(lsVouchers);
-        this.context = context;
-    }
 
     public VoucherItemAdapter(Context context) {
         super(new ArrayList<>());

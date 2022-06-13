@@ -42,8 +42,6 @@ public class OrderInfoPageViewModel extends BaseOrderInfoViewModel<OrderInfoPage
                 throwable -> {
                     Log.d("getCartItems", throwable.getMessage(), throwable);
                 });
-
-        this.voucher.set("Chọn");
         this.paymentMethod.set(Payment.CASH);
 
         dispose(remote.getAddresses(userId),

@@ -201,7 +201,7 @@
                         <TextView
                                 android:id="@+id/tvOrderPageVoucher"
                                 android:fontFamily="@font/lato_regular"
-                                android:text="@{viewModel.voucher}"
+                                android:text="@{viewModel.voucherDescription}"
                                 android:textSize="19dp"
                                 android:textColor="@color/black"
                                 android:textAlignment="textStart"
@@ -351,7 +351,7 @@
                                     android:textSize="15dp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/black"
-                                    price="@{viewModel.discount}"/>
+                                    price="@{viewModel.voucherDiscount}"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
