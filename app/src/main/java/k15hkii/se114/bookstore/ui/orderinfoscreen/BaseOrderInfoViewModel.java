@@ -86,6 +86,10 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
         return -voucher.getDiscount(price.get());
     }
 
+    public void setPaymentMethod(Payment payment) {
+        paymentMethod.set(payment);
+    }
+
     public void setVoucher(Voucher voucher) {
         if (voucher == null)
             return;

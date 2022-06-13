@@ -122,7 +122,11 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
     @Override
     public void openSelectPayment() {
-        createTransaction(R.id.fragmentContainerView, PaymentMethodPage.class, null)
+        PaymentMethodPage paymentSelector = new PaymentMethodPage();
+        paymentSelector.addCloseCallback((data) -> {
+            viewModel.setVoucher((Voucher) data);
+        });
+        createTransaction(R.id.fragmentContainerView, paymentSelector, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
