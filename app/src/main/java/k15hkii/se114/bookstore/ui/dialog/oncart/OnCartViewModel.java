@@ -20,7 +20,6 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
     private Book book;
     private UUID userId;
 
-    //TODO: thêm sách chưa đúng
     public OnCartViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);
         this.remote = remote;
