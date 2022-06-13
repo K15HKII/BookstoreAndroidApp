@@ -127,19 +127,20 @@ public final class BindingUtils {
 
         Glide.with(view)
                 .load(url)
+                .fitCenter()
                 .into(view);
     }
 
     @BindingAdapter("price")
     public static void bindPrice(TextView view, long price) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        view.setText(formatter.format(price));
+        view.setText(formatter.format(price) + "đ");
     }
 
     @BindingAdapter("price")
     public static void bindPrice(TextView view, double price) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        view.setText(formatter.format(price));
+        view.setText(formatter.format(price) + "đ");
     }
 
     @SuppressLint("DefaultLocale")

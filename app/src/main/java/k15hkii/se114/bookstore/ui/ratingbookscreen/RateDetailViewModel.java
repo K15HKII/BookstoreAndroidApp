@@ -4,11 +4,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.databinding.Bindable;
-import androidx.databinding.ObservableDouble;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableFloat;
+import androidx.databinding.*;
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.book.BookTag;
@@ -21,12 +19,11 @@ import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.utils.RemoteUtils;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavigator> {
 
@@ -36,8 +33,10 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     private final UUID userId;
 
     public final ObservableField<String> comment = new ObservableField<>();
-    public final ObservableField<List<Uri>> imageUris = new ObservableField<>(new LinkedList<>());
     public final ObservableField<List<Uri>> videoUris = new ObservableField<>(new LinkedList<>());
+
+    public final ObservableList<Image> images = new ObservableArrayList<>();
+
     public final ObservableFloat rating = new ObservableFloat();
 
     private Book book;
@@ -86,17 +85,25 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         notifyPropertyChanged(BR.bookTags);
     }
 
-    //TODO: Binding
-    public void onClickNewImage() {
-        getNavigator().selectImages();
-    }
-
     public void onBackWardClick() {
         getNavigator().BackWard();
     }
 
-    public void selectImages(Uri... uris) {
-        imageUris.get().addAll(Arrays.asList(uris));
+    public void selectImages(Uri uri, RequestBody requestBody) {
+        if (uri == null)
+            return;
+        dispose(Single.just(requestBody).toObservable()
+                        .switchMapSingle(body -> {
+                            String path = uri.getPath();
+                            String name = path.substring(path.lastIndexOf('/') + 1);
+                            return remote.uploadImage(MultipartBody.Part.createFormData("image", name, body));
+                        })
+                        .toList(),
+                images -> {
+                    this.images.addAll(images);
+                    Log.d("RateDetailViewModel", "images: " + images);
+                },
+                throwable -> Log.d("RateDetailViewModel", "ConfirmRating: " + throwable.getMessage(), throwable));
     }
 
     public void selectVideos(Uri... uris) {
@@ -104,21 +111,17 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     }
 
     public void postFeedback() {
-        dispose(Observable.fromIterable(imageUris.get())
-                        .flatMapSingle(uri -> remote.uploadImage(RemoteUtils.from(uri)))
-                        .map(File::getId)
-                        .toList(),
-                images -> {
-                    Log.d("RateDetailViewModel", "ConfirmRating: " + images.size());
-                    FeedbackCRUDRequest request = new FeedbackCRUDRequest(images, null, comment.get(), userId, rating.get());
-                    dispose(remote.sendFeedback(request), feedback -> {
-                       //TODO: handle feedback
-                        Log.d("RateDetailViewModel", "ConfirmRating: " + feedback.getId());
-                    }, throwable -> {
-                        Log.d("RateDetailViewModel", "ConfirmRating: " + throwable.getMessage());
-                    });
-                },
-                throwable -> Log.d("RateDetailViewModel", "ConfirmRating: " + throwable.getMessage(), throwable));
+        List<UUID> list = new ArrayList<>();
+        for (Image image : images) {
+            list.add(image.getId());
+        }
+        FeedbackCRUDRequest request = new FeedbackCRUDRequest(list, null, comment.get(), book.getId(), rating.get());
+        dispose(remote.sendFeedback(book.getId(), request), feedback -> {
+            //TODO: handle feedback
+            Log.d("RateDetailViewModel", "ConfirmRating: " + feedback.getId());
+        }, throwable -> {
+            Log.d("RateDetailViewModel", "ConfirmRating: " + throwable.getMessage());
+        });
     }
 
 }

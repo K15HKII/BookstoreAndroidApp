@@ -12,6 +12,7 @@ import javax.inject.Inject;
 public class BookstoreApp extends Application {
 
     public static final boolean IS_LOCAL = false;
+
     @Getter AppComponent appComponent;
 
     @Inject protected LocationRepository locationRepository;

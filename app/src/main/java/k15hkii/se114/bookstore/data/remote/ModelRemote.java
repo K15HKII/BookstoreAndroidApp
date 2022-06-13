@@ -24,6 +24,7 @@ import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
 import k15hkii.se114.bookstore.data.model.api.user.*;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.*;
 
@@ -234,12 +235,14 @@ public interface ModelRemote {
 
     //region File
     @Multipart
+    @Headers({"Connection: keep-alive"
+            , "Accept: */*"})
     @POST("/upload/image")
-    Single<Image> uploadImage(@Part RequestBody body);
+    Single<Image> uploadImage(@Part MultipartBody.Part image);
 
     @Multipart
     @POST("/upload/video")
-    Single<Video> uploadVideo(@Part RequestBody body);
+    Single<Video> uploadVideo(@Part("video") RequestBody body);
     //endregion
 
     //region Feedback
@@ -249,8 +252,8 @@ public interface ModelRemote {
     @GET("/api/message/feedbacks")
     Single<List<Feedback>> getFeedbacks();
 
-    @POST("/api/message/feedback")
-    public Single<Feedback> sendFeedback(@Body FeedbackCRUDRequest feedback);
+    @POST("/api/message/feedback/{book_id}")
+    public Single<Feedback> sendFeedback(@Path("book_id") UUID bookId, @Body FeedbackCRUDRequest feedback);
 
     @POST("/api/message/{feedback_id}")
     public Single<ReplyFeedback> sendReply(@Body ReplyCRUDRequest request);

@@ -2,9 +2,10 @@ package k15hkii.se114.bookstore.data.model.api.book;
 
 import k15hkii.se114.bookstore.data.model.ISubEnum;
 
+import java.io.Serializable;
 import java.util.Locale;
 
-public enum BookTag implements ISubEnum {
+public enum BookTag implements ISubEnum, Serializable {
     DRAMA("Drama")
     ,COMEDY("Hài kịch")
     ,HORROR("Kinh dị")

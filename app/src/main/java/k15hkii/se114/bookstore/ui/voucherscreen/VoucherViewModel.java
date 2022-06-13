@@ -35,7 +35,7 @@ public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implem
                     this.discountType.set("Giảm giá theo %");
                     this.minValue.set("Đơn hàng tối thiểu " + String.valueOf(voucherProfile.getMinValue()) + " đ");
                     this.requireBook.set("Cần tối thiểu " + String.valueOf(voucherProfile.getRequire_book()) + " quyển sách");
-                    this.bookType.set("chim nhỏ, mông bự");
+                    this.bookType.set("Hài hước");
                 }, throwable -> {
                     Log.d("VoucherViewModel", "getData: " + throwable.getMessage(), throwable);
                 });

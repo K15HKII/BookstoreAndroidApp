@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
-public class Video extends File{
+import java.io.Serializable;
+
+public class Video extends File implements Serializable {
     @Getter
     @Expose
     @SerializedName("duration")
