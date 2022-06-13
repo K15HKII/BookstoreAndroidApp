@@ -41,21 +41,13 @@ public class Register extends BaseFragment<RegisterFragmentBinding, RegisterView
         View view = super.onCreateView(inflater, container, savedInstanceState);
         RegisterFragmentBinding binding = getViewDataBinding();
         edtDOB = binding.etRegisterDOB;
-        datePickerDOB = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, month);
-                myCalendar.set(Calendar.DAY_OF_MONTH, day);
-                updateLabel();
-            }
+        datePickerDOB = (view1, year, month, day) -> {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, month);
+            myCalendar.set(Calendar.DAY_OF_MONTH, day);
+            updateLabel();
         };
-        edtDOB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new DatePickerDialog(getContext(),datePickerDOB,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
+        edtDOB.setOnClickListener(view12 -> new DatePickerDialog(getContext(),datePickerDOB,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show());
         viewModel.setNavigator(Register.this);
         return view;
     }

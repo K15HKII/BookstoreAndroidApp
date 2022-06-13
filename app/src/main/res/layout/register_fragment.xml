@@ -85,7 +85,7 @@
                                     android:layout_width="250dp"
                                     android:layout_height="wrap_content"
                                     android:inputType="text"
-                                    android:text="@={viewModel.userName}"
+                                    android:text="@={viewModel.username}"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="18dp"
                                     android:ems="15"
@@ -102,7 +102,7 @@
                                 android:padding="15dp"
                                 android:layout_marginLeft="15dp"
                                 android:textSize="18dp"
-                                testSource="@{viewModel.gender}"
+                                source="@{viewModel.gender}"
                                 android:background="@drawable/new_edit_text_shape_large"
                                 android:inputType="text"
                                 android:hint="giới tính">
@@ -131,7 +131,7 @@
                                     android:layout_width="188dp"
                                     android:layout_height="wrap_content"
                                     android:inputType="date"
-                                    android:text="@={viewModel.dob}"
+                                    android:text="@={viewModel.birthday}"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="18dp"
                                     android:ems="15"
@@ -157,7 +157,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
-                                    android:text="@={viewModel.phoneNumber}"
+                                    android:text="@={viewModel.phone}"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="18dp"
                                     android:ems="15"
@@ -248,7 +248,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textPassword"
-                                    android:text="@={viewModel.passConfirm}"
+                                    android:text="@={viewModel.passwordConfirm}"
                                     android:fontFamily="@font/lato_regular"
                                     android:textSize="18dp"
                                     android:ems="15"
@@ -259,8 +259,6 @@
                                     android:background="@drawable/new_edit_text_shape_large"/>
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
-
-
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

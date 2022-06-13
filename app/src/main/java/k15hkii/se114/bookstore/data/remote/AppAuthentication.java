@@ -4,6 +4,8 @@ import android.util.Log;
 import io.reactivex.Single;
 import k15hkii.se114.bookstore.data.model.auth.LoginRequest;
 import k15hkii.se114.bookstore.data.model.auth.LoginResponse;
+import k15hkii.se114.bookstore.data.model.auth.RegisterRequest;
+import k15hkii.se114.bookstore.data.model.auth.RegisterResponse;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import lombok.AllArgsConstructor;
 
@@ -24,6 +26,11 @@ public class AppAuthentication implements Authentication {
             preferencesHelper.setRefreshToken(response.getRefreshToken());
             preferencesHelper.setCurrentUserId(response.getUserId());
         });
+    }
+
+    @Override
+    public Single<RegisterResponse> register(RegisterRequest request) {
+        return authentication.register(request);
     }
 
 }

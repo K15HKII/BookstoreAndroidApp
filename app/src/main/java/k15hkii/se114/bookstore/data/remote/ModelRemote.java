@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import io.reactivex.Single;
+import k15hkii.se114.bookstore.data.model.ItemResponse;
+import k15hkii.se114.bookstore.data.model.StatusResponse;
 import k15hkii.se114.bookstore.data.model.api.*;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.bill.BillCreateRequest;
@@ -63,7 +65,7 @@ public interface ModelRemote {
     Single<List<Book>> getFavoriteBooks(@Path("user_id") UUID user_id);
 
     @GET("/api/user/favourite/{book_id}/{user_id}")
-    Single<CRUDItemResponse<Boolean>> isFavouriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
+    Single<ItemResponse<Boolean>> isFavouriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
 
     /**
      * Tạo hoặc cập nhật một sách yêu thích
@@ -73,10 +75,10 @@ public interface ModelRemote {
      * @return
      */
     @POST("/api/user/favourite/{user_id}")
-    Single<CRUDStatusResponse> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
+    Single<StatusResponse> createFavoriteBook(@Path("user_id") UUID user_id, @Body FavouriteBookCRUDRequest request);
 
     @DELETE("/api/user/favourite/{book_id}/{user_id}")
-    Single<CRUDStatusResponse> deleteFavoriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
+    Single<StatusResponse> deleteFavoriteBook(@Path("user_id") UUID user_id, @Path("book_id") UUID book_id);
     //endregion
 
     //region CartItem
@@ -91,10 +93,10 @@ public interface ModelRemote {
      * @return
      */
     @POST("/api/user/cart/{user_id}")
-    Single<CRUDStatusResponse> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
+    Single<StatusResponse> createCart(@Path("user_id") UUID user_id, @Body CartItemCRUDRequest cartItem);
 
     @DELETE("/api/user/cart/{book_id}")
-    Single<CRUDStatusResponse> deleteCart(@Path("book_id") UUID book_id);
+    Single<StatusResponse> deleteCart(@Path("book_id") UUID book_id);
     //endregion
 
     //region Address
@@ -105,29 +107,29 @@ public interface ModelRemote {
     Single<UserAddress> getAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @DELETE("/api/user/address/{address_id}/{user_id}")
-    Single<CRUDStatusResponse> deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
+    Single<StatusResponse> deleteAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id);
 
     @POST("/api/user/address/{user_id}")
-    Single<CRUDItemResponse<UserAddress>> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
+    Single<ItemResponse<UserAddress>> createAddress(@Path("user_id") UUID user_id, @Body UserAddressCRUDRequest address);
 
     @POST("/api/user/address/{address_id}/{user_id}")
-    Single<CRUDItemResponse<UserAddress>> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
+    Single<ItemResponse<UserAddress>> updateAddress(@Path("user_id") UUID user_id, @Path("address_id") long address_id, @Body UserAddressCRUDRequest address);
 
     //region Bank
     @GET("/api/user/banks/{user_id}")
     Single<List<UserBank>> getBanks(@Path("user_id") UUID user_id);
 
     @POST("/api/user/bank/{user_id}")
-    Single<CRUDItemResponse<UserBank>> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
+    Single<ItemResponse<UserBank>> createBank(@Path("user_id") UUID user_id, @Body UserBankCRUDRequest bank);
 
     @POST("/api/user/bank/{bank_id}/{user_id}")
-    Single<CRUDItemResponse<UserBank>> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
+    Single<ItemResponse<UserBank>> updateBank(@Path("user_id") UUID user_id, @Path("bank_id") long bankId, @Body UserBankCRUDRequest bank);
 
     @GET("/api/user/bank/{bank_id}/{user_id}")
     Single<UserBank> getBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
 
     @DELETE("/api/user/bank/{bank_id}/{user_id}")
-    Single<CRUDStatusResponse> deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
+    Single<StatusResponse> deleteBank(@Path("user_id") UUID user_id, @Path("bank_id") long bank_id);
     //endregion
     //endregion
     //endregion
