@@ -6,16 +6,16 @@ import k15hkii.se114.bookstore.data.model.api.bill.BillDetail;
 import k15hkii.se114.bookstore.data.model.api.bill.BillStatus;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
 import k15hkii.se114.bookstore.data.model.api.lend.Lend;
-import k15hkii.se114.bookstore.data.model.api.user.UserBank;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.VoucherViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
+import k15hkii.se114.bookstore.di.UserId;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.BookViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.order.adapter.OrderBookViewModel;
+import k15hkii.se114.bookstore.ui.voucher.VoucherViewModel;
+import k15hkii.se114.bookstore.ui.voucher.adapter.VoucherItemAdapterViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,23 +30,27 @@ public class ViewModelMapper {
 
     private final ModelRemote remote;
     private final SchedulerProvider schedulerProvider;
+    private final UUID userId;
 
     @Inject
-    public ViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) {
+    public ViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
         this.schedulerProvider = schedulerProvider;
         this.remote = remote;
+        this.userId = userId;
+    }
+
+    public List<BookViewModel> toBookViewModel(List<Book> books) {
+        List<BookViewModel> list = new ArrayList<>();
+        for (Book book : books) {
+            BookViewModel vm = new BookViewModel(schedulerProvider, remote, userId);
+            vm.setBook(book);
+            list.add(vm);
+        }
+        return list;
     }
 
     public Single<List<BookViewModel>> toBookViewModel(Single<List<Book>> single) {
-        return single.map(books -> {
-            List<BookViewModel> list = new ArrayList<>();
-            for (Book book : books) {
-                BookViewModel vm = new BookViewModel(schedulerProvider, remote);
-                vm.setBook(book);
-                list.add(vm);
-            }
-            return list;
-        });
+        return single.map(this::toBookViewModel);
     }
 
     public Single<List<RentViewViewModel>> toLendViewModel(Single<List<Lend>> single) {
@@ -67,6 +71,18 @@ public class ViewModelMapper {
             List<VoucherViewModel> list = new ArrayList<>();
             for (Voucher voucher : vouchers) {
                 VoucherViewModel vm = new VoucherViewModel(schedulerProvider, remote);
+                vm.setVoucher(voucher);
+                list.add(vm);
+            }
+            return list;
+        });
+    }
+
+    public Single<List<VoucherItemAdapterViewModel>> toSelectVoucherViewModel(Single<List<Voucher>> single) {
+        return single.map(vouchers -> {
+            List<VoucherItemAdapterViewModel> list = new ArrayList<>();
+            for (Voucher voucher : vouchers) {
+                VoucherItemAdapterViewModel vm = new VoucherItemAdapterViewModel(schedulerProvider, remote);
                 vm.setVoucher(voucher);
                 list.add(vm);
             }
@@ -156,6 +172,10 @@ public class ViewModelMapper {
         return toVoucherViewModel(remote.getVouchers(userId));
     }
 
+    public Single<List<VoucherItemAdapterViewModel>> getSelectVouchers(UUID userId) {
+        return toSelectVoucherViewModel(remote.getVouchers(userId));
+    }
+
 
     public Single<List<BookViewModel>> getRecentBooks(UUID userId) {
         return toBookViewModel(remote.getRecentBooks(userId));
@@ -179,7 +199,7 @@ public class ViewModelMapper {
     public List<OrderBookViewModel> toOrderBookViewModels(List<BillDetail> details) {
         List<OrderBookViewModel> list = new ArrayList<>();
         for (BillDetail billDetail : details) {
-            OrderBookViewModel viewModel = new OrderBookViewModel(remote);
+            OrderBookViewModel viewModel = new OrderBookViewModel(this.schedulerProvider, remote);
             viewModel.setOrderDetail(billDetail);
             list.add(viewModel);
         }

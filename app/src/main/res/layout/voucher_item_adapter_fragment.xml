@@ -1,90 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapterViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.voucher.adapter.VoucherItemAdapterViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-        <RadioButton
-                android:id="@+id/radbtn"
-                android:layout_width="31dp"
-                android:layout_height="match_parent"/>
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:layout_width="31dp"
+            android:layout_height="match_parent"
+            android:textOn=""
+            android:textOff=""
+            android:scaleX="0.8"
+            android:scaleY="0.19"
+            android:checked="@={viewModel.isSelected}"
+            android:background="@drawable/radio_selector" />
+
         <LinearLayout
-                android:orientation="vertical"
-                android:background="@drawable/voucher_shape"
-                android:paddingTop="15dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:background="@drawable/voucher_shape"
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
                     <TextView
-                            android:id="@+id/tvVoucherItemTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato_bold"
-                            android:textColor="@color/btn_blue"
-                            android:textSize="28dp"
-                            android:text="discount"
-                            android:textStyle="bold"/>
+                        android:id="@+id/tvVoucherItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:textColor="@color/btn_blue"
+                        android:textSize="28dp"
+                        android:text="@{viewModel.discount}"
+                        android:textStyle="bold" />
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
+                            android:fontFamily="@font/lato_regular"
+                            android:text="Hạn sử dụng " />
+
                         <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="Hạn sử dụng "/>
-                        <TextView
-                                android:id="@+id/tvVoucherItemDateExp"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="date"/>
+                            android:id="@+id/tvVoucherItemDateExp"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.expiredDate}" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
+
             <TextView
-                    android:id="@+id/tvVoucherItemMaxUse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="Tối đa 100.000đ"
-                    android:textSize="15dp"
-                    android:textColor="@color/btn_blue"/>
+                android:id="@+id/tvVoucherItemMaxUse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:text="@{viewModel.discountType}"
+                android:textSize="15dp"
+                android:textColor="@color/btn_blue" />
+
             <TextView
-                    android:id="@+id/tvVoucherItemApplyForBill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:textSize="20dp"
-                    android:text="minValue"
-                    android:textColor="@color/btn_blue"/>
+                android:id="@+id/tvVoucherItemApplyForBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="20dp"
+                android:text="@{viewModel.minValue}"
+                android:textColor="@color/btn_blue" />
+
             <TextView
-                    android:id="@+id/tvVoucherItemApplyForBook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_regular"
-                    android:textSize="12.5dp"
-                    android:text="discountType"
-            />
+                android:id="@+id/tvVoucherItemApplyForBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="12.5dp"
+                android:text="@{viewModel.bookType}" />
         </LinearLayout>
     </LinearLayout>
 </layout>

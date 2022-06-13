@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="PolicyViewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.policy.PolicyViewModel"/>
+
+        <variable
+            name="PolicyViewModel"
+            type="k15hkii.se114.bookstore.ui.account.help.policy.PolicyViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.accountscreen.helppage.policy.Policy">
+        tools:context=".ui.account.help.policy.Policy">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:background="@color/new_background_color">
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/new_background_color">
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
                 android:id="@+id/toolbarHelpPage">
-            <android.widget.Button
+
+                <android.widget.Button
                     android:onClick="@{()-> PolicyViewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
-                    android:background="@drawable/ic_backward"/>
+                    android:background="@drawable/ic_backward" />
 
-            <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -37,22 +44,32 @@
                     android:textStyle="bold"
                     android:text="Điều khoản"
                     android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                    android:textSize="24dp" />
 
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:padding="20dp">
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:background="@drawable/edit_text_background"
-                      android:padding="15dp"
-                      android:fontFamily="@font/lato_regular"
-                      android:text="Điều khoản"
-                      android:textSize="15dp"
-                      android:textColor="@color/black"/>
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="15dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Khi vào web của chúng tôi, khách hàng phải đảm bảo đủ 18 tuổi, hoặc truy cập dưới sự giám sát của cha mẹ hay người giám hộ hợp pháp. Khách hàng đảm bảo có đầy đủ hành vi dân sự để thực hiện các giao dịch mua bán hàng hóa theo quy định hiện hành của pháp luật Việt Nam.
+\n\nChúng tôi có quyền từ chối hoặc hủy đơn hàng của quý khách vì bất kỳ lý do gì liên quan đến lỗi kỹ thuật, hệ thống một cách khách quan vào bất kỳ lúc nào.
+\n\nNgoài ra, để đảm bảo tính công bằng cho khách hàng là người tiêu dùng cuối cùng, chúng tôi cũng sẽ từ chối các đơn hàng không nhằm mục đích sử dụng cho cá nhân, mua hàng số lượng nhiều hoặc với mục đích mua đi bán lại.
+\n\n Trong mọi trường hợp, khách hàng đều có quyền chấm dứt giao dịch nếu đã thực hiện các biện pháp sau đây:
+\n\tThông báo cho chúng tôi về việc hủy giao dịch qua đường dây nóng 123321.
+\n\tTrả lại hàng hoá đã nhận nhưng chưa sử dụng hoặc hưởng bất kỳ lợi ích nào từ hàng hóa đó."
+                    android:textSize="15dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

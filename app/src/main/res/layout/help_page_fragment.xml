@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="HelpPageViewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPageViewModel"/>
+
+        <variable
+            name="HelpPageViewModel"
+            type="k15hkii.se114.bookstore.ui.account.help.HelpPageViewModel" />
     </data>
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbarHelpPage">
-        <android.widget.Button
+
+            <android.widget.Button
                 android:id="@+id/btnEditBankBackward"
                 android:onClick="@{()-> HelpPageViewModel.onBackWardClick()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleX="0.55"
                 android:scaleY="0.55"
-                android:background="@drawable/ic_backward"/>
+                android:background="@drawable/ic_backward" />
 
-        <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -38,10 +40,11 @@
                 android:textStyle="bold"
                 android:text="Hỗ trợ"
                 android:textColor="@color/black"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
-    </androidx.appcompat.widget.Toolbar>
-    <LinearLayout
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -51,7 +54,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarEditBank"
             app:layout_constraintBottom_toBottomOf="parent">
-        <android.widget.Button
+
+            <android.widget.Button
                 android:id="@+id/btnHelpHelpCenter"
                 android:onClick="@{()-> HelpPageViewModel.onHelpCenterClick()}"
                 android:fontFamily="@font/lato_regular"
@@ -63,8 +67,9 @@
                 android:textAllCaps="false"
                 android:textSize="19dp"
                 android:drawableEnd="@drawable/ic_arrow_account"
-                android:text="Trung tâm hỗ trợ"/>
-        <android.widget.Button
+                android:text="Trung tâm hỗ trợ" />
+
+            <android.widget.Button
                 android:id="@+id/btnHelpPresenter"
                 android:onClick="@{()-> HelpPageViewModel.onIntroductionAppClick()}"
                 android:fontFamily="@font/lato_regular"
@@ -76,8 +81,9 @@
                 android:textAllCaps="false"
                 android:textSize="19dp"
                 android:drawableEnd="@drawable/ic_arrow_account"
-                android:text="Giới thiệu"/>
-        <android.widget.Button
+                android:text="Giới thiệu" />
+
+            <android.widget.Button
                 android:id="@+id/btnHelpPolicy"
                 android:onClick="@{()-> HelpPageViewModel.onPolicyClick()}"
                 android:fontFamily="@font/lato_regular"
@@ -90,9 +96,9 @@
                 android:textSize="19dp"
                 android:text="Điều khoản"
                 android:padding="15dp"
-                android:drawableEnd="@drawable/ic_arrow_account"
-        />
-        <android.widget.Button
+                android:drawableEnd="@drawable/ic_arrow_account" />
+
+            <android.widget.Button
                 android:id="@+id/btnHelpRequestDeleteAccount"
                 android:onClick="@{()-> HelpPageViewModel.onDeleteAccountRequest()}"
                 android:fontFamily="@font/lato_regular"
@@ -104,7 +110,7 @@
                 android:textSize="19dp"
                 android:text="Yêu cầu xoá tài khoản"
                 android:padding="15dp"
-                android:drawableEnd="@drawable/ic_arrow_account"/>
+                android:drawableEnd="@drawable/ic_arrow_account" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>

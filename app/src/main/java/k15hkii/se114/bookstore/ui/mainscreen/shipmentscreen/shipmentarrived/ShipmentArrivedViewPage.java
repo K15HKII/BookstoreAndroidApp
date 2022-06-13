@@ -1,24 +1,21 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ShipmentArrivedViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
-import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRating;
+import k15hkii.se114.bookstore.ui.order.rating.OrderRating;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -78,4 +75,5 @@ public class ShipmentArrivedViewPage extends BaseFragment<ShipmentArrivedViewFra
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

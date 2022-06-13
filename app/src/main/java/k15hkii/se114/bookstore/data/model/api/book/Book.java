@@ -17,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book implements Serializable {
+
     @Getter
     @Expose
     @SerializedName("id")

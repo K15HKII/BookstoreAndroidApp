@@ -2,7 +2,6 @@ package k15hkii.se114.bookstore.data.model.api.message;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;

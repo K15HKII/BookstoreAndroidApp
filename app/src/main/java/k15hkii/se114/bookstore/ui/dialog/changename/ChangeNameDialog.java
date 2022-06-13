@@ -11,6 +11,9 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ChangeNameDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
+import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
+import k15hkii.se114.bookstore.ui.dialog.errordata.ErrorDataDialog;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 
 import javax.inject.Inject;
 
@@ -18,10 +21,17 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     private static final String TAG = "ChangeNameDialog";
 
-    @Inject protected ChangeNameDialogViewModel changeNameDialogViewModel;
+    @Inject
+    protected ChangeNameDialogViewModel changeNameDialogViewModel;
 
-    public static ChangeNameDialog newInstance() {
-        ChangeNameDialog fragment = new ChangeNameDialog();
+    private final CloseReturnCallback closeCallback;
+
+    public ChangeNameDialog(CloseReturnCallback closeCallback) {
+        this.closeCallback = closeCallback;
+    }
+
+    public static ChangeNameDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangeNameDialog fragment = new ChangeNameDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -29,8 +39,8 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ChangeNameDialogBinding binding = DataBindingUtil.inflate( inflater,R.layout.change_name_dialog, container, false);
-        View view =binding.getRoot();
+        ChangeNameDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.change_name_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(changeNameDialogViewModel);
         changeNameDialogViewModel.setNavigator(this);
@@ -44,12 +54,30 @@ public class ChangeNameDialog extends BaseDialog implements ChangeNameCallBack {
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
     @Override
     public void dismissDialog() {
         dismissDialog(TAG);
+        closeCallback.onClose(null);
     }
+
+    @Override
+    public void openMissingNameDialog(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        MissingDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
+                show(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void openInvalidNameDialog(String error) {
+        Bundle bundle = new Bundle();
+        bundle.putString("error", error);
+        ErrorDataDialog.newInstance(getActivity().getSupportFragmentManager(), bundle).
+                show(getActivity().getSupportFragmentManager());
+    }
+
 }

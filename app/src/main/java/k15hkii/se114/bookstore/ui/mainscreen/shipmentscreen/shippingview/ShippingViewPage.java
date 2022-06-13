@@ -1,31 +1,29 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.ShippingViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
-import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderChecker;
+import k15hkii.se114.bookstore.ui.order.checker.OrderChecker;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
 public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, ShippingViewPageViewModel> implements ShippingViewPageNavigator, IOrderNavigator {
 
-    @Inject protected OrderViewAdapter orderViewAdapter;
+    @Inject
+    protected OrderViewAdapter orderViewAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -70,7 +68,6 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
 
         bundle.putSerializable("bill", vm.getBill());
 
-        //TODO: Navigate to Shipping
         createTransaction(R.id.fragmentContainerView, OrderChecker.class, bundle)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
@@ -79,4 +76,5 @@ public class ShippingViewPage extends BaseFragment<ShippingViewFragmentBinding, 
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

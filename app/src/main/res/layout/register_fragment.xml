@@ -1,304 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.auth.register.RegisterViewModel" />
     </data>
 
     <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/new_login_bg"
-            tools:context=".ui.registerscreen.Register">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/new_login_bg"
+        tools:context=".ui.auth.register.Register">
+
         <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
                 <!--        Hình ảnh logo-->
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                  android:orientation="vertical">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                      android:orientation="horizontal">
-                            <RelativeLayout
-                                    android:padding="15dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                                <android.widget.Button
-                                        android:id="@+id/btnRegisterBackward"
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:scaleX="0.7"
-                                        android:scaleY="0.7"
-                                        android:onClick="@{()-> viewModel.onBackWardClick()}"
-                                        android:background="@drawable/ic_backward"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                                <View
-                                        android:layout_width="220dp"
-                                        android:layout_height="150dp"
-                                        android:scaleX="1.5"
-                                        android:scaleY="1.5"
-                                        android:background="@drawable/login_shark_img"
-                                        android:layout_centerInParent="true"/>
-                            </RelativeLayout>
-                        </LinearLayout>
-                        <TextView android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:fontFamily="@font/lato_bold"
-                                  android:text="Đăng kí"
-                                  android:textAlignment="center"
-                                  android:textSize="35sp"
-                                  android:textStyle="bold"
-                                  android:textColor="@color/btn_blue"
-                                  android:gravity="center"
-                                  android:backgroundTint="@color/black"
-                                  android:textAppearance="@style/Dang_ki"/>
-                    </LinearLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:padding="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.widget.Button
+                            android:id="@+id/btnRegisterBackward"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:onClick="@{()-> viewModel.onBackWardClick()}"
+                            android:background="@drawable/ic_backward"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:layout_width="220dp"
+                            android:layout_height="150dp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.5"
+                            android:background="@drawable/login_shark_img"
+                            android:layout_centerInParent="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Đăng kí"
+                        android:textAlignment="center"
+                        android:textSize="35sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/btn_blue"
+                        android:gravity="center"
+                        android:backgroundTint="@color/black"
+                        android:textAppearance="@style/Dang_ki" />
 
                     <!--            Thông tin đăng nhập-->
-                    <LinearLayout android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:paddingLeft="15dp"
-                                  android:paddingRight="15dp"
-                                  android:layout_marginTop="10dp"
-                                  android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
                         <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Tên đăng nhập">
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Tên đăng nhập">
+
                             <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterUser"
-                                    android:layout_width="250dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="text"
-                                    android:text="@={viewModel.userName}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <android.widget.Spinner
-                                android:id="@+id/spRegisterGender"
-                                android:layout_width="match_parent"
+                                android:id="@+id/etRegisterUser"
+                                android:layout_width="250dp"
                                 android:layout_height="wrap_content"
-                                android:popupBackground="@drawable/spinner_shape"
-                                android:padding="15dp"
-                                android:layout_marginLeft="15dp"
-                                android:textSize="18dp"
-                                testSource="@{viewModel.gender}"
-                                android:background="@drawable/new_edit_text_shape_large"
                                 android:inputType="text"
-                                android:hint="giới tính">
-                        </android.widget.Spinner>
+                                android:text="@={viewModel.username}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <android.widget.Spinner
+                            android:id="@+id/spRegisterGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:popupBackground="@drawable/spinner_shape"
+                            android:padding="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:textSize="18dp"
+                            source="@{viewModel.gender}"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            android:inputType="text"
+                            android:hint="giới tính"></android.widget.Spinner>
                     </LinearLayout>
 
-                    <LinearLayout android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:paddingLeft="15dp"
-                                  android:paddingRight="15dp"
-                                  android:orientation="horizontal"
-                                  android:layout_marginTop="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
                         <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Ngày sinh">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etRegisterBirth"
+                                android:layout_width="188dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Ngày sinh">
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterDOB"
-                                    android:layout_width="188dp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="date"
-                                    android:text="@={viewModel.dob}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
+                                android:inputType="date"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Số điện thoại">
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Số điện thoại">
+
                             <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterPhoneNum"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:text="@={viewModel.phoneNumber}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
+                                android:id="@+id/etRegisterPhoneNum"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:text="@={viewModel.phone}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp">
-                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Email">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etRegisterEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Email">
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterEmail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="text"
-                                    android:text="@={viewModel.email}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
+                                android:inputType="text"
+                                android:text="@={viewModel.email}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:passwordToggleEnabled="true"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Nhập mật khẩu">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etRegisterPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                app:passwordToggleEnabled="true"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Nhập mật khẩu">
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterPassword"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textPassword"
-                                    android:text="@={viewModel.password}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColorHighlight="@color/white"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
+                                android:inputType="textPassword"
+                                android:text="@={viewModel.password}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColorHighlight="@color/white"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:passwordToggleEnabled="true"
+                            android:background="@drawable/new_edit_text_shape_large"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:boxStrokeColor="#FFF"
+                            app:boxBackgroundColor="#FFF"
+                            app:hintTextColor="@color/btn_blue"
+                            android:nextFocusRight="@color/btn_blue"
+                            android:hint="Nhập lại mật khẩu">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etRegisterPasswordConfirm"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                app:passwordToggleEnabled="true"
-                                android:background="@drawable/new_edit_text_shape_large"
-                                app:boxStrokeWidth="0dp"
-                                app:boxStrokeWidthFocused="0dp"
-                                app:boxStrokeColor="#FFF"
-                                app:boxBackgroundColor="#FFF"
-                                app:hintTextColor="@color/btn_blue"
-                                android:nextFocusRight="@color/btn_blue"
-                                android:hint="Nhập lại mật khẩu">
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etRegisterPasswordConfirm"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textPassword"
-                                    android:text="@={viewModel.passConfirm}"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textSize="18dp"
-                                    android:ems="15"
-                                    android:textColorHighlight="@color/white"
-                                    android:textColor="@color/btn_blue"
-                                    android:textColorHint="@color/btn_blue"
-                                    android:textCursorDrawable="@drawable/cursor_color"
-                                    android:background="@drawable/new_edit_text_shape_large"/>
+                                android:inputType="textPassword"
+                                android:text="@={viewModel.passwordConfirm}"
+                                android:fontFamily="@font/lato_regular"
+                                android:textSize="18dp"
+                                android:ems="15"
+                                android:textColorHighlight="@color/white"
+                                android:textColor="@color/btn_blue"
+                                android:textColorHint="@color/btn_blue"
+                                android:textCursorDrawable="@drawable/cursor_color"
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
-
                     <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:orientation="horizontal">
                         <!--Kiểm tra đã đồng ý điều khoản hay chưa-->
                         <CheckBox
-                                android:id="@+id/cbRegisterCheckPolicy"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="12dp"
-                                android:textColor="#001C44"
-                                android:textSize="15dp"
-                                android:clickable="true"
-                                android:text="Tôi chấp nhận với điều khoản và chính sách của appname."/>
+                            android:id="@+id/cbRegisterCheckPolicy"
+                            android:fontFamily="@font/lato_regular"
+                            android:checked="@={viewModel.acceptTerms}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:textColor="#001C44"
+                            android:textSize="15dp"
+                            android:clickable="true"
+                            android:text="Tôi chấp nhận với điều khoản và chính sách của appname." />
 
                     </LinearLayout>
                     <!--            Đăng kí button-->
                     <android.widget.Button
-                            android:id="@+id/btnRegisterRegister"
-                            android:fontFamily="@font/lato_bold"
-                            android:textAllCaps="false"
-                            android:background="@drawable/new_btn_sky_medium"
-                            android:layout_width="160dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:padding="15dp"
-                            android:textSize="15dp"
-                            android:text="Đăng kí"
-                            android:textColor="@color/white"
+                        android:id="@+id/btnRegisterRegister"
+                        android:onClick="@{()->viewModel.register()}"
+                        android:fontFamily="@font/lato_bold"
+                        android:textAllCaps="false"
+                        android:background="@drawable/new_btn_sky_medium"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="15dp"
+                        android:textSize="15dp"
+                        android:text="Đăng kí"
+                        android:textColor="@color/white"
 
-                            android:layout_gravity="center"/>
+                        android:layout_gravity="center" />
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
-
+        <!--<FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
+                loading="@{viewModel.loading}"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:backgroundTint="@color/color_of_button"
+                loading="@{viewModel.loading}"/>-->
     </FrameLayout>
 </layout>

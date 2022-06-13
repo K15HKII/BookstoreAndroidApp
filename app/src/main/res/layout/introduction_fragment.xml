@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="IntroductionViewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.helppage.introduction.IntroductionViewModel"/>
+
+        <variable
+            name="IntroductionViewModel"
+            type="k15hkii.se114.bookstore.ui.account.help.introduction.IntroductionViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.accountscreen.helppage.introduction.Introduction">
+        tools:context=".ui.account.help.introduction.Introduction">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:background="@color/new_background_color">
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/new_background_color">
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
                 android:id="@+id/toolbarHelpPage">
-            <android.widget.Button
+
+                <android.widget.Button
                     android:id="@+id/btnEditBankBackward"
                     android:onClick="@{()-> IntroductionViewModel.onBackWardClick()}"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
-                    android:background="@drawable/ic_backward"/>
+                    android:background="@drawable/ic_backward" />
 
-            <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -38,25 +45,29 @@
                     android:textStyle="bold"
                     android:text="Giới thiệu"
                     android:textColor="@color/black"
-                    android:textSize="24dp"/>
+                    android:textSize="24dp" />
 
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:padding="20dp">
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:background="@drawable/edit_text_background"
-                      android:padding="15dp"
-                      android:fontFamily="@font/lato_regular"
-                      android:text="Thông tin về ứng dụng:\n+ phiên bản
-                                    \n+ năm phát hành
-                                    \n+ nhà phát triển
-                                    \n+ Cách sử dụng cơ bản"
-                      android:textSize="15dp"
-                      android:textColor="@color/black"/>
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="15dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Phiên bản: 1.0
+                                    \nNăm phát hành: 2022
+                                    \nNhà phát triển: xxx"
+                    android:textSize="15dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

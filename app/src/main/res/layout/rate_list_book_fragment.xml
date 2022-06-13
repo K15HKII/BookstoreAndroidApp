@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="vỉewModel"
-                  type="k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBookViewModel"
-            />
+
+        <variable
+            name="vỉewModel"
+            type="k15hkii.se114.bookstore.ui.book.rating.list.RateListBookViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ratingbookscreen.ratelistbook.RateListBook">
+        tools:context=".ui.book.rating.list.RateListBook">
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/new_background_color"
             android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:theme="?attr/actionBarTheme"
                 android:minHeight="?attr/actionBarSize"
                 android:id="@+id/toolbarAddBank">
-            <RelativeLayout
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <android.widget.Button
+
+                    <android.widget.Button
                         android:id="@+id/btnRatingBookBackward"
                         android:onClick="@{()-> vỉewModel.onBackWardClick()}"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:scaleX="0.5"
                         android:scaleY="0.5"
-                        android:background="@drawable/ic_backward"/>
+                        android:background="@drawable/ic_backward" />
 
-                <TextView
+                    <TextView
                         android:fontFamily="@font/lato_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -44,19 +49,19 @@
                         android:text="Đánh giá"
                         android:textColor="@color/black"
                         android:textSize="24dp"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerInParent="true" />
 
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-        //TODO: thêm list book rating
-        <androidx.recyclerview.widget.RecyclerView
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+            //TODO: thêm list book rating
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rcvRatingList"
-                android:padding="10dp"
-        />
+                android:padding="10dp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

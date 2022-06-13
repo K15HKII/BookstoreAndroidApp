@@ -3,4 +3,5 @@ package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecyclevi
 import k15hkii.se114.bookstore.ui.base.INavigator;
 
 public interface OrderItemNavigator extends INavigator {
+
 }

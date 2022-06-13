@@ -1,28 +1,24 @@
 package k15hkii.se114.bookstore.ui.dialog.oncart;
 
 import android.util.Log;
-import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 import k15hkii.se114.bookstore.data.model.api.book.Book;
-import k15hkii.se114.bookstore.data.model.api.cartitem.CartItem;
 import k15hkii.se114.bookstore.data.model.api.cartitem.CartItemCRUDRequest;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
-import javax.inject.Inject;
 import java.util.UUID;
 
 public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
 
-    public final ObservableField<Integer> quantity = new ObservableField<>();
+    public final ObservableInt quantity = new ObservableInt();
     PreferencesHelper helper;
 
-    @Inject
     protected ModelRemote remote;
     private Book book;
-    private UUID userId;
-    private CartItem cartItem;
+    private final UUID userId;
 
     public OnCartViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
         super(schedulerProvider);
@@ -36,61 +32,43 @@ public class OnCartViewModel extends BaseViewModel<OnCartCallBack> {
         quantity.set(1);
     }
 
-    int q = -1;
+    public void postCart() {
+        if (quantity.get() < 1)
+            return;
 
-    void postCart() {
         CartItemCRUDRequest request = new CartItemCRUDRequest();
         request.setBookId(book.getId());
         request.setSelected(false);
         request.setQuantity(quantity.get());
+        request.setQuantityAction("add");
 
-        //TODO: cong don` cart item quantity, lỗi chỗ dispose
-        dispose(remote.getCarts(userId),
-                cartItems -> {
-                    q = 0;
-                    for (CartItem item : cartItems) {
-                        if (item.getBookId() == book.getId()) {
-//                            if (item.getQuantity() == 0) {
-//                                q = this.quantity.get();
-//                            }
-//                            else {
-                            q = item.getQuantity() + this.quantity.get();
-//                            }
-                            request.setQuantity(q);
-                        }
-                    }
-                    dispose(remote.createCart(userId, request),
-                            cartItem -> { },
-                            throwable -> { });
+        dispose(remote.createCart(userId, request),
+                cartItem -> {
+                    getNavigator().dismissDialog();
                 },
-                throwable -> { });
-        if (q == -1) {
-            dispose(remote.createCart(userId, request),
-                    cartItem -> { },
-                    throwable -> { });
-        }
-        return;
+                throwable -> {
+                    Log.d("OnCartViewModel", throwable.getMessage());
+                });
     }
 
     public void plusQuantity() {
         if (quantity.get() >= book.getStock()) {
             return;
-        } else {
-            quantity.set((quantity.get() + 1));
         }
+
+        quantity.set(quantity.get() + 1);
     }
 
     public void minusQuantity() {
         if (quantity.get() == 1) {
             return;
-        } else {
-            quantity.set((quantity.get() - 1));
         }
+
+        quantity.set(quantity.get() - 1);
     }
 
-    public void dismissDialog() {
+    public void accept() {
         postCart();
-        getNavigator().dismissDialog();
     }
 
 }

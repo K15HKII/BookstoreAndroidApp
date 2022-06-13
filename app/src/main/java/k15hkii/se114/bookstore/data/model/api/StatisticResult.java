@@ -5,8 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
 public class StatisticResult {
+
     @Getter
     @Expose
     @SerializedName("result")
     private double result;
+
 }

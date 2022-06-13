@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.util.Date;
 import java.util.UUID;
 
 @With
@@ -44,5 +43,6 @@ public class UserBank {
     @Expose
     @SerializedName("is_primary")
     private boolean isPrimary;
+
 }
 

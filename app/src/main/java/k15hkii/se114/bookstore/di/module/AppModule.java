@@ -10,10 +10,13 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
 import k15hkii.se114.bookstore.BuildConfig;
-import k15hkii.se114.bookstore.data.DataSession;
+import k15hkii.se114.bookstore.data.CacheRemote;
 import k15hkii.se114.bookstore.data.prefs.AppPreferencesHelper;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
-import k15hkii.se114.bookstore.data.remote.*;
+import k15hkii.se114.bookstore.data.remote.AppAuthentication;
+import k15hkii.se114.bookstore.data.remote.Authentication;
+import k15hkii.se114.bookstore.data.remote.ModelRemote;
+import k15hkii.se114.bookstore.data.remote.RestHeader;
 import k15hkii.se114.bookstore.di.PreferenceInfo;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
@@ -33,19 +36,21 @@ public class AppModule {
 
     @Provides
     @PreferenceInfo
-    String providePrefName() { return AppConstants.PREF_NAME; }
+    String providePrefName() {
+        return AppConstants.PREF_NAME;
+    }
 
     @Provides
     @Singleton
-    DataSession provideDataSession() { return new DataSession(); }
+    ViewModelMapper provideViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID uuid) {
+        return new ViewModelMapper(schedulerProvider, remote, uuid);
+    }
 
     @Provides
     @Singleton
-    ViewModelMapper provideViewModelMapper(SchedulerProvider schedulerProvider, ModelRemote remote) { return new ViewModelMapper(schedulerProvider,remote); }
-
-    @Provides
-    @Singleton
-    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) { return appPreferencesHelper; }
+    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) {
+        return appPreferencesHelper;
+    }
 
     @Provides
     @UserId
@@ -62,17 +67,20 @@ public class AppModule {
     @Provides
     @Singleton
     ModelRemote provideModelRemote(Retrofit retrofit) {
-        return retrofit.create(ModelRemote.class);
+        return new CacheRemote(retrofit.create(ModelRemote.class));
     }
 
     @Provides
     @Singleton
-    Context provideContext(Application application) { return application; }
+    Context provideContext(Application application) {
+        return application;
+    }
 
     @Provides
     @Singleton
     Gson provideGson() {
         return new GsonBuilder()
+                .setLenient()
                 .registerTypeAdapter(RestHeader.PublicRestHeader.class, RestHeader.PublicRestHeaderSerializer.getInstance())
                 .registerTypeAdapter(RestHeader.ProtectedRestHeader.class, RestHeader.ProtectedRestHeaderSerializer.getInstance())
                 .excludeFieldsWithoutExposeAnnotation()
@@ -89,7 +97,9 @@ public class AppModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson));
 
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true);
+
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         clientBuilder.addInterceptor(loggingInterceptor);

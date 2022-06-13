@@ -1,25 +1,21 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentedViewPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -56,7 +52,7 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
         rentedViewPageFragmentBinding.rcvRentedBookView.setLayoutManager(linearLayoutManager);
         rentedViewPageFragmentBinding.rcvRentedBookView.setAdapter(rentViewAdapter);
 
-        return  view;
+        return view;
     }
 
     @Override
@@ -77,4 +73,5 @@ public class RentedViewPage extends BaseFragment<RentedViewPageFragmentBinding, 
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

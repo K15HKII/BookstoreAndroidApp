@@ -9,18 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import k15hkii.se114.bookstore.BookstoreApp;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.FilterSearchDialogBinding;
-import k15hkii.se114.bookstore.di.component.DaggerDialogComponent;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
-import k15hkii.se114.bookstore.di.module.DialogModule;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
+import k15hkii.se114.bookstore.ui.book.search.SearchBookViewResult;
 
 import javax.inject.Inject;
 
 public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBack {
+
     private static final String TAG = "FilterSearchDialog";
 
     @Inject
@@ -36,8 +34,8 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        FilterSearchDialogBinding binding = DataBindingUtil.inflate( inflater, R.layout.filter_search_dialog, container, false);
-        View view =binding.getRoot();
+        FilterSearchDialogBinding binding = DataBindingUtil.inflate(inflater, R.layout.filter_search_dialog, container, false);
+        View view = binding.getRoot();
 
         binding.setViewModel(filterSearchViewModel);
         filterSearchViewModel.setNavigator(this);
@@ -55,7 +53,7 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         skPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tvPrice.setText("" + String.format("%,.0f",(double)i) + "đ - 2.000.000đ");
+                tvPrice.setText("" + String.format("%,.0f", (double) i) + "đ - 2.000.000đ");
             }
 
             @Override
@@ -76,7 +74,7 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         super.show(fragmentManager, TAG);
     }
 
-    public void performDependencyInjection(DialogComponent buildComponent){
+    public void performDependencyInjection(DialogComponent buildComponent) {
         buildComponent.inject(this);
     }
 
@@ -87,9 +85,9 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
 
     @Override
     public void openSearchResult() {
-        FragmentManager  fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class,null).setCustomAnimations(
+        fragmentTransaction.replace(R.id.fragmentContainerView, SearchBookViewResult.class, null).setCustomAnimations(
                 R.anim.slide_in,  // enter
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
@@ -97,4 +95,5 @@ public class FilterSearchDialog extends BaseDialog implements FilterSearchCallBa
         ).addToBackStack(null).commit();
         dismissDialog(TAG);
     }
+
 }

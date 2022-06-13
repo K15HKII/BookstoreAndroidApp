@@ -2,9 +2,14 @@ package k15hkii.se114.bookstore.data.model.api.user;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.*;
+import k15hkii.se114.bookstore.data.model.api.file.Image;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @With
@@ -13,7 +18,15 @@ import java.util.UUID;
 public class User {
 
     public String getName() {
-        return getFirstName() + " " + getLastName();
+        StringBuilder sb = new StringBuilder();
+        if (getFirstName() != null) {
+            sb.append(getFirstName());
+        }
+        if (getLastName() != null) {
+            sb.append(" ");
+            sb.append(getLastName());
+        }
+        return sb.toString();
     }
 
     @Getter
@@ -58,11 +71,6 @@ public class User {
 
     @Getter
     @Expose
-    @SerializedName("salt")
-    private String salt;
-
-    @Getter
-    @Expose
     @SerializedName("password")
     private String password;
 
@@ -73,43 +81,28 @@ public class User {
 
     @Getter
     @Expose
-    @SerializedName("role")
-    private String role;
-
-    @Getter
-    @Expose
-    @SerializedName("refresh_token")
-    private String refresh_token;
-
-    @Getter
-    @Expose
     @SerializedName("created_at")
-    private String created_at;
+    private String createdAt;
+
+    @Getter
+    @Expose
+    @SerializedName("addresses")
+    private List<UserAddress> addresses;
+
+    @Getter
+    @Expose
+    @SerializedName("banks")
+    private List<UserBank> banks;
+
+    @Getter
+    @Expose
+    @SerializedName("avatar")
+    private Image avatar;
 
     @Getter
     @Expose
     @SerializedName("updated_at")
     private int updated_at;
-
-    @Getter
-    @Expose
-    @SerializedName("is_active")
-    private int is_active;
-
-    @Getter
-    @Expose
-    @SerializedName("is_verified")
-    private int is_verified;
-
-    @Getter
-    @Expose
-    @SerializedName("is_locked")
-    private int is_locked;
-
-    @Getter
-    @Expose
-    @SerializedName("is_blocked")
-    private int is_blocked;
 
 }
 

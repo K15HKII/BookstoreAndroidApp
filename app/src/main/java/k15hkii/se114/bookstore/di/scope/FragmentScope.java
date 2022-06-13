@@ -7,4 +7,5 @@ import java.lang.annotation.RetentionPolicy;
 @Scope
 @Retention(RetentionPolicy.SOURCE)
 public @interface FragmentScope {
+
 }

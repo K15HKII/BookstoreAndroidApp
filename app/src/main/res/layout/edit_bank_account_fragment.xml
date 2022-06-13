@@ -1,78 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.bankscreen.edit.EditBankPageViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.account.bank.edit.EditBankPageViewModel" />
     </data>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".ui.bankscreen.edit.EditBankPage">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.account.bank.edit.EditBankPage">
 
-    <ScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
-        <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="?attr/actionBarTheme"
-                android:minHeight="?attr/actionBarSize"
-                android:id="@+id/toolbarEditBank">
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <LinearLayout
-                        android:layout_alignParentLeft="true"
-                        android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:orientation="horizontal">
-                <android.widget.Button
-                android:id="@+id/btnEditBankBackward"
-                android:onClick="@{()-> viewModel.onBackWardClick()}"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:background="@drawable/ic_backward"/>
-                    <TextView
-                            android:fontFamily="@font/lato_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:text="Tài khoản ngân hàng"
-                            android:textColor="@color/black"
-                            android:textSize="24dp"/>
-                </LinearLayout>
 
-                <android.widget.Button
-                        android:id="@+id/btnEditBank"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentEnd="true"
-                        android:scaleX="0.8"
-                        android:scaleY="0.8"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/ic_delete_black"/>
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:theme="?attr/actionBarTheme"
+                    android:minHeight="?attr/actionBarSize"
+                    android:id="@+id/toolbarEditBank">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <android.widget.Button
+                                android:id="@+id/btnEditBankBackward"
+                                android:onClick="@{()-> viewModel.onBackWardClick()}"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:background="@drawable/ic_backward" />
+
+                            <TextView
+                                android:fontFamily="@font/lato_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:text="Tài khoản ngân hàng"
+                                android:textColor="@color/black"
+                                android:textSize="24dp" />
+                        </LinearLayout>
+
+                        <android.widget.Button
+                            android:id="@+id/btnEditBank"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_delete_black" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+                <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="673dp"
                     android:background="@color/new_background_color"
                     android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -84,7 +95,8 @@
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
                         android:hint="Tên chủ sở hữu">
-                    <com.google.android.material.textfield.TextInputEditText
+
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEditBankOwnerName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -99,9 +111,10 @@
                             android:textColor="@color/btn_blue"
                             android:textColorHint="@color/btn_blue"
                             android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/new_edit_text_shape_large"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
+                            android:background="@drawable/new_edit_text_shape_large" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -113,7 +126,8 @@
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
                         android:hint="CMND/CCCD">
-                    <com.google.android.material.textfield.TextInputEditText
+
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEditBankIdentifyNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -128,10 +142,10 @@
                             android:textColor="@color/btn_blue"
                             android:textColorHint="@color/btn_blue"
                             android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/new_edit_text_shape_large"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                            android:background="@drawable/new_edit_text_shape_large" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <android.widget.Spinner
+                    <android.widget.Spinner
                         android:id="@+id/spAddBankBankName"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
@@ -146,9 +160,9 @@
                         android:inputType="text"
                         android:popupBackground="@drawable/spinner_shape"
                         android:background="@drawable/new_edit_text_shape_large"
-                        source="@{viewModel.bankDb}"/>
+                        source="@{viewModel.bankDb}" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -160,7 +174,8 @@
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
                         android:hint="Chi nhánh">
-                    <com.google.android.material.textfield.TextInputEditText
+
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEditBankBankLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -175,10 +190,10 @@
                             android:textColor="@color/btn_blue"
                             android:textColorHint="@color/btn_blue"
                             android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/new_edit_text_shape_large"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                            android:background="@drawable/new_edit_text_shape_large" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -190,7 +205,8 @@
                         app:hintTextColor="@color/btn_blue"
                         android:nextFocusRight="@color/btn_blue"
                         android:hint="Số tài khoản">
-                    <com.google.android.material.textfield.TextInputEditText
+
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEditBankCardNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -205,24 +221,26 @@
                             android:textColor="@color/btn_blue"
                             android:textColorHint="@color/btn_blue"
                             android:textCursorDrawable="@drawable/cursor_color"
-                            android:background="@drawable/new_edit_text_shape_large"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                            android:background="@drawable/new_edit_text_shape_large" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+                    <LinearLayout
                         android:layout_marginTop="30dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                    <CheckBox
+
+                        <CheckBox
                             android:id="@+id/cbEditBankDefaultBankCheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/lato_regular"
                             android:text="Đặt làm tài khoản ngân hàng mặc định"
                             android:textSize="15dp"
-                            android:textColor="@color/black"/>
-                </LinearLayout>
-                <android.widget.Button
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <android.widget.Button
                         android:id="@+id/btnEditBankDone"
                         android:onClick="@{()-> viewModel.Accept()}"
                         android:textAllCaps="false"
@@ -238,11 +256,11 @@
                         android:textSize="16.5dp"
                         android:text="Xong"
                         android:textColor="@color/white"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
 
 
-</FrameLayout>
+    </FrameLayout>
 </layout>

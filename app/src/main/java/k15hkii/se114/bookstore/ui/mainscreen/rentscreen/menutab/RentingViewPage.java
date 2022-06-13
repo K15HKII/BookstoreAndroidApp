@@ -1,25 +1,21 @@
 package k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RentingViewPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBill;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -28,10 +24,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
 
     @Inject
     protected RentViewAdapter rentViewAdapter;
-
-    public static RentingViewPage newInstance() {
-        return new RentingViewPage();
-    }
 
     @Override
     public int getBindingVariable() {
@@ -59,12 +51,6 @@ public class RentingViewPage extends BaseFragment<RentingViewPageFragmentBinding
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
         rentingViewPageFragmentBinding.rcvRentingBookView.setLayoutManager(linearLayoutManager);
         rentingViewPageFragmentBinding.rcvRentingBookView.setAdapter(rentViewAdapter);
-
-//        rentViewAdapter = new OrderViewAdapter(getListBook1(), RentingViewPage.this.getContext());
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RentingViewPage.this.getContext());
-//        rcvRentView.setLayoutManager(linearLayoutManager);
-//        rcvRentView.setAdapter(rentViewAdapter);
 
         return view;
     }

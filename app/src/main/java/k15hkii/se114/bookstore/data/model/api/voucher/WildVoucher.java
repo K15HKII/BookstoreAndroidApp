@@ -11,6 +11,7 @@ import lombok.With;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WildVoucher extends BaseVoucher {
+
     @Getter
     @Expose
     @SerializedName("remaining_uses")

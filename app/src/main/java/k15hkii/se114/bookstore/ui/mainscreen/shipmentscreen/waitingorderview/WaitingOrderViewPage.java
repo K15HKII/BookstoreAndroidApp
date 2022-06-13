@@ -1,30 +1,31 @@
 package k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import k15hkii.se114.bookstore.BR;
+import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.WaitingOrderViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
-import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetail;
+import k15hkii.se114.bookstore.ui.order.detail.OrderDetail;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
 public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentBinding, WaitingOrderListViewModel> implements WaitingOrderViewPageNavigator, IOrderNavigator {
-    private WaitingOrderListViewModel mViewModel;
-    private int statusView = 0;
 
-    public int getStatusView(){
+    private WaitingOrderListViewModel mViewModel;
+    private final int statusView = 0;
+
+    public int getStatusView() {
         return this.statusView;
     }
 
@@ -81,4 +82,5 @@ public class WaitingOrderViewPage extends BaseFragment<WaitingOrderViewFragmentB
                         R.anim.slide_out  // popExit
                 ).commit();
     }
+
 }

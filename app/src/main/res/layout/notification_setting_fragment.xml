@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="NotificationSettingViewModel"
-                  type="k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel"/>
+
+        <variable
+            name="NotificationSettingViewModel"
+            type="k15hkii.se114.bookstore.ui.account.setting.notificationsetting.NotificationSettingViewModel" />
     </data>
-<LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/new_background_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.accountscreen.settingpage.notificationsetting.NotificationSetting"
+        tools:context=".ui.account.setting.notificationsetting.NotificationSetting"
         android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbarHelpPage">
-        <android.widget.Button
+
+            <android.widget.Button
                 android:id="@+id/btnEditBankBackward"
                 android:onClick="@{()-> NotificationSettingViewModel.onBackWardClick()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleX="0.55"
                 android:scaleY="0.55"
-                android:background="@drawable/ic_backward"/>
+                android:background="@drawable/ic_backward" />
 
-        <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -36,20 +40,26 @@
                 android:textStyle="bold"
                 android:text="Thông báo"
                 android:textColor="@color/black"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
-    </androidx.appcompat.widget.Toolbar>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:padding="20dp"
-                  android:orientation="vertical">
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Chọn thông báo bạn muốn nhận"
-                  android:textColor="#636363"
-                  android:fontFamily="@font/lato_regular"
-                  android:layout_marginTop="5dp"
-                  android:layout_marginBottom="15dp"/>
-        <android.widget.Button
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn thông báo bạn muốn nhận"
+                android:textColor="#636363"
+                android:fontFamily="@font/lato_regular"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp" />
+
+            <android.widget.Button
                 android:onClick="@{()-> NotificationSettingViewModel.onMyOrderClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,8 +71,9 @@
                 android:padding="15dp"
                 android:textAllCaps="false"
                 android:textSize="19dp"
-                android:text="Đơn hàng của tôi"/>
-        <android.widget.Button
+                android:text="Đơn hàng của tôi" />
+
+            <android.widget.Button
                 android:onClick="@{()-> NotificationSettingViewModel.onVoucherNotificationClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,8 +85,9 @@
                 android:padding="15dp"
                 android:textAllCaps="false"
                 android:textSize="19dp"
-                android:text="Voucher"/>
-        <android.widget.Button
+                android:text="Voucher" />
+
+            <android.widget.Button
                 android:onClick="@{()-> NotificationSettingViewModel.onOtherNotificationClick()}"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
@@ -88,7 +100,7 @@
                 android:padding="15dp"
                 android:textAllCaps="false"
                 android:textSize="19dp"
-                android:text="Thông báo khác"/>
+                android:text="Thông báo khác" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </layout>

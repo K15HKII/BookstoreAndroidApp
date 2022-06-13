@@ -4,16 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.BookViewAdapterBinding;
 import k15hkii.se114.bookstore.databinding.RentViewAdapterBinding;
 import k15hkii.se114.bookstore.ui.components.ListAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.IOrderNavigator;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +18,7 @@ import java.util.List;
 
 public class RentViewAdapter extends ListAdapter<RentViewViewModel, RentViewAdapter.RentViewViewHolder> {
 
-    private Context context;
+    private final Context context;
     @Getter
     @Setter
     private RentViewNavigator rentViewNavigator;
@@ -58,9 +53,9 @@ public class RentViewAdapter extends ListAdapter<RentViewViewModel, RentViewAdap
         });
     }
 
-    public class RentViewViewHolder extends RecyclerView.ViewHolder{
+    public class RentViewViewHolder extends RecyclerView.ViewHolder {
 
-        private RentViewAdapterBinding binding;
+        private final RentViewAdapterBinding binding;
 
         public RentViewViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -70,5 +65,7 @@ public class RentViewAdapter extends ListAdapter<RentViewViewModel, RentViewAdap
         public void setViewModel(RentViewViewModel data) {
             binding.setViewModel(data);
         }
+
     }
+
 }

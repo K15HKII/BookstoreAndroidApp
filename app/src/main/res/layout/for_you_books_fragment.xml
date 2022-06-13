@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.mainscreen.navigator.foryou.ForYouBooksViewModel" />
     </data>
 
 
-    <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.mainscreen.navigator.foryou.ForYouBooksPage">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksPage">
+            android:orientation="vertical" />
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:orientation="vertical"/>
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lvHomeForYouBooks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                source="@{viewModel.items}"/>
+            android:id="@+id/lvHomeForYouBooks"
+            android:paddingLeft="30dp"
+            android:paddingRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            source="@{viewModel.items}" />
     </FrameLayout>
 </layout>

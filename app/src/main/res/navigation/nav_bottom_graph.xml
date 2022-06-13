@@ -9,14 +9,14 @@
         <action android:id="@+id/action_home_view_to_notificationPage" app:destination="@id/notification_view"/>
         <action android:id="@+id/action_home_view_to_news_view" app:destination="@id/news_view"/>
     </fragment>
-    <fragment android:id="@+id/account_view" android:name="k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPage"
+    <fragment android:id="@+id/account_view" android:name="k15hkii.se114.bookstore.ui.account.AccountPage"
               android:label="account_view_fragment" tools:layout="@layout/account_page_fragment">
         <action android:id="@+id/action_account_view_to_home_view" app:destination="@id/home_view"/>
         <action android:id="@+id/action_account_view_to_notificationPage" app:destination="@id/notification_view"/>
         <action android:id="@+id/action_account_view_to_news_view" app:destination="@id/news_view"/>
     </fragment>
     <fragment android:id="@+id/notification_view"
-              android:name="k15hkii.se114.bookstore.ui.notificationnews.NotificationPage"
+              android:name="k15hkii.se114.bookstore.ui.notification.NotificationPage"
               android:label="NotificationPage">
         <action android:id="@+id/action_notification_view_to_account_view" app:destination="@id/account_view"/>
         <action android:id="@+id/action_notification_view_to_home_view" app:destination="@id/home_view"/>

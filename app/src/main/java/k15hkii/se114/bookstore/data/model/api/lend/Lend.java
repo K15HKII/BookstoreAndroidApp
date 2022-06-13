@@ -3,7 +3,10 @@ package k15hkii.se114.bookstore.data.model.api.lend;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.Payment;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -48,4 +51,5 @@ public class Lend implements Serializable {
     @Expose
     @SerializedName("payment")
     private Payment payment;
+
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import dagger.BindsInstance;
 import dagger.Component;
 import k15hkii.se114.bookstore.BookstoreApp;
-import k15hkii.se114.bookstore.data.DataSession;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.Authentication;
 import k15hkii.se114.bookstore.data.remote.LocationRepository;
@@ -37,8 +36,6 @@ public interface AppComponent {
     ViewModelMapper getViewModelMapper();
 
     Context getContext();
-
-    DataSession getDataSession();
 
     @UserId
     UUID getUserId();

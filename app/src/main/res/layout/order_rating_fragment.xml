@@ -5,14 +5,14 @@
 
         <variable
             name="viewModel"
-            type="k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel" />
+            type="k15hkii.se114.bookstore.ui.order.rating.OrderRatingViewModel" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.orderinfoscreen.orderdetail.OrderDetail">
+        tools:context=".ui.order.detail.OrderDetail">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -409,23 +409,22 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <android.widget.Button
-                        android:id="@+id/btnOrderRatingCancleOrder"
-                        android:fontFamily="@font/lato_bold"
-                        android:paddingLeft="35dp"
-                        android:paddingRight="35dp"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
-                        android:background="@drawable/new_btn_sky_large"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        android:text="Đã nhận hàng thành công ^-^!"
-                        android:textColor="@color/white"
-                        android:drawableStart="@drawable/ic_check_circle"
-                        android:layout_gravity="center" />
+                    <!--                    <android.widget.Button-->
+                    <!--                        android:id="@+id/btnOrderRatingCancleOrder"-->
+                    <!--                        android:fontFamily="@font/lato_bold"-->
+                    <!--                        android:paddingLeft="35dp"-->
+                    <!--                        android:paddingRight="35dp"-->
+                    <!--                        android:paddingTop="12dp"-->
+                    <!--                        android:paddingBottom="12dp"-->
+                    <!--                        android:background="@drawable/new_btn_sky_medium"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="25dp"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="14sp"-->
+                    <!--                        android:text="Đánh giá"-->
+                    <!--                        android:textColor="@color/white"-->
+                    <!--                        android:layout_gravity="center" />-->
 
                 </LinearLayout>
             </ScrollView>

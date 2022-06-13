@@ -4,7 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
 import java.io.Serializable;
 import java.util.List;
@@ -65,6 +68,11 @@ public class Bill implements Serializable {
     @Getter
     @SerializedName("ship_cost")
     private long shipCost;
+
+    @Expose
+    @Getter
+    @SerializedName("total_discount")
+    private long totalDiscount;
     //endregion
 
 }

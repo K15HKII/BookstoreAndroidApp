@@ -1,8 +1,8 @@
 package k15hkii.se114.bookstore.ui.intro.thirdpage;
 
 import androidx.databinding.Observable;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class IntroThirdPageViewModel extends BaseViewModel<IntroThirdPageNavigator> implements Observable {
 
@@ -10,7 +10,7 @@ public class IntroThirdPageViewModel extends BaseViewModel<IntroThirdPageNavigat
         super(schedulerProvider);
     }
 
-    public void openFinalPage(){
+    public void openFinalPage() {
         getNavigator().openFinalPage();
     }
 

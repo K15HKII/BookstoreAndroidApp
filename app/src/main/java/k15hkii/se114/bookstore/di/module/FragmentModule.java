@@ -9,86 +9,89 @@ import k15hkii.se114.bookstore.data.remote.LocationRepository;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.*;
-import k15hkii.se114.bookstore.ui.accountscreen.voucherscreen.adapterSelect.VoucherItemAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
-import k15hkii.se114.bookstore.ui.news.NewsViewModel;
-import k15hkii.se114.bookstore.ui.news.createfeed.CreateNewsViewModel;
-import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
-import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
-import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
-import k15hkii.se114.bookstore.ui.notificationnews.ListDataNotificationAdapter;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderchecker.OrderCheckerViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderdetail.OrderDetailViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderrating.OrderRatingViewModel;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.ratelistbook.RateListBookViewModel;
-import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
-import k15hkii.se114.bookstore.ui.accountscreen.accountinfopage.AccountInfoViewViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.helppage.HelpPageViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.helppage.delaccountrequest.DeleteAccountViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.helppage.introduction.IntroductionViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.helppage.policy.PolicyViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.SettingPageViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.helppage.helpcenter.HelpCenterViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.languagesetting.LanguageSettingViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.NotificationSettingViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.myordernotification.MyOrderNotificationViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.othernotification.OtherNotificationViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
-import k15hkii.se114.bookstore.ui.accountscreen.settingpage.privacysetting.PrivacySettingViewModel;
-import k15hkii.se114.bookstore.ui.address.recycleViewAddressSelector.OtherAddressAdapter;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPageViewModel;
-import k15hkii.se114.bookstore.ui.address.add.AddAddressPageViewModel;
-import k15hkii.se114.bookstore.ui.address.edit.EditAddressPageViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.recycleViewBankSelector.OtherBankAdapter;
-import k15hkii.se114.bookstore.ui.bankscreen.SelectorBankPageViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.add.AddBankPageViewModel;
-import k15hkii.se114.bookstore.ui.bankscreen.edit.EditBankPageViewModel;
-import k15hkii.se114.bookstore.ui.bookdetailscreen.BookDetailPageViewModel;
-import k15hkii.se114.bookstore.ui.bookdetailscreen.CommentViewAdapter;
-import k15hkii.se114.bookstore.ui.forgotpassscreen.ForgotPasswordViewModel;
+import k15hkii.se114.bookstore.ui.account.AccountPageViewModel;
+import k15hkii.se114.bookstore.ui.account.address.SelectorAddressPageViewModel;
+import k15hkii.se114.bookstore.ui.account.address.add.AddAddressPageViewModel;
+import k15hkii.se114.bookstore.ui.account.address.edit.EditAddressPageViewModel;
+import k15hkii.se114.bookstore.ui.account.address.recycleViewAddressSelector.OtherAddressAdapter;
+import k15hkii.se114.bookstore.ui.account.bank.SelectorBankPageViewModel;
+import k15hkii.se114.bookstore.ui.account.bank.add.AddBankPageViewModel;
+import k15hkii.se114.bookstore.ui.account.bank.edit.EditBankPageViewModel;
+import k15hkii.se114.bookstore.ui.account.bank.recycleViewBankSelector.OtherBankAdapter;
+import k15hkii.se114.bookstore.ui.account.help.HelpPageViewModel;
+import k15hkii.se114.bookstore.ui.account.help.delete.DeleteAccountViewModel;
+import k15hkii.se114.bookstore.ui.account.help.helpcenter.HelpCenterViewModel;
+import k15hkii.se114.bookstore.ui.account.help.introduction.IntroductionViewModel;
+import k15hkii.se114.bookstore.ui.account.help.policy.PolicyViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.SettingPageViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.languagesetting.LanguageSettingViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.notificationsetting.NotificationSettingViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.notificationsetting.myordernotification.MyOrderNotificationViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.notificationsetting.othernotification.OtherNotificationViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.notificationsetting.vouchernotification.VoucherNotificaitonViewModel;
+import k15hkii.se114.bookstore.ui.account.setting.privacysetting.PrivacySettingViewModel;
+import k15hkii.se114.bookstore.ui.auth.forgotpassword.ForgotPasswordViewModel;
+import k15hkii.se114.bookstore.ui.auth.loginscreen.LoginViewModel;
+import k15hkii.se114.bookstore.ui.auth.register.RegisterViewModel;
+import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.book.detail.BookDetailPageViewModel;
+import k15hkii.se114.bookstore.ui.book.detail.CommentViewAdapter;
+import k15hkii.se114.bookstore.ui.book.rating.MediaViewAdapter;
+import k15hkii.se114.bookstore.ui.book.rating.RateDetailViewModel;
+import k15hkii.se114.bookstore.ui.book.rating.list.RateListBookViewModel;
+import k15hkii.se114.bookstore.ui.book.search.SearchBookViewResultViewModel;
+import k15hkii.se114.bookstore.ui.book.search.SearchBookViewViewModel;
+import k15hkii.se114.bookstore.ui.cart.OncartItemAdapter;
+import k15hkii.se114.bookstore.ui.cart.OncartViewViewModel;
 import k15hkii.se114.bookstore.ui.intro.firstpage.IntroFirstPageViewModel;
 import k15hkii.se114.bookstore.ui.intro.fourthpage.IntroFourthPageViewModel;
 import k15hkii.se114.bookstore.ui.intro.secondpage.IntroSecondPageViewModel;
 import k15hkii.se114.bookstore.ui.intro.thirdpage.IntroThirdPageViewModel;
-import k15hkii.se114.bookstore.ui.loginscreen.LoginViewModel;
-import k15hkii.se114.bookstore.ui.base.BaseFragment;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.BookViewAdapter;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.allbooks.AllBooksViewViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.familiarbooks.FamiliarBooksViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.foryoubooks.ForYouBooksViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.homechipnavigator.popularbooks.PopularBooksViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.BookViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.all.AllBooksViewViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.familiar.FamiliarBooksViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.foryou.ForYouBooksViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.navigator.popular.PopularBooksViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.page.recentbook.RecentListBookViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPageViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.RentInfoViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookDetailViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.add.AddRentBookViewViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.RentingViewPageViewModel;
+import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.menutab.detail.RentDetailBillViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.rentscreen.rentbooksrecycleview.RentViewAdapter;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.cancleorder.CancelOrderViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderItemAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.orderitemsrecycleview.OrderViewAdapter;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shipmentarrived.ShipmentArrivedViewPageViewModel;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.shippingview.ShippingViewPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.page.accountpage.AccountPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.page.favoritepage.FavoritePageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.page.homepage.HomePageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.page.rentpage.RentPageViewModel;
-import k15hkii.se114.bookstore.ui.mainscreen.page.shippingpage.ShippingPageViewModel;
-import k15hkii.se114.bookstore.ui.notificationnews.NotificationPageViewModel;
-import k15hkii.se114.bookstore.ui.oncartscreen.OncartItemAdapter;
-import k15hkii.se114.bookstore.ui.oncartscreen.OncartViewViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.orderConfirm.OrderInfoPageViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.PaymentMethodViewModel;
-import k15hkii.se114.bookstore.ui.orderinfoscreen.recycleViewOrderBooks.OrderBooksViewAdapter;
-import k15hkii.se114.bookstore.ui.ratingbookscreen.RateDetailViewModel;
-import k15hkii.se114.bookstore.ui.registerscreen.RegisterViewModel;
-import k15hkii.se114.bookstore.ui.searchbook.RecentSearchAdapter;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResultViewModel;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewViewModel;
-import k15hkii.se114.bookstore.ui.success.lend.*;
+import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.waitingorderview.WaitingOrderListViewModel;
+import k15hkii.se114.bookstore.ui.news.NewsViewModel;
+import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+import k15hkii.se114.bookstore.ui.news.createfeed.CreateNewsViewModel;
+import k15hkii.se114.bookstore.ui.news.explorer.ExplorerViewModel;
+import k15hkii.se114.bookstore.ui.news.follow.FollowViewModel;
+import k15hkii.se114.bookstore.ui.news.popularnews.PopularNewsViewModel;
+import k15hkii.se114.bookstore.ui.notification.NotificationPageViewModel;
+import k15hkii.se114.bookstore.ui.notification.adapter.NotificationViewAdapter;
+import k15hkii.se114.bookstore.ui.order.PaymentMethodViewModel;
+import k15hkii.se114.bookstore.ui.order.adapter.OrderBooksViewAdapter;
+import k15hkii.se114.bookstore.ui.order.cancel.OrderCancleViewModel;
+import k15hkii.se114.bookstore.ui.order.checker.OrderCheckerViewModel;
+import k15hkii.se114.bookstore.ui.order.confirm.OrderInfoPageViewModel;
+import k15hkii.se114.bookstore.ui.order.detail.OrderDetailViewModel;
+import k15hkii.se114.bookstore.ui.order.rating.OrderRatingViewModel;
+import k15hkii.se114.bookstore.ui.success.lend.LendSuccessViewModel;
+import k15hkii.se114.bookstore.ui.success.order.OrderSuccessViewModel;
+import k15hkii.se114.bookstore.ui.voucher.VoucherPageViewModel;
+import k15hkii.se114.bookstore.ui.voucher.VoucherViewAdapter;
+import k15hkii.se114.bookstore.ui.voucher.adapter.VoucherItemAdapter;
+import k15hkii.se114.bookstore.ui.voucher.selector.SelectorVoucherViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import java.util.UUID;
 
@@ -115,9 +118,10 @@ public class FragmentModule {
     }
 
     @Provides
-    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider));
+    public RegisterViewModel provideRegisterViewModel(SchedulerProvider schedulerProvider, Authentication authentication) {
+        return createViewModel(fragment, RegisterViewModel.class, () -> new RegisterViewModel(schedulerProvider, authentication));
     }
+
     @Provides
     public HomePageViewModel provideHomePageViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, HomePageViewModel.class, () -> new HomePageViewModel(schedulerProvider));
@@ -139,13 +143,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider,remote, preferencesHelper));
-    }
-
-    @Provides
-    public AccountInfoViewViewModel provideAccountInfoViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
-        return createViewModel(fragment, AccountInfoViewViewModel.class, () -> new AccountInfoViewViewModel(schedulerProvider, remote, userId));
+    public AccountPageViewModel provideAccountPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, @UserId UUID userId) {
+        return createViewModel(fragment, AccountPageViewModel.class, () -> new AccountPageViewModel(schedulerProvider, remote, userId));
     }
 
     @Provides
@@ -214,8 +213,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper) {
-        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper));
+    public SelectorBankPageViewModel provideSelectorBankPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper preferencesHelper, ModelRemote remote) {
+        return createViewModel(fragment, SelectorBankPageViewModel.class, () -> new SelectorBankPageViewModel(schedulerProvider, preferencesHelper, remote));
     }
 
     @Provides
@@ -239,8 +238,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
-        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, remote, mapper));
+    public OrderInfoPageViewModel provideOrderInfoPageViewModel(SchedulerProvider schedulerProvider, PreferencesHelper helper, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, OrderInfoPageViewModel.class, () -> new OrderInfoPageViewModel(schedulerProvider, helper, remote, mapper));
     }
 
     @Provides
@@ -269,13 +268,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider));
-    }
-
-    @Provides
-    public NotificationOrderViewModel provideNotificationOrderViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationOrderViewModel.class, () -> new NotificationOrderViewModel(schedulerProvider));
+    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper, @UserId UUID userId) {
+        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider, remote, mapper, userId));
     }
 
     @Provides
@@ -289,8 +283,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider));
+    public SearchBookViewViewModel provideSearchBookViewViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper) {
+        return createViewModel(fragment, SearchBookViewViewModel.class, () -> new SearchBookViewViewModel(schedulerProvider, remote, mapper));
     }
 
     @Provides
@@ -399,43 +393,53 @@ public class FragmentModule {
     }
 
     @Provides
-    public CancelOrderViewModel provideCancleOrderViewModel (SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+    public CancelOrderViewModel provideCancleOrderViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
         return createViewModel(fragment, CancelOrderViewModel.class, () -> new CancelOrderViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
-    public SelectorVoucherViewModel provideSelectorVoucherViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider));
+    public SelectorVoucherViewModel provideSelectorVoucherViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, SelectorVoucherViewModel.class, () -> new SelectorVoucherViewModel(schedulerProvider, mapper, helper));
     }
 
     @Provides
-    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    public NewsViewModel provideNewsViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider, remote));
     }
 
     @Provides
-    public ExplorerViewModel provideExplorerViewModel (SchedulerProvider schedulerProvider) {
+    public ExplorerViewModel provideExplorerViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, ExplorerViewModel.class, () -> new ExplorerViewModel(schedulerProvider));
     }
 
     @Provides
-    public RateListBookViewModel provideRateListBookViewModel (SchedulerProvider schedulerProvider) {
+    public RateListBookViewModel provideRateListBookViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, RateListBookViewModel.class, () -> new RateListBookViewModel(schedulerProvider));
     }
 
     @Provides
-    public PopularNewsViewModel providePopularNewsViewModel (SchedulerProvider schedulerProvider) {
+    public PopularNewsViewModel providePopularNewsViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, PopularNewsViewModel.class, () -> new PopularNewsViewModel(schedulerProvider));
     }
 
     @Provides
-    public FollowViewModel provideFollowViewModel (SchedulerProvider schedulerProvider) {
+    public FollowViewModel provideFollowViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, FollowViewModel.class, () -> new FollowViewModel(schedulerProvider));
     }
 
     @Provides
-    public CreateNewsViewModel provideCreateNewsViewModel (SchedulerProvider schedulerProvider) {
+    public CreateNewsViewModel provideCreateNewsViewModel(SchedulerProvider schedulerProvider) {
         return createViewModel(fragment, CreateNewsViewModel.class, () -> new CreateNewsViewModel(schedulerProvider));
+    }
+
+    @Provides
+    public RecentListBookViewModel provideRecentListBookViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, PreferencesHelper helper) {
+        return createViewModel(fragment, RecentListBookViewModel.class, () -> new RecentListBookViewModel(schedulerProvider, mapper, helper));
+    }
+
+    @Provides
+    public OrderCancleViewModel provideOrderCancleViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {
+        return createViewModel(fragment, OrderCancleViewModel.class, () -> new OrderCancleViewModel(schedulerProvider, mapper, remote));
     }
 
 //    @Provides
@@ -446,6 +450,11 @@ public class FragmentModule {
     //endregion
 
     //region Adapters
+    @Provides
+    public MediaViewAdapter provideMediaViewAdapter() {
+        return new MediaViewAdapter();
+    }
+
     @Provides
     public VoucherItemAdapter provideVoucherItemAdapter(Context context) {
         return new VoucherItemAdapter(context);
@@ -502,15 +511,14 @@ public class FragmentModule {
     }
 
     @Provides
-    public RecentSearchAdapter recentSearchAdapter(Context context) {
-        return new RecentSearchAdapter(context);
+    public NewsAdapter NewsAdapter(Context context) {
+        return new NewsAdapter(context);
     }
 
     @Provides
-    public ListDataNotificationAdapter listDataNotificationAdapter(Context context) {
-        return new ListDataNotificationAdapter(context);
+    public NotificationViewAdapter notificationOrderViewAdapter(Context context) {
+        return new NotificationViewAdapter(context);
     }
-    //endregion
     //endregion
 
 }

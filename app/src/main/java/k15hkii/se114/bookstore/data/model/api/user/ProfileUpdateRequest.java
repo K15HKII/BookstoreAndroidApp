@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.Date;
 
 public class ProfileUpdateRequest {
+
     @Expose
     @SerializedName("firstname")
     @Getter

@@ -12,17 +12,20 @@ import javax.inject.Inject;
 public class BookstoreApp extends Application {
 
     public static final boolean IS_LOCAL = false;
-    @Getter AppComponent appComponent;
 
-    @Inject protected LocationRepository locationRepository;
+    @Getter
+    AppComponent appComponent;
+
+    @Inject
+    protected LocationRepository locationRepository;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         appComponent = DaggerAppComponent.builder()
-                                         .application(this)
-                                         .build();
+                .application(this)
+                .build();
 
         appComponent.inject(this);
         if (locationRepository.isInitialize()) {

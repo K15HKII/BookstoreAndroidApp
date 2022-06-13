@@ -2,7 +2,10 @@ package k15hkii.se114.bookstore.data.model.api.cartitem;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.With;
 
 import java.util.UUID;
 

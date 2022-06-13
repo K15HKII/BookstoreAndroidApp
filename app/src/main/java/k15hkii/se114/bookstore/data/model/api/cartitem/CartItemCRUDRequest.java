@@ -22,6 +22,12 @@ public class CartItemCRUDRequest {
     private int quantity;
 
     @Expose
+    @Getter
+    @Setter
+    @SerializedName("quantity_action")
+    private String quantityAction;
+
+    @Expose
     @Setter
     @Getter
     @SerializedName("selected")

@@ -1,43 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
-        <variable name="viewModel"
-                  type="k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderViewModel" />
     </data>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:background="@drawable/dialog_shape">
-    <com.google.android.material.textfield.TextInputLayout
+
+        <android.widget.Spinner
+            android:id="@+id/spRegisterGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:popupBackground="@drawable/spinner_shape"
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="18dp"
+            android:selectedItemPosition="@={viewModel.genderIndex}"
+            source="@{viewModel.gender}"
             android:background="@drawable/new_edit_text_shape_large"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            app:hintTextColor="@color/btn_blue"
-            android:nextFocusRight="@color/btn_blue"
-            android:hint="Nhập giới tính">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etChangeGenderGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:fontFamily="@font/lato_regular"
-                android:textSize="16dp"
-                android:ems="15"
-                android:text="@{viewModel.userGender.name()}"
-                android:textColor="@color/btn_blue"
-                android:textColorHint="@color/btn_blue"
-                android:textCursorDrawable="@drawable/cursor_color"
-                android:background="@drawable/new_edit_text_shape_large"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <android.widget.Button
+            android:inputType="text"
+            android:hint="giới tính" />
+        <!--    <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/new_edit_text_shape_large"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    app:hintTextColor="@color/btn_blue"
+                    android:nextFocusRight="@color/btn_blue"
+                    android:hint="Nhập giới tính">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etChangeGenderGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:fontFamily="@font/lato_regular"
+                        android:textSize="16dp"
+                        android:ems="15"
+                        android:text="@{viewModel.userGender.name()}"
+                        android:textColor="@color/btn_blue"
+                        android:textColorHint="@color/btn_blue"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/new_edit_text_shape_large"/>
+            </com.google.android.material.textfield.TextInputLayout>-->
+        <android.widget.Button
             android:id="@+id/btnChangeGenderConfirmChange"
             android:onClick="@{()-> viewModel.onSubmitGenderText()}"
             android:fontFamily="@font/lato_bold"
@@ -49,6 +66,6 @@
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-</LinearLayout>
+            android:layout_gravity="center" />
+    </LinearLayout>
 </layout>

@@ -1,14 +1,12 @@
 package k15hkii.se114.bookstore.ui.news.createfeed;
 
-import androidx.databinding.library.baseAdapters.BR;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.library.baseAdapters.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.CreateNewsFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;

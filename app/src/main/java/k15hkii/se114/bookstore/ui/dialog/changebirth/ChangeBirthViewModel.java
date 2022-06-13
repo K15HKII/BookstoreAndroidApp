@@ -1,17 +1,15 @@
 package k15hkii.se114.bookstore.ui.dialog.changebirth;
 
-import android.util.Log;
 import androidx.databinding.ObservableField;
 import k15hkii.se114.bookstore.data.model.api.user.ProfileUpdateRequest;
 import k15hkii.se114.bookstore.data.model.api.user.User;
 import k15hkii.se114.bookstore.data.prefs.PreferencesHelper;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
-import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
+import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import java.util.Date;
-import java.util.UUID;
 
 public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
 
@@ -27,7 +25,8 @@ public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
                     this.user = user;
                     userBirth.set(user.getBirthday());
                 },
-                throwable -> { });
+                throwable -> {
+                });
     }
 
     public ChangeBirthViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, PreferencesHelper helper) {
@@ -42,10 +41,13 @@ public class ChangeBirthViewModel extends BaseViewModel<ChangeBirthCallBack> {
             request.setBirthday(userBirth.get());
 
             dispose(remote.updateSelfUser(request),
-                    user -> { },
-                    throwable -> { });
+                    user -> {
+                        getNavigator().dismissDialog();
+                    },
+                    throwable -> {
+                    });
         }
-        getNavigator().dismissDialog();
     }
+
 }
 
