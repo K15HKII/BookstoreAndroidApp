@@ -59,7 +59,7 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
 
     @Bindable
     public List<BookTag> getBookTags() {
-        return book == null ? null : Arrays.asList(book.getBooktags());
+        return book == null || book.getBooktags() == null ? null : Arrays.asList(book.getBooktags());
     }
 
     public RateDetailViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote, PreferencesHelper preferencesHelper) {
