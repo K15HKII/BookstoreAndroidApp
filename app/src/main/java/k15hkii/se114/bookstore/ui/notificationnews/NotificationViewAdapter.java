@@ -19,7 +19,8 @@ import java.util.ArrayList;
 public class NotificationViewAdapter extends ListAdapter<NotificationViewModel, NotificationViewAdapter.NotificationOrderHolder> implements NotificationViewNavigator {
 
     private Context context;
-    @Setter private NotificationPageNavigator pageNavigator;
+    @Setter
+    private NotificationPageNavigator pageNavigator;
 
     public NotificationViewAdapter(Context context) {
         super(new ArrayList<>());
@@ -30,7 +31,7 @@ public class NotificationViewAdapter extends ListAdapter<NotificationViewModel, 
     @NotNull
     @Override
     public NotificationOrderHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_order_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_order_adapter, parent, false);
         return new NotificationViewAdapter.NotificationOrderHolder(view);
     }
 
@@ -45,15 +46,15 @@ public class NotificationViewAdapter extends ListAdapter<NotificationViewModel, 
         pageNavigator.childNavigate(object);
     }
 
-    class NotificationOrderHolder extends RecyclerView.ViewHolder{
+    class NotificationOrderHolder extends RecyclerView.ViewHolder {
 
         NotificationOrderAdapterBinding binding;
 
         public NotificationOrderHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            //TODO: viết adapter cho notification order
             binding = NotificationOrderAdapterBinding.bind(itemView);
         }
+
         public void setViewModel(NotificationViewModel data) {
             binding.setViewModel(data);
         }

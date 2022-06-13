@@ -11,9 +11,6 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class NotificationOrderViewModel extends NotificationViewModel {
 
-    public final ObservableField<String> notificationTitle = new ObservableField<>();
-    public final ObservableField<String> notificationContent = new ObservableField<>();
-    public final ObservableField<Image> notificationImage = new ObservableField<>();
     private final BaseOrderInfoViewModel<NotificationViewNavigator> _base;
 
     public NotificationOrderViewModel(SchedulerProvider schedulerProvider, ViewModelMapper mapper, ModelRemote remote) {

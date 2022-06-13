@@ -47,6 +47,7 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
         View view = super.onCreateView(inflater, container, savedInstanceState);
         NotificationPageFragmentBinding notificationPageFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
+        notificationAdapter.setPageNavigator(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NotificationPage.this.getContext());
         notificationPageFragmentBinding.rcvNotificationView.setLayoutManager(linearLayoutManager);

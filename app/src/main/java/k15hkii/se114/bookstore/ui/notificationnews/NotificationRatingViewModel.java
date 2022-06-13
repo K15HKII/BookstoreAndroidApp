@@ -17,9 +17,6 @@ import java.util.UUID;
 
 public class NotificationRatingViewModel extends NotificationViewModel {
 
-    public final ObservableField<String> notificationTitle = new ObservableField<>();
-    public final ObservableField<String> notificationContent = new ObservableField<>();
-    public final ObservableField<Image> notificationImage = new ObservableField<>();
     private final OrderBookViewModel _base;
 
     public Book getBook() {
