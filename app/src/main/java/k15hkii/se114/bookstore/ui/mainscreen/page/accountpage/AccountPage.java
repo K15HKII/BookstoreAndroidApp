@@ -114,6 +114,19 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
     }
 
     @Override
+    public void openCancleOrder() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",3);
+        createTransaction(R.id.fragmentContainerView, ShippingPage.class, bundle)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
+    }
+
+    @Override
     public void openShippingOrder() {
         Bundle bundle = new Bundle();
         bundle.putInt("position",1);

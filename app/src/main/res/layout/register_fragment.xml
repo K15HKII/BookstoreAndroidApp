@@ -23,11 +23,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                  android:orientation="vertical">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                      android:orientation="horizontal">
-                            <RelativeLayout
+                            <androidx.constraintlayout.widget.ConstraintLayout
                                     android:padding="15dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
@@ -38,7 +34,9 @@
                                         android:scaleX="0.7"
                                         android:scaleY="0.7"
                                         android:onClick="@{()-> viewModel.onBackWardClick()}"
-                                        android:background="@drawable/ic_backward"/>
+                                        android:background="@drawable/ic_backward"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"/>
 
                                 <View
                                         android:layout_width="220dp"
@@ -46,9 +44,11 @@
                                         android:scaleX="1.5"
                                         android:scaleY="1.5"
                                         android:background="@drawable/login_shark_img"
-                                        android:layout_centerInParent="true"/>
-                            </RelativeLayout>
-                        </LinearLayout>
+                                        android:layout_centerInParent="true" app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
                         <TextView android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
                                   android:fontFamily="@font/lato_bold"
@@ -60,7 +60,6 @@
                                   android:gravity="center"
                                   android:backgroundTint="@color/black"
                                   android:textAppearance="@style/Dang_ki"/>
-                    </LinearLayout>
 
                     <!--            Thông tin đăng nhập-->
                     <LinearLayout android:layout_width="match_parent"
@@ -299,7 +298,7 @@
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
-        <FrameLayout
+        <!--<FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/gray_transparent"
@@ -314,6 +313,6 @@
                 android:layout_gravity="center"
                 android:clickable="false"
                 android:backgroundTint="@color/color_of_button"
-                loading="@{viewModel.loading}"/>
+                loading="@{viewModel.loading}"/>-->
     </FrameLayout>
 </layout>

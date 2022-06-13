@@ -58,7 +58,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
-                            android:background="@drawable/edit_text_background"
+                            android:background="@drawable/new_edit_text_shape_large"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
                             app:boxStrokeColor="#FFF"
@@ -81,7 +81,7 @@
                                 android:textColor="@color/btn_blue"
                                 android:textColorHint="@color/btn_blue"
                                 android:textCursorDrawable="@drawable/cursor_color"
-                                android:background="@drawable/edit_text_background" />
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +89,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             app:passwordToggleEnabled="true"
-                            android:background="@drawable/edit_text_background"
+                            android:background="@drawable/new_edit_text_shape_large"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
                             app:boxStrokeColor="#FFF"
@@ -113,7 +113,7 @@
                                 android:textColor="@color/btn_blue"
                                 android:textColorHint="@color/btn_blue"
                                 android:textCursorDrawable="@drawable/cursor_color"
-                                android:background="@drawable/edit_text_background" />
+                                android:background="@drawable/new_edit_text_shape_large" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -218,7 +218,7 @@
                 </ScrollView>
             </RelativeLayout>
         </LinearLayout>
-        <!--<FrameLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/gray_transparent"
@@ -233,7 +233,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:backgroundTint="@color/color_of_button"
-            loading="@{viewModel.loading}"/>-->
+            loading="@{viewModel.loading}"/>
     </FrameLayout>
 
 

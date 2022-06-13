@@ -30,6 +30,8 @@ public interface AccountPageNavigator extends INavigator {
 
     void openArrivedOrder();
 
+    void openCancleOrder();
+
     void openRenting();
 
     void openRented();

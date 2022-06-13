@@ -10,8 +10,8 @@ import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
 public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Observable {
 
-    public final ObservableField<String> username = new ObservableField<>();
-    public final ObservableField<String> password = new ObservableField<>();
+    public final ObservableField<String> username = new ObservableField<>("");
+    public final ObservableField<String> password = new ObservableField<>("");
 
     private final Authentication authentication;
     public ObservableField<String> LoginMessage = new ObservableField<>();
@@ -22,19 +22,30 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> implements Obs
     }
 
     public void login(Object obj) {
-        dispose(authentication.login(new LoginRequest(username.get(), password.get())),
-                response -> {
-                    int statusCode = -1;
+        //KIỂM TRA CÓ NHẬP THÔNG TIN HAY CHƯA
+        if(username.get().isEmpty() || password.get().isEmpty()) {
+            getNavigator().openMissingDataDialog();
+            return;
+        }
+        else{
+            dispose(authentication.login(new LoginRequest(username.get(), password.get())),
+                    response -> {
+                        int statusCode = -1;
                    /* if (statusCode == Constant.CORRECT_PASSWORD) {
                         getNavigator().openCorrectDialog();
                     } else {
                         getNavigator().openWrongDialog();
                     }*/
-                    if (response.isAuthenticated())
-                        getNavigator().openHomeView(obj);
-                }, throwable -> {
-                    getNavigator().handleError(throwable);
-                });
+                        //CHECK LOGIN CÓ ĐÚNG HAY KHÔNG
+                        if (response.isAuthenticated())
+                            getNavigator().openCorrectDialog(obj);
+                        else{
+                            getNavigator().openWrongDialog();
+                        }
+                    }, throwable -> {
+                        getNavigator().handleError(throwable);
+                    });
+        }
     }
 
     public void onServerLoginClick() {

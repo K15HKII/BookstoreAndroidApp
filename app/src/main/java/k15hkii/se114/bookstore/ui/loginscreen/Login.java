@@ -1,13 +1,6 @@
 package k15hkii.se114.bookstore.ui.loginscreen;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +10,10 @@ import android.view.ViewGroup;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.LoginFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
-import k15hkii.se114.bookstore.ui.address.SelectorAddressPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.dialog.failedcheck.FailedCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
 import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
+import k15hkii.se114.bookstore.ui.dialog.missingdata.MissingDataDialog;
 import k15hkii.se114.bookstore.ui.forgotpassscreen.ForgotPasswordPage;
 import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
 import k15hkii.se114.bookstore.R;
@@ -105,7 +97,7 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
     }
 
     @Override
-    public void openCorrectDialog() {
+    public void openCorrectDialog(Object... obj) {
         LoginCheckDialog dialog = new LoginCheckDialog();
         dialog.show(getActivity().getSupportFragmentManager());
         final Handler handler = new Handler();
@@ -114,7 +106,14 @@ public class Login extends BaseFragment<LoginFragmentBinding, LoginViewModel> im
             public void run() {
                 // Do something after 5s = 5000ms
                 dialog.dismissDialog();
+                openHomeView(obj);
             }
         }, 500);
+    }
+
+    @Override
+    public void openMissingDataDialog() {
+        MissingDataDialog dialog = new MissingDataDialog();
+        dialog.show(getActivity().getSupportFragmentManager());
     }
 }

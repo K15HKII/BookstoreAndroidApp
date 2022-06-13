@@ -8,12 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.LoginCheckDialogBinding;
 import k15hkii.se114.bookstore.databinding.MissingInfoDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckDialog;
-import k15hkii.se114.bookstore.ui.dialog.logincheck.LoginCheckViewModel;
 
 import javax.inject.Inject;
 

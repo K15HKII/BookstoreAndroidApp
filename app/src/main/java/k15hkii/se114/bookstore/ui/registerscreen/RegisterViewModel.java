@@ -26,14 +26,14 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
     public final ObservableField<String> password = new ObservableField<>();
     public final ObservableField<String> passConfirm = new ObservableField<>();
 
-    //TODO: post
+    //TODO: làm function tạo tài khoản
 
     public RegisterViewModel(SchedulerProvider schedulerProvider) {
         super(schedulerProvider);
     }
 
     public void onBackWardClick() {
-        String temp = phoneNumber.get();
+        getNavigator().BackWard();
     }
 
 }

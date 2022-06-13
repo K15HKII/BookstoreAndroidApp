@@ -87,4 +87,8 @@ public class AccountPageViewModel extends BaseUserInfoViewModel<AccountPageNavig
     public void openArrivedOrderClick(){
         getNavigator().openArrivedOrder();
     }
+
+    public void openCancleOrderClick(){
+        getNavigator().openCancleOrder();
+    }
 }

@@ -1,23 +1,14 @@
 package k15hkii.se114.bookstore.ui.dialog.logincheck;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import k15hkii.se114.bookstore.R;
-import k15hkii.se114.bookstore.databinding.FilterSearchDialogBinding;
 import k15hkii.se114.bookstore.databinding.LoginCheckDialogBinding;
 import k15hkii.se114.bookstore.di.component.DialogComponent;
 import k15hkii.se114.bookstore.ui.base.BaseDialog;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchCallBack;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchDialog;
-import k15hkii.se114.bookstore.ui.dialog.filtersearch.FilterSearchViewModel;
-import k15hkii.se114.bookstore.ui.searchbook.SearchBookViewResult;
 
 import javax.inject.Inject;
 
