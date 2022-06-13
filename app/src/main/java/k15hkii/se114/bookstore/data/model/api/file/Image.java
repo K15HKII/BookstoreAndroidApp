@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 
-public class Image extends File {
+import java.io.Serializable;
+
+public class Image extends File implements Serializable {
     @Getter
     @Expose
     @SerializedName("width")

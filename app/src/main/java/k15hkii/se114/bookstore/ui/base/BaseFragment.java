@@ -128,7 +128,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
 
     public FragmentTransaction createTransaction(@IdRes int containerId, Class<? extends Fragment> clazz, @Nullable Bundle bundle) {
         return this.getActivity().getSupportFragmentManager().beginTransaction()
-                .add(containerId, clazz, bundle)
+                .replace(containerId, clazz, bundle)
                 .addToBackStack(null);
     }
 

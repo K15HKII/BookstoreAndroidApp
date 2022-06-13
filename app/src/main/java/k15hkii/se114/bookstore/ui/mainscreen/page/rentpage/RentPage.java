@@ -58,7 +58,7 @@ public class RentPage extends BaseFragment<RentPageFragmentBinding, RentPageView
 
         btnAdd.setImageTintList(ColorStateList.valueOf(Color.rgb(255,255,255)));
 
-        RentBookMenuTabAdapter rentBookView = new RentBookMenuTabAdapter(getActivity().getSupportFragmentManager(),
+        RentBookMenuTabAdapter rentBookView = new RentBookMenuTabAdapter(getChildFragmentManager(),
                 this.getLifecycle());
         RentView.setAdapter(rentBookView);
         new TabLayoutMediator(tabMenuNav, RentView,

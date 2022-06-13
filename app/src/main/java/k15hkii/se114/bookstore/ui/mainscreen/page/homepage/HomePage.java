@@ -72,7 +72,7 @@ public class HomePage extends BaseFragment<HomePageFragmentBinding, HomePageView
         }
 
         ViewPager2 vpContent = binding.vpHomeBookView;
-        HomeMenuTab adapter = new HomeMenuTab(getActivity().getSupportFragmentManager(), this.getLifecycle());
+        HomeMenuTab adapter = new HomeMenuTab(getChildFragmentManager(), this.getLifecycle());
         vpContent.setAdapter(adapter);
         tlContent.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

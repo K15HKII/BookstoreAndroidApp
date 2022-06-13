@@ -24,6 +24,7 @@ import k15hkii.se114.bookstore.data.model.api.message.ReplyFeedback;
 import k15hkii.se114.bookstore.data.model.api.user.*;
 import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.model.api.voucher.VoucherProfile;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.*;
 
@@ -234,12 +235,15 @@ public interface ModelRemote {
 
     //region File
     @Multipart
+    @Headers({"Connection: keep-alive"
+            , "Accept: */*"
+            , "Accept-Encoding: gzip, deflate, br"})
     @POST("/upload/image")
-    Single<Image> uploadImage(@Part RequestBody body);
+    Single<Image> uploadImage(@Part MultipartBody.Part image);
 
     @Multipart
     @POST("/upload/video")
-    Single<Video> uploadVideo(@Part RequestBody body);
+    Single<Video> uploadVideo(@Part("video") RequestBody body);
     //endregion
 
     //region Feedback

@@ -13,6 +13,7 @@ import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewAdapter;
 import k15hkii.se114.bookstore.ui.notificationnews.NotificationViewModel;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
+import k15hkii.se114.bookstore.ui.ratingbookscreen.MediaViewAdapter;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherViewAdapter;
@@ -456,6 +457,11 @@ public class FragmentModule {
     //endregion
 
     //region Adapters
+    @Provides
+    public MediaViewAdapter provideMediaViewAdapter() {
+        return new MediaViewAdapter();
+    }
+
     @Provides
     public VoucherItemAdapter provideVoucherItemAdapter(Context context) {
         return new VoucherItemAdapter(context);

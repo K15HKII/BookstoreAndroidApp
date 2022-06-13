@@ -3,12 +3,15 @@ package k15hkii.se114.bookstore.ui.ratingbookscreen;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RatingDetailBooksViewFragmentBinding;
@@ -22,16 +25,25 @@ import java.util.LinkedList;
 
 public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFragmentBinding, RateDetailViewModel> implements RatingBooksDetailPageNavigator {
 
-    private final LinkedList<Consumer<Uri>> callbacks = new LinkedList<>();
-    private final ActivityResultLauncher<String> GetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
-            uri -> {
-                while (!callbacks.isEmpty())
-                    callbacks.remove().accept(uri);
-            });
+    public RateDetailViewModel getViewModel() {
+        return viewModel;
+    }
+
+    @Inject
+    protected MediaViewAdapter adapter;
 
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
+    }
+
+    private LifecycleObserve mObserver;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mObserver = new LifecycleObserve(requireActivity().getActivityResultRegistry());
+        getLifecycle().addObserver(mObserver);
     }
 
     @Override
@@ -48,7 +60,13 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        RatingDetailBooksViewFragmentBinding ratingDetailBooksViewFragmentBinding = getViewDataBinding();
+        RatingDetailBooksViewFragmentBinding binding = getViewDataBinding();
+
+        adapter.setNavigator(this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+        binding.rvImages.setLayoutManager(gridLayoutManager);
+        binding.rvImages.setAdapter(adapter);
+
         viewModel.setNavigator(this);
         return view;
     }
@@ -65,6 +83,6 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
 
     @Override
     public void selectImages() {
-        GetContent.launch("image/* video/*");
+        mObserver.selectImage();
     }
 }

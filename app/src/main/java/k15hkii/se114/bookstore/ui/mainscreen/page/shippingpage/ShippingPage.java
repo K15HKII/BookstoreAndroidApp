@@ -39,7 +39,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         tmOrder = binding.tabMenuReceiptNav;
         vpOrder = binding.vpReceiptOrderView;
 
-        OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getActivity().getSupportFragmentManager(),
+        OrderMenuTabAdapter orderMenuTabAdapter = new OrderMenuTabAdapter(getChildFragmentManager(),
                 this.getLifecycle());
         vpOrder.setAdapter(orderMenuTabAdapter);
         new TabLayoutMediator(tmOrder, vpOrder,
