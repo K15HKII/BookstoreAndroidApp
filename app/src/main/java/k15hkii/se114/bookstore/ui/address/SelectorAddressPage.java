@@ -1,7 +1,5 @@
 package k15hkii.se114.bookstore.ui.address;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +32,12 @@ public class SelectorAddressPage extends BaseFragment<SelectorAddressFragmentBin
     @Override
     public int getLayoutId() {
         return R.layout.selector_address_fragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getViewDataBinding().getViewModel().loadData();
     }
 
     @Override

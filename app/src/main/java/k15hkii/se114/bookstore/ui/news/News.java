@@ -17,11 +17,16 @@ import k15hkii.se114.bookstore.databinding.NewsFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.mainscreen.shipmentscreen.OrderMenuTabAdapter;
+import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+
+import javax.inject.Inject;
 
 public class News extends BaseFragment<NewsFragmentBinding, NewsViewModel> implements NewsNavigator {
 
-    private TabLayout tabmenuNav;
-    private ViewPager2 newsView;
+/*    private TabLayout tabmenuNav;
+    private ViewPager2 newsView;*/
+
+    @Inject protected NewsAdapter newsAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -39,7 +44,9 @@ public class News extends BaseFragment<NewsFragmentBinding, NewsViewModel> imple
         View view = super.onCreateView(inflater, container, savedInstanceState);
         NewsFragmentBinding binding = getViewDataBinding();
 
-        tabmenuNav = binding.tabMenuNewsNav;
+        binding.rvNewsView.setAdapter(newsAdapter);
+
+       /* tabmenuNav = binding.tabMenuNewsNav;
         newsView = binding.vpNewsView;
 
         NewsMenuTab adapter = new NewsMenuTab(getActivity().getSupportFragmentManager(), this.getLifecycle());
@@ -60,7 +67,7 @@ public class News extends BaseFragment<NewsFragmentBinding, NewsViewModel> imple
                     }
                     tab.setText(title);
                 }
-        ).attach();
+        ).attach();*/
         viewModel.setNavigator(this);
         return view;
     }

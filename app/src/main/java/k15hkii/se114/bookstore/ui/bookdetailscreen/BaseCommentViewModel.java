@@ -11,6 +11,7 @@ import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.ui.base.INavigator;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
+import lombok.Getter;
 
 import java.util.Date;
 import java.util.List;
@@ -33,9 +34,10 @@ public class BaseCommentViewModel<N extends INavigator> extends BaseViewModel<N>
     }
 
     public final ObservableField<String> senderName = new ObservableField<>();
+    public final ObservableField<Image> senderAvatar = new ObservableField<>();
 
     private Message message;
-    private final ModelRemote remote;
+    @Getter private final ModelRemote remote;
 
     public BaseCommentViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
         super(schedulerProvider);
@@ -47,6 +49,7 @@ public class BaseCommentViewModel<N extends INavigator> extends BaseViewModel<N>
 
         dispose(remote.getUser(message.getUserId()), user -> {
             senderName.set(user.getName());
+            senderAvatar.set(user.getAvatar());
         }, throwable -> {
             Log.d("BaseCommentViewModel", "Error get user");
         });

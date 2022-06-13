@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
+import de.hdodenhof.circleimageview.CircleImageView;
 import k15hkii.se114.bookstore.BuildConfig;
 import k15hkii.se114.bookstore.data.model.ISubEnum;
 import k15hkii.se114.bookstore.data.model.api.Payment;
@@ -86,6 +87,14 @@ public final class BindingUtils {
 
     @BindingAdapter({"image"})
     public static void bindImage(ImageView view, Image image) {
+        if (image == null)
+            return;
+
+        bindImage(view, image.getId().toString());
+    }
+
+    @BindingAdapter({"image"})
+    public static void bindImage(CircleImageView view, Image image) {
         if (image == null)
             return;
 

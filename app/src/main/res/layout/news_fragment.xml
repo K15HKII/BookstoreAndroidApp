@@ -36,7 +36,7 @@
                     android:textSize="24dp" android:layout_centerInParent="true"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
-        <com.google.android.material.tabs.TabLayout
+        <!--<com.google.android.material.tabs.TabLayout
             android:id="@+id/tabMenuNewsNav"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -46,18 +46,25 @@
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabSelectedTextColor="@color/black"
             app:tabIndicatorColor="@color/black" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>-->
         <androidx.constraintlayout.widget.ConstraintLayout
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  android:layout_marginBottom="50dp">
-            <androidx.viewpager2.widget.ViewPager2
+            <!--<androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/vpNewsView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent">
-            </androidx.viewpager2.widget.ViewPager2>
+            </androidx.viewpager2.widget.ViewPager2>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNewsView"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                source="@{viewModel.news}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnRentBookAdd"
                     android:layout_width="wrap_content"

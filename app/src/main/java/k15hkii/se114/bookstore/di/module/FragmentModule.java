@@ -10,6 +10,7 @@ import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.di.UserId;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.news.adapter.NewsAdapter;
+import k15hkii.se114.bookstore.ui.notificationnews.NotificationOrderViewAdapter;
 import k15hkii.se114.bookstore.ui.orderinfoscreen.ordercancle.OrderCancleViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucherViewModel;
 import k15hkii.se114.bookstore.ui.voucherscreen.VoucherPageViewModel;
@@ -273,8 +274,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider));
+    public NotificationPageViewModel provideNotificationPageViewModel(SchedulerProvider schedulerProvider, ModelRemote remote, ViewModelMapper mapper, @UserId UUID userId) {
+        return createViewModel(fragment, NotificationPageViewModel.class, () -> new NotificationPageViewModel(schedulerProvider, remote, mapper, userId));
     }
 
     @Provides
@@ -413,8 +414,8 @@ public class FragmentModule {
     }
 
     @Provides
-    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider) {
-        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider));
+    public NewsViewModel provideNewsViewModel (SchedulerProvider schedulerProvider, ModelRemote remote) {
+        return createViewModel(fragment, NewsViewModel.class, () -> new NewsViewModel(schedulerProvider, remote));
     }
 
     @Provides
@@ -524,7 +525,11 @@ public class FragmentModule {
     public NewsAdapter NewsAdapter(Context context) {
         return new NewsAdapter(context);
     }
-    //endregion
+
+    @Provides
+    public NotificationOrderViewAdapter notificationOrderViewAdapter(Context context) {
+        return new NotificationOrderViewAdapter(context);
+    }
     //endregion
 
 }

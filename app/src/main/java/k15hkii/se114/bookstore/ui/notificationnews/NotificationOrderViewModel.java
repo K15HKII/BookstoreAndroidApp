@@ -1,6 +1,7 @@
 package k15hkii.se114.bookstore.ui.notificationnews;
 
 import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
 import androidx.databinding.ObservableField;
 import androidx.databinding.library.baseAdapters.BR;
 import k15hkii.se114.bookstore.data.model.api.file.Image;
@@ -33,6 +34,23 @@ public class NotificationOrderViewModel extends BaseOrderInfoViewModel<Notificat
                 notifyPropertyChanged(BR.image);
             }
         });
+        OnPropertyChangedCallback callback = new OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                updateContent();
+            }
+        };
+        this.price.addOnPropertyChangedCallback(callback);
+        this.discount.addOnPropertyChangedCallback(callback);
+        this.address.addOnPropertyChangedCallback(callback);
+        this.voucher.addOnPropertyChangedCallback(callback);
+        this.paymentMethod.addOnPropertyChangedCallback(callback);
+        updateContent();
+    }
+
+    private void updateContent() {
+        notificationTitle.set("test"); //TODO
+        notificationContent.set("super testtttttttttttttttttttttttttttttttttttt"); //TODO
     }
 
 }

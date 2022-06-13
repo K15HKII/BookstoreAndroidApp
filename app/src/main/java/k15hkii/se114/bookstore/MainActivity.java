@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivity
     public void nav(Class<? extends Fragment> clazz) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.clearBackStack("test");
-        Log.i("asdasd", fragmentManager.hashCode() + "");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView, clazz,null).addToBackStack("test").commit();
     }

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.databinding.NotificationPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
@@ -23,8 +22,7 @@ import java.util.List;
 
 public class NotificationPage extends BaseFragment<NotificationPageFragmentBinding, NotificationPageViewModel> implements NotificationPageNavigator {
 
-    @Inject protected
-    ListDataNotificationAdapter listDataNotificationAdapter;
+    @Inject protected NotificationOrderViewAdapter notificationAdapter;
 
     @Override
     public int getBindingVariable() {
@@ -50,7 +48,7 @@ public class NotificationPage extends BaseFragment<NotificationPageFragmentBindi
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NotificationPage.this.getContext());
         notificationPageFragmentBinding.rcvNotificationView.setLayoutManager(linearLayoutManager);
-        notificationPageFragmentBinding.rcvNotificationView.setAdapter(listDataNotificationAdapter);
+        notificationPageFragmentBinding.rcvNotificationView.setAdapter(notificationAdapter);
         return view;
     }
 

@@ -246,6 +246,9 @@ public interface ModelRemote {
     @GET("/api/message/feedback/{book_id}")
     Single<List<Feedback>> getFeedbacks(@Path("book_id") UUID book_id);
 
+    @GET("/api/message/feedbacks")
+    Single<List<Feedback>> getFeedbacks();
+
     @POST("/api/message/feedback")
     public Single<Feedback> sendFeedback(@Body FeedbackCRUDRequest feedback);
 
