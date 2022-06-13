@@ -25,6 +25,9 @@ public class LifecycleObserve implements DefaultLifecycleObserver {
 
         mGetContent = mRegistry.register("imageSelector", owner, new ActivityResultContracts.GetContent(),
                 uri -> {
+                    if(uri == null){
+                        return;
+                    }
                     if (owner instanceof RatingBooksDetailPage) {
                         RatingBooksDetailPage page = (RatingBooksDetailPage) owner;
                         FragmentActivity activity = page.getActivity();

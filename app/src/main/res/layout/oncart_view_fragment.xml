@@ -5,6 +5,9 @@
         <variable name="viewModel"
                   type="k15hkii.se114.bookstore.ui.oncartscreen.OncartViewViewModel"/>
     </data>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,84 +51,89 @@
         </androidx.appcompat.widget.Toolbar>
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvOnCartViewListItems"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 source="@{viewModel.items}"/>
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:paddingLeft="10dp"
-                          android:paddingRight="10dp"
-                          android:paddingTop="12dp"
-                          android:paddingBottom="13dp"
-                          android:gravity="bottom"
-                          android:background="@drawable/oncart_bottom_shape"
-                          android:orientation="horizontal" app:layout_constraintBottom_toBottomOf="parent"
-                          app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                        android:id="@+id/linearLayout2">
-                    <CheckBox
-                            android:id="@+id/cbOnCartViewPickAll"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:fontFamily="@font/lato_regular"
-                            android:textColor="@color/black"
-                            android:text="Chọn tất cả"
-                            android:textSize="12dp"
-                            android:backgroundTint="@color/btn_blue"/>
+    </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                                   android:layout_height="wrap_content"
+                                                                   android:paddingLeft="10dp"
+                                                                   android:paddingRight="10dp"
+                                                                   android:paddingTop="12dp"
+                                                                   android:paddingBottom="13dp"
+                                                                   android:gravity="bottom"
+                                                                   android:background="@drawable/oncart_bottom_shape"
+                                                                   android:orientation="horizontal" app:layout_constraintBottom_toBottomOf="parent"
+                                                                   app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
                     <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                        <TextView
+                            android:orientation="vertical" app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                            android:id="@+id/linearLayout2">
+                        <CheckBox
+                                android:id="@+id/cbOnCartViewPickAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:fontFamily="@font/lato_regular"
+                                android:textColor="@color/black"
+                                android:text="Chọn tất cả"
+                                android:textSize="12dp"
+                                android:backgroundTint="@color/btn_blue"/>
+                        <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="Tổng tiền  "
-                                android:textSize="21dp"
-                                android:textColor="@color/black"/>
-                        <TextView
-                                android:id="@+id/tvOnCartViewPriceOfAllBooks"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.totalPrice)}"
-                                android:textSize="21dp"
-                                android:textColor="@color/red_orange"/>
+                                android:orientation="horizontal">
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="Tổng tiền  "
+                                    android:textSize="21dp"
+                                    android:textColor="@color/black"/>
+                            <TextView
+                                    android:id="@+id/tvOnCartViewPriceOfAllBooks"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(viewModel.totalPrice)}"
+                                    android:textSize="21dp"
+                                    android:textColor="@color/red_orange"/>
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-                <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnOnCartViewConfirmOrderOncart"
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingRight="15dp"
-                        android:paddingLeft="15dp"
-                        android:text="Mua hàng"
-                        android:textAllCaps="false"
-                        android:textSize="16dp"
-                        android:textColor="@color/white"
-                        app:icon="@drawable/ic_shopping"
-                        app:iconGravity="textStart"
-                        app:backgroundTint="#21A1E9"
-                        android:drawableTint="@color/white"
-                        android:background="@drawable/new_btn_sky_medium"
-                        android:onClick="@{()->viewModel.openOrderPage()}" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-                        app:layout_constraintHorizontal_bias="0.893" app:layout_constraintVertical_bias="0.517"/>
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOnCartViewConfirmOrderOncart"
+                            android:fontFamily="@font/lato_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingRight="15dp"
+                            android:paddingLeft="15dp"
+                            android:text="Mua hàng"
+                            android:textAllCaps="false"
+                            android:textSize="16dp"
+                            android:textColor="@color/white"
+                            app:icon="@drawable/ic_shopping"
+                            app:iconGravity="textStart"
+                            app:backgroundTint="#21A1E9"
+                            android:drawableTint="@color/white"
+                            android:background="@drawable/new_btn_sky_medium"
+                            android:onClick="@{()->viewModel.openOrderPage()}" app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                            app:layout_constraintHorizontal_bias="0.893" app:layout_constraintVertical_bias="0.517"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+    </FrameLayout>
 
-
-    </LinearLayout>
 </layout>

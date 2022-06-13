@@ -6,15 +6,14 @@ import java.util.Locale;
 
 public enum Payment implements ISubEnum {
     CASH("Tiền mặt")
-    ,BANK_TRANSFER("") //TODO:
-    ,CREDIT_CARD("") //TODO:
-    ,PAYPAL("") //TODO:
-    ,BITCOIN("") //TODO:
-    ,WECHAT("") //TODO:
-    ,ALIPAY("") //TODO:
-    ,WALLET("") //TODO:
-    ,OTHER("") //TODO:
-    ,DEBIT_CARD(""); //TODO:
+    ,BANK_TRANSFER("Chuyển khoản")
+    ,CREDIT_CARD("Thẻ tín dụng")
+    ,PAYPAL("Paypal")
+    ,BITCOIN("Bitcoin")
+    ,WECHAT("Wechat")
+    ,ALIPAY("Alipay")
+    ,OTHER("Khác")
+    ,DEBIT_CARD("Thẻ ghi nợ");
 
     private final String sub;
 
