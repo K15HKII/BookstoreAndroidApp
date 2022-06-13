@@ -70,7 +70,7 @@ public class ShippingPage extends BaseFragment<ShippingPageFragmentBinding, Ship
         }
 
         ViewPager2 vpContent = binding.vpReceiptOrderView;
-        HomeMenuTab adapter = new HomeMenuTab(getChildFragmentManager(), this.getLifecycle());
+        OrderMenuTabAdapter adapter = new OrderMenuTabAdapter (getChildFragmentManager(), this.getLifecycle());
         vpContent.setAdapter(adapter);
         tlContent.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

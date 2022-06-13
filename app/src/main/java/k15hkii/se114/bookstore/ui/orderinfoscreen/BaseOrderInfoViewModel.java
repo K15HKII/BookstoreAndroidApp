@@ -3,13 +3,16 @@ package k15hkii.se114.bookstore.ui.orderinfoscreen;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableLong;
 import io.reactivex.Observable;
+import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.data.model.api.Payment;
 import k15hkii.se114.bookstore.data.model.api.bill.Bill;
 import k15hkii.se114.bookstore.data.model.api.user.UserAddress;
 import k15hkii.se114.bookstore.data.model.api.user.UserBank;
+import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.ViewModelMapper;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
@@ -27,10 +30,8 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
     public final ObservableField<List<OrderBookViewModel>> items = new ObservableField<>();
     public final ObservableField<UserAddress> address = new ObservableField<>();
     public final ObservableField<UserBank> bank = new ObservableField<>();
-    public final ObservableField<String> voucher = new ObservableField<>();
     public final ObservableLong price = new ObservableLong();
     public final ObservableField<Payment> paymentMethod = new ObservableField<>();
-    public final ObservableLong discount = new ObservableLong();
     public final ObservableLong shipPay = new ObservableLong();
     public final ObservableLong total = new ObservableLong();
 
@@ -40,6 +41,7 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
     private int billId;
     @Getter
     private Bill bill;
+    @Getter private Voucher voucher;
 
     protected final ViewModelMapper mapper;
     protected final ModelRemote remote;
@@ -57,7 +59,6 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
         };
         price.addOnPropertyChangedCallback(callback);
         shipPay.addOnPropertyChangedCallback(callback);
-        discount.addOnPropertyChangedCallback(callback);
     }
 
     @Override
@@ -67,6 +68,34 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
         if (bill != null) {
             setBill(bill);
         }
+    }
+
+    @Bindable
+    public String getVoucherDescription() {
+        if (voucher == null) {
+            return "Không có";
+        }
+        return voucher.getDescription();
+    }
+
+    @Bindable
+    public long getVoucherDiscount() {
+        if (voucher == null) {
+            return 0;
+        }
+        return -voucher.getDiscount(price.get());
+    }
+
+    public void setPaymentMethod(Payment payment) {
+        paymentMethod.set(payment);
+    }
+
+    public void setVoucher(Voucher voucher) {
+        if (voucher == null)
+            return;
+        this.voucher = voucher;
+        refreshTotal();
+        notifyPropertyChanged(BR.voucherDescription);
     }
 
     public void setBillId(int billId) {
@@ -100,7 +129,8 @@ public class BaseOrderInfoViewModel<N extends INavigator> extends BaseViewModel<
     }
 
     private void refreshTotal() {
-        total.set(price.get() + shipPay.get() - discount.get());
+        total.set(price.get() + shipPay.get() + getVoucherDiscount());
+        notifyPropertyChanged(BR.voucherDiscount);
     }
 
 }

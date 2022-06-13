@@ -51,8 +51,8 @@ public class NotificationRatingViewModel extends NotificationViewModel {
     }
 
     private void updateContent() {
-        notificationTitle.set("test detail"); //TODO
-        notificationContent.set("super testtttttttttttttttttttttttttttttttttttt"); //TODO
+        notificationTitle.set("Chia sẻ nhận xét về sản phẩm");
+        notificationContent.set("Kiện hàng đã đến tay bạn. Hãy đánh giá sản phẩm và chất lượng dịch vụ giúp chúng mình nhé!");
     }
 
     @Override

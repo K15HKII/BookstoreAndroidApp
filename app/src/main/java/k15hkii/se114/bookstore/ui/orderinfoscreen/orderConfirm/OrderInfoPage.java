@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
+import k15hkii.se114.bookstore.data.model.api.voucher.Voucher;
 import k15hkii.se114.bookstore.databinding.OrderInfoPageFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.voucherscreen.SelectorVoucher;
@@ -106,7 +107,11 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
     @Override
     public void openSelectVoucher() {
-        createTransaction(R.id.fragmentContainerView, SelectorVoucher.class, null)
+        SelectorVoucher selectorVoucher = new SelectorVoucher();
+        selectorVoucher.addCloseCallback((data) -> {
+            viewModel.setVoucher((Voucher) data);
+        });
+        createTransaction(R.id.fragmentContainerView, selectorVoucher, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit
@@ -117,7 +122,11 @@ public class OrderInfoPage extends BaseFragment<OrderInfoPageFragmentBinding, Or
 
     @Override
     public void openSelectPayment() {
-        createTransaction(R.id.fragmentContainerView, PaymentMethodPage.class, null)
+        PaymentMethodPage paymentSelector = new PaymentMethodPage();
+        paymentSelector.addCloseCallback((data) -> {
+            viewModel.setVoucher((Voucher) data);
+        });
+        createTransaction(R.id.fragmentContainerView, paymentSelector, null)
                 .setCustomAnimations(
                         R.anim.slide_in,  // enter
                         R.anim.fade_out,  // exit

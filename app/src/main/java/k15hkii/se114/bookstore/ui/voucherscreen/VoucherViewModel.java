@@ -10,46 +10,10 @@ import k15hkii.se114.bookstore.data.remote.ModelRemote;
 import k15hkii.se114.bookstore.ui.base.BaseViewModel;
 import k15hkii.se114.bookstore.utils.rx.SchedulerProvider;
 
-import javax.inject.Inject;
-
-public class VoucherViewModel extends BaseViewModel<VoucherViewNavigator> implements Observable {
-
-    @Inject
-    protected ModelRemote remote;
-    public final ObservableField<String> discount = new ObservableField<>();
-    public final ObservableField<String> discountType = new ObservableField<>();
-    public final ObservableField<String> minValue = new ObservableField<>();
-    public final ObservableField<String> requireBook = new ObservableField<>();
-    public final ObservableField<String> bookType = new ObservableField<>();
-    public final ObservableField<String> expiredDate = new ObservableField<>();
-
-    private VoucherProfile voucherProfile;
-    private Voucher voucher;
-    private User user;
-    private String maxCondition;
-
-    public void getData() {
-        dispose(remote.getVoucherProfile(voucher.getProfileId()), voucherProfile -> {
-                    this.voucherProfile = voucherProfile;
-                    this.discount.set(String.valueOf(voucherProfile.getDiscount()));
-                    this.discountType.set("Giảm giá theo %");
-                    this.minValue.set("Đơn hàng tối thiểu " + String.valueOf(voucherProfile.getMinValue()) + " đ");
-                    this.requireBook.set("Cần tối thiểu " + String.valueOf(voucherProfile.getRequire_book()) + " quyển sách");
-                    this.bookType.set("Hài hước");
-                }, throwable -> {
-                    Log.d("VoucherViewModel", "getData: " + throwable.getMessage(), throwable);
-                });
-    }
+public class VoucherViewModel extends BaseVoucherViewModel<VoucherViewNavigator> {
 
     public VoucherViewModel(SchedulerProvider schedulerProvider, ModelRemote remote) {
-        super(schedulerProvider);
-        this.remote = remote;
-    }
-
-    public void setVoucher(Voucher voucher) {
-        this.voucher = voucher;
-        this.expiredDate.set(String.valueOf(voucher.getExpired_at()));
-        getData();
+        super(schedulerProvider, remote);
     }
 
 }

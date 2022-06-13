@@ -14,14 +14,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherViewAdapter.VoucherViewHolder> {
+public class VoucherViewAdapter extends ListAdapter<BaseVoucherViewModel, VoucherViewAdapter.VoucherViewHolder> {
 
     private Context context;
-    @Deprecated
-    public VoucherViewAdapter(List<VoucherViewModel> lsVouchers, Context context) {
-        super(lsVouchers);
-        this.context = context;
-    }
 
     public VoucherViewAdapter(Context context) {
         super(new ArrayList<>());
@@ -37,11 +32,11 @@ public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, VoucherViewModel data) {
+    public void onBindViewHolder(@NonNull @NotNull VoucherViewAdapter.VoucherViewHolder holder, BaseVoucherViewModel data) {
         holder.setViewModel(data);
     }
 
-    class VoucherViewHolder extends RecyclerView.ViewHolder{
+    static class VoucherViewHolder extends RecyclerView.ViewHolder{
 
         private VoucherItemAdapterBinding binding;
 
@@ -49,8 +44,9 @@ public class VoucherViewAdapter extends ListAdapter<VoucherViewModel,VoucherView
             super(itemView);
             binding = VoucherItemAdapterBinding.bind(itemView);
         }
-        public void setViewModel(VoucherViewModel data) {
+        public void setViewModel(BaseVoucherViewModel data) {
             binding.setViewModel(data);
         }
+
     }
 }

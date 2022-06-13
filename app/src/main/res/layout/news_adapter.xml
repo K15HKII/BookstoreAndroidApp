@@ -128,7 +128,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--<FrameLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/gray_transparent"
@@ -144,6 +144,6 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:backgroundTint="@color/color_of_button"
-            loading="@{viewModel.loading}" />-->
+            loading="@{viewModel.loading}" />
     </FrameLayout>
 </layout>
