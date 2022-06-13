@@ -18,8 +18,8 @@ android {
 
     buildTypes {
         debug {
-//            buildConfigField("String", "BASE_URL", "\"https://upbeat-resolver-316305.df.r.appspot.com/\"")
-            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/\"")
+            buildConfigField("String", "BASE_URL", "\"https://upbeat-resolver-316305.df.r.appspot.com/\"")
+//            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/\"")
         }
         release {
             minifyEnabled false

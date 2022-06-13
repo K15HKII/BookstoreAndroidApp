@@ -23,10 +23,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavigator> {
 
@@ -36,7 +33,6 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     private final UUID userId;
 
     public final ObservableField<String> comment = new ObservableField<>();
-    public final ObservableField<List<Uri>> imageUris = new ObservableField<>(new LinkedList<>());
     public final ObservableField<List<Uri>> videoUris = new ObservableField<>(new LinkedList<>());
 
     public final ObservableList<Image> images = new ObservableArrayList<>();
@@ -89,11 +85,6 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         notifyPropertyChanged(BR.bookTags);
     }
 
-    //TODO: Binding
-    public void onClickNewImage() {
-        getNavigator().selectImages();
-    }
-
     public void onBackWardClick() {
         getNavigator().BackWard();
     }
@@ -101,7 +92,6 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     public void selectImages(Uri uri, RequestBody requestBody) {
         if (uri == null)
             return;
-        imageUris.get().add(uri);
         dispose(Single.just(requestBody).toObservable()
                         .switchMapSingle(body -> {
                             String path = uri.getPath();
@@ -121,8 +111,12 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
     }
 
     public void postFeedback() {
-        FeedbackCRUDRequest request = new FeedbackCRUDRequest(null, null, comment.get(), userId, rating.get());
-        dispose(remote.sendFeedback(request), feedback -> {
+        List<UUID> list = new ArrayList<>();
+        for (Image image : images) {
+            list.add(image.getId());
+        }
+        FeedbackCRUDRequest request = new FeedbackCRUDRequest(list, null, comment.get(), book.getId(), rating.get());
+        dispose(remote.sendFeedback(book.getId(), request), feedback -> {
             //TODO: handle feedback
             Log.d("RateDetailViewModel", "ConfirmRating: " + feedback.getId());
         }, throwable -> {

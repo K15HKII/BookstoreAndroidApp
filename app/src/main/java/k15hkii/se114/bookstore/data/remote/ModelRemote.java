@@ -236,8 +236,7 @@ public interface ModelRemote {
     //region File
     @Multipart
     @Headers({"Connection: keep-alive"
-            , "Accept: */*"
-            , "Accept-Encoding: gzip, deflate, br"})
+            , "Accept: */*"})
     @POST("/upload/image")
     Single<Image> uploadImage(@Part MultipartBody.Part image);
 
@@ -253,8 +252,8 @@ public interface ModelRemote {
     @GET("/api/message/feedbacks")
     Single<List<Feedback>> getFeedbacks();
 
-    @POST("/api/message/feedback")
-    public Single<Feedback> sendFeedback(@Body FeedbackCRUDRequest feedback);
+    @POST("/api/message/feedback/{book_id}")
+    public Single<Feedback> sendFeedback(@Path("book_id") UUID bookId, @Body FeedbackCRUDRequest feedback);
 
     @POST("/api/message/{feedback_id}")
     public Single<ReplyFeedback> sendReply(@Body ReplyCRUDRequest request);

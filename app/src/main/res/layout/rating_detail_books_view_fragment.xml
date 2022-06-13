@@ -57,6 +57,7 @@
                         android:layout_height="40dp"
                         android:layout_marginRight="15dp"
                         android:layout_alignParentEnd="true"
+                        android:onClick="@{()-> viewModel.postFeedback()}"
                         android:scaleX="0.7"
                         android:scaleY="0.7"
                         android:background="@drawable/ic_done" />

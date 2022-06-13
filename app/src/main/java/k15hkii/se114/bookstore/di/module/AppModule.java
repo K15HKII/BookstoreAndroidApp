@@ -85,6 +85,7 @@ public class AppModule {
     @Singleton
     Gson provideGson() {
         return new GsonBuilder()
+                .setLenient()
                 .registerTypeAdapter(RestHeader.PublicRestHeader.class, RestHeader.PublicRestHeaderSerializer.getInstance())
                 .registerTypeAdapter(RestHeader.ProtectedRestHeader.class, RestHeader.ProtectedRestHeaderSerializer.getInstance())
                 .excludeFieldsWithoutExposeAnnotation()
