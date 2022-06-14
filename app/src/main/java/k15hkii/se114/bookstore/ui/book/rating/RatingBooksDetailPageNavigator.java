@@ -8,4 +8,6 @@ public interface RatingBooksDetailPageNavigator extends INavigator {
 
     void selectImages();
 
+    void openHomePage();
+
 }

@@ -31,8 +31,8 @@ public class ChangeEmailDialog extends BaseDialog implements ChangeEmailCallBack
         this.closeCallback = closeCallback;
     }
 
-    public static ChangeBirthDialog newInstance(CloseReturnCallback closeCallback) {
-        ChangeBirthDialog fragment = new ChangeBirthDialog(closeCallback);
+    public static ChangeEmailDialog newInstance(CloseReturnCallback closeCallback) {
+        ChangeEmailDialog fragment = new ChangeEmailDialog(closeCallback);
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;

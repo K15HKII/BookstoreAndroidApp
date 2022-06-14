@@ -38,6 +38,8 @@ public interface AccountPageNavigator extends INavigator {
 
     void openRencentBook();
 
+    void openChangeEmailDialog();
+
     void logOut();
 
 }

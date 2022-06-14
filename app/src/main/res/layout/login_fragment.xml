@@ -49,7 +49,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/AppName"
-                            android:text="App Name"
+                            android:text="Bookoi"
                             android:textSize="31dp"
                             android:textColor="#001C44"
                             android:textAlignment="center"

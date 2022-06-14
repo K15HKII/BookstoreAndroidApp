@@ -1,12 +1,15 @@
 package k15hkii.se114.bookstore.ui.mainscreen.navigator.all;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.viewpager2.widget.ViewPager2;
 import k15hkii.se114.bookstore.BR;
 import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.AllBooksViewFragmentBinding;
@@ -27,6 +30,8 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
     @Inject
     protected BookViewAdapter bookViewAdapter;
 
+    ViewPager2 viewPager;
+
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
@@ -46,6 +51,7 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        viewPager = view.findViewById(R.id.vpPopularBooks);
         AllBooksViewFragmentBinding allBooksViewFragmentBinding = getViewDataBinding();
         viewModel.setNavigator(this);
         bookViewAdapter.setBookViewNavigator(this);
@@ -55,6 +61,18 @@ public class AllBooksPage extends BaseFragment<AllBooksViewFragmentBinding, AllB
         getViewDataBinding().vpPopularBooks.setAdapter(bannerAdapter);
         getViewDataBinding().ciPopularBooks.setViewPager(getViewDataBinding().vpPopularBooks);
         bannerAdapter.registerAdapterDataObserver(getViewDataBinding().ciPopularBooks.getAdapterDataObserver());
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                int currentItem = viewPager.getCurrentItem();
+                int size = bannerAdapter.getItemCount();
+                viewPager.setCurrentItem((currentItem + 1) % size, true);
+                handler.postDelayed(this, 2000);
+            }
+        }, 1500);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         allBooksViewFragmentBinding.lvHomeAllBook.setLayoutManager(gridLayoutManager);

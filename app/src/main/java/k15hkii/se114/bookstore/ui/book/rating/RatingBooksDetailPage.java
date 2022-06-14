@@ -12,6 +12,8 @@ import k15hkii.se114.bookstore.R;
 import k15hkii.se114.bookstore.databinding.RatingDetailBooksViewFragmentBinding;
 import k15hkii.se114.bookstore.di.component.FragmentComponent;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
+import k15hkii.se114.bookstore.ui.book.search.SearchBookView;
+import k15hkii.se114.bookstore.ui.mainscreen.HomeLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -77,6 +79,17 @@ public class RatingBooksDetailPage extends BaseFragment<RatingDetailBooksViewFra
     @Override
     public void selectImages() {
         mObserver.selectImage();
+    }
+
+    @Override
+    public void openHomePage() {
+        createTransaction(R.id.fragmentContainerView, HomeLayout.class, null)
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                ).commit();
     }
 
 }
