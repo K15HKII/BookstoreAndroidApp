@@ -17,6 +17,7 @@ import k15hkii.se114.bookstore.ui.account.setting.SettingPage;
 import k15hkii.se114.bookstore.ui.base.BaseFragment;
 import k15hkii.se114.bookstore.ui.components.CloseReturnCallback;
 import k15hkii.se114.bookstore.ui.dialog.changebirth.ChangeBirthDialog;
+import k15hkii.se114.bookstore.ui.dialog.changeemail.ChangeEmailDialog;
 import k15hkii.se114.bookstore.ui.dialog.changegender.ChangeGenderDialog;
 import k15hkii.se114.bookstore.ui.dialog.changename.ChangeNameDialog;
 import k15hkii.se114.bookstore.ui.dialog.changepassword.ChangePassDialog;
@@ -173,6 +174,11 @@ public class AccountPage extends BaseFragment<AccountPageFragmentBinding, Accoun
                         R.anim.fade_in,   // popEnter
                         R.anim.slide_out  // popExit
                 ).commit();
+    }
+
+    @Override
+    public void openChangeEmailDialog() {
+        ChangeEmailDialog.newInstance(closeCallback).show(getActivity().getSupportFragmentManager());
     }
 
     @Override

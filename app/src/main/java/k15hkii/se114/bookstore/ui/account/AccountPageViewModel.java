@@ -83,4 +83,8 @@ public class AccountPageViewModel extends BaseUserInfoViewModel<AccountPageNavig
         getNavigator().openCancleOrder();
     }
 
+    public void openChangeEmailDialog() {
+        getNavigator().openChangeEmailDialog();
+    }
+
 }

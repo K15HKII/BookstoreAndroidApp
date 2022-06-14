@@ -45,12 +45,13 @@ public class ChangeEmailViewModel extends BaseViewModel<ChangeEmailCallBack> {
 
             dispose(remote.updateSelfUser(request),
                     user -> {
+                        getNavigator().dismissDialog();
                     },
                     throwable -> {
                         getNavigator().openInvalidEmailDialog("Email đã tồn tại");
                     });
         }
-        getNavigator().dismissDialog();
+
     }
 
 }

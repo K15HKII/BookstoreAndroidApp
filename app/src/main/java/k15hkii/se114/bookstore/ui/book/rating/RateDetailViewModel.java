@@ -122,7 +122,7 @@ public class RateDetailViewModel extends BaseViewModel<RatingBooksDetailPageNavi
         }
         FeedbackCRUDRequest request = new FeedbackCRUDRequest(list, null, comment.get(), book.getId(), rating.get());
         dispose(remote.sendFeedback(book.getId(), request), feedback -> {
-            //TODO: handle feedback
+            getNavigator().openHomePage();
             Log.d("RateDetailViewModel", "ConfirmRating: " + feedback.getId());
         }, throwable -> {
             Log.d("RateDetailViewModel", "ConfirmRating: " + throwable.getMessage());

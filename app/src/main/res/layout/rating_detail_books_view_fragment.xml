@@ -198,14 +198,13 @@
                                 android:background="@drawable/edit_text_background"
                                 app:boxBackgroundColor="@color/mtrl_textinput_default_box_stroke_color"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/etRatingReportDescription"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:lines="6"
                                     android:text="@={viewModel.comment}"
-                                    android:hint="Placeholder"
+                                    android:hint="Đánh giá của bạn"
                                     android:gravity="top|start"
                                     android:inputType="textMultiLine"
                                     android:overScrollMode="always"
@@ -219,5 +218,22 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
         </LinearLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
+                loading="@{viewModel.loading}" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:backgroundTint="@color/color_of_button"
+                loading="@{viewModel.loading}" />
     </FrameLayout>
 </layout>
