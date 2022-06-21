@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainActivity
     @Override
     public void performDependencyInjection(ActivityComponent buildComponent) {
     }
-
+//
     public void nav(Class<? extends Fragment> clazz) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.clearBackStack("test");
